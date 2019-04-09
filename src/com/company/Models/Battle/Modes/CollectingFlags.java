@@ -1,8 +1,10 @@
-package com.company;
+package com.company.Models.Battle.Modes;
+
+import com.company.Models.Card.Flag;
 
 import java.util.ArrayList;
 
-public class CollectingFlagsMode extends Mode {
+public class CollectingFlags extends Mode {
     ArrayList<Flag> flags = new ArrayList<>();
 
     public ArrayList<Flag> getFlags() {

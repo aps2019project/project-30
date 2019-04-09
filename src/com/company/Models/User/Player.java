@@ -1,30 +1,25 @@
-package com.company;
+package com.company.Models.User;
+
+import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Card.Spell.Spell;
 
 public class Player {
     private String username;
-    private int score;
     private Deck deck;
+    private int score;
     private int mana;
     private int usedMana;
+    private Spell spell;
 
-    public Player(Account account) {
-    }
+    public Player(Account account) { }
 
-    public Player() {
-        //Bot
-    }
+    public Player() { }
 
-    public void incremeantScore(int number) {
+    public void incremeantScore(int number) { }
 
-    }
+    public void incremeantUsedMana(int number) { }
 
-    public void incremeantUsedMana(int number) {
-
-    }
-
-    public void incremeantMana() {
-
-    }
+    public void incremeantMana() { }
 
     public String getUsername() {
         return username;

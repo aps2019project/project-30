@@ -1,7 +1,11 @@
-package com.company;
+package com.company.Models.Card.Hero;
 
-public class Hero extends Card {
-    private enum AttackType {RANGED, MELEE, HYBRID}
+import com.company.Models.Card.AttackType;
+import com.company.Models.Card.Card;
+import com.company.Models.Card.Spell.Spell;
+
+public abstract class Hero extends Card {
+
     private static String name;
     private static AttackType attackType;
     private static int priceInDrake;

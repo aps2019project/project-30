@@ -1,10 +1,13 @@
-package com.company;
+package com.company.Models.Card.Spell;
+
+import com.company.Models.Buff.Buff;
+import com.company.Models.Card.Card;
 
 public abstract class Spell extends Card {
-    String name;
-    int priceInDrake;
-    int neededMana;
-    Buff buff;
+    private String name;
+    private int priceInDrake;
+    private int neededMana;
+    private Buff buff;
 
     public String getName() {
         return name;

@@ -1,4 +1,9 @@
-package com.company;
+package com.company.Models.User;
+
+import com.company.Models.Battle.BattleLog;
+import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Battle.Battle;
 
 import java.util.ArrayList;
 
@@ -10,8 +15,8 @@ public class Account {
     private int drake = 0;
     private ArrayList<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
-    private GCollection gCollection;
-    private ArrayList<Game> gameHistories = new ArrayList<>();
+    private Collection collection;
+    private ArrayList<BattleLog> battleHistories = new ArrayList<>();
 
     public Account(String username, String password) {
         this.username = username;
@@ -42,12 +47,12 @@ public class Account {
         return mainDeck;
     }
 
-    public GCollection getgCollection() {
-        return gCollection;
+    public Collection getCollection() {
+        return collection;
     }
 
-    public ArrayList<Game> getGameHistories() {
-        return gameHistories;
+    public ArrayList<BattleLog> getBattleHistories() {
+        return battleHistories;
     }
 
     public void setDrake(int drake) {

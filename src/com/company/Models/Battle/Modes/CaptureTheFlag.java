@@ -1,9 +1,11 @@
-package com.company;
+package com.company.Models.Battle.Modes;
 
-public class CTFMode extends Mode {
+import com.company.Models.Card.Flag;
+
+public class CaptureTheFlag extends Mode {
     Flag flag;
 
-    public CTFMode() {
+    public CaptureTheFlag() {
         this.flag = new Flag();
     }
 

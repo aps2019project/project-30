@@ -1,11 +1,14 @@
-package com.company;
+package com.company.Models.Battle;
 
-public class SinglePlayer extends Game {
+import com.company.Models.Battle.Modes.Mode;
+import com.company.Models.User.Account;
+import com.company.Models.User.Player;
+
+public class SinglePlayer extends Battle {
     private Account player1Acc;
     private Player player1;
     private Mode mode;
     private boolean isStory;
-    //story saving
 
     public Account getPlayer1Acc() {
         return player1Acc;

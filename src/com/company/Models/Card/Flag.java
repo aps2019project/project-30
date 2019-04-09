@@ -1,9 +1,9 @@
-package com.company;
+package com.company.Models.Card;
 
 public class Flag {
-    int flagHolder = 0;
-    int flagXCoordinate;
-    int flagYCoordinate;
+    private int flagHolder = 0;
+    private int flagXCoordinate;
+    private int flagYCoordinate;
 
     public int getFlagHolder() {
         return flagHolder;

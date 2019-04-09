@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Models.Card.Groups;
+
+import com.company.Models.Card.Card;
 
 public class Deck {
     private String name;
@@ -51,6 +53,10 @@ public class Deck {
     public void initializeHand() {
 
     }
+
+    public void generateRandomCardsOrder() {}
+
+    public Card getIncomingCardToHand() {return null;}
 
     public boolean isValidate() {
         return true;

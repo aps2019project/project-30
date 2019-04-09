@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Models.Card.Groups;
+
+import com.company.Models.Card.Card;
 
 public class Hand {
     Card[] cards = new Card[5];
