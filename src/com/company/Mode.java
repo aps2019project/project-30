@@ -1,7 +1,5 @@
 package com.company;
 
-public abstract class Game {
-    private Mode mode;
+public abstract class Mode {
     public abstract void handler();
-
 }

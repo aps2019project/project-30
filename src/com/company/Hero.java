@@ -1,13 +1,64 @@
 package com.company;
 
-public class Hero {
-    enum AttackType {RANGED, MELEE, HYBRID}
-    String name;
-    AttackType attackType;
-    int priceInDrake;
-    int health;
-    int attackPower;
-    int AreaOfEffect;
+public class Hero extends Card {
+    private enum AttackType {RANGED, MELEE, HYBRID}
+    private static String name;
+    private static AttackType attackType;
+    private static int priceInDrake;
+    private static int FullHealth;
+    private int health;
+    private int attackPower;
+    private static int AreaOfEffect;
+    private static int manaPoint;
+    private static int coolDown;
+    private int coolDownRemaining;
+    private static Spell spell;
 
+    public String getName() {
+        return name;
+    }
 
+    public AttackType getAttackType() {
+        return attackType;
+    }
+
+    public static int getPriceInDrake() {
+        return priceInDrake;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public int getAreaOfEffect() {
+        return AreaOfEffect;
+    }
+
+    public int getManaPoint() {
+        return manaPoint;
+    }
+
+    public int getCoolDown() {
+        return coolDown;
+    }
+
+    public int getCoolDownRemaining() {
+        return coolDownRemaining;
+    }
+
+    public Spell getSpell() {
+        return spell;
+    }
+
+    public void setCoolDownRemaining(int coolDownRemaining) {
+        this.coolDownRemaining = coolDownRemaining;
+    }
+
+    public void decremeantHealth(int health) {
+
+    }
 }
