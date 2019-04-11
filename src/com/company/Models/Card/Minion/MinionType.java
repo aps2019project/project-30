@@ -34,4 +34,36 @@ public enum MinionType {
     }
 
     public abstract void doAction();
+
+    public String getName() {
+        return name;
+    }
+
+    public AttackType getAttackType() {
+        return attackType;
+    }
+
+    public ActivationTime getActivationTime() {
+        return activationTime;
+    }
+
+    public int getPriceInDrake() {
+        return priceInDrake;
+    }
+
+    public int getNeededMana() {
+        return neededMana;
+    }
+
+    public int getFullHealth() {
+        return fullHealth;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public int getAreaOfEffect() {
+        return areaOfEffect;
+    }
 }

@@ -10,4 +10,27 @@ public abstract class Card {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getManaPoint() {
+        return manaPoint;
+    }
+
+    public int getPriceInDrake() {
+        return priceInDrake;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setManaPoint(int manaPoint) {
+        this.manaPoint = manaPoint;
+    }
+
+    public void setPriceInDrake(int priceInDrake) {
+        this.priceInDrake = priceInDrake;
+    }
 }

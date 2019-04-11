@@ -7,6 +7,8 @@ public class Minion extends Card {
 
     public Minion(MinionType minionType) {
         this.minionType = minionType;
+        super.setName(minionType.getName());
+        super.setManaPoint(minionType.getNeededMana());
     }
 
     private int health;
