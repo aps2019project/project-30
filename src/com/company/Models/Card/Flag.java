@@ -1,15 +1,17 @@
 package com.company.Models.Card;
 
+import com.company.Models.User.Player;
+
 public class Flag {
-    private int flagHolder = 0;
+    private Player flagHolder;
     private int flagXCoordinate;
     private int flagYCoordinate;
 
-    public int getFlagHolder() {
+    public Player getFlagHolder() {
         return flagHolder;
     }
 
-    public void setFlagHolder(int flagHolder) {
+    public void setFlagHolder(Player flagHolder) {
         this.flagHolder = flagHolder;
     }
 
