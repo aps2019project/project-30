@@ -23,6 +23,31 @@ public class Account {
         this.password = password;
     }
 
+    public static Account getAccountByUsername(String username) {
+        for (Account account : accounts) {
+            if (account.getUsername().equals(username)) {
+                return account;
+            }
+        }
+        return null;
+    }
+
+    public boolean isPasswordCorrect(String password) {
+        return this.password.equals(password);
+    }
+
+    public static ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
+    public static void addToAccounts(Account account) {
+        accounts.add(account);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     public static void login(String username, String password) {
 
     }

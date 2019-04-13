@@ -6,7 +6,7 @@ public enum SpellType {
     TOTAL_DISARM("Total Disarm", 1000, 0, null) {
         @Override
         public void doAction() {
-
+            
         }
 
         @Override

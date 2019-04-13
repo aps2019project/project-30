@@ -1,5 +1,5 @@
 package com.company.Controllers;
 
-public class Shop {
+public class ShopController {
 
 }
