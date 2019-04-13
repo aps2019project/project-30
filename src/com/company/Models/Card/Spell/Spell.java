@@ -4,24 +4,13 @@ import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 
 public abstract class Spell extends Card {
-    private String name;
-    private int priceInDrake;
-    private int neededMana;
-    private Buff buff;
+    private SpellType spellType;
 
-    public String getName() {
-        return name;
+    public Spell(SpellType spellType) {
+        this.spellType = spellType;
     }
 
-    abstract void getTarget();
-
-    public int getPriceInDrake() {
-        return priceInDrake;
+    public SpellType getSpellType() {
+        return spellType;
     }
-
-    public int getNeededMana() {
-        return neededMana;
-    }
-
-    abstract void doAction();
 }

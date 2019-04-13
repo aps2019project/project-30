@@ -1,6 +1,6 @@
-package com.company.Controllers;
+package com.company.Views;
 
-public class Console {
+public class ConsoleInput {
     enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE}
     Menu menu;
     public static void mainMenuCommandsChecker() {

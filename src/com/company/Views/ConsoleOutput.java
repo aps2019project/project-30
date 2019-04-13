@@ -1,4 +1,4 @@
 package com.company.Views;
 
-public class Console {
+public class ConsoleOutput {
 }

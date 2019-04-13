@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="702040f4-b561-473b-bbb0-9f4c1e09b1e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Hero/HeroType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/Controllers/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Spell/SpellType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Card/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Card/Minion/MinionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Minion/MinionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Controllers/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Views/ConsoleInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Views/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Views/ConsoleOutput.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,15 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Hero/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,68 +34,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="uml://JAVA/com.company">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>com.company</OriginalElement>
-              <nodes>
-                <node x="694.0" y="890.0">com.company.Models.Battle</node>
-                <node x="845.0" y="890.0">com.company.Models.User</node>
-                <node x="543.0" y="890.0">com.company.Views</node>
-                <node x="485.0" y="595.0">com.company.Models.Shop</node>
-                <node x="0.0" y="890.0">com.company.Main</node>
-                <node x="0.0" y="333.0">com.company.Models.Card.Hero.Hero</node>
-                <node x="482.0" y="377.0">com.company.Models.Card.Minion.Minion</node>
-                <node x="384.0" y="890.0">com.company.Models.Card.Groups</node>
-                <node x="803.0" y="595.0">com.company.Models.Card.AttackType</node>
-                <node x="286.0" y="322.0">com.company.Models.Card.Spell.Spell</node>
-                <node x="206.0" y="890.0">com.company.Controllers</node>
-                <node x="0.0" y="986.0">com.company.Models.Buff</node>
-                <node x="0.0" y="595.0">com.company.Models.Card.Hero.HeroType</node>
-                <node x="952.0" y="595.0">com.company.Models.Card.ActivationTime</node>
-                <node x="228.0" y="595.0">com.company.Models.Card.Flag</node>
-                <node x="278.0" y="0.0">com.company.Models.Card.Card</node>
-                <node x="718.0" y="0.0">com.company.Models.Card.Minion.MinionType</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="com.company.Models.Card.Hero.Hero" target="com.company.Models.Card.Card">
-                  <point x="0.0" y="-103.0" />
-                  <point x="133.0" y="297.0" />
-                  <point x="310.0" y="297.0" />
-                  <point x="-64.0" y="136.0" />
-                </edge>
-                <edge source="com.company.Models.Card.Minion.Minion" target="com.company.Models.Card.Card">
-                  <point x="0.0" y="-59.0" />
-                  <point x="577.5" y="297.0" />
-                  <point x="438.0" y="297.0" />
-                  <point x="64.0" y="136.0" />
-                </edge>
-                <edge source="com.company.Models.Card.Spell.Spell" target="com.company.Models.Card.Card">
-                  <point x="0.0" y="-114.0" />
-                  <point x="0.0" y="136.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="-272.0" y="704.0" />
-              <SelectedNodes>
-                <node>com.company.Controllers</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Methods</Category>
-                <Category>Fields</Category>
-              </Categories>
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>private</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Hero/HeroType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="360">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,27 +46,72 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/MinionType.java">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Models/User/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-240">
+            <state relative-caret-position="600">
+              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Views/ConsoleInput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
               <folding>
-                <element signature="e#1177#1178#0" expanded="true" />
-                <element signature="e#1204#1205#0" expanded="true" />
-                <element signature="e#1245#1246#0" expanded="true" />
-                <element signature="e#1278#1279#0" expanded="true" />
-                <element signature="e#1327#1328#0" expanded="true" />
-                <element signature="e#1364#1365#0" expanded="true" />
-                <element signature="e#1400#1401#0" expanded="true" />
-                <element signature="e#1435#1436#0" expanded="true" />
-                <element signature="e#1469#1470#0" expanded="true" />
-                <element signature="e#1502#1503#0" expanded="true" />
-                <element signature="e#1536#1537#0" expanded="true" />
-                <element signature="e#1569#1570#0" expanded="true" />
-                <element signature="e#1604#1605#0" expanded="true" />
-                <element signature="e#1638#1639#0" expanded="true" />
-                <element signature="e#1674#1675#0" expanded="true" />
-                <element signature="e#1709#1710#0" expanded="true" />
+                <element signature="method#mainMenuCommandsChecker#0;class#Console#0" />
+                <element signature="method#collectionMenuCommandsChecker#0;class#Console#0" />
+                <element signature="method#accountMenuCommandsChecker#0;class#Console#0" />
+                <element signature="method#shopMenuCommandsChecker#0;class#Console#0" />
+                <element signature="method#battleMenuCommandsChecker#0;class#Console#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Controllers/Shop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Models/Shop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+              <folding>
+                <element signature="method#buy#0;class#Shop#0" />
+                <element signature="method#sell#0;class#Shop#0" />
+                <element signature="method#show#0;class#Shop#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#230#231#0" expanded="true" />
+                <element signature="e#272#273#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/SpellType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -142,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="180">
+              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,15 +131,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
+            <state relative-caret-position="320">
               <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
               <folding>
-                <element signature="e#273#274#0" expanded="true" />
-                <element signature="e#300#301#0" expanded="true" />
-                <element signature="e#340#341#0" expanded="true" />
-                <element signature="e#372#373#0" expanded="true" />
-                <element signature="e#415#416#0" expanded="true" />
-                <element signature="e#450#451#0" expanded="true" />
                 <element signature="e#480#481#0" expanded="true" />
                 <element signature="e#527#528#0" expanded="true" />
                 <element signature="e#569#570#0" expanded="true" />
@@ -188,9 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/company/Player.java" />
-        <option value="$PROJECT_DIR$/src/com/company/SinglePlayer.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Game.java" />
         <option value="$PROJECT_DIR$/src/com/company/MultiPlayer.java" />
         <option value="$PROJECT_DIR$/src/com/company/Hero.java" />
         <option value="$PROJECT_DIR$/src/com/company/Card.java" />
@@ -231,22 +199,25 @@
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Spell.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Battle/BattleLog.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/User/Account.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Controllers/Console.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Minion/MinionType.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Card.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Hero/Hero.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Hero/HeroType.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Controllers/Console.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Views/ConsoleInput.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Controllers/Shop.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Models/Card/Spell/SpellType.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="115" />
-    <option name="y" value="13" />
-    <option name="width" value="1688" />
-    <option name="height" value="996" />
+    <option name="y" value="11" />
+    <option name="width" value="1690" />
+    <option name="height" value="997" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -256,6 +227,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,6 +251,13 @@
               <item name="Project Files" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="company" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project Files" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project Files" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -287,7 +266,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="company" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Card" type="462c0819:PsiDirectoryNode" />
+              <item name="Battle" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project Files" type="b2602c69:ProjectViewProjectNode" />
@@ -296,16 +275,6 @@
               <item name="company" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
               <item name="Card" type="462c0819:PsiDirectoryNode" />
-              <item name="Hero" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project Files" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project Files" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="company" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Card" type="462c0819:PsiDirectoryNode" />
-              <item name="Minion" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project Files" type="b2602c69:ProjectViewProjectNode" />
@@ -316,18 +285,32 @@
               <item name="Card" type="462c0819:PsiDirectoryNode" />
               <item name="Spell" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Project Files" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project Files" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project Files" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project Files" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="company" type="462c0819:PsiDirectoryNode" />
+              <item name="Views" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554977733361" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555143757533" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
   </component>
   <component name="RunDashboard">
@@ -374,28 +357,28 @@
       <workItem from="1554790454287" duration="6406000" />
       <workItem from="1554806331429" duration="1501000" />
       <workItem from="1554823534258" duration="7822000" />
-      <workItem from="1554976153619" duration="1579000" />
+      <workItem from="1554976153619" duration="3074000" />
+      <workItem from="1555141598836" duration="2085000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26637000" />
+    <option name="totallyTimeSpent" value="30217000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1618" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19897304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20154044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32885906" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -403,8 +386,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32885906" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -611,18 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="method#buy#0;class#Shop#0" />
-            <element signature="method#sell#0;class#Shop#0" />
-            <element signature="method#show#0;class#Shop#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Battle/BattleLog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -648,77 +620,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/User/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Controllers/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding>
-            <element signature="method#mainMenuCommandsChecker#0;class#Console#0" />
-            <element signature="method#collectionMenuCommandsChecker#0;class#Console#0" />
-            <element signature="method#accountMenuCommandsChecker#0;class#Console#0" />
-            <element signature="method#shopMenuCommandsChecker#0;class#Console#0" />
-            <element signature="method#battleMenuCommandsChecker#0;class#Console#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Views/Console.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Views/ConsoleOutput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="20" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#300#301#0" expanded="true" />
-            <element signature="e#340#341#0" expanded="true" />
-            <element signature="e#372#373#0" expanded="true" />
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#480#481#0" expanded="true" />
-            <element signature="e#527#528#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#622#623#0" expanded="true" />
-            <element signature="e#670#671#0" expanded="true" />
-          </folding>
+    <entry file="uml://JAVA/com.company">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.company</OriginalElement>
+          <nodes>
+            <node x="" y="">com.company.Models.Battle</node>
+            <node x="" y="">com.company.Models.User</node>
+            <node x="" y="">com.company.Views</node>
+            <node x="" y="">com.company.Models.Shop</node>
+            <node x="" y="">com.company.Main</node>
+            <node x="" y="">com.company.Models.Card.Hero.Hero</node>
+            <node x="" y="">com.company.Models.Card.Minion.Minion</node>
+            <node x="" y="">com.company.Models.Card.Groups</node>
+            <node x="" y="">com.company.Models.Card.AttackType</node>
+            <node x="" y="">com.company.Models.Card.Spell.Spell</node>
+            <node x="" y="">com.company.Controllers</node>
+            <node x="" y="">com.company.Models.Buff</node>
+            <node x="" y="">com.company.Models.Card.Hero.HeroType</node>
+            <node x="" y="">com.company.Models.Card.ActivationTime</node>
+            <node x="" y="">com.company.Models.Card.Flag</node>
+            <node x="" y="">com.company.Models.Card.Card</node>
+            <node x="" y="">com.company.Models.Card.Minion.MinionType</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="112.0" y="449.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/MinionType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
+        <state>
           <folding>
             <element signature="e#1177#1178#0" expanded="true" />
             <element signature="e#1204#1205#0" expanded="true" />
@@ -740,10 +695,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        <state relative-caret-position="180">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding>
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Hero/HeroType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/User/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Views/ConsoleInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="method#mainMenuCommandsChecker#0;class#Console#0" />
+            <element signature="method#collectionMenuCommandsChecker#0;class#Console#0" />
+            <element signature="method#accountMenuCommandsChecker#0;class#Console#0" />
+            <element signature="method#shopMenuCommandsChecker#0;class#Console#0" />
+            <element signature="method#battleMenuCommandsChecker#0;class#Console#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Controllers/Shop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Shop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+          <folding>
+            <element signature="method#buy#0;class#Shop#0" />
+            <element signature="method#sell#0;class#Shop#0" />
+            <element signature="method#show#0;class#Shop#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -760,69 +782,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/com.company">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>com.company</OriginalElement>
-          <nodes>
-            <node x="694.0" y="890.0">com.company.Models.Battle</node>
-            <node x="845.0" y="890.0">com.company.Models.User</node>
-            <node x="543.0" y="890.0">com.company.Views</node>
-            <node x="485.0" y="595.0">com.company.Models.Shop</node>
-            <node x="0.0" y="890.0">com.company.Main</node>
-            <node x="0.0" y="333.0">com.company.Models.Card.Hero.Hero</node>
-            <node x="482.0" y="377.0">com.company.Models.Card.Minion.Minion</node>
-            <node x="384.0" y="890.0">com.company.Models.Card.Groups</node>
-            <node x="803.0" y="595.0">com.company.Models.Card.AttackType</node>
-            <node x="286.0" y="322.0">com.company.Models.Card.Spell.Spell</node>
-            <node x="206.0" y="890.0">com.company.Controllers</node>
-            <node x="0.0" y="986.0">com.company.Models.Buff</node>
-            <node x="0.0" y="595.0">com.company.Models.Card.Hero.HeroType</node>
-            <node x="952.0" y="595.0">com.company.Models.Card.ActivationTime</node>
-            <node x="228.0" y="595.0">com.company.Models.Card.Flag</node>
-            <node x="278.0" y="0.0">com.company.Models.Card.Card</node>
-            <node x="718.0" y="0.0">com.company.Models.Card.Minion.MinionType</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="com.company.Models.Card.Hero.Hero" target="com.company.Models.Card.Card">
-              <point x="0.0" y="-103.0" />
-              <point x="133.0" y="297.0" />
-              <point x="310.0" y="297.0" />
-              <point x="-64.0" y="136.0" />
-            </edge>
-            <edge source="com.company.Models.Card.Minion.Minion" target="com.company.Models.Card.Card">
-              <point x="0.0" y="-59.0" />
-              <point x="577.5" y="297.0" />
-              <point x="438.0" y="297.0" />
-              <point x="64.0" y="136.0" />
-            </edge>
-            <edge source="com.company.Models.Card.Spell.Spell" target="com.company.Models.Card.Card">
-              <point x="0.0" y="-114.0" />
-              <point x="0.0" y="136.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-272.0" y="704.0" />
-          <SelectedNodes>
-            <node>com.company.Controllers</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Methods</Category>
-            <Category>Fields</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Hero/HeroType.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/SpellType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
         </state>
       </provider>
     </entry>
