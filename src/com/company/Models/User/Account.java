@@ -9,20 +9,28 @@ import java.util.ArrayList;
 
 public class Account {
     private static ArrayList<Account> accounts = new ArrayList<>();
+    private static Account loggedInAccount;
     private String username;
     private String password;
-    private boolean isLoggedIn = false;
     private int drake = 0;
     private ArrayList<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
     private Collection collection;
     private ArrayList<BattleLog> battleHistories = new ArrayList<>();
+    private int wins;
 
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    public int getWins() {
+        return wins;
+    }
+
+    public void incremeantWins() {
+        wins++;
+    }
     public static Account getAccountByUsername(String username) {
         for (Account account : accounts) {
             if (account.getUsername().equals(username)) {
@@ -49,6 +57,10 @@ public class Account {
     }
 
     public static void login(String username, String password) {
+
+    }
+
+    public static void logout() {
 
     }
 
