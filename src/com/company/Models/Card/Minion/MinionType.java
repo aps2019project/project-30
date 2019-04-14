@@ -6,12 +6,25 @@ import com.company.Models.Card.AttackType;
 
 public enum MinionType {
 
-    KAMANDAR_FARS("Kamandar Fars", AttackType.RANGED, ActivationTime.ON_ATTACK, 300, 2, 6, 4, 7) {
+    KAMANDAR_FARS("Kamandar Fars", AttackType.RANGED, null, 300, 2, 6, 4, 7) {
+        @Override
+        public void doAction() {
+
+        }
+    },
+    SHAMSHIRZAN_FARS("Shamshirzan Fars", AttackType.MELEE, ActivationTime.ON_ATTACK, 400, 2, 6, 4, 0) {
+        @Override
+        public void doAction() {
+
+        }
+    },
+    PAHLEVAN_FARS("Pahlevan Fars", AttackType.MELEE, ActivationTime.ON_ATTACK, 600, 9, 24, 6, 0){
         @Override
         public void doAction() {
 
         }
     };
+
 
     private final String name;
     private final AttackType attackType;

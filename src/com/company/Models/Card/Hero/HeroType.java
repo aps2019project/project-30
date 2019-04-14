@@ -9,6 +9,12 @@ public enum HeroType {
         public void doAction() {
 
         }
+    },
+    SIMORGH("Simorgh", AttackType.MELEE, 9000, 50, 0, 4, 5, 8) {
+        @Override
+        public void doAction() {
+
+        }
     };
     private final String name;
     private final AttackType attackType;

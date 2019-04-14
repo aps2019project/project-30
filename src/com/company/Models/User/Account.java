@@ -57,15 +57,11 @@ public class Account {
     }
 
     public static void login(String username, String password) {
-
-    }
-
-    public static void logout() {
-
+        loggedInAccount = getAccountByUsername(username);
     }
 
     public void logout() {
-
+        loggedInAccount = null;
     }
 
     public void addToDecks(Deck deck) {

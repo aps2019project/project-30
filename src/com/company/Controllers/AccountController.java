@@ -2,6 +2,7 @@ package com.company.Controllers;
 
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
+import com.company.Views.Console.AccountView;
 import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
@@ -24,14 +25,14 @@ public class AccountController {
             ConsoleOutput.printErrorMessage(ErrorType.USERNAME_NOTFOUND);
         } else {
             if (Account.getAccountByUsername(username).isPasswordCorrect(password)) {
-                //todo : login
+                Account.login(username, password);
             } else {
                 ConsoleOutput.printErrorMessage(ErrorType.PASSWORD_INVALID);
             }
         }
     }
 
-    public static ArrayList<Account> getLeaderBoard() {
+    public static void showLeaderBoard() {
         ArrayList<Account> leaderBoard = Account.getAccounts();
         leaderBoard.sort(new Comparator<Account>() {
             @Override
@@ -43,7 +44,7 @@ public class AccountController {
                 }
             }
         });
-        return leaderBoard;
+        AccountView.printLeaderBoard(leaderBoard);
     }
 
     private static boolean usernameExists(String username) {
