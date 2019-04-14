@@ -21,15 +21,23 @@ public class AccountController {
     }
 
     public static void loginAccount(String username, String password) {
+        ErrorType loginErrorType = null;
         if (!usernameExists(username)) {
-            ConsoleOutput.printErrorMessage(ErrorType.USERNAME_NOTFOUND);
+            loginErrorType = ErrorType.USERNAME_NOTFOUND;
         } else {
             if (Account.getAccountByUsername(username).isPasswordCorrect(password)) {
                 Account.login(username, password);
             } else {
-                ConsoleOutput.printErrorMessage(ErrorType.PASSWORD_INVALID);
+                loginErrorType = ErrorType.PASSWORD_INVALID;
             }
         }
+        if (loginErrorType != null) {
+            ConsoleOutput.printErrorMessage(loginErrorType);
+        }
+    }
+
+    public static void logout() {
+        Account.getLoggedInAccount().logout();
     }
 
     public static void showLeaderBoard() {

@@ -24,6 +24,11 @@ public class Account {
         this.password = password;
     }
 
+
+    public static Account getLoggedInAccount() {
+        return loggedInAccount;
+    }
+
     public int getWins() {
         return wins;
     }
@@ -31,6 +36,7 @@ public class Account {
     public void incremeantWins() {
         wins++;
     }
+
     public static Account getAccountByUsername(String username) {
         for (Account account : accounts) {
             if (account.getUsername().equals(username)) {
