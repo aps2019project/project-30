@@ -1,0 +1,8 @@
+
+?squid:S1068"(Remove this unused "name" private field.(Ë¥¼
+@squid:S14815")Remove this unused "card" local variable.(ÙÃä
+Asquid:S001085")Either remove or fill this block of code.(ÙÃä
+˜squid:S1186;"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¥ù×
+squid:S1186?"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Î½®—úÿÿÿÿ
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤­—“úÿÿÿÿ
+Vsquid:UselessImportCheck"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ

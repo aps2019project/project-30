@@ -7,5 +7,6 @@ public abstract class Battle {
     private Mode mode;
     private Player turnToPlay;
 
+
     public abstract void handler();
 }

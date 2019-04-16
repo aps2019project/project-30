@@ -2,9 +2,12 @@ package com.company.Models.Card.Groups;
 
 import com.company.Models.Card.Card;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Deck {
     private String name;
-    private Card[] deckCards = new Card[20];
+    private ArrayList<Card> deckCards = new ArrayList<>();
     private Card heroCard;
     private Card itemCard;
     private Hand hand;
@@ -14,12 +17,8 @@ public class Deck {
         hand = new Hand(this);
     }
 
-    public Card[] getDeckCards() {
+    public ArrayList<Card> getDeckCards() {
         return deckCards;
-    }
-
-    public void setDeckCards(Card[] deckCards) {
-        this.deckCards = deckCards;
     }
 
     public Card getHeroCard() {
@@ -47,7 +46,11 @@ public class Deck {
     }
 
     public void addRandomCardToHand() {
+        if (!hand.isComplete()) {
+            for (Card card: deckCards) {
 
+            }
+        }
     }
 
     public void initializeHand() {
