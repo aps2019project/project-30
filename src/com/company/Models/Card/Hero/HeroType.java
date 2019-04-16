@@ -37,4 +37,36 @@ public enum HeroType {
     }
 
     public abstract void doAction();
+
+    public String getName() {
+        return name;
+    }
+
+    public AttackType getAttackType() {
+        return attackType;
+    }
+
+    public int getPriceInDrake() {
+        return priceInDrake;
+    }
+
+    public int getFullHealth() {
+        return fullHealth;
+    }
+
+    public int getAreaOfEffect() {
+        return areaOfEffect;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public int getManaPoint() {
+        return manaPoint;
+    }
+
+    public int getCoolDown() {
+        return coolDown;
+    }
 }

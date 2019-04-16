@@ -3,7 +3,7 @@ package com.company.Models.Card.Minion;
 import com.company.Models.Card.Card;
 
 public class Minion extends Card {
-    MinionType minionType;
+    private MinionType minionType;
 
     public Minion(MinionType minionType) {
         this.minionType = minionType;

@@ -6,6 +6,7 @@ public abstract class Card {
     private int manaPoint;
     private int priceInDrake;
     private String description;
+    private boolean isInGraveCards = false;
 
     public String getDescription() {
         return description;
@@ -13,6 +14,14 @@ public abstract class Card {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isInGraveCards() {
+        return isInGraveCards;
+    }
+
+    public void setInGraveCards(boolean inGraveCards) {
+        isInGraveCards = inGraveCards;
     }
 
     public int getId() {
