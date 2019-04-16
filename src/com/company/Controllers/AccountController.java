@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Models.Card.Card;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
@@ -63,4 +64,5 @@ public class AccountController {
         }
         return false;
     }
+
 }
