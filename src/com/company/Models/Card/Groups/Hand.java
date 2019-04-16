@@ -3,18 +3,18 @@ package com.company.Models.Card.Groups;
 import com.company.Models.Card.Card;
 
 public class Hand {
-    Card[] cards = new Card[5];
-    Deck deck;
+    private Card[] cards = new Card[5];
+    private Deck deck;
 
     public Hand(Deck deck) {
         this.deck = deck;
     }
 
-    private boolean isComplete() {
+    public boolean isComplete() {
         return false;
     }
 
-    private void addToCards(Card card) {
+    public void addToCards(Card card) {
 
     }
 
