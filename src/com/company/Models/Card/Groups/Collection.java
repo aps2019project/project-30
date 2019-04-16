@@ -6,17 +6,9 @@ import java.util.ArrayList;
 
 public class Collection {
     private ArrayList<Card> cards;
-
     public  ArrayList<Card> getCards() {
         return cards;
     }
 
 
-    public void createDeck(String name) {
-
-    }
-
-    public void deleteDeck(String name) {
-
-    }
 }

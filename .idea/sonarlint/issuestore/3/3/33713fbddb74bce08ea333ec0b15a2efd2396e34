@@ -1,0 +1,6 @@
+
+Xsquid:UnusedPrivateMethod"3Remove this unused private "removeFromCard" method.(½Ι
+Bsquid:S1172"+Remove this unused method parameter "card".(½Ι
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ρχ‰
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(½Ι
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤­—“ϊÿÿÿÿ

@@ -25,27 +25,21 @@ public class CollectionController {
             return;
         }
         if(deckExist(deckName)){
-            for (Deck deck : Account.getLoggedInAccount().getDecks()) {
-                if (deck.getName().equals(deckName)) {
-                   for(Card card:deck.getDeckCards()){
-                       if(card.getId()==cardId){
-                           //payamemonaseb
-                           return;
-                       }
-                   }
+            for(Card card:getDeckByName(deckName).getDeckCards()){
+                if(card.getId()==cardId){
+                    //payamemonaseb
+                    return;
                 }
             }
         }
-        for(Card card:Account.getLoggedInAccount().getCollection().getCards()){
-            if(cardId==card.getId()){
-                if(card instanceof Hero){
-                    for (Deck deck : Account.getLoggedInAccount().getDecks()) {
-                        if (deck.getName().equals(deckName)) {
-                            if(deck.getHeroCard()!=null){
-                                //payammonaseb
-                                return;
-                            }
-                        }
+        if(getDeckByName(deckName).getDeckCards().size()>=20){
+            //payammonaseb
+        }
+        for(Card card:Account.getLoggedInAccount().getCollection().getCards()) {
+            if (cardId == card.getId()) {
+                if (card instanceof Hero) {
+                    if(getDeckByName(deckName).getHeroCard()!=null){
+                        //payamemonaseb
                     }
                 }
             }
@@ -69,19 +63,18 @@ public class CollectionController {
     }
     public void selectDeck(String deckName){
         if(deckExist(deckName)){
-            for(Deck deck:Account.getLoggedInAccount().getDecks()) {
-                if (deck.getName().equals(deckName)) {
-                    Account.getLoggedInAccount().setMainDeck(deck);
-                    return;
-                }
-            }
+            Account.getLoggedInAccount().setMainDeck(getDeckByName(deckName));
+           return;
         }
         //payame monaseb
     }
     public boolean validateDeck(String deckName){
         Deck deck;
         if(deckExist(deckName)) {
-            if(getDeckByName(deckName).getDeckCards().)
+            if(getDeckByName(deckName).getDeckCards().size()==20&&getDeckByName(deckName).getHeroCard()!=null){
+                return true;
+            }
+            return false;
         }
         return false;
     }
@@ -95,11 +88,7 @@ public class CollectionController {
     }
     public void deleteDeck(String deckName) {
         if(deckExist(deckName)){
-            for (Deck deck : Account.getLoggedInAccount().getDecks()) {
-                if (deck.getName().equals(deckName)) {
-                    Account.getLoggedInAccount().getDecks().remove(deck);
-                }
-            }
+            Account.getLoggedInAccount().getDecks().remove(getDeckByName(deckName));
         }
         //payamemonaseb
     }
