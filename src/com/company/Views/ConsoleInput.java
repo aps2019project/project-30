@@ -8,22 +8,33 @@ public class ConsoleInput {
     enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE}
 
     Menu menu;
-    private static String command;
-
-    public static void mainMenuCommandsChecker() {
+    public static void mainMenuCommandsChecker(String command) {
 
     }
 
-    public static void collectionMenuCommandsChecker() {
+    public static void collectionMenuCommandsChecker(String command) {
 
     }
 
-    public static void accountMenuCommandsChecker() {
-
+    public static void accountMenuCommandsChecker(String command) {
+        if(command.matches("creat username \\w+")){
+            //creat account
+        }else if(command.matches("login \\w+")){
+            //login
+        }else if(command.matches("show leaderboard")){
+            //show leaderboard
+        }else if(command.matches("save")){
+            //save
+        }else if(command.matches("logout")){
+            //logout
+        }else if(command.matches("buy \\d+")){
+            //buy
+        }else if(command.matches("help")){
+            //help
+        }
     }
 
-    public static void shopMenuCommandsChecker() {
-        command = scanner.nextLine();
+    public static void shopMenuCommandsChecker(String command) {
         if(command.matches("show")){
             //show
         }else if(command.matches("help")){
@@ -37,9 +48,9 @@ public class ConsoleInput {
         }else if(command.matches("search collection")){
             //search collection
         }else if(command.matches("buy \\d+")){
-
+            //buy
         }else if(command.matches("sell \\d+")){
-
+            //sell
         }
     }
 
