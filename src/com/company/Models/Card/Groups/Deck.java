@@ -11,6 +11,7 @@ public class Deck {
     private Card heroCard;
     private Card itemCard;
     private Hand hand;
+    private
 
     public Deck(String name) {
         this.name = name;
