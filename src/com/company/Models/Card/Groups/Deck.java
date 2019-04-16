@@ -53,6 +53,9 @@ public class Deck {
     public void initializeHand() {
 
     }
+    public String getName(){
+        return name;
+    }
 
     public void generateRandomCardsOrder() {}
 
