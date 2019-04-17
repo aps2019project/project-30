@@ -56,6 +56,17 @@ public class Shop {
         return false;
     }
 
+    public static boolean cardExistsInShop(int cardId) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            for (Card card : Shop.getShopCollection().getCards()) {
+                if (cardId == card.getId()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public static int getCardIdByName(String cardName) {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
