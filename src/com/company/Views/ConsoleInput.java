@@ -2,6 +2,7 @@ package com.company.Views;
 
 import com.company.Controllers.AccountController;
 import com.company.Models.ErrorType;
+import com.company.Views.Console.AccountView;
 
 import java.nio.channels.AcceptPendingException;
 import java.util.Scanner;
@@ -74,7 +75,7 @@ public class ConsoleInput {
         } else if (command.matches("logout")) {
             //logout
         } else if (command.matches("help")) {
-            //help
+            AccountView.printAccountCommandsToHelp();
         }
     }
 
