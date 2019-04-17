@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.Controllers.ShopController;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Minion.MinionType;
 import com.company.Views.ConsoleInput;
@@ -10,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
+        ConsoleInput.shopMenuCommandsChecker("help");
         Minion minion = new Minion(MinionType.KAMANDAR_FARS);
         String name = minion.getName();
         System.out.println(name);
