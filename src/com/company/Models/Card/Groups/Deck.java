@@ -47,22 +47,6 @@ public class Deck {
         this.hand = hand;
     }
 
-    public void addRandomCardToHand() {
-        if (!hand.isComplete()) {
-            for (Card card: deckCards) {
-
-            }
-        }
-    }
-
-    public void initializeHand() {
-
-    }
-
-    public void generateRandomCardsOrder() {}
-
-    public Card getIncomingCardToHand() {return null;}
-
     public boolean isValidate() {
         return true;
     }
