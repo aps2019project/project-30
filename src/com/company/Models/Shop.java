@@ -22,7 +22,15 @@ public class Shop {
     }
 
     public static void buy(Account account, String name) {
-
+        if (cardExistsInShop(name)) {
+            if (account.getDrake() >= getCardByName(name).getPriceInDrake()) {
+                ShopController.buy(account, getCardByName(name));
+            }else {
+                ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_DRAKE);
+            }
+        }else {
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
+        }
     }
 
     public void sell(Account account, int id) {
