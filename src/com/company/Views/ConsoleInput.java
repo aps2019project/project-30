@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.ShopController;
 import com.company.Models.ErrorType;
 import com.company.Views.Console.AccountView;
 
@@ -84,8 +85,10 @@ public class ConsoleInput {
             //show
         } else if (command.matches("exit")) {
             //exit
-        } else if (command.matches("search \\d+")) {
-            //search
+        } else if (command.matches("search [a-zA-Z]+")) {
+            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+            matcher.find();
+            ShopController.search(matcher.group("cardName"));
         } else if (command.matches("show collection")) {
             //show collection
         } else if (command.matches("search collection")) {
