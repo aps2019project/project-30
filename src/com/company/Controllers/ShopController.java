@@ -16,8 +16,9 @@ public class ShopController {
         }
     }
 
-    public static void buy(Account account, String name) {
-
+    public static void buy(Account account, Card card) {
+        //add to account collection
+        account.decrementDrake(card.getPriceInDrake());
     }
 
 
