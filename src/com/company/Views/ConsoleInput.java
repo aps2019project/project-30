@@ -98,9 +98,11 @@ public class ConsoleInput {
         } else if (command.matches("buy [a-zA-Z]+")) {
             Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
-            Shop.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
+            ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {
-            //sell
+            Matcher matcher = Pattern.compile("search (?<cardId>\\d+)").matcher(command);
+            matcher.find();
+            ShopController.sell(Account.getLoggedInAccount(),Integer.parseInt(matcher.group("cardId")));
         } else if (command.matches("help")) {
             ShopView.printShopCommandsToHelp();
         }
