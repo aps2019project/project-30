@@ -16,7 +16,7 @@ public class ShopController {
     }
 
     public static boolean cardExistsInShop(String cardName) {
-        if (Shop.getShopCollection() != null && Shop.getShopCollection().getCards() != null) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
                 if (card.getName().equals(cardName)) {
                     return true;
@@ -27,7 +27,7 @@ public class ShopController {
     }
 
     private static int getCardIdByName(String cardName) {
-        if (Shop.getShopCollection() != null && Shop.getShopCollection().getCards() != null) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
                 if (card.getName().equals(cardName)) {
                     return card.getId();
