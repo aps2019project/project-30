@@ -2,8 +2,10 @@ package com.company.Models.Card.Groups;
 
 import com.company.Models.Card.Card;
 
+import java.util.ArrayList;
+
 public class Hand {
-    private Card[] cards = new Card[5];
+    private ArrayList<Card> cards = ArrayList<>();
     private Deck deck;
 
     public Hand(Deck deck) {
@@ -14,19 +16,11 @@ public class Hand {
         return false;
     }
 
-    public void addToCards(Card card) {
-
-    }
-
-    private void removeFromCard(Card card) {
-
-    }
-
     public Deck getDeck() {
         return deck;
     }
 
-    public Card[] getCards() {
+    public ArrayList<Card> getCards() {
         return cards;
     }
 }

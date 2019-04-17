@@ -4,7 +4,8 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Collections;
+import java.util.Random;
 
 public class DeckController {
     private Deck deck;
@@ -12,27 +13,33 @@ public class DeckController {
     public DeckController(Deck deck) {
         this.deck = deck;
         generateRandomCardsOrder();
+        initializeHand();
     }
 
     public void addRandomCardToHand() {
-        ArrayList<Card> cards = deck.getDeckCards();
-
+        Card card = getAliveCards().get(0);
+        deck.getHand().getCards().add(card);
     }
 
     public void initializeHand() {
-
+        for (int i = 0; i < 5; i++) {
+            deck.getHand().getCards().add(
+              deck.getDeckCards().get(i)
+            );
+        }
     }
 
     public void generateRandomCardsOrder() {
-
+        Collections.shuffle(deck.getDeckCards());
     }
 
-    public void getAliveCards() {
+    public ArrayList<Card> getAliveCards() {
         ArrayList<Card> aliveCards = new ArrayList<>();
         for (Card card : deck.getDeckCards()) {
-            if (card.isInGraveCards()) {
-
+            if (!card.isInGraveCards()) {
+                aliveCards.add(card);
             }
         }
+        return aliveCards;
     }
 }

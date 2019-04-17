@@ -21,3 +21,13 @@ b
 2src/com/company/Controllers/AccountController.java,9\d\9dac60dda8668757f4e9170e95049dfbb9163d92
 X
 (src/com/company/Models/User/Account.java,9\e\9ef85b6e83004d498cad6953bb983b598d3ce9e1
+I
+src/com/company/Main.java,4\a\4a831b10439099d44774d0ccc387e808deffaeab
+^
+.src/com/company/Models/Card/Minion/Minion.java,e\e\eefeeff0ebddea43890bd2a2bf3965bb52d1736d
+^
+.src/com/company/Models/Card/Hero/HeroType.java,9\d\9debbf477818a0ac7b2ef8890d6fb69bd7abcbc9
+Z
+*src/com/company/Models/Card/Hero/Hero.java,a\3\a3958ba20e0bb595fe1619a462f6d797ef76e99a
+_
+/src/com/company/Controllers/DeckController.java,0\d\0d08d4635527db5fdb73b1b70e6f6a7755fe0f1b
