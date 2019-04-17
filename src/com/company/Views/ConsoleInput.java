@@ -93,7 +93,7 @@ public class ConsoleInput {
             //show collection
         } else if (command.matches("search collection")) {
             //search collection
-        } else if (command.matches("buy \\d+")) {
+        } else if (command.matches("buy [a-zA-Z]+")) {
             //buy
         } else if (command.matches("sell \\d+")) {
             //sell
