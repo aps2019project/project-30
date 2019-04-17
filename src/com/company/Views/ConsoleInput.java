@@ -3,6 +3,8 @@ package com.company.Views;
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
 import com.company.Models.ErrorType;
+import com.company.Models.Shop;
+import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 
 import java.nio.channels.AcceptPendingException;
@@ -94,7 +96,9 @@ public class ConsoleInput {
         } else if (command.matches("search collection")) {
             //search collection
         } else if (command.matches("buy [a-zA-Z]+")) {
-            //buy
+            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+            matcher.find();
+            Shop.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {
             //sell
         } else if (command.matches("help")) {
