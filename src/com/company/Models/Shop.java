@@ -18,7 +18,11 @@ public class Shop {
     }
 
     public static void search(String name) {
-        ShopController.search(name);
+        if (Shop.cardExistsInShop(name)) {
+            ShopController.search(name);
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
+        }
     }
 
     public static void buy(Account account, String name) {
@@ -33,8 +37,12 @@ public class Shop {
         }
     }
 
-    public void sell(Account account, int id) {
-
+    public void sell(Account account, int cardId) {
+        if(cardExistsInShop(cardId)){
+            ShopController.sell(account,getCardById(cardId));
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
+        }
     }
 
     public static void show() {

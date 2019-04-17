@@ -9,11 +9,7 @@ import com.company.Views.ConsoleOutput;
 public class ShopController {
 
     public static void search(String cardName) {
-        if (Shop.cardExistsInShop(cardName)) {
-            System.out.println(Shop.getCardIdByName(cardName));
-        } else {
-            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
-        }
+        System.out.println(Shop.getCardIdByName(cardName));
     }
 
     public static void buy(Account account, Card card) {
@@ -22,4 +18,8 @@ public class ShopController {
     }
 
 
+    public static void sell(Account account, Card card) {
+        //remove from account collection
+        account.incrementDrake(card.getPriceInDrake());
+    }
 }
