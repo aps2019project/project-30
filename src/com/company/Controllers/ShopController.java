@@ -1,10 +1,19 @@
 package com.company.Controllers;
 
 import com.company.Models.Card.Card;
+import com.company.Models.ErrorType;
 import com.company.Models.Shop;
+import com.company.Views.ConsoleOutput;
 
 public class ShopController {
 
+    public static void search(String cardName) {
+        if (cardExistsInShop(cardName)) {
+            System.out.println(getCardIdByName(cardName));
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
+        }
+    }
     public static boolean cardExistsInShop(String cardName) {
         if(Shop.getShopCollection() != null && Shop.getShopCollection().getCards() != null) {
             for (Card card : Shop.getShopCollection().getCards()) {
