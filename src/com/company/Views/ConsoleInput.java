@@ -81,8 +81,6 @@ public class ConsoleInput {
     public static void shopMenuCommandsChecker(String command) {
         if (command.matches("show")) {
             //show
-        } else if (command.matches("help")) {
-            //help
         } else if (command.matches("exit")) {
             //exit
         } else if (command.matches("search \\d+")) {
@@ -95,6 +93,8 @@ public class ConsoleInput {
             //buy
         } else if (command.matches("sell \\d+")) {
             //sell
+        } else if (command.matches("help")) {
+            ShopView.printShopCommandsToHelp();
         }
     }
 
