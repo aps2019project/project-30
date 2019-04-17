@@ -5,7 +5,7 @@ import com.company.Models.Card.Card;
 import java.util.ArrayList;
 
 public class Hand {
-    private ArrayList<Card> cards = ArrayList<>();
+    private ArrayList<Card> cards = new ArrayList<>();
     private Deck deck;
 
     public Hand(Deck deck) {
