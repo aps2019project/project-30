@@ -10,11 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
-        String command = scanner.nextLine();
-        ConsoleInput.accountMenuCommandsChecker(command);
-/*        Minion minion = new Minion(MinionType.KAMANDAR_FARS);
+        Minion minion = new Minion(MinionType.KAMANDAR_FARS);
         String name = minion.getName();
-        System.out.println(name);*/
+        System.out.println(name);
     }
 }

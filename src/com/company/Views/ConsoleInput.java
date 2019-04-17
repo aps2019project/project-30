@@ -73,8 +73,6 @@ public class ConsoleInput {
             //save
         } else if (command.matches("logout")) {
             //logout
-        } else if (command.matches("buy \\d+")) {
-            //buy
         } else if (command.matches("help")) {
             //help
         }
