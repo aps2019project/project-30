@@ -15,10 +15,10 @@ public class AccountView {
 
     public static void printAccountCommandsToHelp() {
         ConsoleOutput.printMessage("##### Account Commands #####");
-        ConsoleOutput.printMessage("1- create account [username]");
-        ConsoleOutput.printMessage("2- login [username]");
-        ConsoleOutput.printMessage("3- show leaderboard");
-        ConsoleOutput.printMessage("4- save");
-        ConsoleOutput.printMessage("5- logout");
+        ConsoleOutput.printMessage("1- create account [username] : to creating new account");
+        ConsoleOutput.printMessage("2- login [username] : to logging in to existing account");
+        ConsoleOutput.printMessage("3- show leaderboard : to show ranking of accounts");
+        ConsoleOutput.printMessage("4- save : to save!");
+        ConsoleOutput.printMessage("5- logout : obviously to logging out!");
     }
 }
