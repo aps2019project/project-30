@@ -88,4 +88,15 @@ public class Shop {
         }
         return null;//that means there is no card with this name
     }
+
+    public static Card getCardById(int cardId) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            for (Card card : Shop.getShopCollection().getCards()) {
+                if (cardId == card.getId()) {
+                    return card;
+                }
+            }
+        }
+        return null;//that means there is no card with this name
+    }
 }
