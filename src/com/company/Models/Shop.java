@@ -1,6 +1,6 @@
 package com.company.Models;
 
-import com.company.Controllers.ShopController;
+//import com.company.Controllers.ShopController;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.User.Account;
@@ -21,11 +21,11 @@ public class Shop {
     }
 
     public static void buy(Account account, String name) {
-        if (ShopController.cardExistsInShop(name)) {
+/*        if (ShopController.cardExistsInShop(name)) {
 
         } else {
             //ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
-        }
+        }*/
     }
 
     public void sell(Account account, int id) {

@@ -30,7 +30,9 @@ public class DeckController {
     public void getAliveCards() {
         ArrayList<Card> aliveCards = new ArrayList<>();
         for (Card card : deck.getDeckCards()) {
-            if (card.isInGraveCards())
+            if (card.isInGraveCards()) {
+
+            }
         }
     }
 }
