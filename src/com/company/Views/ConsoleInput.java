@@ -51,7 +51,7 @@ public class ConsoleInput {
 
     public static void accountMenuCommandsChecker(String command) {
         if (command.matches("create account \\w+")) {
-            Matcher usernameMatcher = Pattern.compile("create account  (?<username>\\w+)").matcher(command);
+            Matcher usernameMatcher = Pattern.compile("create account (?<username>\\w+)").matcher(command);
             usernameMatcher.find();
             while (true) {
                 command = scanner.nextLine();
