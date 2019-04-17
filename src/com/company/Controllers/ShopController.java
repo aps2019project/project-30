@@ -14,8 +14,9 @@ public class ShopController {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
     }
+
     public static boolean cardExistsInShop(String cardName) {
-        if(Shop.getShopCollection() != null && Shop.getShopCollection().getCards() != null) {
+        if (Shop.getShopCollection() != null && Shop.getShopCollection().getCards() != null) {
             for (Card card : Shop.getShopCollection().getCards()) {
                 if (card.getName().equals(cardName)) {
                     return true;
@@ -26,9 +27,11 @@ public class ShopController {
     }
 
     private static int getCardIdByName(String cardName) {
-        for (Card card : Shop.getShopCollection().getCards()) {
-            if (card.getName().equals(cardName)) {
-                return card.getId();
+        if (Shop.getShopCollection() != null && Shop.getShopCollection().getCards() != null) {
+            for (Card card : Shop.getShopCollection().getCards()) {
+                if (card.getName().equals(cardName)) {
+                    return card.getId();
+                }
             }
         }
         return -1;//that means there is no card with this name
