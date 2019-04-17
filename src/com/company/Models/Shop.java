@@ -17,8 +17,8 @@ public class Shop {
         return shopCollection;
     }
 
-    public static ArrayList<Card> search(Account account, String name) {
-        return null;
+    public static void search(String name) {
+        ShopController.search(name);
     }
 
     public static void buy(Account account, String name) {
@@ -35,5 +35,38 @@ public class Shop {
 
     public static void showCollection() {
 
+    }
+
+    public static boolean cardExistsInShop(String cardName) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            for (Card card : Shop.getShopCollection().getCards()) {
+                if (card.getName().equals(cardName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static int getCardIdByName(String cardName) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            for (Card card : Shop.getShopCollection().getCards()) {
+                if (card.getName().equals(cardName)) {
+                    return card.getId();
+                }
+            }
+        }
+        return -1;//that means there is no card with this name
+    }
+
+    public static Card getCardByName(String cardName) {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            for (Card card : Shop.getShopCollection().getCards()) {
+                if (card.getName().equals(cardName)) {
+                    return card;
+                }
+            }
+        }
+        return null;//that means there is no card with this name
     }
 }
