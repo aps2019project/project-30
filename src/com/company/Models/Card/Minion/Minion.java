@@ -3,12 +3,17 @@ package com.company.Models.Card.Minion;
 import com.company.Models.Card.Card;
 
 public class Minion extends Card {
+
     private MinionType minionType;
 
     public Minion(MinionType minionType) {
         this.minionType = minionType;
         super.setName(minionType.getName());
         super.setManaPoint(minionType.getNeededMana());
+    }
+
+    public MinionType getMinionType() {
+        return minionType;
     }
 
     private int health;
