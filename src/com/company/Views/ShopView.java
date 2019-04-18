@@ -2,6 +2,7 @@ package com.company.Views;
 
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 
 public class ShopView {
@@ -9,9 +10,30 @@ public class ShopView {
     private void showHeroes() {
         System.out.println("Heroes :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
-            System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() + /*AP*/
+            System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
+                    "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHeroType().getAttackPower() +
                     "- HP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHealth() + /*special power*/
                     "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+        }
+    }
+
+    private void showCards() {
+        System.out.println("Cards :");
+        for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
+            if (Shop.getShopCollection().getCards().get(i) instanceof Minion) {
+                System.out.println((i + 1) + "- Type : Minion " +
+                        "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
+                        "- AP : " + ((Minion) Shop.getShopCollection().getCards().get(i)).getMinionType().getAttackPower() +
+                        "- HP : " + ((Minion) Shop.getShopCollection().getCards().get(i)).getHealth() +
+                        "- MP : " + Shop.getShopCollection().getCards().get(i).getManaPoint() + /*special power*/
+                        "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            } else if (Shop.getShopCollection().getCards().get(i) instanceof Spell) {
+                System.out.println((i + 1) + "- Type : Spell " +
+                        "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
+                        "- MP : " + Shop.getShopCollection().getCards().get(i).getManaPoint() +
+                        "- Desc : " + Shop.getShopCollection().getCards().get(i).getDescription() +
+                        "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            }
         }
     }
 
