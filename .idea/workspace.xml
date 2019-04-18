@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="688e278d-8d77-4bf6-869a-ba4187462286" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java" afterPath="$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Views/ShopView.java" afterPath="$PROJECT_DIR$/src/com/company/Views/ShopView.java" />
-    </list>
+    <list default="true" id="688e278d-8d77-4bf6-869a-ba4187462286" name="Default" comment="" />
     <ignored path="Duelyst.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,8 +37,8 @@
       <file leaf-file-name="ShopView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Views/ShopView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
+            <state relative-caret-position="85">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,7 +59,7 @@
       <file leaf-file-name="Minion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
+            <state relative-caret-position="119">
               <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
               <folding>
                 <element signature="e#411#412#0" expanded="true" />
@@ -417,12 +413,12 @@
       <workItem from="1555395521377" duration="5586000" />
       <workItem from="1555484097767" duration="11282000" />
       <workItem from="1555521123627" duration="8998000" />
-      <workItem from="1555576318524" duration="3218000" />
+      <workItem from="1555576318524" duration="3382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29084000" />
+    <option name="totallyTimeSpent" value="29248000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -855,7 +851,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="119">
           <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
           <folding>
             <element signature="e#411#412#0" expanded="true" />
@@ -869,8 +865,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Views/ShopView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
+        <state relative-caret-position="85">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

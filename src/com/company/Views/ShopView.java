@@ -7,7 +7,7 @@ import com.company.Models.Shop;
 
 public class ShopView {
 
-    private void showHeroes() {
+    private static void showHeroes() {
         System.out.println("Heroes :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
             System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
@@ -17,7 +17,7 @@ public class ShopView {
         }
     }
 
-    private void showCards() {
+    private static void showCards() {
         System.out.println("Cards :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
             if (Shop.getShopCollection().getCards().get(i) instanceof Minion) {
