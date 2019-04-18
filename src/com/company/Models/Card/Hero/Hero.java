@@ -26,7 +26,11 @@ public abstract class Hero extends Card {
 
     }
 
-    public void decremeantHealth(int health) {
+    public void decremeantHealth(int number) {
+        this.health -= number;
+    }
 
+    public void incrementHealth(int number) {
+        this.health += number;
     }
 }
