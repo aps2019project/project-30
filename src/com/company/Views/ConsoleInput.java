@@ -84,7 +84,7 @@ public class ConsoleInput {
 
     public static void shopMenuCommandsChecker(String command) {
         if (command.matches("show")) {
-            //show
+            ShopView.showAll();
         } else if (command.matches("exit")) {
             //exit
         } else if (command.matches("search [a-zA-Z]+")) {
