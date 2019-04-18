@@ -1,8 +1,11 @@
 
-Ysquid:UnusedPrivateMethod"1Remove this unused private "containsCard" method.(±šœ§þÿÿÿÿ
-…squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¤¨×€
-Rsquid:UnusedPrivateMethod"/Remove this unused private "addToCards" method.(îÔ™ª
-–squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îÔ™ª
-usquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤­—“úÿÿÿÿ
-@squid:S1172"+Remove this unused method parameter "card".(îÔ™ª
-Esquid:S1172"+Remove this unused method parameter "card".(±šœ§þÿÿÿÿ
+Bsquid:S1172
+"+Remove this unused method parameter "card".(îÔ™ª
+[squid:UnusedPrivateMethod"1Remove this unused private "containsCard" method.(±šœ§þÿÿÿÿ
+Gsquid:S1172"+Remove this unused method parameter "card".(±šœ§þÿÿÿÿ
+˜squid:S1186
+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îÔ™ª
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤­—“úÿÿÿÿ
+‡squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¤¨×€
+Tsquid:UnusedPrivateMethod
+"/Remove this unused private "addToCards" method.(îÔ™ª
