@@ -11,12 +11,8 @@ public class Shop {
         return shopCollection;
     }
 
-    public static void show() {
-
-    }
-
     public static void showCollection() {
-        //use the same method in CollectionController
+        //use the same method in CollectionController (maybe CollectionView , i don't know!)
     }
 
     public static boolean cardExistsInShop(String cardName) {
