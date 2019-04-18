@@ -1,7 +1,0 @@
-
-]squid:UselessImportCheck"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8ï·§¢-
-~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤­—“úÿÿÿÿ8ï·§¢-
-Usquid:S1068"2Remove this unused "deckController" private field.(–ÊÎëÿÿÿÿÿ8ï·§¢-
-“squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(„«¸Öøÿÿÿÿ8ï·§¢-
-Fsquid:S1068
-"(Remove this unused "name" private field.(Ë¥¼8ï·§¢-
