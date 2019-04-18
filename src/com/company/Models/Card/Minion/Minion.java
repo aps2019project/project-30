@@ -20,4 +20,12 @@ public class Minion extends Card {
     public int getHealth() {
         return health;
     }
+
+    public void decremeantHealth(int number) {
+        this.health -= number;
+    }
+
+    public void incrementHealth(int number) {
+        this.health += number;
+    }
 }
