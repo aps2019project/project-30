@@ -22,4 +22,5 @@
 
 *.iml
 *.xml
-.idea/workspace.xml
+.idea/
+.out/

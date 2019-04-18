@@ -15,9 +15,42 @@ import java.util.regex.Pattern;
 public class ConsoleInput {
     private static Scanner scanner = new Scanner(System.in);
 
-    enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE}
+    public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE, EXIT}
 
-    Menu menu;
+    private static Menu menu = Menu.ACCOUNT;
+
+    public static Menu getMenu() {
+        return menu;
+    }
+
+    public static void setMenu(Menu menu) {
+        ConsoleInput.menu = menu;
+    }
+
+    public static void menusHandler() {
+        while (true) {
+            String command = scanner.nextLine();
+            switch (menu) {
+                case MAIN:
+                    mainMenuCommandsChecker(command);
+                    break;
+                case ACCOUNT:
+                    accountMenuCommandsChecker(command);
+                    break;
+                case COLLECTION:
+                    collectionMenuCommandsChecker(command);
+                    break;
+                case SHOP:
+                    shopMenuCommandsChecker(command);
+                    break;
+                case BATTLE:
+                    battleMenuCommandsChecker(command);
+                    break;
+                case EXIT:
+                    return;
+            }
+        }
+    }
 
     public static void mainMenuCommandsChecker(String command) {
         if (command.matches("save")) {
@@ -78,6 +111,8 @@ public class ConsoleInput {
             AccountController.showLeaderBoard();
         } else if (command.matches("help")) {
             AccountView.printAccountCommandsToHelp();
+        } else if (command.matches("exit")) {
+            setMenu(Menu.EXIT);
         }
     }
 
@@ -107,7 +142,7 @@ public class ConsoleInput {
         }
     }
 
-    public static void battleMenuCommandsChecker() {
+    public static void battleMenuCommandsChecker(String command) {
 
     }
 }
