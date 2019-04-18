@@ -7,6 +7,20 @@ import com.company.Models.Shop;
 
 public class ShopView {
 
+    public static void showAll() {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            for (int i = 0; i < 3; i++) {//one time for heroes, once for itmes and once for cards(spells and minions)
+                if (i == 0) {
+                    showHeroes();
+                } else if (i == 1) {
+                    //showing items
+                } else if (i == 2) {
+                    showCards();
+                }
+            }
+        }
+    }
+
     private static void showHeroes() {
         System.out.println("Heroes :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
