@@ -7,9 +7,18 @@ import com.company.Models.User.Account;
 
 
 public class CollectionController {
-    private void show() {
+    public void show() {
 
     }
+    public void ShowAllDecks(){
+        for(Deck deck:Account.getLoggedInAccount().getDecks()){
+            showDeckInview(deck);
+        }
+    }
+    public void ShowDeck(String deckNmae){
+        showDeckInView(getDeckByName(deckNmae));
+    }
+
     public void search(String cardName){
         for(Card card: Account.getLoggedInAccount().getCollection().getCards()){
             if(card.getName().equals(cardName)){

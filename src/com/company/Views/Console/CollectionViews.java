@@ -12,8 +12,19 @@ public class CollectionViews {
         System.out.println("Heroes : ");
         for(Card card: Account.getLoggedInAccount().getCollection().getCards()){
             if(card instanceof Hero){
-
+                System.out.println("    1 : Name "+card.getName()+" - Ap : "+((Hero) card).getHeroType().getAttackPower()+" - Hp : "+((Hero) card).getHealth()+
+                        " - class : "+((Hero) card).getHeroType().getName()+" - spesial power : "+((Hero) card).getHeroType().getSpesioalPower()+" - sell Cost: "+((Hero) card).getHeroType().getPriceInDrake());
             }
+
+        }
+        System.out.println("Item : ");
+        for(Card card:Account.getLoggedInAccount().getCollection().getCards()){
+            if(card instanceof ){
+                System.out.println("    2 : Name "+);
+            }
+        }
+        System.out.println("Cards : ");
+        for (Card card:Account.getLoggedInAccount().getCollection().getCards()){
 
         }
     }

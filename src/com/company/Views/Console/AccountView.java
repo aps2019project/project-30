@@ -13,7 +13,7 @@ public class AccountView {
         }
     }
 
-    public static void printHelp() {
+    public static void printAccountCommandsToHelp() {
         ConsoleOutput.printMessage("##### Account Commands #####");
         ConsoleOutput.printMessage("1- create account [username]");
         ConsoleOutput.printMessage("2- login [username]");

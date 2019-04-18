@@ -1,5 +1,6 @@
 package com.company.Models.Card.Groups;
 
+import com.company.Controllers.DeckController;
 import com.company.Models.Card.Card;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Deck {
     private Card heroCard;
     private Card itemCard;
     private Hand hand;
+    private DeckController deckController = new DeckController(this);
 
     public Deck(String name) {
         this.name = name;
