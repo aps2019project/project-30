@@ -41,6 +41,7 @@ public class AccountController {
 
     public static void logout() {
         Account.getLoggedInAccount().logout();
+        ConsoleInput.setMenu(ConsoleInput.Menu.ACCOUNT);
     }
 
     public static void showLeaderBoard() {

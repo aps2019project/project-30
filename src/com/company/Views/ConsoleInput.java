@@ -55,9 +55,19 @@ public class ConsoleInput {
 
     public static void mainMenuCommandsChecker(String command) {
         if (command.matches("save")) {
-            //save
+            //todo
         } else if (command.matches("logout")) {
             AccountController.logout();
+        } else if (command.matches("enter collection")) {
+            setMenu(Menu.COLLECTION);
+        } else if (command.matches("enter shop")) {
+            setMenu(Menu.SHOP);
+        } else if (command.matches("enter Battle")) {
+            setMenu(Menu.COLLECTION);
+        } else if (command.matches("exit")) {
+            setMenu(Menu.EXIT);
+        } else if (command.matches("help")) {
+            //todo
         }
     }
 
