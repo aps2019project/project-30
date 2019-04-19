@@ -15,16 +15,8 @@ public class MultiPlayer extends Battle {
         return player1Acc;
     }
 
-    public void setPlayer1Acc(Account player1Acc) {
-        this.player1Acc = player1Acc;
-    }
-
     public Account getPlayer2Acc() {
         return player2Acc;
-    }
-
-    public void setPlayer2Acc(Account player2Acc) {
-        this.player2Acc = player2Acc;
     }
 
     @Override

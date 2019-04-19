@@ -29,7 +29,7 @@ public class AccountController {
         } else {
             if (Account.getAccountByUsername(username).isPasswordCorrect(password)) {
                 Account.login(username, password);
-                ConsoleInput.setMenu(ConsoleInput.Menu.ACCOUNT);
+                ConsoleInput.setMenu(ConsoleInput.Menu.MAIN);
             } else {
                 loginErrorType = ErrorType.PASSWORD_INVALID;
             }

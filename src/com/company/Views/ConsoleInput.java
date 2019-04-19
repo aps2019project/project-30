@@ -46,8 +46,9 @@ public class ConsoleInput {
                 case BATTLE:
                     battleMenuCommandsChecker(command);
                     break;
-                case EXIT:
-                    return;
+            }
+            if (menu.equals(Menu.EXIT)) {
+                return;
             }
         }
     }
