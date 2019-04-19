@@ -154,6 +154,38 @@ public class ConsoleInput {
     }
 
     public static void battleMenuCommandsChecker(String command) {
-
+        if (command.matches("game info")) {
+            //todo
+        } else if (command.matches("show my minions")) {
+            //todo
+        } else if (command.matches("show opponent minions")) {
+            //todo
+        } else if (command.matches("show card info \\d+")) {
+            //todo
+        } else if (command.matches("select \\d+")) {
+            //todo
+        } else if (command.matches("attack \\d+")) {
+            //todo
+        } else if (command.matches("attack combo (\\d+)+")) {
+            //todo
+        } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
+            //todo
+        } else if (command.matches("show hand")) {
+            //todo
+        } else if (command.matches("end turn")) {
+            //todo
+        } else if (command.matches("select \\d+")) {
+            //todo
+        } else if (command.matches("show info")) {
+            //todo
+        } else if (command.matches("use \\(\\d+, \\d+\\)")) {
+            //todo
+        } else if (command.matches("show next card")) {
+            //todo
+        } else if (command.matches("enter graveyard")) {
+            //todo
+        } else if (command.matches("help")) {
+            //todo
+        }
     }
 }
