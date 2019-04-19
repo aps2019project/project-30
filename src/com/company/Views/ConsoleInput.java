@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class ConsoleInput {
     private static Scanner scanner = new Scanner(System.in);
 
-    public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE, EXIT}
+    public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE, GRAVEYARD, EXIT}
 
     private static Menu menu = Menu.ACCOUNT;
 
@@ -45,6 +45,9 @@ public class ConsoleInput {
                     break;
                 case BATTLE:
                     battleMenuCommandsChecker(command);
+                    break;
+                case GRAVEYARD:
+                    graveYardMenuCommandsChecker(command);
                     break;
             }
             if (menu.equals(Menu.EXIT)) {
@@ -188,4 +191,16 @@ public class ConsoleInput {
             //todo
         }
     }
+
+
+    private static void graveYardMenuCommandsChecker(String command) {
+        if (command.matches("show info")) {
+            //todo
+        } else if (command.matches("show cards")) {
+            //todo
+        } else if (command.matches("exit")) {
+            setMenu(Menu.BATTLE);
+        }
+    }
+
 }
