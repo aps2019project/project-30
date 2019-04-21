@@ -5,6 +5,7 @@ import com.company.Models.Card.Card;
 public class Minion extends Card {
 
     private MinionType minionType;
+    private boolean disarmed = false;
 
     public Minion(MinionType minionType) {
         this.minionType = minionType;
