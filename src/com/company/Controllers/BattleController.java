@@ -8,4 +8,8 @@ public class BattleController {
     public BattleController(Battle battle) {
         this.battle = battle;
     }
+
+    public void showMyMinions() {
+
+    }
 }

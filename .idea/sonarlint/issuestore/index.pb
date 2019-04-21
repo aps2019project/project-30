@@ -27,3 +27,17 @@ I
 src/com/company/Main.java,4\a\4a831b10439099d44774d0ccc387e808deffaeab
 W
 'src/com/company/Views/ConsoleInput.java,4\f\4fca37f1eb8f681879c104b387ce97f21d76c8be
+a
+1src/com/company/Controllers/BattleController.java,2\7\27e83e39c062bd963cd4ab19e110a5d59adad569
+Y
+)src/com/company/Models/Battle/Battle.java,3\1\312a238bca20877bcad135b8ba6aa041dffffaeb
+b
+2src/com/company/Models/Card/Groups/Collection.java,3\8\38844e25db2ac012559aa3e4befbe06254e9873e
+^
+.src/com/company/Models/Battle/MultiPlayer.java,9\6\965928bf0105bc206ea56fe59cbb6c97e1a20862
+W
+'src/com/company/Models/User/Player.java,b\4\b42e35205aef6e640e77fc66614421eba0cf68f4
+\
+,src/com/company/Models/Card/Spell/Spell.java,f\1\f1b798183a5824c527a13f16c63a5a72ba5016b8
+`
+0src/com/company/Models/Card/Spell/SpellType.java,0\6\06baa98878839148a1c40ebc8d1fe61af7988848

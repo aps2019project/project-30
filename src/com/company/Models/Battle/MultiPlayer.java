@@ -11,6 +11,10 @@ public class MultiPlayer extends Battle {
     private Player player2;
     private Mode mode;
 
+    public MultiPlayer(Mode mode) {
+        super(mode);
+    }
+
     public Account getPlayer1Acc() {
         return player1Acc;
     }
