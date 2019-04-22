@@ -6,18 +6,31 @@ import com.company.Models.Card.Spell.Spell;
 
 public abstract class Hero extends Card {
     private boolean disarmed = false;
+    private int xCoordiante, yCoordinate;
     private HeroType heroType;
-    private String name;
     private AttackType attackType;
-    private int priceInDrake;
     private int fullHealth;
     private int areaOfEffect;
     private int attackPower;
-    private int manaPoint;
     private int coolDown;
     private int health;
     private int coolDownRemaining;
 
+    public int getxCoordiante() {
+        return xCoordiante;
+    }
+
+    public void setxCoordiante(int xCoordiante) {
+        this.xCoordiante = xCoordiante;
+    }
+
+    public int getyCoordinate() {
+        return yCoordinate;
+    }
+
+    public void setyCoordinate(int yCoordinate) {
+        this.yCoordinate = yCoordinate;
+    }
 
     public HeroType getHeroType() {
         return heroType;

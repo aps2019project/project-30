@@ -6,10 +6,9 @@ import com.company.Models.Card.Card;
 public class Minion extends Card {
 
     private MinionType minionType;
-    private String name;
     private AttackType attackType;
+    private int xCoordiante, yCoordinate;
     private ActivationTime activationTime;
-    private int priceInDrake;
     private int neededMana;
     private int fullHealth;
     private int attackPower;
@@ -20,6 +19,22 @@ public class Minion extends Card {
         this.minionType = minionType;
         super.setName(minionType.getName());
         super.setManaPoint(minionType.getNeededMana());
+    }
+
+    public int getxCoordiante() {
+        return xCoordiante;
+    }
+
+    public void setxCoordiante(int xCoordiante) {
+        this.xCoordiante = xCoordiante;
+    }
+
+    public int getyCoordinate() {
+        return yCoordinate;
+    }
+
+    public void setyCoordinate(int yCoordinate) {
+        this.yCoordinate = yCoordinate;
     }
 
     public MinionType getMinionType() {
@@ -46,5 +61,9 @@ public class Minion extends Card {
 
     public void incrementAttackPower(int number) {
         this.attackPower += number;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
     }
 }
