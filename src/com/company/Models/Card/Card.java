@@ -4,6 +4,7 @@ import com.company.Models.Buff.Buff;
 import com.company.Models.TargetType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Card {
     private int id;
@@ -13,8 +14,8 @@ public abstract class Card {
     private String description;
     private boolean isInGraveCards = false;
     private TargetType targetType;
-    private ArrayList<Buff> buffsToCast;
-    private ArrayList<Buff> buffsCasted;
+    private List<Buff> buffsToCast;
+    private List<Buff> buffsCasted;
 
 
     public String getDescription() {
@@ -69,11 +70,11 @@ public abstract class Card {
         this.targetType = targetType;
     }
 
-    public ArrayList<Buff> getBuffsToCast() {
+    public List<Buff> getBuffsToCast() {
         return buffsToCast;
     }
 
-    public ArrayList<Buff> getBuffsCasted() {
+    public List<Buff> getBuffsCasted() {
         return buffsCasted;
     }
 }

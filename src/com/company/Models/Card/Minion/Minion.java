@@ -1,10 +1,19 @@
 package com.company.Models.Card.Minion;
 
+import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
 
 public class Minion extends Card {
 
     private MinionType minionType;
+    private String name;
+    private AttackType attackType;
+    private ActivationTime activationTime;
+    private int priceInDrake;
+    private int neededMana;
+    private int fullHealth;
+    private int attackPower;
+    private int areaOfEffect;
     private boolean disarmed = false;
 
     public Minion(MinionType minionType) {
@@ -33,5 +42,9 @@ public class Minion extends Card {
 
     public void incrementHealth(int number) {
         this.health += number;
+    }
+
+    public void incrementAttackPower(int number) {
+        this.attackPower += number;
     }
 }

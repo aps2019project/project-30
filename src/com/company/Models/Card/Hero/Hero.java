@@ -5,11 +5,19 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Spell.Spell;
 
 public abstract class Hero extends Card {
-
-    private int health;
-    private int coolDownRemaining;
     private boolean disarmed = false;
     private HeroType heroType;
+    private String name;
+    private AttackType attackType;
+    private int priceInDrake;
+    private int fullHealth;
+    private int areaOfEffect;
+    private int attackPower;
+    private int manaPoint;
+    private int coolDown;
+    private int health;
+    private int coolDownRemaining;
+
 
     public HeroType getHeroType() {
         return heroType;
@@ -33,5 +41,9 @@ public abstract class Hero extends Card {
 
     public void incrementHealth(int number) {
         this.health += number;
+    }
+
+    public void incrementAttackPower(int number) {
+        this.attackPower += number;
     }
 }

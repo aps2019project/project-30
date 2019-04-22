@@ -9,9 +9,25 @@ public class HolyBuff extends Buff{
     }
     @Override
     public void cast() {
-        if (super.cardToCast instanceof Hero)
-            ((Hero) super.cardToCast).incrementHealth(1);
-        else if (super.cardToCast instanceof Minion)
-            ((Minion) super.cardToCast).incrementHealth(1);
+        if (isActive() && canCastThisTurn()) {
+            if (super.cardToCast instanceof Hero)
+                ((Hero) super.cardToCast).incrementHealth(1);
+            else if (super.cardToCast instanceof Minion)
+                ((Minion) super.cardToCast).incrementHealth(1);
+        }
+        decrementCounters();
+    }
+
+    private boolean isActive() {
+        return remTurnToBeInactive == 0;
+    }
+
+    private boolean canCastThisTurn() {
+        return remTurnToCast == 0;
+    }
+
+    private void decrementCounters() {
+        remTurnToCast--;
+        remTurnToBeInactive--;
     }
 }
