@@ -19,7 +19,7 @@ public class ShopController {
     public static void buy(Account account,String cardName) {
         if (Shop.cardExistsInShop(cardName)) {
             if (account.getDrake() >= Shop.getCardByName(cardName).getPriceInDrake()) {
-                //add to account collection
+                AccountController.addCardToCollection(account,Shop.getCardByName(cardName));
                 account.decrementDrake(Shop.getCardByName(cardName).getPriceInDrake());
             }else {
                 ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_DRAKE);
