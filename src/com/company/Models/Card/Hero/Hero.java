@@ -8,6 +8,7 @@ public abstract class Hero extends Card {
 
     private int health;
     private int coolDownRemaining;
+    private boolean disarmed = false;
     private HeroType heroType;
 
     public HeroType getHeroType() {

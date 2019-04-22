@@ -1,7 +1,6 @@
 package com.company.Models.Card.Minion;
 
 
-import com.company.Models.Card.ActivationTime;
 import com.company.Models.Card.AttackType;
 
 public enum MinionType {

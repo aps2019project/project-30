@@ -24,7 +24,6 @@ public class Account {
         this.password = password;
     }
 
-
     public static Account getLoggedInAccount() {
         return loggedInAccount;
     }

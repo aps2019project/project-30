@@ -15,12 +15,63 @@ import java.util.regex.Pattern;
 public class ConsoleInput {
     private static Scanner scanner = new Scanner(System.in);
 
-    enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE}
+    public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE, GRAVEYARD, EXIT}
 
-    Menu menu;
+    private static Menu menu = Menu.ACCOUNT;
+
+    public static Menu getMenu() {
+        return menu;
+    }
+
+    public static void setMenu(Menu menu) {
+        ConsoleInput.menu = menu;
+    }
+
+    public static void menusHandler() {
+        while (true) {
+            String command = scanner.nextLine();
+            switch (menu) {
+                case MAIN:
+                    mainMenuCommandsChecker(command);
+                    break;
+                case ACCOUNT:
+                    accountMenuCommandsChecker(command);
+                    break;
+                case COLLECTION:
+                    collectionMenuCommandsChecker(command);
+                    break;
+                case SHOP:
+                    shopMenuCommandsChecker(command);
+                    break;
+                case BATTLE:
+                    battleMenuCommandsChecker(command);
+                    break;
+                case GRAVEYARD:
+                    graveYardMenuCommandsChecker(command);
+                    break;
+            }
+            if (menu.equals(Menu.EXIT)) {
+                return;
+            }
+        }
+    }
 
     public static void mainMenuCommandsChecker(String command) {
-
+        if (command.matches("save")) {
+            //todo
+        } else if (command.matches("logout")) {
+            AccountController.logout();
+        } else if (command.matches("enter collection")) {
+            setMenu(Menu.COLLECTION);
+        } else if (command.matches("enter shop")) {
+            setMenu(Menu.SHOP);
+        } else if (command.matches("enter Battle")) {
+            setMenu(Menu.COLLECTION);
+        } else if (command.matches("exit")) {
+            setMenu(Menu.EXIT);
+        } else if (command.matches("help")) {
+            //todo
+        }
     }
 
     public static void collectionMenuCommandsChecker(String command) {
@@ -56,29 +107,26 @@ public class ConsoleInput {
     public static void accountMenuCommandsChecker(String command) {
         if (command.matches("create account \\w+")) {
             Matcher usernameMatcher = Pattern.compile("create account (?<username>\\w+)").matcher(command);
-            usernameMatcher.find();
-            while (true) {
+            if (usernameMatcher.find()) {
                 command = scanner.nextLine();
-                if (command.matches("\\w+")) {
-                    Matcher passwordMatcher = Pattern.compile("(?<password>\\w+)").matcher(command);
-                    passwordMatcher.find();
-                    System.out.println(usernameMatcher.group("username") + " " + passwordMatcher.group("password"));
-                    AccountController.createAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
-                    return;
-                } else {
-                    ConsoleOutput.printErrorMessage(ErrorType.PASSWORD_INVALID);
-                }
+                Matcher passwordMatcher = Pattern.compile("(?<password>\\w+)").matcher(command);
+                passwordMatcher.find();
+                AccountController.createAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
             }
         } else if (command.matches("login \\w+")) {
-            //login
+            Matcher usernameMatcher = Pattern.compile("login (?<username>\\w+)").matcher(command);
+            if (usernameMatcher.find()) {
+                command = scanner.nextLine();
+                Matcher passwordMatcher = Pattern.compile("(?<password>\\w+)").matcher(command);
+                passwordMatcher.find();
+                AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
+            }
         } else if (command.matches("show leaderboard")) {
-            //show leaderboard
-        } else if (command.matches("save")) {
-            //save
-        } else if (command.matches("logout")) {
-            //logout
+            AccountController.showLeaderBoard();
         } else if (command.matches("help")) {
             AccountView.printAccountCommandsToHelp();
+        } else if (command.matches("exit")) {
+            setMenu(Menu.EXIT);
         }
     }
 
@@ -108,7 +156,51 @@ public class ConsoleInput {
         }
     }
 
-    public static void battleMenuCommandsChecker() {
-
+    public static void battleMenuCommandsChecker(String command) {
+        if (command.matches("game info")) {
+            //todo
+        } else if (command.matches("show my minions")) {
+            //todo
+        } else if (command.matches("show opponent minions")) {
+            //todo
+        } else if (command.matches("show card info \\d+")) {
+            //todo
+        } else if (command.matches("select \\d+")) {
+            //todo
+        } else if (command.matches("attack \\d+")) {
+            //todo
+        } else if (command.matches("attack combo (\\d+)+")) {
+            //todo
+        } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
+            //todo
+        } else if (command.matches("show hand")) {
+            //todo
+        } else if (command.matches("end turn")) {
+            //todo
+        } else if (command.matches("select \\d+")) {
+            //todo
+        } else if (command.matches("show info")) {
+            //todo
+        } else if (command.matches("use \\(\\d+, \\d+\\)")) {
+            //todo
+        } else if (command.matches("show next card")) {
+            //todo
+        } else if (command.matches("enter graveyard")) {
+            //todo
+        } else if (command.matches("help")) {
+            //todo
+        }
     }
+
+
+    private static void graveYardMenuCommandsChecker(String command) {
+        if (command.matches("show info")) {
+            //todo
+        } else if (command.matches("show cards")) {
+            //todo
+        } else if (command.matches("exit")) {
+            setMenu(Menu.BATTLE);
+        }
+    }
+
 }
