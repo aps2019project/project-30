@@ -1,4 +1,5 @@
 
-Qsquid:S1118":Add a private constructor to hide the implicit public one.(œëà
-Dsquid:S1604-"(Make this anonymous inner class a lambda(ƒÌÇÍüÿÿÿÿ
-rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¨Ô•
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(œëà8Ö–™§¢-
+Isquid:S1604"(Make this anonymous inner class a lambda(ƒÌÇÍüÿÿÿÿ8Ö–™§¢-
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¨Ô•8Ö–™§¢-
+gsquid:UselessImportCheck"9Remove this unused import 'com.company.Models.Card.Card'.(»õî‰øÿÿÿÿ8Ö–™§¢-

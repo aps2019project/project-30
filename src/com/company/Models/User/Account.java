@@ -97,6 +97,14 @@ public class Account {
         this.drake = drake;
     }
 
+    public void incrementDrake(int number) {
+        this.drake += number;
+    }
+
+    public void decrementDrake(int number) {
+        this.drake -= number;
+    }
+
     public void setMainDeck(Deck mainDeck) {
         this.mainDeck = mainDeck;
     }

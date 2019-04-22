@@ -1,7 +1,7 @@
 
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ï•‰ƒûÿÿÿÿ
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(øºÑûúÿÿÿÿ
-Qsquid:S1118":Add a private constructor to hide the implicit public one.(ÇŽÕì
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢¸Àÿúÿÿÿÿ
+Osquid:S1118":Add a private constructor to hide the implicit public one.(ÇŽÕì
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(ï•‰ƒûÿÿÿÿ
+usquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢¸Àÿúÿÿÿÿ
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(øºÑûúÿÿÿÿ

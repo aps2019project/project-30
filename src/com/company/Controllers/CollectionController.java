@@ -4,19 +4,23 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.User.Account;
+import com.company.Views.Console.CollectionViews;
 
 
 public class CollectionController {
     public void show() {
-
+        CollectionViews.show();
     }
     public void ShowAllDecks(){
+        int counter=0;
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
-            showDeckInview(deck);
+            counter++;
+            System.out.println(counter+" : deck_"+counter);
+            CollectionViews.showDeck(deck);
         }
     }
     public void ShowDeck(String deckNmae){
-        showDeckInView(getDeckByName(deckNmae));
+        CollectionViews.showDeck(getDeckByName(deckNmae));
     }
 
     public void search(String cardName){
