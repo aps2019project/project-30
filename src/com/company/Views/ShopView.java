@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
@@ -13,7 +14,7 @@ public class ShopView {
                 if (i == 0) {
                     showHeroes();
                 } else if (i == 1) {
-                    //showing items
+                    showItems();
                 } else if (i == 2) {
                     showCards();
                 }
@@ -45,6 +46,18 @@ public class ShopView {
                 System.out.println((i + 1) + "- Type : Spell " +
                         "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
                         "- MP : " + Shop.getShopCollection().getCards().get(i).getManaPoint() +
+                        "- Desc : " + Shop.getShopCollection().getCards().get(i).getDescription() +
+                        "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            }
+        }
+    }
+
+    private static void showItems() {
+        System.out.println("Items :");
+        for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
+             if(Shop.getShopCollection().getCards().get(i) instanceof Item){
+                System.out.println((i + 1) +
+                        "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
                         "- Desc : " + Shop.getShopCollection().getCards().get(i).getDescription() +
                         "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
             }

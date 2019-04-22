@@ -4,4 +4,5 @@ import com.company.Models.Card.Card;
 
 public class Item extends Card {
     private int priceInDrake;
+
 }
