@@ -3,21 +3,19 @@ package com.company.Models.Battle.Map;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 
+import java.util.ArrayList;
+
 public class Cell {
     private int xCoordinate, yCoordinate;
     private Card cardInCell;
-    private Buff cellEffect;
+    private ArrayList<Buff> cellEffects;
 
     public int getxCoordinate() {
         return xCoordinate;
     }
 
-    public Buff getCellEffect() {
-        return cellEffect;
-    }
-
-    public void setCellEffect(Buff cellEffect) {
-        this.cellEffect = cellEffect;
+    public ArrayList<Buff> getCellEffect() {
+        return cellEffects;
     }
 
     public int getyCoordinate() {

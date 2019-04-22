@@ -49,3 +49,11 @@ f
 6src/com/company/Models/Card/Minion/ActivationTime.java,1\5\15362be0d300a6ebee7b17e82a604166fa7a780d
 Z
 *src/com/company/Models/Card/Item/Item.java,a\d\ade7333d70a31562dcb6b079be1f60c15abe9154
+V
+&src/com/company/Models/TargetType.java,3\4\34d58d8b1637ab449bea317929f5b1932cf139f6
+b
+2src/com/company/Views/Console/CollectionViews.java,6\3\63ccd6c5b1ba8268869ef05b20bcf6743479ca46
+U
+%src/com/company/Models/Card/Card.java,5\2\52a07166cf075ca77417caae95e3d0589ec93f4c
+Y
+)src/com/company/Models/Buff/HolyBuff.java,5\5\5590eefac191134495f29cbf430fc92d5a94a194
