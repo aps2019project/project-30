@@ -2,6 +2,7 @@ package com.company.Controllers;
 
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Card.Groups.Hand;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,5 +42,9 @@ public class DeckController {
             }
         }
         return aliveCards;
+    }
+
+    private boolean isHandFull() {
+        return deck.getHand().getCards().size() == Hand.HAND_CARDS_MAX;
     }
 }

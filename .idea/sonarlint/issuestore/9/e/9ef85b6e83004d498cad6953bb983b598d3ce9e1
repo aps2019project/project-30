@@ -1,9 +1,0 @@
-
-…squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¶…É÷
-dsquid:UselessImportCheck"=Remove this unused import 'com.company.Models.Battle.Battle'.(ÿ ‡Æøÿÿÿÿ
-…squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÚÒÍ
-Dsquid:S1172"/Remove this unused method parameter "password".(¥á£€
-›squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ËèÉšÿÿÿÿÿ
-Ksquid:S2696"6Make the enclosing method "static" or remove this set.(Õ‡êè
-usquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(èšÖ‹ıÿÿÿÿ
-Šsquid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ØùÇ°úÿÿÿÿ

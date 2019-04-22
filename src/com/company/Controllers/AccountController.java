@@ -4,6 +4,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
+import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class AccountController {
         } else {
             if (Account.getAccountByUsername(username).isPasswordCorrect(password)) {
                 Account.login(username, password);
+                ConsoleInput.setMenu(ConsoleInput.Menu.MAIN);
             } else {
                 loginErrorType = ErrorType.PASSWORD_INVALID;
             }
@@ -39,6 +41,7 @@ public class AccountController {
 
     public static void logout() {
         Account.getLoggedInAccount().logout();
+        ConsoleInput.setMenu(ConsoleInput.Menu.ACCOUNT);
     }
 
     public static void showLeaderBoard() {

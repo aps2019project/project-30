@@ -1,5 +1,0 @@
-
-Ÿsquid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¥ù×8”¬§¢-
-ysquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¨Ô•8´î §¢-
-Ÿsquid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Í¹àĞ8”¬§¢-
-“squid:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ó¾Ãäşÿÿÿÿ8Ùü®¨¢-

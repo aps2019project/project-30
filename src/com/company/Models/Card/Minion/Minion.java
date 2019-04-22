@@ -5,7 +5,7 @@ import com.company.Models.Card.Card;
 public class Minion extends Card {
 
     private MinionType minionType;
-    private int health;
+    private boolean disarmed = false;
 
     public Minion(MinionType minionType) {
         this.minionType = minionType;
@@ -16,6 +16,8 @@ public class Minion extends Card {
     public MinionType getMinionType() {
         return minionType;
     }
+
+    private int health;
 
     public void setHealth(int health) {
         this.health = health;

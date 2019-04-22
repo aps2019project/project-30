@@ -10,6 +10,10 @@ public class SinglePlayer extends Battle {
     private Mode mode;
     private boolean isStory;
 
+    public SinglePlayer(Mode mode) {
+        super(mode);
+    }
+
     public Account getPlayer1Acc() {
         return player1Acc;
     }
