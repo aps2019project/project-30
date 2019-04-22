@@ -126,7 +126,6 @@ public class CollectionController {
         if(deckExist(deckName)){
             Account.getLoggedInAccount().getDecks().remove(getDeckByName(deckName));
         }
-        //payamemonaseb
     }
     private Deck getDeckByName(String deckName){
             for (Deck deck : Account.getLoggedInAccount().getDecks()) {
