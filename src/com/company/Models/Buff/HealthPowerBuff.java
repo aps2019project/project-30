@@ -15,4 +15,5 @@ public class HealthPowerBuff extends Buff {
         else if (super.cardToCast instanceof Minion)
             ((Minion) super.cardToCast).incrementAttackPower(value);
     }
+
 }

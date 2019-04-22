@@ -2,24 +2,28 @@ package com.company.Models.Card.Minion;
 
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
-
-import java.util.ArrayList;
+import com.company.Models.Card.Hero.Hero;
 
 public class Minion extends Card {
 
-    private MinionType minionType;
-    private AttackType attackType;
+//    private MinionType minionType;
     private int xCoordiante, yCoordinate;
+    private AttackType attackType;
     private ActivationTime activationTime;
-    private int neededMana;
     private int fullHealth;
+    private int health;
     private int attackPower;
     private int areaOfEffect;
-    private boolean disarmed = false;
-    public Minion(MinionType minionType) {
-        this.minionType = minionType;
-        super.setName(minionType.getName());
-        super.setManaPoint(minionType.getNeededMana());
+    private boolean disarmed;
+
+    public void attack(Card targetCard) {
+        if (targetCard instanceof Hero) {
+            ((Hero) targetCard).decremeantHealth(attackPower);
+        }
+        else if (targetCard instanceof Minion) {
+            ((Minion) targetCard).decremeantHealth(attackPower);
+        }
+        //TODO Check Counter Buffs
     }
 
     public int getxCoordiante() {
@@ -38,11 +42,10 @@ public class Minion extends Card {
         this.yCoordinate = yCoordinate;
     }
 
-    public MinionType getMinionType() {
-        return minionType;
-    }
+//    public MinionType getMinionType() {
+//        return minionType;
+//    }
 
-    private int health;
 
     public void setHealth(int health) {
         this.health = health;

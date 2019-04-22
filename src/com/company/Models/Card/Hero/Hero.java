@@ -10,11 +10,11 @@ public abstract class Hero extends Card {
     private HeroType heroType;
     private AttackType attackType;
     private int fullHealth;
+    private int health;
     private int areaOfEffect;
     private int attackPower;
     private int coolDown;
-    private int health;
-    private int coolDownRemaining;
+    private int remainingCoolDown;
 
     public int getxCoordiante() {
         return xCoordiante;
@@ -41,7 +41,7 @@ public abstract class Hero extends Card {
     }
 
     public int getCoolDownRemaining() {
-        return coolDownRemaining;
+        return remainingCoolDown;
     }
 
     public void decremeantCoolDownRemaining() {
