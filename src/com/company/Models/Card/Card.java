@@ -1,5 +1,7 @@
 package com.company.Models.Card;
 
+import com.company.Models.TargetType;
+
 public abstract class Card {
     private int id;
     private String name;
@@ -7,6 +9,7 @@ public abstract class Card {
     private int priceInDrake;
     private String description;
     private boolean isInGraveCards = false;
+    private TargetType targetType;
 
     public String getDescription() {
         return description;
@@ -50,5 +53,13 @@ public abstract class Card {
 
     public void setPriceInDrake(int priceInDrake) {
         this.priceInDrake = priceInDrake;
+    }
+
+    public TargetType getTargetType() {
+        return targetType;
+    }
+
+    public void setTargetType(TargetType targetType) {
+        this.targetType = targetType;
     }
 }

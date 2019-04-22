@@ -50,4 +50,8 @@ public class Deck {
     public boolean isValidate() {
         return true;
     }
+
+    public String getName() {
+        return name;
+    }
 }
