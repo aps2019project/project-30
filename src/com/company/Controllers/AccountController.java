@@ -22,6 +22,10 @@ public class AccountController {
         }
     }
 
+    public void addCardToCollection(Account account ,Card card){
+        account.getCollection().getCards().add(card);
+    }
+
     public static void loginAccount(String username, String password) {
         ErrorType loginErrorType = null;
         if (!usernameExists(username)) {
