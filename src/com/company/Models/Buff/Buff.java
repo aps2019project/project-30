@@ -9,6 +9,8 @@ public abstract class Buff {
     private Type type;
     private Name name;
 
+    private int remTurnToBeInactive;
+
     public Type getType() {
         return type;
     }
@@ -17,5 +19,5 @@ public abstract class Buff {
         return name;
     }
 
-    public abstract void doAction();
+    public abstract void cast();
 }
