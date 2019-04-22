@@ -22,5 +22,5 @@
 
 *.iml
 *.xml
-.idea/
-.out/
+/.idea/
+/out/

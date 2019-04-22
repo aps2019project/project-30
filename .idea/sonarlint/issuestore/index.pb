@@ -17,8 +17,6 @@ U
 ,src/com/company/Models/Card/Groups/Hand.java,3\3\33713fbddb74bce08ea333ec0b15a2efd2396e34
 [
 +src/com/company/Models/Battle/Map/Cell.java,9\4\9418bf02790ca07c588c543978ab77ad131a0d11
-_
-/src/com/company/Models/Battle/SinglePlayer.java,1\e\1e422943442b93e7feaa49b472f83b5e2b7fcda8
 \
 ,src/com/company/Models/Battle/BattleLog.java,1\e\1ebddb704cbb86f28071fbdb29596a23df5f9204
 b
@@ -33,8 +31,6 @@ Y
 )src/com/company/Models/Battle/Battle.java,3\1\312a238bca20877bcad135b8ba6aa041dffffaeb
 b
 2src/com/company/Models/Card/Groups/Collection.java,3\8\38844e25db2ac012559aa3e4befbe06254e9873e
-^
-.src/com/company/Models/Battle/MultiPlayer.java,9\6\965928bf0105bc206ea56fe59cbb6c97e1a20862
 W
 'src/com/company/Models/User/Player.java,b\4\b42e35205aef6e640e77fc66614421eba0cf68f4
 \
@@ -69,9 +65,15 @@ Y
 )src/com/company/Models/Buff/AntiBuff.java,f\0\f096af524b6a4db5009df092841adff1064a9620
 Y
 )src/com/company/Models/Buff/ManaBuff.java,c\4\c4a0935e73a917bac25deee86761d3ee87e3b5f5
-Z
-*src/com/company/Models/Buff/PowerBuff.java,3\8\3842090f760d478856b5dee4925919a8bc77bd89
 _
 /src/com/company/Controllers/DeckController.java,0\d\0d08d4635527db5fdb73b1b70e6f6a7755fe0f1b
 [
 +src/com/company/Models/Buff/DisarmBuff.java,5\8\58574cb19ed81bbdec46ebcde4c5512ef266074e
+b
+2src/com/company/Models/Card/Minion/MinionType.java,e\f\ef186346528a190df20852ef785cff510d2267d9
+^
+.src/com/company/Models/Card/Hero/HeroType.java,9\d\9debbf477818a0ac7b2ef8890d6fb69bd7abcbc9
+`
+0src/com/company/Models/Buff/HealthPowerBuff.java,f\c\fc5f0fc32d608609d308b520fc0ddfc255386ba2
+U
+%src/com/company/Views/BattleView.java,e\2\e25ab0ecdd8201b65b582b3ea3241a62326e6219

@@ -3,6 +3,8 @@ package com.company.Models.Card.Minion;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
 
+import java.util.ArrayList;
+
 public class Minion extends Card {
 
     private MinionType minionType;
@@ -14,7 +16,6 @@ public class Minion extends Card {
     private int attackPower;
     private int areaOfEffect;
     private boolean disarmed = false;
-
     public Minion(MinionType minionType) {
         this.minionType = minionType;
         super.setName(minionType.getName());
