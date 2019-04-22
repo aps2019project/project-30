@@ -22,7 +22,7 @@ public class AccountController {
         }
     }
 
-    public void addCardToCollection(Account account ,Card card){
+    public static void addCardToCollection(Account account ,Card card){
         account.getCollection().getCards().add(card);
     }
 
