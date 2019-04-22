@@ -13,7 +13,6 @@ public class Deck {
     private Card itemCard;
     private Hand hand;
     private DeckController deckController = new DeckController(this);
-
     public Deck(String name) {
         this.name = name;
         hand = new Hand(this);
