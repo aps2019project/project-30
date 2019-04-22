@@ -15,7 +15,7 @@ public class CollectionController {
         int counter=0;
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
             counter++;
-            System.out.println(counter+" : deck_"+counter);
+            CollectionViews.showNumberofDeck(counter);
             CollectionViews.showDeck(deck);
         }
     }
@@ -106,7 +106,6 @@ public class CollectionController {
         //payamemonaseb
     }
     private Deck getDeckByName(String deckName){
-        Deck deck1;
             for (Deck deck : Account.getLoggedInAccount().getDecks()) {
                 if (deck.getName().equals(deckName)) {
                     return deck;
