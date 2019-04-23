@@ -7,8 +7,8 @@ public abstract class Buff {
     public enum Type {POSSETIVE, NEGATIVE}
     public enum Name {HOLY, POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM}
 
-    private Type type;
-    private Name name;
+    Type type;
+    Name name;
     protected Card cardToCast;
 
     protected String description;

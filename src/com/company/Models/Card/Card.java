@@ -14,8 +14,8 @@ public abstract class Card {
     private String description;
     private boolean isInGraveCards = false;
     private TargetType targetType;
-    private List<Buff> buffsToCast;
-    private List<Buff> buffsCasted;
+    private List<Buff> buffsToCast = new ArrayList<>();
+    private List<Buff> buffsCasted = new ArrayList<>();
 
 
     public String getDescription() {
