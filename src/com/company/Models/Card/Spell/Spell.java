@@ -2,8 +2,9 @@ package com.company.Models.Card.Spell;
 
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Hero.Hero;
 
-public abstract class Spell extends Card {
+public class Spell extends Card {
     private SpellType spellType;
 
     public Spell(SpellType spellType) {
@@ -12,5 +13,9 @@ public abstract class Spell extends Card {
 
     public SpellType getSpellType() {
         return spellType;
+    }
+
+    public void throwBuffs(Card target) {
+        target.getBuffsCasted().addAll(this.getBuffsToCast());
     }
 }

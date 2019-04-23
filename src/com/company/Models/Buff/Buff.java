@@ -33,4 +33,21 @@ public abstract class Buff {
     }
 
     public abstract void cast();
+
+    boolean isActive() {
+        return remTurnToBeInactive == 0;
+    }
+
+    boolean canCastThisTurn() {
+        return remTurnToCast == 0;
+    }
+
+    void decrementCounters() {
+        remTurnToCast--;
+        remTurnToBeInactive--;
+    }
+
+    public void setCardToCast(Card cardToCast) {
+        this.cardToCast = cardToCast;
+    }
 }

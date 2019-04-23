@@ -69,10 +69,6 @@ _
 /src/com/company/Controllers/DeckController.java,0\d\0d08d4635527db5fdb73b1b70e6f6a7755fe0f1b
 [
 +src/com/company/Models/Buff/DisarmBuff.java,5\8\58574cb19ed81bbdec46ebcde4c5512ef266074e
-b
-2src/com/company/Models/Card/Minion/MinionType.java,e\f\ef186346528a190df20852ef785cff510d2267d9
-^
-.src/com/company/Models/Card/Hero/HeroType.java,9\d\9debbf477818a0ac7b2ef8890d6fb69bd7abcbc9
 `
 0src/com/company/Models/Buff/HealthPowerBuff.java,f\c\fc5f0fc32d608609d308b520fc0ddfc255386ba2
 U
