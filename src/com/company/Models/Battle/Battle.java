@@ -36,4 +36,8 @@ public class Battle {
     public static Battle getPlayingBattle() {
         return playingBattle;
     }
+
+    public Player[] getPlayers() {
+        return players;
+    }
 }

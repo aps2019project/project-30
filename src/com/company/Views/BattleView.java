@@ -6,7 +6,7 @@ import com.company.Models.Card.Minion.Minion;
 import java.util.ArrayList;
 
 public class BattleView {
-    public static void showMinions(ArrayList<Minion> minions) {
+    public static void printMinionsInfo(ArrayList<Minion> minions) {
         minions.forEach(minion ->
                 System.out.printf(
                         "%d : %s, health : %d, location : (%d, %d), power : %d\n",
@@ -17,5 +17,9 @@ public class BattleView {
                         minion.getAttackPower()
                         )
         );
+    }
+
+    public static void printGraveYardCards(ArrayList<Card> cards) {
+
     }
 }
