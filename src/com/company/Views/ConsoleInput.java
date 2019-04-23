@@ -2,6 +2,7 @@ package com.company.Views;
 
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
+import com.company.Models.Battle.Battle;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
@@ -194,10 +195,10 @@ public class ConsoleInput {
 
 
     private static void graveYardMenuCommandsChecker(String command) {
-        if (command.matches("show info")) {
+        if (command.matches("show info \\d+")) {
             //todo
         } else if (command.matches("show cards")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showGraveYardCards();
         } else if (command.matches("exit")) {
             setMenu(Menu.BATTLE);
         }
