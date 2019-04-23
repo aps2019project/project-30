@@ -1,4 +1,9 @@
 ### Java ###
+.idea/
+/.idea/
+/out/
+*.iml
+*.xml
 # Compiled class file
 *.class
 
@@ -20,7 +25,5 @@
 *.tar.gz
 *.rar
 
-*.iml
-*.xml
-/.idea/
-/out/
+
+
