@@ -7,6 +7,7 @@ import com.company.Models.User.Player;
 public class Battle {
     private static Battle playingBattle;
     private Mode mode;
+    private BattleType battleType;
     private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;

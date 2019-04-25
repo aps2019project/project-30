@@ -158,6 +158,7 @@ public class ConsoleInput {
     }
 
     public static void battleMenuCommandsChecker(String command) {
+        //Todo : Create New Game
         if (command.matches("game info")) {
             //todo
         } else if (command.matches("show my minions")) {
@@ -176,18 +177,22 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show hand")) {
             //todo
+        } else if (command.matches("insert \\d+ in \\(\\d+, \\d+\\)")) {
+            //todo
         } else if (command.matches("end turn")) {
+            //todo
+        } else if (command.matches("Show collectables")) {
             //todo
         } else if (command.matches("select \\d+")) {
             //todo
-        } else if (command.matches("show info")) {
+        } else if (command.matches("show info \\d+")) {
             //todo
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {
             //todo
         } else if (command.matches("enter graveyard")) {
-            //todo
+            setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {
             //todo
         }

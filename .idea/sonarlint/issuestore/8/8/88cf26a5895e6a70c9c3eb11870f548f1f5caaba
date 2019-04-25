@@ -1,18 +1,33 @@
 
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÉÃ¤Àûÿÿÿÿ
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(‚÷‚Ü
-T
-squid:S106"9Replace this use of System.out or System.err by a logger.(€¥ìùşÿÿÿÿ
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(µÇıò
-T
-squid:S106	"9Replace this use of System.out or System.err by a logger.(üåÄ¡ÿÿÿÿÿ
-O
-squid:S106
-"9Replace this use of System.out or System.err by a logger.(Äıü¿
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(°ÆÆå
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(Ö‡¢øÿÿÿÿ
 wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¢¸Àÿúÿÿÿÿ
+V
+squid:S106'"9Replace this use of System.out or System.err by a logger.(‡›€Ô8§ø•Ø¤-
+O
+squid:S106I"9Replace this use of System.out or System.err by a logger.(Äıü¿
+O
+squid:S106E"9Replace this use of System.out or System.err by a logger.(‚÷‚Ü
+V
+squid:S106$"9Replace this use of System.out or System.err by a logger.(¥ìëÀ8§ø•Ø¤-
+V
+squid:S106."9Replace this use of System.out or System.err by a logger.(çÚ€8§ø•Ø¤-
+Vsquid:S1118	":Add a private constructor to hide the implicit public one.(Ö‡¢øÿÿÿÿ
+V
+squid:S1068"9Replace this use of System.out or System.err by a logger.(Õÿñ¥8§ø•Ø¤-
+O
+squid:S106G"9Replace this use of System.out or System.err by a logger.(µÇıò
+T
+squid:S106H"9Replace this use of System.out or System.err by a logger.(üåÄ¡ÿÿÿÿÿ
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(Üè¹8§ø•Ø¤-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(éŒÀØøÿÿÿÿ8§ø•Ø¤-
+qsquid:S1192"NDefine a constant instead of duplicating this literal "- buy cost : " 4 times.(äÕÇÜşÿÿÿÿ8§ø•Ø¤-
+V
+squid:S106;"9Replace this use of System.out or System.err by a logger.(¬‘ö8§ø•Ø¤-
+T
+squid:S106D"9Replace this use of System.out or System.err by a logger.(ÉÃ¤Àûÿÿÿÿ
+T
+squid:S106F"9Replace this use of System.out or System.err by a logger.(€¥ìùşÿÿÿÿ
+O
+squid:S106J"9Replace this use of System.out or System.err by a logger.(°ÆÆå
+msquid:S1192"JDefine a constant instead of duplicating this literal "- Name : " 4 times.(éŒÀØøÿÿÿÿ8§ø•Ø¤-

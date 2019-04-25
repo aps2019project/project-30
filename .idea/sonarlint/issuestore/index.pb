@@ -73,3 +73,15 @@ _
 0src/com/company/Models/Buff/HealthPowerBuff.java,f\c\fc5f0fc32d608609d308b520fc0ddfc255386ba2
 U
 %src/com/company/Views/BattleView.java,e\2\e25ab0ecdd8201b65b582b3ea3241a62326e6219
+X
+(src/com/company/Models/User/Account.java,9\e\9ef85b6e83004d498cad6953bb983b598d3ce9e1
+]
+-src/com/company/Models/Battle/Modes/Mode.java,9\8\98e0d7016c4d20e6b100255deb24f90784cda6ea
+g
+7src/com/company/Models/Battle/Modes/KillingGeneral.java,8\4\8461879b1545da229170f60ccb8a5e073821c231
+h
+8src/com/company/Models/Battle/Modes/CollectingFlags.java,7\6\7644cca3e4028744c35658ad39e945c65228b9e9
+g
+7src/com/company/Models/Battle/Modes/CaptureTheFlag.java,5\a\5a4c5a6b55e6eb523012b58af24788e234a39bb9
+]
+-src/com/company/Models/Battle/BattleType.java,0\6\06c9211ac449f7bd8ef621afcf0a4d49bb21cfd9
