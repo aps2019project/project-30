@@ -22,6 +22,14 @@ public class AccountController {
         }
     }
 
+    public static void addCardToCollection(Account account ,Card card){
+        account.getCollection().getCards().add(card);
+    }
+
+    public static void removeCardFromCollection(Account account ,Card card){
+        account.getCollection().getCards().remove(card);
+    }
+
     public static void loginAccount(String username, String password) {
         ErrorType loginErrorType = null;
         if (!usernameExists(username)) {

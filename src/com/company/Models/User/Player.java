@@ -4,7 +4,7 @@ import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Spell.Spell;
 
 public class Player {
-    private String username;
+    private Account account;
     private Deck deck;
     private int score;
     private int mana;
@@ -21,8 +21,8 @@ public class Player {
 
     public void incremeantMana() { }
 
-    public String getUsername() {
-        return username;
+    public Account getAccount() {
+        return account;
     }
 
     public int getScore() {

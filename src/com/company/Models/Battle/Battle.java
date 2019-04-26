@@ -4,14 +4,18 @@ import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.User.Player;
 
-public abstract class Battle {
+public class Battle {
+    private static Battle playingBattle;
     private Mode mode;
+    private BattleType battleType;
+    private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;
 
     public Battle(Mode mode) {
         this.mode = mode;
         this.battleController = new BattleController(this);
+        playingBattle = this;
     }
 
     public Mode getMode() {
@@ -30,5 +34,11 @@ public abstract class Battle {
         this.turnToPlay = turnToPlay;
     }
 
-    public abstract void handler();
+    public static Battle getPlayingBattle() {
+        return playingBattle;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
 }

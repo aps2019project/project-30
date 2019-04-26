@@ -2,6 +2,7 @@ package com.company.Views;
 
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
+import com.company.Models.Battle.Battle;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
@@ -136,7 +137,7 @@ public class ConsoleInput {
 
     public static void shopMenuCommandsChecker(String command) {
         if (command.matches("show")) {
-            //show
+            ShopView.showAll();
         } else if (command.matches("exit")) {
             //exit
         } else if (command.matches("search [a-zA-Z]+")) {
@@ -161,6 +162,7 @@ public class ConsoleInput {
     }
 
     public static void battleMenuCommandsChecker(String command) {
+        //Todo : Create New Game
         if (command.matches("game info")) {
             //todo
         } else if (command.matches("show my minions")) {
@@ -179,18 +181,22 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show hand")) {
             //todo
+        } else if (command.matches("insert \\d+ in \\(\\d+, \\d+\\)")) {
+            //todo
         } else if (command.matches("end turn")) {
+            //todo
+        } else if (command.matches("Show collectables")) {
             //todo
         } else if (command.matches("select \\d+")) {
             //todo
-        } else if (command.matches("show info")) {
+        } else if (command.matches("show info \\d+")) {
             //todo
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {
             //todo
         } else if (command.matches("enter graveyard")) {
-            //todo
+            setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {
             //todo
         }
@@ -198,10 +204,10 @@ public class ConsoleInput {
 
 
     private static void graveYardMenuCommandsChecker(String command) {
-        if (command.matches("show info")) {
+        if (command.matches("show info \\d+")) {
             //todo
         } else if (command.matches("show cards")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showGraveYardCards();
         } else if (command.matches("exit")) {
             setMenu(Menu.BATTLE);
         }
