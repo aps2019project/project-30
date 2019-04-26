@@ -6,8 +6,13 @@ import com.company.Models.Card.Card;
 import java.util.ArrayList;
 
 public class Collection {
-    private ArrayList<Card> cards;
     private CollectionController collectionController;
+    private ArrayList<Card> cards;
+
+
+    public void setCollectionController(CollectionController collectionController) {
+        this.collectionController = collectionController;
+    }
 
     public CollectionController getCollectionController() {
         return collectionController;

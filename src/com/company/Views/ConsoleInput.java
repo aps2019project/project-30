@@ -77,32 +77,36 @@ public class ConsoleInput {
     }
 
     public static void collectionMenuCommandsChecker(String command) {
+        String strings[] = command.split("\\s+");
         if (command.matches("create deck \\w+")) {
-            //create deck
+            Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(strings[2]);
         } else if (command.matches("delete deck \\w+")) {
-            //delete deck
+            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(strings[2]);
         } else if (command.matches("search \\w+")) {
-            //search
+            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(strings[1]);
         } else if (command.matches("show")) {
-            //show
+            Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("save")) {
             //save
+            //todo
         } else if (command.matches("add \\w+ to deck \\w+")) {
-            //add card to deck
+            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(Integer.parseInt(strings[1]),strings[4]);
         } else if (command.matches("validate deck \\w+")) {
-            //validate deck
-        } else if (command.matches("remove \\d+ from deck \\w+")) {
-            //remove specific card from specific deck
+            Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(strings[2]);
+        } else if (command.matches("remove \\w+ from deck \\w+")) {
+            Account.getLoggedInAccount().getCollection().getCollectionController().remove(Integer.parseInt(strings[1]),strings[4]);
         } else if (command.matches("help")) {
             //help
-        } else if (command.matches("select deck")) {
-            //select deck
+            //todo
+        } else if (command.matches("select deck \\w+")) {
+            Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(strings[2]);
         } else if (command.matches("show all decks")) {
-            //show all decks
+            Account.getLoggedInAccount().getCollection().getCollectionController().showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            //show specific deck
+            Account.getLoggedInAccount().getCollection().getCollectionController().showDeck(strings[2]);
         } else if (command.matches("exit")) {
             //exit
+            //todo
         }
     }
 
@@ -152,7 +156,7 @@ public class ConsoleInput {
         } else if (command.matches("sell \\d+")) {
             Matcher matcher = Pattern.compile("search (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            ShopController.sell(Account.getLoggedInAccount(),Integer.parseInt(matcher.group("cardId")));
+            ShopController.sell(Account.getLoggedInAccount(), Integer.parseInt(matcher.group("cardId")));
         } else if (command.matches("help")) {
             ShopView.printShopCommandsToHelp();
         }
