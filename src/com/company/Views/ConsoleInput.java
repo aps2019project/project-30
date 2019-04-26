@@ -3,6 +3,7 @@ package com.company.Views;
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;

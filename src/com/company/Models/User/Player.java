@@ -1,5 +1,6 @@
 package com.company.Models.User;
 
+import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Spell.Spell;
 
@@ -10,6 +11,7 @@ public class Player {
     private int mana;
     private int usedMana;
     private Spell spell;
+    private Card selectedCard;
 
     public Player(Account account) { }
 
@@ -39,5 +41,13 @@ public class Player {
 
     public int getUsedMana() {
         return usedMana;
+    }
+
+    public Card getSelectedCard() {
+        return selectedCard;
+    }
+
+    public void setSelectedCard(Card selectedCard) {
+        this.selectedCard = selectedCard;
     }
 }

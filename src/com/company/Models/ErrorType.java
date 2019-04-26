@@ -5,7 +5,8 @@ public enum ErrorType {
     USERNAME_NOTFOUND("This username does not exists"),
     CARD_NOTFOUND("This card does not exists"),
     NOTENOUGH_DRAKE("you have not enough drake to buy this card"),
-    PASSWORD_INVALID("Invalid password.");
+    PASSWORD_INVALID("Invalid password."),
+    CARD_ID_INVALID("Invalid card ID");
 
     private String message;
 

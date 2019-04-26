@@ -35,8 +35,6 @@ W
 'src/com/company/Models/User/Player.java,b\4\b42e35205aef6e640e77fc66614421eba0cf68f4
 \
 ,src/com/company/Models/Card/Spell/Spell.java,f\1\f1b798183a5824c527a13f16c63a5a72ba5016b8
-`
-0src/com/company/Models/Card/Spell/SpellType.java,0\6\06baa98878839148a1c40ebc8d1fe61af7988848
 Z
 *src/com/company/Models/Card/Hero/Hero.java,a\3\a3958ba20e0bb595fe1619a462f6d797ef76e99a
 ^

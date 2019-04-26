@@ -20,6 +20,6 @@ public class BattleView {
     }
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
-
+        //Todo : printGraveYardCards : View
     }
 }
