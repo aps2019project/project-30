@@ -12,10 +12,11 @@ import com.company.Views.ConsoleOutput;
 
 
 public class CollectionController {
+    //public static void
     public void show() {
         CollectionViews.show();
     }
-    public void ShowAllDecks(){
+    public void showAllDecks(){
         int counter=0;
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
             counter++;
@@ -23,7 +24,7 @@ public class CollectionController {
             CollectionViews.showDeck(deck);
         }
     }
-    public void ShowDeck(String deckNmae){
+    public void showDeck(String deckNmae){
         CollectionViews.showDeck(getDeckByName(deckNmae));
     }
 
