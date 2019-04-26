@@ -16,7 +16,13 @@ public class HolyBuff extends Buff{
                 ((Hero) super.cardToCast).incrementHealth(1);
             else if (super.cardToCast instanceof Minion)
                 ((Minion) super.cardToCast).incrementHealth(1);
+            decrementCounters();
+        } else {
+            if (super.cardToCast instanceof Hero)
+                ((Hero) super.cardToCast).decremeantHealth(1);
+            else if (super.cardToCast instanceof Minion)
+                ((Minion) super.cardToCast).decremeantHealth( 1);
         }
-        decrementCounters();
+
     }
 }
