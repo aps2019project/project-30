@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3b3b0c3-e0e6-4bc1-8c29-e9d9f2a6c75b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/company/Models/Buff/AttackPowerBuff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Controllers/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Controllers/BattleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Buff/AntiBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Buff/AntiBuff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Models/Buff/Buff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Buff/Buff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Models/Buff/HolyBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Models/Buff/HolyBuff.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -74,10 +75,13 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/AntiBuff.java">
+            <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/AttackPowerBuff.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="40">
-                  <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+                <state relative-caret-position="180">
+                  <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -94,8 +98,20 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/HolyBuff.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="57">
-                  <caret line="5" column="29" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="29" />
+                <state relative-caret-position="280">
+                  <caret line="14" column="25" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="25" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="400">
+                  <caret line="20" column="35" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="35" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -123,8 +139,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/Buff.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="190">
-                  <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+                <state relative-caret-position="240">
+                  <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#917#918#0" expanded="true" />
@@ -145,8 +161,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -165,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/com/company/Models/TargetType.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Battle/Map/Cell.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Buff/PowerBuff.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Minion/Minion.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Card/Hero/Hero.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/User/Account.java" />
@@ -182,7 +197,10 @@
         <option value="$PROJECT_DIR$/src/com/company/Models/ErrorType.java" />
         <option value="$PROJECT_DIR$/src/com/company/Controllers/BattleController.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Models/Buff/AntiBuff.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Models/Buff/AttackPowerBuff.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Buff/Buff.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java" />
         <option value="$PROJECT_DIR$/src/com/company/Models/Buff/HolyBuff.java" />
       </list>
     </option>
@@ -345,7 +363,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556286518666" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556292588032" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -415,12 +433,12 @@
       <workItem from="1556034069812" duration="8386000" />
       <workItem from="1556185127550" duration="1183000" />
       <workItem from="1556195224419" duration="5878000" />
-      <workItem from="1556251964718" duration="4949000" />
+      <workItem from="1556251964718" duration="6090000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56205000" />
+    <option name="totallyTimeSpent" value="57346000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -435,7 +453,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11140725" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16311301" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -451,9 +469,9 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="bottom" id="SonarLint" order="9" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="SonarLint" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946696" weight="0.12567714" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946696" visible="true" weight="0.12567714" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" weight="0.13217768" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -471,13 +489,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Minion/ActivationTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Item/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -598,16 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="107" column="37" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -769,20 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/AntiBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Groups/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -794,16 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="43" column="66" selection-start-line="43" selection-start-column="66" selection-end-line="43" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Views/BattleView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -838,10 +815,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Card/Spell/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/AntiBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Views/BattleView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/AttackPowerBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/Buff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state relative-caret-position="240">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#917#918#0" expanded="true" />
@@ -854,10 +865,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/HealthPowerBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="35" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Models/Buff/HolyBuff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="29" />
+        <state relative-caret-position="280">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

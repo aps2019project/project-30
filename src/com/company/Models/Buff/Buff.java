@@ -5,7 +5,7 @@ import com.company.Models.Card.Spell.Spell;
 
 public abstract class Buff {
     public enum Type {POSSETIVE, NEGATIVE}
-    public enum Name {HOLY, POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM}
+    public enum Name {HOLY, HEALTH_POWER, ATTACK_POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM}
 
     Type type;
     Name name;

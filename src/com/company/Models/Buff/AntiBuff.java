@@ -1,4 +1,4 @@
 package com.company.Models.Buff;
 
-public class AntiBuff {
+public class AntiBuff  {
 }
