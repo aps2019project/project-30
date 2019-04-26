@@ -8,11 +8,8 @@ import java.util.ArrayList;
 public class Collection {
     private CollectionController collectionController;
     private ArrayList<Card> cards;
-    private CollectionController collectionController;
 
-    public CollectionController getCollectionController() {
-        return collectionController;
-    }
+
     public void setCollectionController(CollectionController collectionController) {
         this.collectionController = collectionController;
     }
