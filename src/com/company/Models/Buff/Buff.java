@@ -10,7 +10,7 @@ public abstract class Buff {
     Type type;
     Name name;
     protected Card cardToCast;
-
+    protected boolean isCasted = false;
     protected String description;
     protected Type antiBuff;
     protected int remTurnToBeInactive;
@@ -49,5 +49,13 @@ public abstract class Buff {
 
     public void setCardToCast(Card cardToCast) {
         this.cardToCast = cardToCast;
+    }
+
+    public boolean isCasted() {
+        return isCasted;
+    }
+
+    public void setCasted(boolean casted) {
+        isCasted = casted;
     }
 }

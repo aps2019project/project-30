@@ -25,12 +25,7 @@ public class BattleController {
         ArrayList<Card> graveYardCards = new ArrayList<>();
         graveYardCards.addAll(battle.getPlayers()[0].getDeck().getDeckCards());
         graveYardCards.addAll(battle.getPlayers()[1].getDeck().getDeckCards());
-        graveYardCards.removeIf(new Predicate<Card>() {
-            @Override
-            public boolean test(Card card) {
-                return !card.isInGraveCards();
-            }
-        });
+        graveYardCards.removeIf(card -> !card.isInGraveCards());
         BattleView.printGraveYardCards(graveYardCards);
     }
 

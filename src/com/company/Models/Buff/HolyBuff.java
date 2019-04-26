@@ -12,17 +12,19 @@ public class HolyBuff extends Buff{
     @Override
     public void cast() {
         if (isActive()) {
-            if (super.cardToCast instanceof Hero)
-                ((Hero) super.cardToCast).incrementHealth(1);
-            else if (super.cardToCast instanceof Minion)
-                ((Minion) super.cardToCast).incrementHealth(1);
-            decrementCounters();
+            if (!isCasted) {
+                if (super.cardToCast instanceof Hero)
+                    ((Hero) super.cardToCast).incrementHealth(1);
+                else if (super.cardToCast instanceof Minion)
+                    ((Minion) super.cardToCast).incrementHealth(1);
+                setCasted(true);
+                decrementCounters();
+            }
         } else {
             if (super.cardToCast instanceof Hero)
                 ((Hero) super.cardToCast).decremeantHealth(1);
             else if (super.cardToCast instanceof Minion)
                 ((Minion) super.cardToCast).decremeantHealth( 1);
         }
-
     }
 }
