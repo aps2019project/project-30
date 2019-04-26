@@ -58,4 +58,9 @@ public abstract class Buff {
     public void setCasted(boolean casted) {
         isCasted = casted;
     }
+    // destruct Method Remove buff from buffsCasted's Player
+    public void destuct() {
+        cardToCast.getBuffsCasted().remove(this);
+    }
+
 }

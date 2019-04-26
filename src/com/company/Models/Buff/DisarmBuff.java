@@ -7,6 +7,10 @@ public class DisarmBuff extends Buff{
 
     @Override
     public void cast() {
-
+        if (isActive()) {
+            decrementCounters();
+        } else {
+            destuct();
+        }
     }
 }

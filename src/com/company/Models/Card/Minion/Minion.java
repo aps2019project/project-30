@@ -1,12 +1,12 @@
 package com.company.Models.Card.Minion;
 
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Soldier;
 
-public class Minion extends Card {
-
-//    private MinionType minionType;
+public class Minion extends Card implements Soldier {
     private int xCoordiante, yCoordinate;
     private AttackType attackType;
     private ActivationTime activationTime;
@@ -14,7 +14,6 @@ public class Minion extends Card {
     private int health;
     private int attackPower;
     private int areaOfEffect;
-    private boolean disarmed;
 
     public void attack(Card targetCard) {
         if (targetCard instanceof Hero) {
@@ -24,6 +23,13 @@ public class Minion extends Card {
             ((Minion) targetCard).decremeantHealth(attackPower);
         }
         //TODO Check Counter Buffs
+    }
+
+    @Override
+    public void counterAttack(Card targetCard) {
+        if (!hasBuffByName(Buff.Name.DISARM)) {
+            attack(targetCard);
+        }
     }
 
     public int getxCoordiante() {
@@ -41,11 +47,6 @@ public class Minion extends Card {
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
     }
-
-//    public MinionType getMinionType() {
-//        return minionType;
-//    }
-
 
     public void setHealth(int health) {
         this.health = health;
@@ -69,5 +70,15 @@ public class Minion extends Card {
 
     public int getAttackPower() {
         return attackPower;
+    }
+
+    @Override
+    public boolean hasBuffByName(Buff.Name buffName) {
+        for (Buff buff : getBuffsCasted()) {
+            if (buff.getName().equals(buffName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
