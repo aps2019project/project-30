@@ -35,7 +35,10 @@ public abstract class Buff {
     public abstract void cast();
 
     boolean isActive() {
-        return remTurnToBeInactive == 0;
+        if(hasAntiBuff()==true||remTurnToBeInactive==0){
+            return false;
+        }
+        return true;
     }
 
     boolean canCastThisTurn() {
@@ -62,5 +65,12 @@ public abstract class Buff {
     public void destuct() {
         cardToCast.getBuffsCasted().remove(this);
     }
-
+    public boolean hasAntiBuff(){
+        for (Buff buff : cardToCast.getBuffsCasted()) {
+            if(name.equals(buff.antiBuff)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
