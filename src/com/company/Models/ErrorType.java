@@ -12,7 +12,8 @@ public enum ErrorType {
     DECK_FULL("Deck capacity is complite"),
     HERO_EXISTS("This deck has hero"),
     ITEM_EXISTS("This deck has item"),
-    DECK_VALIDATE("Deck is not validate");
+    DECK_VALIDATE("Deck is not validate"),
+    CARD_ID_INVALID("Invalid card id");
 
 
 

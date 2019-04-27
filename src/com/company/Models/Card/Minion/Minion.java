@@ -26,6 +26,7 @@ public class Minion extends Card implements Soldier {
             ((Minion) targetCard).counterAttack(this);
         }
         //TODO Check Counter Buffs
+        //Todo : Check Enemy's Holy Buff
     }
 
     @Override

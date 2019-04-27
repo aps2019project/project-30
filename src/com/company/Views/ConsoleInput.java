@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class ConsoleInput {
     private static Scanner scanner = new Scanner(System.in);
 
-    public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, BATTLE, GRAVEYARD, EXIT}
+    public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
 
     private static Menu menu = Menu.ACCOUNT;
 
@@ -45,6 +45,9 @@ public class ConsoleInput {
                     break;
                 case SHOP:
                     shopMenuCommandsChecker(command);
+                    break;
+                case NEW_BATTLE:
+                    newBattleMenuCommandsChecker(command);
                     break;
                 case BATTLE:
                     battleMenuCommandsChecker(command);
@@ -215,4 +218,14 @@ public class ConsoleInput {
         }
     }
 
+    private static void newBattleMenuCommandsChecker(String command) {
+        if (command.matches("story \\d+")) {
+            Matcher storyLevelMatcher = Pattern.compile("story (?<level>\\d+)").matcher(command);
+            storyLevelMatcher.find();
+            new Battle(
+                    Integer.valueOf(storyLevelMatcher.group("level"))
+            );
+            setMenu(Menu.BATTLE);
+        }
+    }
 }

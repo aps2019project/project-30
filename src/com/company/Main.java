@@ -12,7 +12,7 @@ import com.google.gson.reflect.TypeToken;
 public class Main {
 
     public static void main(String[] args) {
-//        ConsoleInput.menusHandler();
+        ConsoleInput.menusHandler();
         Buff holyBuff = new HolyBuff(null,1,0,1);
         Spell spell = new Spell();
         spell.setName("Total Disarm");

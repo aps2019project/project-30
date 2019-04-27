@@ -19,6 +19,23 @@ public class Battle {
         playingBattle = this;
     }
 
+    public Battle(int storyLevel) {
+        this.battleType = BattleType.STORY;
+        switch (storyLevel) {
+            case 1 :
+                this.mode = Mode.KILLING_GENERAL;
+                break;
+            case 2 :
+                this.mode = Mode.CAPTURE_THE_FLAG;
+                break;
+            case 3 :
+                this.mode = Mode.COLLECTING_FLAGS;
+                break;
+        }
+        this.winningPrize = 500 * storyLevel;
+        playingBattle = this;
+    }
+
     public Mode getMode() {
         return mode;
     }
