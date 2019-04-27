@@ -5,7 +5,7 @@ import com.company.Models.Card.Spell.Spell;
 
 public abstract class Buff {
     public enum Type {POSSETIVE, NEGATIVE}
-    public enum Name {HOLY, HEALTH_POWER, ATTACK_POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM}
+    public enum Name {HOLY, HEALTH_POWER, ATTACK_POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM, DISPELL}
 
     Type type;
     Name name;
@@ -35,10 +35,10 @@ public abstract class Buff {
     public abstract void cast();
 
     boolean isActive() {
-        if(hasAntiBuff()==true||remTurnToBeInactive==0){
-            return false;
+        if(hasAntiBuff()==false||(remTurnToBeInactive>0&&remTurnToCast<=0)){
+            return true;
         }
-        return true;
+        return false;
     }
 
     boolean canCastThisTurn() {
