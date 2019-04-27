@@ -15,14 +15,18 @@ public class Minion extends Card implements Soldier {
     private int attackPower;
     private int areaOfEffect;
 
+    @Override
     public void attack(Card targetCard) {
-        if (targetCard instanceof Hero) {
-            ((Hero) targetCard).decremeantHealth(attackPower);
+        if(!hasBuffByName(Buff.Name.STUN)) {
+            if (targetCard instanceof Hero) {
+                ((Hero) targetCard).decremeantHealth(attackPower);
+                ((Hero) targetCard).counterAttack(this);
+            } else if (targetCard instanceof Minion) {
+                ((Minion) targetCard).decremeantHealth(attackPower);
+                ((Minion) targetCard).counterAttack(this);
+            }
+            //TODO Check Counter Buffs
         }
-        else if (targetCard instanceof Minion) {
-            ((Minion) targetCard).decremeantHealth(attackPower);
-        }
-        //TODO Check Counter Buffs
     }
 
     @Override
@@ -66,6 +70,10 @@ public class Minion extends Card implements Soldier {
 
     public void incrementAttackPower(int number) {
         this.attackPower += number;
+    }
+
+    public void decrementAttackPower(int number) {
+        this.attackPower -= number;
     }
 
     public int getAttackPower() {

@@ -9,22 +9,24 @@ public class AttackPowerBuff extends Buff {
         super.name = Name.HOLY;
         super.type = Type.POSSETIVE;
     }
+
     @Override
     public void cast() {
         if (isActive()) {
             if (!isCasted) {
                 if (super.cardToCast instanceof Hero)
-                    ((Hero) super.cardToCast).incrementAttackPower(1);
+                    ((Hero) super.cardToCast).incrementAttackPower(value);
                 else if (super.cardToCast instanceof Minion)
-                    ((Minion) super.cardToCast).incrementAttackPower(1);
+                    ((Minion) super.cardToCast).incrementAttackPower(value);
                 setCasted(true);
                 decrementCounters();
             }
         } else {
             if (super.cardToCast instanceof Hero)
-                ((Hero) super.cardToCast).incrementAttackPower(1);
+                ((Hero) super.cardToCast).decrementAttackPower(value);
             else if (super.cardToCast instanceof Minion)
-                ((Minion) super.cardToCast).incrementAttackPower( 1);
+                ((Minion) super.cardToCast).decrementAttackPower(value);
+            destuct();
         }
     }
 }
