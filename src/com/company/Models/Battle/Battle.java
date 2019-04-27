@@ -11,10 +11,11 @@ public class Battle {
     private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;
+    private int winningPrize;
 
-    public Battle(Mode mode) {
+    public Battle(Mode mode, BattleType battleType) {
         this.mode = mode;
-        this.battleController = new BattleController(this);
+        this.battleType = battleType;
         playingBattle = this;
     }
 
