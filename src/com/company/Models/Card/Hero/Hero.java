@@ -57,6 +57,10 @@ public abstract class Hero extends Card implements Soldier {
         this.attackPower += number;
     }
 
+    public void decrementAttackPower(int number) {
+        this.attackPower -= number;
+    }
+
     @Override
     public boolean hasBuffByName(Buff.Name buffName) {
         for (Buff buff : getBuffsCasted()) {
@@ -74,6 +78,8 @@ public abstract class Hero extends Card implements Soldier {
 
     @Override
     public void counterAttack(Card targetCard) {
-
+        if (!hasBuffByName(Buff.Name.DISARM)) {
+            attack(targetCard);
+        }
     }
 }
