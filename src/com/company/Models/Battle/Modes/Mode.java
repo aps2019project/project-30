@@ -1,5 +1,7 @@
 package com.company.Models.Battle.Modes;
 
-public abstract class Mode {
-    public abstract void handler();
+public enum Mode {
+    CAPTURE_THE_FLAG,
+    COLLECTING_FLAGS,
+    KILLING_GENERAL
 }

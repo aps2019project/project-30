@@ -11,10 +11,28 @@ public class Battle {
     private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;
+    private int winningPrize;
 
-    public Battle(Mode mode) {
+    public Battle(Mode mode, BattleType battleType) {
         this.mode = mode;
-        this.battleController = new BattleController(this);
+        this.battleType = battleType;
+        playingBattle = this;
+    }
+
+    public Battle(int storyLevel) {
+        this.battleType = BattleType.STORY;
+        switch (storyLevel) {
+            case 1 :
+                this.mode = Mode.KILLING_GENERAL;
+                break;
+            case 2 :
+                this.mode = Mode.CAPTURE_THE_FLAG;
+                break;
+            case 3 :
+                this.mode = Mode.COLLECTING_FLAGS;
+                break;
+        }
+        this.winningPrize = 500 * storyLevel;
         playingBattle = this;
     }
 
