@@ -21,5 +21,7 @@ public class PosionBuff extends Buff{
             }
             decrementCounters();
         }
+        else
+            destuct();
     }
 }
