@@ -3,6 +3,7 @@ package com.company.Models.Card.Hero;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
 
@@ -73,7 +74,16 @@ public abstract class Hero extends Card implements Soldier {
 
     @Override
     public void attack(Card targetCard) {
-
+        if(!hasBuffByName(Buff.Name.STUN)) {
+            if (targetCard instanceof Hero) {
+                ((Hero) targetCard).decremeantHealth(attackPower);
+                ((Hero) targetCard).counterAttack(this);
+            } else if (targetCard instanceof Minion) {
+                ((Minion) targetCard).decremeantHealth(attackPower);
+                ((Minion) targetCard).counterAttack(this);
+            }
+            //TODO Check Counter Buffs
+        }
     }
 
     @Override
