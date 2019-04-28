@@ -16,7 +16,5 @@ public class DispelBuff extends Buff{
                 }
             }
         }
-        else
-            destuct();
     }
 }

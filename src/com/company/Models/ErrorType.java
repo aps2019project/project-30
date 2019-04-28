@@ -13,7 +13,8 @@ public enum ErrorType {
     HERO_EXISTS("This deck has hero"),
     ITEM_EXISTS("This deck has item"),
     DECK_VALIDATE("Deck is not validate"),
-    CARD_ID_INVALID("Invalid card id");
+    CARD_ID_INVALID("Invalid card id"),
+    INVALID_CELL("Invalid target");
 
 
 

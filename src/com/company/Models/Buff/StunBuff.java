@@ -12,7 +12,5 @@ public class StunBuff extends Buff{
         if(isActive()){
             decrementCounters();
         }
-        else
-            destuct();
     }
 }

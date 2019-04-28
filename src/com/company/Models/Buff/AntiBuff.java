@@ -11,7 +11,5 @@ public class AntiBuff extends Buff {
         if(isActive()){
             decrementCounters();
         }
-        else
-            destuct();
     }
 }

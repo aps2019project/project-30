@@ -1,5 +1,6 @@
 package com.company.Models.Card.Hero;
 
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
@@ -9,7 +10,7 @@ import com.company.Models.Card.Spell.Spell;
 
 public abstract class Hero extends Card implements Soldier {
     private boolean disarmed = false;
-    private int xCoordiante, yCoordinate;
+    private Cell cell;
     private AttackType attackType;
     private int fullHealth;
     private int health;
@@ -18,20 +19,12 @@ public abstract class Hero extends Card implements Soldier {
     private int coolDown;
     private int remainingCoolDown;
 
-    public int getxCoordiante() {
-        return xCoordiante;
+    public Cell getCell() {
+        return cell;
     }
 
-    public void setxCoordiante(int xCoordiante) {
-        this.xCoordiante = xCoordiante;
-    }
-
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     public int getHealth() {

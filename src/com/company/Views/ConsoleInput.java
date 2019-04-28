@@ -172,6 +172,8 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show my minions")) {
             //todo
+        }else if (command.matches("move to (\\d+,\\d+)")) {
+            //todo
         } else if (command.matches("show opponent minions")) {
             //todo
         } else if (command.matches("show card info \\d+")) {
