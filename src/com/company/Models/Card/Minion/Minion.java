@@ -82,4 +82,18 @@ public class Minion extends Card implements Soldier {
         }
         return false;
     }
+
+    public Minion clone(){
+        Minion minion = new Minion();
+        minion.setDescription(this.getDescription());
+        minion.setInGraveCards(this.isInGraveCards());
+        minion.setName(this.getName());
+        minion.setManaPoint(this.getManaPoint());
+        minion.setPriceInDrake(this.getPriceInDrake());
+        minion.setHealth(this.getHealth());
+        minion.setCell(this.getCell());
+        minion.setTargetType(this.getTargetType());
+        minion.setId(Card.createNewId());
+        return minion;
+    }
 }

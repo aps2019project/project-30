@@ -8,8 +8,9 @@ public class GraveYard {
     private ArrayList<Card> destroyedCards = new ArrayList<>();
 
     private void addToCards(Card card) {
-
+        destroyedCards.add(card);
     }
+
 
     private boolean containsCard(Card card) {
         return false;

@@ -86,9 +86,19 @@ public class BattleController {
     }
     public void endTern(){
         Random rand = new Random();
-        int rand_int1 = rand.nextInt(19);
         Card card;
-        card=battle.getTurnToPlay().getAccount().getMainDeck().getDeckCards().get(rand_int1);
+        while(true) {
+            int a=0;
+            int rand_int1 = rand.nextInt(19);
+            card=battle.getTurnToPlay().getAccount().getMainDeck().getDeckCards().get(rand_int1);
+            for (Card card1 : battle.getTurnToPlay().getGraveYard().getDestroyedCards()) {
+                if (card==card1)
+                    a=1;
+
+            }
+            if(a==1)continue;
+            break;
+        }
         battle.getTurnToPlay().getAccount().getMainDeck().getHand().addCard(card);
         if(battle.getTurnToPlay()==battle.getPlayers()[0]) {
             battle.setTurnToPlay(battle.getPlayers()[1]);

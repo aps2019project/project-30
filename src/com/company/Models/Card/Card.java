@@ -16,6 +16,7 @@ public abstract class Card {
     private TargetType targetType;
     private List<Buff> buffsToCast = new ArrayList<>();
     private List<Buff> buffsCasted = new ArrayList<>();
+    private static int lastId = 0;
 
 
     public String getDescription() {
@@ -36,6 +37,10 @@ public abstract class Card {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -76,5 +81,10 @@ public abstract class Card {
 
     public List<Buff> getBuffsCasted() {
         return buffsCasted;
+    }
+
+    public static int createNewId(){
+        lastId++;
+        return lastId;
     }
 }
