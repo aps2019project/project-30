@@ -91,8 +91,7 @@ public class Minion extends Card implements Soldier {
         minion.setManaPoint(this.getManaPoint());
         minion.setPriceInDrake(this.getPriceInDrake());
         minion.setHealth(this.getHealth());
-        minion.setxCoordiante(this.getxCoordiante());
-        minion.setyCoordinate(this.getyCoordinate());
+        minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
         minion.setId(Card.createNewId());
         return minion;
