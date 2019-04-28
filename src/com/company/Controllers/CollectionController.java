@@ -144,4 +144,7 @@ public class CollectionController {
         }
         ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
     }
+    public void help(){
+        CollectionViews.printHelp();
+    }
 }

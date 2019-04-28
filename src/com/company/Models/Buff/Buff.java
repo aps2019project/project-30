@@ -38,6 +38,9 @@ public abstract class Buff {
         if(hasAntiBuff()==false||(remTurnToBeInactive>0&&remTurnToCast<=0)){
             return true;
         }
+        if(remTurnToBeInactive==0){
+            destuct();
+        }
         return false;
     }
 

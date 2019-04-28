@@ -1,5 +1,6 @@
 package com.company.Models.Card.Minion;
 
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
@@ -7,13 +8,21 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
 
 public class Minion extends Card implements Soldier {
-    private int xCoordiante, yCoordinate;
+    private Cell cell;
     private AttackType attackType;
     private ActivationTime activationTime;
     private int fullHealth;
     private int health;
     private int attackPower;
     private int areaOfEffect;
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
 
     @Override
     public void attack(Card targetCard) {
@@ -34,22 +43,6 @@ public class Minion extends Card implements Soldier {
         if (!hasBuffByName(Buff.Name.DISARM)) {
             attack(targetCard);
         }
-    }
-
-    public int getxCoordiante() {
-        return xCoordiante;
-    }
-
-    public void setxCoordiante(int xCoordiante) {
-        this.xCoordiante = xCoordiante;
-    }
-
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
     }
 
     public void setHealth(int health) {

@@ -3,10 +3,13 @@ package com.company.Models.Battle;
 import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.User.Player;
+import com.company.Models.Battle.Map.Map;
+
 
 public class Battle {
     private static Battle playingBattle;
     private Mode mode;
+    private Map map;
     private BattleType battleType;
     private Player[] players;
     private Player turnToPlay;
@@ -17,6 +20,11 @@ public class Battle {
         this.mode = mode;
         this.battleType = battleType;
         playingBattle = this;
+        this.map = new Map();
+    }
+
+    public Map getMap() {
+        return map;
     }
 
     public Battle(int storyLevel) {
