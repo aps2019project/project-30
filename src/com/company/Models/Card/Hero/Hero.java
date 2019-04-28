@@ -123,7 +123,7 @@ public class Hero extends Card implements Soldier {
         hero.setDisarmed(this.disarmed);
         hero.setAttackPower(this.attackPower);
         hero.setAreaOfEffect(this.areaOfEffect);
-        hero.setId(Card.createNewId());
+        //hero.setId(Card.createNewId(hero));
         return hero;
     }
 }

@@ -171,4 +171,21 @@ public class BattleController {
         return null;
     }
 
+    private void insertNewCardToMap(int x, int y,String cardName) {
+        if (cellIsValidToInsertingCard(x, y)) {
+            if (isCardIdValid(cardName)) {
+                Card card = getCardByName(cardName);
+                if (card.getManaPoint() >= battle.getTurnToPlay().getMana()) {
+                    Cell cell = battle.getMap().getCellByCoordinates(x, y);
+                    cell.setCardInCell(card);
+                } else {
+                    ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
+                }
+            } else {
+                ConsoleOutput.printErrorMessage(ErrorType.CARD_ID_INVALID);
+            }
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
+        }
+    }
 }
