@@ -13,10 +13,10 @@ import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Predicate;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 public class BattleController {
     Battle battle;
@@ -85,7 +85,11 @@ public class BattleController {
         return true;
     }
     public void endTern(){
-        battle.getTurnToPlay().getAccount().getMainDeck().getHand()
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(19);
+        Card card;
+        card=battle.getTurnToPlay().getAccount().getMainDeck().getDeckCards().get(rand_int1);
+        battle.getTurnToPlay().getAccount().getMainDeck().getHand().addCard(card);
         if(battle.getTurnToPlay()==battle.getPlayers()[0]) {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         }
