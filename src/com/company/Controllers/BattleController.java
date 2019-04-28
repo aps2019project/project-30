@@ -13,10 +13,10 @@ import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Predicate;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 public class BattleController {
     Battle battle;
@@ -30,12 +30,14 @@ public class BattleController {
     }
 
     public void move(int x, int y) {
+        //todo buff and item
         if (battle.getTurnToPlay().getSelectedCard() instanceof Minion) {
             if (!cellIsValid(x, y, ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell())) {
                 ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
             } else {
                 battle.getMap().getCellByCoordinates(((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Minion) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+
             }
         } else if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (!cellIsValid(x, y, ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell())) {
@@ -54,7 +56,7 @@ public class BattleController {
             return false;
         } else if ((abs(x1 - x2) == 2 &&validPreviousCell(battle.getTurnToPlay(),battle.getMap().getCellByCoordinates(min(x1,x2)+1,y1))) || (abs(y1 - y2) == 2 &&validPreviousCell(battle.getTurnToPlay(),battle.getMap().getCellByCoordinates(x1,min(y1,y2)+1)))) {
             return false;
-        } else if (x1 > 9 || x1 < 0 || y1 > 5 || y1 < 0) {
+        } else if (x1 >= 9 || x1 < 0 || y1 >= 5 || y1 < 0) {
             return false;
         } else if (battle.getMap().getCellByCoordinates(x2,y2).getCardInCell()!=null){
             return false;
@@ -81,6 +83,30 @@ public class BattleController {
             }
         }
         return true;
+    }
+    public void endTern(){
+        Random rand = new Random();
+        Card card;
+        while(true) {
+            int a=0;
+            int rand_int1 = rand.nextInt(19);
+            card=battle.getTurnToPlay().getAccount().getMainDeck().getDeckCards().get(rand_int1);
+            for (Card card1 : battle.getTurnToPlay().getGraveYard().getDestroyedCards()) {
+                if (card==card1)
+                    a=1;
+
+            }
+            if(a==1)continue;
+            break;
+        }
+        battle.getTurnToPlay().getAccount().getMainDeck().getHand().addCard(card);
+        if(battle.getTurnToPlay()==battle.getPlayers()[0]) {
+            battle.setTurnToPlay(battle.getPlayers()[1]);
+        }
+        else{
+            battle.setTurnToPlay(battle.getPlayers()[0]);
+        }
+
     }
 
     public void showGraveYardCards() {
