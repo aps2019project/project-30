@@ -171,7 +171,7 @@ public class BattleController {
         return null;
     }
 
-    private void insertNewCardToMap(int x, int y,String cardName) {
+    public void insertNewCardToMap(int x, int y,String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
             if (isCardIdValid(cardName)) {
                 Card card = getCardByName(cardName);

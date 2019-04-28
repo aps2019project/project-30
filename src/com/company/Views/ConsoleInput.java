@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.BattleController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.CaptureTheFlag;
@@ -94,11 +95,11 @@ public class ConsoleInput {
             //save
             //todo
         } else if (command.matches("add \\w+ to deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(Integer.parseInt(strings[1]),strings[4]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(Integer.parseInt(strings[1]), strings[4]);
         } else if (command.matches("validate deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(strings[2]);
         } else if (command.matches("remove \\w+ from deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().remove(Integer.parseInt(strings[1]),strings[4]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().remove(Integer.parseInt(strings[1]), strings[4]);
         } else if (command.matches("help")) {
             //help
             //todo
@@ -172,7 +173,7 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show my minions")) {
             //todo
-        }else if (command.matches("move to (\\d+,\\d+)")) {
+        } else if (command.matches("move to (\\d+,\\d+)")) {
             //todo
         } else if (command.matches("show opponent minions")) {
             //todo
@@ -188,8 +189,10 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show hand")) {
             //todo
-        } else if (command.matches("insert \\d+ in \\(\\d+, \\d+\\)")) {
-            //todo
+        } else if (command.matches("insert \\[a-zA-Z]+ in \\(\\d+, \\d+\\)")) {
+            Matcher matcher = Pattern.compile("insert (?<cardName>[a-zA-Z]+) in \\((?<xCordinate>\\d+)\\,(?<yCordinate>\\d+)\\)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().insertNewCardToMap(Integer.parseInt(matcher.group("xCordinate")), Integer.parseInt(matcher.group("yCordinate")), matcher.group("cardName"));
         } else if (command.matches("end turn")) {
             //todo
         } else if (command.matches("Show collectables")) {
