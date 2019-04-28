@@ -168,8 +168,8 @@ public class ConsoleInput {
 
     public static void battleMenuCommandsChecker(String command) {
         //Todo : Create New Game
-        if (command.matches("game info")) {
-            //todo
+        if (command.matches("Game info")) {
+            Battle.getPlayingBattle().getBattleView().printGameInfo();
         } else if (command.matches("show my minions")) {
             //todo
         } else if (command.matches("move to (\\d+,\\d+)")) {

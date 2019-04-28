@@ -4,6 +4,7 @@ import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
+import com.company.Views.BattleView;
 
 
 public class Battle {
@@ -14,6 +15,7 @@ public class Battle {
     private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;
+    private BattleView battleView;
     private int winningPrize;
 
     public Battle(Mode mode, BattleType battleType) {
@@ -52,6 +54,10 @@ public class Battle {
 
     public Player getTurnToPlay() {
         return turnToPlay;
+    }
+
+    public BattleView getBattleView() {
+        return battleView;
     }
 
     public BattleController getBattleController() {
