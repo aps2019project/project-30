@@ -77,7 +77,7 @@ public class ConsoleInput {
         } else if (command.matches("exit")) {
             setMenu(Menu.EXIT);
         } else if (command.matches("help")) {
-            //todo
+            MainMenuView.printMainMenuCommandsToHelp();
         }
     }
 
