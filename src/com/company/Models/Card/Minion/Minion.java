@@ -7,7 +7,8 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
 
-public class Minion extends Card implements Soldier {
+public class
+Minion extends Card implements Soldier {
     private Cell cell;
     private AttackType attackType;
     private ActivationTime activationTime;
