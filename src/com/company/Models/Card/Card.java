@@ -1,6 +1,10 @@
 package com.company.Models.Card;
 
 import com.company.Models.Buff.Buff;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Shop;
 import com.company.Models.TargetType;
 
 import java.util.ArrayList;
@@ -83,8 +87,20 @@ public abstract class Card {
         return buffsCasted;
     }
 
-    public static int createNewId(){
+    public static int createNewId() {
         lastId++;
         return lastId;
+    }
+
+    public static String getCardType(String cardName) {
+        Card card = Shop.getCardByName(cardName);
+        if (card instanceof Minion) {
+            return "Minion";
+        } else if (card instanceof Item) {
+            return "Item";
+        } else if (card instanceof Hero) {
+            return "Hero";
+        }
+        return "";
     }
 }
