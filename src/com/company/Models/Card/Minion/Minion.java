@@ -94,7 +94,7 @@ Minion extends Card implements Soldier {
         minion.setHealth(this.getHealth());
         minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
-        minion.setId(Card.createNewId());
+        //minion.setId(Card.createNewId());
         return minion;
     }
 }

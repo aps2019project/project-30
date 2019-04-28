@@ -12,8 +12,8 @@ public class BattleView {
                         "%d : %s, health : %d, location : (%d, %d), power : %d\n",
                         minion.getId(),
                         minion.getName(),
-                        minion.getxCoordiante(),
-                        minion.getyCoordinate(),
+                        minion.getCell().getxCoordinate(),
+                        minion.getCell().getyCoordinate(),
                         minion.getAttackPower()
                         )
         );
