@@ -21,6 +21,8 @@ public class Battle {
         this.battleType = battleType;
         playingBattle = this;
         this.map = new Map();
+        map.getCellByCoordinates(0,2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(8,2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
     }
 
     public Map getMap() {

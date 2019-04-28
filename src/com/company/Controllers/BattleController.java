@@ -54,7 +54,7 @@ public class BattleController {
             return false;
         } else if ((abs(x1 - x2) == 2 &&validPreviousCell(battle.getTurnToPlay(),battle.getMap().getCellByCoordinates(min(x1,x2)+1,y1))) || (abs(y1 - y2) == 2 &&validPreviousCell(battle.getTurnToPlay(),battle.getMap().getCellByCoordinates(x1,min(y1,y2)+1)))) {
             return false;
-        } else if (x1 > 9 || x1 < 0 || y1 > 5 || y1 < 0) {
+        } else if (x1 >= 9 || x1 < 0 || y1 >= 5 || y1 < 0) {
             return false;
         } else if (battle.getMap().getCellByCoordinates(x2,y2).getCardInCell()!=null){
             return false;
