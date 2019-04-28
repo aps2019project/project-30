@@ -110,8 +110,7 @@ public class ConsoleInput {
         } else if (command.matches("show deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().showDeck(strings[2]);
         } else if (command.matches("exit")) {
-            //exit
-            //todo
+            setMenu(Menu.MAIN);
         }
     }
 
@@ -145,7 +144,7 @@ public class ConsoleInput {
         if (command.matches("show")) {
             ShopView.showAll();
         } else if (command.matches("exit")) {
-            //exit
+            setMenu(Menu.MAIN);
         } else if (command.matches("search [a-zA-Z]+")) {
             Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
