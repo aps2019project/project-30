@@ -6,6 +6,7 @@ import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Shop;
 import com.company.Models.TargetType;
+import com.company.Models.User.Account;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,9 +88,9 @@ public abstract class Card {
         return buffsCasted;
     }
 
-    public static int createNewId() {
+    public static String createNewId(Card card) {
         lastId++;
-        return lastId;
+        return Account.getLoggedInAccount().getUsername() + "_" + card.getName() + "_" + lastId;
     }
 
     public static String getCardType(String cardName) {
