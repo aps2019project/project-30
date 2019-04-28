@@ -30,12 +30,14 @@ public class BattleController {
     }
 
     public void move(int x, int y) {
+        //todo buff and item
         if (battle.getTurnToPlay().getSelectedCard() instanceof Minion) {
             if (!cellIsValid(x, y, ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell())) {
                 ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
             } else {
                 battle.getMap().getCellByCoordinates(((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Minion) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+
             }
         } else if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (!cellIsValid(x, y, ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell())) {
@@ -81,6 +83,16 @@ public class BattleController {
             }
         }
         return true;
+    }
+    public void endTern(){
+        battle.getTurnToPlay().getAccount().getMainDeck().getHand()
+        if(battle.getTurnToPlay()==battle.getPlayers()[0]) {
+            battle.setTurnToPlay(battle.getPlayers()[1]);
+        }
+        else{
+            battle.setTurnToPlay(battle.getPlayers()[0]);
+        }
+
     }
 
     public void showGraveYardCards() {
