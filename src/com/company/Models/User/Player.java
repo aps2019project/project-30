@@ -70,4 +70,5 @@ public class Player {
     public void addNewCardToCards(Card card){
         cards.add(card);
     }
+
 }
