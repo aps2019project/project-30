@@ -8,10 +8,7 @@ import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Spell.Spell;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> e9978fc84ba079a67bd5f1118295ace7b7866225
 
 public class Player {
     private List<Item> items = new ArrayList<>();
@@ -19,7 +16,7 @@ public class Player {
     private GraveYard graveYard;
     private Deck deck;
     private int score;
-    private int mana=2;
+    private int mana = 2;
     private int maxMana;
     private Spell spell;
     private Card selectedCard;
@@ -33,16 +30,19 @@ public class Player {
     public void setMaxMana(int maxMana) {
         this.maxMana = maxMana;
     }
-    public void addMaxMana(){
-        if(maxMana<9) {
+
+    public void addMaxMana() {
+        if (maxMana < 9) {
             maxMana += 1;
         }
     }
-    public void setMana(int mana){
-        this.mana=mana;
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
-    public Player() { }
+    public Player() {
+    }
 
     public GraveYard getGraveYard() {
         return graveYard;
@@ -51,15 +51,18 @@ public class Player {
     public List<Item> getItems() {
         return items;
     }
-    public void addItem(Item item){
+
+    public void addItem(Item item) {
         items.add(item);
     }
 
-    public void incremeantScore(int number) { }
+    public void incremeantScore(int number) {
+        this.score += number;
+    }
 
-    public void incremeantUsedMana(int number) { }
-
-    public void incremeantMana() { }
+    public void incremeantMana(int number) {
+        mana += number;
+    }
 
     public Account getAccount() {
         return account;
@@ -90,7 +93,7 @@ public class Player {
         return cards;
     }
 
-    public void addNewCardToCards(Card card){
+    public void addNewCardToCards(Card card) {
         cards.add(card);
     }
 
