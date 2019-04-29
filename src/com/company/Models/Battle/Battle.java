@@ -3,20 +3,32 @@ package com.company.Models.Battle;
 import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.User.Player;
+import com.company.Models.Battle.Map.Map;
+import com.company.Views.BattleView;
+
 
 public class Battle {
     private static Battle playingBattle;
     private Mode mode;
+    private Map map;
     private BattleType battleType;
     private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;
+    private BattleView battleView;
     private int winningPrize;
 
     public Battle(Mode mode, BattleType battleType) {
         this.mode = mode;
         this.battleType = battleType;
         playingBattle = this;
+        this.map = new Map();
+        map.getCellByCoordinates(0,2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(8,2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
+    }
+
+    public Map getMap() {
+        return map;
     }
 
     public Battle(int storyLevel) {
@@ -42,6 +54,10 @@ public class Battle {
 
     public Player getTurnToPlay() {
         return turnToPlay;
+    }
+
+    public BattleView getBattleView() {
+        return battleView;
     }
 
     public BattleController getBattleController() {

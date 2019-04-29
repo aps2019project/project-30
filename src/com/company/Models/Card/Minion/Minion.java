@@ -1,13 +1,15 @@
 package com.company.Models.Card.Minion;
 
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
 
-public class Minion extends Card implements Soldier {
-    private int xCoordiante, yCoordinate;
+public class
+Minion extends Card implements Soldier {
+    private Cell cell;
     private AttackType attackType;
     private ActivationTime activationTime;
     private int fullHealth;
@@ -15,18 +17,26 @@ public class Minion extends Card implements Soldier {
     private int attackPower;
     private int areaOfEffect;
 
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
     @Override
     public void attack(Card targetCard) {
-        if (targetCard instanceof Hero) {
-            ((Hero) targetCard).decremeantHealth(attackPower);
-            ((Hero) targetCard).counterAttack(this);
+        if(!hasBuffByName(Buff.Name.STUN)) {
+            if (targetCard instanceof Hero) {
+                ((Hero) targetCard).decremeantHealth(attackPower);
+                ((Hero) targetCard).counterAttack(this);
+            } else if (targetCard instanceof Minion) {
+                ((Minion) targetCard).decremeantHealth(attackPower);
+                ((Minion) targetCard).counterAttack(this);
+            }
+            //TODO Check Counter Buffs
         }
-        else if (targetCard instanceof Minion) {
-            ((Minion) targetCard).decremeantHealth(attackPower);
-            ((Minion) targetCard).counterAttack(this);
-        }
-        //TODO Check Counter Buffs
-        //Todo : Check Enemy's Holy Buff
     }
 
     @Override
@@ -34,22 +44,6 @@ public class Minion extends Card implements Soldier {
         if (!hasBuffByName(Buff.Name.DISARM)) {
             attack(targetCard);
         }
-    }
-
-    public int getxCoordiante() {
-        return xCoordiante;
-    }
-
-    public void setxCoordiante(int xCoordiante) {
-        this.xCoordiante = xCoordiante;
-    }
-
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
     }
 
     public void setHealth(int health) {
@@ -90,7 +84,17 @@ public class Minion extends Card implements Soldier {
         return false;
     }
 
-    public AttackType getAttackType() {
-        return attackType;
+    public Minion clone(){
+        Minion minion = new Minion();
+        minion.setDescription(this.getDescription());
+        minion.setInGraveCards(this.isInGraveCards());
+        minion.setName(this.getName());
+        minion.setManaPoint(this.getManaPoint());
+        minion.setPriceInDrake(this.getPriceInDrake());
+        minion.setHealth(this.getHealth());
+        minion.setCell(this.getCell());
+        minion.setTargetType(this.getTargetType());
+        //minion.setId(Card.createNewId());
+        return minion;
     }
 }

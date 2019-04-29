@@ -1,6 +1,9 @@
 package com.company.Controllers;
 
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.Minion;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
@@ -19,7 +22,17 @@ public class ShopController {
     public static void buy(Account account, String cardName) {
         if (Shop.cardExistsInShop(cardName)) {
             if (account.getDrake() >= Shop.getCardByName(cardName).getPriceInDrake()) {
-                AccountController.addCardToCollection(account, Shop.getCardByName(cardName));
+                switch (Card.getCardType(cardName)) {
+                    case "Item":
+                        AccountController.addCardToCollection(account, ((Item) Shop.getCardByName(cardName)).clone());
+                        break;
+                    case "Minion":
+                        AccountController.addCardToCollection(account, ((Minion) Shop.getCardByName(cardName)).clone());
+                        break;
+                    case "Herp":
+                        AccountController.addCardToCollection(account, ((Hero) Shop.getCardByName(cardName)).clone());
+                        break;
+                }
                 account.decrementDrake(Shop.getCardByName(cardName).getPriceInDrake());
             } else {
                 ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_DRAKE);
@@ -32,10 +45,11 @@ public class ShopController {
 
     public static void sell(Account account, int cardId) {
         if (Shop.cardExistsInShop(cardId)) {
-            AccountController.removeCardFromCollection(account,Shop.getCardById(cardId));
+            AccountController.removeCardFromCollection(account, Shop.getCardById(cardId));
             account.incrementDrake(Shop.getCardById(cardId).getPriceInDrake());
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
     }
+
 }

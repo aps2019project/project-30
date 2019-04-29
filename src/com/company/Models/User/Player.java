@@ -2,10 +2,12 @@ package com.company.Models.User;
 
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Card.Groups.GraveYard;
 import com.company.Models.Card.Spell.Spell;
 
 public class Player {
     private Account account;
+    private GraveYard graveYard;
     private Deck deck;
     private int score;
     private int mana;
@@ -13,9 +15,16 @@ public class Player {
     private Spell spell;
     private Card selectedCard;
 
-    public Player(Account account) { }
+    public Player(Account account) {
+        this.account = account;
+        this.graveYard = new GraveYard();
+    }
 
     public Player() { }
+
+    public GraveYard getGraveYard() {
+        return graveYard;
+    }
 
     public void incremeantScore(int number) { }
 

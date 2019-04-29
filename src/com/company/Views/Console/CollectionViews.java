@@ -71,5 +71,20 @@ public class CollectionViews {
 
         }
     }
+    public static void printHelp(){
+        System.out.println("*** Account Commands ***");
+        System.out.println("1. exit :");
+        System.out.println("2. show :to showing all card and items");
+        System.out.println("3.search :  show that a card or item is in callection or not");
+        System.out.println("4. save : ");
+        System.out.println("5. create deck : creating a deck and add to collection ");
+        System.out.println("6. delete deck :delet a deck from collection");
+        System.out.println("7. add : adding a card or item to a deck");
+        System.out.println("8. remove : removing a card or item from a deck");
+        System.out.println("9. validate deck : showing a deck is complit or not");
+        System.out.println("10. select deck : select a deck as main deck");
+        System.out.println("11. show all decks : to showing content of all decks");
+        System.out.println("12 . show deck : to showing content of deck");
+    }
 
 }

@@ -1,7 +1,12 @@
 package com.company.Models.Card;
 
 import com.company.Models.Buff.Buff;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Shop;
 import com.company.Models.TargetType;
+import com.company.Models.User.Account;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +21,7 @@ public abstract class Card {
     private TargetType targetType;
     private List<Buff> buffsToCast = new ArrayList<>();
     private List<Buff> buffsCasted = new ArrayList<>();
+    private static int lastId = 0;
 
 
     public String getDescription() {
@@ -36,6 +42,10 @@ public abstract class Card {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -76,5 +86,22 @@ public abstract class Card {
 
     public List<Buff> getBuffsCasted() {
         return buffsCasted;
+    }
+
+    public static String createNewId(Card card) {
+        lastId++;
+        return Account.getLoggedInAccount().getUsername() + "_" + card.getName() + "_" + lastId;
+    }
+
+    public static String getCardType(String cardName) {
+        Card card = Shop.getCardByName(cardName);
+        if (card instanceof Minion) {
+            return "Minion";
+        } else if (card instanceof Item) {
+            return "Item";
+        } else if (card instanceof Hero) {
+            return "Hero";
+        }
+        return "";
     }
 }

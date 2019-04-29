@@ -1,14 +1,16 @@
 package com.company.Models.Card.Hero;
 
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
 
 public class Hero extends Card implements Soldier {
     private boolean disarmed = false;
-    private int xCoordiante, yCoordinate;
+    private Cell cell;
     private AttackType attackType;
     private int fullHealth;
     private int health;
@@ -17,44 +19,20 @@ public class Hero extends Card implements Soldier {
     private int coolDown;
     private int remainingCoolDown;
 
-    public int getxCoordiante() {
-        return xCoordiante;
+    public Cell getCell() {
+        return cell;
     }
 
-    public void setxCoordiante(int xCoordiante) {
-        this.xCoordiante = xCoordiante;
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
+    public void setAttackType(AttackType attackType){
+        this.attackType = attackType;
     }
 
     public int getHealth() {
         return health;
-    }
-
-    public int getCoolDownRemaining() {
-        return remainingCoolDown;
-    }
-
-    public void decremeantCoolDownRemaining() {
-
-    }
-
-    public AttackType getAttackType() {
-        return attackType;
-    }
-
-    public void setAttackType(AttackType attackType) {
-        this.attackType = attackType;
-    }
-
-    public int getFullHealth() {
-        return fullHealth;
     }
 
     public void setFullHealth(int fullHealth) {
@@ -65,24 +43,12 @@ public class Hero extends Card implements Soldier {
         this.health = health;
     }
 
-    public int getAreaOfEffect() {
-        return areaOfEffect;
+    public int getCoolDownRemaining() {
+        return remainingCoolDown;
     }
 
-    public void setAreaOfEffect(int areaOfEffect) {
-        this.areaOfEffect = areaOfEffect;
-    }
+    public void decremeantCoolDownRemaining() {
 
-    public void setAttackPower(int attackPower) {
-        this.attackPower = attackPower;
-    }
-
-    public int getCoolDown() {
-        return coolDown;
-    }
-
-    public void setCoolDown(int coolDown) {
-        this.coolDown = coolDown;
     }
 
     public void decremeantHealth(int number) {
@@ -113,7 +79,28 @@ public class Hero extends Card implements Soldier {
 
     @Override
     public void attack(Card targetCard) {
+        if(!hasBuffByName(Buff.Name.STUN)) {
+            if (targetCard instanceof Hero) {
+                ((Hero) targetCard).decremeantHealth(attackPower);
+                ((Hero) targetCard).counterAttack(this);
+            } else if (targetCard instanceof Minion) {
+                ((Minion) targetCard).decremeantHealth(attackPower);
+                ((Minion) targetCard).counterAttack(this);
+            }
+            //TODO Check Counter Buffs
+        }
+    }
 
+    public void setDisarmed(boolean disarmed) {
+        this.disarmed = disarmed;
+    }
+
+    public void setAreaOfEffect(int areaOfEffect) {
+        this.areaOfEffect = areaOfEffect;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
     }
 
     @Override
@@ -123,7 +110,20 @@ public class Hero extends Card implements Soldier {
         }
     }
 
-    public int getAttackPower() {
-        return attackPower;
+    public Hero clone(){
+        Hero hero = new Hero();
+        hero.setInGraveCards(this.isInGraveCards());
+        hero.setName(this.getName());
+        hero.setManaPoint(this.getManaPoint());
+        hero.setPriceInDrake(this.getPriceInDrake());
+        hero.setHealth(this.getHealth());
+        hero.setCell(this.getCell());
+        hero.setTargetType(this.getTargetType());
+        hero.setAttackType(this.attackType);
+        hero.setDisarmed(this.disarmed);
+        hero.setAttackPower(this.attackPower);
+        hero.setAreaOfEffect(this.areaOfEffect);
+        //hero.setId(Card.createNewId(hero));
+        return hero;
     }
 }

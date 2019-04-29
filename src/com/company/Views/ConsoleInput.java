@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.BattleController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.User.Account;
@@ -71,7 +72,7 @@ public class ConsoleInput {
         } else if (command.matches("exit")) {
             setMenu(Menu.EXIT);
         } else if (command.matches("help")) {
-            //todo
+            MainMenuView.printMainMenuCommandsToHelp();
         }
     }
 
@@ -89,11 +90,11 @@ public class ConsoleInput {
             //save
             //todo
         } else if (command.matches("add \\w+ to deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(Integer.parseInt(strings[1]),strings[4]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(Integer.parseInt(strings[1]), strings[4]);
         } else if (command.matches("validate deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(strings[2]);
         } else if (command.matches("remove \\w+ from deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().remove(Integer.parseInt(strings[1]),strings[4]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().remove(Integer.parseInt(strings[1]), strings[4]);
         } else if (command.matches("help")) {
             //help
             //todo
@@ -104,8 +105,7 @@ public class ConsoleInput {
         } else if (command.matches("show deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().showDeck(strings[2]);
         } else if (command.matches("exit")) {
-            //exit
-            //todo
+            setMenu(Menu.MAIN);
         }
     }
 
@@ -139,7 +139,7 @@ public class ConsoleInput {
         if (command.matches("show")) {
             ShopView.showAll();
         } else if (command.matches("exit")) {
-            //exit
+            setMenu(Menu.MAIN);
         } else if (command.matches("search [a-zA-Z]+")) {
             Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
@@ -163,9 +163,11 @@ public class ConsoleInput {
 
     public static void battleMenuCommandsChecker(String command) {
         //Todo : Create New Game
-        if (command.matches("game info")) {
-            //todo
+        if (command.matches("Game info")) {
+            Battle.getPlayingBattle().getBattleView().printGameInfo();
         } else if (command.matches("show my minions")) {
+            //todo
+        } else if (command.matches("move to (\\d+,\\d+)")) {
             //todo
         } else if (command.matches("show opponent minions")) {
             //todo
@@ -181,8 +183,10 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show hand")) {
             //todo
-        } else if (command.matches("insert \\d+ in \\(\\d+, \\d+\\)")) {
-            //todo
+        } else if (command.matches("insert \\[a-zA-Z]+ in \\(\\d+, \\d+\\)")) {
+            Matcher matcher = Pattern.compile("insert (?<cardName>[a-zA-Z]+) in \\((?<xCordinate>\\d+)\\,(?<yCordinate>\\d+)\\)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().insertNewCardToMap(Integer.parseInt(matcher.group("xCordinate")), Integer.parseInt(matcher.group("yCordinate")), matcher.group("cardName"));
         } else if (command.matches("end turn")) {
             //todo
         } else if (command.matches("Show collectables")) {
