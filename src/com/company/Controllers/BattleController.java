@@ -13,6 +13,7 @@ import com.company.Views.BattleView;
 import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
@@ -171,7 +172,7 @@ public class BattleController {
         return null;
     }
 
-    public void insertNewCardToMap(int x, int y,String cardName) {
+    public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
             if (isCardIdValid(cardName)) {
                 Card card = getCardByName(cardName);
@@ -188,5 +189,17 @@ public class BattleController {
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         }
+    }
+
+    public Player playerThatHasThisCard(Card card) {
+        for (int i = 0; i < 2; i++) {
+            List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+            for (Card c : playerCards) {
+                if (c.getId() == card.getId()) {
+                    return Battle.getPlayingBattle().getPlayers()[i];
+                }
+            }
+        }
+        return null;
     }
 }
