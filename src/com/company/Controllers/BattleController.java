@@ -38,7 +38,9 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Minion) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-
+                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                }
             }
         } else if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (!cellIsValidToMove(x, y, ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell())) {
@@ -46,6 +48,9 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Hero) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                }
             }
         }
     }
@@ -126,6 +131,9 @@ public class BattleController {
                 battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint());
             }
         }
+    }
+    public void showMyMinion(){
+
     }
 
     public void showGraveYardCards() {

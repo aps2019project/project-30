@@ -1,17 +1,22 @@
 package com.company.Models.User;
 
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.GraveYard;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Spell.Spell;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
+    private List<Item> items = new ArrayList<>();
     private Account account;
     private GraveYard graveYard;
     private Deck deck;
     private int score;
     private int mana=2;
-   // private int usedMana;
     private int maxMana;
     private Spell spell;
     private Card selectedCard;
@@ -37,6 +42,13 @@ public class Player {
 
     public GraveYard getGraveYard() {
         return graveYard;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+    public void addItem(Item item){
+        items.add(item);
     }
 
     public void incremeantScore(int number) { }
