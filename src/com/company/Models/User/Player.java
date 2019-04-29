@@ -5,6 +5,8 @@ import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.GraveYard;
 import com.company.Models.Card.Spell.Spell;
 
+import java.util.ArrayList;
+
 public class Player {
     private Account account;
     private GraveYard graveYard;
@@ -14,6 +16,7 @@ public class Player {
     private int usedMana;
     private Spell spell;
     private Card selectedCard;
+    private ArrayList<Card> cards;
 
     public Player(Account account) {
         this.account = account;
@@ -58,5 +61,13 @@ public class Player {
 
     public void setSelectedCard(Card selectedCard) {
         this.selectedCard = selectedCard;
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public void addNewCardToCards(Card card){
+        cards.add(card);
     }
 }
