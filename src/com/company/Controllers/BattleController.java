@@ -208,9 +208,9 @@ public class BattleController {
         }
     }
 
-    public Player playerThatHasThisCard(Card card) {
+    public static Player playerThatHasThisCard(Card card) {
         for (int i = 0; i < 2; i++) {
-            List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+            List<Card> playerCards = Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckCards();
             for (Card c : playerCards) {
                 if (c.getId() == card.getId()) {
                     return Battle.getPlayingBattle().getPlayers()[i];
