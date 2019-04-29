@@ -2,6 +2,9 @@ package com.company.Controllers;
 
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -47,6 +50,39 @@ public class JsonController {
         {
             Type spellListType = new TypeToken<ArrayList<Spell>>(){}.getType();
             return getGson().fromJson(reader, spellListType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static ArrayList<Minion> getMinions() {
+        try (FileReader reader = new FileReader("data/Minions.json"))
+        {
+            Type minionListType = new TypeToken<ArrayList<Minion>>(){}.getType();
+            return getGson().fromJson(reader, minionListType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static ArrayList<Hero> getHeroes() {
+        try (FileReader reader = new FileReader("data/Heroes.json"))
+        {
+            Type heroListType = new TypeToken<ArrayList<Hero>>(){}.getType();
+            return getGson().fromJson(reader, heroListType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static ArrayList<Item> getItems() {
+        try (FileReader reader = new FileReader("data/Items.json"))
+        {
+            Type itemListType = new TypeToken<ArrayList<Item>>(){}.getType();
+            return getGson().fromJson(reader, itemListType);
         } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
