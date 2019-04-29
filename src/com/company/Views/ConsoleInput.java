@@ -3,14 +3,9 @@ package com.company.Views;
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
-import com.company.Models.Battle.Modes.CaptureTheFlag;
-import com.company.Models.Battle.Modes.Mode;
-import com.company.Models.ErrorType;
-import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 
-import java.nio.channels.AcceptPendingException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

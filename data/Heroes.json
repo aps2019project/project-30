@@ -1,0 +1,58 @@
+[
+  {
+    "disarmed": false,
+    "attackType": "MELEE",
+    "fullHealth": 50,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "coolDown": 2,
+    "remainingCoolDown": 0,
+    "id": 0,
+    "name": "Div Sefid",
+    "manaPoint": 1,
+    "priceInDrake": 8000,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "remTurnToBeInactive": 1000,
+        "remTurnToCast": 0,
+        "value": 4,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "disarmed": false,
+    "attackType": "MELEE",
+    "fullHealth": 50,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "coolDown": 8,
+    "remainingCoolDown": 0,
+    "id": 0,
+    "name": "Simorgh",
+    "manaPoint": 5,
+    "priceInDrake": 9000,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "remTurnToBeInactive": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.StunBuff"
+      }
+    ],
+    "buffsCasted": []
+  }
+]

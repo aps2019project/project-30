@@ -13,5 +13,6 @@ public enum TargetType {
     NEAR_FRIENDS_HERO,
     ENEMY_MINION,
     FRIEND_MINION,
-    ATTACKTYPE_MELEE
+    ENEMY_SOLDIER,
+    FRIEND_SOLDIER,
 }

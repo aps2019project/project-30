@@ -21,11 +21,11 @@ public class CollectionViews {
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
             if (card instanceof Hero) {
                 System.out.println("    1 : Name " + card.getName() +
-                        " - Ap : " + ((Hero) card).getHeroType().getAttackPower() +
+                        " - Ap : " + ((Hero) card).getAttackPower() +
                         " - Hp : " + ((Hero) card).getHealth() +
-                        " - class : " + ((Hero) card).getHeroType().getName() +
-                        " - spesial power : " + ((Hero) card).getHeroType().getSpesioalPower() +
-                        " - sell Cost: " + ((Hero) card).getHeroType().getPriceInDrake());
+                        " - class : " + ((Hero) card).getName() +
+                        " - spesial power : " + ((Hero) card).getDescription() +
+                        " - sell Cost: " + ((Hero) card).getPriceInDrake());
                 break;
             }
 
@@ -41,11 +41,11 @@ public class CollectionViews {
     public static void showDeck(Deck deck) {
         System.out.println("Heroes : ");
         System.out.println("    1 : Name " + deck.getHeroCard().getName() +
-                " - Ap : " + ((Hero) deck.getHeroCard()).getHeroType().getAttackPower() +
+                " - Ap : " + ((Hero) deck.getHeroCard()).getAttackPower() +
                 " - Hp : " + ((Hero) deck.getHeroCard()).getHealth() +
-                " - class : " + ((Hero) deck.getHeroCard()).getHeroType().getName() +
-                " - spesial power : " + ((Hero) deck.getHeroCard()).getHeroType().getSpesioalPower() +
-                " - sell Cost: " + ((Hero) deck.getHeroCard()).getHeroType().getPriceInDrake());
+                " - class : " + ((Hero) deck.getHeroCard()).getName() +
+                " - spesial power : " + ((Hero) deck.getHeroCard()).getDescription() +
+                " - sell Cost: " + ((Hero) deck.getHeroCard()).getPriceInDrake());
 
         int counter = 0;
         for (Card card : deck.getDeckCards()) {
@@ -58,11 +58,11 @@ public class CollectionViews {
     private static void showCard(Card card, int counter) {
         if (card instanceof Minion) {
             System.out.println("    " + counter + " : Type : Minion - Name : " + card.getName() +
-                    " - Class " + ((Minion) card).getMinionType().getClass() +
-                    " - Ap : " + ((Minion) card).getMinionType().getAttackPower() +
-                    " - Hp : " + ((Minion) card).getMinionType() +
+                    " - Class " + ((Minion) card).getAttackType() +
+                    " - Ap : " + ((Minion) card).getAttackPower() +
+                    " - Hp : " + ((Minion) card).getHealth() +
                     " - Mp : " + card.getManaPoint() +
-                    " - Special power : "/*+((Minion) card).getMinionType().getSpecialPower*/);
+                    " - Special power : "+ card.getDescription());
         }
         if (card instanceof Spell) {
             System.out.println("    " + counter + " : Type Spell - Name : " + card.getName() +

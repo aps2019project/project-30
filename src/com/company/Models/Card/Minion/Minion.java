@@ -89,4 +89,8 @@ public class Minion extends Card implements Soldier {
         }
         return false;
     }
+
+    public AttackType getAttackType() {
+        return attackType;
+    }
 }

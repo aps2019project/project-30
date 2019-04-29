@@ -6,7 +6,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
 
-public abstract class Hero extends Card implements Soldier {
+public class Hero extends Card implements Soldier {
     private boolean disarmed = false;
     private int xCoordiante, yCoordinate;
     private AttackType attackType;
@@ -45,6 +45,46 @@ public abstract class Hero extends Card implements Soldier {
 
     }
 
+    public AttackType getAttackType() {
+        return attackType;
+    }
+
+    public void setAttackType(AttackType attackType) {
+        this.attackType = attackType;
+    }
+
+    public int getFullHealth() {
+        return fullHealth;
+    }
+
+    public void setFullHealth(int fullHealth) {
+        this.fullHealth = fullHealth;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getAreaOfEffect() {
+        return areaOfEffect;
+    }
+
+    public void setAreaOfEffect(int areaOfEffect) {
+        this.areaOfEffect = areaOfEffect;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    public int getCoolDown() {
+        return coolDown;
+    }
+
+    public void setCoolDown(int coolDown) {
+        this.coolDown = coolDown;
+    }
+
     public void decremeantHealth(int number) {
         this.health -= number;
     }
@@ -81,5 +121,9 @@ public abstract class Hero extends Card implements Soldier {
         if (!hasBuffByName(Buff.Name.DISARM)) {
             attack(targetCard);
         }
+    }
+
+    public int getAttackPower() {
+        return attackPower;
     }
 }
