@@ -145,7 +145,7 @@ public class BattleController {
         BattleView.printGraveYardCards(graveYardCards);
     }
 
-    public void selectCard(int cardId) {
+    public void selectCard(String cardId) {
         if (isCardIdValid(cardId)) {
             battle.getTurnToPlay().setSelectedCard(getCardById(cardId));
         } else {
@@ -153,16 +153,16 @@ public class BattleController {
         }
     }
 
-    private boolean isCardIdValid(int cardId) {
+    private boolean isCardIdValid(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
-            if (playerCard.getId() == cardId)
+            if (playerCard.getId().equals(cardId))
                 return true;
         }
         return false;
     }
 
-    private boolean isCardIdValid(String cardName) {
+    private boolean isCardNameValid(String cardName) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
             if (playerCard.getName().equals(cardName))
@@ -171,10 +171,10 @@ public class BattleController {
         return false;
     }
 
-    private Card getCardById(int cardId) {
+    private Card getCardById(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
-            if (playerCard.getId() == cardId)
+            if (playerCard.getId().equals(cardId))
                 return playerCard;
         }
         return null;
@@ -191,7 +191,7 @@ public class BattleController {
 
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
-            if (isCardIdValid(cardName)) {
+            if (isCardNameValid(cardName)) {
                 Card card = getCardByName(cardName);
                 if (card.getManaPoint() >= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);

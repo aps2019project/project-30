@@ -12,15 +12,15 @@ import com.company.Views.ConsoleOutput;
 public class ShopController {
 
     public static void search(String cardName) {
-        if (Shop.cardExistsInShop(cardName)) {
-            System.out.println(Shop.getCardIdByName(cardName));
+        if (Shop.cardNameExistsInShop(cardName)) {
+            System.out.println(Shop.getCardByName(cardName).getId());
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
     }
 
     public static void buy(Account account, String cardName) {
-        if (Shop.cardExistsInShop(cardName)) {
+        if (Shop.cardNameExistsInShop(cardName)) {
             if (account.getDrake() >= Shop.getCardByName(cardName).getPriceInDrake()) {
                 switch (Card.getCardType(cardName)) {
                     case "Item":
@@ -43,10 +43,10 @@ public class ShopController {
     }
 
 
-    public static void sell(Account account, int cardId) {
-        if (Shop.cardExistsInShop(cardId)) {
-            AccountController.removeCardFromCollection(account, Shop.getCardById(cardId));
+    public static void sell(Account account, String cardId) {
+        if (Shop.cardIdExistsInShop(cardId)) {
             account.incrementDrake(Shop.getCardById(cardId).getPriceInDrake());
+            AccountController.removeCardFromCollection(account, Shop.getCardById(cardId));
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }

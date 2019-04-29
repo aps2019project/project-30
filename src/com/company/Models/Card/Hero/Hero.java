@@ -97,6 +97,10 @@ public class Hero extends Card implements Soldier {
         return false;
     }
 
+    public int getAttackPower() {
+        return attackPower;
+    }
+
     @Override
     public void attack(Card targetCard) {
         if(!hasBuffByName(Buff.Name.STUN)) {
@@ -143,7 +147,7 @@ public class Hero extends Card implements Soldier {
         hero.setDisarmed(this.disarmed);
         hero.setAttackPower(this.attackPower);
         hero.setAreaOfEffect(this.areaOfEffect);
-        //hero.setId(Card.createNewId(hero));
+        hero.setId(Card.createNewCardId(this));
         return hero;
     }
 }

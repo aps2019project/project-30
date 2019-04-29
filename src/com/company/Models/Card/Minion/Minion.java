@@ -21,6 +21,10 @@ Minion extends Card implements Soldier {
         return cell;
     }
 
+    public AttackType getAttackType() {
+        return attackType;
+    }
+
     public void setCell(Cell cell) {
         this.cell = cell;
     }
@@ -94,7 +98,7 @@ Minion extends Card implements Soldier {
         minion.setHealth(this.getHealth());
         minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
-        //minion.setId(Card.createNewId());
+        minion.setId(Card.createNewCardId(this));
         return minion;
     }
 }

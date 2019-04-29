@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Card {
-    private int id;
+    private String id;
     private String name;
     private int manaPoint;
     private int priceInDrake;
@@ -40,11 +40,11 @@ public abstract class Card {
         isInGraveCards = inGraveCards;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -88,7 +88,7 @@ public abstract class Card {
         return buffsCasted;
     }
 
-    public static String createNewId(Card card) {
+    public static String createNewCardId(Card card) {
         lastId++;
         return Account.getLoggedInAccount().getUsername() + "_" + card.getName() + "_" + lastId;
     }

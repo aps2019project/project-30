@@ -35,14 +35,14 @@ public class CollectionController {
         }
     }
 
-    public void addCard(int cardId,String deckName){
+    public void addCard(String cardId,String deckName){
         if(cardExist(cardId)==false) {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
             return;
         }
         if(deckExist(deckName)){
             for(Card card:getDeckByName(deckName).getDeckCards()){
-                if(card.getId()==cardId){
+                if(card.getId().equals(cardId)){
                     ConsoleOutput.printErrorMessage(ErrorType.CARD_EXISTS);
                     return;
                 }
@@ -53,7 +53,7 @@ public class CollectionController {
             return;
         }
         for(Card card:Account.getLoggedInAccount().getCollection().getCards()) {
-            if (cardId == card.getId()) {
+            if (card.getId().equals(card.getId())) {
                 if (card instanceof Hero) {
                     if(getDeckByName(deckName).getHeroCard()!=null){
                         ConsoleOutput.printErrorMessage(ErrorType.HERO_EXISTS);
@@ -89,9 +89,9 @@ public class CollectionController {
         }
         return false;
     }
-    private boolean cardExist(int cardId){
+    private boolean cardExist(String cardId){
         for(Card card:Account.getLoggedInAccount().getCollection().getCards()){
-            if(card.getId()==cardId){
+            if(card.getId().equals(cardId)){
                 return true;
             }
         }
@@ -135,9 +135,9 @@ public class CollectionController {
             }
         return null;
     }
-    public void remove(int cardId,String deckName){
+    public void remove(String cardId,String deckName){
         for(Card card:getDeckByName(deckName).getDeckCards()){
-            if(cardId==card.getId()){
+            if(card.getId().equals(cardId)){
                 getDeckByName(deckName).getDeckCards().remove(card);
                 return;
             }

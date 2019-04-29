@@ -12,7 +12,7 @@ public class Item extends Card {
         item.setManaPoint(this.getManaPoint());
         item.setPriceInDrake(this.getPriceInDrake());
         item.setTargetType(this.getTargetType());
-        item.setId(Card.createNewId());
+        item.setId(Card.createNewCardId(this));
         return item;
     }
 }
