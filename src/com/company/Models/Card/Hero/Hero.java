@@ -134,6 +134,7 @@ public class Hero extends Card implements Soldier {
         }
     }
 
+    @Override
     public Hero clone(){
         Hero hero = new Hero();
         hero.setInGraveCards(this.isInGraveCards());
@@ -147,7 +148,18 @@ public class Hero extends Card implements Soldier {
         hero.setDisarmed(this.disarmed);
         hero.setAttackPower(this.attackPower);
         hero.setAreaOfEffect(this.areaOfEffect);
-        hero.setId(Card.createNewCardId(this));
+        return hero;
+    }
+
+    public Hero makeCopyForCreatingNewCardInShop(){
+        Hero hero = this.clone();
+        hero.setId(Card.createNewCardIdToCreatingNewCardInShop());
+        return hero;
+    }
+
+    public Hero makeCopyForCreatingNewCardInBattle(){
+        Hero hero = this.clone();
+        hero.setId(Card.createNewCardIdToCreatingNewCardInBattle(this.getName()));
         return hero;
     }
 }

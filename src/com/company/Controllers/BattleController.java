@@ -5,8 +5,10 @@ import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Battle.Map.Map;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.ErrorType;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Views.BattleView;
@@ -39,8 +41,8 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Minion) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
             }
         } else if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
@@ -49,8 +51,8 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Hero) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
             }
         }
@@ -124,16 +126,18 @@ public class BattleController {
         }
 
     }
-    public void useSpecialPawer(){
-        if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
-            if(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining()==0){
+
+    public void useSpecialPawer() {
+        if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
+            if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() == 0) {
                 //todo
                 ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
-                battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint());
+                battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint());
             }
         }
     }
-    public void showMyMinion(){
+
+    public void showMyMinion() {
 
     }
 
@@ -192,11 +196,11 @@ public class BattleController {
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
             if (isCardNameValid(cardName)) {
-                Card card = getCardByName(cardName);
-                if (card.getManaPoint() >= battle.getTurnToPlay().getMana()) {
+                Card newCard = createCopyFromExistingCard(getCardByName(cardName));
+                if (newCard.getManaPoint() >= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
-                    cell.setCardInCell(card);
-                    Battle.getPlayingBattle().getTurnToPlay().addNewCardToCards(card);
+                    cell.setCardInCell(newCard);
+                    Battle.getPlayingBattle().getTurnToPlay().addNewCardToCards(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
@@ -212,10 +216,22 @@ public class BattleController {
         for (int i = 0; i < 2; i++) {
             List<Card> playerCards = Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckCards();
             for (Card c : playerCards) {
-                if (c.getId() == card.getId()) {
+                if (c.getId().equals(card.getId())) {
                     return Battle.getPlayingBattle().getPlayers()[i];
                 }
             }
+        }
+        return null;
+    }
+
+    public static Card createCopyFromExistingCard(Card card){
+        switch (Card.getCardType(card.getName())) {
+            case "Item":
+                return ((Item) Shop.getCardByName(card.getName())).clone();
+            case "Minion":
+                return ((Minion) Shop.getCardByName(card.getName())).clone();
+            case "Hero":
+                return ((Hero) Shop.getCardByName(card.getName())).clone();
         }
         return null;
     }

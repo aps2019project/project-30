@@ -1,5 +1,6 @@
 package com.company.Models.Card;
 
+import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
@@ -21,7 +22,7 @@ public abstract class Card {
     private TargetType targetType;
     private List<Buff> buffsToCast = new ArrayList<>();
     private List<Buff> buffsCasted = new ArrayList<>();
-    private static int lastId = 0;
+    private static int lastShopCardId = 0;
 
 
     public String getDescription() {
@@ -88,9 +89,14 @@ public abstract class Card {
         return buffsCasted;
     }
 
-    public static String createNewCardId(Card card) {
-        lastId++;
-        return Account.getLoggedInAccount().getUsername() + "_" + card.getName() + "_" + lastId;
+    public static String createNewCardIdToCreatingNewCardInShop(){
+        lastShopCardId++;
+        return lastShopCardId + "";
+    }
+
+    public static String createNewCardIdToCreatingNewCardInBattle(String cardName) {
+        Battle.incrementlastBattleCardId(1);
+        return Battle.getPlayingBattle().getTurnToPlay().getAccount().getUsername() + "_" + cardName + "_" + Battle.getLastBattleCardId();
     }
 
     public static String getCardType(String cardName) {

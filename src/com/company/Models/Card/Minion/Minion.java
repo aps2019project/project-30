@@ -88,6 +88,7 @@ Minion extends Card implements Soldier {
         return false;
     }
 
+    @Override
     public Minion clone(){
         Minion minion = new Minion();
         minion.setDescription(this.getDescription());
@@ -98,7 +99,18 @@ Minion extends Card implements Soldier {
         minion.setHealth(this.getHealth());
         minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
-        minion.setId(Card.createNewCardId(this));
+        return minion;
+    }
+
+    public Minion makeCopyForCreatingNewCardInShop(){
+        Minion minion = this.clone();
+        minion.setId(Card.createNewCardIdToCreatingNewCardInShop());
+        return minion;
+    }
+
+    public Minion makeCopyForCreatingNewCardInBattle(){
+        Minion minion = this.clone();
+        minion.setId(Card.createNewCardIdToCreatingNewCardInBattle(this.getName()));
         return minion;
     }
 }
