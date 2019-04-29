@@ -15,7 +15,7 @@ public class Shop {
         //use the same method in CollectionController (maybe CollectionView , i don't know!)
     }
 
-    public static boolean cardExistsInShop(String cardName) {
+    public static boolean cardNameExistsInShop(String cardName) {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
                 if (card.getName().equals(cardName)) {
@@ -26,26 +26,15 @@ public class Shop {
         return false;
     }
 
-    public static boolean cardExistsInShop(int cardId) {
+    public static boolean cardIdExistsInShop(String cardId) {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
-                if (cardId == card.getId()) {
+                if (card.getId().equals(cardId)) {
                     return true;
                 }
             }
         }
         return false;
-    }
-
-    public static int getCardIdByName(String cardName) {
-        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
-            for (Card card : Shop.getShopCollection().getCards()) {
-                if (card.getName().equals(cardName)) {
-                    return card.getId();
-                }
-            }
-        }
-        return -1;//that means there is no card with this name
     }
 
     public static Card getCardByName(String cardName) {
@@ -59,10 +48,10 @@ public class Shop {
         return null;//that means there is no card with this name
     }
 
-    public static Card getCardById(int cardId) {
+    public static Card getCardById(String cardId) {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
-                if (cardId == card.getId()) {
+                if (card.getId().equals(cardId)) {
                     return card;
                 }
             }
