@@ -118,6 +118,15 @@ public class BattleController {
         }
 
     }
+    public void useSpecialPawer(){
+        if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
+            if(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining()==0){
+                //todo
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
+                battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint());
+            }
+        }
+    }
 
     public void showGraveYardCards() {
         ArrayList<Card> graveYardCards = new ArrayList<>();

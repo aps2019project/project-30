@@ -10,14 +10,27 @@ public class Player {
     private GraveYard graveYard;
     private Deck deck;
     private int score;
-    private int mana;
-    private int usedMana;
+    private int mana=2;
+   // private int usedMana;
+    private int maxMana;
     private Spell spell;
     private Card selectedCard;
 
     public Player(Account account) {
         this.account = account;
         this.graveYard = new GraveYard();
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
+    public void addMaxMana(){
+        if(maxMana<9) {
+            maxMana += 1;
+        }
+    }
+    public void setMana(int mana){
+        this.mana=mana;
     }
 
     public Player() { }
@@ -48,9 +61,6 @@ public class Player {
         return mana;
     }
 
-    public int getUsedMana() {
-        return usedMana;
-    }
 
     public Card getSelectedCard() {
         return selectedCard;
