@@ -1,19 +1,26 @@
 package com.company.Models.User;
 
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.GraveYard;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Spell.Spell;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> e9978fc84ba079a67bd5f1118295ace7b7866225
 
 public class Player {
+    private List<Item> items = new ArrayList<>();
     private Account account;
     private GraveYard graveYard;
     private Deck deck;
     private int score;
-    private int mana;
-    private int usedMana;
+    private int mana=2;
+    private int maxMana;
     private Spell spell;
     private Card selectedCard;
     private ArrayList<Card> cards;
@@ -23,10 +30,29 @@ public class Player {
         this.graveYard = new GraveYard();
     }
 
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
+    public void addMaxMana(){
+        if(maxMana<9) {
+            maxMana += 1;
+        }
+    }
+    public void setMana(int mana){
+        this.mana=mana;
+    }
+
     public Player() { }
 
     public GraveYard getGraveYard() {
         return graveYard;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+    public void addItem(Item item){
+        items.add(item);
     }
 
     public void incremeantScore(int number) { }
@@ -51,9 +77,6 @@ public class Player {
         return mana;
     }
 
-    public int getUsedMana() {
-        return usedMana;
-    }
 
     public Card getSelectedCard() {
         return selectedCard;

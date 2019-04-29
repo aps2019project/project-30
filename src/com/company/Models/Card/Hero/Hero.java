@@ -23,6 +23,26 @@ public class Hero extends Card implements Soldier {
         return cell;
     }
 
+    public void setCoolDown(int coolDown) {
+        this.coolDown = coolDown;
+    }
+
+    public int getCoolDown() {
+        return coolDown;
+    }
+    public void decrementing(){
+        remainingCoolDown--;
+    }
+
+    public int getRemainingCoolDown() {
+        return remainingCoolDown;
+
+    }
+
+    public void setRemainingCoolDown(int remainingCoolDown) {
+        this.remainingCoolDown = remainingCoolDown;
+    }
+
     public void setCell(Cell cell) {
         this.cell = cell;
     }
