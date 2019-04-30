@@ -5,8 +5,8 @@ import com.company.Models.Card.Minion.Minion;
 
 public class HealthWeaknessBuff extends Buff{
 
-    public HealthWeaknessBuff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
-        super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
+    public HealthWeaknessBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+        super(antiBuff, castTime, remTurnToCast, value);
         super.name = Name.HEALTH_WEAKNESS;
         super.type = Type.POSSETIVE;
     }
