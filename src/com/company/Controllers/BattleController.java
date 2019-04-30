@@ -316,17 +316,17 @@ public class BattleController {
         }
     }
 
-    private static int getDistance(Cell cell1, Cell cell2) {
-        int xDistance = cell1.getxCoordinate() - cell2.getxCoordinate();
-        int yDistance = cell1.getyCoordinate() - cell2.getyCoordinate();
+    private static int getDistance(Cell beginning, Cell end) {
+        int xDistance = beginning.getxCoordinate() - end.getxCoordinate();
+        int yDistance = beginning.getyCoordinate() - end.getyCoordinate();
         return (int) Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
     }
 
-    private static boolean isNearby(Cell cell1, Cell cell2) {
+    private static boolean isNearby(Cell home, Cell toCheck) {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                if (cell2.getxCoordinate() + i == cell1.getxCoordinate()
-                && cell2.getyCoordinate() + j == cell1.getyCoordinate()
+                if (toCheck.getxCoordinate() + i == home.getxCoordinate()
+                && toCheck.getyCoordinate() + j == home.getyCoordinate()
                 && !(i == 0 && j == 0)) {
                     return true;
                 }

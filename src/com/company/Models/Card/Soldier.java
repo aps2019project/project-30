@@ -79,6 +79,7 @@ public class Soldier extends Card {
         if(!hasBuffByName(Buff.Name.STUN)) {
             ((Soldier) targetCard).decrementHealth(getAttackPower());
             ((Soldier) targetCard).counterAttack(this);
+            //todo holy buff yaroo ejra she
             //TODO Check Counter Buffs
         }
     }
