@@ -1,18 +1,17 @@
 package com.company.Models.Card;
 
 import com.company.Models.Battle.Map.Cell;
-import com.company.Models.User.Player;
 
 public class Flag {
-    private Player flagHolder1;
+    private Card flagHolder;
     private Cell cell;
 
-    public Player getFlagHolder() {
-        return flagHolder1;
+    public Card getFlagHolder() {
+        return flagHolder;
     }
 
-    public void setFlagHolder(Player flagHolder) {
-        this.flagHolder1 = flagHolder;
+    public void setFlagHolder(Card flagHolder) {
+        this.flagHolder = flagHolder;
     }
 
     public Cell getCell(){
