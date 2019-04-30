@@ -37,5 +37,18 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 3,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Kamandar Arab",
+    "manaPoint": 1,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]

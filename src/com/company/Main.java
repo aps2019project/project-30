@@ -65,11 +65,11 @@ public class Main {
 
 
         Minion minion = new Minion();
-        minion.setName("Asbsavar Fars");
-        minion.setPriceInDrake(200);
-        minion.setManaPoint(4);
-        minion.setFullHealth(10);
-        minion.setAttackPower(6);
+        minion.setName("Kamandar Arab");
+        minion.setPriceInDrake(500);
+        minion.setManaPoint(1);
+        minion.setFullHealth(3);
+        minion.setAttackPower(4);
         minion.setAttackType(AttackType.MELEE);
 
 
