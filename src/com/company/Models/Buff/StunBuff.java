@@ -9,8 +9,9 @@ public class StunBuff extends Buff{
 
     @Override
     public void cast() {
-        if(isActive()){
-            decrementCounters();
+        if(!isActive()){
+            destruct();
         }
+        decrementCounters();
     }
 }
