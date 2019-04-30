@@ -145,7 +145,7 @@ public class BattleController {
                     case FRIEND_MINION:
                     case ENEMY_SOLDIER:
                         for(Buff buff:battle.getTurnToPlay().getSelectedCard().getBuffsToCast()){
-                            Buff
+//                            Buff
                         }
                 }
             }
