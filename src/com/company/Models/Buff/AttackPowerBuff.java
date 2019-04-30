@@ -13,13 +13,15 @@ public class AttackPowerBuff extends Buff {
     @Override
     public void cast() {
         if (isActive()) {
-            if (!isCasted) {
-                if (super.cardToCast instanceof Hero)
-                    ((Hero) super.cardToCast).incrementAttackPower(value);
-                else if (super.cardToCast instanceof Minion)
-                    ((Minion) super.cardToCast).incrementAttackPower(value);
-                setCasted(true);
-                decrementCounters();
+            if (canCastThisTurn()) {
+                if (!isCasted) {
+                    if (super.cardToCast instanceof Hero)
+                        ((Hero) super.cardToCast).incrementAttackPower(value);
+                    else if (super.cardToCast instanceof Minion)
+                        ((Minion) super.cardToCast).incrementAttackPower(value);
+                    setCasted(true);
+                    decrementCounters();
+                }
             }
         } else {
             if (super.cardToCast instanceof Hero)

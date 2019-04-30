@@ -219,4 +219,22 @@ public class BattleController {
         }
         return null;
     }
+
+    public void attack(Cell target) {
+        Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
+        switch (((Hero) turnToPlay.getSelectedCard()).getAttackType()){
+            case MELEE :
+                if (getDistance(target, ((Hero) turnToPlay.getSelectedCard()).getCell()) < 2) {
+
+                }
+        }
+        battle.getTurnToPlay()
+//        ((Hero) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).attack(target.getCardInCell());
+    }
+
+    public static int getDistance(Cell cell1, Cell cell2) {
+        int xDistance = cell1.getxCoordinate() - cell2.getxCoordinate();
+        int yDistance = cell1.getyCoordinate() - cell2.getyCoordinate();
+        return (int) Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+    }
 }
