@@ -252,7 +252,7 @@ public class BattleController {
 
     public void attack(Cell target) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
-        ErrorType errorType;
+        ErrorType errorType = null;
         if (!isCardIdValid(target.getCardInCell().getId())){
             errorType = ErrorType.CARD_ID_INVALID;
         }
@@ -277,7 +277,11 @@ public class BattleController {
         if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
             errorType = ErrorType.CARD_CANT_ATTACK;
         }
-        ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell());
+        if (errorType != null) {
+            ConsoleOutput.printErrorMessage(errorType);
+        } else {
+            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell());
+        }
     }
 
     private static int getDistance(Cell cell1, Cell cell2) {
