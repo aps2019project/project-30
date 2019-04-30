@@ -15,6 +15,7 @@ public class CollectionController {
     public void show() {
         CollectionViews.show();
     }
+
     public void showAllDecks(){
         int counter=0;
         for(Deck deck:Account.getLoggedInAccount().getDecks()){

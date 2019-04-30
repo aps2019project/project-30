@@ -26,7 +26,7 @@ public class ShopView {
         System.out.println("Heroes :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
             System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
-//                    "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHeroType().getAttackPower() +
+                    "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getAttackPower() +
                     "- HP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHealth() + /*special power*/
                     "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
         }
@@ -38,7 +38,7 @@ public class ShopView {
             if (Shop.getShopCollection().getCards().get(i) instanceof Minion) {
                 System.out.println((i + 1) + "- Type : Minion " +
                         "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
-//                        "- AP : " + ((Minion) Shop.getShopCollection().getCards().get(i)).getMinionType().getAttackPower() +
+                        "- AP : " + ((Minion) Shop.getShopCollection().getCards().get(i)).getAttackPower() +
                         "- HP : " + ((Minion) Shop.getShopCollection().getCards().get(i)).getHealth() +
                         "- MP : " + Shop.getShopCollection().getCards().get(i).getManaPoint() + /*special power*/
                         "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
