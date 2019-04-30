@@ -35,7 +35,7 @@ public abstract class Buff {
     public abstract void cast();
 
     boolean isActive() {
-        return (castTime > 0 || remTurnToCast > 0) && !hasAntiBuff();
+        return (castTime > 0 || remTurnToCast >= 0) && !hasAntiBuff();
     }
 
     boolean canCastThisTurn() {

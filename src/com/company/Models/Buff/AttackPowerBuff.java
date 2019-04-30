@@ -7,7 +7,7 @@ import com.company.Models.Card.Soldier;
 public class AttackPowerBuff extends Buff {
     public AttackPowerBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
         super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
-        super.name = Name.HOLY;
+        super.name = Name.ATTACK_POWER;
         super.type = Type.POSSETIVE;
     }
 

@@ -1,25 +1,22 @@
 [
   {
-    "disarmed": false,
+    "coolDown": 2,
+    "remainingCoolDown": 0,
     "attackType": "MELEE",
     "fullHealth": 50,
     "health": 0,
     "areaOfEffect": 0,
     "attackPower": 4,
-    "coolDown": 2,
-    "remainingCoolDown": 0,
-    "id": 0,
     "name": "Div Sefid",
     "manaPoint": 1,
     "priceInDrake": 8000,
     "isInGraveCards": false,
-    "targetType": "FRIEND_HERO",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
-        "name": "HOLY",
+        "name": "ATTACK_POWER",
         "isCasted": false,
-        "remTurnToBeInactive": 1000,
+        "castTime": 1000,
         "remTurnToCast": 0,
         "value": 4,
         "className": "com.company.Models.Buff.AttackPowerBuff"
