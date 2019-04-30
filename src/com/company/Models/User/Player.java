@@ -1,6 +1,5 @@
 package com.company.Models.User;
 
-import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.GraveYard;
@@ -20,7 +19,7 @@ public class Player {
     private int maxMana;
     private Spell spell;
     private Card selectedCard;
-    private ArrayList<Card> cards;
+    private ArrayList<Card> usedCardsToAttack;
 
     public Player(Account account) {
         this.account = account;
@@ -80,7 +79,6 @@ public class Player {
         return mana;
     }
 
-
     public Card getSelectedCard() {
         return selectedCard;
     }
@@ -89,12 +87,7 @@ public class Player {
         this.selectedCard = selectedCard;
     }
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    public ArrayList<Card> getUsedCardsToAttack() {
+        return usedCardsToAttack;
     }
-
-    public void addNewCardToCards(Card card) {
-        cards.add(card);
-    }
-
 }

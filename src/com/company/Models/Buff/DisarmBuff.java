@@ -3,6 +3,8 @@ package com.company.Models.Buff;
 public class DisarmBuff extends Buff {
     public DisarmBuff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
         super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
+        super.name=Name.DISARM;
+        super.type=Type.NEGATIVE;
     }
 
     @Override
@@ -11,5 +13,11 @@ public class DisarmBuff extends Buff {
             destruct();
         }
         decrementCounters();
+    }
+    public DisarmBuff clone() {
+        DisarmBuff disarmBuff = new DisarmBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        disarmBuff.name = this.name;
+        disarmBuff.type = this.type;
+        return disarmBuff;
     }
 }

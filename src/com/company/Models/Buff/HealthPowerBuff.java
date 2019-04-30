@@ -25,5 +25,11 @@ public class HealthPowerBuff extends Buff {
             destruct();
         }
     }
+    public HealthPowerBuff clone() {
+        HealthPowerBuff healthPowerBuff= new HealthPowerBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        healthPowerBuff.name = this.name;
+        healthPowerBuff.type = this.type;
+        return healthPowerBuff;
+    }
 
 }

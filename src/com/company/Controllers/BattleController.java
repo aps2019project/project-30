@@ -3,6 +3,7 @@ package com.company.Controllers;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Battle.Map.Map;
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
@@ -127,12 +128,26 @@ public class BattleController {
         }
 
     }
-    public void useSpecialPawer(){
+    public void useSpecialPawer(int x,int y){
         if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
-            if(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining()==0){
-                //todo
-                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
-                battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint());
+            if(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining()!=0){
+                //todo eror message
+                return;
+            }
+            if(battle.getTurnToPlay().getSelectedCard().getManaPoint()<=battle.getTurnToPlay().getMana()){
+                int newmana=battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint();
+                battle.getTurnToPlay().setMana(newmana);
+                if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
+                    ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
+                }
+                switch (battle.getTurnToPlay().getSelectedCard().getTargetType()){
+                    case ENEMY_MINION:
+                    case FRIEND_MINION:
+                    case ENEMY_SOLDIER:
+                        for(Buff buff:battle.getTurnToPlay().getSelectedCard().getBuffsToCast()){
+                            Buff
+                        }
+                }
             }
         }
     }
@@ -259,8 +274,10 @@ public class BattleController {
                 }
                 break;
         }
-
-//        ((Hero) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).attack(target.getCardInCell());
+        if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
+            errorType = ErrorType.CARD_CANT_ATTACK;
+        }
+        ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell());
     }
 
     private static int getDistance(Cell cell1, Cell cell2) {
