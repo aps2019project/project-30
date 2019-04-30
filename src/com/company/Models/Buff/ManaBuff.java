@@ -5,8 +5,11 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 
 public class ManaBuff extends Buff {
-    public ManaBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
-        super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
+
+    public ManaBuff(Buff.Type antiBuff, int castTime, int remTurnToCast, int value) {
+        super(antiBuff, castTime, remTurnToCast, value);
+        super.name = Name.MANA;
+        super.type = Type.POSSETIVE;
     }
 
     @Override
@@ -15,9 +18,17 @@ public class ManaBuff extends Buff {
             if (canCastThisTurn()) {
                 Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incremeantMana(this.value);
             }
-        } else{
+        } else {
             destruct();
         }
         decrementCounters();
+    }
+
+    public ManaBuff clone() {
+        ManaBuff manaBuff = new ManaBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        manaBuff.name = this.name;
+        manaBuff.type = this.type;
+
+        return manaBuff;
     }
 }

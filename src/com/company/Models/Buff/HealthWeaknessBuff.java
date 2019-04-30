@@ -30,4 +30,10 @@ public class HealthWeaknessBuff extends Buff{
         }
         decrementCounters();
     }
+    public HealthWeaknessBuff clone() {
+         HealthWeaknessBuff healthWeaknessBuff= new HealthWeaknessBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        healthWeaknessBuff.name = this.name;
+        healthWeaknessBuff.type = this.type;
+        return healthWeaknessBuff;
+    }
 }

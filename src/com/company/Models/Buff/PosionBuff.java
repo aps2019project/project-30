@@ -15,14 +15,20 @@ public class PosionBuff extends Buff{
         if(isActive()){
             if(canCastThisTurn()) {
                 if (cardToCast instanceof Hero) {
-                    ((Hero) cardToCast).decremeantHealth(1);
+                    ((Hero) cardToCast).decrementHealth(1);
                 } else if (cardToCast instanceof Minion) {
-                    ((Minion) cardToCast).decremeantHealth(1);
+                    ((Minion) cardToCast).decrementHealth(1);
                 }
             }
         } else{
             destruct();
         }
         decrementCounters();
+    }
+    public PosionBuff clone() {
+        PosionBuff posionBuff = new PosionBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        posionBuff.name = this.name;
+        posionBuff.type = this.type;
+        return posionBuff;
     }
 }

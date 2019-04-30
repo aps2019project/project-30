@@ -22,4 +22,10 @@ public class DispelBuff extends Buff{
         }
         decrementCounters();
     }
+    public DispelBuff clone() {
+        DispelBuff dispelBuff = new DispelBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        dispelBuff.name = this.name;
+        dispelBuff.type = this.type;
+        return dispelBuff;
+    }
 }
