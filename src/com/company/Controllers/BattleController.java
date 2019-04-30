@@ -144,7 +144,7 @@ public class BattleController {
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
-                    doSpecialPoweronEnemyEnemu(x, y);
+                    doSpecialPoweronEnemyMinion(x, y);
                     break;
                 case FRIEND_MINION:
                     doSpecialPowerOnFriendMinion(x, y);
@@ -152,28 +152,52 @@ public class BattleController {
                 case ENEMY_HERO:
                     doSpecialPowerEnemyHero(x, y);
                     break;
+                case FRIEND_HERO:
+                    doSpecialPowerFriendHero(x, y);
+                    break;
                 case ENEMY_SOLDIER:
                     doSpecialPowerOnEnemySolder(x, y);
                     break;
-                case WHOLE_ENEMY:
-                    doSpecialPowerOnFWholeEnemy();
+                case FRIEND_SOLDIER:
+                    doSpecialPowerOnFreindSolder(x, y);
                     break;
-                case WHOLE_FRIEND:
+                case WHOLE_ENEMY:
                     doSpecialPowerOnWholeEnemy();
                     break;
+                case WHOLE_FRIEND:
+                    doSpecialPowerOnWholeFriend();
+                    break;
                 case NEAR_ENEMYS_HERO:
-                    doSpecialPowerOnNearEnemyHero();
+                    doSpecialPowerOnNear("enemy");
                     break;
                 case NEAR_FRIENDS_HERO:
+                    doSpecialPowerOnNear("friend");
+                    break;
+                case SQUARE_2:
+
+                    break;
             }
         }
     }
 
-    private void doSpecialPowerOnNearEnemyHero() {
-        for(Card card:getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()){
-            if(card instanceof Hero){
-                int x=((Hero) card).getCell().getxCoordinate();
-                int y=((Hero) card).getCell().getyCoordinate();
+    private void doSpecialPowerOnNear(String type) {
+        int x=0,y=0;
+        if(type.equals("enemy")) {
+            for (Card card : getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()) {
+                if (card instanceof Hero) {
+                    x = ((Hero) card).getCell().getxCoordinate();
+                    y = ((Hero) card).getCell().getyCoordinate();
+                    break;
+                }
+            }
+        }
+        else{
+            for (Card card : battle.getTurnToPlay().getUsedCards()) {
+                if (card instanceof Hero) {
+                    x = ((Hero) card).getCell().getxCoordinate();
+                    y = ((Hero) card).getCell().getyCoordinate();
+                    break;
+                }
             }
         }
         for(int i=-1;i<=1;i++){
@@ -186,15 +210,14 @@ public class BattleController {
     }
 
     private void doSpecialPowerOnWholeEnemy() {
-        for (Card card:battle.getTurnToPlay().getUsedCards()){
+        for (Card card:getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()){
             if(card instanceof Hero ||card instanceof Minion){
                 doUseSpecialPowerSwichCase(((Soldier) card).getCell());
             }
         }
     }
-
-    private void doSpecialPowerOnFWholeEnemy() {
-        for (Card card:getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()){
+    private void doSpecialPowerOnWholeFriend() {
+        for (Card card:battle.getTurnToPlay().getUsedCards()){
             if(card instanceof Hero ||card instanceof Minion){
                 doUseSpecialPowerSwichCase(((Soldier) card).getCell());
             }
@@ -208,29 +231,54 @@ public class BattleController {
         }
         doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
     }
-
-    private void doSpecialPowerEnemyHero(int x, int y) {
-        if(!(battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)||playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()){
-            //todo eror message
+    private void doSpecialPowerOnFreindSolder(int x, int y) {
+        if(playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())){
+            //todo eror mmessage
             return;
         }
         doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+    }
+
+    private void doSpecialPowerEnemyHero(int x, int y) {
+        if((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())){
+
+            doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+        }
+        else {
+            //todo eror message
+        }
+    }
+    private void doSpecialPowerFriendHero(int x, int y) {
+        if((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()){
+
+            doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+        }
+        else {
+            //todo eror message
+        }
     }
 
     private void doSpecialPowerOnFriendMinion(int x, int y) {
-        if (!(battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)||playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())!=battle.getTurnToPlay()) {
-            //todo eror message
-            return;
+        if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()) {
+            doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
         }
-        doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+        else{
+            //todo eror message
+        }
+
+
     }
 
-    private void doSpecialPoweronEnemyEnemu(int x, int y) {
-        if (!(battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)||playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()) {
-            //todo eror message
-            return;
+    private void doSpecialPoweronEnemyMinion(int x, int y) {
+        if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())) {
+
+            doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+
         }
-        doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+        else {
+            //todo eror message
+        }
+
     }
 
 
