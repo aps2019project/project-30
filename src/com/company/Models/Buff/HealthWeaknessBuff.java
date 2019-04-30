@@ -16,9 +16,9 @@ public class HealthWeaknessBuff extends Buff{
         if(isActive()){
             if(canCastThisTurn()){
                 if (super.cardToCast instanceof Hero)
-                    ((Hero) super.cardToCast).decremeantHealth(value);
+                    ((Hero) super.cardToCast).decrementHealth(value);
                 else if (super.cardToCast instanceof Minion)
-                    ((Minion) super.cardToCast).decremeantHealth(value);
+                    ((Minion) super.cardToCast).decrementHealth(value);
                 setCasted(true);
             }
         }else{
@@ -29,5 +29,11 @@ public class HealthWeaknessBuff extends Buff{
             destruct();
         }
         decrementCounters();
+    }
+    public HealthWeaknessBuff clone() {
+         HealthWeaknessBuff healthWeaknessBuff= new HealthWeaknessBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        healthWeaknessBuff.name = this.name;
+        healthWeaknessBuff.type = this.type;
+        return healthWeaknessBuff;
     }
 }

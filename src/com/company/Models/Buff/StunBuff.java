@@ -14,4 +14,10 @@ public class StunBuff extends Buff{
         }
         decrementCounters();
     }
+    public StunBuff clone() {
+        StunBuff stunBuff = new StunBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
+        stunBuff.name = this.name;
+        stunBuff.type = this.type;
+        return stunBuff;
+    }
 }
