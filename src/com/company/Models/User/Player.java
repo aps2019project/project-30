@@ -20,6 +20,7 @@ public class Player {
     private Spell spell;
     private Card selectedCard;
     private ArrayList<Card> usedCardsToAttack;
+    private ArrayList<Card> usedCards;
 
     public Player(Account account) {
         this.account = account;
@@ -90,4 +91,10 @@ public class Player {
     public ArrayList<Card> getUsedCardsToAttack() {
         return usedCardsToAttack;
     }
+
+    public ArrayList<Card> getUsedCards() {
+        return usedCards;
+    }
+
+
 }
