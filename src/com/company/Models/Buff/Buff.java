@@ -5,7 +5,7 @@ import com.company.Models.Card.Card;
 public abstract class Buff {
     public enum Type {POSSETIVE, NEGATIVE}
 
-    public enum Name {HOLY, HEALTH_POWER, ATTACK_POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM, DISPELL}
+    public enum Name {HOLY, HEALTH_POWER, HEALTH_WEAKNESS, ATTACK_POWER, ATTACK_WEAKNESS, MANA, ANTI, POSION, STUN, DISARM, DISPELL}
 
     Type type;
     Name name;

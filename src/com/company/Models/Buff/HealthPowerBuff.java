@@ -13,10 +13,12 @@ public class HealthPowerBuff extends Buff {
     @Override
     public void cast() {
         if (isActive()) {
-            if (!isCasted) {
-                ((Soldier) super.cardToCast).incrementHealth(value);
-                setCasted(true);
-                decrementCounters();
+            if (canCastThisTurn()) {
+                if (!isCasted) {
+                    ((Soldier) super.cardToCast).incrementHealth(value);
+                    setCasted(true);
+                    decrementCounters();
+                }
             }
         } else {
             ((Soldier) super.cardToCast).decrementHealth(value);

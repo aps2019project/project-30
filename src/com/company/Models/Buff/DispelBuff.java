@@ -10,11 +10,16 @@ public class DispelBuff extends Buff{
     @Override
     public void cast() {
         if(isActive()){
-            for(Buff buff:cardToCast.getBuffsCasted()){
-                if(!buff.name.equals(Name.DISPELL)){
-                    cardToCast.getBuffsCasted().remove(buff);
+            if(canCastThisTurn()) {
+                for (Buff buff : cardToCast.getBuffsCasted()) {
+                    if (!buff.name.equals(Name.DISPELL)) {
+                        cardToCast.getBuffsCasted().remove(buff);
+                    }
                 }
             }
+        } else{
+            destruct();
         }
+        decrementCounters();
     }
 }
