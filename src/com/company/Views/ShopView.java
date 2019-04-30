@@ -25,10 +25,12 @@ public class ShopView {
     private static void showHeroes() {
         System.out.println("Heroes :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
-            System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
-                    "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getAttackPower() +
-                    "- HP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHealth() + /*special power*/
-                    "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            if (Shop.getShopCollection().getCards().get(i) instanceof Hero) {
+                System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
+                        "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getAttackPower() +
+                        "- HP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHealth() + /*special power*/
+                        "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            }
         }
     }
 

@@ -13,7 +13,7 @@ import com.company.Views.ConsoleOutput;
 public class CollectionController {
     //public static void
     public void show() {
-        CollectionViews.show();
+        CollectionViews.show(Account.getLoggedInAccount().getCollection().getCards());
     }
 
     public void showAllDecks(){

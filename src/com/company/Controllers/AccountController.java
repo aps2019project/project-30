@@ -12,6 +12,7 @@ import java.util.Comparator;
 
 
 public class AccountController {
+    AccountView view = new AccountView();
     public static void createAccount(String username, String password) {
         if (!usernameExists(username)) {
             Account.addToAccounts(

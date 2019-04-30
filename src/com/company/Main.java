@@ -26,14 +26,14 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-//        for (Hero hero : JsonController.getHeroes()) {
-//            System.out.println(hero.getName());
-//        }
         ShopController.initialize();
         ConsoleInput.menusHandler();
 
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000,1, 4);
         StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
+
+
+
 
         Hero hero = new Hero();
         hero.setName("Simorgh");
@@ -45,6 +45,9 @@ public class Main {
         hero.getBuffsToCast().add(stunBuff);
         hero.setManaPoint(5);
         hero.setCoolDown(8);
+
+//        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
+
         System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));
     }
 }

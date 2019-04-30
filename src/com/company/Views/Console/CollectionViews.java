@@ -7,6 +7,7 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.User.Account;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CollectionViews {
@@ -18,9 +19,9 @@ public class CollectionViews {
         System.out.println(cardId);
     }
 
-    public static void show() {
+    public static void show(ArrayList<Card> cards) {
         System.out.println("Heroes : ");
-        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
+        for (Card card : cards) {
             if (card instanceof Hero) {
                 System.out.println("\t" + ": Name " + card.getName() + "\tid : " + card.getId()+ 
                         " - Ap : " + ((Hero) card).getAttackPower() +
