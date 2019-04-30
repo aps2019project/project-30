@@ -19,7 +19,7 @@ public class HolyBuff extends Buff{
                 ((Minion) super.cardToCast).incrementHealth(1);
             decrementCounters();
         } else {
-            destuct();
+            destruct();
         }
     }
 }
