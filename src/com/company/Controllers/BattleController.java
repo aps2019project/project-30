@@ -7,6 +7,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Soldier;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
@@ -236,19 +237,49 @@ public class BattleController {
 
     public void attack(Cell target) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
-        switch (((Hero) turnToPlay.getSelectedCard()).getAttackType()){
-            case MELEE :
-                if (getDistance(target, ((Hero) turnToPlay.getSelectedCard()).getCell()) < 2) {
-
-                }
+        ErrorType errorType;
+        if (!isCardIdValid(target.getCardInCell().getId())){
+            errorType = ErrorType.CARD_ID_INVALID;
         }
-        battle.getTurnToPlay()
+        switch (((Soldier) turnToPlay.getSelectedCard()).getAttackType()){
+            case MELEE :
+                if (!isNearby(target, ((Soldier) turnToPlay.getSelectedCard()).getCell())) {
+                    errorType = ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
+                }
+                break;
+            case RANGED:
+                if (getDistance(target, ((Soldier) turnToPlay.getSelectedCard()).getCell()) > ((Soldier) turnToPlay.getSelectedCard()).getAreaOfEffect()
+                || isNearby(target, ((Soldier) turnToPlay.getSelectedCard()).getCell())) {
+                    errorType = ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
+                }
+                break;
+            case HYBRID:
+                if (getDistance(target, ((Soldier) turnToPlay.getSelectedCard()).getCell()) > ((Soldier) turnToPlay.getSelectedCard()).getAreaOfEffect()) {
+                    errorType = ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
+                }
+                break;
+        }
+
 //        ((Hero) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).attack(target.getCardInCell());
     }
 
-    public static int getDistance(Cell cell1, Cell cell2) {
+    private static int getDistance(Cell cell1, Cell cell2) {
         int xDistance = cell1.getxCoordinate() - cell2.getxCoordinate();
         int yDistance = cell1.getyCoordinate() - cell2.getyCoordinate();
         return (int) Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
     }
+
+    private static boolean isNearby(Cell cell1, Cell cell2) {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (cell2.getxCoordinate() + i == cell1.getxCoordinate()
+                && cell2.getyCoordinate() + j == cell1.getyCoordinate()
+                && !(i == 0 && j == 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

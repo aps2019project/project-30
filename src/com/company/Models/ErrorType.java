@@ -15,7 +15,8 @@ public enum ErrorType {
     ITEM_EXISTS("This deck has item"),
     DECK_VALIDATE("Deck is not validate"),
     CARD_ID_INVALID("Invalid card id"),
-    INVALID_CELL("Invalid target");
+    INVALID_CELL("Invalid target"),
+    UNAVAILABLE_OPPONENT_SOLDIER("Opponent minion is unavailable for attack");
 
 
 
