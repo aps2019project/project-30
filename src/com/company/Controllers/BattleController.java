@@ -141,11 +141,14 @@ public class BattleController {
                 }
                 switch (battle.getTurnToPlay().getSelectedCard().getTargetType()){
                     case ENEMY_MINION:
-                    case FRIEND_MINION:
-                    case ENEMY_SOLDIER:
-                        for(Buff buff:battle.getTurnToPlay().getSelectedCard().getBuffsToCast()){
-                            Buff
+                        if(!(battle.getMap().getCellByCoordinates(x,y).getCardInCell() instanceof Minion)){
+                            //todo eror message
                         }
+                        for(Buff buff:battle.getTurnToPlay().getSelectedCard().getBuffsToCast()){
+                            battle.getMap().getCellByCoordinates(x,y).getCardInCell().getBuffsCasted().add(buff.clone());
+                        }
+                        break;
+
                 }
             }
         }

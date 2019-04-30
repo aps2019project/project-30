@@ -74,4 +74,6 @@ public abstract class Buff {
         }
         return false;
     }
+
+    public abstract Buff clone();
 }
