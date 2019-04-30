@@ -162,9 +162,25 @@ public class BattleController {
                     doSpecialPowerOnWholeEnemy();
                     break;
                 case NEAR_ENEMYS_HERO:
-
-
+                    doSpecialPowerOnNearEnemyHero();
                     break;
+                case NEAR_FRIENDS_HERO:
+            }
+        }
+    }
+
+    private void doSpecialPowerOnNearEnemyHero() {
+        for(Card card:getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()){
+            if(card instanceof Hero){
+                int x=((Hero) card).getCell().getxCoordinate();
+                int y=((Hero) card).getCell().getyCoordinate();
+            }
+        }
+        for(int i=-1;i<=1;i++){
+            for(int j=-1;j<1;j++) {
+                if(!(i==0&&j==0)) {
+                    doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
+                }
             }
         }
     }
