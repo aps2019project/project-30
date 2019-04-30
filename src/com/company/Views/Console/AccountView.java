@@ -14,11 +14,11 @@ public class AccountView {
     }
 
     public static void printAccountCommandsToHelp() {
-        ConsoleOutput.printMessage("##### Account Commands #####");
-        ConsoleOutput.printMessage("1- create account [username] : to creating new account");
-        ConsoleOutput.printMessage("2- login [username] : to logging in to existing account");
-        ConsoleOutput.printMessage("3- show leaderboard : to show ranking of accounts");
-        ConsoleOutput.printMessage("4- save : to save!");
-        ConsoleOutput.printMessage("5- logout : obviously to logging out!");
+        System.out.println("##### Account Commands #####");
+        System.out.println("1- create account [username] : to creating new account");
+        System.out.println("2- login [username] : to logging in to existing account");
+        System.out.println("3- show leaderboard : to show ranking of accounts");
+        System.out.println("4- save : to save!");
+        System.out.println("5- logout : obviously to logging out!");
     }
 }

@@ -4,6 +4,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Soldier;
 
 import java.util.ArrayList;
 
@@ -14,15 +15,16 @@ public class BattleView {
         this.battle = battle;
     }
 
-    public static void printMinionsInfo(ArrayList<Minion> minions) {
-        minions.forEach(minion ->
+    public static void printSoldiersInfo(ArrayList<Soldier> soldiers) {
+        soldiers.forEach(soldier ->
                 System.out.printf(
-                        "%d : %s, health : %d, location : (%d, %d), power : %d\n",
-                        minion.getId(),
-                        minion.getName(),
-                        minion.getCell().getxCoordinate(),
-                        minion.getCell().getyCoordinate(),
-                        minion.getAttackPower()
+                        "\t%s - %s, health : %d, location : (%d, %d), power : %d\n",
+                        soldier.getId(),
+                        soldier.getName(),
+                        soldier.getHealth(),
+                        soldier.getCell().getxCoordinate(),
+                        soldier.getCell().getyCoordinate(),
+                        soldier.getAttackPower()
                 )
         );
     }
