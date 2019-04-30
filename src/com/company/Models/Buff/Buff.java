@@ -5,6 +5,7 @@ import com.company.Models.Card.Spell.Spell;
 
 public abstract class Buff {
     public enum Type {POSSETIVE, NEGATIVE}
+
     public enum Name {HOLY, HEALTH_POWER, ATTACK_POWER, MANA, ANTI, POSION, WEAKNESS, STUN, DISARM, DISPELL}
 
     Type type;
@@ -35,10 +36,10 @@ public abstract class Buff {
     public abstract void cast();
 
     boolean isActive() {
-        if(hasAntiBuff()==false||(remTurnToBeInactive>0&&remTurnToCast<=0)){
+        if (hasAntiBuff() == false || (remTurnToBeInactive > 0 && remTurnToCast <= 0)) {
             return true;
         }
-        if(remTurnToBeInactive==0){
+        if (remTurnToBeInactive == 0) {
             destuct();
         }
         return false;
@@ -64,13 +65,15 @@ public abstract class Buff {
     public void setCasted(boolean casted) {
         isCasted = casted;
     }
+
     // destruct Method Remove buff from buffsCasted's Player
     public void destuct() {
         cardToCast.getBuffsCasted().remove(this);
     }
-    public boolean hasAntiBuff(){
+
+    public boolean hasAntiBuff() {
         for (Buff buff : cardToCast.getBuffsCasted()) {
-            if(name.equals(buff.antiBuff)){
+            if (name.equals(buff.antiBuff)) {
                 return true;
             }
         }

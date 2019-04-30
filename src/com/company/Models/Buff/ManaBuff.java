@@ -5,16 +5,14 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 
 public class ManaBuff extends Buff {
-    int numberOfManasToincrement;
-    public ManaBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value, int numberOfManasToincrement) {
+    public ManaBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
         super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
-        this.numberOfManasToincrement = numberOfManasToincrement;
     }
 
     @Override
     public void cast() {
         if (isActive()) {
-            Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incremeantMana(this.numberOfManasToincrement);
+            Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incremeantMana(this.value);
         }
     }
 }
