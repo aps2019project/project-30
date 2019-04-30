@@ -21,7 +21,7 @@ public class ShopController {
 
     public static void buy(Account account, String cardName) {
         if (Shop.cardNameExistsInShop(cardName)) {
-            Card newCard = Shop.getCardByName(cardName);
+            Card newCard = makeCopyForCreatingNewCardInShop(cardName);
             if (account.getDrake() >= newCard.getPriceInDrake()) {
                 AccountController.addCardToCollection(account,ShopController.makeCopyForCreatingNewCardInShop(newCard.getName()));
                 account.decrementDrake(newCard.getPriceInDrake());

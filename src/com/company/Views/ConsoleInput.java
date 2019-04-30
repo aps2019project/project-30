@@ -83,7 +83,7 @@ public class ConsoleInput {
         } else if (command.matches("delete deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[2]);
         } else if (command.matches("search \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().search(commandParts[1]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[1]);
         } else if (command.matches("show")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("save")) {
@@ -140,18 +140,18 @@ public class ConsoleInput {
             ShopView.showAll();
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
-        } else if (command.matches("search [a-zA-Z]+")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+        } else if (command.matches("search .+")) {
+            Matcher matcher = Pattern.compile("search (?<cardName>.+)").matcher(command);
             matcher.find();
             ShopController.search(matcher.group("cardName"));
         } else if (command.matches("show collection")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("search collection")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+            Matcher matcher = Pattern.compile("search collection (?<cardName>.+)").matcher(command);
             matcher.find();
             Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
-        } else if (command.matches("buy .*")) {
-            Matcher matcher = Pattern.compile("buy (?<cardName>.*)").matcher(command);
+        } else if (command.matches("buy [a-zA-Z]+")) {
+            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
             ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {
