@@ -8,8 +8,9 @@ public class AntiBuff extends Buff {
     }
     @Override
     public void cast() {
-        if(isActive()){
-            decrementCounters();
+        if(!isActive()){
+            destruct();
         }
+        decrementCounters();
     }
 }

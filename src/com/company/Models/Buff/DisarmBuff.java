@@ -10,7 +10,7 @@ public class DisarmBuff extends Buff{
         if (isActive()) {
             decrementCounters();
         } else {
-            destuct();
+            destruct();
         }
     }
 }

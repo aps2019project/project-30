@@ -11,6 +11,7 @@ public class
 Minion extends Soldier {
     private ActivationTime activationTime;
 
+    @Override
     public Minion clone(){
         Minion minion = new Minion();
         minion.setDescription(this.getDescription());
@@ -21,7 +22,18 @@ Minion extends Soldier {
         minion.setHealth(this.getHealth());
         minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
-        minion.setId(Card.createNewCardId(this));
+        return minion;
+    }
+
+    public Minion makeCopyForCreatingNewCardInShop(){
+        Minion minion = this.clone();
+        minion.setId(Card.createNewCardIdToCreatingNewCardInShop());
+        return minion;
+    }
+
+    public Minion makeCopyForCreatingNewCardInBattle(){
+        Minion minion = this.clone();
+        minion.setId(Card.createNewCardIdToCreatingNewCardInBattle(this.getName()));
         return minion;
     }
 }

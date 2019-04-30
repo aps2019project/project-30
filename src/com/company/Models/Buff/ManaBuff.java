@@ -12,7 +12,12 @@ public class ManaBuff extends Buff {
     @Override
     public void cast() {
         if (isActive()) {
-            Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incremeantMana(this.value);
+            if (canCastThisTurn()) {
+                Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incremeantMana(this.value);
+            }
+        } else{
+            destruct();
         }
+        decrementCounters();
     }
 }

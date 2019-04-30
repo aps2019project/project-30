@@ -49,10 +49,21 @@ public class Hero extends Soldier {
         hero.setHealth(this.getHealth());
         hero.setCell(this.getCell());
         hero.setTargetType(this.getTargetType());
-        hero.setAttackType(super.getAttackType());
-        hero.setAttackPower(super.getAttackPower());
-        hero.setAreaOfEffect(super.getAreaOfEffect());
-        hero.setId(Card.createNewCardId(this));
+        hero.setAttackType(getAttackType());
+        hero.setAttackPower(getAttackPower());
+        hero.setAreaOfEffect(getAreaOfEffect());
+        return hero;
+    }
+
+    public Hero makeCopyForCreatingNewCardInShop(){
+        Hero hero = this.clone();
+        hero.setId(Card.createNewCardIdToCreatingNewCardInShop());
+        return hero;
+    }
+
+    public Hero makeCopyForCreatingNewCardInBattle(){
+        Hero hero = this.clone();
+        hero.setId(Card.createNewCardIdToCreatingNewCardInBattle(this.getName()));
         return hero;
     }
 }

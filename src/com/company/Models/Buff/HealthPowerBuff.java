@@ -20,7 +20,7 @@ public class HealthPowerBuff extends Buff {
             }
         } else {
             ((Soldier) super.cardToCast).decrementHealth(value);
-            destuct();
+            destruct();
         }
     }
 
