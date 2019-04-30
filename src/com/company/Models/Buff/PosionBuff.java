@@ -4,8 +4,8 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 
 public class PosionBuff extends Buff{
-    public PosionBuff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
-        super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
+    public PosionBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+        super(antiBuff,castTime, remTurnToCast, value);
         name = Name.POSION;
         type = Type.NEGATIVE;
     }

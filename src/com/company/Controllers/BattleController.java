@@ -128,27 +128,58 @@ public class BattleController {
         }
 
     }
-    public void useSpecialPawer(int x,int y){
-        if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
-            if(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining()!=0){
+
+    public void useSpecialPawer(int x, int y) {
+        if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
+            if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
                 //todo eror message
                 return;
             }
-            if(battle.getTurnToPlay().getSelectedCard().getManaPoint()<=battle.getTurnToPlay().getMana()){
-                int newmana=battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint();
-                battle.getTurnToPlay().setMana(newmana);
-                if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
-                    ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
-                }
-                switch (battle.getTurnToPlay().getSelectedCard().getTargetType()){
-                    case ENEMY_MINION:
-                    case FRIEND_MINION:
-                    case ENEMY_SOLDIER:
-                        for(Buff buff:battle.getTurnToPlay().getSelectedCard().getBuffsToCast()){
-//                            Buff
-                        }
-                }
+        }
+        if (battle.getTurnToPlay().getSelectedCard().getManaPoint() <= battle.getTurnToPlay().getMana()) {
+            int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
+            battle.getTurnToPlay().setMana(newmana);
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
             }
+            switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
+                case ENEMY_MINION:
+                    if (!(battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)) {
+                        //todo eror message
+                    }
+                    doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+                    break;
+                case ENEMY_HERO:
+
+                   break;
+                case ENEMY_SOLDIER:
+
+
+            }
+        }
+    }
+    //private void do()
+
+    private void doUseSpecialPowerSwichCase(Cell cell) {
+        int x=cell.getxCoordinate();
+        int y=cell.getyCoordinate();
+        int startEndenx = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
+        for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
+            Buff buff1 = buff.clone();
+            buff1.setCardToCast(battle.getMap().getCellByCoordinates(x, y).getCardInCell());
+            battle.getMap().getCellByCoordinates(x, y).getCardInCell().getBuffsCasted().add(buff1);
+        }
+        int counter = 0;
+        for (Buff buff : battle.getMap().getCellByCoordinates(x, y).getCardInCell().getBuffsCasted()) {
+            counter++;
+            if (counter == startEndenx) {
+                buff.cast();
+            }
+        }
+    }
+    private Player getEenmyPlayer(Player player){
+        if(player==battle.getPlayers()[0]){
+            return battle.getPlayers()[1];
         }
     }
     public void showMyMinion(){
@@ -214,7 +245,7 @@ public class BattleController {
                 if (newCard.getManaPoint() >= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
                     cell.setCardInCell(newCard);
-                    Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
+                    Battle.getPlayingBattle().getTurnToPlay().addNewCardToCards(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
