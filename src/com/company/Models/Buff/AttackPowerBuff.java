@@ -19,7 +19,6 @@ public class AttackPowerBuff extends Buff {
                 else if (super.cardToCast instanceof Minion)
                     ((Minion) super.cardToCast).incrementAttackPower(value);
                 setCasted(true);
-                decrementCounters();
             }
         } else {
             if (super.cardToCast instanceof Hero)
@@ -28,5 +27,6 @@ public class AttackPowerBuff extends Buff {
                 ((Minion) super.cardToCast).decrementAttackPower(value);
             destruct();
         }
+        decrementCounters();
     }
 }

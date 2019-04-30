@@ -18,7 +18,6 @@ public class HealthPowerBuff extends Buff {
                 else if (super.cardToCast instanceof Minion)
                     ((Minion) super.cardToCast).incrementHealth(value);
                 setCasted(true);
-                decrementCounters();
             }
         } else {
             if (super.cardToCast instanceof Hero)
@@ -27,6 +26,7 @@ public class HealthPowerBuff extends Buff {
                 ((Minion) super.cardToCast).decremeantHealth( value);
             destruct();
         }
+        decrementCounters();
     }
 
 }
