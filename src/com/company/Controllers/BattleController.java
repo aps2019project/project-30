@@ -240,8 +240,8 @@ public class BattleController {
     }
 
     private void doSpecialPowerEnemyHero(int x, int y) {
-        if((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())){
-
+        if((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)&&
+                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())){
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
         }
         else {
@@ -249,8 +249,8 @@ public class BattleController {
         }
     }
     private void doSpecialPowerFriendHero(int x, int y) {
-        if((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()){
-
+        if((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)&&
+                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()){
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
         }
         else {
@@ -259,7 +259,8 @@ public class BattleController {
     }
 
     private void doSpecialPowerOnFriendMinion(int x, int y) {
-        if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()) {
+        if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion&&
+                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==battle.getTurnToPlay()) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
         }
         else{
@@ -270,7 +271,8 @@ public class BattleController {
     }
 
     private void doSpecialPoweronEnemyMinion(int x, int y) {
-        if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)&&playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())) {
+        if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)&&
+                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())==getEenmyPlayer(battle.getTurnToPlay())) {
 
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
 
