@@ -3,11 +3,12 @@ package com.company.Models.Buff;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 
-public class HealthPowerBuff extends Buff {
-    public HealthPowerBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
+public class AttackWeaknessBuff extends Buff {
+
+    public AttackWeaknessBuff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
         super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
-        super.name = Name.HEALTH_POWER;
-        super.type = Type.POSSETIVE;
+        super.name = Name.ATTACK_WEAKNESS;
+        super.type = Type.NEGATIVE;
     }
 
     @Override
@@ -15,19 +16,18 @@ public class HealthPowerBuff extends Buff {
         if (isActive()) {
             if (!isCasted) {
                 if (super.cardToCast instanceof Hero)
-                    ((Hero) super.cardToCast).incrementHealth(value);
+                    ((Hero) super.cardToCast).decrementAttackPower(value);
                 else if (super.cardToCast instanceof Minion)
-                    ((Minion) super.cardToCast).incrementHealth(value);
+                    ((Minion) super.cardToCast).decrementAttackPower(value);
                 setCasted(true);
             }
         } else {
             if (super.cardToCast instanceof Hero)
-                ((Hero) super.cardToCast).decremeantHealth(value);
+                ((Hero) super.cardToCast).incrementAttackPower(value);
             else if (super.cardToCast instanceof Minion)
-                ((Minion) super.cardToCast).decremeantHealth(value);
+                ((Minion) super.cardToCast).incrementAttackPower(value);
             destruct();
         }
         decrementCounters();
     }
-
 }
