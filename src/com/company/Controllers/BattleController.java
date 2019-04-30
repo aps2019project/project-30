@@ -284,36 +284,42 @@ public class BattleController {
 
     public void attack(Cell target) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
-        ErrorType errorType = null;
-        if (!isCardIdValid(target.getCardInCell().getId())){
-            errorType = ErrorType.CARD_ID_INVALID;
-        }
-        switch (((Soldier) turnToPlay.getSelectedCard()).getAttackType()){
-            case MELEE :
-                if (!isNearby(target, ((Soldier) turnToPlay.getSelectedCard()).getCell())) {
-                    errorType = ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
-                }
-                break;
-            case RANGED:
-                if (getDistance(target, ((Soldier) turnToPlay.getSelectedCard()).getCell()) > ((Soldier) turnToPlay.getSelectedCard()).getAreaOfEffect()
-                || isNearby(target, ((Soldier) turnToPlay.getSelectedCard()).getCell())) {
-                    errorType = ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
-                }
-                break;
-            case HYBRID:
-                if (getDistance(target, ((Soldier) turnToPlay.getSelectedCard()).getCell()) > ((Soldier) turnToPlay.getSelectedCard()).getAreaOfEffect()) {
-                    errorType = ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
-                }
-                break;
-        }
-        if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
-            errorType = ErrorType.CARD_CANT_ATTACK;
-        }
+        ErrorType errorType = getErrorTypeOfAttack(target, turnToPlay);
         if (errorType != null) {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
             ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell());
         }
+    }
+
+    private ErrorType getErrorTypeOfAttack(Cell target, Player turnToPlay) {
+        Cell selectedCardCell = ((Soldier) turnToPlay.getSelectedCard()).getCell();
+        int selectedCardAreaOfEffect = ((Soldier) turnToPlay.getSelectedCard()).getAreaOfEffect();
+        if (!isCardIdValid(target.getCardInCell().getId())){
+            return ErrorType.CARD_ID_INVALID;
+        }
+        switch (((Soldier) turnToPlay.getSelectedCard()).getAttackType()){
+            case MELEE :
+                if (!isNearby(target, selectedCardCell)) {
+                    return ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
+                }
+                break;
+            case RANGED:
+                if (getDistance(target, selectedCardCell) > selectedCardAreaOfEffect
+                || isNearby(target, selectedCardCell)) {
+                    return ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
+                }
+                break;
+            case HYBRID:
+                if (getDistance(target, selectedCardCell) > selectedCardAreaOfEffect) {
+                    return ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
+                }
+                break;
+        }
+        if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
+            return ErrorType.CARD_CANT_ATTACK;
+        }
+        return null;
     }
 
     private static int getDistance(Cell beginning, Cell end) {
