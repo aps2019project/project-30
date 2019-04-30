@@ -32,7 +32,7 @@ public class Main {
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000,1, 4);
         StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
-
+/*
 
 
         Hero hero = new Hero();
@@ -48,6 +48,19 @@ public class Main {
 
 //        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 
-        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));
+        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));*/
+
+        Gson gson = new Gson();
+
+        Minion minion = new Minion();
+        minion.setName("Kamandar Fars");
+        minion.setPriceInDrake(300);
+        minion.setFullHealth(6);
+        minion.setManaPoint(2);
+        minion.setAttackPower(4);
+        minion.setAttackType(AttackType.RANGED);
+        minion.setAreaOfEffect(7);
+        System.out.println(JsonController.getGson().toJson(minion));
+
     }
 }

@@ -1,0 +1,13 @@
+{
+  "attackType": "RANGED",
+  "fullHealth": 6,
+  "health": 0,
+  "areaOfEffect": 7,
+  "attackPower": 4,
+  "name": "Kamandar Fars",
+  "manaPoint": 2,
+  "priceInDrake": 300,
+  "isInGraveCards": false,
+  "buffsToCast": [],
+  "buffsCasted": []
+}
