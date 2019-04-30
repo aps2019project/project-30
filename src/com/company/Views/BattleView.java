@@ -5,6 +5,7 @@ import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
+import com.company.Views.Console.CollectionViews;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ public class BattleView {
 
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
-        //Todo : printGraveYardCards : View
+        CollectionViews.show(cards);
     }
 
     private static void showHeroesCordinates() {
