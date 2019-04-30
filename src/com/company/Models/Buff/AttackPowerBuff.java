@@ -2,6 +2,7 @@ package com.company.Models.Buff;
 
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Soldier;
 
 public class AttackPowerBuff extends Buff {
     public AttackPowerBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
@@ -15,19 +16,13 @@ public class AttackPowerBuff extends Buff {
         if (isActive()) {
             if (canCastThisTurn()) {
                 if (!isCasted) {
-                    if (super.cardToCast instanceof Hero)
-                        ((Hero) super.cardToCast).incrementAttackPower(value);
-                    else if (super.cardToCast instanceof Minion)
-                        ((Minion) super.cardToCast).incrementAttackPower(value);
+                    ((Soldier) super.cardToCast).incrementAttackPower(value);
                     setCasted(true);
                     decrementCounters();
                 }
             }
         } else {
-            if (super.cardToCast instanceof Hero)
-                ((Hero) super.cardToCast).decrementAttackPower(value);
-            else if (super.cardToCast instanceof Minion)
-                ((Minion) super.cardToCast).decrementAttackPower(value);
+            ((Soldier) super.cardToCast).decrementAttackPower(value);
             destuct();
         }
     }
