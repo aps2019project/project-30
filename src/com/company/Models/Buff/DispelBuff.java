@@ -1,8 +1,8 @@
 package com.company.Models.Buff;
 
 public class DispelBuff extends Buff{
-    public DispelBuff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
-        super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
+    public DispelBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+        super(antiBuff, castTime, remTurnToCast, value);
         name=Name.DISPELL;
         type=Type.NEGATIVE;
     }

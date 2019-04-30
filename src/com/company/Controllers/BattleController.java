@@ -42,8 +42,8 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Minion) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
             }
         } else if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
@@ -52,8 +52,8 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Hero) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
             }
         }
@@ -127,33 +127,63 @@ public class BattleController {
         }
 
     }
-    public void useSpecialPawer(int x,int y){
-        if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
-            if(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining()!=0){
+
+    public void useSpecialPawer(int x, int y) {
+        if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
+            if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
                 //todo eror message
                 return;
             }
-            if(battle.getTurnToPlay().getSelectedCard().getManaPoint()<=battle.getTurnToPlay().getMana()){
-                int newmana=battle.getTurnToPlay().getMana()-battle.getTurnToPlay().getSelectedCard().getManaPoint();
-                battle.getTurnToPlay().setMana(newmana);
-                if(battle.getTurnToPlay().getSelectedCard() instanceof Hero){
-                    ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
-                }
-                switch (battle.getTurnToPlay().getSelectedCard().getTargetType()){
-                    case ENEMY_MINION:
-                        if(!(battle.getMap().getCellByCoordinates(x,y).getCardInCell() instanceof Minion)){
-                            //todo eror message
-                        }
-                        for(Buff buff:battle.getTurnToPlay().getSelectedCard().getBuffsToCast()){
-                            battle.getMap().getCellByCoordinates(x,y).getCardInCell().getBuffsCasted().add(buff.clone());
-                        }
-                        break;
+        }
+        if (battle.getTurnToPlay().getSelectedCard().getManaPoint() <= battle.getTurnToPlay().getMana()) {
+            int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
+            battle.getTurnToPlay().setMana(newmana);
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
+            }
+            switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
+                case ENEMY_MINION:
+                    if (!(battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)) {
+                        //todo eror message
+                    }
+                    doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+                    break;
+                case ENEMY_HERO:
 
-                }
+                   break;
+                case ENEMY_SOLDIER:
+
+
             }
         }
     }
-    public void showMyMinion(){
+    //private void do()
+
+    private void doUseSpecialPowerSwichCase(Cell cell) {
+        int x=cell.getxCoordinate();
+        int y=cell.getyCoordinate();
+        int startEndenx = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
+        for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
+            Buff buff1 = buff.clone();
+            buff1.setCardToCast(battle.getMap().getCellByCoordinates(x, y).getCardInCell());
+            battle.getMap().getCellByCoordinates(x, y).getCardInCell().getBuffsCasted().add(buff1);
+        }
+        int counter = 0;
+        for (Buff buff : battle.getMap().getCellByCoordinates(x, y).getCardInCell().getBuffsCasted()) {
+            counter++;
+            if (counter == startEndenx) {
+                buff.cast();
+            }
+        }
+    }
+    private Player getEenmyPlayer(Player player){
+        if(player==battle.getPlayers()[0]){
+            return battle.getPlayers()[1];
+        }
+        else return battle.getPlayers()[0];
+    }
+
+    public void showMyMinion() {
 
     }
 
@@ -240,7 +270,7 @@ public class BattleController {
         return null;
     }
 
-    public static Card createCopyFromExistingCard(Card card){
+    public static Card createCopyFromExistingCard(Card card) {
         switch (Card.getCardType(card.getName())) {
             case "Item":
                 return ((Item) Shop.getCardByName(card.getName())).clone();
@@ -254,8 +284,8 @@ public class BattleController {
 
     public void attack(Cell target) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
-        switch (((Hero) turnToPlay.getSelectedCard()).getAttackType()){
-            case MELEE :
+        switch (((Hero) turnToPlay.getSelectedCard()).getAttackType()) {
+            case MELEE:
                 if (getDistance(target, ((Hero) turnToPlay.getSelectedCard()).getCell()) < 2) {
 
                 }

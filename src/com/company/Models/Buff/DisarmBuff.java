@@ -1,8 +1,8 @@
 package com.company.Models.Buff;
 
 public class DisarmBuff extends Buff {
-    public DisarmBuff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
-        super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
+    public DisarmBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+        super(antiBuff, castTime, remTurnToCast, value);
         super.name=Name.DISARM;
         super.type=Type.NEGATIVE;
     }
