@@ -55,4 +55,8 @@ public class ShopController {
         }
     }
 
+    public static void initialize() {
+        Shop.getShopCollection().getCards().addAll(JsonController.getSpells());
+
+    }
 }
