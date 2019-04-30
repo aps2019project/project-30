@@ -24,5 +24,18 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 10,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 6,
+    "name": "Asbsavar Fars",
+    "manaPoint": 4,
+    "priceInDrake": 200,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]

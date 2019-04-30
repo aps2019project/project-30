@@ -65,12 +65,12 @@ public class Main {
 
 
         Minion minion = new Minion();
-        minion.setName("Neyzedar Fars");
-        minion.setPriceInDrake(500);
-        minion.setManaPoint(1);
-        minion.setFullHealth(5);
-        minion.setAttackPower(3);
-        minion.setAttackType(AttackType.HYBRID);
+        minion.setName("Asbsavar Fars");
+        minion.setPriceInDrake(200);
+        minion.setManaPoint(4);
+        minion.setFullHealth(10);
+        minion.setAttackPower(6);
+        minion.setAttackType(AttackType.MELEE);
 
 
         System.out.println(JsonController.getGson().toJson(minion));
