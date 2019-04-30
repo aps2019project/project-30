@@ -10,7 +10,7 @@
         "type": "NEGATIVE",
         "name": "DISARM",
         "isCasted": false,
-        "remTurnToBeInactive": 10000,
+        "castTime": 10000,
         "remTurnToCast": 0,
         "value": 0,
         "className": "com.company.Models.Buff.DisarmBuff"
@@ -29,7 +29,7 @@
         "type": "POSSETIVE",
         "name": "ATTACK_POWER",
         "isCasted": false,
-        "remTurnToBeInactive": 10000,
+        "castTime": 10000,
         "remTurnToCast": 0,
         "value": 2,
         "className": "com.company.Models.Buff.AttackPowerBuff"
@@ -48,10 +48,10 @@
         "type": "NEGATIVE",
         "name": "WEAKNESS",
         "isCasted": false,
-        "remTurnToBeInactive": 10000,
+        "castTime": 10000,
         "remTurnToCast": 0,
         "value": 4,
-        "className": "com.company.Models.Buff.WeaknessBuff"
+        "className": "com.company.Models.Buff.AttackWeaknessBuff"
       }
     ],
     "buffsCasted": []
@@ -67,7 +67,7 @@
         "type": "POSSETIVE",
         "name": "ATTACK_POWER",
         "isCasted": false,
-        "remTurnToBeInactive": 10000,
+        "castTime": 10000,
         "remTurnToCast": 0,
         "value": 4,
         "className": "com.company.Models.Buff.AttackPowerBuff"
@@ -86,10 +86,10 @@
         "type": "NEGATIVE",
         "name": "WEAKNESS",
         "isCasted": false,
-        "remTurnToBeInactive": 2,
+        "castTime": 2,
         "remTurnToCast": 0,
         "value": 4,
-        "className": "com.company.Models.Buff.WeaknessBuff"
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
     ],
     "buffsCasted": []
