@@ -5,6 +5,7 @@ import com.company.Controllers.ShopController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Minion.ActivationTime;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.TargetType;
@@ -29,7 +30,7 @@ public class Main {
         ShopController.initialize();
         ConsoleInput.menusHandler();
 
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000,1, 4);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
         StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
 /*
@@ -52,14 +53,26 @@ public class Main {
 
         Gson gson = new Gson();
 
-        Minion minion = new Minion();
-        minion.setName("Kamandar Fars");
-        minion.setPriceInDrake(300);
-        minion.setFullHealth(6);
+/*        Minion minion = new Minion();
+        minion.setName("Shamshirzan Fars");
+        minion.setPriceInDrake(400);
         minion.setManaPoint(2);
+        minion.setFullHealth(6);
         minion.setAttackPower(4);
-        minion.setAttackType(AttackType.RANGED);
-        minion.setAreaOfEffect(7);
+        minion.setAttackType(AttackType.MELEE);
+        minion.setActivationTime(ActivationTime.ON_ATTACK);
+        //Specialpower*/
+
+
+        Minion minion = new Minion();
+        minion.setName("Neyzedar Fars");
+        minion.setPriceInDrake(500);
+        minion.setManaPoint(1);
+        minion.setFullHealth(5);
+        minion.setAttackPower(3);
+        minion.setAttackType(AttackType.HYBRID);
+
+
         System.out.println(JsonController.getGson().toJson(minion));
 
     }
