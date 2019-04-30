@@ -13,13 +13,16 @@ public class PosionBuff extends Buff{
     @Override
     public void cast() {
         if(isActive()){
-            if(cardToCast instanceof Hero){
-                ((Hero) cardToCast).decremeantHealth(1);
+            if(canCastThisTurn()) {
+                if (cardToCast instanceof Hero) {
+                    ((Hero) cardToCast).decremeantHealth(1);
+                } else if (cardToCast instanceof Minion) {
+                    ((Minion) cardToCast).decremeantHealth(1);
+                }
             }
-            else if(cardToCast instanceof Minion){
-                ((Minion) cardToCast).decremeantHealth(1);
-            }
-            decrementCounters();
+        } else{
+            destruct();
         }
+        decrementCounters();
     }
 }
