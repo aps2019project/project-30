@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Minion.Minion;
 
@@ -27,16 +28,44 @@ public class BattleView {
     }
 
     public void printGameInfo() {
-        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-            System.out.printf(
-                    "Player %d: \n" +
-                            "manas: %d\n", battle.getPlayers()[playerIndex].getMana());
+        showPlayersMana();
+        switch (Battle.getPlayingBattle().getMode()) {
+            case KILLING_GENERAL:
+                showHeroesCordinates();
+                break;
+            case CAPTURE_THE_FLAG:
+                showFlagsCordinates();
+                break;
+            case COLLECTING_FLAGS:
+                showFlagsCordinates();
+                break;
         }
-        //mode info
     }
 
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
         //Todo : printGraveYardCards : View
+    }
+
+    private static void showHeroesCordinates() {
+        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+            System.out.printf(
+                    "Player %d Hero health: %d\n", playerIndex + 1, Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
+        }
+    }
+
+    private static void showPlayersMana() {
+        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+            System.out.println("Player " + playerIndex +
+                    "---- > manas: " + Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
+        }
+    }
+
+    private static void showFlagsCordinates() {
+        for (int flagIndex = 0; flagIndex < Battle.getPlayingBattle().getFlags().size(); flagIndex++) {
+            System.out.println("flag number " + (flagIndex + 1) +
+                    " ---> X:" + Battle.getPlayingBattle().getFlags().get(flagIndex).getCell().getxCoordinate()
+                    + "\t Y:" + Battle.getPlayingBattle().getFlags().get(flagIndex).getCell().getyCoordinate());
+        }
     }
 }

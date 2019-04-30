@@ -77,33 +77,33 @@ public class ConsoleInput {
     }
 
     public static void collectionMenuCommandsChecker(String command) {
-        String strings[] = command.split("\\s+");
+        String commandParts[] = command.split("\\s+");
         if (command.matches("create deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(strings[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(commandParts[2]);
         } else if (command.matches("delete deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(strings[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[2]);
         } else if (command.matches("search \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(strings[1]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[1]);
         } else if (command.matches("show")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("save")) {
             //save
             //todo
         } else if (command.matches("add \\w+ to deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(Integer.parseInt(strings[1]), strings[4]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(commandParts[1], commandParts[4]);
         } else if (command.matches("validate deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(strings[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(commandParts[2]);
         } else if (command.matches("remove \\w+ from deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().remove(Integer.parseInt(strings[1]), strings[4]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().remove(commandParts[1], commandParts[4]);
         } else if (command.matches("help")) {
             //help
             //todo
         } else if (command.matches("select deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(strings[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
         } else if (command.matches("show all decks")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().showDeck(strings[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().showDeck(commandParts[2]);
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         }
@@ -145,9 +145,11 @@ public class ConsoleInput {
             matcher.find();
             ShopController.search(matcher.group("cardName"));
         } else if (command.matches("show collection")) {
-            //show collection
+            Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("search collection")) {
-            //search collection
+            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+            matcher.find();
+            Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
         } else if (command.matches("buy [a-zA-Z]+")) {
             Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
@@ -155,7 +157,7 @@ public class ConsoleInput {
         } else if (command.matches("sell \\d+")) {
             Matcher matcher = Pattern.compile("search (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            ShopController.sell(Account.getLoggedInAccount(), Integer.parseInt(matcher.group("cardId")));
+            ShopController.sell(Account.getLoggedInAccount(),matcher.group("cardId"));
         } else if (command.matches("help")) {
             ShopView.printShopCommandsToHelp();
         }

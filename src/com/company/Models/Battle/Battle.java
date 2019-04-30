@@ -2,9 +2,13 @@ package com.company.Models.Battle;
 
 import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
+import com.company.Models.Card.Card;
+import com.company.Models.Card.Flag;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
+
+import java.util.List;
 
 
 public class Battle {
@@ -15,6 +19,7 @@ public class Battle {
     private Player[] players;
     private Player turnToPlay;
     private BattleController battleController;
+    private List<Flag> flags;
     private BattleView battleView;
     private static int lastBattleCardId = 0;
     private int winningPrize;
@@ -67,6 +72,14 @@ public class Battle {
 
     public void setTurnToPlay(Player turnToPlay) {
         this.turnToPlay = turnToPlay;
+    }
+
+    public List<Flag> getFlags() {
+        return flags;
+    }
+
+    public void addToFlags(Flag flag) {
+        this.flags.add(flag);
     }
 
     public static Battle getPlayingBattle() {

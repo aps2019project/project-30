@@ -26,5 +26,19 @@ public class Main {
 
     public static void main(String[] args) {
         ConsoleInput.menusHandler();
+
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000,1, 4);
+
+
+        Hero hero = new Hero();
+        hero.setName("Div Sefid");
+        hero.setPriceInDrake(8000);
+        hero.setFullHealth(50);
+        hero.setAttackPower(4);
+        hero.setAttackType(AttackType.MELEE);
+        hero.getBuffsToCast().add(attackPowerBuff);
+        hero.setManaPoint(1);
+        hero.setCoolDown(2);
+        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));
     }
 }

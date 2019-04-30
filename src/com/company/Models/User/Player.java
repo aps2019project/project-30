@@ -19,6 +19,7 @@ public class Player {
     private int maxMana;
     private Spell spell;
     private Card selectedCard;
+    private ArrayList<Card> usedCardsToAttack;
     private ArrayList<Card> usedCards;
 
     public Player(Account account) {
@@ -83,16 +84,17 @@ public class Player {
         return selectedCard;
     }
 
-    public ArrayList<Card> getUsedCards() {
-        return usedCards;
-    }
-
     public void setSelectedCard(Card selectedCard) {
         this.selectedCard = selectedCard;
     }
 
-    public void addNewCardToCards(Card card) {
-        usedCards.add(card);
+    public ArrayList<Card> getUsedCardsToAttack() {
+        return usedCardsToAttack;
     }
+
+    public ArrayList<Card> getUsedCards() {
+        return usedCards;
+    }
+
 
 }
