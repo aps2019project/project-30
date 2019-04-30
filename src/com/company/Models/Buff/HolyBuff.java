@@ -2,6 +2,7 @@ package com.company.Models.Buff;
 
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Soldier;
 
 public class HolyBuff extends Buff {
     public HolyBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
@@ -14,14 +15,13 @@ public class HolyBuff extends Buff {
     @Override
     public void cast() {
         if (isActive()) {
-            if (super.cardToCast instanceof Hero)
-                ((Hero) super.cardToCast).incrementHealth(1);
-            else if (super.cardToCast instanceof Minion)
-                ((Minion) super.cardToCast).incrementHealth(1);
-            decrementCounters();
+            if (canCastThisTurn()) {
+                ((Soldier) super.cardToCast).incrementHealth(1);
+            }
         } else {
-            destuct();
+            destruct();
         }
+        decrementCounters();
     }
 
     public HolyBuff clone() {

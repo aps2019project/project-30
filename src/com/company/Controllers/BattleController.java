@@ -6,8 +6,10 @@ import com.company.Models.Battle.Map.Map;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.ErrorType;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Views.BattleView;
@@ -160,7 +162,7 @@ public class BattleController {
         BattleView.printGraveYardCards(graveYardCards);
     }
 
-    public void selectCard(int cardId) {
+    public void selectCard(String cardId) {
         if (isCardIdValid(cardId)) {
             battle.getTurnToPlay().setSelectedCard(getCardById(cardId));
         } else {
@@ -168,16 +170,16 @@ public class BattleController {
         }
     }
 
-    private boolean isCardIdValid(int cardId) {
+    private boolean isCardIdValid(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
-            if (playerCard.getId() == cardId)
+            if (playerCard.getId().equals(cardId))
                 return true;
         }
         return false;
     }
 
-    private boolean isCardIdValid(String cardName) {
+    private boolean isCardNameValid(String cardName) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
             if (playerCard.getName().equals(cardName))
@@ -186,10 +188,10 @@ public class BattleController {
         return false;
     }
 
-    private Card getCardById(int cardId) {
+    private Card getCardById(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
-            if (playerCard.getId() == cardId)
+            if (playerCard.getId().equals(cardId))
                 return playerCard;
         }
         return null;
@@ -206,12 +208,12 @@ public class BattleController {
 
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
-            if (isCardIdValid(cardName)) {
-                Card card = getCardByName(cardName);
-                if (card.getManaPoint() >= battle.getTurnToPlay().getMana()) {
+            if (isCardNameValid(cardName)) {
+                Card newCard = createCopyFromExistingCard(getCardByName(cardName));
+                if (newCard.getManaPoint() >= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
-                    cell.setCardInCell(card);
-                    Battle.getPlayingBattle().getTurnToPlay().addNewCardToCards(card);
+                    cell.setCardInCell(newCard);
+                    Battle.getPlayingBattle().getTurnToPlay().addNewCardToCards(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
@@ -223,15 +225,45 @@ public class BattleController {
         }
     }
 
-    public Player playerThatHasThisCard(Card card) {
+    public static Player playerThatHasThisCard(Card card) {
         for (int i = 0; i < 2; i++) {
-            List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+            List<Card> playerCards = Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckCards();
             for (Card c : playerCards) {
-                if (c.getId() == card.getId()) {
+                if (c.getId().equals(card.getId())) {
                     return Battle.getPlayingBattle().getPlayers()[i];
                 }
             }
         }
         return null;
+    }
+
+    public static Card createCopyFromExistingCard(Card card){
+        switch (Card.getCardType(card.getName())) {
+            case "Item":
+                return ((Item) Shop.getCardByName(card.getName())).clone();
+            case "Minion":
+                return ((Minion) Shop.getCardByName(card.getName())).clone();
+            case "Hero":
+                return ((Hero) Shop.getCardByName(card.getName())).clone();
+        }
+        return null;
+    }
+
+    public void attack(Cell target) {
+        Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
+        switch (((Hero) turnToPlay.getSelectedCard()).getAttackType()){
+            case MELEE :
+                if (getDistance(target, ((Hero) turnToPlay.getSelectedCard()).getCell()) < 2) {
+
+                }
+        }
+        battle.getTurnToPlay()
+//        ((Hero) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).attack(target.getCardInCell());
+    }
+
+    public static int getDistance(Cell cell1, Cell cell2) {
+        int xDistance = cell1.getxCoordinate() - cell2.getxCoordinate();
+        int yDistance = cell1.getyCoordinate() - cell2.getyCoordinate();
+        return (int) Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
     }
 }

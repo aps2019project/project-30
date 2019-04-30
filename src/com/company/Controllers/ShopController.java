@@ -12,28 +12,19 @@ import com.company.Views.ConsoleOutput;
 public class ShopController {
 
     public static void search(String cardName) {
-        if (Shop.cardExistsInShop(cardName)) {
-            System.out.println(Shop.getCardIdByName(cardName));
+        if (Shop.cardNameExistsInShop(cardName)) {
+            System.out.println(Shop.getCardByName(cardName).getId());
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
     }
 
     public static void buy(Account account, String cardName) {
-        if (Shop.cardExistsInShop(cardName)) {
-            if (account.getDrake() >= Shop.getCardByName(cardName).getPriceInDrake()) {
-                switch (Card.getCardType(cardName)) {
-                    case "Item":
-                        AccountController.addCardToCollection(account, ((Item) Shop.getCardByName(cardName)).clone());
-                        break;
-                    case "Minion":
-                        AccountController.addCardToCollection(account, ((Minion) Shop.getCardByName(cardName)).clone());
-                        break;
-                    case "Herp":
-                        AccountController.addCardToCollection(account, ((Hero) Shop.getCardByName(cardName)).clone());
-                        break;
-                }
-                account.decrementDrake(Shop.getCardByName(cardName).getPriceInDrake());
+        if (Shop.cardNameExistsInShop(cardName)) {
+            Card newCard = Shop.getCardByName(cardName);
+            if (account.getDrake() >= newCard.getPriceInDrake()) {
+                AccountController.addCardToCollection(account,ShopController.makeCopyForCreatingNewCardInShop(newCard.getName()));
+                account.decrementDrake(newCard.getPriceInDrake());
             } else {
                 ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_DRAKE);
             }
@@ -42,14 +33,30 @@ public class ShopController {
         }
     }
 
+    public static Card makeCopyForCreatingNewCardInShop(String cardName){
+        switch (Card.getCardType(cardName)) {
+            case "Item":
+                return ((Item) Shop.getCardByName(cardName)).makeCopyForCreatingNewCardInShop();
+            case "Minion":
+                return ((Minion) Shop.getCardByName(cardName)).makeCopyForCreatingNewCardInShop();
+            case "Hero":
+                return ((Hero) Shop.getCardByName(cardName)).makeCopyForCreatingNewCardInShop();
 
-    public static void sell(Account account, int cardId) {
-        if (Shop.cardExistsInShop(cardId)) {
-            AccountController.removeCardFromCollection(account, Shop.getCardById(cardId));
+        }
+        return null;
+    }
+
+    public static void sell(Account account, String cardId) {
+        if (Shop.cardIdExistsInShop(cardId)) {
             account.incrementDrake(Shop.getCardById(cardId).getPriceInDrake());
+            AccountController.removeCardFromCollection(account, Shop.getCardById(cardId));
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
     }
 
+    public static void initialize() {
+        Shop.getShopCollection().getCards().addAll(JsonController.getCards());
+        //todo : Set Card ID
+    }
 }

@@ -8,5 +8,6 @@ public class Spell extends Card {
 
     public void throwBuffs(Card target) {
         target.getBuffsCasted().addAll(this.getBuffsToCast());
+        //Todo : Clone Buffs And Cast
     }
 }

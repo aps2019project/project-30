@@ -8,9 +8,10 @@ public class AntiBuff extends Buff {
     }
     @Override
     public void cast() {
-        if(isActive()){
-            decrementCounters();
+        if(!isActive()){
+            destruct();
         }
+        decrementCounters();
     }
     public AntiBuff clone() {
         AntiBuff antiBuff= new AntiBuff(this.antiBuff, this.remTurnToBeInactive, this.remTurnToCast, this.value);

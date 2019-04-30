@@ -12,7 +12,7 @@ public class CollectionViews {
         System.out.println(n + " : deck_" + n);
     }
 
-    public static void showCardId(int cardId) {
+    public static void showCardId(String cardId) {
         System.out.println(cardId);
     }
 

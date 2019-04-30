@@ -16,6 +16,7 @@ public class Battle {
     private Player turnToPlay;
     private BattleController battleController;
     private BattleView battleView;
+    private static int lastBattleCardId = 0;
     private int winningPrize;
 
     public Battle(Mode mode, BattleType battleType) {
@@ -23,8 +24,8 @@ public class Battle {
         this.battleType = battleType;
         playingBattle = this;
         this.map = new Map();
-        map.getCellByCoordinates(0,2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
-        map.getCellByCoordinates(8,2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(0, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(8, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
     }
 
     public Map getMap() {
@@ -34,13 +35,13 @@ public class Battle {
     public Battle(int storyLevel) {
         this.battleType = BattleType.STORY;
         switch (storyLevel) {
-            case 1 :
+            case 1:
                 this.mode = Mode.KILLING_GENERAL;
                 break;
-            case 2 :
+            case 2:
                 this.mode = Mode.CAPTURE_THE_FLAG;
                 break;
-            case 3 :
+            case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
                 break;
         }
@@ -75,4 +76,13 @@ public class Battle {
     public Player[] getPlayers() {
         return players;
     }
+
+    public static int getLastBattleCardId() {
+        return lastBattleCardId;
+    }
+
+    public static void incrementlastBattleCardId(int number){
+        lastBattleCardId += number;
+    }
+
 }
