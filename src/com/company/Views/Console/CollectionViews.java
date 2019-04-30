@@ -7,6 +7,8 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.User.Account;
 
+import java.util.Arrays;
+
 public class CollectionViews {
     public static void showNumberofDeck(int n) {
         System.out.println(n + " : deck_" + n);
@@ -26,8 +28,9 @@ public class CollectionViews {
                         " - class : " + ((Hero) card).getName() +
                         " - spesial power : " + ((Hero) card).getDescription() +
                         " - sell Cost: " + ((Hero) card).getPriceInDrake());
-                break;
             }
+
+            //todo
 
         }
         System.out.println("Cards : ");

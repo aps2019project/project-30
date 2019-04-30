@@ -12,10 +12,10 @@ public class Account {
     private static Account loggedInAccount;
     private String username;
     private String password;
-    private int drake = 0;
+    private int drake = 20000;
     private ArrayList<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
-    private Collection collection;
+    private Collection collection = new Collection();
     private ArrayList<BattleLog> battleHistories = new ArrayList<>();
     private int wins;
 

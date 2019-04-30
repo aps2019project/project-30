@@ -83,7 +83,7 @@ public class ConsoleInput {
         } else if (command.matches("delete deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[2]);
         } else if (command.matches("search \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[1]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().search(commandParts[1]);
         } else if (command.matches("show")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("save")) {
@@ -150,8 +150,8 @@ public class ConsoleInput {
             Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
             Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
-        } else if (command.matches("buy [a-zA-Z]+")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+        } else if (command.matches("buy .*")) {
+            Matcher matcher = Pattern.compile("buy (?<cardName>.*)").matcher(command);
             matcher.find();
             ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {

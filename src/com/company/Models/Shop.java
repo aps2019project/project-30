@@ -5,7 +5,7 @@ import com.company.Models.Card.Groups.Collection;
 
 public class Shop {
 
-    static Collection shopCollection;
+    static Collection shopCollection = new Collection();
 
     public static Collection getShopCollection() {
         return shopCollection;

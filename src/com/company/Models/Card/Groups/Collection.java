@@ -6,8 +6,8 @@ import com.company.Models.Card.Card;
 import java.util.ArrayList;
 
 public class Collection {
-    private CollectionController collectionController;
-    private ArrayList<Card> cards;
+    private CollectionController collectionController = new CollectionController();
+    private ArrayList<Card> cards = new ArrayList<>();
 
 
     public void setCollectionController(CollectionController collectionController) {
