@@ -50,5 +50,18 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "attackType": "RANGED",
+    "fullHealth": 4,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Ghollabsangdar Arab",
+    "manaPoint": 1,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]
