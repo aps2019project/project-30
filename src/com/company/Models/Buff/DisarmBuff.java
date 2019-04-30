@@ -13,7 +13,7 @@ public class DisarmBuff extends Buff {
         decrementCounters();
     }
     public DisarmBuff clone() {
-        DisarmBuff disarmBuff = new DisarmBuff(this.antiBuff, this.remTurnToBeInactive, this.remTurnToCast, this.value);
+        DisarmBuff disarmBuff = new DisarmBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
         disarmBuff.name = this.name;
         disarmBuff.type = this.type;
         return disarmBuff;
