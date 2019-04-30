@@ -91,7 +91,7 @@ public abstract class Card {
 
     public static String createNewCardIdToCreatingNewCardInShop(){
         lastShopCardId++;
-        return lastShopCardId + "";
+        return String.valueOf(lastShopCardId);
     }
 
     public static String createNewCardIdToCreatingNewCardInBattle(String cardName) {

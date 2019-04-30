@@ -181,6 +181,7 @@ public class BattleController {
         if(player==battle.getPlayers()[0]){
             return battle.getPlayers()[1];
         }
+        return null;
     }
     public void showMyMinion(){
 
@@ -245,7 +246,7 @@ public class BattleController {
                 if (newCard.getManaPoint() >= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
                     cell.setCardInCell(newCard);
-                    Battle.getPlayingBattle().getTurnToPlay().addNewCardToCards(newCard);
+                    Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
