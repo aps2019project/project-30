@@ -5,10 +5,8 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 
 public class ManaBuff extends Buff {
-    int numberOfManasToincrement;
-    public ManaBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value, int numberOfManasToincrement) {
+    public ManaBuff(Buff.Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int valuet) {
         super(antiBuff, remTurnToBeInactive, remTurnToCast, value);
-        this.numberOfManasToincrement = numberOfManasToincrement;
     }
 
     @Override
@@ -16,5 +14,12 @@ public class ManaBuff extends Buff {
         if (isActive()) {
 
         }
+    }
+    public ManaBuff clone() {
+        ManaBuff manaBuff = new ManaBuff(this.antiBuff, this.remTurnToBeInactive,this.remTurnToCast, this.remTurnToCast, this.value);
+        manaBuff.name = this.name;
+        manaBuff.type = this.type;
+
+        return manaBuff;
     }
 }

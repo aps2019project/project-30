@@ -17,4 +17,10 @@ public class DispelBuff extends Buff{
             }
         }
     }
+    public DispelBuff clone() {
+        DispelBuff dispelBuff = new DispelBuff(this.antiBuff, this.remTurnToBeInactive, this.remTurnToCast, this.value);
+        dispelBuff.name = this.name;
+        dispelBuff.type = this.type;
+        return dispelBuff;
+    }
 }

@@ -12,4 +12,10 @@ public class AntiBuff extends Buff {
             decrementCounters();
         }
     }
+    public AntiBuff clone() {
+        AntiBuff antiBuff= new AntiBuff(this.antiBuff, this.remTurnToBeInactive, this.remTurnToCast, this.value);
+        antiBuff.name = this.name;
+        antiBuff.type = this.type;
+        return antiBuff;
+    }
 }

@@ -21,5 +21,6 @@ public class PosionBuff extends Buff{
             }
             decrementCounters();
         }
+        decrementCounters();
     }
 }

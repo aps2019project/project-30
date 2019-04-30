@@ -29,4 +29,10 @@ public class AttackPowerBuff extends Buff {
             destuct();
         }
     }
+    public AttackPowerBuff clone() {
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(this.antiBuff, this.remTurnToBeInactive, this.remTurnToCast, this.value);
+        attackPowerBuff.name = this.name;
+        attackPowerBuff.type = this.type;
+        return attackPowerBuff;
+    }
 }
