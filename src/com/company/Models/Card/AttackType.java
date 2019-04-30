@@ -1,4 +1,8 @@
 package com.company.Models.Card;
 
-public enum  AttackType {RANGED, MELEE, HYBRID}
+public enum  AttackType {
+    RANGED,
+    MELEE,
+    HYBRID
+}
 

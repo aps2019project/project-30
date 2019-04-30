@@ -2,9 +2,12 @@ package com.company.Models.Battle;
 
 import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
+import com.company.Models.Card.Card;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
+
+import java.util.List;
 
 
 public class Battle {
