@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Minion.Minion;
 
@@ -29,14 +30,30 @@ public class BattleView {
     public void printGameInfo() {
         for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
             System.out.printf(
-                    "Player %d: \n" +
+                    "Player %d: \n",playerIndex +
                             "manas: %d\n", battle.getPlayers()[playerIndex].getMana());
         }
-        //mode info
+        switch (Battle.getPlayingBattle().getMode()) {
+            case KILLING_GENERAL:
+                showHeroesCordinates();
+                break;
+            case CAPTURE_THE_FLAG:
+
+                break;
+            case COLLECTING_FLAGS:
+                break;
+        }
     }
 
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
         //Todo : printGraveYardCards : View
+    }
+
+    private static void showHeroesCordinates(){
+        for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
+            System.out.printf(
+                    "Player %d Hero health: %d\n",playerIndex,Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
+        }
     }
 }

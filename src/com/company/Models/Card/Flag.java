@@ -1,35 +1,22 @@
 package com.company.Models.Card;
 
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.User.Player;
 
 public class Flag {
-    private Player flagHolder;
-    private int flagXCoordinate;
-    private int flagYCoordinate;
+    private Player flagHolder1;
+    private Cell cell;
 
     public Player getFlagHolder() {
-        return flagHolder;
+        return flagHolder1;
     }
 
     public void setFlagHolder(Player flagHolder) {
-        this.flagHolder = flagHolder;
+        this.flagHolder1 = flagHolder;
     }
 
-    public int getFlagXCoordinate() {
-        return flagXCoordinate;
+    public Cell getCell(){
+        return cell;
     }
-
-    public void setFlagXCoordinate(int flagXCoordinate) {
-        this.flagXCoordinate = flagXCoordinate;
-    }
-
-    public int getFlagYCoordinate() {
-        return flagYCoordinate;
-    }
-
-    public void setFlagYCoordinate(int flagYCoordinate) {
-        this.flagYCoordinate = flagYCoordinate;
-    }
-
 
 }
