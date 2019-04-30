@@ -147,7 +147,9 @@ public class ConsoleInput {
         } else if (command.matches("show collection")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("search collection")) {
-            //search collection
+            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+            matcher.find();
+            Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
         } else if (command.matches("buy [a-zA-Z]+")) {
             Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
             matcher.find();
