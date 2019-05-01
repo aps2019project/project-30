@@ -142,7 +142,7 @@ public class BattleController {
     public void useSpecialPawer(int x, int y) {
         if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
-                //todo eror message
+                ConsoleOutput.printErrorMessage(ErrorType.COOLDOWN_VALIDATE);
                 return;
             }
         }
@@ -197,6 +197,7 @@ public class BattleController {
                     break;
             }
         }
+        ConsoleOutput.printErrorMessage(ErrorType.ENOUGH_MANA);
     }
 
     private void doOnEnemyRow() {
@@ -288,7 +289,7 @@ public class BattleController {
 
     private void doSpecialPowerOnEnemySolder(int x, int y) {
         if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
-            //todo eror mmessage
+            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
             return;
         }
         doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
@@ -296,7 +297,7 @@ public class BattleController {
 
     private void doSpecialPowerOnFreindSolder(int x, int y) {
         if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
-            //todo eror mmessage
+            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
             return;
         }
         doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
@@ -307,7 +308,7 @@ public class BattleController {
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
         } else {
-            //todo eror message
+            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
         }
     }
 
@@ -316,7 +317,7 @@ public class BattleController {
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
         } else {
-            //todo eror message
+            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
         }
     }
 
@@ -325,7 +326,7 @@ public class BattleController {
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
         } else {
-            //todo eror message
+            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
         }
 
 
@@ -338,7 +339,7 @@ public class BattleController {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
 
         } else {
-            //todo eror message
+            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
         }
 
     }
@@ -366,7 +367,6 @@ public class BattleController {
         if (player == battle.getPlayers()[0]) {
             return battle.getPlayers()[1];
         }
-        return player;
         else{
             return battle.getPlayers()[0];
 
