@@ -168,11 +168,11 @@ public class ConsoleInput {
         if (command.matches("Game info")) {
             Battle.getPlayingBattle().getBattleView().printGameInfo();
         } else if (command.matches("show my minions")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showMySoldiers();
         } else if (command.matches("move to (\\d+,\\d+)")) {
             //todo
         } else if (command.matches("show opponent minions")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showMySoldiers();
         } else if (command.matches("show card info \\d+")) {
             //todo
         } else if (command.matches("select \\d+")) {

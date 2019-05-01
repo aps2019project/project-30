@@ -31,7 +31,14 @@ public class BattleController {
         this.battle = battle;
     }
 
-    public void showMyMinions() {
+    public void showMySoldiers() {
+        List<Card> usedCards = (List<Card>) battle.getTurnToPlay().getUsedCards().clone();
+        usedCards.removeIf(Card::isInGraveCards);
+        usedCards.removeIf(card -> !(card instanceof Soldier));
+        BattleView.printSoldiersInfo(usedCards);
+    }
+
+    public void showOpponentSoldiers() {
 
     }
 
@@ -183,10 +190,6 @@ public class BattleController {
             return battle.getPlayers()[1];
         }
         return player;
-    }
-
-    public void showMyMinion() {
-
     }
 
     public void showGraveYardCards() {

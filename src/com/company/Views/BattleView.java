@@ -8,6 +8,7 @@ import com.company.Models.Card.Soldier;
 import com.company.Views.Console.CollectionViews;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BattleView {
     Battle battle;
@@ -16,16 +17,16 @@ public class BattleView {
         this.battle = battle;
     }
 
-    public static void printSoldiersInfo(ArrayList<Soldier> soldiers) {
-        soldiers.forEach(soldier ->
+    public static void printSoldiersInfo(List<Card> cards) {
+        cards.forEach(soldier ->
                 System.out.printf(
                         "\t%s - %s, health : %d, location : (%d, %d), power : %d\n",
                         soldier.getId(),
                         soldier.getName(),
-                        soldier.getHealth(),
-                        soldier.getCell().getxCoordinate(),
-                        soldier.getCell().getyCoordinate(),
-                        soldier.getAttackPower()
+                        ((Soldier) soldier).getHealth(),
+                        ((Soldier) soldier).getCell().getxCoordinate(),
+                        ((Soldier) soldier).getCell().getyCoordinate(),
+                        ((Soldier) soldier).getAttackPower()
                 )
         );
     }
