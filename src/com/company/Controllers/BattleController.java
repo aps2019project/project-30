@@ -9,6 +9,7 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
+import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
@@ -276,6 +277,8 @@ public class BattleController {
                 return ((Minion) Shop.getCardByName(card.getName())).clone();
             case "Hero":
                 return ((Hero) Shop.getCardByName(card.getName())).clone();
+            case "Spell":
+                return ((Spell) Shop.getCardByName(card.getName())).clone();
         }
         return null;
     }

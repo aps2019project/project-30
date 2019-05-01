@@ -10,4 +10,15 @@ public class Spell extends Card {
         target.getBuffsCasted().addAll(this.getBuffsToCast());
         //Todo : Clone Buffs And Cast
     }
+
+    public Spell clone() {
+        Spell spell = new Spell();
+        spell.setName(this.getName());
+        spell.setTargetType(this.getTargetType());
+        spell.setInGraveCards(this.isInGraveCards());
+        spell.setManaPoint(this.getManaPoint());
+        spell.setPriceInDrake(this.getPriceInDrake());
+        spell.setDescription(this.getDescription());
+        return spell;
+    }
 }
