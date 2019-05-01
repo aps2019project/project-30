@@ -33,12 +33,13 @@ public class Item extends Card {
 
     public static void showItems(ArrayList<Card> cards) {
         System.out.println("Items :");
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i) instanceof Item) {
-                System.out.println((i + 1) +
-                        "- Name : " + cards.get(i).getName() +
-                        "- Desc : " + cards.get(i).getDescription() +
-                        "- Sell cost : " + cards.get(i).getPriceInDrake());
+        int index = 1;
+        for (Card card : cards) {
+            if (card instanceof Item) {
+                System.out.println(index++ +
+                        "- Name : " + card.getName() +
+                        "- Desc : " + card.getDescription() +
+                        "- Sell cost : " + card.getPriceInDrake());
             }
         }
     }
