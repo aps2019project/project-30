@@ -43,6 +43,7 @@ public class CollectionViews {
     }
 
     public static void showDeck(Deck deck) {
+        //Todo : Bug
         System.out.println("Heroes : ");
         System.out.println("    1 : Name " + deck.getHeroCard().getName() +
                 " - Ap : " + ((Hero) deck.getHeroCard()).getAttackPower() +
@@ -75,6 +76,14 @@ public class CollectionViews {
 
         }
     }
+
+    public static void printDeckValidation(boolean isValidate) {
+        if (isValidate)
+            System.out.println("Deck Is Valid");
+        else
+            System.out.println("Deck Is Not Valid");
+    }
+
     public static void printHelp(){
         System.out.println("*** Account Commands ***");
         System.out.println("1. exit :");

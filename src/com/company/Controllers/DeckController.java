@@ -14,7 +14,7 @@ public class DeckController {
     public DeckController(Deck deck) {
         this.deck = deck;
         generateRandomCardsOrder();
-        initializeHand();
+//        initializeHand();
     }
 
     public void addRandomCardToHand() {

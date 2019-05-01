@@ -107,6 +107,12 @@ public class CollectionController {
         ConsoleOutput.printErrorMessage(ErrorType.DECK_VALIDATE);
     }
 
+    public void showDeckIsValidate(String deckName) {
+        CollectionViews.printDeckValidation(
+                validateDeck(deckName)
+        );
+    }
+
     public boolean validateDeck(String deckName) {
         Deck deck;
         if (deckExist(deckName)) {

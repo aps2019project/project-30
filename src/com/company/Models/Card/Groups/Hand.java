@@ -3,9 +3,10 @@ package com.company.Models.Card.Groups;
 import com.company.Models.Card.Card;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Hand {
-    private ArrayList<Card> cards = new ArrayList<>();
+    private List<Card> cards = new ArrayList<>();
     public static final int HAND_CARDS_MAX = 5;
     private Deck deck;
 
@@ -17,7 +18,7 @@ public class Hand {
         return deck;
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 

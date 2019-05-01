@@ -92,7 +92,7 @@ public class ConsoleInput {
         } else if (command.matches("add \\w+ to deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().addCard(commandParts[1], commandParts[4]);
         } else if (command.matches("validate deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(commandParts[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().showDeckIsValidate(commandParts[2]);
         } else if (command.matches("remove \\w+ from deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().remove(commandParts[1], commandParts[4]);
         } else if (command.matches("help")) {
