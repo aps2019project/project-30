@@ -12,7 +12,7 @@ import com.company.Models.User.Account;
 import com.company.Views.Console.CollectionViews;
 import com.company.Views.ConsoleOutput;
 
-import static com.company.Models.Shop.getCardById;
+//import static com.company.Models.Shop.getCardById;
 
 
 public class CollectionController {
@@ -123,6 +123,14 @@ public class CollectionController {
         if (deckExist(deckName)) {
             Account.getLoggedInAccount().getDecks().remove(Collection.getDeckByName(deckName));
         }
+    }
+    public Card getCardById(String cardId){
+        for(Card card:Account.getLoggedInAccount().getCollection().getCards()){
+            if(card.equals(cardId)){
+                return card;
+            }
+        }
+        return null;
     }
 
 
