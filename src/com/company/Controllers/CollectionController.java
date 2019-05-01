@@ -42,28 +42,25 @@ public class CollectionController {
             ConsoleOutput.printErrorMessage(ErrorType.DECK_FULL);
             return;
         }
-        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
-            if (card.getId().equals(card.getId())) {
-                if (card instanceof Hero) {
-                    if (Collection.getDeckByName(deckName).getHeroCard() != null) {
-                        ConsoleOutput.printErrorMessage(ErrorType.HERO_EXISTS);
-                        return;
-                    } else {
-                        Collection.getDeckByName(deckName).setHeroCard(card);
-                        return;
-                    }
-                } else if (card instanceof Item) {
-                    if (Collection.getDeckByName(deckName).getItemCard() != null) {
-                        ConsoleOutput.printErrorMessage(ErrorType.ITEM_EXISTS);
-                        return;
-                    } else {
-                        Collection.getDeckByName(deckName).setItemCard(card);
-                        return;
-                    }
-                } else {
-                    Collection.getDeckByName(deckName).getDeckCards().add(card);
-                }
+        Card card = getCardById(cardId);
+        if (card instanceof Hero) {
+            if (Collection.getDeckByName(deckName).getHeroCard() != null) {
+                ConsoleOutput.printErrorMessage(ErrorType.HERO_EXISTS);
+                return;
+            } else {
+                Collection.getDeckByName(deckName).setHeroCard(card);
+                return;
             }
+        } else if (card instanceof Item) {
+            if (Collection.getDeckByName(deckName).getItemCard() != null) {
+                ConsoleOutput.printErrorMessage(ErrorType.ITEM_EXISTS);
+                return;
+            } else {
+                Collection.getDeckByName(deckName).setItemCard(card);
+                return;
+            }
+        } else {
+            Collection.getDeckByName(deckName).getDeckCards().add(card);
         }
 
     }
@@ -124,9 +121,10 @@ public class CollectionController {
             Account.getLoggedInAccount().getDecks().remove(Collection.getDeckByName(deckName));
         }
     }
-    public Card getCardById(String cardId){
-        for(Card card:Account.getLoggedInAccount().getCollection().getCards()){
-            if(card.equals(cardId)){
+
+    public Card getCardById(String cardId) {
+        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
+            if (card.equals(cardId)) {
                 return card;
             }
         }
@@ -135,22 +133,20 @@ public class CollectionController {
 
 
     public void remove(String cardId, String deckName) {
-        Card card=getCardById(cardId);
-        if(card instanceof Minion||card instanceof Spell) {
+        Card card = getCardById(cardId);
+        if (card instanceof Minion || card instanceof Spell) {
             for (Card card1 : Collection.getDeckByName(deckName).getDeckCards()) {
                 if (card1.getId().equals(cardId)) {
                     Collection.getDeckByName(deckName).getDeckCards().remove(card);
                     return;
                 }
             }
-        }
-        else if(card instanceof Hero){
-            if(Collection.getDeckByName(deckName).getHeroCard().getId().equals(cardId)){
+        } else if (card instanceof Hero) {
+            if (Collection.getDeckByName(deckName).getHeroCard().getId().equals(cardId)) {
                 Collection.getDeckByName(deckName).setHeroCard(null);
             }
-        }
-        else if(card instanceof Item){
-            if(Collection.getDeckByName(deckName).getItemCard().getId().equals(cardId)){
+        } else if (card instanceof Item) {
+            if (Collection.getDeckByName(deckName).getItemCard().getId().equals(cardId)) {
                 Collection.getDeckByName(deckName).setItemCard(null);
             }
         }
