@@ -155,7 +155,7 @@ public class ConsoleInput {
             matcher.find();
             ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {
-            Matcher matcher = Pattern.compile("search (?<cardId>\\d+)").matcher(command);
+            Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
             ShopController.sell(Account.getLoggedInAccount(),matcher.group("cardId"));
         } else if (command.matches("help")) {

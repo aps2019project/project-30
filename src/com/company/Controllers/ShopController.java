@@ -49,9 +49,10 @@ public class ShopController {
     }
 
     public static void sell(Account account, String cardId) {
-        if (Shop.cardIdExistsInShop(cardId)) {
-            account.incrementDrake(Shop.getCardById(cardId).getPriceInDrake());
-            AccountController.removeCardFromCollection(account, Shop.getCardById(cardId));
+        if (Account.getLoggedInAccount().getCollection().getCollectionController().cardExist(cardId)) {
+            Card card = Account.getLoggedInAccount().getCollection().getCollectionController().getCardById(cardId);
+            account.incrementDrake(card.getPriceInDrake());
+            AccountController.removeCardFromCollection(account, card);
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }

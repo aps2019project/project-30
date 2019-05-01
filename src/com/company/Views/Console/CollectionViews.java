@@ -61,7 +61,7 @@ public class CollectionViews {
 
     private static void showCard(Card card, int counter) {
         if (card instanceof Minion) {
-            System.out.println("    " + counter + " : Type : Minion - Name : " + card.getName() +
+            System.out.println("    " + counter + " : Type : Minion - Name : " + card.getName() + "\tid : " + card.getId()+
                     " - Class " + ((Minion) card).getAttackType() +
                     " - Ap : " + ((Minion) card).getAttackPower() +
                     " - Hp : " + ((Minion) card).getHealth() +
