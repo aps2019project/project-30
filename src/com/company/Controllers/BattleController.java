@@ -32,14 +32,19 @@ public class BattleController {
     }
 
     public void showMySoldiers() {
-        List<Card> usedCards = (List<Card>) battle.getTurnToPlay().getUsedCards().clone();
-        usedCards.removeIf(Card::isInGraveCards);
-        usedCards.removeIf(card -> !(card instanceof Soldier));
-        BattleView.printSoldiersInfo(usedCards);
+        List<Card> myCards = (List<Card>) battle.getTurnToPlay().getUsedCards().clone();
+        showSoldiers(myCards);
+    }
+
+    public void showSoldiers(List<Card> soldiers) {
+        soldiers.removeIf(Card::isInGraveCards);
+        soldiers.removeIf(card -> !(card instanceof Soldier));
+        BattleView.printSoldiersInfo(soldiers);
     }
 
     public void showOpponentSoldiers() {
-
+        List<Card> opponentCards = (List<Card>) battle.getTurnToPlay().getUsedCards().clone();
+        showSoldiers(opponentCards);
     }
 
     public void move(int x, int y) {
