@@ -93,7 +93,7 @@ public class JsonController {
     public static List<Card> getCards() {
         ArrayList<Card> cards = new ArrayList<Card>();
         cards.addAll(getSpells());
-//        cards.addAll(getMinions());
+        cards.addAll(getMinions());
         cards.addAll(getHeroes());
 //        cards.addAll(getItems());
         return cards;

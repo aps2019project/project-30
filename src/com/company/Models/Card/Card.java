@@ -5,6 +5,7 @@ import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 import com.company.Models.TargetType;
 import com.company.Models.User.Account;
@@ -91,7 +92,7 @@ public abstract class Card {
 
     public static String createNewCardIdToCreatingNewCardInShop(){
         lastShopCardId++;
-        return lastShopCardId + "";
+        return String.valueOf(lastShopCardId);
     }
 
     public static String createNewCardIdToCreatingNewCardInBattle(String cardName) {
@@ -107,6 +108,8 @@ public abstract class Card {
             return "Item";
         } else if (card instanceof Hero) {
             return "Hero";
+        } else if (card instanceof Spell) {
+            return "Spell";
         }
         return "";
     }

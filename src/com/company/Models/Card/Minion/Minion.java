@@ -36,4 +36,12 @@ Minion extends Soldier {
         minion.setId(Card.createNewCardIdToCreatingNewCardInBattle(this.getName()));
         return minion;
     }
+
+    public ActivationTime getActivationTime() {
+        return activationTime;
+    }
+
+    public void setActivationTime(ActivationTime activationTime) {
+        this.activationTime = activationTime;
+    }
 }

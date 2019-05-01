@@ -23,7 +23,7 @@ public class CollectionViews {
         System.out.println("Heroes : ");
         for (Card card : cards) {
             if (card instanceof Hero) {
-                System.out.println("    1 : Name " + card.getName() +
+                System.out.println("\t" + ": Name " + card.getName() + "\tid : " + card.getId()+ 
                         " - Ap : " + ((Hero) card).getAttackPower() +
                         " - Hp : " + ((Hero) card).getHealth() +
                         " - class : " + ((Hero) card).getName() +

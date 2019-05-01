@@ -43,8 +43,8 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Minion) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Minion) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
             }
         } else if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
@@ -53,8 +53,8 @@ public class BattleController {
             } else {
                 battle.getMap().getCellByCoordinates(((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Hero) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Hero) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                if(battle.getMap().getCellByCoordinates(x,y).getItem()!=null){
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x,y).getItem());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
             }
         }
@@ -147,11 +147,11 @@ public class BattleController {
                     if (!(battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion)) {
                         //todo eror message
                     }
-                    doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x,y));
+                    doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
                     break;
                 case ENEMY_HERO:
 
-                   break;
+                    break;
                 case ENEMY_SOLDIER:
 
 
@@ -161,8 +161,8 @@ public class BattleController {
     //private void do()
 
     private void doUseSpecialPowerSwichCase(Cell cell) {
-        int x=cell.getxCoordinate();
-        int y=cell.getyCoordinate();
+        int x = cell.getxCoordinate();
+        int y = cell.getyCoordinate();
         int startEndenx = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
         for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
             Buff buff1 = buff.clone();
@@ -177,13 +177,15 @@ public class BattleController {
             }
         }
     }
-    private Player getEenmyPlayer(Player player){
-        if(player==battle.getPlayers()[0]){
+
+    private Player getEenmyPlayer(Player player) {
+        if (player == battle.getPlayers()[0]) {
             return battle.getPlayers()[1];
         }
         return player;
     }
-    public void showMyMinion(){
+
+    public void showMyMinion() {
 
     }
 
@@ -270,7 +272,7 @@ public class BattleController {
         return null;
     }
 
-    public static Card createCopyFromExistingCard(Card card){
+    public static Card createCopyFromExistingCard(Card card) {
         switch (Card.getCardType(card.getName())) {
             case "Item":
                 return ((Item) Shop.getCardByName(card.getName())).clone();
@@ -295,18 +297,18 @@ public class BattleController {
     private ErrorType getErrorTypeOfAttack(Cell target, Player turnToPlay) {
         Cell selectedCardCell = ((Soldier) turnToPlay.getSelectedCard()).getCell();
         int selectedCardAreaOfEffect = ((Soldier) turnToPlay.getSelectedCard()).getAreaOfEffect();
-        if (!isCardIdValid(target.getCardInCell().getId())){
+        if (!isCardIdValid(target.getCardInCell().getId())) {
             return ErrorType.CARD_ID_INVALID;
         }
-        switch (((Soldier) turnToPlay.getSelectedCard()).getAttackType()){
-            case MELEE :
+        switch (((Soldier) turnToPlay.getSelectedCard()).getAttackType()) {
+            case MELEE:
                 if (!isNearby(target, selectedCardCell)) {
                     return ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
                 }
                 break;
             case RANGED:
                 if (getDistance(target, selectedCardCell) > selectedCardAreaOfEffect
-                || isNearby(target, selectedCardCell)) {
+                        || isNearby(target, selectedCardCell)) {
                     return ErrorType.UNAVAILABLE_OPPONENT_SOLDIER;
                 }
                 break;
@@ -332,8 +334,8 @@ public class BattleController {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (toCheck.getxCoordinate() + i == home.getxCoordinate()
-                && toCheck.getyCoordinate() + j == home.getyCoordinate()
-                && !(i == 0 && j == 0)) {
+                        && toCheck.getyCoordinate() + j == home.getyCoordinate()
+                        && !(i == 0 && j == 0)) {
                     return true;
                 }
             }
