@@ -53,24 +53,17 @@ public class Main {
 
         Gson gson = new Gson();
 
-/*        Minion minion = new Minion();
+
+
+        Minion minion = new Minion();
         minion.setName("Shamshirzan Fars");
         minion.setPriceInDrake(400);
         minion.setManaPoint(2);
         minion.setFullHealth(6);
         minion.setAttackPower(4);
         minion.setAttackType(AttackType.MELEE);
+        minion.getBuffsToCast().add(stunBuff);
         minion.setActivationTime(ActivationTime.ON_ATTACK);
-        //Specialpower*/
-
-
-        Minion minion = new Minion();
-        minion.setName("Ghollabsangdar Arab");
-        minion.setPriceInDrake(600);
-        minion.setManaPoint(1);
-        minion.setFullHealth(4);
-        minion.setAttackPower(2);
-        minion.setAttackType(AttackType.RANGED);
 
 
         System.out.println(JsonController.getGson().toJson(minion));

@@ -13,6 +13,30 @@
     "buffsCasted": []
   },
   {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Shamshirzan Fars",
+    "manaPoint": 2,
+    "priceInDrake": 400,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.StunBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
     "attackType": "HYBRID",
     "fullHealth": 5,
     "health": 0,
