@@ -4,8 +4,11 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Soldier;
+import com.company.Views.Console.CollectionViews;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BattleView {
     Battle battle;
@@ -14,15 +17,16 @@ public class BattleView {
         this.battle = battle;
     }
 
-    public static void printMinionsInfo(ArrayList<Minion> minions) {
-        minions.forEach(minion ->
+    public static void printSoldiersInfo(List<Card> cards) {
+        cards.forEach(soldier ->
                 System.out.printf(
-                        "%d : %s, health : %d, location : (%d, %d), power : %d\n",
-                        minion.getId(),
-                        minion.getName(),
-                        minion.getCell().getxCoordinate(),
-                        minion.getCell().getyCoordinate(),
-                        minion.getAttackPower()
+                        "\t%s - %s, health : %d, location : (%d, %d), power : %d\n",
+                        soldier.getId(),
+                        soldier.getName(),
+                        ((Soldier) soldier).getHealth(),
+                        ((Soldier) soldier).getCell().getxCoordinate(),
+                        ((Soldier) soldier).getCell().getyCoordinate(),
+                        ((Soldier) soldier).getAttackPower()
                 )
         );
     }
@@ -44,7 +48,7 @@ public class BattleView {
 
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
-        //Todo : printGraveYardCards : View
+        CollectionViews.show(cards);
     }
 
     private static void showHeroesCordinates() {

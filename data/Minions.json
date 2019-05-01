@@ -1,0 +1,91 @@
+[
+  {
+    "attackType": "RANGED",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 7,
+    "attackPower": 4,
+    "name": "Kamandar Fars",
+    "manaPoint": 2,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Shamshirzan Fars",
+    "manaPoint": 2,
+    "priceInDrake": 400,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.StunBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "HYBRID",
+    "fullHealth": 5,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 3,
+    "name": "Neyzedar Fars",
+    "manaPoint": 1,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 10,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 6,
+    "name": "Asbsavar Fars",
+    "manaPoint": 4,
+    "priceInDrake": 200,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 3,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Kamandar Arab",
+    "manaPoint": 1,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "RANGED",
+    "fullHealth": 4,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Ghollabsangdar Arab",
+    "manaPoint": 1,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  }
+]

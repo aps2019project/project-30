@@ -25,26 +25,23 @@
     "buffsCasted": []
   },
   {
-    "disarmed": false,
+    "coolDown": 8,
+    "remainingCoolDown": 0,
     "attackType": "MELEE",
     "fullHealth": 50,
     "health": 0,
     "areaOfEffect": 0,
     "attackPower": 4,
-    "coolDown": 8,
-    "remainingCoolDown": 0,
-    "id": 0,
     "name": "Simorgh",
     "manaPoint": 5,
     "priceInDrake": 9000,
     "isInGraveCards": false,
-    "targetType": "WHOLE_ENEMY",
     "buffsToCast": [
       {
         "type": "NEGATIVE",
         "name": "STUN",
         "isCasted": false,
-        "remTurnToBeInactive": 1,
+        "castTime": 1,
         "remTurnToCast": 0,
         "value": 0,
         "className": "com.company.Models.Buff.StunBuff"

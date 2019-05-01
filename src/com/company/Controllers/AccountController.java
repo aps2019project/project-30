@@ -12,6 +12,7 @@ import java.util.Comparator;
 
 
 public class AccountController {
+    AccountView view = new AccountView();
     public static void createAccount(String username, String password) {
         if (!usernameExists(username)) {
             Account.addToAccounts(
@@ -54,14 +55,11 @@ public class AccountController {
 
     public static void showLeaderBoard() {
         ArrayList<Account> leaderBoard = Account.getAccounts();
-        leaderBoard.sort(new Comparator<Account>() {
-            @Override
-            public int compare(Account o1, Account o2) {
-                if (o1.getWins() == o2.getWins()){
-                    return o1.getUsername().compareTo(o2.getUsername());
-                } else {
-                    return o1.getWins() - o2.getWins();
-                }
+        leaderBoard.sort((o1, o2) -> {
+            if (o1.getWins() == o2.getWins()){
+                return o1.getUsername().compareTo(o2.getUsername());
+            } else {
+                return o1.getWins() - o2.getWins();
             }
         });
         AccountView.printLeaderBoard(leaderBoard);

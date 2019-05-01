@@ -7,6 +7,9 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.User.Account;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class CollectionViews {
     public static void showNumberofDeck(int n) {
         System.out.println(n + " : deck_" + n);
@@ -16,18 +19,19 @@ public class CollectionViews {
         System.out.println(cardId);
     }
 
-    public static void show() {
+    public static void show(ArrayList<Card> cards) {
         System.out.println("Heroes : ");
-        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
+        for (Card card : cards) {
             if (card instanceof Hero) {
-                System.out.println("    1 : Name " + card.getName() +
+                System.out.println("\t" + ": Name " + card.getName() + "\tid : " + card.getId()+ 
                         " - Ap : " + ((Hero) card).getAttackPower() +
                         " - Hp : " + ((Hero) card).getHealth() +
                         " - class : " + ((Hero) card).getName() +
                         " - spesial power : " + ((Hero) card).getDescription() +
                         " - sell Cost: " + ((Hero) card).getPriceInDrake());
-                break;
             }
+
+            //todo
 
         }
         System.out.println("Cards : ");
@@ -39,6 +43,7 @@ public class CollectionViews {
     }
 
     public static void showDeck(Deck deck) {
+        //Todo : Bug
         System.out.println("Heroes : ");
         System.out.println("    1 : Name " + deck.getHeroCard().getName() +
                 " - Ap : " + ((Hero) deck.getHeroCard()).getAttackPower() +
@@ -57,7 +62,7 @@ public class CollectionViews {
 
     private static void showCard(Card card, int counter) {
         if (card instanceof Minion) {
-            System.out.println("    " + counter + " : Type : Minion - Name : " + card.getName() +
+            System.out.println("    " + counter + " : Type : Minion - Name : " + card.getName() + "\tid : " + card.getId()+
                     " - Class " + ((Minion) card).getAttackType() +
                     " - Ap : " + ((Minion) card).getAttackPower() +
                     " - Hp : " + ((Minion) card).getHealth() +
@@ -71,6 +76,14 @@ public class CollectionViews {
 
         }
     }
+
+    public static void printDeckValidation(boolean isValidate) {
+        if (isValidate)
+            System.out.println("Deck Is Valid");
+        else
+            System.out.println("Deck Is Not Valid");
+    }
+
     public static void printHelp(){
         System.out.println("*** Account Commands ***");
         System.out.println("1. exit :");

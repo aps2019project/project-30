@@ -92,7 +92,7 @@ public class ConsoleInput {
         } else if (command.matches("add \\w+ to deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().addCard(commandParts[1], commandParts[4]);
         } else if (command.matches("validate deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().validateDeck(commandParts[2]);
+            Account.getLoggedInAccount().getCollection().getCollectionController().showDeckIsValidate(commandParts[2]);
         } else if (command.matches("remove \\w+ from deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().remove(commandParts[1], commandParts[4]);
         } else if (command.matches("help")) {
@@ -140,22 +140,22 @@ public class ConsoleInput {
             ShopView.showAll();
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
-        } else if (command.matches("search [a-zA-Z]+")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+        } else if (command.matches("search .+")) {
+            Matcher matcher = Pattern.compile("search (?<cardName>.+)").matcher(command);
             matcher.find();
             ShopController.search(matcher.group("cardName"));
         } else if (command.matches("show collection")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().show();
         } else if (command.matches("search collection")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+            Matcher matcher = Pattern.compile("search collection (?<cardName>.+)").matcher(command);
             matcher.find();
             Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
-        } else if (command.matches("buy [a-zA-Z]+")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>[a-zA-Z]+)").matcher(command);
+        } else if (command.matches("buy .+")) {
+            Matcher matcher = Pattern.compile("buy (?<cardName>.+)").matcher(command);
             matcher.find();
             ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {
-            Matcher matcher = Pattern.compile("search (?<cardId>\\d+)").matcher(command);
+            Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
             ShopController.sell(Account.getLoggedInAccount(),matcher.group("cardId"));
         } else if (command.matches("help")) {
@@ -168,11 +168,11 @@ public class ConsoleInput {
         if (command.matches("Game info")) {
             Battle.getPlayingBattle().getBattleView().printGameInfo();
         } else if (command.matches("show my minions")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showMySoldiers();
         } else if (command.matches("move to (\\d+,\\d+)")) {
             //todo
         } else if (command.matches("show opponent minions")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showMySoldiers();
         } else if (command.matches("show card info \\d+")) {
             //todo
         } else if (command.matches("select \\d+")) {

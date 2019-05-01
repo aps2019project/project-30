@@ -10,25 +10,21 @@ public class ShopView {
 
     public static void showAll() {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
-            for (int i = 0; i < 3; i++) {//one time for heroes, once for itmes and once for cards(spells and minions)
-                if (i == 0) {
-                    showHeroes();
-                } else if (i == 1) {
-                    showItems();
-                } else if (i == 2) {
-                    showCards();
-                }
-            }
+            showHeroes();
+            showItems();
+            showCards();
         }
     }
 
     private static void showHeroes() {
         System.out.println("Heroes :");
         for (int i = 0; i < Shop.getShopCollection().getCards().size(); i++) {
-            System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
-                    "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getAttackPower() +
-                    "- HP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHealth() + /*special power*/
-                    "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            if (Shop.getShopCollection().getCards().get(i) instanceof Hero) {
+                System.out.println((i + 1) + "- Name : " + Shop.getShopCollection().getCards().get(i).getName() +
+                        "- AP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getAttackPower() +
+                        "- HP : " + ((Hero) Shop.getShopCollection().getCards().get(i)).getHealth() + /*special power*/
+                        "- buy cost : " + Shop.getShopCollection().getCards().get(i).getPriceInDrake());
+            }
         }
     }
 
