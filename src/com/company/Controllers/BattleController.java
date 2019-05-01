@@ -44,7 +44,7 @@ public class BattleController {
     }
 
     public void showOpponentSoldiers() {
-        List<Card> opponentCards = (List<Card>) battle.getTurnToPlay().getUsedCards().clone();
+        List<Card> opponentCards = (List<Card>) getEenmyPlayer(battle.getTurnToPlay()).getUsedCards().clone();
         showSoldiers(opponentCards);
     }
 
