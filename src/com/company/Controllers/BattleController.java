@@ -175,7 +175,26 @@ public class BattleController {
                     doSpecialPowerOnNear("friend");
                     break;
                 case SQUARE_2:
-
+                    for(int i=-1;i<=0;i++){
+                        for(int j=-1;j<=0;j++){
+                            if(!(i==0&&j==0)) {
+                                doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, j));
+                            }
+                        }
+                    }
+                    break;
+                case SQUARE_3:
+                    for(int i=-2;i<=0;i++){
+                        for(int j=-2;j<=0;j++){
+                            if(!(i==0&&j==0)) {
+                                doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, j));
+                            }
+                        }
+                    }
+                    break;
+                case ENEMY_ROW:
+                    break;
+                case ENEMY_COLUMN:
                     break;
             }
         }
@@ -308,8 +327,10 @@ public class BattleController {
             return battle.getPlayers()[1];
         }
         return player;
-        else
+        else{
             return battle.getPlayers()[0];
+
+        }
     }
     public void showMyMinion(){
 
