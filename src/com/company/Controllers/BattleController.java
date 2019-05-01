@@ -49,7 +49,6 @@ public class BattleController {
     }
 
     public void move(int x, int y) {
-        //todo buff and item
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         } else {
@@ -79,7 +78,7 @@ public class BattleController {
     private boolean validRage(Cell cell) {
         int x = cell.getxCoordinate();
         int y = cell.getyCoordinate();
-        if(x>=9||x<0||y>=5||y<0){
+        if (x >= 9 || x < 0 || y >= 5 || y < 0) {
             return false;
         }
         return true;
@@ -201,24 +200,25 @@ public class BattleController {
     }
 
     private void doOnEnemyRow() {
-        int y=0;
-        for(Card card:getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()){
-            if (card instanceof Hero){
-                y=((Hero) card).getCell().getyCoordinate();
+        int y = 0;
+        for (Card card : getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()) {
+            if (card instanceof Hero) {
+                y = ((Hero) card).getCell().getyCoordinate();
             }
         }
-        for(int i=0;i<9;i++){
+        for (int i = 0; i < 9; i++) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, y));
         }
     }
+
     private void doOnEnemyColum() {
-        int x=0;
-        for(Card card:getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()){
-            if (card instanceof Hero){
-                x=((Hero) card).getCell().getxCoordinate();
+        int x = 0;
+        for (Card card : getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()) {
+            if (card instanceof Hero) {
+                x = ((Hero) card).getCell().getxCoordinate();
             }
         }
-        for(int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, i));
         }
     }
@@ -226,7 +226,7 @@ public class BattleController {
     private void doOnSquare3() {
         for (int i = -2; i <= 0; i++) {
             for (int j = -2; j <= 0; j++) {
-                if (!(i == 0 && j == 0)&&validRage(battle.getMap().getCellByCoordinates(i, j))) {
+                if (!(i == 0 && j == 0) && validRage(battle.getMap().getCellByCoordinates(i, j))) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, j));
                 }
             }
@@ -236,7 +236,7 @@ public class BattleController {
     private void doOnSquare2() {
         for (int i = -1; i <= 0; i++) {
             for (int j = -1; j <= 0; j++) {
-                if (!(i == 0 && j == 0)&&validRage(battle.getMap().getCellByCoordinates(i, j))) {
+                if (!(i == 0 && j == 0) && validRage(battle.getMap().getCellByCoordinates(i, j))) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, j));
                 }
             }
@@ -346,7 +346,7 @@ public class BattleController {
 
 
     private void doUseSpecialPowerSwichCase(Cell cell) {
-        if(!validRage(cell))
+        if (!validRage(cell))
             return;
         int startEndenx = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
         for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
@@ -366,8 +366,7 @@ public class BattleController {
     private Player getEenmyPlayer(Player player) {
         if (player == battle.getPlayers()[0]) {
             return battle.getPlayers()[1];
-        }
-        else{
+        } else {
             return battle.getPlayers()[0];
 
         }

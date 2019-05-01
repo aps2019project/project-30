@@ -5,10 +5,14 @@ import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.CollectionViews;
 import com.company.Views.ConsoleOutput;
+
+import static com.company.Models.Shop.getCardById;
 
 
 public class CollectionController {
@@ -121,21 +125,28 @@ public class CollectionController {
         }
     }
 
+
     public void remove(String cardId, String deckName) {
-        for (Card card : Collection.getDeckByName(deckName).getDeckCards()) {
-            if (card.getId().equals(cardId)) {
-                Collection.getDeckByName(deckName).getDeckCards().remove(card);
-                return;
+        Card card=getCardById(cardId);
+        if(card instanceof Minion||card instanceof Spell) {
+            for (Card card1 : Collection.getDeckByName(deckName).getDeckCards()) {
+                if (card1.getId().equals(cardId)) {
+                    Collection.getDeckByName(deckName).getDeckCards().remove(card);
+                    return;
+                }
+            }
+        }
+        else if(card instanceof Hero){
+            if(Collection.getDeckByName(deckName).getHeroCard().getId().equals(cardId)){
+                Collection.getDeckByName(deckName).setHeroCard(null);
+            }
+        }
+        else if(card instanceof Item){
+            if(Collection.getDeckByName(deckName).getItemCard().getId().equals(cardId)){
+                Collection.getDeckByName(deckName).setItemCard(null);
             }
         }
         ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
     }
 
-    public Card getCardById(String cardId) {
-        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
-            if(card.getId().equals(cardId))
-                return card;
-        }
-        return null;
-    }
 }
