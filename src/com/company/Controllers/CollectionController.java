@@ -12,23 +12,6 @@ import com.company.Views.ConsoleOutput;
 
 
 public class CollectionController {
-    //public static void
-    public void show() {
-        CollectionViews.show(Account.getLoggedInAccount().getCollection().getCards());
-    }
-
-    public void showAllDecks() {
-        int counter = 0;
-        for (Deck deck : Account.getLoggedInAccount().getDecks()) {
-            counter++;
-            CollectionViews.showNumberofDeck(counter);
-            CollectionViews.showDeck(deck);
-        }
-    }
-
-    public void showDeck(String deckNmae) {
-        CollectionViews.showDeck(getDeckByName(deckNmae));
-    }
 
     public void search(String cardName) {
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
@@ -44,37 +27,37 @@ public class CollectionController {
             return;
         }
         if (deckExist(deckName)) {
-            for (Card card : getDeckByName(deckName).getDeckCards()) {
+            for (Card card : Collection.getDeckByName(deckName).getDeckCards()) {
                 if (card.getId().equals(cardId)) {
                     ConsoleOutput.printErrorMessage(ErrorType.CARD_EXISTS);
                     return;
                 }
             }
         }
-        if (getDeckByName(deckName).getDeckCards().size() >= 20) {
+        if (Collection.getDeckByName(deckName).getDeckCards().size() >= 20) {
             ConsoleOutput.printErrorMessage(ErrorType.DECK_FULL);
             return;
         }
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
             if (card.getId().equals(card.getId())) {
                 if (card instanceof Hero) {
-                    if (getDeckByName(deckName).getHeroCard() != null) {
+                    if (Collection.getDeckByName(deckName).getHeroCard() != null) {
                         ConsoleOutput.printErrorMessage(ErrorType.HERO_EXISTS);
                         return;
                     } else {
-                        getDeckByName(deckName).setHeroCard(card);
+                        Collection.getDeckByName(deckName).setHeroCard(card);
                         return;
                     }
                 } else if (card instanceof Item) {
-                    if (getDeckByName(deckName).getItemCard() != null) {
+                    if (Collection.getDeckByName(deckName).getItemCard() != null) {
                         ConsoleOutput.printErrorMessage(ErrorType.ITEM_EXISTS);
                         return;
                     } else {
-                        getDeckByName(deckName).setItemCard(card);
+                        Collection.getDeckByName(deckName).setItemCard(card);
                         return;
                     }
                 } else {
-                    getDeckByName(deckName).getDeckCards().add(card);
+                    Collection.getDeckByName(deckName).getDeckCards().add(card);
                 }
             }
         }
@@ -101,7 +84,7 @@ public class CollectionController {
 
     public void selectDeck(String deckName) {
         if (deckExist(deckName) && validateDeck(deckName)) {
-            Account.getLoggedInAccount().setMainDeck(getDeckByName(deckName));
+            Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(deckName));
             return;
         }
         ConsoleOutput.printErrorMessage(ErrorType.DECK_VALIDATE);
@@ -114,9 +97,8 @@ public class CollectionController {
     }
 
     public boolean validateDeck(String deckName) {
-        Deck deck;
         if (deckExist(deckName)) {
-            if (getDeckByName(deckName).getDeckCards().size() == 20 && getDeckByName(deckName).getHeroCard() != null) {
+            if (Collection.getDeckByName(deckName).getDeckCards().size() == 20 && Collection.getDeckByName(deckName).getHeroCard() != null) {
                 return true;
             }
             return false;
@@ -135,31 +117,18 @@ public class CollectionController {
 
     public void deleteDeck(String deckName) {
         if (deckExist(deckName)) {
-            Account.getLoggedInAccount().getDecks().remove(getDeckByName(deckName));
+            Account.getLoggedInAccount().getDecks().remove(Collection.getDeckByName(deckName));
         }
-    }
-
-    private Deck getDeckByName(String deckName) {
-        for (Deck deck : Account.getLoggedInAccount().getDecks()) {
-            if (deck.getName().equals(deckName)) {
-                return deck;
-            }
-        }
-        return null;
     }
 
     public void remove(String cardId, String deckName) {
-        for (Card card : getDeckByName(deckName).getDeckCards()) {
+        for (Card card : Collection.getDeckByName(deckName).getDeckCards()) {
             if (card.getId().equals(cardId)) {
-                getDeckByName(deckName).getDeckCards().remove(card);
+                Collection.getDeckByName(deckName).getDeckCards().remove(card);
                 return;
             }
         }
         ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
-    }
-
-    public void help() {
-        CollectionViews.printHelp();
     }
 
     public Card getCardById(String cardId) {

@@ -3,78 +3,37 @@ package com.company.Views.Console;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
+import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CollectionViews {
-    public static void showNumberofDeck(int n) {
-        System.out.println(n + " : deck_" + n);
-    }
 
     public static void showCardId(String cardId) {
         System.out.println(cardId);
     }
 
-    public static void show(ArrayList<Card> cards) {
-        System.out.println("Heroes : ");
-        for (Card card : cards) {
-            if (card instanceof Hero) {
-                System.out.println("\t" + ": Name " + card.getName() + "\tid : " + card.getId()+ 
-                        " - Ap : " + ((Hero) card).getAttackPower() +
-                        " - Hp : " + ((Hero) card).getHealth() +
-                        " - class : " + ((Hero) card).getName() +
-                        " - spesial power : " + ((Hero) card).getDescription() +
-                        " - sell Cost: " + ((Hero) card).getPriceInDrake());
-            }
-
-            //todo
-
-        }
-        System.out.println("Cards : ");
-        int counter = 0;
-        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
-            counter++;
-            showCard(card, counter);
+    public static void showAllCardsInCollection() {
+        if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
+            ConsoleOutput.showAllCards(Account.getLoggedInAccount().getCollection().getCards());
         }
     }
 
-    public static void showDeck(Deck deck) {
-        //Todo : Bug
-        System.out.println("Heroes : ");
-        System.out.println("    1 : Name " + deck.getHeroCard().getName() +
-                " - Ap : " + ((Hero) deck.getHeroCard()).getAttackPower() +
-                " - Hp : " + ((Hero) deck.getHeroCard()).getHealth() +
-                " - class : " + ((Hero) deck.getHeroCard()).getName() +
-                " - spesial power : " + ((Hero) deck.getHeroCard()).getDescription() +
-                " - sell Cost: " + ((Hero) deck.getHeroCard()).getPriceInDrake());
-
-        int counter = 0;
-        for (Card card : deck.getDeckCards()) {
-            counter++;
-            showCard(card, counter);
+    public static void showAllDecks() {
+        for(int i =0;i<Account.getLoggedInAccount().getDecks().size();i++){
+            System.out.println(i + "-->");
+            showDeck(Account.getLoggedInAccount().getDecks().get(i));
         }
-
     }
 
-    private static void showCard(Card card, int counter) {
-        if (card instanceof Minion) {
-            System.out.println("    " + counter + " : Type : Minion - Name : " + card.getName() + "\tid : " + card.getId()+
-                    " - Class " + ((Minion) card).getAttackType() +
-                    " - Ap : " + ((Minion) card).getAttackPower() +
-                    " - Hp : " + ((Minion) card).getHealth() +
-                    " - Mp : " + card.getManaPoint() +
-                    " - Special power : "+ card.getDescription());
-        }
-        if (card instanceof Spell) {
-            System.out.println("    " + counter + " : Type Spell - Name : " + card.getName() +
-                    " - Mp " + ((Spell) card).getManaPoint() +
-                    " - Desc : "/*+((Spell) card).getSpellType().get*/);
-
-        }
+    public static void showDeck(Deck deck){
+        ConsoleOutput.showAllCards(deck.getDeckCards());
     }
 
     public static void printDeckValidation(boolean isValidate) {
@@ -84,20 +43,20 @@ public class CollectionViews {
             System.out.println("Deck Is Not Valid");
     }
 
-    public static void printHelp(){
+    public static void printShopCommandsToHelp() {
         System.out.println("*** Account Commands ***");
-        System.out.println("1. exit :");
-        System.out.println("2. show :to showing all card and items");
-        System.out.println("3.search :  show that a card or item is in callection or not");
-        System.out.println("4. save : ");
-        System.out.println("5. create deck : creating a deck and add to collection ");
-        System.out.println("6. delete deck :delet a deck from collection");
-        System.out.println("7. add : adding a card or item to a deck");
-        System.out.println("8. remove : removing a card or item from a deck");
-        System.out.println("9. validate deck : showing a deck is complit or not");
-        System.out.println("10. select deck : select a deck as main deck");
-        System.out.println("11. show all decks : to showing content of all decks");
-        System.out.println("12 . show deck : to showing content of deck");
+        System.out.println("1. exit : obviously to exit!");
+        System.out.println("2. how :To showing all card and items");
+        System.out.println("3.search :  Show that a card or item is in callection or not");
+        System.out.println("4. save : What you think is for");
+        System.out.println("5. create deck : Creating a deck and add to collection ");
+        System.out.println("6. delete deck :Delete a deck from collection");
+        System.out.println("7. add : Adding a card or item to a deck");
+        System.out.println("8. remove : Removing a card or item from a deck");
+        System.out.println("9. validate deck : Showing a deck is complit or not");
+        System.out.println("10. select deck : Select a deck as main deck");
+        System.out.println("11. showAllCardsInCollection all decks : To showing content of all decks");
+        System.out.println("12 . showAllCardsInCollection deck : To showing content of deck");
     }
 
 }

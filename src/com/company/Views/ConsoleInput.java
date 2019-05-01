@@ -1,11 +1,12 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
-import com.company.Controllers.BattleController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Card.Groups.Collection;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
+import com.company.Views.Console.CollectionViews;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -85,7 +86,7 @@ public class ConsoleInput {
         } else if (command.matches("search \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[1]);
         } else if (command.matches("show")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().show();
+            CollectionViews.showAllCardsInCollection();
         } else if (command.matches("save")) {
             //save
             //todo
@@ -96,14 +97,13 @@ public class ConsoleInput {
         } else if (command.matches("remove \\w+ from deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().remove(commandParts[1], commandParts[4]);
         } else if (command.matches("help")) {
-            //help
-            //todo
+            CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
         } else if (command.matches("show all decks")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().showAllDecks();
+            CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().showDeck(commandParts[2]);
+            CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         }
@@ -137,7 +137,7 @@ public class ConsoleInput {
 
     public static void shopMenuCommandsChecker(String command) {
         if (command.matches("show")) {
-            ShopView.showAll();
+            ShopView.showAllCardsInShop();
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         } else if (command.matches("search .+")) {
@@ -145,7 +145,7 @@ public class ConsoleInput {
             matcher.find();
             ShopController.search(matcher.group("cardName"));
         } else if (command.matches("show collection")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().show();
+            CollectionViews.showAllCardsInCollection();
         } else if (command.matches("search collection")) {
             Matcher matcher = Pattern.compile("search collection (?<cardName>.+)").matcher(command);
             matcher.find();
