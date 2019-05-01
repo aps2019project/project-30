@@ -51,22 +51,23 @@ Minion extends Soldier {
 
     public static void showCards(ArrayList<Card> cards) {
         System.out.println("Cards :");
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i) instanceof Minion) {
-                System.out.println((i + 1) + "- Type : Minion " +
-                        "- Name : " + cards.get(i).getName() +
-                        "- Class : " + ((Minion) cards.get(i)).getActivationTime() +
-                        "- AP : " + ((Minion) cards.get(i)).getAttackPower() +
-                        "- HP : " + ((Minion) cards.get(i)).getFullHealth() +
-                        "- MP : " + cards.get(i).getManaPoint() +
-                        "- Desc : " + Shop.getShopCollection().getCards().get(i).getDescription() +
-                        "- Sell cost : " + cards.get(i).getPriceInDrake());
-            } else if (cards.get(i) instanceof Spell) {
-                System.out.println((i + 1) + "- Type : Spell " +
-                        "- Name : " + cards.get(i).getName() +
-                        "- MP : " + cards.get(i).getManaPoint() +
-                        "- Desc : " + cards.get(i).getDescription() +
-                        "- Sell cost : " + cards.get(i).getPriceInDrake());
+        int index = 1;
+        for (Card card : cards) {
+            if (card instanceof Minion) {
+                System.out.println(index++ + "- Type : Minion " +
+                        "- Name : " + card.getName() +
+                        "- Class : " + ((Minion) card).getActivationTime() +
+                        "- AP : " + ((Minion) card).getAttackPower() +
+                        "- HP : " + ((Minion) card).getFullHealth() +
+                        "- MP : " + card.getManaPoint() +
+                        "- Desc : " + card.getDescription() +
+                        "- Sell cost : " + card.getPriceInDrake());
+            } else if (card instanceof Spell) {
+                System.out.println(index++ + "- Type : Spell " +
+                        "- Name : " + card.getName() +
+                        "- MP : " + card.getManaPoint() +
+                        "- Desc : " + card.getDescription() +
+                        "- Sell cost : " + card.getPriceInDrake());
             }
         }
     }

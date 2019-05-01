@@ -72,13 +72,14 @@ public class Hero extends Soldier {
 
     public static void showHeroes(ArrayList<Card> cards) {
         System.out.println("Heroes :");
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i) instanceof Hero) {
-                System.out.println((i + 1) + "- Name : " + cards.get(i).getName() +
-                        "- AP : " + ((Hero) cards.get(i)).getAttackPower() +
-                        "- HP : " + ((Hero) cards.get(i)).getFullHealth() +
-                        "- Desc : " + Shop.getShopCollection().getCards().get(i).getDescription() +
-                        "- Sell cost : " + cards.get(i).getPriceInDrake());
+        int index = 1;
+        for (Card card:cards) {
+            if (card instanceof Hero) {
+                System.out.println(index++ + "- Name : " + card.getName() +
+                        "- AP : " + ((Hero) card).getAttackPower() +
+                        "- HP : " + ((Hero) card).getFullHealth() +
+                        "- Desc : " + card.getDescription() +
+                        "- Sell cost : " + card.getPriceInDrake());
             }
         }
     }
