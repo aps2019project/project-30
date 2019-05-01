@@ -17,7 +17,7 @@ public class AccountView {
         System.out.println("##### Account Commands #####");
         System.out.println("1- create account [username] : to creating new account");
         System.out.println("2- login [username] : to logging in to existing account");
-        System.out.println("3- show leaderboard : to show ranking of accounts");
+        System.out.println("3- showAllCardsInCollection leaderboard : to showAllCardsInCollection ranking of accounts");
         System.out.println("4- save : to save!");
         System.out.println("5- logout : obviously to logging out!");
     }
