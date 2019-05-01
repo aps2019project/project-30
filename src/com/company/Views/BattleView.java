@@ -1,9 +1,7 @@
 package com.company.Views;
 
 import com.company.Models.Battle.Battle;
-import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
-import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import com.company.Views.Console.CollectionViews;
 
@@ -48,7 +46,7 @@ public class BattleView {
 
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
-        CollectionViews.show(cards);
+        ConsoleOutput.showAllCards(cards);
     }
 
     private static void showHeroesCordinates() {
