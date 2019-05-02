@@ -1,7 +1,11 @@
 package com.company.Models.Battle.Modes;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Card.Hero.Hero;
 import com.company.Models.User.Player;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public enum Mode {
     CAPTURE_THE_FLAG {
@@ -19,6 +23,14 @@ public enum Mode {
     KILLING_GENERAL {
         @Override
         public Player getWinner() {
+            Map<Player, Hero> playerHeroMap = new HashMap<>();
+            playerHeroMap.put(getBattle().getPlayers()[0] ,(Hero) getBattle().getPlayers()[0].getDeck().getHeroCard());
+            playerHeroMap.put(getBattle().getPlayers()[1] ,(Hero) getBattle().getPlayers()[1].getDeck().getHeroCard());
+            for (Map.Entry<Player, Hero> playerHeroEntry : playerHeroMap.entrySet()) {
+                if (playerHeroEntry.getValue().getHealth() <= 0) {
+                    return playerHeroEntry.getKey();
+                }
+            }
             return null;
         }
     };
