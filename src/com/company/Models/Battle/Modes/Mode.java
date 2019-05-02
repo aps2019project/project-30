@@ -24,8 +24,9 @@ public enum Mode {
         @Override
         public Player getWinner() {
             Map<Player, Hero> playerHeroMap = new HashMap<>();
-            playerHeroMap.put(getBattle().getPlayers()[0] ,(Hero) getBattle().getPlayers()[0].getDeck().getHeroCard());
-            playerHeroMap.put(getBattle().getPlayers()[1] ,(Hero) getBattle().getPlayers()[1].getDeck().getHeroCard());
+            for (Player player : getBattle().getPlayers()) {
+                playerHeroMap.put(player ,(Hero) player.getDeck().getHeroCard());
+            }
             for (Map.Entry<Player, Hero> playerHeroEntry : playerHeroMap.entrySet()) {
                 if (playerHeroEntry.getValue().getHealth() <= 0) {
                     return playerHeroEntry.getKey();
