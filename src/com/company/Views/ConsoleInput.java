@@ -29,7 +29,7 @@ public class ConsoleInput {
 
     public static void menusHandler() {
         while (true) {
-            String command = scanner.nextLine();
+            String command = scanner.nextLine().toLowerCase();
             switch (menu) {
                 case MAIN:
                     mainMenuCommandsChecker(command);
