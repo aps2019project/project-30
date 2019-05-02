@@ -1,6 +1,7 @@
 package com.company.Models.Battle.Modes;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.User.Player;
 
@@ -11,6 +12,12 @@ public enum Mode {
     CAPTURE_THE_FLAG {
         @Override
         public Player getWinner() {
+            final int FLAGS = getBattle().getFlags().size();
+            Map<Player, Integer> playerHeroMap = new HashMap<>();
+            for (Player player : getBattle().getPlayers()) {
+                playerHeroMap.put(player ,0);
+            }
+            //Todo  : counting Flags Of Each Player
             return null;
         }
     },
