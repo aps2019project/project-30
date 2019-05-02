@@ -2,7 +2,6 @@ package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
-import com.company.Models.Battle.Map.Map;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
@@ -18,10 +17,8 @@ import com.company.Views.BattleView;
 import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
 
 import static java.lang.Math.*;
 
@@ -75,7 +72,7 @@ public class BattleController {
         return true;
     }
 
-    private boolean validRage(Cell cell) {
+    private boolean validRange(Cell cell) {
         int x = cell.getxCoordinate();
         int y = cell.getyCoordinate();
         if (x >= 9 || x < 0 || y >= 5 || y < 0) {
@@ -226,7 +223,7 @@ public class BattleController {
     private void doOnSquare3() {
         for (int i = -2; i <= 0; i++) {
             for (int j = -2; j <= 0; j++) {
-                if (!(i == 0 && j == 0) && validRage(battle.getMap().getCellByCoordinates(i, j))) {
+                if (!(i == 0 && j == 0) && validRange(battle.getMap().getCellByCoordinates(i, j))) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, j));
                 }
             }
@@ -236,7 +233,7 @@ public class BattleController {
     private void doOnSquare2() {
         for (int i = -1; i <= 0; i++) {
             for (int j = -1; j <= 0; j++) {
-                if (!(i == 0 && j == 0) && validRage(battle.getMap().getCellByCoordinates(i, j))) {
+                if (!(i == 0 && j == 0) && validRange(battle.getMap().getCellByCoordinates(i, j))) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(i, j));
                 }
             }
@@ -346,7 +343,7 @@ public class BattleController {
 
 
     private void doUseSpecialPowerSwichCase(Cell cell) {
-        if (!validRage(cell))
+        if (!validRange(cell))
             return;
         int startEndenx = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
         for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
