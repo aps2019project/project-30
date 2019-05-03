@@ -88,7 +88,6 @@ public class ConsoleInput {
         } else if (command.matches("show")) {
             CollectionViews.showAllCardsInCollection();
         } else if (command.matches("save")) {
-            //save
             //todo
         } else if (command.matches("add \\w+ to deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().addCard(commandParts[1], commandParts[4]);
