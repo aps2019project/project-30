@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Taj Danayi",
+    "manaPoint": 0,
+    "priceInDrake": 300,
+    "description": "ManaBuff : 3 Rounds - 1 Mana",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "MANA",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.ManaBuff"
+      }
+    ],
+    "buffsCasted": []
+  }
+]
