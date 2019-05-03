@@ -95,7 +95,7 @@ public class JsonController {
         cards.addAll(getSpells());
         cards.addAll(getMinions());
         cards.addAll(getHeroes());
-//        cards.addAll(getItems());
+        cards.addAll(getItems());
         return cards;
     }
 
