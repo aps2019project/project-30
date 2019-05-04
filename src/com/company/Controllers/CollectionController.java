@@ -38,10 +38,7 @@ public class CollectionController {
                 }
             }
         }
-        if (Collection.getDeckByName(deckName).getDeckCards().size() >= 20) {
-            ConsoleOutput.printErrorMessage(ErrorType.DECK_FULL);
-            return;
-        }
+
         Card card = getCardById(cardId);
         if (card instanceof Hero) {
             System.out.println(1);
@@ -57,6 +54,11 @@ public class CollectionController {
                 Collection.getDeckByName(deckName).setItemCard(card);
             }
         } else {
+            if (Collection.getDeckByName(deckName).getDeckCards().size() >= 20) {
+                ConsoleOutput.printErrorMessage(ErrorType.DECK_FULL);
+                return;
+            }
+            else
             Collection.getDeckByName(deckName).getDeckCards().add(card);
         }
     }
