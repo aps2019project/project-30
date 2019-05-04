@@ -62,7 +62,7 @@ public class BattleController {
         int y2 = cell.getyCoordinate();
         if (abs(x1 - x2) > 2 || abs(y1 - y2) > 2 || (abs(x1 - x2) == 2 && abs(y1 - y2) > 0) || (abs(y1 - y2) == 2 && abs(x1 - x2) > 0)) {
             return false;
-        } else if ((abs(x1 - x2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
+        } else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
             return false;
         } else if (x1 >= 9 || x1 < 0 || y1 >= 5 || y1 < 0) {
             return false;
