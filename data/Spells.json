@@ -238,9 +238,28 @@
         "type": "POSSETIVE",
         "name": "HOLY",
         "isCasted": false,
-        "castTime": 1000,
+        "castTime": 1,
         "remTurnToCast": 0,
         "value": 6,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "All Power",
+    "manaPoint": 4,
+    "priceInDrake": 2000,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_FRIEND",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
         "className": "com.company.Models.Buff.AttackPowerBuff"
       }
     ],

@@ -80,12 +80,12 @@ public class Main {
 
 
 
-        AttackPowerBuff attackPowerBuff= new AttackPowerBuff(null, 1000, 0, 6);
+        AttackPowerBuff attackPowerBuff= new AttackPowerBuff(null, 1000, 0, 2);
         Spell spell = new Spell();
-        spell.setName("Power Pu");
-        spell.setManaPoint(2);
-        spell.setPriceInDrake(2500);
-        spell.setTargetType(TargetType.FRIEND_SOLDIER);
+        spell.setName("All Power");
+        spell.setManaPoint(4);
+        spell.setPriceInDrake(2000);
+        spell.setTargetType(TargetType.WHOLE_FRIEND);
         spell.setInGraveCards(false);
         spell.getBuffsToCast().add(attackPowerBuff);
 
