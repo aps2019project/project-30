@@ -75,7 +75,9 @@ public class Hero extends Soldier {
         int index = 1;
         for (Card card:cards) {
             if (card instanceof Hero) {
-                System.out.println(index++ + "- Name : " + card.getName() +
+                System.out.println(index++ +
+                        "- ID : " + card.getId() +
+                        "- Name : " + card.getName() +
                         "- AP : " + ((Hero) card).getAttackPower() +
                         "- HP : " + ((Hero) card).getFullHealth() +
                         "- Desc : " + card.getDescription() +

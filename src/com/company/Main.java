@@ -78,8 +78,18 @@ public class Main {
 //
 
 
+        Hero hero = new Hero();
+        hero.setName("Simorgh");
 
+        hero.setPriceInDrake(9000);
+        hero.setFullHealth(50);
+        hero.setAttackPower(4);
+        hero.setAttackType(AttackType.MELEE);
+        hero.getBuffsToCast().add(stunBuff);
+        hero.setManaPoint(5);
+        hero.setCoolDown(8);
 
+//        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 
         StunBuff stunBuff= new StunBuff(null, 2, 0, 0);
         Spell spell = new Spell();

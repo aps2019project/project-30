@@ -89,7 +89,7 @@ public class ConsoleInput {
             CollectionViews.showAllCardsInCollection();
         } else if (command.matches("save")) {
             //todo
-        } else if (command.matches("add \\w+ to deck \\w+")) {
+        } else if (command.matches("add \\d+ to deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().addCard(commandParts[1], commandParts[4]);
         } else if (command.matches("validate deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().showDeckIsValidate(commandParts[2]);

@@ -2,6 +2,7 @@ package com.company.Models.Buff;
 
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
+import com.company.Models.Card.Soldier;
 
 public class PosionBuff extends Buff{
     public PosionBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
@@ -14,11 +15,7 @@ public class PosionBuff extends Buff{
     public void cast() {
         if(isActive()){
             if(canCastThisTurn()) {
-                if (cardToCast instanceof Hero) {
-                    ((Hero) cardToCast).decrementHealth(1);
-                } else if (cardToCast instanceof Minion) {
-                    ((Minion) cardToCast).decrementHealth(1);
-                }
+                ((Soldier) cardToCast).decrementHealth(1);
             }
         } else{
             destruct();

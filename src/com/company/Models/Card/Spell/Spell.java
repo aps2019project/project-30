@@ -21,4 +21,9 @@ public class Spell extends Card {
         spell.setDescription(this.getDescription());
         return spell;
     }
+    public Spell makeCopyForCreatingNewCardInShop(){
+        Spell spell = this.clone();
+        spell.setId(Card.createNewCardIdToCreatingNewCardInShop());
+        return spell;
+    }
 }

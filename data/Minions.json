@@ -132,5 +132,95 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 3,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 10,
+    "name": "Gorzdar Arab",
+    "manaPoint": 2,
+    "priceInDrake": 450,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "HYBRID",
+    "fullHealth": 14,
+    "health": 0,
+    "areaOfEffect": 10,
+    "attackPower": 10,
+    "name": "Gorzdar Arab",
+    "manaPoint": 9,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "HYBRID",
+    "fullHealth": 14,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 10,
+    "name": "Div Siah",
+    "manaPoint": 9,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "RANGED",
+    "fullHealth": 12,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 12,
+    "name": "Ghool Sang Andaz",
+    "manaPoint": 9,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEATH",
+    "attackType": "MELEE",
+    "fullHealth": 16,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 8,
+    "name": "Div Goraz Savar",
+    "manaPoint": 6,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEATH",
+    "attackType": "RANGED",
+    "fullHealth": 0,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Oghab",
+    "manaPoint": 2,
+    "priceInDrake": 200,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_POWER",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 10,
+        "className": "com.company.Models.Buff.HealthPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
