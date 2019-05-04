@@ -56,9 +56,8 @@ public class CollectionController {
             if (Collection.getDeckByName(deckName).getDeckCards().size() >= 20) {
                 ConsoleOutput.printErrorMessage(ErrorType.DECK_FULL);
                 return;
-            }
-            else
-            Collection.getDeckByName(deckName).getDeckCards().add(card);
+            } else
+                Collection.getDeckByName(deckName).getDeckCards().add(card);
         }
     }
 
