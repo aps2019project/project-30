@@ -80,14 +80,14 @@ public class Main {
 
 
 
-        HealthWeaknessBuff healthWeaknessBuff= new HealthWeaknessBuff(null, 1, 0, 6);
+        AttackWeaknessBuff attackWeaknessBuff= new AttackWeaknessBuff(null, 1, 0, 4);
         Spell spell = new Spell();
-        spell.setName("All Attack");
-        spell.setManaPoint(4);
-        spell.setPriceInDrake(1500);
-        spell.setTargetType(TargetType.ENEMY_COLUMN);
+        spell.setName("Weakening");
+        spell.setManaPoint(1);
+        spell.setPriceInDrake(1000);
+        spell.setTargetType(TargetType.ENEMY_MINION);
         spell.setInGraveCards(false);
-        spell.getBuffsToCast().add(healthWeaknessBuff);
+        spell.getBuffsToCast().add(attackWeaknessBuff);
 
 
         System.out.println(JsonController.getGson().toJson(spell));

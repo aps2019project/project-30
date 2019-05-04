@@ -283,5 +283,24 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Weakening",
+    "manaPoint": 1,
+    "priceInDrake": 1000,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_MINION",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "ATTACK_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 4,
+        "className": "com.company.Models.Buff.AttackWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
