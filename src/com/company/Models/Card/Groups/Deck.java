@@ -53,4 +53,8 @@ public class Deck {
     public String getName() {
         return name;
     }
+
+    public DeckController getDeckController() {
+        return deckController;
+    }
 }
