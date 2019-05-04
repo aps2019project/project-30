@@ -264,5 +264,24 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "All Attack",
+    "manaPoint": 4,
+    "priceInDrake": 1500,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_COLUMN",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
