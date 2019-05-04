@@ -160,5 +160,24 @@
         "className": "com.company.Models.Buff.DisarmBuff"
       }
     ]
+  },
+  {
+    "name": "All Poisen",
+    "manaPoint": 8,
+    "priceInDrake": 1500,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 4,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.PosionBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

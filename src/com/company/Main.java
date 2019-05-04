@@ -80,16 +80,14 @@ public class Main {
 
 
 
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 3, 0, 4);
-        DisarmBuff disarmBuff= new DisarmBuff(null, 3, 0, 0);
+        PosionBuff posionBuff= new PosionBuff(null, 4, 0, 1);
         Spell spell = new Spell();
-        spell.setName("All Disarm");
-        spell.setManaPoint(9);
-        spell.setPriceInDrake(2000);
+        spell.setName("All Poisen");
+        spell.setManaPoint(8);
+        spell.setPriceInDrake(1500);
         spell.setTargetType(TargetType.WHOLE_ENEMY);
         spell.setInGraveCards(false);
-        spell.getBuffsToCast().add(attackPowerBuff);
-        spell.getBuffsCasted().add(disarmBuff);
+        spell.getBuffsToCast().add(posionBuff);
 
 
         System.out.println(JsonController.getGson().toJson(spell));
