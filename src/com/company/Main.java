@@ -28,54 +28,13 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-//        ShopController.initialize();
-//        ConsoleInput.menusHandler();
+        ShopController.initialize();
+        ConsoleInput.menusHandler();
 
-//        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
-//        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
-//
-///*
-//
-//
-//        Hero hero = new Hero();
-//        hero.setName("Simorgh");
-//
-//        hero.setPriceInDrake(9000);
-//        hero.setFullHealth(50);
-//        hero.setAttackPower(4);
-//        hero.setAttackType(AttackType.MELEE);
-//        hero.getBuffsToCast().add(stunBuff);
-//        hero.setManaPoint(5);
-//        hero.setCoolDown(8);
-//
-////        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
-//
-//        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));*/
-//
-//
-//
-//
-//        Minion minion = new Minion();
-//        minion.setName("Shamshirzan Fars");
-//        minion.setPriceInDrake(400);
-//        minion.setManaPoint(2);
-//        minion.setFullHealth(6);
-//        minion.setAttackPower(4);
-//        minion.setAttackType(AttackType.MELEE);
-//        minion.getBuffsToCast().add(stunBuff);
-//        minion.setActivationTime(ActivationTime.ON_ATTACK);
-//
-//
-//
-//        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
-//        Item item = new Item();
-//        item.setName("Taj Danayi");
-//        item.setPriceInDrake(300);
-//        item.getBuffsToCast().add(manaBuff);
-//        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
-//        item.setTargetType(TargetType.FRIEND_HERO);
-//
-//
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
+        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
+
+/*
 
 
         Hero hero = new Hero();
@@ -91,19 +50,32 @@ public class Main {
 
 //        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 
-        StunBuff stunBuff= new StunBuff(null, 2, 0, 0);
-        Spell spell = new Spell();
-        spell.setName("Shock");
-        spell.setManaPoint(1);
-        spell.setPriceInDrake(1200);
-        spell.setTargetType(TargetType.ENEMY_SOLDIER);
-        spell.setInGraveCards(false);
+        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));*/
 
-        spell.getBuffsToCast().add(stunBuff);
+//        Gson gson = new Gson();
 
 
-        System.out.println(JsonController.getGson().toJson(spell));
+        HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
+        Minion minion = new Minion();
+        minion.setName("Oghab");
+        minion.setPriceInDrake(200);
+        minion.setManaPoint(2);
+        minion.setFullHealth(0);
+        minion.setAttackPower(2);
+        minion.setAttackType(AttackType.RANGED);
+        minion.getBuffsToCast().add(healthPowerBuff);
+        minion.setActivationTime(ActivationTime.ON_DEATH);
+//
+//
+//        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
+//        Item item = new Item();
+//        item.setName("Taj Danayi");
+//        item.setPriceInDrake(300);
+//        item.getBuffsToCast().add(manaBuff);
+//        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
+//        item.setTargetType(TargetType.FRIEND_HERO);
 
 
+        System.out.println(JsonController.getGson().toJson(minion));
     }
 }
