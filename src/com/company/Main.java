@@ -57,14 +57,14 @@ public class Main {
 
 
         Minion minion = new Minion();
-        minion.setName("Div Sefid");
+        minion.setName("Div Goraz Savar");
         minion.setPriceInDrake(300);
-        minion.setManaPoint(9);
-        minion.setFullHealth(14);
-        minion.setAttackPower(10);
-        minion.setAttackType(AttackType.HYBRID);
+        minion.setManaPoint(6);
+        minion.setFullHealth(16);
+        minion.setAttackPower(8);
+        minion.setAttackType(AttackType.MELEE);
 //        minion.getBuffsToCast().add(stunBuff);
-        minion.setActivationTime(null);
+        minion.setActivationTime(ActivationTime.ON_DEATH);
 //
 //
 //        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);

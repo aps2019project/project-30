@@ -171,5 +171,32 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "attackType": "RANGED",
+    "fullHealth": 12,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 12,
+    "name": "Ghool Sang Andaz",
+    "manaPoint": 9,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEATH",
+    "attackType": "MELEE",
+    "fullHealth": 16,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 8,
+    "name": "Div Goraz Savar",
+    "manaPoint": 6,
+    "priceInDrake": 300,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]
