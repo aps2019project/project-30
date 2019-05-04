@@ -37,6 +37,7 @@ public class Item extends Card {
         for (Card card : cards) {
             if (card instanceof Item) {
                 System.out.println(index++ +
+                        "- ID : " + card.getId() +
                         "- Name : " + card.getName() +
                         "- Desc : " + card.getDescription() +
                         "- Sell cost : " + card.getPriceInDrake());

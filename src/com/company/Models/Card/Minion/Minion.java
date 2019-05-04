@@ -54,7 +54,9 @@ Minion extends Soldier {
         int index = 1;
         for (Card card : cards) {
             if (card instanceof Minion) {
-                System.out.println(index++ + "- Type : Minion " +
+                System.out.println(index++ +
+                        "- ID : " + card.getId() +
+                        "- Type : Minion " +
                         "- Name : " + card.getName() +
                         "- Class : " + ((Minion) card).getActivationTime() +
                         "- AP : " + ((Minion) card).getAttackPower() +
@@ -63,7 +65,9 @@ Minion extends Soldier {
                         "- Desc : " + card.getDescription() +
                         "- Sell cost : " + card.getPriceInDrake());
             } else if (card instanceof Spell) {
-                System.out.println(index++ + "- Type : Spell " +
+                System.out.println(index++ +
+                        "- ID : " + card.getId() +
+                        "- Type : Spell " +
                         "- Name : " + card.getName() +
                         "- MP : " + card.getManaPoint() +
                         "- Desc : " + card.getDescription() +

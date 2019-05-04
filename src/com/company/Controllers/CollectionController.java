@@ -44,20 +44,17 @@ public class CollectionController {
         }
         Card card = getCardById(cardId);
         if (card instanceof Hero) {
+            System.out.println(1);
             if (Collection.getDeckByName(deckName).getHeroCard() != null) {
                 ConsoleOutput.printErrorMessage(ErrorType.HERO_EXISTS);
-                return;
             } else {
                 Collection.getDeckByName(deckName).setHeroCard(card);
-                return;
             }
         } else if (card instanceof Item) {
             if (Collection.getDeckByName(deckName).getItemCard() != null) {
                 ConsoleOutput.printErrorMessage(ErrorType.ITEM_EXISTS);
-                return;
             } else {
                 Collection.getDeckByName(deckName).setItemCard(card);
-                return;
             }
         } else {
             Collection.getDeckByName(deckName).getDeckCards().add(card);
