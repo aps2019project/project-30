@@ -8,6 +8,7 @@ import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
 
+import javax.management.BadAttributeValueExpException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -168,10 +169,15 @@ public class ConsoleInput {
             Battle.getPlayingBattle().getBattleView().printGameInfo();
         } else if (command.matches("show my minions")) {
             Battle.getPlayingBattle().getBattleController().showMySoldiers();
-        } else if (command.matches("move to (\\d+,\\d+)")) {
-            //todo
+        } else if (command.matches("move to \\(\\d+, \\d+\\)")) {
+            Matcher matcher = Pattern.compile("move to \\((?<x>\\d+), (?<y>\\d+)\\)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().move(
+                    Integer.valueOf(matcher.group("x")),
+                    Integer.valueOf(matcher.group("y"))
+            );
         } else if (command.matches("show opponent minions")) {
-            Battle.getPlayingBattle().getBattleController().showMySoldiers();
+            Battle.getPlayingBattle().getBattleController().showOpponentSoldiers();
         } else if (command.matches("show card info \\d+")) {
             //todo
         } else if (command.matches("select \\d+")) {

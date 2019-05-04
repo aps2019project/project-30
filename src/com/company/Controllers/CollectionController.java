@@ -44,7 +44,6 @@ public class CollectionController {
         }
         Card card = getCardById(cardId);
         if (card instanceof Hero) {
-            System.out.println(1);
             if (Collection.getDeckByName(deckName).getHeroCard() != null) {
                 ConsoleOutput.printErrorMessage(ErrorType.HERO_EXISTS);
             } else {
