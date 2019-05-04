@@ -93,5 +93,24 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Lighting Bolt",
+    "manaPoint": 2,
+    "priceInDrake": 1250,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 8,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

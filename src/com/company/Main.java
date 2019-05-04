@@ -28,8 +28,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ShopController.initialize();
-        ConsoleInput.menusHandler();
+//        ShopController.initialize();
+//        ConsoleInput.menusHandler();
 
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
         StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
@@ -52,7 +52,6 @@ public class Main {
 
         System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));*/
 
-        Gson gson = new Gson();
 
 
 
@@ -67,6 +66,7 @@ public class Main {
         minion.setActivationTime(ActivationTime.ON_ATTACK);
 
 
+
         ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
         Item item = new Item();
         item.setName("Taj Danayi");
@@ -75,8 +75,17 @@ public class Main {
         item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
         item.setTargetType(TargetType.FRIEND_HERO);
 
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 8);
+        Spell spell = new Spell();
+        spell.setName("Lighting Bolt");
+        spell.setManaPoint(2);
+        spell.setPriceInDrake(1250);
+        spell.setTargetType(TargetType.ENEMY_HERO);
+        spell.setInGraveCards(false);
+        spell.getBuffsToCast().add(healthWeaknessBuff);
 
-        System.out.println(JsonController.getGson().toJson(item));
+
+        System.out.println(JsonController.getGson().toJson(spell));
 
     }
 }
