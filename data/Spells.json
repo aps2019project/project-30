@@ -148,21 +148,10 @@
         "value": 4,
         "className": "com.company.Models.Buff.AttackPowerBuff"
       }
-    ],
-    "buffsCasted": [
-      {
-        "type": "NEGATIVE",
-        "name": "DISARM",
-        "isCasted": false,
-        "castTime": 3,
-        "remTurnToCast": 0,
-        "value": 0,
-        "className": "com.company.Models.Buff.DisarmBuff"
-      }
     ]
   },
   {
-    "name": "All Poisen",
+    "name": "All Poison",
     "manaPoint": 8,
     "priceInDrake": 1500,
     "isInGraveCards": false,
@@ -175,7 +164,7 @@
         "castTime": 4,
         "remTurnToCast": 0,
         "value": 1,
-        "className": "com.company.Models.Buff.PosionBuff"
+        "className": "com.company.Models.Buff.PoisonBuff"
       }
     ],
     "buffsCasted": []
@@ -228,7 +217,7 @@
     "buffsCasted": []
   },
   {
-    "name": "Power Pu",
+    "name": "Power Up",
     "manaPoint": 2,
     "priceInDrake": 2500,
     "isInGraveCards": false,
@@ -304,7 +293,7 @@
     "buffsCasted": []
   },
   {
-    "name": "Weakening",
+    "name": "Sacrifice",
     "manaPoint": 2,
     "priceInDrake": 1600,
     "isInGraveCards": false,
@@ -327,6 +316,25 @@
         "remTurnToCast": 0,
         "value": 8,
         "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Shock",
+    "manaPoint": 1,
+    "priceInDrake": 1200,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "castTime": 2,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.StunBuff"
       }
     ],
     "buffsCasted": []
