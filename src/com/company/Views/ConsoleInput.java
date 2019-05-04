@@ -1,9 +1,11 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
@@ -105,8 +107,11 @@ public class ConsoleInput {
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            //Todo : MohammadHosein : Check Validations
-            CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
+            if (CollectionController.validateDeck(commandParts[2])) {
+                CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
+            } else {
+                ConsoleOutput.printErrorMessage(ErrorType.DECK_NOTFOUND);
+            }
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         }
@@ -160,7 +165,7 @@ public class ConsoleInput {
         } else if (command.matches("sell \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            ShopController.sell(Account.getLoggedInAccount(),matcher.group("cardId"));
+            ShopController.sell(Account.getLoggedInAccount(), matcher.group("cardId"));
         } else if (command.matches("help")) {
             ShopView.printShopCommandsToHelp();
         }
