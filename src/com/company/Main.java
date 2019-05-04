@@ -55,15 +55,15 @@ public class Main {
 //        Gson gson = new Gson();
 
 
-
+        HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
         Minion minion = new Minion();
-        minion.setName("Div Goraz Savar");
-        minion.setPriceInDrake(300);
-        minion.setManaPoint(6);
-        minion.setFullHealth(16);
-        minion.setAttackPower(8);
-        minion.setAttackType(AttackType.MELEE);
-//        minion.getBuffsToCast().add(stunBuff);
+        minion.setName("Oghab");
+        minion.setPriceInDrake(200);
+        minion.setManaPoint(2);
+        minion.setFullHealth(0);
+        minion.setAttackPower(2);
+        minion.setAttackType(AttackType.RANGED);
+        minion.getBuffsToCast().add(healthPowerBuff);
         minion.setActivationTime(ActivationTime.ON_DEATH);
 //
 //

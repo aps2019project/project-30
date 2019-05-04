@@ -198,5 +198,29 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEATH",
+    "attackType": "RANGED",
+    "fullHealth": 0,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Oghab",
+    "manaPoint": 2,
+    "priceInDrake": 200,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_POWER",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 10,
+        "className": "com.company.Models.Buff.HealthPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
