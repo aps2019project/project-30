@@ -477,6 +477,7 @@ public class BattleController {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
             ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell());
+
         }
     }
 
