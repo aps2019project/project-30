@@ -302,5 +302,33 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Weakening",
+    "manaPoint": 2,
+    "priceInDrake": 1600,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_MINION",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 8,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
