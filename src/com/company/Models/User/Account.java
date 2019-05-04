@@ -12,7 +12,7 @@ public class Account {
     private static Account loggedInAccount;
     private String username;
     private String password;
-    private int drake = 20000;
+    private int drake = 200000;
     private ArrayList<Deck> decks = new ArrayList<>();
     private Deck mainDeck;
     private Collection collection = new Collection();

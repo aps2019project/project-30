@@ -84,8 +84,10 @@ public class ConsoleInput {
             Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(commandParts[2]);
         } else if (command.matches("delete deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[2]);
-        } else if (command.matches("search \\w+")) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[1]);
+        } else if (command.matches("search .+")) {
+            Matcher matcher = Pattern.compile("search (?<cardName>.+)").matcher(command);
+            matcher.find();
+            Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
         } else if (command.matches("show")) {
             CollectionViews.showAllCardsInCollection();
         } else if (command.matches("save")) {
@@ -103,6 +105,7 @@ public class ConsoleInput {
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
+            //Todo : MohammadHosein : Check Validations
             CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
