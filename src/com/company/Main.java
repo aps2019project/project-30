@@ -52,31 +52,31 @@ public class Main {
 
         System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));*/
 
-        Gson gson = new Gson();
+//        Gson gson = new Gson();
 
 
 
         Minion minion = new Minion();
-        minion.setName("Shamshirzan Fars");
-        minion.setPriceInDrake(400);
-        minion.setManaPoint(2);
-        minion.setFullHealth(6);
-        minion.setAttackPower(4);
-        minion.setAttackType(AttackType.MELEE);
-        minion.getBuffsToCast().add(stunBuff);
-        minion.setActivationTime(ActivationTime.ON_ATTACK);
+        minion.setName("Div Sefid");
+        minion.setPriceInDrake(300);
+        minion.setManaPoint(9);
+        minion.setFullHealth(14);
+        minion.setAttackPower(10);
+        minion.setAttackType(AttackType.HYBRID);
+//        minion.getBuffsToCast().add(stunBuff);
+        minion.setActivationTime(null);
+//
+//
+//        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
+//        Item item = new Item();
+//        item.setName("Taj Danayi");
+//        item.setPriceInDrake(300);
+//        item.getBuffsToCast().add(manaBuff);
+//        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
+//        item.setTargetType(TargetType.FRIEND_HERO);
 
 
-        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
-        Item item = new Item();
-        item.setName("Taj Danayi");
-        item.setPriceInDrake(300);
-        item.getBuffsToCast().add(manaBuff);
-        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
-        item.setTargetType(TargetType.FRIEND_HERO);
-
-
-        System.out.println(JsonController.getGson().toJson(item));
+        System.out.println(JsonController.getGson().toJson(minion));
 
     }
 }
