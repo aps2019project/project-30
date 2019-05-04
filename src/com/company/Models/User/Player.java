@@ -12,7 +12,6 @@ import java.util.List;
 public class Player {
     private List<Item> items = new ArrayList<>();
     private Account account;
-    private GraveYard graveYard;
     private Deck deck;
     private int score;
     private int mana = 2;
@@ -24,8 +23,8 @@ public class Player {
 
     public Player(Account account) {
         this.account = account;
-        this.graveYard = new GraveYard();
     }
+
 
     public void setMaxMana(int maxMana) {
         this.maxMana = maxMana;
@@ -42,10 +41,6 @@ public class Player {
     }
 
     public Player() {
-    }
-
-    public GraveYard getGraveYard() {
-        return graveYard;
     }
 
     public List<Item> getItems() {

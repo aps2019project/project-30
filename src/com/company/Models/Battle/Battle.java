@@ -4,6 +4,7 @@ import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
+import com.company.Models.Card.Groups.Deck;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
@@ -48,6 +49,7 @@ public class Battle {
         this.winningPrize = 500 * storyLevel;
         playingBattle = this;
         initHeroes();
+        System.out.println("sgd");
     }
 
     public Map getMap() {
@@ -102,6 +104,11 @@ public class Battle {
     private void initHeroes() {
         map.getCellByCoordinates(8, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
         map.getCellByCoordinates(0, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
+        Player botPlayer = new Player();
+        botPlayer.setMana(2);
+        botPlayer.setMaxMana(2);
+
+
     }
 
 }

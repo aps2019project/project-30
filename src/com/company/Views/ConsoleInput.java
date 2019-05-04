@@ -69,8 +69,8 @@ public class ConsoleInput {
             setMenu(Menu.COLLECTION);
         } else if (command.matches("enter shop")) {
             setMenu(Menu.SHOP);
-        } else if (command.matches("enter Battle")) {
-            setMenu(Menu.COLLECTION);
+        } else if (command.matches("enter battle")) {
+            setMenu(Menu.NEW_BATTLE);
         } else if (command.matches("exit")) {
             setMenu(Menu.EXIT);
         } else if (command.matches("help")) {
