@@ -179,5 +179,33 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Health With Profit",
+    "manaPoint": 0,
+    "priceInDrake": 2250,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

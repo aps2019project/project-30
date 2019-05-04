@@ -80,14 +80,16 @@ public class Main {
 
 
 
-        PosionBuff posionBuff= new PosionBuff(null, 4, 0, 1);
+        HealthWeaknessBuff healthWeaknessBuff= new HealthWeaknessBuff(null, 1, 0, 6);
+        HolyBuff holyBuff= new HolyBuff(null, 3, 0, 1);
         Spell spell = new Spell();
-        spell.setName("All Poisen");
-        spell.setManaPoint(8);
-        spell.setPriceInDrake(1500);
-        spell.setTargetType(TargetType.WHOLE_ENEMY);
+        spell.setName("Health With Profit");
+        spell.setManaPoint(0);
+        spell.setPriceInDrake(2250);
+        spell.setTargetType(TargetType.FRIEND_SOLDIER);
         spell.setInGraveCards(false);
-        spell.getBuffsToCast().add(posionBuff);
+        spell.getBuffsToCast().add(healthWeaknessBuff);
+        spell.getBuffsToCast().add(holyBuff);
 
 
         System.out.println(JsonController.getGson().toJson(spell));
