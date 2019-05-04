@@ -164,7 +164,7 @@
         "castTime": 4,
         "remTurnToCast": 0,
         "value": 1,
-        "className": "com.company.Models.Buff.PoisonBuff"
+        "className": "com.company.Models.Buff.PosionBuff"
       }
     ],
     "buffsCasted": []

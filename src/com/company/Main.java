@@ -32,7 +32,7 @@ public class Main {
         ConsoleInput.menusHandler();
 
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
-        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
+//        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
 /*
 
@@ -74,6 +74,17 @@ public class Main {
 //        item.getBuffsToCast().add(manaBuff);
 //        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
 //        item.setTargetType(TargetType.FRIEND_HERO);
+
+        StunBuff stunBuff= new StunBuff(null, 2, 0, 0);
+        Spell spell = new Spell();
+        spell.setName("Shock");
+        spell.setManaPoint(1);
+        spell.setPriceInDrake(1200);
+        spell.setTargetType(TargetType.ENEMY_SOLDIER);
+        spell.setInGraveCards(false);
+
+        spell.getBuffsToCast().add(stunBuff);
+
 
 
         System.out.println(JsonController.getGson().toJson(minion));
