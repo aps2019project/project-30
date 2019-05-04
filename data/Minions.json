@@ -123,12 +123,12 @@
       },
       {
         "type": "NEGATIVE",
-        "name": "POISON",
+        "name": "POSION",
         "isCasted": false,
         "castTime": 4,
         "remTurnToCast": 0,
         "value": 0,
-        "className": "com.company.Models.Buff.PoisonBuff"
+        "className": "com.company.Models.Buff.PosionBuff"
       }
     ],
     "buffsCasted": []
