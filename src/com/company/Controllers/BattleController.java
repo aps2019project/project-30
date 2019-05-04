@@ -135,7 +135,7 @@ public class BattleController {
 
     }
 
-    public void useSpecialPawer(int x, int y) {
+    public void useSpecialPower(int x, int y) {
         if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
                 ConsoleOutput.printErrorMessage(ErrorType.COOLDOWN_VALIDATE);

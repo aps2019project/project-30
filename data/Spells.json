@@ -93,5 +93,250 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Lighting Bolt",
+    "manaPoint": 2,
+    "priceInDrake": 1250,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 8,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Poison Lake",
+    "manaPoint": 5,
+    "priceInDrake": 900,
+    "isInGraveCards": false,
+    "targetType": "SQUARE_3",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.PosionBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Madness",
+    "manaPoint": 0,
+    "priceInDrake": 650,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 4,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ]
+  },
+  {
+    "name": "All Poison",
+    "manaPoint": 8,
+    "priceInDrake": 1500,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 4,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.PoisonBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "All Disarm",
+    "manaPoint": 9,
+    "priceInDrake": 2000,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Health With Profit",
+    "manaPoint": 0,
+    "priceInDrake": 2250,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Power Up",
+    "manaPoint": 2,
+    "priceInDrake": 2500,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "All Power",
+    "manaPoint": 4,
+    "priceInDrake": 2000,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_FRIEND",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "All Attack",
+    "manaPoint": 4,
+    "priceInDrake": 1500,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_COLUMN",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Weakening",
+    "manaPoint": 1,
+    "priceInDrake": 1000,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_MINION",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "ATTACK_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 4,
+        "className": "com.company.Models.Buff.AttackWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Sacrifice",
+    "manaPoint": 2,
+    "priceInDrake": 1600,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_MINION",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 8,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Shock",
+    "manaPoint": 1,
+    "priceInDrake": 1200,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "castTime": 2,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.StunBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
