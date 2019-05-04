@@ -112,5 +112,53 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Poison Lake",
+    "manaPoint": 5,
+    "priceInDrake": 900,
+    "isInGraveCards": false,
+    "targetType": "SQUARE_3",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.PosionBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "All Disarm",
+    "manaPoint": 9,
+    "priceInDrake": 2000,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 4,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      }
+    ]
   }
 ]
