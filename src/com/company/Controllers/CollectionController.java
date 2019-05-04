@@ -59,7 +59,6 @@ public class CollectionController {
         } else {
             Collection.getDeckByName(deckName).getDeckCards().add(card);
         }
-
     }
 
     private boolean deckExist(String deckName) {
@@ -121,7 +120,7 @@ public class CollectionController {
 
     public Card getCardById(String cardId) {
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
-            if (card.equals(cardId)) {
+            if (card.getId().equals(cardId)) {
                 return card;
             }
         }
