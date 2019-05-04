@@ -80,16 +80,14 @@ public class Main {
 
 
 
-        HealthWeaknessBuff healthWeaknessBuff= new HealthWeaknessBuff(null, 1, 0, 6);
-        HolyBuff holyBuff= new HolyBuff(null, 3, 0, 1);
+        AttackPowerBuff attackPowerBuff= new AttackPowerBuff(null, 1000, 0, 6);
         Spell spell = new Spell();
-        spell.setName("Health With Profit");
-        spell.setManaPoint(0);
-        spell.setPriceInDrake(2250);
+        spell.setName("Power Pu");
+        spell.setManaPoint(2);
+        spell.setPriceInDrake(2500);
         spell.setTargetType(TargetType.FRIEND_SOLDIER);
         spell.setInGraveCards(false);
-        spell.getBuffsToCast().add(healthWeaknessBuff);
-        spell.getBuffsToCast().add(holyBuff);
+        spell.getBuffsToCast().add(attackPowerBuff);
 
 
         System.out.println(JsonController.getGson().toJson(spell));

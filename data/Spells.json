@@ -133,11 +133,11 @@
     "buffsCasted": []
   },
   {
-    "name": "All Disarm",
-    "manaPoint": 9,
-    "priceInDrake": 2000,
+    "name": "Madness",
+    "manaPoint": 0,
+    "priceInDrake": 650,
     "isInGraveCards": false,
-    "targetType": "WHOLE_ENEMY",
+    "targetType": "FRIEND_SOLDIER",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
@@ -181,6 +181,25 @@
     "buffsCasted": []
   },
   {
+    "name": "All Disarm",
+    "manaPoint": 9,
+    "priceInDrake": 2000,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
     "name": "Health With Profit",
     "manaPoint": 0,
     "priceInDrake": 2250,
@@ -204,6 +223,25 @@
         "remTurnToCast": 0,
         "value": 1,
         "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Power Pu",
+    "manaPoint": 2,
+    "priceInDrake": 2500,
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
       }
     ],
     "buffsCasted": []
