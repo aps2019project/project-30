@@ -5,6 +5,7 @@ import com.company.Controllers.ShopController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.ActivationTime;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
@@ -66,7 +67,16 @@ public class Main {
         minion.setActivationTime(ActivationTime.ON_ATTACK);
 
 
-        System.out.println(JsonController.getGson().toJson(minion));
+        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
+        Item item = new Item();
+        item.setName("Taj Danayi");
+        item.setPriceInDrake(300);
+        item.getBuffsToCast().add(manaBuff);
+        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
+        item.setTargetType(TargetType.FRIEND_HERO);
+
+
+        System.out.println(JsonController.getGson().toJson(item));
 
     }
 }

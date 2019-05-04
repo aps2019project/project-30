@@ -87,5 +87,50 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "attackType": "HYBRID",
+    "fullHealth": 4,
+    "health": 0,
+    "areaOfEffect": 3,
+    "attackPower": 4,
+    "name": "Neyze Dar Arab",
+    "manaPoint": 1,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 6,
+    "name": "Jasoos Arab",
+    "manaPoint": 4,
+    "priceInDrake": 700,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      },
+      {
+        "type": "NEGATIVE",
+        "name": "POISON",
+        "isCasted": false,
+        "castTime": 4,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.PoisonBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
