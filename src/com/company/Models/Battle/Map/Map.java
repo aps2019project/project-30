@@ -15,7 +15,7 @@ public class Map {
                 Cell cell = new Cell();
                 cell.setxCoordinate(i);
                 cell.setyCoordinate(j);
-                cells[i] = cell;
+                cells[i + j] = cell;
             }
         }
     }
@@ -41,7 +41,6 @@ public class Map {
             if(cell.getCardInCell() instanceof Soldier){
                 stringBuilder.append(cell.getCardInCell().getId());
             }
-
             if (counter==9){
                 stringBuilder.append('\n');
                 counter=0;

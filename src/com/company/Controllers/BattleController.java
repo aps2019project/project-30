@@ -118,11 +118,11 @@ public class BattleController {
             int a = 0;
             int rand_int1 = rand.nextInt(19);
             card = battle.getTurnToPlay().getAccount().getMainDeck().getDeckCards().get(rand_int1);
-            for (Card card1 : battle.getTurnToPlay().getGraveYard().getDestroyedCards()) {
-                if (card == card1)
-                    a = 1;
-
-            }
+//            for (Card card1 : battle.getTurnToPlay().getGraveYard().getDestroyedCards()) {
+//                if (card == card1)
+//                    a = 1;
+//
+//            }
             if (a == 1) continue;
             break;
         }
