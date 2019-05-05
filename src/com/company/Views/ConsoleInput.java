@@ -259,7 +259,7 @@ public class ConsoleInput {
         } else if (command.matches("enter graveyard")) {
             setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {
-            //todo
+            BattleView.printBattleCommandsToHelp();
         }
     }
 
