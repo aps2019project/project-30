@@ -6,6 +6,7 @@ import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.ActivationTime;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
@@ -457,13 +458,13 @@ public class BattleController {
         return null;
     }
 
-    public void attack(Cell target) {
+    public void attack(Cell target,Boolean isCombo) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
         ErrorType errorType = getErrorTypeOfAttack(target, turnToPlay);
         if (errorType != null) {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
-            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell());
+            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(),isCombo);
 
         }
     }
@@ -516,5 +517,15 @@ public class BattleController {
         }
         return false;
     }
-
+    public void attackCombo(String oponentId,ArrayList<String> cardsId){
+        Cell cell=((Minion)getCardById(oponentId)).getCell();
+        for(String cardId:cardsId){
+            if(getCardById(cardId) instanceof Minion){
+                if(((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)){
+                    selectCard(cardId);
+                    attack(cell,true);
+                }
+            }
+        }
+    }
 }

@@ -30,20 +30,20 @@ public class Map {
     }
 
     @Override
-    public String toString(){
-        StringBuilder stringBuilder=new StringBuilder();
-        int counter=0;
-        for(Cell cell:getCells()){
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int counter = 0;
+        for (Cell cell : getCells()) {
             counter++;
-            if(cell.getCardInCell()==null){
+            if (cell.getCardInCell() == null) {
                 stringBuilder.append('#');
             }
-            if(cell.getCardInCell() instanceof Soldier){
+            if (cell.getCardInCell() instanceof Soldier) {
                 stringBuilder.append(cell.getCardInCell().getId());
             }
-            if (counter==9){
+            if (counter == 9) {
                 stringBuilder.append('\n');
-                counter=0;
+                counter = 0;
             }
         }
         return stringBuilder.toString();
