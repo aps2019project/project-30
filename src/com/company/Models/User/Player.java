@@ -12,8 +12,9 @@ import java.util.List;
 public class Player {
     private List<Item> items = new ArrayList<>();
     private Account account;
+    private String name;
     private Deck deck;
-    private int score;
+    private int score = 0;
     private int mana = 2;
     private int maxMana;
     private Spell spell;
@@ -91,5 +92,47 @@ public class Player {
         return usedCards;
     }
 
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
 
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDeck(Deck deck) {
+        this.deck = deck;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public Spell getSpell() {
+        return spell;
+    }
+
+    public void setSpell(Spell spell) {
+        this.spell = spell;
+    }
+
+    public void setUsedCardsToAttack(ArrayList<Card> usedCardsToAttack) {
+        this.usedCardsToAttack = usedCardsToAttack;
+    }
+
+    public void setUsedCards(ArrayList<Card> usedCards) {
+        this.usedCards = usedCards;
+    }
 }

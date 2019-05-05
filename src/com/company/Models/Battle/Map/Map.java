@@ -10,12 +10,12 @@ public class Map {
     }
 
     public Map() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 9; j++) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
                 Cell cell = new Cell();
-                cell.setxCoordinate(i);
-                cell.setyCoordinate(j);
-                cells[i] = cell;
+                cell.setxCoordinate(i + 1);
+                cell.setyCoordinate(j + 1);
+                cells[j * 9 + i] = cell;
             }
         }
     }
@@ -41,7 +41,6 @@ public class Map {
             if(cell.getCardInCell() instanceof Soldier){
                 stringBuilder.append(cell.getCardInCell().getId());
             }
-
             if (counter==9){
                 stringBuilder.append('\n');
                 counter=0;
