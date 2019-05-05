@@ -1,26 +1,18 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
-import com.company.Controllers.BattleController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
-import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
-import com.company.Models.Card.Groups.Deck;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
-import com.google.gson.*;
+//import com.google.gson.*;
 
 
-import javax.management.BadAttributeValueExpException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -234,8 +226,10 @@ public class ConsoleInput {
             );
         } else if (command.matches("show opponent minions")) {
             Battle.getPlayingBattle().getBattleController().showOpponentSoldiers();
-        } else if (command.matches("show card info \\d+")) {
-            //todo
+        } else if (command.matches("show card \\d+")) {
+            Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
         } else if (command.matches("attack \\d+")) {
             //todo
         } else if (command.matches("attack combo (\\d+)+")) {
@@ -257,7 +251,7 @@ public class ConsoleInput {
             matcher.find();
             Battle.getPlayingBattle().getBattleController().selectCard(matcher.group("cardId"));
         } else if (command.matches("show info")) {//showing selected card info
-            BattleView.showSelectedCardInformation();
+            BattleView.showCardInformation(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard());
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {
