@@ -49,4 +49,10 @@ public class Item extends Card {
                 "- Desc : " + item.getDescription() +
                 "- Sell cost : " + item.getPriceInDrake());
     }
+
+    public static void showItemInBattle(Item item) {
+        System.out.println("- ID : " + item.getId() +
+                "- Name : " + item.getName() +
+                "- Desc : " + item.getDescription());
+    }
 }

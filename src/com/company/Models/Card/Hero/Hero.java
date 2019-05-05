@@ -84,4 +84,12 @@ public class Hero extends Soldier {
                 "- Desc : " + hero.getDescription() +
                 "- Sell cost : " + hero.getPriceInDrake());
     }
+
+    public static void showHeroInBattle(Hero hero) {
+        System.out.println("- ID : " + hero.getId() +
+                "- Name : " + hero.getName() +
+                "- AP : " + hero.getAttackPower() +
+                "- HP : " + hero.getHealth() +
+                "- Desc : " + hero.getDescription());
+    }
 }

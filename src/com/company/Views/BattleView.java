@@ -1,7 +1,6 @@
 package com.company.Views;
 
 import com.company.Models.Battle.Battle;
-import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
@@ -9,7 +8,6 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
-import com.company.Views.Console.CollectionViews;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +37,7 @@ public class BattleView {
         showPlayersMana();
         switch (Battle.getPlayingBattle().getMode()) {
             case KILLING_GENERAL:
-                showHeroesCordinates();
+                showHeroesCoordinates();
                 break;
             case CAPTURE_THE_FLAG:
                 showFlagsCordinates();
@@ -53,13 +51,13 @@ public class BattleView {
     public static void showCardInformation(Card card){
         if(card != null) {
             if (card instanceof Minion) {
-                Minion.showMinion((Minion) card);
+                Minion.showMinionInBattle((Minion) card);
             } else if (card instanceof Item) {
-                Item.showItem((Item) card);
+                Item.showItemInBattle((Item) card);
             } else if (card instanceof Hero) {
-                Hero.showHero((Hero) card);
+                Hero.showHeroInBattle((Hero) card);
             } else if (card instanceof Spell) {
-                Spell.showSpell((Spell) card);
+                Spell.showSpellInBattle((Spell) card);
             }
         } else{
             ConsoleOutput.printErrorMessage(ErrorType.NO_SELECTED_CARD);
@@ -70,7 +68,7 @@ public class BattleView {
         ConsoleOutput.showAllCards(cards);
     }
 
-    private static void showHeroesCordinates() {
+    private static void showHeroesCoordinates() {
         for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
             System.out.printf(
                     "Player %d Hero health: %d\n", playerIndex + 1, Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
