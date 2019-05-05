@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.ErrorType;
@@ -37,31 +38,31 @@ public class ConsoleInput {
             String command = scanner.nextLine();
             switch (menu) {
                 case MAIN:
-                    System.out.println("MAIN");
+                    System.out.println("*** MAIN ***");
                     mainMenuCommandsChecker(command);
                     break;
                 case ACCOUNT:
-                    System.out.println("ACCOUNT");
+                    System.out.println("*** ACCOUNT ***");
                     accountMenuCommandsChecker(command);
                     break;
                 case COLLECTION:
-                    System.out.println("COLLECTION");
+                    System.out.println("*** COLLECTION ***");
                     collectionMenuCommandsChecker(command);
                     break;
                 case SHOP:
-                    System.out.println("SHOP");
+                    System.out.println("*** SHOP ***");
                     shopMenuCommandsChecker(command);
                     break;
                 case NEW_BATTLE:
-                    System.out.println("NEW_BATTLE");
+                    System.out.println("*** NEW_BATTLE ***");
                     newBattleMenuCommandsChecker(command);
                     break;
                 case BATTLE:
-                    System.out.println("BATTLE");
+                    System.out.println("*** BATTLE ***");
                     battleMenuCommandsChecker(command);
                     break;
                 case GRAVEYARD:
-                    System.out.println("GRAVEYARD");
+                    System.out.println("*** GRAVEYARD ***");
                     graveYardMenuCommandsChecker(command);
                     break;
             }
@@ -83,7 +84,7 @@ public class ConsoleInput {
         } else if (command.matches("enter battle")) {
             setMenu(Menu.NEW_BATTLE);
         } else if (command.matches("exit")) {
-            setMenu(Menu.EXIT);
+            setMenu(Menu.ACCOUNT);
         } else if (command.matches("help")) {
             MainMenuView.printMainMenuCommandsToHelp();
         }
@@ -220,7 +221,7 @@ public class ConsoleInput {
 
     public static void battleMenuCommandsChecker(String command) {
         //Todo : Create New Game
-        if (command.matches("Game info")) {
+        if (command.matches("game info")) {
             Battle.getPlayingBattle().getBattleView().printGameInfo();
         } else if (command.matches("show my minions")) {
             Battle.getPlayingBattle().getBattleController().showMySoldiers();
@@ -291,6 +292,16 @@ public class ConsoleInput {
                     Integer.valueOf(storyLevelMatcher.group("level"))
             );
             setMenu(Menu.BATTLE);
+        } else {
+            if (command.matches("start multiplayer game \\S+ \\w+")) {
+                Matcher multiPlayerMatcher = Pattern.compile("start multiplayer game (?<mode>\\S+) (?<opponent>\\w+)").matcher(command);
+                multiPlayerMatcher.find();
+                new Battle(
+                        Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode")),
+                        Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
+                );
+                setMenu(Menu.BATTLE);
+            }
         }
     }
 }

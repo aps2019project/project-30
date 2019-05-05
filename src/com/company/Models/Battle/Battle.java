@@ -25,16 +25,23 @@ public class Battle {
     private Player turnToPlay;
     private BattleController battleController = new BattleController(this);
     private List<Flag> flags = new ArrayList<>();
-    private BattleView battleView;
+    private BattleView battleView = new BattleView(this);
     private static int lastBattleCardId = 0;
     private int winningPrize;
 
-    public Battle(Mode mode, BattleType battleType) {
+    public Battle(Mode mode, Account opponent) {
+        players[0] = new Player(Account.getLoggedInAccount());
+        players[1] = new Player(opponent);
+        players[0].getDeck().getDeckController().initializeHand();
+        players[1].getDeck().getDeckController().initializeHand();
+        this.turnToPlay = players[0];
         this.mode = mode;
         this.battleType = battleType;
         playingBattle = this;
+        this.winningPrize = 1000;
         this.map = new Map();
         initHeroes();
+        System.out.println(map.toString());
     }
 
     public Battle(int storyLevel) {

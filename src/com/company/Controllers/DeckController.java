@@ -6,27 +6,27 @@ import com.company.Models.Card.Groups.Hand;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class DeckController {
     private Deck deck;
+    private int cardToAddInHandIndex = 0;
 
     public DeckController(Deck deck) {
         this.deck = deck;
-        generateRandomCardsOrder();
-//        initializeHand();
     }
 
     public void addRandomCardToHand() {
-        Card card = getAliveCards().get(0);
+        Card card = deck.getDeckCards().get(cardToAddInHandIndex);
         deck.getHand().getCards().add(card);
+        cardToAddInHandIndex++;
     }
 
     public void initializeHand() {
+        generateRandomCardsOrder();
         for (int i = 0; i < 5; i++) {
-            deck.getHand().getCards().add(
-              deck.getDeckCards().get(i)
-            );
+            addRandomCardToHand();
         }
     }
 

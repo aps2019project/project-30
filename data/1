@@ -55,5 +55,59 @@ add 21 to deck test
 add 22 to deck test
 select deck test
 exit
+exit
+login majid
+123
+enter shop
+buy Simorgh
+buy Taj Danayi
+buy Total Disarm
+buy Empower
+buy Fireball
+buy God Strength
+buy Hell Fire
+buy Kamandar Fars
+buy Shamshirzan Fars
+buy Neyzedar Fars
+buy Asbsavar Fars
+buy Kamandar Arab
+buy Ghollabsangdar Arab
+buy Neyze Dar Arab
+buy Jasoos Arab
+buy Gorzdar Arab
+buy Div Siah
+buy Ghool Sang Andaz
+buy Div Goraz Savar
+buy Oghab
+buy Lighting Bolt
+buy Poison Lake
+buy Madness
+exit
+enter collection
+create deck test1
+add 24 to deck test1
+add 25 to deck test1
+add 26 to deck test1
+add 27 to deck test1
+add 28 to deck test1
+add 29 to deck test1
+add 30 to deck test1
+add 31 to deck test1
+add 32 to deck test1
+add 33 to deck test1
+add 34 to deck test1
+add 35 to deck test1
+add 36 to deck test1
+add 37 to deck test1
+add 38 to deck test1
+add 39 to deck test1
+add 40 to deck test1
+add 41 to deck test1
+add 42 to deck test1
+add 43 to deck test1
+add 44 to deck test1
+add 45 to deck test1
+select deck test1
+exit
 enter battle
-story 2
+start multiplayer game KILLING_GENERAL hamid
