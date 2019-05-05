@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
@@ -78,7 +79,7 @@ public class BattleView {
 
     private static void showPlayersMana() {
         for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-            System.out.println("Player " + playerIndex +
+            System.out.println("Player " + (playerIndex+1) +
                     "---- > manas: " + Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
         }
     }
@@ -96,28 +97,28 @@ public class BattleView {
     }
 
     public static void printBattleCommandsToHelp(){
-        System.out.println("game info: to seeing game information!" +
-                "show my minions : to seeing your minions!" +
-                "show opponent minions : to seeing your opppnent minions!" +
-                "show card info [cardId] : to seeing this card information" +
-                "select [cardId]: obviously to selecting specific card" +
-                "move to [x][y]: nothing to explain" +
-                "attack [opponent cardId]: :)" +
-                "attack combo [opponent cardId][my cardId][my cardId]...: to attack to one card with many cards" +
-                "use special power [x][y]" +
-                "insert [cardName] in [x][y]" +
-                "end turn" +
-                "show collectibles: to seeing collected items" +
-                "select [collectibleId]: to selecting an item" +
-                "show info: to seeing selected card information" +
-                "show info [cardId]: to seeing specific card information" +
-                "use [x][y]: to using selected item in specific location" +
-                "show next card: to seeing the next card that will add to hand" +
-                "enter graveyard: to go to graveyard menu" +
-                "show cards: to seeing graveyard cards" +
-                "end game: to ending game!" +
-                "exit" +
-                "show menu" +
-                "help: to seeing this help!");
+        System.out.println("game info: to seeing game information!\n" +
+                "show my minions : to seeing your minions!\n" +
+                "show opponent minions : to seeing your opppnent minions!\n" +
+                "show card info [cardId] : to seeing this card information\n" +
+                "select [cardId]: obviously to selecting specific card\n" +
+                "move to [x][y]: nothing to explain\n" +
+                "attack [opponent cardId]: :)\n" +
+                "attack combo [opponent cardId][my cardId][my cardId]...: to attack to one card with many cards\n" +
+                "use special power [x][y]\n" +
+                "insert [cardName] in [x][y]\n" +
+                "end turn\n" +
+                "show collectibles: to seeing collected items\n" +
+                "select [collectibleId]: to selecting an item\n" +
+                "show info: to seeing selected card information\n" +
+                "show info [cardId]: to seeing specific card information\n" +
+                "use [x][y]: to using selected item in specific location\n" +
+                "show next card: to seeing the next card that will add to hand\n" +
+                "enter graveyard: to go to graveyard menu\n" +
+                "show cards: to seeing graveyard cards\n" +
+                "end game: to ending game!\n" +
+                "exit\n" +
+                "show menu\n" +
+                "help: to seeing this help!\n");
     }
 }

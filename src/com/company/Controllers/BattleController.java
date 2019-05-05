@@ -115,7 +115,6 @@ public class BattleController {
     }
 
     public void endTurn() {
-
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
         battle.getTurnToPlay().getUsedCardsToAttack().clear();
