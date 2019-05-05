@@ -35,4 +35,12 @@ public class Spell extends Card {
                 "- Desc : " + spell.getDescription() +
                 "- Sell cost : " + spell.getPriceInDrake());
     }
+
+    public static void showSpellInBattle(Spell spell) {
+        System.out.println("- ID : " + spell.getId() +
+                "- Type : Spell " +
+                "- Name : " + spell.getName() +
+                "- MP : " + spell.getManaPoint() +
+                "- Desc : " + spell.getDescription() +
+    }
 }

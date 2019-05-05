@@ -53,13 +53,13 @@ public class BattleView {
     public static void showCardInformation(Card card){
         if(card != null) {
             if (card instanceof Minion) {
-                Minion.showMinion((Minion) card);
+                Minion.showMinionInBattle((Minion) card);
             } else if (card instanceof Item) {
-                Item.showItem((Item) card);
+                Item.showItemInBattle((Item) card);
             } else if (card instanceof Hero) {
-                Hero.showHero((Hero) card);
+                Hero.showHeroInBattle((Hero) card);
             } else if (card instanceof Spell) {
-                Spell.showSpell((Spell) card);
+                Spell.showSpellInBattle((Spell) card);
             }
         } else{
             ConsoleOutput.printErrorMessage(ErrorType.NO_SELECTED_CARD);

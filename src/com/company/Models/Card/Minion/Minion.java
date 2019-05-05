@@ -61,4 +61,15 @@ Minion extends Soldier {
                 "- Desc : " + minion.getDescription() +
                 "- Sell cost : " + minion.getPriceInDrake());
     }
+
+    public static void showMinionInBattle(Minion minion){
+        System.out.println("- ID : " + minion.getId() +
+                "- Type : Minion " +
+                "- Name : " + minion.getName() +
+                "- Class : " + minion.getActivationTime() +
+                "- AP : " + minion.getAttackPower() +
+                "- HP : " + minion.getHealth() +
+                "- MP : " + minion.getManaPoint() +
+                "- Desc : " + minion.getDescription());
+    }
 }
