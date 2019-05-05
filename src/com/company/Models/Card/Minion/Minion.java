@@ -26,8 +26,8 @@ Minion extends Soldier {
         minion.setPriceInDrake(this.getPriceInDrake());
         minion.setHealth(this.getHealth());
         minion.setFullHealth(getFullHealth());
-        minion.getBuffsToCast().addAll(this.getBuffsToCast());
-        minion.getBuffsCasted().addAll(this.getBuffsCasted());
+        minion.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
+        minion.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
         return minion;

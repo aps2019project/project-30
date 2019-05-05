@@ -1,7 +1,9 @@
 package com.company.Models.Card.Item;
 
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 
+import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class Item extends Card {
         item.setInGraveCards(this.isInGraveCards());
         item.setName(this.getName());
         item.setManaPoint(this.getManaPoint());
+        item.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
+        item.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         item.setPriceInDrake(this.getPriceInDrake());
         item.setTargetType(this.getTargetType());
         return item;
