@@ -82,14 +82,14 @@ public class BattleController {
     private boolean validRange(Cell cell) {
         int x = cell.getxCoordinate();
         int y = cell.getyCoordinate();
-        if (x >= 9 || x < 0 || y >= 5 || y < 0) {
+        if (x > 9 || x <= 0 || y > 5 || y <= 0) {
             return false;
         }
         return true;
     }
 
     private boolean cellIsValidToInsertingCard(int x, int y) {
-        if (x >= 9 || x < 0 || y >= 5 || y < 0) {
+        if (x > 9 || x <= 0 || y > 5 || y <= 0) {
             return false;
         } else if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() != null) {
             return false;
