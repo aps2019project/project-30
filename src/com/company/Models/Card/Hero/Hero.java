@@ -51,6 +51,7 @@ public class Hero extends Soldier {
         hero.setManaPoint(this.getManaPoint());
         hero.setPriceInDrake(this.getPriceInDrake());
         hero.setHealth(this.getHealth());
+        hero.setFullHealth(getFullHealth());
         hero.setCell(this.getCell());
         hero.setTargetType(this.getTargetType());
         hero.setAttackType(getAttackType());
