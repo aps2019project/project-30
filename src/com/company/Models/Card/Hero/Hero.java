@@ -24,7 +24,7 @@ public class Hero extends Soldier {
         return coolDown;
     }
 
-    public void decrementing(){
+    public void decrementing() {
         remainingCoolDown--;
     }
 
@@ -44,7 +44,7 @@ public class Hero extends Soldier {
         this.coolDown--;
     }
 
-    public Hero clone(){
+    public Hero clone() {
         Hero hero = new Hero();
         hero.setInGraveCards(this.isInGraveCards());
         hero.setName(this.getName());
@@ -59,13 +59,13 @@ public class Hero extends Soldier {
         return hero;
     }
 
-    public Hero makeCopyForCreatingNewCardInShop(){
+    public Hero makeCopyForCreatingNewCardInShop() {
         Hero hero = this.clone();
         hero.setId(Card.createNewCardIdToCreatingNewCardInShop());
         return hero;
     }
 
-    public Hero makeCopyForCreatingNewCardInBattle(){
+    public Hero makeCopyForCreatingNewCardInBattle() {
         Hero hero = this.clone();
         hero.setId(Card.createNewCardIdToCreatingNewCardInBattle(this.getName()));
         return hero;
@@ -74,16 +74,20 @@ public class Hero extends Soldier {
     public static void showHeroes(List<Card> cards) {
         System.out.println("Heroes :");
         int index = 1;
-        for (Card card:cards) {
+        for (Card card : cards) {
             if (card instanceof Hero) {
-                System.out.println(index++ +
-                        "- ID : " + card.getId() +
-                        "- Name : " + card.getName() +
-                        "- AP : " + ((Hero) card).getAttackPower() +
-                        "- HP : " + ((Hero) card).getFullHealth() +
-                        "- Desc : " + card.getDescription() +
-                        "- Sell cost : " + card.getPriceInDrake());
+                System.out.println(index++);
+                showHero((Hero)card);
             }
         }
+    }
+
+    public static void showHero(Hero hero) {
+        System.out.println("- ID : " + hero.getId() +
+                "- Name : " + hero.getName() +
+                "- AP : " + hero.getAttackPower() +
+                "- HP : " + hero.getFullHealth() +
+                "- Desc : " + hero.getDescription() +
+                "- Sell cost : " + hero.getPriceInDrake());
     }
 }

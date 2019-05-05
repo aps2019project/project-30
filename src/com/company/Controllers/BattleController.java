@@ -57,18 +57,19 @@ public class BattleController {
                 battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
             }
         }
+        System.out.println(battle.getMap().toString());
     }
 
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
         int x2 = cell.getxCoordinate();
         int y2 = cell.getyCoordinate();
-        if (abs(x1 - x2) > 2 || abs(y1 - y2) > 2 || (abs(x1 - x2) == 2 && abs(y1 - y2) > 0) || (abs(y1 - y2) == 2 && abs(x1 - x2) > 0)) {
+        if (abs (x1 - x2) + abs(y1 - y2) > 2) {
             return false;
-        } else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
+        } else if ((abs(x1 - x2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
             return false;
-        } else if (x1 >= 9 || x1 < 0 || y1 >= 5 || y1 < 0) {
+        } else if (x1 > 9 || x1 <= 0 || y1 > 5 || y1 <= 0) {
             return false;
-        } else if (battle.getMap().getCellByCoordinates(x2, y2).getCardInCell() != null) {
+        } else if (battle.getMap().getCellByCoordinates(x1, y1).getCardInCell() != null) {
             return false;
         }
         return true;
@@ -380,6 +381,7 @@ public class BattleController {
 
     private boolean isCardIdValid(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+        playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
         for (Card playerCard : playerCards) {
             if (playerCard.getId().equals(cardId))
                 return true;

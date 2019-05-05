@@ -70,7 +70,7 @@ public class CollectionController {
         return false;
     }
 
-    private boolean cardExist(String cardId) {
+    public boolean cardExist(String cardId) {
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
             if (card.getId().equals(cardId)) {
                 return true;
