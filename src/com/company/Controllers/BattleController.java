@@ -473,6 +473,7 @@ public class BattleController {
                 if (newCard.getManaPoint() >= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
                     cell.setCardInCell(newCard);
+                    ((Soldier) newCard).setCell(cell);
                     Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
