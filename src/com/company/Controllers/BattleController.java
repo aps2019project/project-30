@@ -125,9 +125,7 @@ public class BattleController {
         } else {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
-
     }
-
     public void useSpecialPower(int x, int y) {
         if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
@@ -433,11 +431,28 @@ public class BattleController {
         return false;
     }
 
+    private boolean cardExistsInDeck(String cardId){
+        for (Card card :battle.getTurnToPlay().getDeck().getDeckCards()) {
+            if(card.getId().equals(cardId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void showCardFromGraveYardInformation(String cardId){
         if(cardExistsInGraveYard(cardId)){
             BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
         }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
+        }
+    }
+
+    public void showDeckCardInformation(String cardId){
+        if(cardExistsInDeck(cardId)){
+            BattleView.showCardInformation(getCardById(cardId));
+        }else{
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
         }
     }
 

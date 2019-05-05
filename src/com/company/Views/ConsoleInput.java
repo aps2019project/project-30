@@ -38,24 +38,31 @@ public class ConsoleInput {
             String command = scanner.nextLine();
             switch (menu) {
                 case MAIN:
+                    System.out.println("MAIN");
                     mainMenuCommandsChecker(command);
                     break;
                 case ACCOUNT:
+                    System.out.println("ACCOUNT");
                     accountMenuCommandsChecker(command);
                     break;
                 case COLLECTION:
+                    System.out.println("COLLECTION");
                     collectionMenuCommandsChecker(command);
                     break;
                 case SHOP:
+                    System.out.println("SHOP");
                     shopMenuCommandsChecker(command);
                     break;
                 case NEW_BATTLE:
+                    System.out.println("NEW_BATTLE");
                     newBattleMenuCommandsChecker(command);
                     break;
                 case BATTLE:
+                    System.out.println("BATTLE");
                     battleMenuCommandsChecker(command);
                     break;
                 case GRAVEYARD:
+                    System.out.println("GRAVEYARD");
                     graveYardMenuCommandsChecker(command);
                     break;
             }
@@ -227,10 +234,10 @@ public class ConsoleInput {
             );
         } else if (command.matches("show opponent minions")) {
             Battle.getPlayingBattle().getBattleController().showOpponentSoldiers();
-        } else if (command.matches("show card \\d+")) {
+        } else if (command.matches("show card info \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
+            Battle.getPlayingBattle().getBattleController().showDeckCardInformation(matcher.group("cardId"));
         } else if (command.matches("attack \\d+")) {
             //todo
         } else if (command.matches("attack combo (\\d+)+")) {
@@ -238,13 +245,13 @@ public class ConsoleInput {
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show hand")) {
-            //todo
+            BattleView.showHand();
         } else if (command.matches("insert \\[a-zA-Z]+ in \\(\\d+, \\d+\\)")) {
             Matcher matcher = Pattern.compile("insert (?<cardName>[a-zA-Z]+) in \\((?<xCordinate>\\d+)\\,(?<yCordinate>\\d+)\\)").matcher(command);
             matcher.find();
             Battle.getPlayingBattle().getBattleController().insertNewCardToMap(Integer.parseInt(matcher.group("xCordinate")), Integer.parseInt(matcher.group("yCordinate")), matcher.group("cardName"));
         } else if (command.matches("end turn")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().endTurn();
         } else if (command.matches("Show collectables")) {
             //todo
         } else if (command.matches("select \\d+")) {
@@ -267,7 +274,9 @@ public class ConsoleInput {
 
     private static void graveYardMenuCommandsChecker(String command) {
         if (command.matches("show info \\d+")) {
-            //todo
+            Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
         } else if (command.matches("show cards")) {
             Battle.getPlayingBattle().getBattleController().showGraveYardCards();
         } else if (command.matches("exit")) {
