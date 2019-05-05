@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.BattleController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
@@ -255,8 +256,8 @@ public class ConsoleInput {
             Matcher matcher = Pattern.compile("select (?<cardId>\\d+)").matcher(command);
             matcher.find();
             Battle.getPlayingBattle().getBattleController().selectCard(matcher.group("cardId"));
-        } else if (command.matches("show info")) {//showing selected card infos
-            //todo
+        } else if (command.matches("show info")) {//showing selected card info
+            BattleView.showSelectedCardInformation();
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {

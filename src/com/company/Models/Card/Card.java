@@ -113,4 +113,18 @@ public abstract class Card {
         }
         return "";
     }
+
+    public static void showCards(List<Card> cards) {
+        System.out.println("Cards :");
+        int index = 1;
+        for (Card card : cards) {
+            if (card instanceof Minion) {
+                System.out.print(index++);
+                Minion.showMinion((Minion)card);
+            } else if (card instanceof Spell) {
+                System.out.print(index++);
+                Spell.showSpell((Spell)card);
+            }
+        }
+    }
 }

@@ -37,12 +37,16 @@ public class Item extends Card {
         int index = 1;
         for (Card card : cards) {
             if (card instanceof Item) {
-                System.out.println(index++ +
-                        "- ID : " + card.getId() +
-                        "- Name : " + card.getName() +
-                        "- Desc : " + card.getDescription() +
-                        "- Sell cost : " + card.getPriceInDrake());
+                System.out.println(index++);
+                showItem((Item)card);
             }
         }
+    }
+
+    public static void showItem(Item item) {
+        System.out.println("- ID : " + item.getId() +
+                "- Name : " + item.getName() +
+                "- Desc : " + item.getDescription() +
+                "- Sell cost : " + item.getPriceInDrake());
     }
 }
