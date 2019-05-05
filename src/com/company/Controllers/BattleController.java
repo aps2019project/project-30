@@ -51,11 +51,13 @@ public class BattleController {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         } else {
-            battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
-            ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-            battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
-            if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
-                battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
+            if(!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
+                battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
+                ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+                battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
+                }
             }
         }
         System.out.println(battle.getMap().toString());
@@ -66,7 +68,7 @@ public class BattleController {
         int y2 = cell.getyCoordinate();
         if (abs(x1 - x2) + abs(y1 - y2) > 2) {
             return false;
-        } else if ((abs(x1 - x2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
+        } else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
             return false;
         } else if (x1 > 9 || x1 <= 0 || y1 > 5 || y1 <= 0) {
             return false;
