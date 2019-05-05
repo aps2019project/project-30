@@ -120,7 +120,7 @@ public class BattleController {
         return true;
     }
 
-    public void endTern() {
+    public void endTurn() {
 
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
