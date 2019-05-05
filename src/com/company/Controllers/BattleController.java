@@ -145,10 +145,10 @@ public class BattleController {
             if(battle.getTurnToPlay().getSelectedCard().getManaPoint() > battle.getTurnToPlay().getMana()){
                 return;
             }
-        }
-         {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
+        }
+         {
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
                 ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDownByCooldown();
             }
