@@ -274,7 +274,7 @@ public class BattleController {
 
     private void doSpecialPowerOnWholeEnemy() {
         for (Card card : getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()) {
-            if (card instanceof Hero || card instanceof Minion) {
+            if (!card.isInGraveCards()&&(card instanceof Hero || card instanceof Minion)) {
                 doUseSpecialPowerSwichCase(((Soldier) card).getCell());
             }
         }
@@ -282,7 +282,7 @@ public class BattleController {
 
     private void doSpecialPowerOnWholeFriend() {
         for (Card card : battle.getTurnToPlay().getUsedCards()) {
-            if (card instanceof Hero || card instanceof Minion) {
+            if (!card.isInGraveCards()&&(card instanceof Hero || card instanceof Minion) ){
                 doUseSpecialPowerSwichCase(((Soldier) card).getCell());
             }
         }
