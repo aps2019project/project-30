@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.ErrorType;
@@ -76,7 +77,7 @@ public class ConsoleInput {
         } else if (command.matches("enter battle")) {
             setMenu(Menu.NEW_BATTLE);
         } else if (command.matches("exit")) {
-            setMenu(Menu.EXIT);
+            setMenu(Menu.ACCOUNT);
         } else if (command.matches("help")) {
             MainMenuView.printMainMenuCommandsToHelp();
         }
@@ -282,6 +283,16 @@ public class ConsoleInput {
                     Integer.valueOf(storyLevelMatcher.group("level"))
             );
             setMenu(Menu.BATTLE);
+        } else {
+            if (command.matches("start multiplayer game \\w+ \\w+ ?\\d+")) {
+                Matcher multiPlayerMatcher = Pattern.compile("start multiplayer game (?<mode>\\w+) (?<opponent>\\w+) ?\\d+").matcher(command);
+                multiPlayerMatcher.find();
+                new Battle(
+                        Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode")),
+                        Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
+                );
+                setMenu(Menu.BATTLE);
+            }
         }
     }
 }
