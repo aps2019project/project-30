@@ -1,6 +1,5 @@
 package com.company.Views;
 
-import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
@@ -50,7 +49,8 @@ public class BattleView {
         }
     }
 
-    public static void showCardInformation(Card card){
+    public static void showSelectedCardInformation(){
+        Card card = Battle.getPlayingBattle().getTurnToPlay().getSelectedCard();
         if(card != null) {
             if (card instanceof Minion) {
                 Minion.showMinion((Minion) card);

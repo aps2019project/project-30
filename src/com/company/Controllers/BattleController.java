@@ -50,6 +50,7 @@ public class BattleController {
     public void move(int x, int y) {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
+<<<<<<< HEAD
         }
 
         else {
@@ -61,6 +62,14 @@ public class BattleController {
                 if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
                     battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
+=======
+        } else {
+            battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
+            ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+            battle.getMap().getCellByCoordinates(x,y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
+            if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
+>>>>>>> parent of 0ed13e4... showGraveYardCardInformation completed
             }
         }
         System.out.println(battle.getMap().toString());
@@ -528,14 +537,13 @@ public class BattleController {
         }
         return false;
     }
-
-    public void attackCombo(String oponentId, ArrayList<String> cardsId) {
-        Cell cell = ((Minion) getCardById(oponentId)).getCell();
-        for (String cardId : cardsId) {
-            if (getCardById(cardId) instanceof Minion) {
-                if (((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)) {
+    public void attackCombo(String oponentId,ArrayList<String> cardsId){
+        Cell cell=((Minion)getCardById(oponentId)).getCell();
+        for(String cardId:cardsId){
+            if(getCardById(cardId) instanceof Minion){
+                if(((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)){
                     selectCard(cardId);
-                    attack(cell, true);
+                    attack(cell,true);
                 }
             }
         }
