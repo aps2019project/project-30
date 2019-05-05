@@ -128,7 +128,7 @@ public class Battle {
     private void initHeroes() {
         map.getCellByCoordinates(9, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
         map.getCellByCoordinates(1, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
-        ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
+        ((Soldier)players[1].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
         Player botPlayer = new Player();
         botPlayer.setMana(2);
