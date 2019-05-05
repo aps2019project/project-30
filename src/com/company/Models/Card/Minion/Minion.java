@@ -54,33 +54,34 @@ Minion extends Soldier {
         System.out.println("Cards :");
         int index = 1;
         for (Card card : cards) {
-            System.out.print(index++);
             if (card instanceof Minion) {
-                showCard(card);
+                System.out.print(index++);
+                showCard((Minion)card);
             } else if (card instanceof Spell) {
-                showSpell(card);
+                System.out.print(index++);
+                showSpell((Spell)card);
             }
         }
     }
 
-    public static void showCard(Card card) {
-        System.out.println("- ID : " + card.getId() +
+    public static void showCard(Minion minion) {
+        System.out.println("- ID : " + minion.getId() +
                 "- Type : Minion " +
-                "- Name : " + card.getName() +
-                "- Class : " + ((Minion) card).getActivationTime() +
-                "- AP : " + ((Minion) card).getAttackPower() +
-                "- HP : " + ((Minion) card).getFullHealth() +
-                "- MP : " + card.getManaPoint() +
-                "- Desc : " + card.getDescription() +
-                "- Sell cost : " + card.getPriceInDrake());
+                "- Name : " + minion.getName() +
+                "- Class : " + minion.getActivationTime() +
+                "- AP : " + minion.getAttackPower() +
+                "- HP : " + minion.getFullHealth() +
+                "- MP : " + minion.getManaPoint() +
+                "- Desc : " + minion.getDescription() +
+                "- Sell cost : " + minion.getPriceInDrake());
     }
 
-    public static void showSpell(Card card) {
-        System.out.println("- ID : " + card.getId() +
+    public static void showSpell(Spell spell) {
+        System.out.println("- ID : " + spell.getId() +
                 "- Type : Spell " +
-                "- Name : " + card.getName() +
-                "- MP : " + card.getManaPoint() +
-                "- Desc : " + card.getDescription() +
-                "- Sell cost : " + card.getPriceInDrake());
+                "- Name : " + spell.getName() +
+                "- MP : " + spell.getManaPoint() +
+                "- Desc : " + spell.getDescription() +
+                "- Sell cost : " + spell.getPriceInDrake());
     }
 }
