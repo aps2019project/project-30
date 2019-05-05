@@ -91,6 +91,10 @@ public class BattleView {
         }
     }
 
+    public static void showHand(){
+        ConsoleOutput.showAllCards(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
+    }
+
     public static void printBattleCommandsToHelp(){
         System.out.println("game info: to seeing game information!" +
                 "show my minions : to seeing your minions!" +

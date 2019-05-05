@@ -237,7 +237,7 @@ public class ConsoleInput {
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show hand")) {
-            //todo
+            BattleView.showHand();
         } else if (command.matches("insert \\[a-zA-Z]+ in \\(\\d+, \\d+\\)")) {
             Matcher matcher = Pattern.compile("insert (?<cardName>[a-zA-Z]+) in \\((?<xCordinate>\\d+)\\,(?<yCordinate>\\d+)\\)").matcher(command);
             matcher.find();
