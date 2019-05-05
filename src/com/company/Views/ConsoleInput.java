@@ -269,6 +269,8 @@ public class ConsoleInput {
             setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {
             BattleView.printBattleCommandsToHelp();
+        }else if (command.matches("show map")) {
+            ConsoleOutput.printMessage(Battle.getPlayingBattle().getMap().toString());
         }
     }
 

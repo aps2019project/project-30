@@ -70,25 +70,21 @@ public class BattleController {
             return false;
         } else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
             return false;
-        } else if (x1 > 9 || x1 <= 0 || y1 > 5 || y1 <= 0) {
-            return false;
-        } else if (battle.getMap().getCellByCoordinates(x1, y1).getCardInCell() != null) {
-            return false;
         }
-        return true;
+        return cellIsValidToInsertingCard(x1,y1);
     }
 
     private boolean validRange(Cell cell) {
         int x = cell.getxCoordinate();
         int y = cell.getyCoordinate();
-        if (x >= 9 || x < 0 || y >= 5 || y < 0) {
+        if (x > 9 || x <= 0 || y > 5 || y <= 0) {
             return false;
         }
         return true;
     }
 
     private boolean cellIsValidToInsertingCard(int x, int y) {
-        if (x >= 9 || x < 0 || y >= 5 || y < 0) {
+        if (x > 9 || x <= 0 || y > 5 || y <= 0) {
             return false;
         } else if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() != null) {
             return false;
