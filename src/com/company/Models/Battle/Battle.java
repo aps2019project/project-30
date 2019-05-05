@@ -41,6 +41,18 @@ public class Battle {
         this.winningPrize = 1000;
         this.map = new Map();
         initHeroes();
+        initCardsHealth();
+    }
+
+    private void initCardsHealth() {
+        for (Player player : players) {
+            ((Hero) player.getDeck().getHeroCard()).setHealth(((Hero) player.getDeck().getHeroCard()).getFullHealth());
+            for (Card deckCard : player.getDeck().getDeckCards()) {
+                if (deckCard instanceof Soldier) {
+                    ((Soldier) deckCard).setHealth(((Soldier) deckCard).getFullHealth());
+                }
+            }
+        }
     }
 
     public Battle(int storyLevel) {

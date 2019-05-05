@@ -150,7 +150,7 @@ public class BattleController {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
-                ((Hero) battle.getTurnToPlay().getSelectedCard()).setCoolDown();
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDownByCooldown();
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
@@ -417,6 +417,19 @@ public class BattleController {
         return null;
     }
 
+    public Card getCardByIdInBattle(String cardId) {
+        Player opponent = battle.getBattleController().getEenmyPlayer(battle.getTurnToPlay());
+        List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+        playerCards.addAll(opponent.getDeck().getDeckCards());
+        playerCards.add(opponent.getDeck().getHeroCard());
+        playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
+        for (Card playerCard : playerCards) {
+            if (playerCard.getId().equals(cardId))
+                return playerCard;
+        }
+        return null;
+    }
+
     private Card getCardByName(String cardName) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
@@ -556,7 +569,6 @@ public class BattleController {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
             ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(), isCombo);
-
         }
     }
 
@@ -584,7 +596,7 @@ public class BattleController {
                 }
                 break;
         }
-        if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
+        if (turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
             return ErrorType.CARD_CANT_ATTACK;
         }
         return null;
@@ -625,5 +637,9 @@ public class BattleController {
                 first=false;
             }
         }
+    }
+
+    public void showNextCardOfBattle() {
+        Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 }
