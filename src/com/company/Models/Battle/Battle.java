@@ -41,7 +41,6 @@ public class Battle {
         this.winningPrize = 1000;
         this.map = new Map();
         initHeroes();
-        System.out.println(map.toString());
     }
 
     public Battle(int storyLevel) {

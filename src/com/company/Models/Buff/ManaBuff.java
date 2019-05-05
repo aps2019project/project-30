@@ -16,7 +16,7 @@ public class ManaBuff extends Buff {
     public void cast() {
         if (isActive()) {
             if (canCastThisTurn()) {
-                Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incremeantMana(this.value);
+                Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incrementMana(this.value);
             }
         } else {
             destruct();

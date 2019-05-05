@@ -62,7 +62,11 @@ public class Player {
         this.score += number;
     }
 
-    public void incremeantMana(int number) {
+    public void decrementMana(int number) {
+        mana -= number;
+    }
+
+    public void incrementMana(int number) {
         mana += number;
     }
 
