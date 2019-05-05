@@ -20,7 +20,6 @@ import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static java.lang.Math.*;
 
@@ -116,7 +115,15 @@ public class BattleController {
     }
 
     public void endTurn() {
-        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementing();
+        Player player=getEenmyPlayer(battle.getTurnToPlay());
+        for(Card card:player.getUsedCards()){
+            if(!card.isInGraveCards()){
+                for(Buff buff:card.getBuffsCasted()){
+                    buff.cast();
+                }
+            }
+        }
+        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();

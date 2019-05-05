@@ -24,8 +24,9 @@ public class Hero extends Soldier {
         return coolDown;
     }
 
-    public void decrementing() {
-        remainingCoolDown--;
+    public void decrementRemainingCoolDown() {
+        if(remainingCoolDown!=0)
+            remainingCoolDown--;
     }
 
     public int getCoolDownRemaining() {
