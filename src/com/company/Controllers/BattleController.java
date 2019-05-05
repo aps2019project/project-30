@@ -474,6 +474,7 @@ public class BattleController {
                     cell.setCardInCell(newCard);
                     ((Soldier) newCard).setCell(cell);
                     Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
+                    System.out.println(battle.getMap().toString());
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
