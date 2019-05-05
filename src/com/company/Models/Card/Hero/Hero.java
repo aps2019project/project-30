@@ -16,8 +16,12 @@ public class Hero extends Soldier {
     private int coolDown;
     private int remainingCoolDown;
 
-    public void setCoolDown() {
+    public void setRemainingCoolDownByCooldown() {
         this.remainingCoolDown = coolDown;
+    }
+
+    public void setCoolDown(int coolDown) {
+        this.coolDown = coolDown;
     }
 
     public int getCoolDown() {

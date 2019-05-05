@@ -143,7 +143,7 @@ public class BattleController {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
-                ((Hero) battle.getTurnToPlay().getSelectedCard()).setCoolDown();
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDownByCooldown();
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
