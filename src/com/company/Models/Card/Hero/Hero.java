@@ -48,6 +48,7 @@ public class Hero extends Soldier {
         hero.setCell(this.getCell());
         hero.setTargetType(this.getTargetType());
         hero.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
+        hero.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         hero.setAttackType(getAttackType());
         hero.setAttackPower(getAttackPower());
         hero.setAreaOfEffect(getAreaOfEffect());
