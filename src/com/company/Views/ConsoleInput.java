@@ -111,6 +111,7 @@ public class ConsoleInput {
             CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
+
             JsonSerializer jsonDeckSerializer = new JsonSerializer<Deck>() {
                 @Override
                 public JsonElement serialize(Deck deck, Type type, JsonSerializationContext jsonSerializationContext) {
@@ -120,6 +121,7 @@ public class ConsoleInput {
                     return jsonElement;
                 }
             };
+            
             JsonDeserializer jsonBuffDeserializer = new JsonDeserializer<Buff>() {
                 @Override
                 public Buff deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

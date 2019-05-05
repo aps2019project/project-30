@@ -43,6 +43,8 @@ public class Battle {
                 break;
             case 2:
                 this.mode = Mode.CAPTURE_THE_FLAG;
+                Flag flag = new Flag(map.getCellByCoordinates(5, 2));
+                map.getCellByCoordinates(5, 2).setFlag(flag);
                 break;
             case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
@@ -105,8 +107,8 @@ public class Battle {
 
 
     private void initHeroes() {
-        map.getCellByCoordinates(8, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
-        map.getCellByCoordinates(0, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(9, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(1, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
         Player botPlayer = new Player();
         botPlayer.setMana(2);
         botPlayer.setMaxMana(2);
