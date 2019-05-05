@@ -130,9 +130,7 @@ public class BattleController {
         } else {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
-
     }
-
     public void useSpecialPower(int x, int y) {
         if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {

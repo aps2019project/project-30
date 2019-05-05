@@ -45,24 +45,31 @@ public class ConsoleInput {
             String command = scanner.nextLine();
             switch (menu) {
                 case MAIN:
+                    System.out.println("MAIN");
                     mainMenuCommandsChecker(command);
                     break;
                 case ACCOUNT:
+                    System.out.println("ACCOUNT");
                     accountMenuCommandsChecker(command);
                     break;
                 case COLLECTION:
+                    System.out.println("COLLECTION");
                     collectionMenuCommandsChecker(command);
                     break;
                 case SHOP:
+                    System.out.println("SHOP");
                     shopMenuCommandsChecker(command);
                     break;
                 case NEW_BATTLE:
+                    System.out.println("NEW_BATTLE");
                     newBattleMenuCommandsChecker(command);
                     break;
                 case BATTLE:
+                    System.out.println("BATTLE");
                     battleMenuCommandsChecker(command);
                     break;
                 case GRAVEYARD:
+                    System.out.println("GRAVEYARD");
                     graveYardMenuCommandsChecker(command);
                     break;
             }
