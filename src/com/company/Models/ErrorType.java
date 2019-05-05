@@ -10,6 +10,7 @@ public enum ErrorType {
     DECK_EXISTS("An deck alredy exists with this deckname"),
     CARD_EXISTS("An card alredy exists with this cardid"),
     CARD_NOTFOUNDINDECK("This card does not exist in this deck"),
+    CARD_NOTFOUNDINGRAVEYARD("This card does not exist in grave yard"),
     DECK_FULL("Deck capacity is complite"),
     DECK_NOTFOUND("This deck does not exists"),
     HERO_EXISTS("This deck has hero"),

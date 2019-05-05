@@ -19,8 +19,8 @@ public class Player {
     private int maxMana = 2;
     private Spell spell;
     private Card selectedCard;
-    private ArrayList<Card> usedCardsToAttack;
-    private ArrayList<Card> usedCardsToMove;
+    private ArrayList<Card> usedCardsToAttack = new ArrayList<>();
+    private ArrayList<Card> usedCardsToMove = new ArrayList<>();
     private ArrayList<Card> usedCards;
 
     public Player(Account account) {
