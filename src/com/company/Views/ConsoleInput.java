@@ -226,10 +226,10 @@ public class ConsoleInput {
             );
         } else if (command.matches("show opponent minions")) {
             Battle.getPlayingBattle().getBattleController().showOpponentSoldiers();
-        } else if (command.matches("show card \\d+")) {
+        } else if (command.matches("show card info \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
+            Battle.getPlayingBattle().getBattleController().showDeckCardInformation(matcher.group("cardId"));
         } else if (command.matches("attack \\d+")) {
             //todo
         } else if (command.matches("attack combo (\\d+)+")) {
@@ -243,7 +243,7 @@ public class ConsoleInput {
             matcher.find();
             Battle.getPlayingBattle().getBattleController().insertNewCardToMap(Integer.parseInt(matcher.group("xCordinate")), Integer.parseInt(matcher.group("yCordinate")), matcher.group("cardName"));
         } else if (command.matches("end turn")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().endTurn();
         } else if (command.matches("Show collectables")) {
             //todo
         } else if (command.matches("select \\d+")) {
@@ -266,7 +266,9 @@ public class ConsoleInput {
 
     private static void graveYardMenuCommandsChecker(String command) {
         if (command.matches("show info \\d+")) {
-            //todo
+            Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
         } else if (command.matches("show cards")) {
             Battle.getPlayingBattle().getBattleController().showGraveYardCards();
         } else if (command.matches("exit")) {
