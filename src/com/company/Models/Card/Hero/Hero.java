@@ -16,8 +16,8 @@ public class Hero extends Soldier {
     private int coolDown;
     private int remainingCoolDown;
 
-    public void setCoolDown(int coolDown) {
-        this.coolDown = coolDown;
+    public void setCoolDown() {
+        this.remainingCoolDown = coolDown;
     }
 
     public int getCoolDown() {
@@ -28,20 +28,8 @@ public class Hero extends Soldier {
         remainingCoolDown--;
     }
 
-    public int getRemainingCoolDown() {
-        return remainingCoolDown;
-    }
-
-    public void setRemainingCoolDown(int remainingCoolDown) {
-        this.remainingCoolDown = remainingCoolDown;
-    }
-
     public int getCoolDownRemaining() {
         return remainingCoolDown;
-    }
-
-    public void decremeantCoolDownRemaining() {
-        this.coolDown--;
     }
 
     public Hero clone() {

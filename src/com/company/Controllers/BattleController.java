@@ -116,11 +116,13 @@ public class BattleController {
     }
 
     public void endTurn() {
+        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementing();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
         battle.getTurnToPlay().getUsedCardsToAttack().clear();
+
         if (battle.getTurnToPlay() == battle.getPlayers()[0]) {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         } else {
@@ -133,12 +135,15 @@ public class BattleController {
                 ConsoleOutput.printErrorMessage(ErrorType.COOLDOWN_VALIDATE);
                 return;
             }
+            if(battle.getTurnToPlay().getSelectedCard().getManaPoint() > battle.getTurnToPlay().getMana()){
+                return;
+            }
         }
-        if (battle.getTurnToPlay().getSelectedCard().getManaPoint() <= battle.getTurnToPlay().getMana()) {
+         {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
-                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setCoolDown();
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
@@ -346,7 +351,7 @@ public class BattleController {
         int counter = 0;
         for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
             counter++;
-            if (counter == startEndenx) {
+            if (counter >= startEndenx) {
                 buff.cast();
             }
         }
@@ -454,6 +459,15 @@ public class BattleController {
         return false;
     }
 
+    private boolean cardExistsInHand(String cardName){
+        for (Card card :battle.getTurnToPlay().getDeck().getHand().getCards()) {
+            if(card.getName().equals(cardName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void showCardFromGraveYardInformation(String cardId){
         if(cardExistsInGraveYard(cardId)){
             BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
@@ -480,7 +494,7 @@ public class BattleController {
 
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
-            if (isCardNameValid(cardName)) {
+            if (cardExistsInHand(cardName)) {
                 //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
                 Card newCard = getCardByNameFromHand(cardName);
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
@@ -489,6 +503,10 @@ public class BattleController {
                     ((Soldier) newCard).setCell(cell);
                     Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                     Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
+                    if(newCard instanceof Spell){
+                        selectCard(newCard.getId());
+                        useSpecialPower(x,y);
+                    }
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
@@ -499,6 +517,8 @@ public class BattleController {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         }
     }
+
+
 
     public Card getCardByNameFromHand(String cardName) {
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
@@ -596,12 +616,18 @@ public class BattleController {
 
     public void attackCombo(String oponentId, ArrayList<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
+        boolean first=true;
         for (String cardId : cardsId) {
             if (getCardById(cardId) instanceof Minion) {
                 if (((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)) {
                     selectCard(cardId);
-                    attack(cell, true);
+                    if(first){
+                        attack(cell,false);
+                    }
+                    else
+                        attack(cell, true);
                 }
+                first=false;
             }
         }
     }
