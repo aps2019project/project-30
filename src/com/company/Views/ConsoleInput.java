@@ -239,7 +239,7 @@ public class ConsoleInput {
             matcher.find();
             Battle.getPlayingBattle().getBattleController().showDeckCardInformation(matcher.group("cardId"));
         } else if (command.matches("attack \\d+")) {
-            //todo
+
         } else if (command.matches("attack combo (\\d+)+")) {
             //todo
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
