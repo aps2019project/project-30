@@ -41,6 +41,6 @@ public class Spell extends Card {
                 "- Type : Spell " +
                 "- Name : " + spell.getName() +
                 "- MP : " + spell.getManaPoint() +
-                "- Desc : " + spell.getDescription() +
+                "- Desc : " + spell.getDescription());
     }
 }
