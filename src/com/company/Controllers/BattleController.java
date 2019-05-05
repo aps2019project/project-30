@@ -396,7 +396,7 @@ public class BattleController {
         return false;
     }
 
-    private Card getCardById(String cardId) {
+    public Card getCardById(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
             if (playerCard.getId().equals(cardId))
