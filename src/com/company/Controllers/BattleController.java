@@ -140,7 +140,7 @@ public class BattleController {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
-                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setCoolDown();
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
@@ -348,7 +348,7 @@ public class BattleController {
         int counter = 0;
         for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
             counter++;
-            if (counter == startEndenx) {
+            if (counter >= startEndenx) {
                 buff.cast();
             }
         }
