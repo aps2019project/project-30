@@ -34,7 +34,6 @@ public class Main {
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
-/*
 
 
         Hero hero = new Hero();
@@ -44,13 +43,14 @@ public class Main {
         hero.setFullHealth(50);
         hero.setAttackPower(4);
         hero.setAttackType(AttackType.MELEE);
-        hero.getBuffsToCast().add(stunBuff);
+//        hero.getBuffsToCast().add(stunBuff);
         hero.setManaPoint(5);
         hero.setCoolDown(8);
+        hero.setTargetType(TargetType.FRIEND_HERO);
 
 //        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 
-        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));*/
+        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));
 
 //        Gson gson = new Gson();
 
