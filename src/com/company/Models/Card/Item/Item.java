@@ -3,6 +3,7 @@ package com.company.Models.Card.Item;
 import com.company.Models.Card.Card;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Item extends Card {
 
@@ -31,7 +32,7 @@ public class Item extends Card {
         return item;
     }
 
-    public static void showItems(ArrayList<Card> cards) {
+    public static void showItems(List<Card> cards) {
         System.out.println("Items :");
         int index = 1;
         for (Card card : cards) {

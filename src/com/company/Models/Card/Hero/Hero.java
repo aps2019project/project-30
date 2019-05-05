@@ -10,6 +10,7 @@ import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Hero extends Soldier {
     private int coolDown;
@@ -70,7 +71,7 @@ public class Hero extends Soldier {
         return hero;
     }
 
-    public static void showHeroes(ArrayList<Card> cards) {
+    public static void showHeroes(List<Card> cards) {
         System.out.println("Heroes :");
         int index = 1;
         for (Card card:cards) {

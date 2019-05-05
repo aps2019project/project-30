@@ -10,6 +10,7 @@ import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class
 Minion extends Soldier {
@@ -49,7 +50,7 @@ Minion extends Soldier {
         this.activationTime = activationTime;
     }
 
-    public static void showCards(ArrayList<Card> cards) {
+    public static void showCards(List<Card> cards) {
         System.out.println("Cards :");
         int index = 1;
         for (Card card : cards) {

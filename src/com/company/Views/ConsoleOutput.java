@@ -7,6 +7,7 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.ErrorType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConsoleOutput {
     public static void printErrorMessage(ErrorType errorType) {
@@ -17,7 +18,7 @@ public class ConsoleOutput {
         System.out.println(message);
     }
 
-    public static void showAllCards(ArrayList<Card> cards) {
+    public static void showAllCards(List<Card> cards) {
         Hero.showHeroes(cards);
         Item.showItems(cards);
         Minion.showCards(cards);
