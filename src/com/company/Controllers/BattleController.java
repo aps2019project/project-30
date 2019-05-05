@@ -117,11 +117,13 @@ public class BattleController {
     }
 
     public void endTurn() {
+        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementing();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
         battle.getTurnToPlay().getUsedCardsToAttack().clear();
+
         if (battle.getTurnToPlay() == battle.getPlayers()[0]) {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         } else {
