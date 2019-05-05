@@ -2,6 +2,7 @@ package com.company.Models.Battle.Map;
 
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Flag;
 import com.company.Models.Card.Item.Item;
 
 import java.util.ArrayList;
@@ -11,6 +12,15 @@ public class Cell {
     private Card cardInCell;
     private Item item;
     private ArrayList<Buff> cellEffects;
+    private Flag flag;
+
+    public Flag getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Flag flag) {
+        this.flag = flag;
+    }
 
     public void setxCoordinate(int xCoordinate) {
         this.xCoordinate = xCoordinate;

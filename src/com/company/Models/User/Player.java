@@ -16,7 +16,7 @@ public class Player {
     private Deck deck;
     private int score = 0;
     private int mana = 2;
-    private int maxMana;
+    private int maxMana = 2;
     private Spell spell;
     private Card selectedCard;
     private ArrayList<Card> usedCardsToAttack;
@@ -24,6 +24,8 @@ public class Player {
 
     public Player(Account account) {
         this.account = account;
+        this.name = account.getUsername();
+        this.deck = account.getMainDeck();
     }
 
 
@@ -42,7 +44,10 @@ public class Player {
     }
 
     public Player() {
+
     }
+
+
 
     public List<Item> getItems() {
         return items;

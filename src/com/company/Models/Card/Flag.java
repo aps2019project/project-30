@@ -6,6 +6,10 @@ public class Flag {
     private Card flagHolder;
     private Cell cell;
 
+    public Flag(Cell cell) {
+        this.cell = cell;
+    }
+
     public Card getFlagHolder() {
         return flagHolder;
     }

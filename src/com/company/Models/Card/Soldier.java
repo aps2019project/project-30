@@ -75,10 +75,12 @@ public class Soldier extends Card {
         this.attackPower -= attackPower;
     }
 
-    public void attack(Card targetCard) {
+    public void attack(Card targetCard,Boolean isCombo) {
         if(!hasBuffByName(Buff.Name.STUN)) {
             ((Soldier) targetCard).decrementHealth(getAttackPower());
-            ((Soldier) targetCard).counterAttack(this);
+            if(isCombo==false) {
+                ((Soldier) targetCard).counterAttack(this);
+            }
             //todo holy buff yaroo ejra she
             //TODO Check Counter Buffs
         }
@@ -86,7 +88,7 @@ public class Soldier extends Card {
 
     public void counterAttack(Card targetCard) {
         if (!hasBuffByName(Buff.Name.DISARM)) {
-            attack(targetCard);
+            ((Soldier) targetCard).decrementHealth(getAttackPower());
         }
     }
 

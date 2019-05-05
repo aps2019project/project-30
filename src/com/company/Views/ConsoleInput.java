@@ -1,12 +1,12 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
-import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 
 public class ConsoleInput {
     private static Scanner scanner = new Scanner(System.in);
+
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
 
     private static Menu menu = Menu.ACCOUNT;
