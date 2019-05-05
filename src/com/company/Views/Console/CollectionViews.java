@@ -26,7 +26,6 @@ public class CollectionViews {
     }
 
     public static void showAllDecks() {
-        //Todo : MohammadHosein : Show deck's name
         for(int i =0;i<Account.getLoggedInAccount().getDecks().size();i++){
             System.out.println(i + "-->");
             showDeck(Account.getLoggedInAccount().getDecks().get(i));
@@ -34,6 +33,7 @@ public class CollectionViews {
     }
 
     public static void showDeck(Deck deck){
+        System.out.println("deck name: " + deck.getName());
         ConsoleOutput.showAllCards(deck.getDeckCards());
     }
 

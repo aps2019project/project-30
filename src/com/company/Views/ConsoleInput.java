@@ -3,12 +3,18 @@ package com.company.Views;
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
+import com.google.gson.*;
 
 import javax.management.BadAttributeValueExpException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -102,11 +108,52 @@ public class ConsoleInput {
             CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
+            JsonSerializer jsonDeckSerializer = new JsonSerializer<Deck>() {
+                @Override
+                public JsonElement serialize(Deck deck, Type type, JsonSerializationContext jsonSerializationContext) {
+                    JsonElement jsonElement = jsonSerializationContext.serialize(deck);
+                    jsonElement.getAsJsonObject().remove("hand");
+                    jsonElement.getAsJsonObject().remove("deckController");
+                    return jsonElement;
+                }
+            };
+            JsonDeserializer jsonBuffDeserializer = new JsonDeserializer<Buff>() {
+                @Override
+                public Buff deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+                    try {
+                        return jsonDeserializationContext.deserialize(jsonElement, Class.forName(jsonObject.get("className").getAsString()));
+                    } catch (ClassNotFoundException e) {
+                        System.out.println(e.getException().getMessage());
+                        return null;
+                    }
+                }
+            };
+
+            JsonSerializer jsonBuffSerializer = new JsonSerializer<Buff>() {
+                @Override
+                public JsonElement serialize(Buff buff, Type type, JsonSerializationContext jsonSerializationContext) {
+                    JsonElement jsonElement = jsonSerializationContext.serialize(buff);
+                    jsonElement.getAsJsonObject().addProperty("className", buff.getClass().getName());
+                    return jsonElement;
+                }
+            };
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder
+                    .registerTypeAdapter(Deck.class, jsonDeckSerializer)
+                    .registerTypeAdapter(Buff.class, jsonBuffDeserializer)
+                    .registerTypeAdapter(Buff.class, jsonBuffSerializer);
+            Gson customGson = gsonBuilder.create();
+            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + customGson.toJson(Collection.getDeckByName(commandParts[2])));
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            //Todo : MohammadHosein : Check Validations
-            CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
+            if (CollectionController.validateDeck(commandParts[2])) {
+                CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
+            } else {
+                ConsoleOutput.printErrorMessage(ErrorType.DECK_NOTFOUND);
+            }
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         }
@@ -160,7 +207,7 @@ public class ConsoleInput {
         } else if (command.matches("sell \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            ShopController.sell(Account.getLoggedInAccount(),matcher.group("cardId"));
+            ShopController.sell(Account.getLoggedInAccount(), matcher.group("cardId"));
         } else if (command.matches("help")) {
             ShopView.printShopCommandsToHelp();
         }

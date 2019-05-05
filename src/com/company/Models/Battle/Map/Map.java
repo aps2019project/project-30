@@ -10,12 +10,12 @@ public class Map {
     }
 
     public Map() {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 9; j++) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
                 Cell cell = new Cell();
-                cell.setxCoordinate(i);
-                cell.setyCoordinate(j);
-                cells[i + j] = cell;
+                cell.setxCoordinate(i + 1);
+                cell.setyCoordinate(j + 1);
+                cells[j * 9 + i] = cell;
             }
         }
     }

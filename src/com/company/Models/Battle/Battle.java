@@ -10,6 +10,7 @@ import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,8 +21,8 @@ public class Battle {
     private BattleType battleType;
     private Player[] players = new Player[2];
     private Player turnToPlay;
-    private BattleController battleController;
-    private List<Flag> flags;
+    private BattleController battleController = new BattleController(this);
+    private List<Flag> flags = new ArrayList<>();
     private BattleView battleView;
     private static int lastBattleCardId = 0;
     private int winningPrize;
@@ -49,7 +50,7 @@ public class Battle {
         }
         this.winningPrize = 500 * storyLevel;
         playingBattle = this;
-        map.getCellByCoordinates(2, 5).setCardInCell(Account.getLoggedInAccount().getMainDeck().getHeroCard());
+//        map.getCellByCoordinates(2, 4).setCardInCell(Account.getLoggedInAccount().getMainDeck().getHeroCard());
 //        initHeroes();
         System.out.println(map.toString());
     }
@@ -109,8 +110,5 @@ public class Battle {
         Player botPlayer = new Player();
         botPlayer.setMana(2);
         botPlayer.setMaxMana(2);
-
-
     }
-
 }

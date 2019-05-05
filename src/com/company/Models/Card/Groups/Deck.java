@@ -4,11 +4,12 @@ import com.company.Controllers.DeckController;
 import com.company.Models.Card.Card;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Deck {
     private String name;
-    private ArrayList<Card> deckCards = new ArrayList<>();
+    private List<Card> deckCards = new ArrayList<>();
     private Card heroCard;
     private Card itemCard;
     private Hand hand;
@@ -18,7 +19,7 @@ public class Deck {
         hand = new Hand(this);
     }
 
-    public ArrayList<Card> getDeckCards() {
+    public List<Card> getDeckCards() {
         return deckCards;
     }
 
