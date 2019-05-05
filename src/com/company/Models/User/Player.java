@@ -14,7 +14,7 @@ public class Player {
     private Account account;
     private String name;
     private Deck deck;
-    private int score;
+    private int score = 0;
     private int mana = 2;
     private int maxMana;
     private Spell spell;
