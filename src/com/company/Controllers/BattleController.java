@@ -135,8 +135,11 @@ public class BattleController {
                 ConsoleOutput.printErrorMessage(ErrorType.COOLDOWN_VALIDATE);
                 return;
             }
+            if(battle.getTurnToPlay().getSelectedCard().getManaPoint() > battle.getTurnToPlay().getMana()){
+                return;
+            }
         }
-        if (battle.getTurnToPlay().getSelectedCard().getManaPoint() <= battle.getTurnToPlay().getMana()) {
+         {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
@@ -487,6 +490,10 @@ public class BattleController {
                     ((Soldier) newCard).setCell(cell);
                     Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                     Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
+                    if(newCard instanceof Spell){
+                        selectCard(newCard.getId());
+                        useSpecialPower(x,y);
+                    }
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
