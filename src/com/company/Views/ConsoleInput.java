@@ -244,12 +244,17 @@ public class ConsoleInput {
             Matcher matcher = Pattern.compile("attack (?<cardId>\\d+)").matcher(command);
             matcher.find();
             Battle.getPlayingBattle().getBattleController().attack(
-                    ((Soldier)Battle.getPlayingBattle().getBattleController().getCardById(matcher.group("cardId"))).getCell(),
+                    ((Soldier)Battle.getPlayingBattle().getBattleController().getCardByIdInBattle(matcher.group("cardId"))).getCell(),
                     false);
         } else if (command.matches("attack combo (\\d+)+")) {
             //todo
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
-
+            Matcher matcher = Pattern.compile("use special power \\((?<xCordinate>\\d+), (?<yCordinate>\\d+)\\)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().useSpecialPower(
+                    Integer.valueOf(matcher.group("xCordinate")),
+                    Integer.valueOf(matcher.group("yCordinate"))
+            );
         } else if (command.matches("show hand")) {
             BattleView.showHand();
         } else if (command.matches("insert .+ in \\(\\d+, \\d+\\)")) {
@@ -273,7 +278,7 @@ public class ConsoleInput {
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {
-            //todo
+            Battle.getPlayingBattle().getBattleController().showNextCardOfBattle();
         } else if (command.matches("enter graveyard")) {
             setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {

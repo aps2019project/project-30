@@ -49,4 +49,8 @@ public class DeckController {
     private boolean isHandFull() {
         return deck.getHand().getCards().size() == Hand.HAND_CARDS_MAX;
     }
+
+    public Card getNextCard() {
+        return deck.getDeckCards().get(cardToAddInHandIndex);
+    }
 }

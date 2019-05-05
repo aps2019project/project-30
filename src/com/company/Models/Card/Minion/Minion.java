@@ -25,6 +25,7 @@ Minion extends Soldier {
         minion.setManaPoint(this.getManaPoint());
         minion.setPriceInDrake(this.getPriceInDrake());
         minion.setHealth(this.getHealth());
+        minion.setFullHealth(getFullHealth());
         minion.setCell(this.getCell());
         minion.setTargetType(this.getTargetType());
         return minion;

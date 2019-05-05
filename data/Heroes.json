@@ -11,6 +11,7 @@
     "manaPoint": 1,
     "priceInDrake": 8000,
     "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
@@ -36,6 +37,7 @@
     "manaPoint": 5,
     "priceInDrake": 9000,
     "isInGraveCards": false,
+    "targetType": "WHOLE_ENEMY",
     "buffsToCast": [
       {
         "type": "NEGATIVE",

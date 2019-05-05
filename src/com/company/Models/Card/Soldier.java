@@ -78,7 +78,7 @@ public class Soldier extends Card {
     public void attack(Card targetCard,Boolean isCombo) {
         if(!hasBuffByName(Buff.Name.STUN)) {
             ((Soldier) targetCard).decrementHealth(getAttackPower());
-            if(isCombo==false) {
+            if(!isCombo) {
                 ((Soldier) targetCard).counterAttack(this);
             }
             //todo holy buff yaroo ejra she

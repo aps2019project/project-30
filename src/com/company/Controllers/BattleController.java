@@ -20,7 +20,6 @@ import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static java.lang.Math.*;
 
@@ -116,7 +115,15 @@ public class BattleController {
     }
 
     public void endTurn() {
-        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementing();
+        Player player=getEenmyPlayer(battle.getTurnToPlay());
+        for(Card card:player.getUsedCards()){
+            if(!card.isInGraveCards()){
+                for(Buff buff:card.getBuffsCasted()){
+                    buff.cast();
+                }
+            }
+        }
+        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
@@ -135,12 +142,15 @@ public class BattleController {
                 ConsoleOutput.printErrorMessage(ErrorType.COOLDOWN_VALIDATE);
                 return;
             }
+            if(battle.getTurnToPlay().getSelectedCard().getManaPoint() > battle.getTurnToPlay().getMana()){
+                return;
+            }
         }
-        if (battle.getTurnToPlay().getSelectedCard().getManaPoint() <= battle.getTurnToPlay().getMana()) {
+         {
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
             battle.getTurnToPlay().setMana(newmana);
             if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
-                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDown(((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDown());
+                ((Hero) battle.getTurnToPlay().getSelectedCard()).setRemainingCoolDownByCooldown();
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
@@ -264,7 +274,7 @@ public class BattleController {
 
     private void doSpecialPowerOnWholeEnemy() {
         for (Card card : getEenmyPlayer(battle.getTurnToPlay()).getUsedCards()) {
-            if (card instanceof Hero || card instanceof Minion) {
+            if (!card.isInGraveCards()&&(card instanceof Hero || card instanceof Minion)) {
                 doUseSpecialPowerSwichCase(((Soldier) card).getCell());
             }
         }
@@ -272,7 +282,7 @@ public class BattleController {
 
     private void doSpecialPowerOnWholeFriend() {
         for (Card card : battle.getTurnToPlay().getUsedCards()) {
-            if (card instanceof Hero || card instanceof Minion) {
+            if (!card.isInGraveCards()&&(card instanceof Hero || card instanceof Minion) ){
                 doUseSpecialPowerSwichCase(((Soldier) card).getCell());
             }
         }
@@ -348,7 +358,7 @@ public class BattleController {
         int counter = 0;
         for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
             counter++;
-            if (counter == startEndenx) {
+            if (counter >= startEndenx) {
                 buff.cast();
             }
         }
@@ -400,6 +410,19 @@ public class BattleController {
 
     public Card getCardById(String cardId) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+        for (Card playerCard : playerCards) {
+            if (playerCard.getId().equals(cardId))
+                return playerCard;
+        }
+        return null;
+    }
+
+    public Card getCardByIdInBattle(String cardId) {
+        Player opponent = battle.getBattleController().getEenmyPlayer(battle.getTurnToPlay());
+        List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+        playerCards.addAll(opponent.getDeck().getDeckCards());
+        playerCards.add(opponent.getDeck().getHeroCard());
+        playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
         for (Card playerCard : playerCards) {
             if (playerCard.getId().equals(cardId))
                 return playerCard;
@@ -487,6 +510,10 @@ public class BattleController {
                     ((Soldier) newCard).setCell(cell);
                     Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                     Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
+                    if(newCard instanceof Spell){
+                        selectCard(newCard.getId());
+                        useSpecialPower(x,y);
+                    }
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
@@ -542,7 +569,6 @@ public class BattleController {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
             ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(), isCombo);
-
         }
     }
 
@@ -570,7 +596,7 @@ public class BattleController {
                 }
                 break;
         }
-        if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
+        if (turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
             return ErrorType.CARD_CANT_ATTACK;
         }
         return null;
@@ -597,13 +623,23 @@ public class BattleController {
 
     public void attackCombo(String oponentId, ArrayList<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
+        boolean first=true;
         for (String cardId : cardsId) {
             if (getCardById(cardId) instanceof Minion) {
                 if (((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)) {
                     selectCard(cardId);
-                    attack(cell, true);
+                    if(first){
+                        attack(cell,false);
+                    }
+                    else
+                        attack(cell, true);
                 }
+                first=false;
             }
         }
+    }
+
+    public void showNextCardOfBattle() {
+        Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 }

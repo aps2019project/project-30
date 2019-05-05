@@ -5,6 +5,7 @@ public class StunBuff extends Buff{
         super(antiBuff, castTime, remTurnToCast, value);
         name = Name.STUN;
         type = Type.NEGATIVE;
+
     }
 
     @Override

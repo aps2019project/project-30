@@ -16,24 +16,21 @@ public class Hero extends Soldier {
     private int coolDown;
     private int remainingCoolDown;
 
-    public void setCoolDown(int coolDown) {
+    public void setRemainingCoolDownByCooldown() {
         this.remainingCoolDown = coolDown;
+    }
+
+    public void setCoolDown(int coolDown) {
+        this.coolDown = coolDown;
     }
 
     public int getCoolDown() {
         return coolDown;
     }
 
-    public void decrementing() {
-        remainingCoolDown--;
-    }
-
-    public int getRemainingCoolDown() {
-        return remainingCoolDown;
-    }
-
-    public void setRemainingCoolDown(int remainingCoolDown) {
-        this.remainingCoolDown = remainingCoolDown;
+    public void decrementRemainingCoolDown() {
+        if(remainingCoolDown!=0)
+            remainingCoolDown--;
     }
 
     public int getCoolDownRemaining() {
@@ -47,6 +44,7 @@ public class Hero extends Soldier {
         hero.setManaPoint(this.getManaPoint());
         hero.setPriceInDrake(this.getPriceInDrake());
         hero.setHealth(this.getHealth());
+        hero.setFullHealth(getFullHealth());
         hero.setCell(this.getCell());
         hero.setTargetType(this.getTargetType());
         hero.setAttackType(getAttackType());
