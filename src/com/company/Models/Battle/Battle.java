@@ -45,9 +45,16 @@ public class Battle {
                 this.mode = Mode.CAPTURE_THE_FLAG;
                 Flag flag = new Flag(map.getCellByCoordinates(5, 2));
                 map.getCellByCoordinates(5, 2).setFlag(flag);
+                flags.add(flag);
                 break;
             case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
+                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
+                map.getCellByCoordinates(5, 1).setFlag(flag);
+                flags.add(flag1);
+                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
+                map.getCellByCoordinates(5, 1).setFlag(flag);
+                flags.add(flag2);
                 break;
         }
         this.winningPrize = 500 * storyLevel;
