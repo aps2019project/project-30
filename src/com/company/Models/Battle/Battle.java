@@ -50,10 +50,10 @@ public class Battle {
             case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
                 Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag);
+                map.getCellByCoordinates(5, 1).setFlag(flag1);
                 flags.add(flag1);
                 Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag);
+                map.getCellByCoordinates(5, 1).setFlag(flag2);
                 flags.add(flag2);
                 break;
         }

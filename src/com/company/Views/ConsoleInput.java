@@ -1,10 +1,13 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Card.Groups.Deck;
+import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
