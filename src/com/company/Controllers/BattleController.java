@@ -604,12 +604,18 @@ public class BattleController {
 
     public void attackCombo(String oponentId, ArrayList<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
+        boolean first=true;
         for (String cardId : cardsId) {
             if (getCardById(cardId) instanceof Minion) {
                 if (((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)) {
                     selectCard(cardId);
-                    attack(cell, true);
+                    if(first){
+                        attack(cell,false);
+                    }
+                    else
+                        attack(cell, true);
                 }
+                first=false;
             }
         }
     }
