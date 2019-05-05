@@ -52,6 +52,7 @@ public class BattleController {
         } else {
             battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
             ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+            battle.getMap().getCellByCoordinates(x,y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
             if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
                 battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
             }
