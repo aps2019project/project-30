@@ -21,7 +21,7 @@ public class Player {
     private Card selectedCard;
     private ArrayList<Card> usedCardsToAttack = new ArrayList<>();
     private ArrayList<Card> usedCardsToMove = new ArrayList<>();
-    private ArrayList<Card> usedCards;
+    private ArrayList<Card> usedCards = new ArrayList<>();
 
     public Player(Account account) {
         this.account = account;

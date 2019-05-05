@@ -471,7 +471,7 @@ public class BattleController {
         if (cellIsValidToInsertingCard(x, y)) {
             if (isCardNameValid(cardName)) {
                 Card newCard = createCopyFromExistingCard(getCardByName(cardName));
-                if (newCard.getManaPoint() >= battle.getTurnToPlay().getMana()) {
+                if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
                     cell.setCardInCell(newCard);
                     ((Soldier) newCard).setCell(cell);
