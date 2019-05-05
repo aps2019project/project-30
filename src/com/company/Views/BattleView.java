@@ -71,7 +71,7 @@ public class BattleView {
     private static void showHeroesCoordinates() {
         for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
             System.out.printf(
-                    "Player %d Hero health: %d\n", playerIndex + 1, ((Hero) Battle.getPlayingBattle().getPlayers()[playerIndex].getDeck().getHeroCard()).getHealth();
+                    "Player %d Hero health: %d\n", playerIndex + 1, ((Hero) Battle.getPlayingBattle().getPlayers()[playerIndex].getDeck().getHeroCard()).getHealth());
         }
     }
 

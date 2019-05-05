@@ -59,7 +59,7 @@ exit
 login majid
 123
 enter shop
-buy Simorgh
+buy Div Sefid
 buy Taj Danayi
 buy Total Disarm
 buy Empower
@@ -111,3 +111,25 @@ select deck test1
 exit
 enter battle
 start multiplayer game KILLING_GENERAL hamid
+select 24
+move to (2, 2)
+end turn
+select 1
+move to (8, 2)
+end turn
+select 24
+move to (3, 2)
+end turn
+select 1
+move to (7, 2)
+end turn
+select 24
+move to (4, 2)
+end turn
+select 1
+move to (6, 2)
+end turn
+select 24
+move to (5, 2)
+select 24
+use special power (5, 2)
