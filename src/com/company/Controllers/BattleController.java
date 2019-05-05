@@ -431,7 +431,7 @@ public class BattleController {
         return false;
     }
 
-    public void showCardFromGraveYardInformation(String cardId){
+    public void showGraveYardCardInformation(String cardId){
         if(cardExistsInGraveYard(cardId)){
             BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
         }else{

@@ -4,7 +4,6 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
-import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
@@ -229,7 +228,7 @@ public class ConsoleInput {
         } else if (command.matches("show card \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
+            Battle.getPlayingBattle().getBattleController().showGraveYardCardInformation(matcher.group("cardId"));
         } else if (command.matches("attack \\d+")) {
             //todo
         } else if (command.matches("attack combo (\\d+)+")) {
