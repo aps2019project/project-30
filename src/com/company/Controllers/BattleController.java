@@ -49,12 +49,17 @@ public class BattleController {
     public void move(int x, int y) {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
-        } else {
-            battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
-            ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-            battle.getMap().getCellByCoordinates(x,y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
-            if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
-                battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
+        }
+
+        else {
+            if (!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
+                battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
+                ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
+                battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
+                battle.getTurnToPlay().getUsedCardsToMove().add(battle.getTurnToPlay().getSelectedCard());
+                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
+                }
             }
         }
         System.out.println(battle.getMap().toString());
