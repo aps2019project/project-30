@@ -50,26 +50,12 @@ public class BattleController {
     public void move(int x, int y) {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
-<<<<<<< HEAD
-        }
-
-        else {
-            if (!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
-                battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
-                ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
-                battle.getTurnToPlay().getUsedCardsToMove().add(battle.getTurnToPlay().getSelectedCard());
-                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
-                }
-=======
         } else {
             battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
             ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-            battle.getMap().getCellByCoordinates(x,y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
+            battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
             if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
                 battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
->>>>>>> parent of 0ed13e4... showGraveYardCardInformation completed
             }
         }
         System.out.println(battle.getMap().toString());
@@ -78,7 +64,7 @@ public class BattleController {
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
         int x2 = cell.getxCoordinate();
         int y2 = cell.getyCoordinate();
-        if (abs (x1 - x2) + abs(y1 - y2) > 2) {
+        if (abs(x1 - x2) + abs(y1 - y2) > 2) {
             return false;
         } else if ((abs(x1 - x2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
             return false;
@@ -381,11 +367,7 @@ public class BattleController {
     }
 
     public void showGraveYardCards() {
-        ArrayList<Card> graveYardCards = new ArrayList<>();
-        graveYardCards.addAll(battle.getPlayers()[0].getDeck().getDeckCards());
-        graveYardCards.addAll(battle.getPlayers()[1].getDeck().getDeckCards());
-        graveYardCards.removeIf(card -> !card.isInGraveCards());
-        BattleView.printGraveYardCards(graveYardCards);
+        BattleView.printGraveYardCards(getGraveYard());
     }
 
     public void selectCard(String cardId) {
@@ -433,6 +415,40 @@ public class BattleController {
         return null;
     }
 
+    private Card getCardByIdFromGraveYardCards(String cardId) {
+        for (Card card :getGraveYard()) {
+            if(card.getId().equals(cardId)){
+                return card;
+            }
+        }
+        return null;
+    }
+
+    private boolean cardExistsInGraveYard(String cardId){
+        for (Card card :getGraveYard()) {
+            if(card.getId().equals(cardId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void showCardFromGraveYardInformation(String cardId){
+        if(cardExistsInGraveYard(cardId)){
+            BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
+        }else{
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
+        }
+    }
+
+    private ArrayList<Card> getGraveYard() {
+        ArrayList<Card> graveYardCards = new ArrayList<>();
+        graveYardCards.addAll(battle.getPlayers()[0].getDeck().getDeckCards());
+        graveYardCards.addAll(battle.getPlayers()[1].getDeck().getDeckCards());
+        graveYardCards.removeIf(card -> !card.isInGraveCards());
+        return graveYardCards;
+    }
+
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
             if (isCardNameValid(cardName)) {
@@ -478,13 +494,13 @@ public class BattleController {
         return null;
     }
 
-    public void attack(Cell target,Boolean isCombo) {
+    public void attack(Cell target, Boolean isCombo) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
         ErrorType errorType = getErrorTypeOfAttack(target, turnToPlay);
         if (errorType != null) {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
-            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(),isCombo);
+            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(), isCombo);
 
         }
     }
@@ -537,13 +553,14 @@ public class BattleController {
         }
         return false;
     }
-    public void attackCombo(String oponentId,ArrayList<String> cardsId){
-        Cell cell=((Minion)getCardById(oponentId)).getCell();
-        for(String cardId:cardsId){
-            if(getCardById(cardId) instanceof Minion){
-                if(((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)){
+
+    public void attackCombo(String oponentId, ArrayList<String> cardsId) {
+        Cell cell = ((Minion) getCardById(oponentId)).getCell();
+        for (String cardId : cardsId) {
+            if (getCardById(cardId) instanceof Minion) {
+                if (((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)) {
                     selectCard(cardId);
-                    attack(cell,true);
+                    attack(cell, true);
                 }
             }
         }
