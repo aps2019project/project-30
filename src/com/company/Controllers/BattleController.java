@@ -51,7 +51,7 @@ public class BattleController {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         } else {
-            if (!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
+            if(!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
                 battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
                 battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
@@ -69,10 +69,11 @@ public class BattleController {
         int y2 = cell.getyCoordinate();
         if (abs(x1 - x2) + abs(y1 - y2) > 2) {
             return false;
-        } else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
-            return false;
         }
-        return cellIsValidToInsertingCard(x1, y1);
+//        else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
+//            return false;
+//        }
+        return cellIsValidToInsertingCard(x1,y1);
     }
 
     private boolean validRange(Cell cell) {
@@ -115,7 +116,8 @@ public class BattleController {
     }
 
     public void endTurn() {
-
+        battle.getTurnToPlay().addMaxMana();
+        battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
         battle.getTurnToPlay().getUsedCardsToAttack().clear();
@@ -125,7 +127,6 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
     }
-
     public void useSpecialPower(int x, int y) {
         if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
@@ -414,44 +415,44 @@ public class BattleController {
     }
 
     private Card getCardByIdFromGraveYardCards(String cardId) {
-        for (Card card : getGraveYard()) {
-            if (card.getId().equals(cardId)) {
+        for (Card card :getGraveYard()) {
+            if(card.getId().equals(cardId)){
                 return card;
             }
         }
         return null;
     }
 
-    private boolean cardExistsInGraveYard(String cardId) {
-        for (Card card : getGraveYard()) {
-            if (card.getId().equals(cardId)) {
+    private boolean cardExistsInGraveYard(String cardId){
+        for (Card card :getGraveYard()) {
+            if(card.getId().equals(cardId)){
                 return true;
             }
         }
         return false;
     }
 
-    private boolean cardExistsInDeck(String cardId) {
-        for (Card card : battle.getTurnToPlay().getDeck().getDeckCards()) {
-            if (card.getId().equals(cardId)) {
+    private boolean cardExistsInDeck(String cardId){
+        for (Card card :battle.getTurnToPlay().getDeck().getDeckCards()) {
+            if(card.getId().equals(cardId)){
                 return true;
             }
         }
         return false;
     }
 
-    public void showCardFromGraveYardInformation(String cardId) {
-        if (cardExistsInGraveYard(cardId)) {
+    public void showCardFromGraveYardInformation(String cardId){
+        if(cardExistsInGraveYard(cardId)){
             BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
-        } else {
+        }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
         }
     }
 
-    public void showDeckCardInformation(String cardId) {
-        if (cardExistsInDeck(cardId)) {
+    public void showDeckCardInformation(String cardId){
+        if(cardExistsInDeck(cardId)){
             BattleView.showCardInformation(getCardById(cardId));
-        } else {
+        }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
         }
     }
