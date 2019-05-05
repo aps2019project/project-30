@@ -21,6 +21,6 @@ public class ConsoleOutput {
     public static void showAllCards(List<Card> cards) {
         Hero.showHeroes(cards);
         Item.showItems(cards);
-        Minion.showCards(cards);
+        Card.showCards(cards);
     }
 }

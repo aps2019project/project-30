@@ -50,21 +50,7 @@ Minion extends Soldier {
         this.activationTime = activationTime;
     }
 
-    public static void showCards(List<Card> cards) {
-        System.out.println("Cards :");
-        int index = 1;
-        for (Card card : cards) {
-            if (card instanceof Minion) {
-                System.out.print(index++);
-                showCard((Minion)card);
-            } else if (card instanceof Spell) {
-                System.out.print(index++);
-                showSpell((Spell)card);
-            }
-        }
-    }
-
-    public static void showCard(Minion minion) {
+    public static void showMinion(Minion minion) {
         System.out.println("- ID : " + minion.getId() +
                 "- Type : Minion " +
                 "- Name : " + minion.getName() +
@@ -74,14 +60,5 @@ Minion extends Soldier {
                 "- MP : " + minion.getManaPoint() +
                 "- Desc : " + minion.getDescription() +
                 "- Sell cost : " + minion.getPriceInDrake());
-    }
-
-    public static void showSpell(Spell spell) {
-        System.out.println("- ID : " + spell.getId() +
-                "- Type : Spell " +
-                "- Name : " + spell.getName() +
-                "- MP : " + spell.getManaPoint() +
-                "- Desc : " + spell.getDescription() +
-                "- Sell cost : " + spell.getPriceInDrake());
     }
 }

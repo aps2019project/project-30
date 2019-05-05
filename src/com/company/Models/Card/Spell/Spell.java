@@ -26,4 +26,13 @@ public class Spell extends Card {
         spell.setId(Card.createNewCardIdToCreatingNewCardInShop());
         return spell;
     }
+
+    public static void showSpell(Spell spell) {
+        System.out.println("- ID : " + spell.getId() +
+                "- Type : Spell " +
+                "- Name : " + spell.getName() +
+                "- MP : " + spell.getManaPoint() +
+                "- Desc : " + spell.getDescription() +
+                "- Sell cost : " + spell.getPriceInDrake());
+    }
 }

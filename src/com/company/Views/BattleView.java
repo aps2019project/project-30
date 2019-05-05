@@ -2,7 +2,12 @@ package com.company.Views;
 
 import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Item.Item;
+import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
+import com.company.Models.Card.Spell.Spell;
+import com.company.Models.ErrorType;
 import com.company.Views.Console.CollectionViews;
 
 import java.util.ArrayList;
@@ -44,6 +49,22 @@ public class BattleView {
         }
     }
 
+    public static void showSelectedCardInformation(){
+        Card card = Battle.getPlayingBattle().getTurnToPlay().getSelectedCard();
+        if(card != null) {
+            if (card instanceof Minion) {
+                Minion.showMinion((Minion) card);
+            } else if (card instanceof Item) {
+                Item.showItem((Item) card);
+            } else if (card instanceof Hero) {
+                Hero.showHero((Hero) card);
+            } else if (card instanceof Spell) {
+                Spell.showSpell((Spell) card);
+            }
+        } else{
+            ConsoleOutput.printErrorMessage(ErrorType.NO_SELECTED_CARD);
+        }
+    }
 
     public static void printGraveYardCards(ArrayList<Card> cards) {
         ConsoleOutput.showAllCards(cards);
