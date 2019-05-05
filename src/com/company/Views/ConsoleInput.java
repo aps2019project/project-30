@@ -244,7 +244,7 @@ public class ConsoleInput {
             Matcher matcher = Pattern.compile("attack (?<cardId>\\d+)").matcher(command);
             matcher.find();
             Battle.getPlayingBattle().getBattleController().attack(
-                    ((Soldier)Battle.getPlayingBattle().getBattleController().getCardById(matcher.group("cardId"))).getCell(),
+                    ((Soldier)Battle.getPlayingBattle().getBattleController().getCardByIdInBattle(matcher.group("cardId"))).getCell(),
                     false);
         } else if (command.matches("attack combo (\\d+)+")) {
             //todo

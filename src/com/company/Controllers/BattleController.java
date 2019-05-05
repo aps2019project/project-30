@@ -405,6 +405,19 @@ public class BattleController {
         return null;
     }
 
+    public Card getCardByIdInBattle(String cardId) {
+        Player opponent = battle.getBattleController().getEenmyPlayer(battle.getTurnToPlay());
+        List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+        playerCards.addAll(opponent.getDeck().getDeckCards());
+        playerCards.add(opponent.getDeck().getHeroCard());
+        playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
+        for (Card playerCard : playerCards) {
+            if (playerCard.getId().equals(cardId))
+                return playerCard;
+        }
+        return null;
+    }
+
     private Card getCardByName(String cardName) {
         List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
         for (Card playerCard : playerCards) {
@@ -557,7 +570,7 @@ public class BattleController {
                 }
                 break;
         }
-        if (!turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
+        if (turnToPlay.getUsedCardsToAttack().contains(turnToPlay.getSelectedCard())) {
             return ErrorType.CARD_CANT_ATTACK;
         }
         return null;
