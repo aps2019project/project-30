@@ -61,7 +61,7 @@ public class CollectionController {
         }
     }
 
-    private boolean deckExist(String deckName) {
+    private static boolean deckExist(String deckName) {
         for (Deck deck : Account.getLoggedInAccount().getDecks()) {
             if (deck.getName().equals(deckName)) {
                 return true;
@@ -70,7 +70,7 @@ public class CollectionController {
         return false;
     }
 
-    public boolean cardExist(String cardId) {
+    private boolean cardExist(String cardId) {
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
             if (card.getId().equals(cardId)) {
                 return true;
@@ -93,7 +93,7 @@ public class CollectionController {
         );
     }
 
-    public boolean validateDeck(String deckName) {
+    public static boolean validateDeck(String deckName) {
         if (deckExist(deckName)) {
             if (Collection.getDeckByName(deckName).getDeckCards().size() == 20 && Collection.getDeckByName(deckName).getHeroCard() != null) {
                 return true;
@@ -126,7 +126,6 @@ public class CollectionController {
         }
         return null;
     }
-
 
     public void remove(String cardId, String deckName) {
         Card card = getCardById(cardId);

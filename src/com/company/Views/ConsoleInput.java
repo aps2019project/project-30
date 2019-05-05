@@ -1,13 +1,10 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
-import com.company.Controllers.CollectionController;
-import com.company.Controllers.JsonController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Groups.Collection;
-import com.company.Models.Card.Groups.Deck;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
@@ -154,8 +151,11 @@ public class ConsoleInput {
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            //Todo : MohammadHosein : Check Validations
-            CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
+            if (CollectionController.validateDeck(commandParts[2])) {
+                CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
+            } else {
+                ConsoleOutput.printErrorMessage(ErrorType.DECK_NOTFOUND);
+            }
         } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         }
@@ -209,7 +209,7 @@ public class ConsoleInput {
         } else if (command.matches("sell \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
             matcher.find();
-            ShopController.sell(Account.getLoggedInAccount(),matcher.group("cardId"));
+            ShopController.sell(Account.getLoggedInAccount(), matcher.group("cardId"));
         } else if (command.matches("help")) {
             ShopView.printShopCommandsToHelp();
         }
@@ -236,14 +236,8 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("attack \\d+")) {
             //todo
-        } else if (command.matches("attack combo (\\w)+")) {
-            Matcher matcher = Pattern.compile("attack combo (\\w) ((\\w)\\s*)+").matcher(command);
-            if (matcher.find()) {
-                command.replace("attack combo ", "");
-                List<String> cardIDs = new ArrayList<>(Arrays.asList(command.split("\\s+")));
-                String opponentCard = cardIDs.remove(0);
-                List<String> soldierCards = cardIDs;
-            }
+        } else if (command.matches("attack combo (\\d+)+")) {
+            //todo
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show hand")) {
