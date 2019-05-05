@@ -16,7 +16,7 @@ public enum ErrorType {
     ITEM_EXISTS("This deck has item"),
     DECK_VALIDATE("Deck is not validate"),
     CARD_ID_INVALID("Invalid card id"),
-    INVALID_CELL("Invalid target"),
+    INVALID_CELL("Invalid cell"),
     UNAVAILABLE_OPPONENT_SOLDIER("Opponent minion is unavailable for attack"),
     CARD_CANT_ATTACK("Card Can't Attack"),
     CELL_VALIDATE("selected cell is invalid"),

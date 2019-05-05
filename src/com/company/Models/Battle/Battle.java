@@ -5,6 +5,8 @@ import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
 import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Soldier;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
@@ -119,6 +121,8 @@ public class Battle {
     private void initHeroes() {
         map.getCellByCoordinates(9, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
         map.getCellByCoordinates(1, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
+        ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
+        ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
         Player botPlayer = new Player();
         botPlayer.setMana(2);
         botPlayer.setMaxMana(2);

@@ -8,11 +8,13 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Card.Groups.Deck;
+import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
 import com.google.gson.*;
-import com.sun.org.apache.xalan.internal.xsltc.dom.SAXImpl;
+
 
 import javax.management.BadAttributeValueExpException;
 import java.lang.reflect.Type;
@@ -112,44 +114,44 @@ public class ConsoleInput {
             CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
-            JsonSerializer jsonDeckSerializer = new JsonSerializer<Deck>() {
-                @Override
-                public JsonElement serialize(Deck deck, Type type, JsonSerializationContext jsonSerializationContext) {
-                    JsonElement jsonElement = jsonSerializationContext.serialize(deck);
-                    jsonElement.getAsJsonObject().remove("hand");
-                    jsonElement.getAsJsonObject().remove("deckController");
-                    return jsonElement;
-                }
-            };
-            JsonDeserializer jsonBuffDeserializer = new JsonDeserializer<Buff>() {
-                @Override
-                public Buff deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-                    JsonObject jsonObject = jsonElement.getAsJsonObject();
-                    try {
-                        return jsonDeserializationContext.deserialize(jsonElement, Class.forName(jsonObject.get("className").getAsString()));
-                    } catch (ClassNotFoundException e) {
-                        System.out.println(e.getException().getMessage());
-                        return null;
-                    }
-                }
-            };
-
-            JsonSerializer jsonBuffSerializer = new JsonSerializer<Buff>() {
-                @Override
-                public JsonElement serialize(Buff buff, Type type, JsonSerializationContext jsonSerializationContext) {
-                    JsonElement jsonElement = jsonSerializationContext.serialize(buff);
-                    jsonElement.getAsJsonObject().addProperty("className", buff.getClass().getName());
-                    return jsonElement;
-                }
-            };
-
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder
-                    .registerTypeAdapter(Deck.class, jsonDeckSerializer)
-                    .registerTypeAdapter(Buff.class, jsonBuffDeserializer)
-                    .registerTypeAdapter(Buff.class, jsonBuffSerializer);
-            Gson customGson = gsonBuilder.create();
-            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + customGson.toJson(Collection.getDeckByName(commandParts[2])));
+//            JsonSerializer jsonDeckSerializer = new JsonSerializer<Deck>() {
+//                @Override
+//                public JsonElement serialize(Deck deck, Type type, JsonSerializationContext jsonSerializationContext) {
+//                    JsonElement jsonElement = jsonSerializationContext.serialize(deck);
+//                    jsonElement.getAsJsonObject().remove("hand");
+//                    jsonElement.getAsJsonObject().remove("deckController");
+//                    return jsonElement;
+//                }
+//            };
+//            JsonDeserializer jsonBuffDeserializer = new JsonDeserializer<Buff>() {
+//                @Override
+//                public Buff deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+//                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+//                    try {
+//                        return jsonDeserializationContext.deserialize(jsonElement, Class.forName(jsonObject.get("className").getAsString()));
+//                    } catch (ClassNotFoundException e) {
+//                        System.out.println(e.getException().getMessage());
+//                        return null;
+//                    }
+//                }
+//            };
+//
+//            JsonSerializer jsonBuffSerializer = new JsonSerializer<Buff>() {
+//                @Override
+//                public JsonElement serialize(Buff buff, Type type, JsonSerializationContext jsonSerializationContext) {
+//                    JsonElement jsonElement = jsonSerializationContext.serialize(buff);
+//                    jsonElement.getAsJsonObject().addProperty("className", buff.getClass().getName());
+//                    return jsonElement;
+//                }
+//            };
+//
+//            GsonBuilder gsonBuilder = new GsonBuilder();
+//            gsonBuilder
+//                    .registerTypeAdapter(Deck.class, jsonDeckSerializer)
+//                    .registerTypeAdapter(Buff.class, jsonBuffDeserializer)
+//                    .registerTypeAdapter(Buff.class, jsonBuffSerializer);
+//            Gson customGson = gsonBuilder.create();
+//            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + customGson.toJson(Collection.getDeckByName(commandParts[2])));
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
@@ -233,8 +235,6 @@ public class ConsoleInput {
         } else if (command.matches("show opponent minions")) {
             Battle.getPlayingBattle().getBattleController().showOpponentSoldiers();
         } else if (command.matches("show card info \\d+")) {
-            //todo
-        } else if (command.matches("select \\d+")) {
             //todo
         } else if (command.matches("attack \\d+")) {
             //todo
