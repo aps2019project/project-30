@@ -36,10 +36,10 @@ public class Map {
         for (Cell cell : getCells()) {
             counter++;
             if (cell.getCardInCell() == null) {
-                stringBuilder.append('#');
+                stringBuilder.append(" # ");
             }
             if (cell.getCardInCell() instanceof Soldier) {
-                stringBuilder.append(cell.getCardInCell().getId());
+                stringBuilder.append(" " + cell.getCardInCell().getId() + " ");
             }
             if (counter == 9) {
                 stringBuilder.append('\n');
