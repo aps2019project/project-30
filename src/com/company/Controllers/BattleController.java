@@ -51,7 +51,7 @@ public class BattleController {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         } else {
-            if(!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
+            if (!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
                 battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
                 ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
                 battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
@@ -72,7 +72,7 @@ public class BattleController {
         } else if ((abs(x1 - x2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(min(x1, x2) + 1, y1))) || (abs(y1 - y2) == 2 && !validPreviousCell(battle.getTurnToPlay(), battle.getMap().getCellByCoordinates(x1, min(y1, y2) + 1)))) {
             return false;
         }
-        return cellIsValidToInsertingCard(x1,y1);
+        return cellIsValidToInsertingCard(x1, y1);
     }
 
     private boolean validRange(Cell cell) {
@@ -125,6 +125,7 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
     }
+
     public void useSpecialPower(int x, int y) {
         if (battle.getTurnToPlay().getSelectedCard() instanceof Hero) {
             if (((Hero) battle.getTurnToPlay().getSelectedCard()).getCoolDownRemaining() != 0) {
@@ -413,44 +414,44 @@ public class BattleController {
     }
 
     private Card getCardByIdFromGraveYardCards(String cardId) {
-        for (Card card :getGraveYard()) {
-            if(card.getId().equals(cardId)){
+        for (Card card : getGraveYard()) {
+            if (card.getId().equals(cardId)) {
                 return card;
             }
         }
         return null;
     }
 
-    private boolean cardExistsInGraveYard(String cardId){
-        for (Card card :getGraveYard()) {
-            if(card.getId().equals(cardId)){
+    private boolean cardExistsInGraveYard(String cardId) {
+        for (Card card : getGraveYard()) {
+            if (card.getId().equals(cardId)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean cardExistsInDeck(String cardId){
-        for (Card card :battle.getTurnToPlay().getDeck().getDeckCards()) {
-            if(card.getId().equals(cardId)){
+    private boolean cardExistsInDeck(String cardId) {
+        for (Card card : battle.getTurnToPlay().getDeck().getDeckCards()) {
+            if (card.getId().equals(cardId)) {
                 return true;
             }
         }
         return false;
     }
 
-    public void showCardFromGraveYardInformation(String cardId){
-        if(cardExistsInGraveYard(cardId)){
+    public void showCardFromGraveYardInformation(String cardId) {
+        if (cardExistsInGraveYard(cardId)) {
             BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
-        }else{
+        } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
         }
     }
 
-    public void showDeckCardInformation(String cardId){
-        if(cardExistsInDeck(cardId)){
+    public void showDeckCardInformation(String cardId) {
+        if (cardExistsInDeck(cardId)) {
             BattleView.showCardInformation(getCardById(cardId));
-        }else{
+        } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
         }
     }
@@ -466,11 +467,13 @@ public class BattleController {
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
             if (isCardNameValid(cardName)) {
-                Card newCard = createCopyFromExistingCard(getCardByName(cardName));
+                //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
+                Card newCard = getCardByNameFromHand(cardName);
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
                     Cell cell = battle.getMap().getCellByCoordinates(x, y);
                     cell.setCardInCell(newCard);
                     ((Soldier) newCard).setCell(cell);
+                    Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                     Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
@@ -481,6 +484,15 @@ public class BattleController {
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         }
+    }
+
+    public Card getCardByNameFromHand(String cardName) {
+        for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
+            if (card.getName().equals(cardName)) {
+                return card;
+            }
+        }
+        return null;//that means there is no card with this name
     }
 
     public static Player playerThatHasThisCard(Card card) {
