@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonController {
-    static class BuffDeserializer implements JsonDeserializer<Buff>{
+    public static class BuffDeserializer implements JsonDeserializer<Buff>{
         @Override
         public Buff deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
             JsonObject jsonObject = jsonElement.getAsJsonObject();
@@ -30,7 +30,7 @@ public class JsonController {
         }
     }
 
-    static class BuffSerializer implements JsonSerializer<Buff>{
+    public static class BuffSerializer implements JsonSerializer<Buff>{
         @Override
         public JsonElement serialize(Buff buff, Type type, JsonSerializationContext jsonSerializationContext) {
             JsonElement jsonElement = jsonSerializationContext.serialize(buff);

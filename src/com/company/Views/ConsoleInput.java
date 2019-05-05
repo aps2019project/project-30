@@ -5,12 +5,19 @@ import com.company.Controllers.CollectionController;
 import com.company.Controllers.JsonController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Card.Groups.Deck;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
+import com.google.gson.*;
 
 import javax.management.BadAttributeValueExpException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,7 +91,6 @@ public class ConsoleInput {
         String commandParts[] = command.split("\\s+");
         if (command.matches("create deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(commandParts[2]);
-//            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])));
         } else if (command.matches("delete deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[2]);
         } else if (command.matches("search .+")) {
@@ -105,6 +111,21 @@ public class ConsoleInput {
             CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
+//            JsonSerializer jsonSerializer = new JsonSerializer<Deck>() {
+//                @Override
+//                public JsonElement serialize(Deck deck, Type type, JsonSerializationContext jsonSerializationContext) {
+//                    JsonElement jsonElement = jsonSerializationContext.serialize(deck);
+//                    jsonElement.getAsJsonObject().remove("hand");
+//                    jsonElement.getAsJsonObject().remove("deckController");
+//                    return jsonElement;
+//                }
+//            };
+//            GsonBuilder gsonBuilder = new GsonBuilder();
+//            gsonBuilder.registerTypeAdapter(Deck.class, jsonSerializer);
+////                    .registerTypeAdapter(Buff.class, JsonController.BuffDeserializer.class)
+////                    .registerTypeAdapter(Buff.class, JsonController.BuffSerializer.class);
+//            Gson customGson = gsonBuilder.create();
+//            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + customGson.toJson(Collection.getDeckByName(commandParts[2])));
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
@@ -190,8 +211,14 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("attack \\d+")) {
             //todo
-        } else if (command.matches("attack combo (\\d+)+")) {
-            //todo
+        } else if (command.matches("attack combo (\\w)+")) {
+            Matcher matcher = Pattern.compile("attack combo (\\w) ((\\w)\\s*)+").matcher(command);
+            if (matcher.find()) {
+                command.replace("attack combo ", "");
+                List<String> cardIDs = new ArrayList<>(Arrays.asList(command.split("\\s+")));
+                String opponentCard = cardIDs.remove(0);
+                List<String> soldierCards = cardIDs;
+            }
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show hand")) {
