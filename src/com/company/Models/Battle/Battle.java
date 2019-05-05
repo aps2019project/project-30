@@ -36,6 +36,9 @@ public class Battle {
     }
 
     public Battle(int storyLevel) {
+        players[0] = new Player(Account.getLoggedInAccount());
+        players[1] = new Player(Account.getLoggedInAccount());
+        this.turnToPlay = players[0];
         this.battleType = BattleType.STORY;
         switch (storyLevel) {
             case 1:
@@ -60,7 +63,7 @@ public class Battle {
         this.winningPrize = 500 * storyLevel;
         playingBattle = this;
 //        map.getCellByCoordinates(2, 4).setCardInCell(Account.getLoggedInAccount().getMainDeck().getHeroCard());
-//        initHeroes();
+        initHeroes();
         System.out.println(map.toString());
     }
 
