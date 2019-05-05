@@ -123,6 +123,8 @@ public class BattleController {
     public void endTern() {
 
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
+        battle.getTurnToPlay().getUsedCardsToMove().clear();
+        battle.getTurnToPlay().getUsedCardsToAttack().clear();
         if (battle.getTurnToPlay() == battle.getPlayers()[0]) {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         } else {
