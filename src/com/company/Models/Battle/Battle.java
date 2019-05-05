@@ -49,7 +49,7 @@ public class Battle {
         }
         this.winningPrize = 500 * storyLevel;
         playingBattle = this;
-        map.getCellByCoordinates(2, 5).setCardInCell(Account.getLoggedInAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(2, 4).setCardInCell(Account.getLoggedInAccount().getMainDeck().getHeroCard());
 //        initHeroes();
         System.out.println(map.toString());
     }

@@ -84,7 +84,7 @@ public class ConsoleInput {
         String commandParts[] = command.split("\\s+");
         if (command.matches("create deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(commandParts[2]);
-            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])));
+//            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])));
         } else if (command.matches("delete deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(commandParts[2]);
         } else if (command.matches("search .+")) {
