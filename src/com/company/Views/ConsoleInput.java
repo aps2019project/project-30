@@ -1,12 +1,14 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.BattleController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Card.Soldier;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
@@ -239,11 +241,15 @@ public class ConsoleInput {
             matcher.find();
             Battle.getPlayingBattle().getBattleController().showDeckCardInformation(matcher.group("cardId"));
         } else if (command.matches("attack \\d+")) {
-
+            Matcher matcher = Pattern.compile("attack (?<cardId>\\d+)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().attack(
+                    ((Soldier)Battle.getPlayingBattle().getBattleController().getCardById(matcher.group("cardId"))).getCell(),
+                    false);
         } else if (command.matches("attack combo (\\d+)+")) {
             //todo
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
-            //todo
+
         } else if (command.matches("show hand")) {
             BattleView.showHand();
         } else if (command.matches("insert .+ in \\(\\d+, \\d+\\)")) {
