@@ -18,9 +18,11 @@ public class DeckController {
     }
 
     public void addRandomCardToHand() {
-        Card card = deck.getDeckCards().get(cardToAddInHandIndex);
-        deck.getHand().getCards().add(card);
-        cardToAddInHandIndex++;
+        while (!isHandFull()) {
+            Card card = deck.getDeckCards().get(cardToAddInHandIndex);
+            deck.getHand().getCards().add(card);
+            cardToAddInHandIndex++;
+        }
     }
 
     public void initializeHand() {
