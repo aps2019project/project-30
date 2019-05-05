@@ -246,8 +246,9 @@ public class ConsoleInput {
             //todo
         } else if (command.matches("show hand")) {
             BattleView.showHand();
-        } else if (command.matches("insert \\[a-zA-Z]+ in \\(\\d+, \\d+\\)")) {
-            Matcher matcher = Pattern.compile("insert (?<cardName>[a-zA-Z]+) in \\((?<xCordinate>\\d+)\\,(?<yCordinate>\\d+)\\)").matcher(command);
+        } else if (command.matches("insert .+ in \\(\\d+, \\d+\\)")) {
+            System.out.println("Checked");
+            Matcher matcher = Pattern.compile("insert (?<cardName>.+) in \\((?<xCordinate>\\d+)\\, (?<yCordinate>\\d+)\\)").matcher(command);
             matcher.find();
             Battle.getPlayingBattle().getBattleController().insertNewCardToMap(Integer.parseInt(matcher.group("xCordinate")), Integer.parseInt(matcher.group("yCordinate")), matcher.group("cardName"));
         } else if (command.matches("end turn")) {
