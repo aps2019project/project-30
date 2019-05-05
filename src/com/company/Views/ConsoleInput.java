@@ -4,11 +4,14 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
+import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
 import com.company.Views.Console.CollectionViews;
 import com.google.gson.*;
+import com.sun.org.apache.xalan.internal.xsltc.dom.SAXImpl;
 
 import javax.management.BadAttributeValueExpException;
 import java.lang.reflect.Type;
@@ -21,7 +24,6 @@ import java.util.regex.Pattern;
 
 public class ConsoleInput {
     private static Scanner scanner = new Scanner(System.in);
-
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
 
     private static Menu menu = Menu.ACCOUNT;
@@ -249,8 +251,10 @@ public class ConsoleInput {
         } else if (command.matches("Show collectables")) {
             //todo
         } else if (command.matches("select \\d+")) {
-            //todo
-        } else if (command.matches("show info \\d+")) {
+            Matcher matcher = Pattern.compile("select (?<cardId>\\d+)").matcher(command);
+            matcher.find();
+            Battle.getPlayingBattle().getBattleController().selectCard(matcher.group("cardId"));
+        } else if (command.matches("show info")) {//showing selected card infos
             //todo
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
