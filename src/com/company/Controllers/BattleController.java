@@ -607,6 +607,6 @@ public class BattleController {
     }
 
     public void showNextCardOfBattle() {
-        Battle.getPlayingBattle().getTurnToPlay().getDeck().get
+        Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 }

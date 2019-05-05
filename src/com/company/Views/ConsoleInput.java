@@ -278,7 +278,7 @@ public class ConsoleInput {
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {
-            Battle.getPlayingBattle().getBattleController().showNextCardOfBattle()
+            Battle.getPlayingBattle().getBattleController().showNextCardOfBattle();
         } else if (command.matches("enter graveyard")) {
             setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {
