@@ -441,6 +441,15 @@ public class BattleController {
         return false;
     }
 
+    private boolean cardExistsInHand(String cardName){
+        for (Card card :battle.getTurnToPlay().getDeck().getHand().getCards()) {
+            if(card.getName().equals(cardName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void showCardFromGraveYardInformation(String cardId){
         if(cardExistsInGraveYard(cardId)){
             BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
@@ -467,7 +476,7 @@ public class BattleController {
 
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cellIsValidToInsertingCard(x, y)) {
-            if (isCardNameValid(cardName)) {
+            if (cardExistsInHand(cardName)) {
                 //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
                 Card newCard = getCardByNameFromHand(cardName);
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
@@ -486,6 +495,8 @@ public class BattleController {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         }
     }
+
+
 
     public Card getCardByNameFromHand(String cardName) {
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
