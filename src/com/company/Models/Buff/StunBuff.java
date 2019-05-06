@@ -1,7 +1,7 @@
 package com.company.Models.Buff;
 
 public class StunBuff extends Buff{
-    public StunBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+    public StunBuff(Name antiBuff, int castTime, int remTurnToCast, int value) {
         super(antiBuff, castTime, remTurnToCast, value);
         name = Name.STUN;
         type = Type.NEGATIVE;

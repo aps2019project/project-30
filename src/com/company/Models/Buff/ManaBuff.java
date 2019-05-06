@@ -6,7 +6,7 @@ import com.company.Models.Card.Minion.Minion;
 
 public class ManaBuff extends Buff {
 
-    public ManaBuff(Buff.Type antiBuff, int castTime, int remTurnToCast, int value) {
+    public ManaBuff(Name antiBuff, int castTime, int remTurnToCast, int value) {
         super(antiBuff, castTime, remTurnToCast, value);
         super.name = Name.MANA;
         super.type = Type.POSSETIVE;
