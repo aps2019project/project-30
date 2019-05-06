@@ -3,6 +3,7 @@ package com.company.Controllers;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
+import com.company.Models.Buff.AntiBuff;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
@@ -609,6 +610,10 @@ public class BattleController {
         } else {
             if (!isAttackedThisTurn(selectedCard)) {
                 selectedCard.attack(target.getCardInCell(), isCombo);
+                if (turnToPlay.getSelectedCard() instanceof Minion &&
+                        ((Minion) turnToPlay.getSelectedCard()).getActivationTime().equals(ActivationTime.ON_ATTACK)) {
+                    throwAttackerCardBuffstoTargetCard(turnToPlay.getSelectedCard(), target.getCardInCell());
+                }
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
         }
@@ -703,6 +708,20 @@ public class BattleController {
                 player.getAccount().getBattleHistories().add(battleLog);
             }
             battle.getMode().getWinner().getAccount().incremeantWins();
+        }
+    }
+
+    public void throwAttackerCardBuffstoTargetCard(Card attackerCard, Card targetCard) {
+        int buffsCastedSizeBeforeThrow = targetCard.getBuffsCasted().size();
+        for (Buff buff : attackerCard.getBuffsToCast()) {
+            Buff clonedBuff = buff.clone();
+            clonedBuff.setCardToCast(targetCard);
+            targetCard.getBuffsCasted().add(clonedBuff);
+        }
+        for (int i = 0; i < targetCard.getBuffsCasted().size(); i++) {
+            Buff buff = targetCard.getBuffsCasted().get(i);
+            if (buff instanceof AntiBuff || i > buffsCastedSizeBeforeThrow)
+                buff.cast();
         }
     }
 }
