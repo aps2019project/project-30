@@ -331,4 +331,9 @@ public class ConsoleInput {
             }
         }
     }
+
+    public static void getCordinatesForUseSpecialPowerOnSpawn(){
+        System.out.println("please enter (x, y) to use minion special power");
+        battleMenuCommandsChecker("use special power " + scanner.nextLine());
+    }
 }

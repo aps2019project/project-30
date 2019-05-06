@@ -17,7 +17,9 @@ import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Views.BattleView;
+import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
+import com.sun.corba.se.impl.monitoring.MonitoredAttributeInfoImpl;
 
 
 import java.util.ArrayList;
@@ -539,7 +541,6 @@ public class BattleController {
 
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cardExistsInHand(cardName)) {
-            //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
             Card newCard = getCardByNameFromHand(cardName);
             if (newCard instanceof Spell || cellIsValidToInsertingCard(x, y)) {
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
@@ -553,6 +554,9 @@ public class BattleController {
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
+                        if(battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion)battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_RESPAWN)){
+                            ConsoleInput.getCordinatesForUseSpecialPowerOnSpawn();
+                        }
                     }
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
