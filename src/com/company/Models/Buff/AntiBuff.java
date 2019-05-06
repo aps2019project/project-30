@@ -3,7 +3,7 @@ package com.company.Models.Buff;
 import com.company.Models.Card.Card;
 
 public class AntiBuff extends Buff {
-    public AntiBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+    public AntiBuff(Name antiBuff, int castTime, int remTurnToCast, int value) {
         super(antiBuff, castTime, remTurnToCast, value);
         name = Name.ANTI;
         type = Type.POSSETIVE;

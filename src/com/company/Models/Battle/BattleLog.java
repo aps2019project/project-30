@@ -1,6 +1,9 @@
 package com.company.Models.Battle;
 
+import com.company.Models.TargetType;
 import com.company.Models.User.Player;
+
+import java.lang.annotation.Target;
 
 public class BattleLog {
     private String player1Username;
