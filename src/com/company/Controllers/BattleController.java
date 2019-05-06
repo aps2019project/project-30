@@ -74,6 +74,7 @@ public class BattleController {
             cellToGo.getFlag().setHoldingTurn(battle.getTurn());
             cellToGo.setFlag(null);
         }
+        checkGameIsFinished();
     }
 
     private boolean isMovedThisTurn(ArrayList<Card> usedCardsToMove, Player turnToPlay) {
@@ -131,6 +132,7 @@ public class BattleController {
     }
 
     public void endTurn() {
+        checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
             if (!card.isInGraveCards()) {
@@ -152,6 +154,7 @@ public class BattleController {
         } else {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
+        checkGameIsFinished();
     }
 
     public void useSpecialPower(int x, int y) {
@@ -690,7 +693,7 @@ public class BattleController {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 
-    public void checkKillingGeneralModeIsFinished() {
+    public void checkGameIsFinished() {
         if (battle.getMode().getWinner() != null) {
             System.out.println("Game Finished : " + battle.getMode().getWinner().getAccount().getUsername());
             BattleLog battleLog = new BattleLog(
