@@ -38,7 +38,26 @@ public class Battle {
         players[1].getDeck().getDeckController().initializeHand();
         this.turnToPlay = players[0];
         this.mode = mode;
-
+        switch (this.mode) {
+            case KILLING_GENERAL:
+                this.mode = Mode.KILLING_GENERAL;
+                break;
+            case COLLECTING_FLAGS:
+                this.mode = Mode.CAPTURE_THE_FLAG;
+                Flag flag = new Flag(map.getCellByCoordinates(5, 2));
+                map.getCellByCoordinates(5, 2).setFlag(flag);
+                flags.add(flag);
+                break;
+            case CAPTURE_THE_FLAG:
+                this.mode = Mode.COLLECTING_FLAGS;
+                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
+                map.getCellByCoordinates(5, 1).setFlag(flag1);
+                flags.add(flag1);
+                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
+                map.getCellByCoordinates(5, 1).setFlag(flag2);
+                flags.add(flag2);
+                break;
+        }
         this.battleType = battleType;
         playingBattle = this;
         this.winningPrize = 1000;
