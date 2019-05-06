@@ -526,6 +526,7 @@ public class BattleController {
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                     }
+                    battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
