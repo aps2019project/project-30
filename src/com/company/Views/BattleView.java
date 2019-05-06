@@ -48,22 +48,6 @@ public class BattleView {
         }
     }
 
-    public static void showCardInformation(Card card){
-        if(card != null) {
-            if (card instanceof Minion) {
-                Minion.showMinionInBattle((Minion) card);
-            } else if (card instanceof Item) {
-                Item.showItemInBattle((Item) card);
-            } else if (card instanceof Hero) {
-                Hero.showHeroInBattle((Hero) card);
-            } else if (card instanceof Spell) {
-                Spell.showSpellInBattle((Spell) card);
-            }
-        } else{
-            ConsoleOutput.printErrorMessage(ErrorType.NO_SELECTED_CARD);
-        }
-    }
-
     public static void printGraveYardCards(ArrayList<Card> cards) {
         ConsoleOutput.showAllCards(cards);
     }
@@ -90,8 +74,9 @@ public class BattleView {
         }
     }
 
-    public static void showHand(){
-        ConsoleOutput.showAllCards(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
+    public static void showHand() {
+        Item.showItemsInBattle(Battle.getPlayingBattle().getTurnToPlay().getItems());
+        Card.showCardsInBattle(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
     }
 
     public static void printBattleCommandsToHelp(){

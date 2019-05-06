@@ -159,10 +159,10 @@ public class BattleController {
                 case FRIEND_MINION:
                     doSpecialPowerOnFriendMinion(x, y);
                     break;
-                case ENEMY_HERO:
+                case ENEMY_HERO://
                     doSpecialPowerEnemyHero(x, y);
                     break;
-                case FRIEND_HERO:
+                case FRIEND_HERO://
                     doSpecialPowerFriendHero(x, y);
                     break;
                 case ENEMY_SOLDIER:
@@ -473,7 +473,7 @@ public class BattleController {
 
     public void showCardFromGraveYardInformation(String cardId){
         if(cardExistsInGraveYard(cardId)){
-            BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
+            Card.showCardInformation(getCardByIdFromGraveYardCards(cardId));
         }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
         }
@@ -481,7 +481,7 @@ public class BattleController {
 
     public void showDeckCardInformation(String cardId){
         if(cardExistsInDeck(cardId)){
-            BattleView.showCardInformation(getCardById(cardId));
+            Card.showCardInformation(getCardById(cardId));
         }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
         }

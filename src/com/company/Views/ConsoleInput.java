@@ -274,7 +274,7 @@ public class ConsoleInput {
             matcher.find();
             Battle.getPlayingBattle().getBattleController().selectCard(matcher.group("cardId"));
         } else if (command.matches("show info")) {//showing selected card info
-            BattleView.showCardInformation(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard());
+            Card.showCardInformation(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard());
         } else if (command.matches("use \\(\\d+, \\d+\\)")) {
             //todo
         } else if (command.matches("show next card")) {
