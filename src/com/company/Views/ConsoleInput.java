@@ -250,12 +250,12 @@ public class ConsoleInput {
                     false);
         } else if (command.matches("attack combo (\\d+)+")) {
             Matcher matcher = Pattern.compile("attack combo (?<opponentId>\\d+) (\\d+)+").matcher(command);
-            command.replace("attack combo ", "");
+            String opponentCardId = matcher.group("opponentId");
+            command = command.replace("attack combo \\d+ ", "");
             List<String> cardIds = Arrays.asList(command.split(" "));
-            cardIds.remove(0);
             if (matcher.find()) {
                 Battle.getPlayingBattle().getBattleController().attackCombo(
-                        matcher.group("opponentId"),
+                        opponentCardId,
                         cardIds
                 );
             }

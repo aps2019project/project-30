@@ -63,7 +63,7 @@
     "manaPoint": 0,
     "priceInDrake": 8000,
     "isInGraveCards": false,
-    "targetType": "WHOLE_ENEMY",
+    "targetType": "ENEMY_SOLDIER",
     "buffsToCast": [
       {
         "type": "NEGATIVE",
