@@ -4,7 +4,6 @@ import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
-import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
 import com.company.Models.User.Account;
@@ -13,7 +12,6 @@ import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
 
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.List;
 
 
@@ -33,12 +31,25 @@ public class Battle {
 
     public Battle(Mode mode, Account opponent) {
         this.map = new Map();
+        initPlayersHand(opponent);
+        this.turnToPlay = players[0];
+        this.mode = mode;
+        initMultiplayerMode();
+        this.battleType = BattleType.MULTI;
+        playingBattle = this;
+        this.winningPrize = 1000;
+        initHeroes();
+        initCardsHealth();
+    }
+
+    private void initPlayersHand(Account opponent) {
         players[0] = new Player(Account.getLoggedInAccount());
         players[1] = new Player(opponent);
         players[0].getDeck().getDeckController().initializeHand();
         players[1].getDeck().getDeckController().initializeHand();
-        this.turnToPlay = players[0];
-        this.mode = mode;
+    }
+
+    private void initMultiplayerMode() {
         switch (this.mode) {
             case KILLING_GENERAL:
                 this.mode = Mode.KILLING_GENERAL;
@@ -60,11 +71,6 @@ public class Battle {
                 flags.add(flag2);
                 break;
         }
-        this.battleType = battleType;
-        playingBattle = this;
-        this.winningPrize = 1000;
-        initHeroes();
-        initCardsHealth();
     }
 
     private void initCardsHealth() {
