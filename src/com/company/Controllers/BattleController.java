@@ -610,12 +610,16 @@ public class BattleController {
         } else {
             if (!isAttackedThisTurn(selectedCard)) {
                 selectedCard.attack(target.getCardInCell(), isCombo);
-                if (turnToPlay.getSelectedCard() instanceof Minion &&
-                        ((Minion) turnToPlay.getSelectedCard()).getActivationTime().equals(ActivationTime.ON_ATTACK)) {
-                    throwAttackerCardBuffstoTargetCard(turnToPlay.getSelectedCard(), target.getCardInCell());
-                }
+                HandleMinionOnAttackBuffs(target, turnToPlay);
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
+        }
+    }
+
+    private void HandleMinionOnAttackBuffs(Cell target, Player turnToPlay) {
+        if (turnToPlay.getSelectedCard() instanceof Minion &&
+                ((Minion) turnToPlay.getSelectedCard()).getActivationTime().equals(ActivationTime.ON_ATTACK)) {
+            throwAttackerCardBuffstoTargetCard(turnToPlay.getSelectedCard(), target.getCardInCell());
         }
     }
 
