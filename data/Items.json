@@ -62,7 +62,7 @@
   {
     "name": "Nooshdaroo",
     "manaPoint": 0,
-    "priceInDrake": 0,
+    "priceInDrake": 30000,
     "description": "increase health 6 units",
     "isInGraveCards": false,
     "targetType": "FRIEND_HERO",
