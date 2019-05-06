@@ -335,6 +335,15 @@ public class ConsoleInput {
                     Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
             );
             setMenu(Menu.BATTLE);
+        } else if (command.matches("start game \\w+ \\S+ ")) {
+            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+) (?<opponent>\\S+)").matcher(command);
+            multiPlayerMatcher.find();
+            Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(multiPlayerMatcher.group("deckName")));
+            new Battle(
+                    Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode")),
+                    Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
+            );
+            setMenu(Menu.BATTLE);
         }
     }
 }
