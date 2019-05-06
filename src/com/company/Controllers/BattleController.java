@@ -130,6 +130,7 @@ public class BattleController {
     }
 
     public void endTurn() {
+        System.out.println("battle.getTimePassedInSeconds() = " + battle.getTimePassedInSeconds());
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
             if (!card.isInGraveCards()) {
@@ -662,12 +663,16 @@ public class BattleController {
 
     public void checkKillingGeneralModeIsFinished() {
         if (battle.getMode().getWinner() != null) {
-//            BattleLog battleLog = new BattleLog(
-//                    battle.getPlayers()[0].getAccount(),
-//                    battle.getPlayers()[1].getAccount(),
-//                    battle.getMode().getWinner(),
-//                    battle.get
-//            )
+            BattleLog battleLog = new BattleLog(
+                    battle.getPlayers()[0].getAccount().getUsername(),
+                    battle.getPlayers()[1].getAccount().getUsername(),
+                    battle.getMode().getWinner().getAccount().getUsername(),
+                    100
+            );
+            for (Player player : battle.getPlayers()) {
+                player.getAccount().getBattleHistories().add(battleLog);
+            }
+            battle.getMode().getWinner().getAccount().incremeantWins();
         }
     }
 }
