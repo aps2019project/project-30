@@ -9,11 +9,6 @@ import java.util.ArrayList;
 
 public class Spell extends Card {
 
-    public void throwBuffs(Card target) {
-        target.getBuffsCasted().addAll(this.getBuffsToCast());
-        //Todo : Clone Buffs And Cast
-    }
-
     public Spell clone() {
         Spell spell = new Spell();
         spell.setName(this.getName());
