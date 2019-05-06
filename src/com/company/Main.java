@@ -35,18 +35,17 @@ public class Main {
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
 
-//
-//        Hero hero = new Hero();
-//        hero.setName("Simorgh");
-//
-//        hero.setPriceInDrake(9000);
-//        hero.setFullHealth(50);
-//        hero.setAttackPower(4);
-//        hero.setAttackType(AttackType.MELEE);
-////        hero.getBuffsToCast().add(stunBuff);
-//        hero.setManaPoint(5);
-//        hero.setCoolDown(8);
-//        hero.setTargetType(TargetType.FRIEND_HERO);
+        DisarmBuff disarmBuff = new DisarmBuff(null, 1, 0, 0);
+        Hero hero = new Hero();
+        hero.setName("Eight Heads Dragon");
+        hero.setPriceInDrake(8000);
+        hero.setFullHealth(50);
+        hero.setAttackPower(4);
+        hero.setAttackType(AttackType.MELEE);
+        hero.getBuffsToCast().add(disarmBuff);
+        hero.setManaPoint(0);
+        hero.setCoolDown(1);
+        hero.setTargetType(TargetType.WHOLE_ENEMY);
 //
 ////        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 //
@@ -56,16 +55,16 @@ public class Main {
 
 
         //HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
-        Minion minion = new Minion();
-        minion.setName("Arjang div");
-        minion.setPriceInDrake(600);
-        minion.setManaPoint(3);
-        minion.setFullHealth(6);
-        minion.setAttackPower(6);
-        minion.setAttackType(AttackType.MELEE);
-        //minion.getBuffsToCast().add(healthPowerBuff);
-        minion.setActivationTime(ActivationTime.COMBO);
-//
+//        Minion minion = new Minion();
+//        minion.setName("Arjang div");
+//        minion.setPriceInDrake(600);
+//        minion.setManaPoint(3);
+//        minion.setFullHealth(6);
+//        minion.setAttackPower(6);
+//        minion.setAttackType(AttackType.MELEE);
+//        //minion.getBuffsToCast().add(healthPowerBuff);
+//        minion.setActivationTime(ActivationTime.COMBO);
+////
 //
 //        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
 //        Item item = new Item();
@@ -87,6 +86,6 @@ public class Main {
 
 
 
-        System.out.println(JsonController.getGson().toJson(minion));
+        System.out.println(JsonController.getGson().toJson(hero));
     }
 }
