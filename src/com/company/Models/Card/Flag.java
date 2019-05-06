@@ -5,6 +5,7 @@ import com.company.Models.Battle.Map.Cell;
 public class Flag {
     private Card flagHolder;
     private Cell cell;
+    private int holdingTurn;
 
     public Flag(Cell cell) {
         this.cell = cell;
@@ -21,5 +22,14 @@ public class Flag {
     public Cell getCell(){
         return cell;
     }
+
+    public int getHoldingTurn() {
+        return holdingTurn;
+    }
+
+    public void setHoldingTurn(int holdingTurn) {
+        this.holdingTurn = holdingTurn;
+    }
+
 
 }

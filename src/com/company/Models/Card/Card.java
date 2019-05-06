@@ -130,7 +130,7 @@ public abstract class Card {
         }
     }
 
-    public static void showCardsInBattle(List<Card> cards) {
+    public static void showMinionsAndSpellsInBattle(List<Card> cards) {
         System.out.println("Cards :");
         int index = 1;
         for (Card card : cards) {

@@ -53,4 +53,8 @@ public class DeckController {
     public Card getNextCard() {
         return deck.getDeckCards().get(cardToAddInHandIndex);
     }
+
+    public void removeFromHand(Card card) {
+        deck.getHand().getCards().remove(card);
+    }
 }

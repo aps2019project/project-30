@@ -4,10 +4,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
-import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
-import com.company.Models.Card.Spell.Spell;
-import com.company.Models.ErrorType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +73,7 @@ public class BattleView {
 
     public static void showHand() {
         Item.showItemsInBattle(Battle.getPlayingBattle().getTurnToPlay().getItems());
-        Card.showCardsInBattle(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
+        Card.showMinionsAndSpellsInBattle(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
     }
 
     public static void printBattleCommandsToHelp(){
