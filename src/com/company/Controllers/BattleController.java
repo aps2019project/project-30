@@ -646,8 +646,8 @@ public class BattleController {
                         attack(cell, false);
                     } else
                         attack(cell, true);
+                    first = false;
                 }
-                first = false;
             }
         }
     }
