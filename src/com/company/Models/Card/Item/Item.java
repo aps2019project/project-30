@@ -23,7 +23,6 @@ public class Item extends Card {
         return item;
     }
 
-
     public Item makeCopyForCreatingNewCardInShop() {
         Item item = this.clone();
         item.setId(Card.createNewCardIdToCreatingNewCardInShop());

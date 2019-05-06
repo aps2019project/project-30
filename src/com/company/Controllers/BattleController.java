@@ -123,6 +123,7 @@ public class BattleController {
                 }
             }
         }
+
         ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
@@ -197,7 +198,6 @@ public class BattleController {
                     break;
             }
         }
-        ConsoleOutput.printErrorMessage(ErrorType.ENOUGH_MANA);
     }
 
     private void doOnEnemyRow() {

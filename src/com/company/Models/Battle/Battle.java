@@ -143,8 +143,8 @@ public class Battle {
         players[1].getUsedCards().add(players[1].getDeck().getHeroCard());
         ((Soldier)players[1].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
-        Player botPlayer = new Player();
-        botPlayer.setMana(2);
-        botPlayer.setMaxMana(2);
+//        Player botPlayer = new Player();
+//        botPlayer.setMana(2);
+//        botPlayer.setMaxMana(2);
     }
 }
