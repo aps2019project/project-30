@@ -102,5 +102,31 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "coolDown": 1,
+    "remainingCoolDown": 0,
+    "attackType": "MELEE",
+    "fullHealth": 50,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Zahak",
+    "manaPoint": 0,
+    "priceInDrake": 10000,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.PosionBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
