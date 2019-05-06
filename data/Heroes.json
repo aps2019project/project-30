@@ -154,5 +154,31 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "coolDown": 2,
+    "remainingCoolDown": 0,
+    "attackType": "RANGED",
+    "fullHealth": 30,
+    "health": 0,
+    "areaOfEffect": 6,
+    "attackPower": 2,
+    "name": "Arash",
+    "manaPoint": 2,
+    "priceInDrake": 10000,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_ROW",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
