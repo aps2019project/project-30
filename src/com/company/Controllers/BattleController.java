@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
@@ -52,7 +53,7 @@ public class BattleController {
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         } else {
-            if(!isMovedThisTurn(battle.getTurnToPlay().getUsedCardsToMove(), battle.getTurnToPlay())) {
+            if (!isMovedThisTurn(battle.getTurnToPlay().getUsedCardsToMove(), battle.getTurnToPlay())) {
                 soldier.getCell().setCardInCell(null);
                 soldier.setCell(battle.getMap().getCellByCoordinates(x, y));
                 cellToGo.setCardInCell(battle.getTurnToPlay().getSelectedCard());
@@ -69,6 +70,7 @@ public class BattleController {
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
         if (cellToGo.getFlag() != null) {
             cellToGo.getFlag().setFlagHolder(soldier);
+            cellToGo.getFlag().setHoldingTurn(battle.getTurn());
             cellToGo.setFlag(null);
         }
     }
@@ -89,7 +91,7 @@ public class BattleController {
         return cellIsValidToInsertingCard(x1, y1);
     }
 
-    private boolean validRange(int x,int y) {
+    private boolean validRange(int x, int y) {
 
         if (x > 9 || x <= 0 || y > 5 || y <= 0) {
             return false;
@@ -137,7 +139,7 @@ public class BattleController {
             }
         }
         battle.incrementTurn();
-        ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
+        ((Hero) battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
         battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
@@ -200,10 +202,10 @@ public class BattleController {
                     doSpecialPowerOnNear("friend");
                     break;
                 case SQUARE_2:
-                    doOnSquare2(x,y);
+                    doOnSquare2(x, y);
                     break;
                 case SQUARE_3:
-                    doOnSquare3(x,y);
+                    doOnSquare3(x, y);
                     break;
                 case ENEMY_ROW:
                     doOnEnemyRow();
@@ -242,7 +244,7 @@ public class BattleController {
     private void doOnSquare3(int x, int y) {
         for (int i = -2; i <= 0; i++) {
             for (int j = -2; j <= 0; j++) {
-                if ( validRange(x+i,y+j)) {
+                if (validRange(x + i, y + j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
                 }
             }
@@ -252,7 +254,7 @@ public class BattleController {
     private void doOnSquare2(int x, int y) {
         for (int i = -1; i <= 0; i++) {
             for (int j = -1; j <= 0; j++) {
-                if ( validRange(x+i,y+j)) {
+                if (validRange(x + i, y + j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
                 }
             }
@@ -362,17 +364,19 @@ public class BattleController {
 
 
     private void doUseSpecialPowerSwichCase(Cell cell) {
-        int startEndex = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
-        for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
-            Buff buff1 = buff.clone();
-            buff1.setCardToCast(cell.getCardInCell());
-            cell.getCardInCell().getBuffsCasted().add(buff1);
-        }
-        int counter = 0;
-        for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
-            counter++;
-            if (counter >= startEndex) {
-                buff.cast();
+        if(cell.getCardInCell()!=null) {
+            int startEndex = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
+            for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
+                Buff buff1 = buff.clone();
+                buff1.setCardToCast(cell.getCardInCell());
+                cell.getCardInCell().getBuffsCasted().add(buff1);
+            }
+            int counter = 0;
+            for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
+                counter++;
+                if (counter >= startEndex) {
+                    buff.cast();
+                }
             }
         }
     }
@@ -654,5 +658,16 @@ public class BattleController {
 
     public void showNextCardOfBattle() {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
+    }
+
+    public void checkKillingGeneralModeIsFinished() {
+        if (battle.getMode().getWinner() != null) {
+            BattleLog battleLog = new BattleLog(
+                    battle.getPlayers()[0].getAccount(),
+                    battle.getPlayers()[1].getAccount(),
+                    battle.getMode().getWinner(),
+                    battle.get
+            )
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.company.Models.Card.Hero;
 
+import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
@@ -31,6 +32,12 @@ public class Hero extends Soldier {
     public void decrementRemainingCoolDown() {
         if(remainingCoolDown!=0)
             remainingCoolDown--;
+    }
+
+    @Override
+    public void decrementHealth(int health) {
+        super.decrementHealth(health);
+        Battle.getPlayingBattle().getBattleController().
     }
 
     public int getCoolDownRemaining() {
@@ -106,4 +113,6 @@ public class Hero extends Soldier {
                 "- HP : " + hero.getHealth() +
                 "- Desc : " + hero.getDescription());
     }
+
+
 }

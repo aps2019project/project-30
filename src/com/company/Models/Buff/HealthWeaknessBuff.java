@@ -15,18 +15,19 @@ public class HealthWeaknessBuff extends Buff{
     public void cast(){
         if(isActive()){
             if(canCastThisTurn()){
-                if (super.cardToCast instanceof Hero)
-                    ((Hero) super.cardToCast).decrementHealth(value);
-                else if (super.cardToCast instanceof Minion)
-                    ((Minion) super.cardToCast).decrementHealth(value);
-                setCasted(true);
+                if (!isCasted) {
+                    if (super.cardToCast instanceof Hero)
+                        ((Hero) super.cardToCast).decrementHealth(value);
+                    else if (super.cardToCast instanceof Minion)
+                        ((Minion) super.cardToCast).decrementHealth(value);
+                    setCasted(true);
+                }
             }
         }else{
             if (super.cardToCast instanceof Hero)
                 ((Hero) super.cardToCast).incrementHealth(value);
             else if (super.cardToCast instanceof Minion)
                 ((Minion) super.cardToCast).incrementHealth(value);
-            destruct();
         }
         decrementCounters();
     }

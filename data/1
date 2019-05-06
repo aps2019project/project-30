@@ -132,3 +132,5 @@ end turn
 select 24
 move to (5, 2)
 select 24
+show hand
+insert Hell Fire in (6, 2)

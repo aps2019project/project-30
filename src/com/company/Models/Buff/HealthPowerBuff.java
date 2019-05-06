@@ -17,13 +17,12 @@ public class HealthPowerBuff extends Buff {
                 if (!isCasted) {
                     ((Soldier) super.cardToCast).incrementHealth(value);
                     setCasted(true);
-                    decrementCounters();
                 }
             }
         } else {
             ((Soldier) super.cardToCast).decrementHealth(value);
-            destruct();
         }
+        decrementCounters();
     }
     public HealthPowerBuff clone() {
         HealthPowerBuff healthPowerBuff= new HealthPowerBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);

@@ -84,7 +84,7 @@
     "buffsToCast": [
       {
         "type": "NEGATIVE",
-        "name": "WEAKNESS",
+        "name": "HEALTH_WEAKNESS",
         "isCasted": false,
         "castTime": 2,
         "remTurnToCast": 0,
