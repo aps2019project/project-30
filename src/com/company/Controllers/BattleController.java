@@ -47,20 +47,33 @@ public class BattleController {
     }
 
     public void move(int x, int y) {
+        Cell cellToGo = battle.getMap().getCellByCoordinates(x, y);
+        Soldier soldier = ((Soldier) battle.getTurnToPlay().getSelectedCard());
         if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         } else {
-            if(!battle.getTurnToPlay().getUsedCardsToMove().contains(battle.getTurnToPlay().getSelectedCard())) {
-                battle.getMap().getCellByCoordinates(((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate(), ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate()).setCardInCell(null);
-                ((Soldier) battle.getTurnToPlay().getSelectedCard()).setCell(battle.getMap().getCellByCoordinates(x, y));
-                battle.getMap().getCellByCoordinates(x, y).setCardInCell(battle.getTurnToPlay().getSelectedCard());
+            if(!isMovedThisTurn(battle.getTurnToPlay().getUsedCardsToMove(), battle.getTurnToPlay())) {
+                soldier.getCell().setCardInCell(null);
+                soldier.setCell(battle.getMap().getCellByCoordinates(x, y));
+                cellToGo.setCardInCell(battle.getTurnToPlay().getSelectedCard());
                 battle.getTurnToPlay().getUsedCardsToMove().add(battle.getTurnToPlay().getSelectedCard());
                 if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
                     battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
+                collectFlagInCell(cellToGo, soldier);
             }
         }
-        System.out.println(battle.getMap().toString());
+    }
+
+    private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
+        if (cellToGo.getFlag() != null) {
+            cellToGo.getFlag().setFlagHolder(soldier);
+            cellToGo.setFlag(null);
+        }
+    }
+
+    private boolean isMovedThisTurn(ArrayList<Card> usedCardsToMove, Player turnToPlay) {
+        return usedCardsToMove.contains(turnToPlay.getSelectedCard());
     }
 
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
@@ -123,7 +136,7 @@ public class BattleController {
                 }
             }
         }
-
+        battle.incrementTurn();
         ((Hero)battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
@@ -640,6 +653,11 @@ public class BattleController {
     }
 
     public void showNextCardOfBattle() {
-        Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
+        Card nextCard = Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
+        if (nextCard instanceof Minion) {
+            Minion.showMinion((Minion) nextCard);
+        } else if (nextCard instanceof Spell) {
+            Spell.showSpell((Spell) nextCard);
+        }
     }
 }

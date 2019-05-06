@@ -29,6 +29,7 @@ public class Battle {
     private BattleView battleView = new BattleView(this);
     private static int lastBattleCardId = 0;
     private int winningPrize;
+    private int turn = 1;
 
     public Battle(Mode mode, Account opponent) {
         players[0] = new Player(Account.getLoggedInAccount());
@@ -37,6 +38,7 @@ public class Battle {
         players[1].getDeck().getDeckController().initializeHand();
         this.turnToPlay = players[0];
         this.mode = mode;
+
         this.battleType = battleType;
         playingBattle = this;
         this.winningPrize = 1000;
@@ -151,4 +153,10 @@ public class Battle {
 //        botPlayer.setMana(2);
 //        botPlayer.setMaxMana(2);
     }
+
+    public void incrementTurn() {
+        this.turn ++;
+    }
+
+
 }
