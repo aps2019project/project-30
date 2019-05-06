@@ -57,11 +57,11 @@ public class Main {
 
         //HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
         Minion minion = new Minion();
-        minion.setName("Sepahsalar Fars");
-        minion.setPriceInDrake(800);
-        minion.setManaPoint(7);
-        minion.setFullHealth(12);
-        minion.setAttackPower(4);
+        minion.setName("Arjang div");
+        minion.setPriceInDrake(600);
+        minion.setManaPoint(3);
+        minion.setFullHealth(6);
+        minion.setAttackPower(6);
         minion.setAttackType(AttackType.MELEE);
         //minion.getBuffsToCast().add(healthPowerBuff);
         minion.setActivationTime(ActivationTime.COMBO);
