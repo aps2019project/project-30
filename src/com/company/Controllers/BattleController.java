@@ -662,12 +662,12 @@ public class BattleController {
 
 /*    public void checkKillingGeneralModeIsFinished() {
         if (battle.getMode().getWinner() != null) {
-            BattleLog battleLog = new BattleLog(
-                    battle.getPlayers()[0].getAccount(),
-                    battle.getPlayers()[1].getAccount(),
-                    battle.getMode().getWinner(),
-                    battle.get
-            )
+//            BattleLog battleLog = new BattleLog(
+//                    battle.getPlayers()[0].getAccount(),
+//                    battle.getPlayers()[1].getAccount(),
+//                    battle.getMode().getWinner(),
+//                    battle.get
+//            )
         }
     }*/
 }

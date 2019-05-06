@@ -37,7 +37,7 @@ public class Hero extends Soldier {
     @Override
     public void decrementHealth(int health) {
         super.decrementHealth(health);
-        Battle.getPlayingBattle().getBattleController().
+        Battle.getPlayingBattle().getBattleController().checkKillingGeneralModeIsFinished();
     }
 
     public int getCoolDownRemaining() {
