@@ -1,14 +1,9 @@
 package com.company.Models.Card.Hero;
 
 import com.company.Models.Battle.Battle;
-import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
-import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Card;
-import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
-import com.company.Models.Card.Spell.Spell;
-import com.company.Models.Shop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +32,7 @@ public class Hero extends Soldier {
     @Override
     public void decrementHealth(int health) {
         super.decrementHealth(health);
-        Battle.getPlayingBattle().getBattleController().checkKillingGeneralModeIsFinished();
+        Battle.getPlayingBattle().getBattleController().checkGameIsFinished();
     }
 
     public int getCoolDownRemaining() {

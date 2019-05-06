@@ -14,9 +14,6 @@ import com.company.Views.BattleView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +33,12 @@ public class Battle {
     private int winningPrize;
     private int turn = 1;
     private int timePassedInSeconds = 0;
+    private boolean botIsActive = false;
 
     public Battle(Mode mode, Account opponent) {
         beginTimer();
         this.map = new Map();
-        initPlayersHand(opponent);
+        initPlayersHand(new Player(opponent));
         this.turnToPlay = players[0];
         this.mode = mode;
         mode.setBattle(this);
@@ -50,6 +48,48 @@ public class Battle {
         this.winningPrize = 1000;
         initHeroes();
         initCardsHealth();
+    }
+
+    public Battle(int storyLevel) {
+        botIsActive = true;
+        beginTimer();
+        this.map = new Map();
+        this.turnToPlay = players[0];
+        players[0] = new Player(Account.getLoggedInAccount());
+        players[1] = new Player(Account.getLoggedInAccount());
+        initPlayersHand(players[1]);
+        this.turnToPlay = players[0];
+        this.battleType = BattleType.STORY;
+        setModeByStoryLevel(storyLevel);
+        mode.setBattle(this);
+        this.winningPrize = 500 * storyLevel;
+        playingBattle = this;
+        initHeroes();
+        initCardsHealth();
+        System.out.println(map.toString());
+    }
+
+    private void setModeByStoryLevel(int storyLevel) {
+        switch (storyLevel) {
+            case 1:
+                this.mode = Mode.KILLING_GENERAL;
+                break;
+            case 2:
+                this.mode = Mode.CAPTURE_THE_FLAG;
+                Flag flag = new Flag(map.getCellByCoordinates(5, 3));
+                map.getCellByCoordinates(5, 3).setFlag(flag);
+                flags.add(flag);
+                break;
+            case 3:
+                this.mode = Mode.COLLECTING_FLAGS;
+                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
+                map.getCellByCoordinates(5, 1).setFlag(flag1);
+                flags.add(flag1);
+                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
+                map.getCellByCoordinates(5, 1).setFlag(flag2);
+                flags.add(flag2);
+                break;
+        }
     }
 
     private void beginTimer() {
@@ -62,9 +102,9 @@ public class Battle {
         timer.start();
     }
 
-    private void initPlayersHand(Account opponent) {
+    private void initPlayersHand(Player opponent) {
         players[0] = new Player(Account.getLoggedInAccount());
-        players[1] = new Player(opponent);
+        players[1] = opponent;
         players[0].getDeck().getDeckController().initializeHand();
         players[1].getDeck().getDeckController().initializeHand();
     }
@@ -76,8 +116,8 @@ public class Battle {
                 break;
             case CAPTURE_THE_FLAG:
                 this.mode = Mode.CAPTURE_THE_FLAG;
-                Flag flag = new Flag(map.getCellByCoordinates(5, 2));
-                map.getCellByCoordinates(5, 2).setFlag(flag);
+                Flag flag = new Flag(map.getCellByCoordinates(5, 3));
+                map.getCellByCoordinates(5, 3).setFlag(flag);
                 flags.add(flag);
                 break;
             case COLLECTING_FLAGS:
@@ -103,36 +143,12 @@ public class Battle {
         }
     }
 
-    public Battle(int storyLevel) {
-        players[0] = new Player(Account.getLoggedInAccount());
-        players[1] = new Player(Account.getLoggedInAccount());
-        this.turnToPlay = players[0];
-        this.battleType = BattleType.STORY;
-        switch (storyLevel) {
-            case 1:
-                this.mode = Mode.KILLING_GENERAL;
-                break;
-            case 2:
-                this.mode = Mode.CAPTURE_THE_FLAG;
-                Flag flag = new Flag(map.getCellByCoordinates(5, 2));
-                map.getCellByCoordinates(5, 2).setFlag(flag);
-                flags.add(flag);
-                break;
-            case 3:
-                this.mode = Mode.COLLECTING_FLAGS;
-                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag1);
-                flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag2);
-                flags.add(flag2);
-                break;
-        }
-        this.winningPrize = 500 * storyLevel;
-        playingBattle = this;
-//        map.getCellByCoordinates(2, 4).setCardInCell(Account.getLoggedInAccount().getMainDeck().getHeroCard());
-        initHeroes();
-        System.out.println(map.toString());
+    public boolean isBotIsActive() {
+        return botIsActive;
+    }
+
+    public void setBotIsActive(boolean botIsActive) {
+        this.botIsActive = botIsActive;
     }
 
     public Map getMap() {

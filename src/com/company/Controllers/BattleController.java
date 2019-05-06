@@ -24,6 +24,7 @@ import com.sun.corba.se.impl.monitoring.MonitoredAttributeInfoImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.*;
 
@@ -77,6 +78,7 @@ public class BattleController {
             cellToGo.getFlag().setHoldingTurn(battle.getTurn());
             cellToGo.setFlag(null);
         }
+        checkGameIsFinished();
     }
 
     private boolean isMovedThisTurn(ArrayList<Card> usedCardsToMove, Player turnToPlay) {
@@ -134,6 +136,8 @@ public class BattleController {
     }
 
     public void endTurn() {
+        botMovements();
+        checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
             if (!card.isInGraveCards()) {
@@ -154,6 +158,22 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         } else {
             battle.setTurnToPlay(battle.getPlayers()[0]);
+        }
+        checkGameIsFinished();
+    }
+
+    private void botMovements() {
+        Random random = new Random();
+        if (battle.isBotIsActive()) {
+            if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
+                for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
+                    selectCard(aliveCard.getId());
+                    move(
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(1),
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(1)
+                    );
+                }
+            }
         }
     }
 
@@ -703,7 +723,7 @@ public class BattleController {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 
-    public void checkKillingGeneralModeIsFinished() {
+    public void checkGameIsFinished() {
         if (battle.getMode().getWinner() != null) {
             System.out.println("Game Finished : " + battle.getMode().getWinner().getAccount().getUsername());
             BattleLog battleLog = new BattleLog(
@@ -716,6 +736,7 @@ public class BattleController {
                 player.getAccount().getBattleHistories().add(battleLog);
             }
             battle.getMode().getWinner().getAccount().incremeantWins();
+            ConsoleInput.setMenu(ConsoleInput.Menu.NEW_BATTLE);
         }
     }
 

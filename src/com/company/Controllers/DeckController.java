@@ -36,16 +36,6 @@ public class DeckController {
         Collections.shuffle(deck.getDeckCards());
     }
 
-    public ArrayList<Card> getAliveCards() {
-        ArrayList<Card> aliveCards = new ArrayList<>();
-        for (Card card : deck.getDeckCards()) {
-            if (!card.isInGraveCards()) {
-                aliveCards.add(card);
-            }
-        }
-        return aliveCards;
-    }
-
     private boolean isHandFull() {
         return deck.getHand().getCards().size() == Hand.HAND_CARDS_MAX;
     }

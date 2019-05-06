@@ -1,6 +1,8 @@
 package com.company.Models.Battle.Modes;
 
+import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.BattleLog;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
@@ -13,7 +15,8 @@ public enum Mode {
     CAPTURE_THE_FLAG {
         @Override
         public Player getWinner() {
-            if(getBattle().getTurn()-getBattle().getFlags().get(0).getHoldingTurn()==6){
+            if(getBattle().getTurn() - getBattle().getFlags().get(0).getHoldingTurn() == 6
+                    && getBattle().getFlags().get(0).getHoldingTurn() != 0){
                 Card card=getBattle().getFlags().get(0).getFlagHolder();
                 if(getBattle().getPlayers()[0].getUsedCards().contains(card)){
                     return getBattle().getPlayers()[0];
@@ -28,11 +31,21 @@ public enum Mode {
         @Override
         public Player getWinner() {
             final int FLAGS = getBattle().getFlags().size();
-            Map<Player, Integer> playerHeroMap = new HashMap<>();
-            for (Player player : getBattle().getPlayers()) {
-                playerHeroMap.put(player ,0);
+            int player1FlagCounter = 0, player2FlagCounter = 0;
+            for (Flag flag : Battle.getPlayingBattle().getFlags()) {
+                if (flag.getFlagHolder() != null) {
+                    if (BattleController.playerThatHasThisCard(flag.getFlagHolder()).equals(getBattle().getPlayers()[0])) {
+                        player1FlagCounter++;
+                    } else {
+                        player2FlagCounter++;
+                    }
+                }
             }
-            //Todo  : counting Flags Of Each Player
+            if (player1FlagCounter > FLAGS / 2) {
+                return getBattle().getPlayers()[0];
+            } else if (player2FlagCounter > FLAGS / 2) {
+                return getBattle().getPlayers()[1];
+            }
             return null;
         }
     },

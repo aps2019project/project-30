@@ -29,6 +29,13 @@ public class Player {
         this.deck = account.getMainDeck();
     }
 
+    public Player(Player player) {
+        this.name = "BOT";
+        this.deck = player.getDeck();
+        this.deck.setHeroCard(player.getDeck().getHeroCard());
+        this.deck.setHeroCard(player.getDeck().getItemCard());
+    }
+
 
     public void setMaxMana(int maxMana) {
         this.maxMana = maxMana;
@@ -44,11 +51,15 @@ public class Player {
         this.mana = mana;
     }
 
-    public Player() {
-
+    public ArrayList<Card> getAliveCards() {
+        ArrayList<Card> aliveCards = new ArrayList<>();
+        for (Card card : getUsedCards()) {
+            if (!card.isInGraveCards()) {
+                aliveCards.add(card);
+            }
+        }
+        return aliveCards;
     }
-
-
 
     public List<Item> getItems() {
         return items;
