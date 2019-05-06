@@ -16,6 +16,8 @@ import com.company.Views.Console.CollectionViews;
 //import com.google.gson.*;
 
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -247,7 +249,16 @@ public class ConsoleInput {
                     ((Soldier)Battle.getPlayingBattle().getBattleController().getCardByIdInBattle(matcher.group("cardId"))).getCell(),
                     false);
         } else if (command.matches("attack combo (\\d+)+")) {
-            //todo
+            Matcher matcher = Pattern.compile("attack combo (?<opponentId>\\d+) (\\d+)+").matcher(command);
+            command.replace("attack combo ", "");
+            List<String> cardIds = Arrays.asList(command.split(" "));
+            cardIds.remove(0);
+            if (matcher.find()) {
+                Battle.getPlayingBattle().getBattleController().attackCombo(
+                        matcher.group("opponentId"),
+                        cardIds
+                );
+            }
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
             Matcher matcher = Pattern.compile("use special power \\((?<xCordinate>\\d+), (?<yCordinate>\\d+)\\)").matcher(command);
             matcher.find();

@@ -667,7 +667,7 @@ public class BattleController {
         return false;
     }
 
-    public void attackCombo(String oponentId, ArrayList<String> cardsId) {
+    public void attackCombo(String oponentId, List<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
         boolean first = true;
         for (String cardId : cardsId) {
