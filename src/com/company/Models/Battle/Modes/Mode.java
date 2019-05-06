@@ -15,7 +15,8 @@ public enum Mode {
     CAPTURE_THE_FLAG {
         @Override
         public Player getWinner() {
-            if(getBattle().getTurn()-getBattle().getFlags().get(0).getHoldingTurn()==6){
+            if(getBattle().getTurn() - getBattle().getFlags().get(0).getHoldingTurn() == 6
+                    && getBattle().getFlags().get(0).getHoldingTurn() != 0){
                 Card card=getBattle().getFlags().get(0).getFlagHolder();
                 if(getBattle().getPlayers()[0].getUsedCards().contains(card)){
                     return getBattle().getPlayers()[0];

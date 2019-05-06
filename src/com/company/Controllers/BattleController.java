@@ -16,11 +16,13 @@ import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Views.BattleView;
+import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.*;
 
@@ -132,6 +134,7 @@ public class BattleController {
     }
 
     public void endTurn() {
+        botMovements();
         checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
@@ -155,6 +158,21 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
         checkGameIsFinished();
+    }
+
+    private void botMovements() {
+        Random random = new Random();
+        if (battle.isBotIsActive()) {
+            if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
+                for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
+                    selectCard(aliveCard.getId());
+                    move(
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(1),
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(1)
+                    );
+                }
+            }
+        }
     }
 
     public void useSpecialPower(int x, int y) {
@@ -706,6 +724,7 @@ public class BattleController {
                 player.getAccount().getBattleHistories().add(battleLog);
             }
             battle.getMode().getWinner().getAccount().incremeantWins();
+            ConsoleInput.setMenu(ConsoleInput.Menu.NEW_BATTLE);
         }
     }
 }
