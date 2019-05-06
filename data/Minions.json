@@ -222,5 +222,19 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "MELEE",
+    "fullHealth": 12,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Sepahsalar Fars",
+    "manaPoint": 7,
+    "priceInDrake": 800,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]
