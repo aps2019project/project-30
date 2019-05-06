@@ -19,7 +19,6 @@ import com.company.Models.User.Player;
 import com.company.Views.BattleView;
 import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
-import com.sun.corba.se.impl.monitoring.MonitoredAttributeInfoImpl;
 
 
 import java.util.ArrayList;
@@ -424,7 +423,7 @@ public class BattleController {
         }
     }
 
-    private Player getEenmyPlayer(Player player) {
+    public Player getEenmyPlayer(Player player) {
         if (player == battle.getPlayers()[0]) {
             return battle.getPlayers()[1];
         } else {
@@ -574,7 +573,7 @@ public class BattleController {
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
-                        if(battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion)battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_RESPAWN)){
+                        if(battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion)battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_SPAWN)){
                             ConsoleInput.getCordinatesForUseSpecialPowerOnSpawn();
                         }
                     }
