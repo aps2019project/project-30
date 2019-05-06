@@ -602,12 +602,20 @@ public class BattleController {
 
     public void attack(Cell target, Boolean isCombo) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
+        Soldier selectedCard = (Soldier) turnToPlay.getSelectedCard();
         ErrorType errorType = getErrorTypeOfAttack(target, turnToPlay);
         if (errorType != null) {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
-            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(), isCombo);
+            if (!isAttackedThisTurn(selectedCard)) {
+                selectedCard.attack(target.getCardInCell(), isCombo);
+                turnToPlay.getUsedCardsToAttack().add(selectedCard);
+            }
         }
+    }
+
+    private boolean isAttackedThisTurn(Card selectedCard2) {
+        return battle.getTurnToPlay().getUsedCardsToAttack().contains(selectedCard2);
     }
 
     private ErrorType getErrorTypeOfAttack(Cell target, Player turnToPlay) {
@@ -658,7 +666,8 @@ public class BattleController {
         }
         return false;
     }
-    public void attackCombo(String oponentId, ArrayList<String> cardsId) {
+
+    public void attackCombo(String oponentId, List<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
         boolean first = true;
         for (String cardId : cardsId) {
@@ -681,11 +690,12 @@ public class BattleController {
 
     public void checkKillingGeneralModeIsFinished() {
         if (battle.getMode().getWinner() != null) {
+            System.out.println("Game Finished : " + battle.getMode().getWinner().getAccount().getUsername());
             BattleLog battleLog = new BattleLog(
                     battle.getPlayers()[0].getAccount().getUsername(),
                     battle.getPlayers()[1].getAccount().getUsername(),
                     battle.getMode().getWinner().getAccount().getUsername(),
-                    100
+                    battle.getTimePassedInSeconds()
             );
             for (Player player : battle.getPlayers()) {
                 player.getAccount().getBattleHistories().add(battleLog);
