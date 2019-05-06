@@ -78,7 +78,7 @@ public class BattleView {
     private static void showPlayersMana() {
         for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
             System.out.println("Player " + (playerIndex+1) +
-                    "---- > manas: " + Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
+                    " ----> manas: " + Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
         }
     }
 

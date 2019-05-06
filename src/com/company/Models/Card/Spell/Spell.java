@@ -4,12 +4,10 @@ import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 
-public class Spell extends Card {
 
-    public void throwBuffs(Card target) {
-        target.getBuffsCasted().addAll(this.getBuffsToCast());
-        //Todo : Clone Buffs And Cast
-    }
+import java.util.ArrayList;
+
+public class Spell extends Card {
 
     public Spell clone() {
         Spell spell = new Spell();
@@ -17,6 +15,8 @@ public class Spell extends Card {
         spell.setTargetType(this.getTargetType());
         spell.setInGraveCards(this.isInGraveCards());
         spell.setManaPoint(this.getManaPoint());
+        spell.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
+        spell.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         spell.setPriceInDrake(this.getPriceInDrake());
         spell.setDescription(this.getDescription());
         return spell;
