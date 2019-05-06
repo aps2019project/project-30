@@ -19,7 +19,7 @@ public class HolyBuff extends Buff {
                 ((Soldier) super.cardToCast).incrementHealth(value);
             }
         } else {
-            destruct();
+//            destruct();
         }
         decrementCounters();
     }
