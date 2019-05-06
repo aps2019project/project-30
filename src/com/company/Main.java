@@ -28,8 +28,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        //ShopController.initialize();
-        //ConsoleInput.menusHandler();
+        ShopController.initialize();
+        ConsoleInput.menusHandler();
 
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
@@ -67,14 +67,16 @@ public class Main {
         minion.setActivationTime(ActivationTime.COMBO);*/
 //
 //
+/*
         HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
         Item item = new Item();
-        item.setName("Nooshdaroo");
-        item.setPriceInDrake(30000);
+        item.setName("Tir Do Shakh");
+        item.setPriceInDrake(0);
         item.getBuffsToCast().add(buff);
         item.setDescription("increase health 6 units");
         item.setTargetType(TargetType.FRIEND_HERO);
+*/
 
-        System.out.println(JsonController.getGson().toJson(item));
+        //System.out.println(JsonController.getGson().toJson(item));
     }
 }
