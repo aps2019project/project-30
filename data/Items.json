@@ -58,5 +58,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Nooshdaroo",
+    "manaPoint": 0,
+    "priceInDrake": 30000,
+    "description": "increase health 6 units",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

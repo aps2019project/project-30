@@ -67,12 +67,12 @@ public class Main {
         minion.setActivationTime(ActivationTime.COMBO);*/
 //
 //
-        DisarmBuff buff = new DisarmBuff(null,1000,0,0);
+        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
         Item item = new Item();
-        item.setName("Kaman Damool");
+        item.setName("Nooshdaroo");
         item.setPriceInDrake(30000);
         item.getBuffsToCast().add(buff);
-        item.setDescription("only for ranged and hybrid: disarmBuff for friend hero");
+        item.setDescription("increase health 6 units");
         item.setTargetType(TargetType.FRIEND_HERO);
 
         System.out.println(JsonController.getGson().toJson(item));
