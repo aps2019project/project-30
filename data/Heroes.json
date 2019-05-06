@@ -180,5 +180,31 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "coolDown": 2,
+    "remainingCoolDown": 0,
+    "attackType": "RANGED",
+    "fullHealth": 40,
+    "health": 0,
+    "areaOfEffect": 3,
+    "attackPower": 3,
+    "name": "Afsane",
+    "manaPoint": 1,
+    "priceInDrake": 11000,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISPELL",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.DispelBuff"
+      }
+    ],
+   "buffsCasted": []
   }
 ]
