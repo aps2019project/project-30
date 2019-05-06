@@ -231,5 +231,20 @@
         "className": "com.company.Models.Buff.HolyBuff"
       }
     ]
+  },
+  {
+    "coolDown": 0,
+    "remainingCoolDown": 0,
+    "attackType": "HYBRID",
+    "fullHealth": 55,
+    "health": 0,
+    "areaOfEffect": 4,
+    "attackPower": 7,
+    "name": "Rostam",
+    "manaPoint": 0,
+    "priceInDrake": 8000,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]
