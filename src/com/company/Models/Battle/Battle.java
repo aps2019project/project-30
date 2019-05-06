@@ -194,9 +194,7 @@ public class Battle {
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
         ((Hero)players[0].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
         ((Hero)players[1].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
-//        Player botPlayer = new Player();
-//        botPlayer.setMana(2);
-//        botPlayer.setMaxMana(2);
+
     }
 
     public void incrementTurn() {

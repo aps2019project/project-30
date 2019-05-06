@@ -35,18 +35,25 @@ public class Main {
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
 
-//
-//        Hero hero = new Hero();
-//        hero.setName("Simorgh");
-//
-//        hero.setPriceInDrake(9000);
-//        hero.setFullHealth(50);
-//        hero.setAttackPower(4);
-//        hero.setAttackType(AttackType.MELEE);
-////        hero.getBuffsToCast().add(stunBuff);
-//        hero.setManaPoint(5);
-//        hero.setCoolDown(8);
-//        hero.setTargetType(TargetType.FRIEND_HERO);
+        DisarmBuff disarmBuff = new DisarmBuff(null, 1, 0, 0);
+        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
+        PosionBuff posionBuff = new PosionBuff(null, 3, 0, 1);
+        HolyBuff holyBuff = new HolyBuff(null, 3, 0, 1);
+        DispelBuff dispelBuff = new DispelBuff(null, 1, 0, 0);
+        HolyBuff holyBuff1 = new HolyBuff(null, 1000, 0, 3);
+        Hero hero = new Hero();
+        hero.setName("Rostam");
+        hero.setPriceInDrake(8000);
+        hero.setFullHealth(55);
+        hero.setAttackPower(7);
+        hero.setAttackType(AttackType.HYBRID);
+        hero.setAreaOfEffect(4);
+//        hero.getBuffsToCast().add(dispelBuff);
+//        hero.getBuffsCasted().add(holyBuff1);
+        hero.setManaPoint(0);
+        hero.setCoolDown(0);
+        hero.setTargetType(null);
+        //todo : cell Targettype
 //
 ////        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 //
@@ -56,16 +63,16 @@ public class Main {
 
 
         //HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
-        Minion minion = new Minion();
-        minion.setName("Arjang div");
-        minion.setPriceInDrake(600);
-        minion.setManaPoint(3);
-        minion.setFullHealth(6);
-        minion.setAttackPower(6);
-        minion.setAttackType(AttackType.MELEE);
-        //minion.getBuffsToCast().add(healthPowerBuff);
-        minion.setActivationTime(ActivationTime.COMBO);
-//
+//        Minion minion = new Minion();
+//        minion.setName("Arjang div");
+//        minion.setPriceInDrake(600);
+//        minion.setManaPoint(3);
+//        minion.setFullHealth(6);
+//        minion.setAttackPower(6);
+//        minion.setAttackType(AttackType.MELEE);
+//        //minion.getBuffsToCast().add(healthPowerBuff);
+//        minion.setActivationTime(ActivationTime.COMBO);
+////
 //
 //        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
 //        Item item = new Item();
@@ -87,6 +94,6 @@ public class Main {
 
 
 
-        System.out.println(JsonController.getGson().toJson(minion));
+        System.out.println(JsonController.getGson().toJson(hero));
     }
 }
