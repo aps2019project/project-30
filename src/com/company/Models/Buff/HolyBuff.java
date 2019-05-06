@@ -16,7 +16,7 @@ public class HolyBuff extends Buff {
     public void cast() {
         if (isActive()) {
             if (canCastThisTurn()) {
-                ((Soldier) super.cardToCast).incrementHealth(1);
+                ((Soldier) super.cardToCast).incrementHealth(value);
             }
         } else {
             destruct();

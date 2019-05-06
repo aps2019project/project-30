@@ -3,6 +3,9 @@ package com.company.Models.Card.Spell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
+
+import java.util.ArrayList;
 
 public class Spell extends Card {
 
@@ -17,6 +20,8 @@ public class Spell extends Card {
         spell.setTargetType(this.getTargetType());
         spell.setInGraveCards(this.isInGraveCards());
         spell.setManaPoint(this.getManaPoint());
+        spell.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
+        spell.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         spell.setPriceInDrake(this.getPriceInDrake());
         spell.setDescription(this.getDescription());
         return spell;

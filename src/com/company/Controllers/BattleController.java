@@ -63,6 +63,7 @@ public class BattleController {
                 collectFlagInCell(cellToGo, soldier);
             }
         }
+        System.out.println(battle.getMap().toString());
     }
 
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
@@ -318,11 +319,8 @@ public class BattleController {
     }
 
     private void doSpecialPowerEnemyHero(int x, int y) {
-        if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero) &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
+        if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)){
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
-        } else {
-            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
         }
     }
 
@@ -513,28 +511,29 @@ public class BattleController {
     }
 
     public void insertNewCardToMap(int x, int y, String cardName) {
-        if (cellIsValidToInsertingCard(x, y)) {
-            if (cardExistsInHand(cardName)) {
-                //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
-                Card newCard = getCardByNameFromHand(cardName);
+        if (cardExistsInHand(cardName)) {
+            //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
+            Card newCard = getCardByNameFromHand(cardName);
+            if (newCard instanceof Spell || cellIsValidToInsertingCard(x, y)) {
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
-                    Cell cell = battle.getMap().getCellByCoordinates(x, y);
-                    cell.setCardInCell(newCard);
-                    ((Soldier) newCard).setCell(cell);
-                    Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
-                    Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
-                    if(newCard instanceof Spell){
+                    if (newCard instanceof Spell) {
                         selectCard(newCard.getId());
-                        useSpecialPower(x,y);
+                        useSpecialPower(x, y);
+                    } else {
+                        Cell cell = battle.getMap().getCellByCoordinates(x, y);
+                        cell.setCardInCell(newCard);
+                        ((Soldier) newCard).setCell(cell);
+                        Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
+                        Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                     }
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
             } else {
-                ConsoleOutput.printErrorMessage(ErrorType.CARD_ID_INVALID);
+                ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
             }
         } else {
-            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
+            ConsoleOutput.printErrorMessage(ErrorType.CARD_ID_INVALID);
         }
     }
 
