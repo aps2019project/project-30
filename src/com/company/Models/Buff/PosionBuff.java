@@ -18,7 +18,7 @@ public class PosionBuff extends Buff{
                 ((Soldier) cardToCast).decrementHealth(1);
             }
         } else{
-//            destruct();
+            //destruct();
         }
         decrementCounters();
     }

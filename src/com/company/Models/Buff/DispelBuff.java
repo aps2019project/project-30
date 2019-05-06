@@ -18,7 +18,7 @@ public class DispelBuff extends Buff{
                 }
             }
         } else{
-//            destruct();
+            //destruct();
         }
         decrementCounters();
     }

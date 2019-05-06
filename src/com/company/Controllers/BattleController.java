@@ -3,6 +3,7 @@ package com.company.Controllers;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
+import com.company.Models.Buff.AntiBuff;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
@@ -16,11 +17,13 @@ import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Views.BattleView;
+import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.*;
 
@@ -62,6 +65,7 @@ public class BattleController {
                     battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
                 collectFlagInCell(cellToGo, soldier);
+                cellToGo.throwBuffsToSoldier();
             }
         }
         System.out.println(battle.getMap().toString());
@@ -73,6 +77,7 @@ public class BattleController {
             cellToGo.getFlag().setHoldingTurn(battle.getTurn());
             cellToGo.setFlag(null);
         }
+        checkGameIsFinished();
     }
 
     private boolean isMovedThisTurn(ArrayList<Card> usedCardsToMove, Player turnToPlay) {
@@ -130,6 +135,8 @@ public class BattleController {
     }
 
     public void endTurn() {
+        botMovements();
+        checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
             if (!card.isInGraveCards()) {
@@ -150,6 +157,22 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         } else {
             battle.setTurnToPlay(battle.getPlayers()[0]);
+        }
+        checkGameIsFinished();
+    }
+
+    private void botMovements() {
+        Random random = new Random();
+        if (battle.isBotIsActive()) {
+            if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
+                for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
+                    selectCard(aliveCard.getId());
+                    move(
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(1),
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(1)
+                    );
+                }
+            }
         }
     }
 
@@ -608,8 +631,16 @@ public class BattleController {
         } else {
             if (!isAttackedThisTurn(selectedCard)) {
                 selectedCard.attack(target.getCardInCell(), isCombo);
+                HandleMinionOnAttackBuffs(target, turnToPlay);
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
+        }
+    }
+
+    private void HandleMinionOnAttackBuffs(Cell target, Player turnToPlay) {
+        if (turnToPlay.getSelectedCard() instanceof Minion &&
+                ((Minion) turnToPlay.getSelectedCard()).getActivationTime().equals(ActivationTime.ON_ATTACK)) {
+            throwAttackerCardBuffstoTargetCard(turnToPlay.getSelectedCard(), target.getCardInCell());
         }
     }
 
@@ -689,7 +720,7 @@ public class BattleController {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 
-    public void checkKillingGeneralModeIsFinished() {
+    public void checkGameIsFinished() {
         if (battle.getMode().getWinner() != null) {
             System.out.println("Game Finished : " + battle.getMode().getWinner().getAccount().getUsername());
             BattleLog battleLog = new BattleLog(
@@ -702,6 +733,21 @@ public class BattleController {
                 player.getAccount().getBattleHistories().add(battleLog);
             }
             battle.getMode().getWinner().getAccount().incremeantWins();
+            ConsoleInput.setMenu(ConsoleInput.Menu.NEW_BATTLE);
+        }
+    }
+
+    public void throwAttackerCardBuffstoTargetCard(Card attackerCard, Card targetCard) {
+        int buffsCastedSizeBeforeThrow = targetCard.getBuffsCasted().size();
+        for (Buff buff : attackerCard.getBuffsToCast()) {
+            Buff clonedBuff = buff.clone();
+            clonedBuff.setCardToCast(targetCard);
+            targetCard.getBuffsCasted().add(clonedBuff);
+        }
+        for (int i = 0; i < targetCard.getBuffsCasted().size(); i++) {
+            Buff buff = targetCard.getBuffsCasted().get(i);
+            if (buff instanceof AntiBuff || i > buffsCastedSizeBeforeThrow)
+                buff.cast();
         }
     }
 }

@@ -110,7 +110,7 @@ add 45 to deck test1
 select deck test1
 exit
 enter battle
-start multiplayer game KILLING_GENERAL hamid
+start multiplayer game CAPTURE_THE_FLAG hamid
 select 24
 move to (2, 2)
 end turn

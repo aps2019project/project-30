@@ -19,7 +19,7 @@ public class ManaBuff extends Buff {
                 Battle.getPlayingBattle().getBattleController().playerThatHasThisCard(super.cardToCast).incrementMana(this.value);
             }
         } else {
-//            destruct();
+            //destruct();
         }
         decrementCounters();
     }

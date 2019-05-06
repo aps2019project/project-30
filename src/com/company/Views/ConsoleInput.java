@@ -319,8 +319,7 @@ public class ConsoleInput {
                     Integer.valueOf(storyLevelMatcher.group("level"))
             );
             setMenu(Menu.BATTLE);
-        } else {
-            if (command.matches("start multiplayer game \\S+ \\w+")) {
+        } else if (command.matches("start multiplayer game \\S+ \\w+")) {
                 Matcher multiPlayerMatcher = Pattern.compile("start multiplayer game (?<mode>\\S+) (?<opponent>\\w+)").matcher(command);
                 multiPlayerMatcher.find();
                 new Battle(
@@ -328,7 +327,23 @@ public class ConsoleInput {
                         Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
                 );
                 setMenu(Menu.BATTLE);
-            }
+        } else if (command.matches("start multiplayer game \\S+ \\w+ \\d+")) {
+            Matcher multiPlayerMatcher = Pattern.compile("start multiplayer game (?<mode>\\S+) (?<opponent>\\w+) (?<flags>\\d+)").matcher(command);
+            multiPlayerMatcher.find();
+            new Battle(
+                    Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode")),
+                    Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
+            );
+            setMenu(Menu.BATTLE);
+        } else if (command.matches("start game \\w+ \\S+ ")) {
+            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+) (?<opponent>\\S+)").matcher(command);
+            multiPlayerMatcher.find();
+            Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(multiPlayerMatcher.group("deckName")));
+            new Battle(
+                    Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode")),
+                    Account.getAccountByUsername(multiPlayerMatcher.group("opponent"))
+            );
+            setMenu(Menu.BATTLE);
         }
     }
 }
