@@ -173,7 +173,7 @@ public class BattleController {
             }
             switch (battle.getTurnToPlay().getSelectedCard().getTargetType()) {
                 case ENEMY_MINION:
-                    doSpecialPoweronEnemyMinion(x, y);
+                    doSpecialPowerOnEnemyMinion(x, y);
                     break;
                 case FRIEND_MINION:
                     doSpecialPowerOnFriendMinion(x, y);
@@ -247,6 +247,9 @@ public class BattleController {
             for (int j = -2; j <= 0; j++) {
                 if (validRange(x + i, y + j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
+                    if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                        battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+                    }
                 }
             }
         }
@@ -257,6 +260,9 @@ public class BattleController {
             for (int j = -1; j <= 0; j++) {
                 if (validRange(x + i, y + j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
+                    if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                        battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+                    }
                 }
             }
         }
@@ -309,6 +315,9 @@ public class BattleController {
     private void doSpecialPowerOnEnemySoldier(int x, int y) {
         if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            }
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
@@ -317,8 +326,10 @@ public class BattleController {
     private void doSpecialPowerOnFreindSolder(int x, int y) {
         if (battle.getTurnToPlay() == playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
-            battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getMap().getCellByCoordinates(x, y).getCardInCell());
-        } else{
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            }
+        } else {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
     }
@@ -326,7 +337,9 @@ public class BattleController {
     private void doSpecialPowerEnemyHero(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
-            battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            }
         }
     }
 
@@ -334,9 +347,11 @@ public class BattleController {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero) &&
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
-            battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            }
         } else {
-            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
     }
 
@@ -344,28 +359,32 @@ public class BattleController {
         if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion &&
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            }
         } else {
-            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
 
 
     }
 
-    private void doSpecialPoweronEnemyMinion(int x, int y) {
+    private void doSpecialPowerOnEnemyMinion(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion) &&
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
-
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
-
+            if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
+                battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
+            }
         } else {
-            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
 
     }
 
 
     private void doUseSpecialPowerSwichCase(Cell cell) {
-        if(cell.getCardInCell()!=null) {
+        if (cell.getCardInCell() != null) {
             int startEndex = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
             for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
                 Buff buff1 = buff.clone();
@@ -493,18 +512,18 @@ public class BattleController {
         return false;
     }
 
-    public void showCardFromGraveYardInformation(String cardId){
-        if(cardExistsInGraveYard(cardId)){
+    public void showCardFromGraveYardInformation(String cardId) {
+        if (cardExistsInGraveYard(cardId)) {
             Card.showCardInformation(getCardByIdFromGraveYardCards(cardId));
-        }else{
+        } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
         }
     }
 
-    public void showDeckCardInformation(String cardId){
-        if(cardExistsInDeck(cardId)){
+    public void showDeckCardInformation(String cardId) {
+        if (cardExistsInDeck(cardId)) {
             Card.showCardInformation(getCardById(cardId));
-        }else{
+        } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
         }
     }
