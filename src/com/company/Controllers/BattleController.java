@@ -64,7 +64,6 @@ public class BattleController {
                 collectFlagInCell(cellToGo, soldier);
             }
         }
-        System.out.println(battle.getMap().toString());
     }
 
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {

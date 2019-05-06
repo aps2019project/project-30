@@ -299,7 +299,6 @@ public class ConsoleInput {
         }
     }
 
-
     private static void graveYardMenuCommandsChecker(String command) {
         if (command.matches("show info \\d+")) {
             Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
