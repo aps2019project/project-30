@@ -5,7 +5,7 @@ create account majid
 login hamid
 123
 enter shop
-buy Simorgh
+buy Eight Heads Dragon
 buy Arjang div
 buy Shah Ghool
 buy Shahzade Irani
@@ -132,4 +132,7 @@ end turn
 select 24
 move to (5, 2)
 select 24
-show hand
+end turn
+select 1
+use special power (5, 2)
+attack 24

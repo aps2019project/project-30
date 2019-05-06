@@ -130,7 +130,6 @@ public class BattleController {
     }
 
     public void endTurn() {
-        System.out.println("battle.getTimePassedInSeconds() = " + battle.getTimePassedInSeconds());
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
             if (!card.isInGraveCards()) {
