@@ -1,7 +1,6 @@
 package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
-import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
@@ -130,6 +129,7 @@ public class BattleController {
     }
 
     public void endTurn() {
+        System.out.println("battle.getTimePassedInSeconds() = " + battle.getTimePassedInSeconds());
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
             if (!card.isInGraveCards()) {
@@ -184,7 +184,7 @@ public class BattleController {
                     doSpecialPowerFriendHero(x, y);
                     break;
                 case ENEMY_SOLDIER:
-                    doSpecialPowerOnEnemySolder(x, y);
+                    doSpecialPowerOnEnemySoldier(x, y);
                     break;
                 case FRIEND_SOLDIER://
                     doSpecialPowerOnFreindSolder(x, y);
@@ -305,12 +305,12 @@ public class BattleController {
         }
     }
 
-    private void doSpecialPowerOnEnemySolder(int x, int y) {
-        if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
-            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
-            return;
+    private void doSpecialPowerOnEnemySoldier(int x, int y) {
+        if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
+            doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
-        doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
     }
 
     private void doSpecialPowerOnFreindSolder(int x, int y) {
@@ -556,7 +556,7 @@ public class BattleController {
 
     public static Player playerThatHasThisCard(Card card) {
         for (int i = 0; i < 2; i++) {
-            List<Card> playerCards = Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckCards();
+            List<Card> playerCards = Battle.getPlayingBattle().getPlayers()[i].getDeck().getDeckCards();
             for (Card c : playerCards) {
                 if (c.getId().equals(card.getId())) {
                     return Battle.getPlayingBattle().getPlayers()[i];
@@ -662,12 +662,16 @@ public class BattleController {
 
     public void checkKillingGeneralModeIsFinished() {
         if (battle.getMode().getWinner() != null) {
-//            BattleLog battleLog = new BattleLog(
-//                    battle.getPlayers()[0].getAccount(),
-//                    battle.getPlayers()[1].getAccount(),
-//                    battle.getMode().getWinner(),
-//                    battle.get
-//            )
+            BattleLog battleLog = new BattleLog(
+                    battle.getPlayers()[0].getAccount().getUsername(),
+                    battle.getPlayers()[1].getAccount().getUsername(),
+                    battle.getMode().getWinner().getAccount().getUsername(),
+                    100
+            );
+            for (Player player : battle.getPlayers()) {
+                player.getAccount().getBattleHistories().add(battleLog);
+            }
+            battle.getMode().getWinner().getAccount().incremeantWins();
         }
     }
 }

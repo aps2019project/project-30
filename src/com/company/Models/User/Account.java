@@ -101,6 +101,10 @@ public class Account {
         this.drake += number;
     }
 
+    public void incrementWins(int number) {
+        this.wins += number;
+    }
+
     public void decrementDrake(int number) {
         this.drake -= number;
     }
