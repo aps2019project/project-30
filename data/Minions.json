@@ -109,6 +109,7 @@
     "attackPower": 6,
     "name": "Jasoos Arab",
     "manaPoint": 4,
+    "targetType": "ENEMY_SOLDIER",
     "priceInDrake": 700,
     "isInGraveCards": false,
     "buffsToCast": [
@@ -287,6 +288,7 @@
     "areaOfEffect": 4,
     "attackPower": 6,
     "name": "Mare sami",
+    "targetType": "ENEMY_SOLDIER",
     "manaPoint": 4,
     "priceInDrake": 300,
     "isInGraveCards": false,
@@ -314,6 +316,132 @@
     "priceInDrake": 250,
     "isInGraveCards": false,
     "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 1,
+    "name": "Gorge",
+    "manaPoint": 3,
+    "priceInDrake": 400,
+    "targetType": "FRIEND_MINION",
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 1,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEATH",
+    "attackType": "MELEE",
+    "fullHealth": 8,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 5,
+    "name": "Syavash",
+    "manaPoint": 4,
+    "priceInDrake": 350,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 1,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_SPAWN",
+    "attackType": "RANGED",
+    "fullHealth": 3,
+    "health": 0,
+    "areaOfEffect": 5,
+    "attackPower": 4,
+    "name": "Nane sarma",
+    "manaPoint": 3,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "targetType": "NEAR_ENEMYS_HERO",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.StunBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "RANGED",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 3,
+    "attackPower": 20,
+    "name": "Iraj",
+    "manaPoint": 4,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "HYBRID",
+    "fullHealth": 30,
+    "health": 0,
+    "areaOfEffect": 2,
+    "attackPower": 8,
+    "name": "Ghool bozorg",
+    "manaPoint": 9,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_SPAWN",
+    "attackType": "MELEE",
+    "fullHealth": 16,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 9,
+    "name": "Bahman",
+    "manaPoint": 8,
+    "priceInDrake": 450,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_MINION",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 16,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
     "buffsCasted": []
   }
 ]

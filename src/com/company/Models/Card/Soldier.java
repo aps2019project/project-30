@@ -5,7 +5,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.User.Player;
-import org.omg.CORBA.BAD_POLICY_TYPE;
+//import org.omg.CORBA.BAD_POLICY_TYPE;
 
 public class Soldier extends Card {
     private Cell cell;
