@@ -247,7 +247,7 @@ public class ConsoleInput {
                     ((Soldier)Battle.getPlayingBattle().getBattleController().getCardByIdInBattle(matcher.group("cardId"))).getCell(),
                     false);
         } else if (command.matches("attack combo (\\d+)+")) {
-            //todo
+
         } else if (command.matches("use special power \\(\\d+, \\d+\\)")) {
             Matcher matcher = Pattern.compile("use special power \\((?<xCordinate>\\d+), (?<yCordinate>\\d+)\\)").matcher(command);
             matcher.find();

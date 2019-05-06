@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
@@ -657,7 +658,6 @@ public class BattleController {
         }
         return false;
     }
-
     public void attackCombo(String oponentId, ArrayList<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
         boolean first = true;
@@ -667,9 +667,9 @@ public class BattleController {
                     selectCard(cardId);
                     if (first) {
                         attack(cell, false);
+                        first = false;
                     } else
                         attack(cell, true);
-                    first = false;
                 }
             }
         }
