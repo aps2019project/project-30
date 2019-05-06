@@ -660,7 +660,7 @@ public class BattleController {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
     }
 
-    public void checkKillingGeneralModeIsFinished() {
+/*    public void checkKillingGeneralModeIsFinished() {
         if (battle.getMode().getWinner() != null) {
             BattleLog battleLog = new BattleLog(
                     battle.getPlayers()[0].getAccount(),
@@ -669,5 +669,5 @@ public class BattleController {
                     battle.get
             )
         }
-    }
+    }*/
 }
