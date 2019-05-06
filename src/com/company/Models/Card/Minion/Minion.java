@@ -27,6 +27,7 @@ Minion extends Soldier {
         minion.setHealth(this.getHealth());
         minion.setFullHealth(this.getFullHealth());
         minion.setAttackPower(this.getAttackPower());
+        minion.setAttackType(this.getAttackType());
         minion.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
         minion.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         minion.setCell(this.getCell());

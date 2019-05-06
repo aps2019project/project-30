@@ -1,7 +1,11 @@
 package com.company.Models.Card;
 
+import com.company.Controllers.BattleController;
+import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
+import com.company.Models.User.Player;
+import org.omg.CORBA.BAD_POLICY_TYPE;
 
 public class Soldier extends Card {
     private Cell cell;
@@ -65,6 +69,15 @@ public class Soldier extends Card {
 
     public void decrementHealth(int health) {
         this.health -= health;
+        deathHandler();
+    }
+
+    private void deathHandler() {
+        if(isDead()){
+            this.getCell().setCardInCell(null);
+            this.setCell(null);
+            Battle.getPlayingBattle().getBattleController().getGraveYard().add(this);
+        }
     }
 
     public void incrementAttackPower(int attackPower) {
@@ -98,6 +111,12 @@ public class Soldier extends Card {
                 return true;
             }
         }
+        return false;
+    }
+
+    public boolean isDead(){
+        if(this.health <= 0)
+            return true;
         return false;
     }
 }
