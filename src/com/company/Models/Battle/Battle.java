@@ -32,6 +32,7 @@ public class Battle {
     private int turn = 1;
 
     public Battle(Mode mode, Account opponent) {
+        this.map = new Map();
         players[0] = new Player(Account.getLoggedInAccount());
         players[1] = new Player(opponent);
         players[0].getDeck().getDeckController().initializeHand();
@@ -42,26 +43,26 @@ public class Battle {
             case KILLING_GENERAL:
                 this.mode = Mode.KILLING_GENERAL;
                 break;
-            case COLLECTING_FLAGS:
+            case CAPTURE_THE_FLAG:
+                System.out.println("hi");
                 this.mode = Mode.CAPTURE_THE_FLAG;
                 Flag flag = new Flag(map.getCellByCoordinates(5, 2));
                 map.getCellByCoordinates(5, 2).setFlag(flag);
                 flags.add(flag);
                 break;
-            case CAPTURE_THE_FLAG:
+            case COLLECTING_FLAGS:
                 this.mode = Mode.COLLECTING_FLAGS;
                 Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
                 map.getCellByCoordinates(5, 1).setFlag(flag1);
                 flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag2);
+                Flag flag2 = new Flag(map.getCellByCoordinates(5, 5));
+                map.getCellByCoordinates(5, 5).setFlag(flag2);
                 flags.add(flag2);
                 break;
         }
         this.battleType = battleType;
         playingBattle = this;
         this.winningPrize = 1000;
-        this.map = new Map();
         initHeroes();
         initCardsHealth();
     }
@@ -167,7 +168,6 @@ public class Battle {
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
         ((Hero)players[0].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
         ((Hero)players[1].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
-        System.out.println("((Hero)players[1].getAccount().getMainDeck().getHeroCard()).getCoolDown() = " + ((Hero) players[1].getAccount().getMainDeck().getHeroCard()).getCoolDown());
 //        Player botPlayer = new Player();
 //        botPlayer.setMana(2);
 //        botPlayer.setMaxMana(2);
@@ -177,5 +177,7 @@ public class Battle {
         this.turn ++;
     }
 
-
+    public int getTurn() {
+        return turn;
+    }
 }

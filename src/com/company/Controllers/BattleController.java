@@ -69,6 +69,7 @@ public class BattleController {
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
         if (cellToGo.getFlag() != null) {
             cellToGo.getFlag().setFlagHolder(soldier);
+            cellToGo.getFlag().setHoldingTurn(battle.getTurn());
             cellToGo.setFlag(null);
         }
     }

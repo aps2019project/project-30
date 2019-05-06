@@ -35,7 +35,9 @@ public class Map {
         int counter = 0;
         for (Cell cell : getCells()) {
             counter++;
-            if (cell.getCardInCell() == null) {
+            if (cell.getFlag() != null) {
+                stringBuilder.append(" F ");
+            } else if (cell.getCardInCell() == null) {
                 stringBuilder.append(" # ");
             }
             if (cell.getCardInCell() instanceof Soldier) {
