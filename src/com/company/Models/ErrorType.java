@@ -21,7 +21,6 @@ public enum ErrorType {
     UNAVAILABLE_OPPONENT_SOLDIER("Opponent minion is unavailable for attack"),
     CARD_CANT_ATTACK("Card Can't Attack"),
     CELL_VALIDATE("selected cell is invalid"),
-    ENOUGH_MANA("mana is nat enough"),
     NO_SELECTED_CARD("select a card first"),
     COOLDOWN_VALIDATE("cooldown is not zero");
 

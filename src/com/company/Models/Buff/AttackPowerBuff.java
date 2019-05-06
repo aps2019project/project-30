@@ -18,13 +18,13 @@ public class AttackPowerBuff extends Buff {
                 if (!isCasted) {
                     ((Soldier) super.cardToCast).incrementAttackPower(value);
                     setCasted(true);
-                    decrementCounters();
                 }
             }
         } else {
             ((Soldier) super.cardToCast).decrementAttackPower(value);
-            destruct();
+//            destruct();
         }
+        decrementCounters();
     }
     public AttackPowerBuff clone() {
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);

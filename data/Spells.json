@@ -46,7 +46,7 @@
     "buffsToCast": [
       {
         "type": "NEGATIVE",
-        "name": "WEAKNESS",
+        "name": "ATTACK_WEAKNESS",
         "isCasted": false,
         "castTime": 10000,
         "remTurnToCast": 0,

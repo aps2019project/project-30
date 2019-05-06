@@ -39,7 +39,7 @@ public abstract class Buff {
     }
 
     boolean canCastThisTurn() {
-        return remTurnToCast == 0;
+        return remTurnToCast <= 0;
     }
 
     void decrementCounters() {
