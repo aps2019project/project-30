@@ -147,6 +147,15 @@
         "remTurnToCast": 0,
         "value": 4,
         "className": "com.company.Models.Buff.AttackPowerBuff"
+      },
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 3,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.DisarmBuff"
       }
     ]
   },
@@ -210,7 +219,7 @@
         "isCasted": false,
         "castTime": 3,
         "remTurnToCast": 0,
-        "value": 1,
+        "value": 2,
         "className": "com.company.Models.Buff.HolyBuff"
       }
     ],
@@ -225,7 +234,7 @@
     "buffsToCast": [
       {
         "type": "POSSETIVE",
-        "name": "HOLY",
+        "name": "ATTACK_POWER",
         "isCasted": false,
         "castTime": 1,
         "remTurnToCast": 0,
@@ -244,7 +253,7 @@
     "buffsToCast": [
       {
         "type": "POSSETIVE",
-        "name": "HOLY",
+        "name": "ATTACK_POWER",
         "isCasted": false,
         "castTime": 1000,
         "remTurnToCast": 0,
@@ -310,7 +319,7 @@
       },
       {
         "type": "POSSETIVE",
-        "name": "HOLY",
+        "name": "ATTACK_POWER",
         "isCasted": false,
         "castTime": 1,
         "remTurnToCast": 0,

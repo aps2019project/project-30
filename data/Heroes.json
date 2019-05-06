@@ -17,7 +17,7 @@
         "type": "POSSETIVE",
         "name": "ATTACK_POWER",
         "isCasted": false,
-        "castTime": 1000,
+        "castTime": 2,
         "remTurnToCast": 0,
         "value": 4,
         "className": "com.company.Models.Buff.AttackPowerBuff"

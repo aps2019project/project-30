@@ -143,6 +143,7 @@ public class BattleController {
                 return;
             }
             if(battle.getTurnToPlay().getSelectedCard().getManaPoint() > battle.getTurnToPlay().getMana()){
+                ConsoleOutput.printErrorMessage(ErrorType.ENOUGH_MANA);
                 return;
             }
             int newmana = battle.getTurnToPlay().getMana() - battle.getTurnToPlay().getSelectedCard().getManaPoint();
@@ -197,7 +198,6 @@ public class BattleController {
                     break;
             }
         }
-        ConsoleOutput.printErrorMessage(ErrorType.ENOUGH_MANA);
     }
 
     private void doOnEnemyRow() {
@@ -349,7 +349,7 @@ public class BattleController {
     private void doUseSpecialPowerSwichCase(Cell cell) {
         if (!validRange(cell))
             return;
-        int startEndenx = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
+        int startEndex = battle.getTurnToPlay().getSelectedCard().getBuffsCasted().size();
         for (Buff buff : battle.getTurnToPlay().getSelectedCard().getBuffsToCast()) {
             Buff buff1 = buff.clone();
             buff1.setCardToCast(cell.getCardInCell());
@@ -358,7 +358,7 @@ public class BattleController {
         int counter = 0;
         for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
             counter++;
-            if (counter >= startEndenx) {
+            if (counter >= startEndex) {
                 buff.cast();
             }
         }
