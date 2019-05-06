@@ -18,5 +18,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Namoos Separ",
+    "manaPoint": 0,
+    "priceInDrake": 4000,
+    "description": "enables 12 holy buffs on friend heroes",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 12,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

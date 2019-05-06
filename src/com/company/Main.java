@@ -28,10 +28,10 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ShopController.initialize();
-        ConsoleInput.menusHandler();
+        //ShopController.initialize();
+        //ConsoleInput.menusHandler();
 
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
+        //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
 
@@ -56,7 +56,7 @@ public class Main {
 
 
         //HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
-        Minion minion = new Minion();
+/*        Minion minion = new Minion();
         minion.setName("Arjang div");
         minion.setPriceInDrake(600);
         minion.setManaPoint(3);
@@ -64,29 +64,17 @@ public class Main {
         minion.setAttackPower(6);
         minion.setAttackType(AttackType.MELEE);
         //minion.getBuffsToCast().add(healthPowerBuff);
-        minion.setActivationTime(ActivationTime.COMBO);
+        minion.setActivationTime(ActivationTime.COMBO);*/
 //
 //
-//        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
-//        Item item = new Item();
-//        item.setName("Taj Danayi");
-//        item.setPriceInDrake(300);
-//        item.getBuffsToCast().add(manaBuff);
-//        item.setDescription("ManaBuff : 3 Rounds - 1 Mana");
-//        item.setTargetType(TargetType.FRIEND_HERO);
+        HolyBuff buff = new HolyBuff(null,1000,0,12);
+        Item item = new Item();
+        item.setName("Namoos Separ");
+        item.setPriceInDrake(4000);
+        item.getBuffsToCast().add(buff);
+        item.setDescription("enables 12 holy buffs on friend heroes");
+        item.setTargetType(TargetType.FRIEND_HERO);
 
-//        StunBuff stunBuff= new StunBuff(null, 2, 0, 0);
-//        Spell spell = new Spell();
-//        spell.setName("Shock");
-//        spell.setManaPoint(1);
-//        spell.setPriceInDrake(1200);
-//        spell.setTargetType(TargetType.ENEMY_SOLDIER);
-//        spell.setInGraveCards(false);
-//
-//        spell.getBuffsToCast().add(stunBuff);
-
-
-
-        System.out.println(JsonController.getGson().toJson(minion));
+        System.out.println(JsonController.getGson().toJson(item));
     }
 }
