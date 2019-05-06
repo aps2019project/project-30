@@ -36,16 +36,17 @@ public class Main {
 
 
         DisarmBuff disarmBuff = new DisarmBuff(null, 1, 0, 0);
+        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
         Hero hero = new Hero();
-        hero.setName("Eight Heads Dragon");
+        hero.setName("Rakhsh");
         hero.setPriceInDrake(8000);
         hero.setFullHealth(50);
         hero.setAttackPower(4);
         hero.setAttackType(AttackType.MELEE);
-        hero.getBuffsToCast().add(disarmBuff);
-        hero.setManaPoint(0);
-        hero.setCoolDown(1);
-        hero.setTargetType(TargetType.WHOLE_ENEMY);
+        hero.getBuffsToCast().add(stunBuff);
+        hero.setManaPoint(1);
+        hero.setCoolDown(2);
+        hero.setTargetType(TargetType.ENEMY_SOLDIER);
 //
 ////        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
 //
