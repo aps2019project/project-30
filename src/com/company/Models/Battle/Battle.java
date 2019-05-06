@@ -11,8 +11,11 @@ import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 
 public class Battle {
@@ -28,8 +31,10 @@ public class Battle {
     private static int lastBattleCardId = 0;
     private int winningPrize;
     private int turn = 1;
+    private Timer timer = new Timer();
 
     public Battle(Mode mode, Account opponent) {
+        Timestamp timestamp = new Timestamp();
         this.map = new Map();
         initPlayersHand(opponent);
         this.turnToPlay = players[0];

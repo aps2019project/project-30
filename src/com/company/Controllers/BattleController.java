@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
@@ -652,5 +653,16 @@ public class BattleController {
 
     public void showNextCardOfBattle() {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
+    }
+
+    public void checkKillingGeneralModeIsFinished() {
+        if (battle.getMode().getWinner() != null) {
+            BattleLog battleLog = new BattleLog(
+                    battle.getPlayers()[0].getAccount(),
+                    battle.getPlayers()[1].getAccount(),
+                    battle.getMode().getWinner(),
+                    battle.get
+            )
+        }
     }
 }
