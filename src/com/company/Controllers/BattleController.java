@@ -228,7 +228,7 @@ public class BattleController {
     private void doOnSquare3(int x, int y) {
         for (int i = -2; i <= 0; i++) {
             for (int j = -2; j <= 0; j++) {
-                if (!(i == 0 && j == 0) && validRange(x+i,y+j)) {
+                if ( validRange(x+i,y+j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
                 }
             }
@@ -238,7 +238,7 @@ public class BattleController {
     private void doOnSquare2(int x, int y) {
         for (int i = -1; i <= 0; i++) {
             for (int j = -1; j <= 0; j++) {
-                if (!(i == 0 && j == 0) && validRange(x+i,y+j)) {
+                if ( validRange(x+i,y+j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
                 }
             }
