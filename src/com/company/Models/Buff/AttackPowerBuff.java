@@ -22,7 +22,7 @@ public class AttackPowerBuff extends Buff {
             }
         } else {
             ((Soldier) super.cardToCast).decrementAttackPower(value);
-            destruct();
+//            destruct();
         }
         decrementCounters();
     }
