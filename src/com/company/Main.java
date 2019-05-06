@@ -67,12 +67,12 @@ public class Main {
         minion.setActivationTime(ActivationTime.COMBO);*/
 //
 //
-        HolyBuff buff = new HolyBuff(null,1000,0,12);
+        DisarmBuff buff = new DisarmBuff(null,1000,0,0);
         Item item = new Item();
-        item.setName("Namoos Separ");
-        item.setPriceInDrake(4000);
+        item.setName("Kaman Damool");
+        item.setPriceInDrake(30000);
         item.getBuffsToCast().add(buff);
-        item.setDescription("enables 12 holy buffs on friend heroes");
+        item.setDescription("only for ranged and hybrid: disarmBuff for friend hero");
         item.setTargetType(TargetType.FRIEND_HERO);
 
         System.out.println(JsonController.getGson().toJson(item));

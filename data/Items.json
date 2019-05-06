@@ -38,5 +38,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Kaman Damool",
+    "manaPoint": 0,
+    "priceInDrake": 30000,
+    "description": "only for ranged and hybrid: disarmBuff for friend hero",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
