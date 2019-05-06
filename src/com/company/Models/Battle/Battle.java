@@ -13,6 +13,7 @@ import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
 
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.List;
 
 
@@ -143,6 +144,9 @@ public class Battle {
         players[1].getUsedCards().add(players[1].getDeck().getHeroCard());
         ((Soldier)players[1].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
+        ((Hero)players[0].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
+        ((Hero)players[1].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
+        System.out.println("((Hero)players[1].getAccount().getMainDeck().getHeroCard()).getCoolDown() = " + ((Hero) players[1].getAccount().getMainDeck().getHeroCard()).getCoolDown());
 //        Player botPlayer = new Player();
 //        botPlayer.setMana(2);
 //        botPlayer.setMaxMana(2);
