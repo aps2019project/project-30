@@ -62,19 +62,19 @@ public class Main {
 ////        Gson gson = new Gson();
 
 
-        //HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
+        AntiBuff antiBuff = new AntiBuff(Buff.Name.HOLY, 1000, 0, 0);
         Minion minion = new Minion();
-        minion.setName("Arjang div");
+        minion.setName("Shir Darande");
         minion.setPriceInDrake(600);
-        minion.setManaPoint(3);
-        minion.setFullHealth(6);
-        minion.setAttackPower(6);
+        minion.setManaPoint(2);
+        minion.setFullHealth(2);
+        minion.setAttackPower(8);
         minion.setAttackType(AttackType.MELEE);
-
-        //minion.getBuffsToCast().add(healthPowerBuff);
-        minion.setActivationTime(ActivationTime.COMBO);
+        minion.setAreaOfEffect(0);
+        minion.getBuffsToCast().add(antiBuff);
+        minion.setActivationTime(ActivationTime.ON_ATTACK);
+////
 //
-
 //        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
 //        Item item = new Item();
 //        item.setName("Taj Danayi");

@@ -5,7 +5,7 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 
 public class HealthPowerBuff extends Buff {
-    public HealthPowerBuff(Buff.Type antiBuff, int castTime, int remTurnToCast, int value) {
+    public HealthPowerBuff(Name antiBuff, int castTime, int remTurnToCast, int value) {
         super(antiBuff, castTime, remTurnToCast, value);
         super.name = Name.HEALTH_POWER;
         super.type = Type.POSSETIVE;
