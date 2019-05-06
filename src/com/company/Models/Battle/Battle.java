@@ -75,7 +75,6 @@ public class Battle {
                 this.mode = Mode.KILLING_GENERAL;
                 break;
             case CAPTURE_THE_FLAG:
-                System.out.println("hi");
                 this.mode = Mode.CAPTURE_THE_FLAG;
                 Flag flag = new Flag(map.getCellByCoordinates(5, 2));
                 map.getCellByCoordinates(5, 2).setFlag(flag);

@@ -62,6 +62,7 @@ public class BattleController {
                     battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                 }
                 collectFlagInCell(cellToGo, soldier);
+                cellToGo.throwBuffsToSoldier();
             }
         }
         System.out.println(battle.getMap().toString());
