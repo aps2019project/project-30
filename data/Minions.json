@@ -315,5 +315,29 @@
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "MELEE",
+    "fullHealth": 8,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 5,
+    "name": "Siavash",
+    "manaPoint": 4,
+    "priceInDrake": 350,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
