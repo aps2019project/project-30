@@ -669,6 +669,7 @@ public class BattleController {
 
     public void attackCombo(String oponentId, List<String> cardsId) {
         Cell cell = ((Minion) getCardById(oponentId)).getCell();
+        String primitiveSelectedCardId=battle.getTurnToPlay().getSelectedCard().getId();
         boolean first = true;
         for (String cardId : cardsId) {
             if (getCardById(cardId) instanceof Minion) {
@@ -682,6 +683,7 @@ public class BattleController {
                 }
             }
         }
+        selectCard(primitiveSelectedCardId);
     }
 
     public void showNextCardOfBattle() {

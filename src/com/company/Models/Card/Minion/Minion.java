@@ -46,6 +46,11 @@ Minion extends Soldier {
         return minion;
     }
 
+    @Override
+    public void decrementHealth(int health) {
+        super.decrementHealth(health);
+    }
+
     public ActivationTime getActivationTime() {
         return activationTime;
     }
