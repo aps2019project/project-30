@@ -86,6 +86,17 @@ public class Hero extends Soldier {
         }
     }
 
+    public static void showHeroesInBattle(List<Card> cards) {
+        System.out.println("Heroes :");
+        int index = 1;
+        for (Card card : cards) {
+            if (card instanceof Hero) {
+                System.out.println(index++);
+                showHeroInBattle((Hero)card);
+            }
+        }
+    }
+
     public static void showHero(Hero hero) {
         System.out.println("- ID : " + hero.getId() +
                 "- Name : " + hero.getName() +

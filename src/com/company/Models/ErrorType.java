@@ -22,7 +22,8 @@ public enum ErrorType {
     CARD_CANT_ATTACK("Card Can't Attack"),
     CELL_VALIDATE("selected cell is invalid"),
     NO_SELECTED_CARD("select a card first"),
-    COOLDOWN_VALIDATE("cooldown is not zero");
+    COOLDOWN_VALIDATE("cooldown is not zero"),
+    INVALID_CARD("select one of your cards");
 
 
 

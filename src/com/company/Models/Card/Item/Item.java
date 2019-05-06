@@ -46,6 +46,17 @@ public class Item extends Card {
         }
     }
 
+    public static void showItemsInBattle(List<Item> items) {
+        System.out.println("Items :");
+        int index = 1;
+        for (Item item : items) {
+            if (item instanceof Item) {
+                System.out.println(index++);
+                showItemInBattle(item);
+            }
+        }
+    }
+
     public static void showItem(Item item) {
         System.out.println("- ID : " + item.getId() +
                 "- Name : " + item.getName() +
