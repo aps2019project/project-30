@@ -12,12 +12,12 @@ public abstract class Buff {
     protected Card cardToCast;
     protected boolean isCasted = false;
     protected String description;
-    protected Type antiBuff;
+    protected Name antiBuff;
     protected int castTime;
     protected int remTurnToCast;
     protected int value;
 
-    public Buff(Type antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
+    public Buff(Name antiBuff, int remTurnToBeInactive, int remTurnToCast, int value) {
         this.antiBuff = antiBuff;
         this.castTime = remTurnToBeInactive;
         this.remTurnToCast = remTurnToCast;

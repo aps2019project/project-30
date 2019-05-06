@@ -5,7 +5,7 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 
 public class HolyBuff extends Buff {
-    public HolyBuff(Buff.Type antiBuff, int castTime, int remTurnToCast, int value) {
+    public HolyBuff(Name antiBuff, int castTime, int remTurnToCast, int value) {
         super(antiBuff, castTime, remTurnToCast, value);
         super.name = Name.HOLY;
         super.type = Type.POSSETIVE;

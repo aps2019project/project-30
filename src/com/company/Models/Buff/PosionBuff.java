@@ -5,7 +5,7 @@ import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 
 public class PosionBuff extends Buff{
-    public PosionBuff(Type antiBuff, int castTime, int remTurnToCast, int value) {
+    public PosionBuff(Name antiBuff, int castTime, int remTurnToCast, int value) {
         super(antiBuff,castTime, remTurnToCast, value);
         name = Name.POSION;
         type = Type.NEGATIVE;

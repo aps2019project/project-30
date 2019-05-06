@@ -5,23 +5,23 @@ create account majid
 login hamid
 123
 enter shop
-buy Eight Heads Dragon
+buy Simorgh
 buy Arjang div
 buy Shah Ghool
 buy Shahzade Irani
 buy Sepahsalar Fars
-buy Total Disarm
-buy Empower
-buy Fireball
-buy God Strength
-buy Neyzedar Fars
-buy Asbsavar Fars
-buy Kamandar Arab
-buy Ghollabsangdar Arab
-buy Neyze Dar Arab
-buy Jasoos Arab
-buy Gorzdar Arab
-buy Div Siah
+buy Arjang div
+buy Shah Ghool
+buy Shahzade Irani
+buy Sepahsalar Fars
+buy Arjang div
+buy Shah Ghool
+buy Shahzade Irani
+buy Sepahsalar Fars
+buy Arjang div
+buy Shah Ghool
+buy Shahzade Irani
+buy Sepahsalar Fars
 buy Ghool Sang Andaz
 buy Div Goraz Savar
 buy Oghab
@@ -60,22 +60,22 @@ login majid
 123
 enter shop
 buy Div Sefid
-buy Taj Danayi
-buy Total Disarm
 buy Arjang div
 buy Shah Ghool
 buy Shahzade Irani
 buy Sepahsalar Fars
-buy Kamandar Fars
-buy Shamshirzan Fars
-buy Neyzedar Fars
-buy Asbsavar Fars
-buy Kamandar Arab
-buy Ghollabsangdar Arab
-buy Neyze Dar Arab
-buy Jasoos Arab
-buy Gorzdar Arab
-buy Div Siah
+buy Arjang div
+buy Shah Ghool
+buy Shahzade Irani
+buy Sepahsalar Fars
+buy Arjang div
+buy Shah Ghool
+buy Shahzade Irani
+buy Sepahsalar Fars
+buy Arjang div
+buy Shah Ghool
+buy Shahzade Irani
+buy Sepahsalar Fars
 buy Ghool Sang Andaz
 buy Div Goraz Savar
 buy Oghab
@@ -132,7 +132,4 @@ end turn
 select 24
 move to (5, 2)
 select 24
-end turn
-select 1
-use special power (5, 2)
-attack 24
+show hand
