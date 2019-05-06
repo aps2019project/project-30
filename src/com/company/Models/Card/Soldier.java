@@ -4,7 +4,8 @@ import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
-import com.company.Models.User.Player;
+import com.company.Models.Card.Minion.ActivationTime;
+import com.company.Models.Card.Minion.Minion;
 
 public class Soldier extends Card {
     private Cell cell;
@@ -72,7 +73,12 @@ public class Soldier extends Card {
     }
 
     private void deathHandler() {
-        if(isDead()){
+        if (isDead()) {
+            if (this instanceof Minion && ((Minion) this).getActivationTime() == ActivationTime.ON_SPAWN) {
+                Battle.getPlayingBattle().getBattleController().throwAttackerCardBuffstoTargetCard(this,
+                        Battle.getPlayingBattle().getBattleController().getEenmyPlayer(
+                                BattleController.playerThatHasThisCard(this)).getDeck().getHeroCard());
+            }
             this.getCell().setCardInCell(null);
             this.setCell(null);
             Battle.getPlayingBattle().getBattleController().getGraveYard().add(this);
@@ -87,10 +93,10 @@ public class Soldier extends Card {
         this.attackPower -= attackPower;
     }
 
-    public void attack(Card targetCard,Boolean isCombo) {
-        if(!hasBuffByName(Buff.Name.STUN)) {
+    public void attack(Card targetCard, Boolean isCombo) {
+        if (!hasBuffByName(Buff.Name.STUN)) {
             ((Soldier) targetCard).decrementHealth(getAttackPower());
-            if(!isCombo) {
+            if (!isCombo) {
                 ((Soldier) targetCard).counterAttack(this);
             }
             //todo holy buff yaroo ejra she
@@ -113,8 +119,8 @@ public class Soldier extends Card {
         return false;
     }
 
-    public boolean isDead(){
-        if(this.health <= 0)
+    public boolean isDead() {
+        if (this.health <= 0)
             return true;
         return false;
     }
