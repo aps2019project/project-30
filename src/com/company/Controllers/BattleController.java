@@ -21,6 +21,7 @@ import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static java.lang.Math.*;
 
@@ -427,7 +428,8 @@ public class BattleController {
     }
 
     private boolean isCardIdValid(String cardId) {
-        List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
+        List<Card> playerCards = battle.getTurnToPlay().getUsedCards();
+        playerCards.removeIf(Card::isInGraveCards);
         playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
         for (Card playerCard : playerCards) {
             if (playerCard.getId().equals(cardId))

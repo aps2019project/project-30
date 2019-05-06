@@ -13,7 +13,7 @@ public class Cell {
     private int xCoordinate, yCoordinate;
     private Card cardInCell;
     private Item item;
-    private ArrayList<Buff> cellEffects;
+    private ArrayList<Buff> cellEffects = new ArrayList<>();
     private Flag flag;
 
     public Flag getFlag() {

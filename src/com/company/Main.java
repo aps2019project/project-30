@@ -63,17 +63,18 @@ public class Main {
 
 
         //HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1, 0, 10);
-//        Minion minion = new Minion();
-//        minion.setName("Arjang div");
-//        minion.setPriceInDrake(600);
-//        minion.setManaPoint(3);
-//        minion.setFullHealth(6);
-//        minion.setAttackPower(6);
-//        minion.setAttackType(AttackType.MELEE);
-//        //minion.getBuffsToCast().add(healthPowerBuff);
-//        minion.setActivationTime(ActivationTime.COMBO);
-////
+        Minion minion = new Minion();
+        minion.setName("Arjang div");
+        minion.setPriceInDrake(600);
+        minion.setManaPoint(3);
+        minion.setFullHealth(6);
+        minion.setAttackPower(6);
+        minion.setAttackType(AttackType.MELEE);
+
+        //minion.getBuffsToCast().add(healthPowerBuff);
+        minion.setActivationTime(ActivationTime.COMBO);
 //
+
 //        ManaBuff manaBuff = new ManaBuff(null, 3, 0, 1);
 //        Item item = new Item();
 //        item.setName("Taj Danayi");
