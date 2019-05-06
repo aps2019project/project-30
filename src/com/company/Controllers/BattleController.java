@@ -583,12 +583,20 @@ public class BattleController {
 
     public void attack(Cell target, Boolean isCombo) {
         Player turnToPlay = Battle.getPlayingBattle().getTurnToPlay();
+        Soldier selectedCard = (Soldier) turnToPlay.getSelectedCard();
         ErrorType errorType = getErrorTypeOfAttack(target, turnToPlay);
         if (errorType != null) {
             ConsoleOutput.printErrorMessage(errorType);
         } else {
-            ((Soldier) turnToPlay.getSelectedCard()).attack(target.getCardInCell(), isCombo);
+            if (!isAttackedThisTurn(selectedCard)) {
+                selectedCard.attack(target.getCardInCell(), isCombo);
+                turnToPlay.getUsedCardsToAttack().add(selectedCard);
+            }
         }
+    }
+
+    private boolean isAttackedThisTurn(Card selectedCard2) {
+        return battle.getTurnToPlay().getUsedCardsToAttack().contains(selectedCard2);
     }
 
     private ErrorType getErrorTypeOfAttack(Cell target, Player turnToPlay) {
