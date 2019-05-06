@@ -666,23 +666,23 @@ public class BattleController {
         return false;
     }
 
-    public void attackCombo(String oponentId, List<String> cardsId) {
-        Cell cell = ((Minion) getCardById(oponentId)).getCell();
-        String primitiveSelectedCardId=battle.getTurnToPlay().getSelectedCard().getId();
-        boolean first = true;
+    public void attackCombo(String opoonentId, List<String> cardsId) {
+        Cell cell = ((Minion) getCardById(opoonentId)).getCell();
+        String previousSelectedCardId = battle.getTurnToPlay().getSelectedCard().getId();
+        boolean isFirstAttack = true;
         for (String cardId : cardsId) {
             if (getCardById(cardId) instanceof Minion) {
                 if (((Minion) getCardById(cardId)).getActivationTime().equals(ActivationTime.COMBO)) {
                     selectCard(cardId);
-                    if (first) {
+                    if (isFirstAttack) {
                         attack(cell, false);
-                        first = false;
+                        isFirstAttack = false;
                     } else
                         attack(cell, true);
                 }
             }
         }
-        selectCard(primitiveSelectedCardId);
+        selectCard(previousSelectedCardId);
     }
 
     public void showNextCardOfBattle() {
