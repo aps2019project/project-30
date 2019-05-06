@@ -14,19 +14,20 @@ public class AttackWeaknessBuff extends Buff {
     @Override
     public void cast() {
         if (isActive()) {
-            if (!isCasted) {
-                if (super.cardToCast instanceof Hero)
-                    ((Hero) super.cardToCast).decrementAttackPower(value);
-                else if (super.cardToCast instanceof Minion)
-                    ((Minion) super.cardToCast).decrementAttackPower(value);
-                setCasted(true);
+            if (canCastThisTurn()) {
+                if (!isCasted) {
+                    if (super.cardToCast instanceof Hero)
+                        ((Hero) super.cardToCast).decrementAttackPower(value);
+                    else if (super.cardToCast instanceof Minion)
+                        ((Minion) super.cardToCast).decrementAttackPower(value);
+                    setCasted(true);
+                }
             }
         } else {
             if (super.cardToCast instanceof Hero)
                 ((Hero) super.cardToCast).incrementAttackPower(value);
             else if (super.cardToCast instanceof Minion)
                 ((Minion) super.cardToCast).incrementAttackPower(value);
-            destruct();
         }
         decrementCounters();
     }

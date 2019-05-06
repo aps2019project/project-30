@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
@@ -176,16 +177,16 @@ public class BattleController {
                 case FRIEND_MINION:
                     doSpecialPowerOnFriendMinion(x, y);
                     break;
-                case ENEMY_HERO:
+                case ENEMY_HERO://
                     doSpecialPowerEnemyHero(x, y);
                     break;
-                case FRIEND_HERO:
+                case FRIEND_HERO://
                     doSpecialPowerFriendHero(x, y);
                     break;
                 case ENEMY_SOLDIER:
                     doSpecialPowerOnEnemySolder(x, y);
                     break;
-                case FRIEND_SOLDIER:
+                case FRIEND_SOLDIER://
                     doSpecialPowerOnFreindSolder(x, y);
                     break;
                 case WHOLE_ENEMY:
@@ -313,16 +314,18 @@ public class BattleController {
     }
 
     private void doSpecialPowerOnFreindSolder(int x, int y) {
-        if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
-            ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
-            return;
+        if (battle.getTurnToPlay() == playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell())) {
+            doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
+            battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getMap().getCellByCoordinates(x, y).getCardInCell());
+        } else{
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
-        doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
     }
 
     private void doSpecialPowerEnemyHero(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero)) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
+            battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
         }
     }
 
@@ -330,6 +333,7 @@ public class BattleController {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero) &&
                 playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
+            battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CELL_VALIDATE);
         }
@@ -488,18 +492,18 @@ public class BattleController {
         return false;
     }
 
-    public void showCardFromGraveYardInformation(String cardId) {
-        if (cardExistsInGraveYard(cardId)) {
-            BattleView.showCardInformation(getCardByIdFromGraveYardCards(cardId));
-        } else {
+    public void showCardFromGraveYardInformation(String cardId){
+        if(cardExistsInGraveYard(cardId)){
+            Card.showCardInformation(getCardByIdFromGraveYardCards(cardId));
+        }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINGRAVEYARD);
         }
     }
 
-    public void showDeckCardInformation(String cardId) {
-        if (cardExistsInDeck(cardId)) {
-            BattleView.showCardInformation(getCardById(cardId));
-        } else {
+    public void showDeckCardInformation(String cardId){
+        if(cardExistsInDeck(cardId)){
+            Card.showCardInformation(getCardById(cardId));
+        }else{
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
         }
     }
@@ -527,8 +531,8 @@ public class BattleController {
                         ((Soldier) newCard).setCell(cell);
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
+                        battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
                     }
-                    battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
                 }
@@ -654,5 +658,16 @@ public class BattleController {
 
     public void showNextCardOfBattle() {
         Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckController().getNextCard();
+    }
+
+    public void checkKillingGeneralModeIsFinished() {
+        if (battle.getMode().getWinner() != null) {
+//            BattleLog battleLog = new BattleLog(
+//                    battle.getPlayers()[0].getAccount(),
+//                    battle.getPlayers()[1].getAccount(),
+//                    battle.getMode().getWinner(),
+//                    battle.get
+//            )
+        }
     }
 }

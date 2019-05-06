@@ -1,5 +1,6 @@
 package com.company.Models.Card.Hero;
 
+import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
@@ -31,6 +32,12 @@ public class Hero extends Soldier {
     public void decrementRemainingCoolDown() {
         if(remainingCoolDown!=0)
             remainingCoolDown--;
+    }
+
+    @Override
+    public void decrementHealth(int health) {
+        super.decrementHealth(health);
+        Battle.getPlayingBattle().getBattleController().checkKillingGeneralModeIsFinished();
     }
 
     public int getCoolDownRemaining() {
@@ -79,6 +86,17 @@ public class Hero extends Soldier {
         }
     }
 
+    public static void showHeroesInBattle(List<Card> cards) {
+        System.out.println("Heroes :");
+        int index = 1;
+        for (Card card : cards) {
+            if (card instanceof Hero) {
+                System.out.println(index++);
+                showHeroInBattle((Hero)card);
+            }
+        }
+    }
+
     public static void showHero(Hero hero) {
         System.out.println("- ID : " + hero.getId() +
                 "- Name : " + hero.getName() +
@@ -95,4 +113,6 @@ public class Hero extends Soldier {
                 "- HP : " + hero.getHealth() +
                 "- Desc : " + hero.getDescription());
     }
+
+
 }

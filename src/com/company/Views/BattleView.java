@@ -4,10 +4,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
-import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
-import com.company.Models.Card.Spell.Spell;
-import com.company.Models.ErrorType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,22 +45,6 @@ public class BattleView {
         }
     }
 
-    public static void showCardInformation(Card card){
-        if(card != null) {
-            if (card instanceof Minion) {
-                Minion.showMinionInBattle((Minion) card);
-            } else if (card instanceof Item) {
-                Item.showItemInBattle((Item) card);
-            } else if (card instanceof Hero) {
-                Hero.showHeroInBattle((Hero) card);
-            } else if (card instanceof Spell) {
-                Spell.showSpellInBattle((Spell) card);
-            }
-        } else{
-            ConsoleOutput.printErrorMessage(ErrorType.NO_SELECTED_CARD);
-        }
-    }
-
     public static void printGraveYardCards(ArrayList<Card> cards) {
         ConsoleOutput.showAllCards(cards);
     }
@@ -90,8 +71,9 @@ public class BattleView {
         }
     }
 
-    public static void showHand(){
-        ConsoleOutput.showAllCards(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
+    public static void showHand() {
+        Item.showItemsInBattle(Battle.getPlayingBattle().getTurnToPlay().getItems());
+        Card.showMinionsAndSpellsInBattle(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
     }
 
     public static void printBattleCommandsToHelp(){

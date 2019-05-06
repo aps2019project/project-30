@@ -1,5 +1,6 @@
 package com.company.Views;
 
+import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
@@ -23,4 +24,5 @@ public class ConsoleOutput {
         Item.showItems(cards);
         Card.showCards(cards);
     }
+
 }

@@ -6,9 +6,11 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.TargetType;
 import com.company.Models.User.Account;
+import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,6 +127,36 @@ public abstract class Card {
                 System.out.print(index++);
                 Spell.showSpell((Spell)card);
             }
+        }
+    }
+
+    public static void showMinionsAndSpellsInBattle(List<Card> cards) {
+        System.out.println("Cards :");
+        int index = 1;
+        for (Card card : cards) {
+            if (card instanceof Minion) {
+                System.out.print(index++);
+                Minion.showMinionInBattle((Minion)card);
+            } else if (card instanceof Spell) {
+                System.out.print(index++);
+                Spell.showSpellInBattle((Spell)card);
+            }
+        }
+    }
+
+    public static void showCardInformation(Card card){
+        if(card != null) {
+            if (card instanceof Minion) {
+                Minion.showMinionInBattle((Minion) card);
+            } else if (card instanceof Item) {
+                Item.showItemInBattle((Item) card);
+            } else if (card instanceof Hero) {
+                Hero.showHeroInBattle((Hero) card);
+            } else if (card instanceof Spell) {
+                Spell.showSpellInBattle((Spell) card);
+            }
+        } else{
+            ConsoleOutput.printErrorMessage(ErrorType.NO_SELECTED_CARD);
         }
     }
 }
