@@ -200,10 +200,10 @@ public class BattleController {
                     doSpecialPowerOnNear("friend");
                     break;
                 case SQUARE_2:
-                    doOnSquare2();
+                    doOnSquare2(x,y);
                     break;
                 case SQUARE_3:
-                    doOnSquare3();
+                    doOnSquare3(x,y);
                     break;
                 case ENEMY_ROW:
                     doOnEnemyRow();
