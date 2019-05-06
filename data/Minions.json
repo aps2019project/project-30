@@ -339,5 +339,29 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "RANGED",
+    "fullHealth": 3,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Nane Sarma",
+    "manaPoint": 3,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "STUN",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.StunBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

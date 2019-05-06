@@ -28,8 +28,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ShopController.initialize();
-        ConsoleInput.menusHandler();
+        //ShopController.initialize();
+        //ConsoleInput.menusHandler();
 
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
@@ -54,16 +54,16 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-/*        HealthWeaknessBuff buff = new HealthWeaknessBuff(null,1, 0, 6);
+        StunBuff buff = new StunBuff(null,1, 0, 0);
         Minion minion = new Minion();
-        minion.setName("Siavash");
-        minion.setPriceInDrake(350);
-        minion.setManaPoint(4);
-        minion.setFullHealth(8);
-        minion.setAttackPower(5);
-        minion.setAttackType(AttackType.MELEE);
+        minion.setName("Nane Sarma");
+        minion.setPriceInDrake(500);
+        minion.setManaPoint(3);
+        minion.setFullHealth(3);
+        minion.setAttackPower(4);
+        minion.setAttackType(AttackType.RANGED);
         minion.getBuffsToCast().add(buff);
-        minion.setActivationTime(ActivationTime.COMBO);*/
+        minion.setActivationTime(ActivationTime.COMBO);
 //
 //
 /*        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
@@ -74,6 +74,6 @@ public class Main {
         item.setDescription("increase health 6 units");
         item.setTargetType(TargetType.FRIEND_HERO);
 */
-        //System.out.println(JsonController.getGson().toJson(minion));
+        System.out.println(JsonController.getGson().toJson(minion));
     }
 }
