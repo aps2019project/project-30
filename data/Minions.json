@@ -222,5 +222,61 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "MELEE",
+    "fullHealth": 12,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Sepahsalar Fars",
+    "manaPoint": 7,
+    "priceInDrake": 800,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 10,
+    "name": "Shahzade Irani",
+    "manaPoint": 6,
+    "priceInDrake": 800,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "MELEE",
+    "fullHealth": 10,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Shah Ghool",
+    "manaPoint": 5,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "COMBO",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 6,
+    "name": "Arjang div",
+    "manaPoint": 3,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
   }
 ]

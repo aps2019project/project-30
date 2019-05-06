@@ -12,6 +12,9 @@ import com.company.Models.Battle.Map.Map;
 import com.company.Views.BattleView;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -32,10 +35,10 @@ public class Battle {
     private static int lastBattleCardId = 0;
     private int winningPrize;
     private int turn = 1;
-//    private Timer timer = new Timer();
+    private int timePassedInSeconds = 0;
 
     public Battle(Mode mode, Account opponent) {
-//        Timer timer = new Timer()
+        beginTimer();
         this.map = new Map();
         initPlayersHand(opponent);
         this.turnToPlay = players[0];
@@ -47,6 +50,16 @@ public class Battle {
         this.winningPrize = 1000;
         initHeroes();
         initCardsHealth();
+    }
+
+    private void beginTimer() {
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timePassedInSeconds ++;
+            }
+        });
+        timer.start();
     }
 
     private void initPlayersHand(Account opponent) {
@@ -192,5 +205,9 @@ public class Battle {
 
     public int getTurn() {
         return turn;
+    }
+
+    public int getTimePassedInSeconds() {
+        return timePassedInSeconds;
     }
 }

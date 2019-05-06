@@ -1,42 +1,42 @@
 package com.company.Models.Battle;
 
-import com.company.Models.User.Account;
+import com.company.Models.User.Player;
 
 public class BattleLog {
-    private Account Account1;
-    private Account Account2;
-    private Account winnerAccount;
+    private String player1Username;
+    private String player2Username;
+    private String winnerPlayerUsername;
     private int battleTime;
 
-    public BattleLog(Account account1, Account account2, Account winnerAccount, int battleTime) {
-        Account1 = account1;
-        Account2 = account2;
-        this.winnerAccount = winnerAccount;
+    public BattleLog(String player1Username, String player2Username, String winnerPlayerUsername, int battleTime) {
+        this.player1Username = player1Username;
+        this.player2Username = player2Username;
+        this.winnerPlayerUsername = winnerPlayerUsername;
         this.battleTime = battleTime;
     }
 
-    public Account getAccount1() {
-        return Account1;
+    public String getPlayer1Username() {
+        return player1Username;
     }
 
-    public void setAccount1(Account Account1) {
-        this.Account1 = Account1;
+    public void setPlayer1Username(String player1Username) {
+        this.player1Username = player1Username;
     }
 
-    public Account getAccount2() {
-        return Account2;
+    public String getPlayer2Username() {
+        return player2Username;
     }
 
-    public void setAccount2(Account Account2) {
-        this.Account2 = Account2;
+    public void setPlayer2Username(String player2Username) {
+        this.player2Username = player2Username;
     }
 
-    public Account getWinnerAccount() {
-        return winnerAccount;
+    public String getWinnerPlayerUsername() {
+        return winnerPlayerUsername;
     }
 
-    public void setWinnerAccount(Account winnerAccount) {
-        this.winnerAccount = winnerAccount;
+    public void setWinnerPlayerUsername(String winnerPlayerUsername) {
+        this.winnerPlayerUsername = winnerPlayerUsername;
     }
 
     public int getBattleTime() {
