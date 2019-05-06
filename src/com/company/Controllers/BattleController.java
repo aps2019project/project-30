@@ -527,7 +527,7 @@ public class BattleController {
         }
     }
 
-    private ArrayList<Card> getGraveYard() {
+    public ArrayList<Card> getGraveYard() {
         ArrayList<Card> graveYardCards = new ArrayList<>();
         graveYardCards.addAll(battle.getPlayers()[0].getDeck().getDeckCards());
         graveYardCards.addAll(battle.getPlayers()[1].getDeck().getDeckCards());
