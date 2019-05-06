@@ -205,6 +205,31 @@
         "className": "com.company.Models.Buff.DispelBuff"
       }
     ],
-   "buffsCasted": []
+    "buffsCasted": []
+  },
+  {
+    "coolDown": 0,
+    "remainingCoolDown": 0,
+    "attackType": "HYBRID",
+    "fullHealth": 35,
+    "health": 0,
+    "areaOfEffect": 3,
+    "attackPower": 3,
+    "name": "Esfandiar",
+    "manaPoint": 0,
+    "priceInDrake": 12000,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 3,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ]
   }
 ]

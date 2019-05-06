@@ -40,17 +40,19 @@ public class Main {
         PosionBuff posionBuff = new PosionBuff(null, 3, 0, 1);
         HolyBuff holyBuff = new HolyBuff(null, 3, 0, 1);
         DispelBuff dispelBuff = new DispelBuff(null, 1, 0, 0);
+        HolyBuff holyBuff1 = new HolyBuff(null, 1000, 0, 3);
         Hero hero = new Hero();
-        hero.setName("Afsane");
-        hero.setPriceInDrake(11000);
-        hero.setFullHealth(40);
+        hero.setName("Esfandiar");
+        hero.setPriceInDrake(12000);
+        hero.setFullHealth(35);
         hero.setAttackPower(3);
-        hero.setAttackType(AttackType.RANGED);
+        hero.setAttackType(AttackType.HYBRID);
         hero.setAreaOfEffect(3);
-        hero.getBuffsToCast().add(dispelBuff);
-        hero.setManaPoint(1);
-        hero.setCoolDown(2);
-        hero.setTargetType(TargetType.ENEMY_SOLDIER);
+//        hero.getBuffsToCast().add(dispelBuff);
+        hero.getBuffsCasted().add(holyBuff1);
+        hero.setManaPoint(0);
+        hero.setCoolDown(0);
+        hero.setTargetType(null);
         //todo : cell Targettype
 //
 ////        System.out.println("gson.toJson(hero) = " + gson.toJson(hero));
