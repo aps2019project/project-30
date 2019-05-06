@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
@@ -662,11 +663,12 @@ public class BattleController {
 
     public void checkKillingGeneralModeIsFinished() {
         if (battle.getMode().getWinner() != null) {
+            System.out.println("Game Finished : " + battle.getMode().getWinner().getAccount().getUsername());
             BattleLog battleLog = new BattleLog(
                     battle.getPlayers()[0].getAccount().getUsername(),
                     battle.getPlayers()[1].getAccount().getUsername(),
                     battle.getMode().getWinner().getAccount().getUsername(),
-                    100
+                    battle.getTimePassedInSeconds()
             );
             for (Player player : battle.getPlayers()) {
                 player.getAccount().getBattleHistories().add(battleLog);
