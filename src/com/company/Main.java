@@ -58,18 +58,20 @@ public class Main {
 ////        StunBuff buff = new StunBuff(null,1, 0, 0);
 //        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
 //        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 2);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1000, 0, 1);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 1, 6);
+        HealthWeaknessBuff healthWeaknessBuff1 = new HealthWeaknessBuff(null, 1, 2, 4);
         Minion minion = new Minion();
-        minion.setName("Mar Ghool Peykar");
-        minion.setPriceInDrake(500);
-        minion.setManaPoint(8);
-        minion.setFullHealth(14);
-        minion.setAttackPower(7);
-        minion.setAttackType(AttackType.RANGED);
-//        minion.getBuffsToCast().add(healthWeaknessBuff);
-        minion.getBuffsCasted().add(healthWeaknessBuff);
-        minion.setActivationTime(ActivationTime.ON_SPAWN);
-        minion.setTargetType(TargetType.NEAR_ENEMYS_HERO);
+        minion.setName("Gorge Sefid");
+        minion.setPriceInDrake(400);
+        minion.setManaPoint(5);
+        minion.setFullHealth(8);
+        minion.setAttackPower(2);
+        minion.setAttackType(AttackType.MELEE);
+        minion.getBuffsToCast().add(healthWeaknessBuff);
+        minion.getBuffsToCast().add(healthWeaknessBuff1);
+//        minion.getBuffsCasted().add(healthWeaknessBuff);
+        minion.setActivationTime(ActivationTime.ON_ATTACK);
+        minion.setTargetType(TargetType.ENEMY_SOLDIER);
 
 //
 //        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);

@@ -480,8 +480,7 @@
     "priceInDrake": 500,
     "isInGraveCards": false,
     "targetType": "ENEMY_SOLDIER",
-    "buffsToCast": [],
-    "buffsCasted": [
+    "buffsToCast": [
       {
         "type": "POSSETIVE",
         "name": "ANTI",
@@ -492,7 +491,8 @@
         "value": 0,
         "className": "com.company.Models.Buff.AntiBuff"
       }
-    ]
+    ],
+    "buffsCasted": []
   },
   {
     "activationTime": "ON_DEATH",
@@ -506,8 +506,7 @@
     "priceInDrake": 500,
     "isInGraveCards": false,
     "targetType": "NEAR_ENEMYS_HERO",
-    "buffsToCast": [],
-    "buffsCasted": [
+    "buffsToCast": [
       {
         "type": "POSSETIVE",
         "name": "HEALTH_WEAKNESS",
@@ -517,6 +516,41 @@
         "value": 2,
         "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
-    ]
+    ],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 8,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Gorge Sefid",
+    "manaPoint": 5,
+    "priceInDrake": 400,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 1,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 2,
+        "value": 4,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
