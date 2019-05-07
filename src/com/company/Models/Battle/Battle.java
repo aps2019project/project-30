@@ -195,14 +195,14 @@ public class Battle {
 
 
     private void initHeroes() {
-        map.getCellByCoordinates(9, 2).setCardInCell(players[1].getAccount().getMainDeck().getHeroCard());
+        map.getCellByCoordinates(9, 2).setCardInCell(players[1].getDeck().getHeroCard());
         map.getCellByCoordinates(1, 2).setCardInCell(players[0].getAccount().getMainDeck().getHeroCard());
         players[0].getUsedCards().add(players[0].getDeck().getHeroCard());
         players[1].getUsedCards().add(players[1].getDeck().getHeroCard());
-        ((Soldier)players[1].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
+        ((Soldier)players[1].getDeck().getHeroCard()).setCell(map.getCellByCoordinates(9, 2));
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
         ((Hero)players[0].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
-        ((Hero)players[1].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
+        ((Hero)players[1].getDeck().getHeroCard()).setRemainingCoolDownByCooldown();
 
     }
 
