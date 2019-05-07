@@ -37,7 +37,7 @@ public class Battle {
     private int timePassedInSeconds = 0;
     private boolean botIsActive = false;
 
-    public Battle(Mode mode, Account opponent) {
+    public Battle(Mode mode, Account opponent, int flags) {
         beginTimer();
         this.map = new Map();
         initPlayersHand(new Player(opponent));
@@ -52,11 +52,11 @@ public class Battle {
         initCardsHealth();
     }
 
-    public Battle(int storyLevel) {
-        setModeByStoryLevel(storyLevel);
+    public Battle(int storyLevel, int flags) {
+        this.map = new Map();
+        setModeByStoryLevel(storyLevel, flags);
         botIsActive = true;
         beginTimer();
-        this.map = new Map();
         this.turnToPlay = players[0];
         players[0] = new Player(Account.getLoggedInAccount());
         players[1] = getBotPlayer();
@@ -73,7 +73,7 @@ public class Battle {
         System.out.println(map.toString());
     }
 
-    private void setModeByStoryLevel(int storyLevel) {
+    private void setModeByStoryLevel(int storyLevel, int flagsNum) {
         switch (storyLevel) {
             case 1:
                 this.mode = Mode.KILLING_GENERAL;
@@ -86,7 +86,9 @@ public class Battle {
                 break;
             case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
-                this.getBattleController().putFlagsOnMap();
+                for (int i = 0; i < flagsNum; i++) {
+                    this.getBattleController().putFlagsOnMap();
+                }
                 break;
         }
     }
@@ -203,7 +205,6 @@ public class Battle {
         ((Soldier)players[0].getAccount().getMainDeck().getHeroCard()).setCell(map.getCellByCoordinates(1, 2));
         ((Hero)players[0].getAccount().getMainDeck().getHeroCard()).setRemainingCoolDownByCooldown();
         ((Hero)players[1].getDeck().getHeroCard()).setRemainingCoolDownByCooldown();
-
     }
 
     public void incrementTurn() {

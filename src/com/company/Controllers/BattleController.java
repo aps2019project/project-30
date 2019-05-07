@@ -82,11 +82,12 @@ public class BattleController {
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
         if (cellToGo.getFlag() != null) {
             Flag flag = cellToGo.getFlag();
-            if(battle.getMode() == Mode.CAPTURE_THE_FLAG) {
+            if (battle.getMode() == Mode.CAPTURE_THE_FLAG) {
                 flag.setFlagHolder(soldier);
                 flag.setHoldingTurn(battle.getTurn());
                 cellToGo.setFlag(null);
-            } else if(battle.getMode() == Mode.COLLECTING_FLAGS){
+            } else if (battle.getMode() == Mode.COLLECTING_FLAGS) {
+                flag.setFlagHolder(soldier);
                 battle.getFlags().remove(flag);
                 flag.setCell(null);
                 cellToGo.setFlag(null);
@@ -100,7 +101,7 @@ public class BattleController {
     }
 
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
-        if (battle.getMap().getCellByCoordinates(x1, y1).getItem() != null) {
+        if (battle.getMap().getCellByCoordinates(x1, y1) != null && battle.getMap().getCellByCoordinates(x1, y1).getItem() != null) {
             return true;
         }
         int x2 = cell.getxCoordinate();
@@ -167,7 +168,7 @@ public class BattleController {
         ((Hero) battle.getTurnToPlay().getDeck().getHeroCard()).decrementRemainingCoolDown();
         battle.getTurnToPlay().addMaxMana();
         battle.getTurnToPlay().setMana(battle.getTurnToPlay().getMaxMana());
-        battle.getTurnToPlay().getAccount().getMainDeck().getDeckController().addRandomCardToHand();
+        battle.getTurnToPlay().getDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
         battle.getTurnToPlay().getUsedCardsToAttack().clear();
 
@@ -178,9 +179,9 @@ public class BattleController {
         }
         checkGameIsFinished();
         putRandomCollectibleItemsOnMap();
-        if (battle.getMode() == Mode.COLLECTING_FLAGS) {
-            putFlagsOnMap();
-        }
+//        if (battle.getMode() == Mode.COLLECTING_FLAGS) {
+//            putFlagsOnMap();
+//        }
     }
 
     private void botMovements() {
@@ -189,8 +190,8 @@ public class BattleController {
                 for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
                     selectCard(aliveCard.getId());
                     move(
-                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(1),
-                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(1)
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
+                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
                     );
                 }
             }
@@ -856,9 +857,11 @@ public class BattleController {
 
     public void putFlagsOnMap() {
         int x = -1, y = -1;
-        while (!cellIsValidToInsertingCard(x, y) || battle.getMap().getCellByCoordinates(x, y).getFlag() != null) {
-            x = random.nextInt(9);
-            y = random.nextInt(5);
+        while (!cellIsValidToInsertingCard(x, y)) {
+            while (battle.getMap().getCellByCoordinates(x, y) == null || battle.getMap().getCellByCoordinates(x, y).getFlag() != null){
+                x = random.nextInt(9);
+                y = random.nextInt(5);
+            }
         }
         Cell cell = battle.getMap().getCellByCoordinates(x, y);
         Flag flag = new Flag(cell);
