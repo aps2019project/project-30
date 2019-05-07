@@ -250,13 +250,24 @@ public class BattleController {
                     );
                     break;
                 case RANDOM_FRIEND_SOLDIER:
-                    Card randomSoldierCard = battle.getTurnToPlay().getAliveCards().get(
+                    Card randomFriendSoldierCard = battle.getTurnToPlay().getAliveCards().get(
                             random.nextInt(battle.getTurnToPlay().getAliveCards().size())
                     );
                     doSpecialPowerOnFreindSolder(
-                            ((Soldier) randomSoldierCard).getCell().getxCoordinate(),
-                            ((Soldier) randomSoldierCard).getCell().getyCoordinate()
+                            ((Soldier) randomFriendSoldierCard).getCell().getxCoordinate(),
+                            ((Soldier) randomFriendSoldierCard).getCell().getyCoordinate()
                     );
+                    break;
+                case RANDOM_ENEMY_SOLDIER:
+                    List<Card> enemyAliveCards = battle.getBattleController().getEenmyPlayer(battle.getTurnToPlay()).getAliveCards();
+                    Card randomEnemySoldierCard = enemyAliveCards.get(
+                            random.nextInt(enemyAliveCards.size())
+                    );
+                    doSpecialPowerOnEnemySoldier(
+                            ((Soldier) randomEnemySoldierCard).getCell().getxCoordinate(),
+                            ((Soldier) randomEnemySoldierCard).getCell().getyCoordinate()
+                    );
+                    break;
             }
         }
     }
