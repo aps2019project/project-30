@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.annotation.Target;
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -69,17 +70,29 @@ public class Main {
 //        minion.setTargetType(TargetType.ENEMY_SOLDIER);
 //
 //
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 3);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
+//        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 1);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
-        ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
+        HolyBuff holyBuff = new HolyBuff(null, 2, 0, 10);
+        ManaBuff manaBuff = new ManaBuff(null, 1000, 0, 1);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 8);
+//        ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
+//        HolyBuff holyBuff = new HolyBuff(null,2,0,0);
         Item item = new Item();
-        item.setName("Majoon Mana");
-        item.setPriceInDrake(0);
+        item.setName("King Wisdom");
+        item.setPriceInDrake(9000);
+//        item.getBuffsToCast().add(manaBuff);
         item.getBuffsToCast().add(manaBuff);
 //        item.getBuffsToCast().add(healthPowerBuff);
-        item.setDescription("increase 2 mana next round");
-        item.setTargetType(TargetType.FRIEND_HERO);
+        item.setDescription("increase mana by 1");
+        item.setTargetType(TargetType.WHOLE_FRIEND);
+        item.setName("Soul Eater");
+        item.setPriceInDrake(25000);
+        item.getBuffsToCast().add(attackPowerBuff);
+        //item.getBuffsToCast().add();
+        item.setDescription("with death of every friend minion, attack poewr buff will cast");
+        item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);
         System.out.println(JsonController.getGson().toJson(item));
     }
 }

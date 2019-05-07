@@ -6,7 +6,6 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
-import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
@@ -43,7 +42,7 @@ public class Battle {
         this.turnToPlay = players[0];
         this.mode = mode;
         mode.setBattle(this);
-        initMultiplayerMode();
+        initFlagMode();
         this.battleType = BattleType.MULTI;
         playingBattle = this;
         this.winningPrize = 1000;
@@ -83,12 +82,7 @@ public class Battle {
                 break;
             case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
-                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag1);
-                flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag2);
-                flags.add(flag2);
+                this.getBattleController().putFlagsOnMap();
                 break;
         }
     }
@@ -110,7 +104,7 @@ public class Battle {
         players[1].getDeck().getDeckController().initializeHand();
     }
 
-    private void initMultiplayerMode() {
+    private void initFlagMode() {
         switch (this.mode) {
             case KILLING_GENERAL:
                 this.mode = Mode.KILLING_GENERAL;
@@ -123,12 +117,7 @@ public class Battle {
                 break;
             case COLLECTING_FLAGS:
                 this.mode = Mode.COLLECTING_FLAGS;
-                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag1);
-                flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 5));
-                map.getCellByCoordinates(5, 5).setFlag(flag2);
-                flags.add(flag2);
+                this.getBattleController().putFlagsOnMap();
                 break;
         }
     }

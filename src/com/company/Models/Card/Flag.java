@@ -8,7 +8,7 @@ public class Flag {
     private int holdingTurn;
 
     public Flag(Cell cell) {
-        this.cell = cell;
+        setCell(cell);
     }
 
     public Card getFlagHolder() {
@@ -21,6 +21,10 @@ public class Flag {
 
     public Cell getCell(){
         return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     public int getHoldingTurn() {
