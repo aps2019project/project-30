@@ -28,8 +28,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        //ShopController.initialize();
-        //ConsoleInput.menusHandler();
+        ShopController.initialize();
+        ConsoleInput.menusHandler();
 
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);

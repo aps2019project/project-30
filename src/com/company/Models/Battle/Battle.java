@@ -6,6 +6,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;

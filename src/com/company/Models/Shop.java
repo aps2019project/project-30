@@ -3,8 +3,10 @@ package com.company.Models;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 
-public class Shop {
+import java.util.ArrayList;
 
+public class Shop {
+    static ArrayList<Card> collectibleItems = new ArrayList<>();
     static Collection shopCollection = new Collection();
 
     public static Collection getShopCollection() {
@@ -24,6 +26,10 @@ public class Shop {
             }
         }
         return false;
+    }
+
+    public static ArrayList<Card> getCollectibleItems() {
+        return collectibleItems;
     }
 
     public static boolean cardIdExistsInShop(String cardId) {
