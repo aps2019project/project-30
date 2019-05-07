@@ -830,7 +830,6 @@ public class BattleController {
     }
 
     public void putRandomCollectibleItemsOnMap() {
-        Random random = new Random();
         int x = random.nextInt(9), y = random.nextInt(5), itemIndex = random.nextInt(Shop.getCollectibleItems().size());
         if (cellIsValidToInsertingCard(x, y)) {
             Cell cell = battle.getMap().getCellByCoordinates(x, y);
