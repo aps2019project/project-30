@@ -36,17 +36,17 @@ public class Main {
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
         StunBuff stunBuff = new StunBuff(null,1, 0, 0);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,1);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,100);
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1,0,2);
         AttackPowerBuff attacBuff = new AttackPowerBuff(null,1,0,4);
         AntiBuff antiBuff = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
         DispelBuff dispelBuff = new DispelBuff(null,1,0,0);
         Spell spell = new Spell();
-        spell.setName("Weakening");
-        spell.setPriceInDrake(1000);
-        spell.setManaPoint(1);
-        spell.getBuffsToCast().add(attacBuff);
-        spell.setTargetType(TargetType.RANDOM_ENEMY_SOLDIER);
+        spell.setName("Kings Gaurd");
+        spell.setPriceInDrake(1750);
+        spell.setManaPoint(9);
+        spell.getBuffsToCast().add(healthWeaknessBuff);
+        spell.setTargetType(TargetType.NEARBY_EIGHT_CELL);
 
 
 //

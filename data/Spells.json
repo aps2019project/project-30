@@ -454,5 +454,24 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Kings Gaurd",
+    "manaPoint": 9,
+    "priceInDrake": 1750,
+    "isInGraveCards": false,
+    "targetType": "NEARBY_EIGHT_CELL",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 100,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
