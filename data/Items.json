@@ -122,7 +122,7 @@
   {
     "name": "Ghosl Tamid",
     "manaPoint": 0,
-    "priceInDrake": 0,
+    "priceInDrake": 20000,
     "description": "give 2 holy buffs to minions on spawn",
     "isInGraveCards": false,
     "targetType": "WHOLE_MINIONS",
@@ -135,6 +135,26 @@
         "remTurnToCast": 0,
         "value": 0,
         "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Soul Eater",
+    "manaPoint": 0,
+    "priceInDrake": 25000,
+    "description": "with death of every friend minion, attack poewr buff will cast",
+    "isInGraveCards": false,
+    "targetType": "RANDOM_FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
       }
     ],
     "buffsCasted": []
