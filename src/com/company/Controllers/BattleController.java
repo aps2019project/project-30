@@ -456,7 +456,7 @@ public class BattleController {
             int counter = 0;
             for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
                 counter++;
-                if (counter >= startEndex) {
+                if (counter >= startEndex || buff.getName().equals(Buff.Name.ANTI)) {
                     buff.cast();
                 }
             }

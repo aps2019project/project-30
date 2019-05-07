@@ -65,7 +65,7 @@
     "priceInDrake": 30000,
     "description": "increase health 6 units",
     "isInGraveCards": false,
-    "targetType": "FRIEND_HERO",
+    "targetType": "FRIEND_SOLDIER",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
