@@ -69,17 +69,18 @@ public class Main {
 //
 //
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 1);
+        DisarmBuff disarmBuff = new DisarmBuff(null,1,0,0);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
         ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
         HolyBuff holyBuff = new HolyBuff(null,2,0,0);
         Item item = new Item();
-        item.setName("Soul Eater");
-        item.setPriceInDrake(25000);
-        item.getBuffsToCast().add(attackPowerBuff);
+        item.setName("Shock Hammer");
+        item.setPriceInDrake(15000);
+        item.getBuffsToCast().add(disarmBuff);
         //item.getBuffsToCast().add();
-        item.setDescription("with death of every friend minion, attack poewr buff will cast");
-        item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);
+        item.setDescription("disarming one enemy soldier by friend hero");
+        item.setTargetType(TargetType.ENEMY_SOLDIER);
         System.out.println(JsonController.getGson().toJson(item));
     }
 }

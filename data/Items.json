@@ -198,5 +198,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Shock Hammer",
+    "manaPoint": 0,
+    "priceInDrake": 15000,
+    "description": "disarming one enemy soldier by friend hero",
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
