@@ -3,6 +3,7 @@ package com.company.Models.Card;
 import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
+import com.company.Models.Buff.AntiBuff;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Minion.ActivationTime;
 import com.company.Models.Card.Minion.Minion;

@@ -245,6 +245,46 @@ public class BattleController {
                 case ENEMY_COLUMN:
                     doOnEnemyColum();
                     break;
+                case NEARBY_EIGHT_CELL:
+                    throwBuffsInNearbyEightCards(
+                            battle.getTurnToPlay().getSelectedCard(),
+                            battle.getMap().getCellByCoordinates(x, y)
+                    );
+                    break;
+                case ONE_CELL:
+                    throwBuffsInCells(
+                            battle.getTurnToPlay().getSelectedCard(),
+                            battle.getMap().getCellByCoordinates(x, y),
+                            1
+                    );
+                    break;
+            }
+        }
+    }
+
+    private void throwBuffsInCells(Card cardToAttack, Cell targetCell, int range) {
+        int x = targetCell.getxCoordinate();
+        int y = targetCell.getyCoordinate();
+        for (int i = range - 1; i <= 0; i++) {
+            for (int j = range - 1; j <= 0; j++) {
+                Cell cell = battle.getMap().getCellByCoordinates(x + i, y + j);
+                throwAttackerCardBuffstoTargetCell(cardToAttack, cell);
+            }
+        }
+    }
+
+    private void throwBuffsInNearbyEightCards(Card cardToAttack, Cell targetCell) {
+        int x = targetCell.getxCoordinate();
+        int y = targetCell.getyCoordinate();
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i != 0 & j != 0) {
+                    Card cardInCell = battle.getMap()
+                            .getCellByCoordinates(x + i, y + j)
+                            .getCardInCell();
+                    if (cardInCell != null)
+                        throwAttackerCardBuffstoTargetCard(cardToAttack, cardInCell);
+                }
             }
         }
     }
@@ -425,7 +465,7 @@ public class BattleController {
             int counter = 0;
             for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
                 counter++;
-                if (counter >= startEndex) {
+                if (counter >= startEndex || buff.getName().equals(Buff.Name.ANTI)) {
                     buff.cast();
                 }
             }
@@ -775,6 +815,14 @@ public class BattleController {
                 cell.setItem(item);
                 item.setCell(cell);
             }
+        }
+    }
+
+    public void throwAttackerCardBuffstoTargetCell(Card attackerCard, Cell targetCell) {
+        List<Buff> cellEffects = targetCell.getCellEffect();
+        int cellEffectsSizeBeforeThrow = targetCell.getCellEffect().size();
+        for (Buff buff : attackerCard.getBuffsToCast()) {
+            cellEffects.add(buff.clone());
         }
     }
 }
