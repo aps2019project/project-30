@@ -493,5 +493,30 @@
         "className": "com.company.Models.Buff.AntiBuff"
       }
     ]
+  },
+  {
+    "activationTime": "ON_DEATH",
+    "attackType": "HYBRID",
+    "fullHealth": 12,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 11,
+    "name": "Ghool Tak Cheshm",
+    "manaPoint": 7,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "targetType": "NEAR_ENEMYS_HERO",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ]
   }
 ]
