@@ -55,22 +55,24 @@ public class Main {
 ////        Gson gson = new Gson();
 
 
-        HealthWeaknessBuff healthWeaknessBuff= new HealthWeaknessBuff(null, 1, 0, 16);
-        Minion minion = new Minion();
-        minion.setName("Bahman");
-        minion.setPriceInDrake(450);
-        minion.setManaPoint(8);
-        minion.setFullHealth(16);
-        minion.setAttackPower(9);
-        minion.setTargetType(TargetType.ENEMY_MINION);
-        minion.setAttackType(AttackType.MELEE);
-        minion.setAreaOfEffect(0);
-        minion.getBuffsToCast().add(healthWeaknessBuff);
-        minion.setActivationTime(ActivationTime.ON_SPAWN);
-////
+//        AntiBuff antiBuff= new AntiBuff(null, 1000, 0, 1);
+//        Minion minion = new Minion();
+//        minion.setName("Shire darande");
+//        minion.setPriceInDrake(600);
+//        minion.setManaPoint(2);
+//        minion.setFullHealth(1);
+//        minion.setAttackPower(8);
+//       // minion.setTargetType(TargetType.ENEMY_MINION);
+//        minion.setAttackType(AttackType.MELEE);
+//        minion.setAreaOfEffect(0);
+//        minion.getBuffsCasted().add(antiBuff);
+//        minion.setActivationTime(ActivationTime.ON_ATTACK);
+//
+//        System.out.println(JsonController.getGson().toJson(minion));
+//////
 //
 //
-/*        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
+        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
         Item item = new Item();
         item.setName("Nooshdaroo");
         item.setPriceInDrake(30000);
@@ -78,6 +80,6 @@ public class Main {
         item.setDescription("increase health 6 units");
         item.setTargetType(TargetType.FRIEND_HERO);
 
-        System.out.println(JsonController.getGson().toJson(item));*/
+        System.out.println(JsonController.getGson().toJson(item));
     }
 }

@@ -325,7 +325,7 @@
     "health": 0,
     "areaOfEffect": 0,
     "attackPower": 1,
-    "name": "Gorge",
+    "name": "Gorg",
     "manaPoint": 3,
     "priceInDrake": 400,
     "targetType": "FRIEND_MINION",
@@ -443,5 +443,29 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 1,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 8,
+    "name": "Shire darande",
+    "manaPoint": 2,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.AntiBuff"
+      }
+    ]
   }
 ]
