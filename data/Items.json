@@ -125,7 +125,7 @@
     "priceInDrake": 20000,
     "description": "give 2 holy buffs to minions on spawn",
     "isInGraveCards": false,
-    "targetType": "WHOLE_MINIONS",
+    "targetType": "WHOLE_FRIEND",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
