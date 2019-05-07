@@ -35,18 +35,27 @@ public class Main {
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
-        StunBuff stunBuff = new StunBuff(null,1, 0, 0);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,100);
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1,0,2);
-        AttackPowerBuff attacBuff = new AttackPowerBuff(null,1,0,4);
-        AntiBuff antiBuff = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
-        DispelBuff dispelBuff = new DispelBuff(null,1,0,0);
-        Spell spell = new Spell();
-        spell.setName("Area Dispel");
-        spell.setPriceInDrake(1500);
-        spell.setManaPoint(2);
-        spell.getBuffsToCast().add(dispelBuff);
-        spell.setTargetType(TargetType.SQUARE_2);
+        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 100);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1, 0, 2);
+        AttackPowerBuff attacBuff = new AttackPowerBuff(null, 1, 0, 4);
+        AntiBuff antiBuff1 = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
+        AntiBuff antiBuff2 = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
+        AntiBuff antiBuff3 = new AntiBuff(Buff.Name.MANA, 1000, 0, 0);
+        AntiBuff antiBuff4 = new AntiBuff(Buff.Name.STUN, 1000, 0, 0);
+        AntiBuff antiBuff5 = new AntiBuff(Buff.Name.DISPELL, 1000, 0, 0);
+        AntiBuff antiBuff6 = new AntiBuff(Buff.Name.ATTACK_WEAKNESS, 1000, 0, 0);
+        AntiBuff antiBuff7 = new AntiBuff(Buff.Name.ATTACK_POWER, 1000, 0, 0);
+        AntiBuff antiBuff8 = new AntiBuff(Buff.Name.HEALTH_WEAKNESS, 1000, 0, 0);
+        AntiBuff antiBuff9 = new AntiBuff(Buff.Name.HEALTH_POWER, 1000, 0, 0);
+        AntiBuff antiBuff10 = new AntiBuff(Buff.Name.HOLY, 1000, 0, 0);
+        DispelBuff dispelBuff = new DispelBuff(null, 1, 0, 0);
+//        Spell spell = new Spell();
+//        spell.setName("Area Dispel");
+//        spell.setPriceInDrake(1500);
+//        spell.setManaPoint(2);
+//        spell.getBuffsToCast().add(dispelBuff);
+//        spell.setTargetType(TargetType.SQUARE_2);
 
 
 //
@@ -68,17 +77,25 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-/*
         Minion minion = new Minion();
-        minion.setName("Piran");
-        minion.setPriceInDrake(400);
-        minion.setManaPoint(8);
-        minion.setFullHealth(20);
-        minion.setAttackPower(12);
-        minion.setAttackType(AttackType.MELEE);
-        minion.getBuffsCasted().add(antiBuff);
+        minion.setName("Giv");
+        minion.setPriceInDrake(450);
+        minion.setManaPoint(4);
+        minion.setFullHealth(5);
+        minion.setAttackPower(7);
+        minion.setAttackType(AttackType.RANGED);
+        minion.getBuffsCasted().add(antiBuff1);
+        minion.getBuffsCasted().add(antiBuff2);
+        minion.getBuffsCasted().add(antiBuff3);
+        minion.getBuffsCasted().add(antiBuff4);
+        minion.getBuffsCasted().add(antiBuff5);
+        minion.getBuffsCasted().add(antiBuff6);
+        minion.getBuffsCasted().add(antiBuff7);
+        minion.getBuffsCasted().add(antiBuff8);
+        minion.getBuffsCasted().add(antiBuff9);
+        minion.getBuffsCasted().add(antiBuff10);
         minion.setActivationTime(ActivationTime.PASSIVE);
-        minion.setTargetType(TargetType.SELF);*/
+        minion.setTargetType(TargetType.SELF);
 //
 //
 /*        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
@@ -104,6 +121,6 @@ public class Main {
         //item.getBuffsToCast().add();
         item.setDescription("with death of every friend minion, attack poewr buff will cast");
         item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);*/
-        System.out.println(JsonController.getGson().toJson(spell));
+        System.out.println(JsonController.getGson().toJson(minion));
     }
 }

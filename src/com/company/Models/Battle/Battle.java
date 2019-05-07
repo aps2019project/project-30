@@ -260,7 +260,7 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Iraj"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shah Ghool"));
                 //Spells
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Kamandar Fars"));//todo : 2
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Area Dispel"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Empower"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("God Strength"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Madness"));

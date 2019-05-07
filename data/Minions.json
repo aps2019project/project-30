@@ -647,5 +647,121 @@
         "className": "com.company.Models.Buff.AntiBuff"
       }
     ]
+  },
+  {
+    "activationTime": "PASSIVE",
+    "attackType": "RANGED",
+    "fullHealth": 5,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 7,
+    "name": "Giv",
+    "manaPoint": 4,
+    "priceInDrake": 450,
+    "isInGraveCards": false,
+    "targetType": "SELF",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "POSION",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "DISARM",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "MANA",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "STUN",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "DISPELL",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "ATTACK_WEAKNESS",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "ATTACK_POWER",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "HEALTH_WEAKNESS",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "HEALTH_POWER",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "HOLY",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      }
+    ]
   }
 ]
