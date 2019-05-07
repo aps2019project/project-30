@@ -67,18 +67,17 @@ public class Main {
 //        System.out.println("JsonController.getGson().toJson(hero) = " + JsonController.getGson().toJson(hero));
 //
 ////        Gson gson = new Gson();
-
-        AttackPowerBuff attackPowerBuff1 = new AttackPowerBuff(null, 1, 0, 1);
+        HealthWeaknessBuff healthWeaknessBuff1 = new HealthWeaknessBuff(null, 1, 0, 5);
         Minion minion = new Minion();
-        minion.setName("Jen");
-        minion.setPriceInDrake(500);
-        minion.setManaPoint(5);
-        minion.setFullHealth(10);
-        minion.setAttackPower(4);
-        minion.setAttackType(AttackType.RANGED);
-        minion.getBuffsCasted().add(attackPowerBuff1);
+        minion.setName("Pahlevan Fars");
+        minion.setPriceInDrake(600);
+        minion.setManaPoint(9);
+        minion.setFullHealth(2);
+        minion.setAttackPower(6);
+        minion.setAttackType(AttackType.MELEE);
+        minion.getBuffsCasted().add(healthWeaknessBuff1);
         minion.setActivationTime(ActivationTime.ON_ATTACK);
-        minion.setTargetType(TargetType.WHOLE_FRIEND);
+        minion.setTargetType(TargetType.RANDOM_ENEMY_SOLDIER);
 //
 //
 /*        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
