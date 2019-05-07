@@ -53,22 +53,27 @@ public class BattleController {
     public void move(int x, int y) {
         Cell cellToGo = battle.getMap().getCellByCoordinates(x, y);
         Soldier soldier = ((Soldier) battle.getTurnToPlay().getSelectedCard());
-        if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
-            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
-        } else {
+        if (cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             if (!isMovedThisTurn(battle.getTurnToPlay().getUsedCardsToMove(), battle.getTurnToPlay())) {
                 soldier.getCell().setCardInCell(null);
                 soldier.setCell(battle.getMap().getCellByCoordinates(x, y));
                 cellToGo.setCardInCell(battle.getTurnToPlay().getSelectedCard());
                 battle.getTurnToPlay().getUsedCardsToMove().add(battle.getTurnToPlay().getSelectedCard());
-                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
-                }
+                collectItemsInCell(cellToGo);
                 collectFlagInCell(cellToGo, soldier);
                 cellToGo.throwBuffsToSoldier();
             }
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         }
         System.out.println(battle.getMap().toString());
+    }
+
+    private void collectItemsInCell(Cell cellToGo) {
+        if (cellToGo.getItem() != null) {
+            battle.getTurnToPlay().addItem(cellToGo.getItem());
+            cellToGo.setItem(null);
+        }
     }
 
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
@@ -85,6 +90,9 @@ public class BattleController {
     }
 
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
+        if (battle.getMap().getCellByCoordinates(x1, y1).getItem() != null) {
+            return true;
+        }
         int x2 = cell.getxCoordinate();
         int y2 = cell.getyCoordinate();
         if (abs(x1 - x2) + abs(y1 - y2) > 2) {
@@ -159,6 +167,7 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
         checkGameIsFinished();
+        putRandomCollectibleItemsOnMap();
     }
 
     private void botMovements() {
@@ -573,8 +582,11 @@ public class BattleController {
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
-                        if(battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion)battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_SPAWN)){
+                        if (battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion) battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_SPAWN)) {
                             ConsoleInput.getCordinatesForUseSpecialPowerOnSpawn();
+                        }
+                        if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                            battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                         }
                     }
                 } else {
@@ -750,6 +762,19 @@ public class BattleController {
             Buff buff = targetCard.getBuffsCasted().get(i);
             if (buff instanceof AntiBuff || i > buffsCastedSizeBeforeThrow)
                 buff.cast();
+        }
+    }
+
+    public void putRandomCollectibleItemsOnMap() {
+        Random random = new Random();
+        int x = random.nextInt(9), y = random.nextInt(5), itemIndex = random.nextInt(Shop.getCollectibleItems().size());
+        if (cellIsValidToInsertingCard(x, y)) {
+            Cell cell = battle.getMap().getCellByCoordinates(x, y);
+            if (cell.getCardInCell() == null && cell.getFlag() == null) {
+                Item item = Shop.getCollectibleItems().get(itemIndex).makeCopyForCreatingNewCardInShop();
+                cell.setItem(item);
+                item.setCell(cell);
+            }
         }
     }
 }
