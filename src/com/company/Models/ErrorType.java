@@ -23,7 +23,8 @@ public enum ErrorType {
     CELL_VALIDATE("selected cell is invalid"),
     NO_SELECTED_CARD("select a card first"),
     COOLDOWN_VALIDATE("cooldown is not zero"),
-    INVALID_CARD("choose one of your cards");
+    INVALID_CARD("choose one of your cards"),
+    COLLECTIBLE_ITEM("this is a collectible item, you can buy it");
 
 
 

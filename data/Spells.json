@@ -347,5 +347,74 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Tir Doshakh",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "increase attackPower 2 units",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Elixir",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "increase attackPower 3 units \u0026 increase healthPower 2",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 3,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.HealthPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Majoon Mana",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "increase 2 mana next round",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "MANA",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 1,
+        "value": 3,
+        "className": "com.company.Models.Buff.ManaBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

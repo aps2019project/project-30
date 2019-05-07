@@ -29,6 +29,7 @@ import static java.lang.Math.*;
 
 public class BattleController {
     Battle battle;
+    private Random random = new Random();
 
     public BattleController(Battle battle) {
         this.battle = battle;
@@ -53,22 +54,27 @@ public class BattleController {
     public void move(int x, int y) {
         Cell cellToGo = battle.getMap().getCellByCoordinates(x, y);
         Soldier soldier = ((Soldier) battle.getTurnToPlay().getSelectedCard());
-        if (!cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
-            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
-        } else {
+        if (cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
             if (!isMovedThisTurn(battle.getTurnToPlay().getUsedCardsToMove(), battle.getTurnToPlay())) {
                 soldier.getCell().setCardInCell(null);
                 soldier.setCell(battle.getMap().getCellByCoordinates(x, y));
                 cellToGo.setCardInCell(battle.getTurnToPlay().getSelectedCard());
                 battle.getTurnToPlay().getUsedCardsToMove().add(battle.getTurnToPlay().getSelectedCard());
-                if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
-                    battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
-                }
+                collectItemsInCell(cellToGo);
                 collectFlagInCell(cellToGo, soldier);
                 cellToGo.throwBuffsToSoldier();
             }
+        } else {
+            ConsoleOutput.printErrorMessage(ErrorType.INVALID_CELL);
         }
         System.out.println(battle.getMap().toString());
+    }
+
+    private void collectItemsInCell(Cell cellToGo) {
+        if (cellToGo.getItem() != null) {
+            battle.getTurnToPlay().addItem(cellToGo.getItem());
+            cellToGo.setItem(null);
+        }
     }
 
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
@@ -85,6 +91,9 @@ public class BattleController {
     }
 
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
+        if (battle.getMap().getCellByCoordinates(x1, y1).getItem() != null) {
+            return true;
+        }
         int x2 = cell.getxCoordinate();
         int y2 = cell.getyCoordinate();
         if (abs(x1 - x2) + abs(y1 - y2) > 2) {
@@ -159,10 +168,10 @@ public class BattleController {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
         checkGameIsFinished();
+        putRandomCollectibleItemsOnMap();
     }
 
     private void botMovements() {
-        Random random = new Random();
         if (battle.isBotIsActive()) {
             if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
                 for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
@@ -236,6 +245,65 @@ public class BattleController {
                 case ENEMY_COLUMN:
                     doOnEnemyColum();
                     break;
+                case NEARBY_EIGHT_CELL:
+                    throwBuffsInNearbyEightCards(
+                            battle.getTurnToPlay().getSelectedCard(),
+                            battle.getMap().getCellByCoordinates(x, y)
+                    );
+                    break;
+                case ONE_CELL:
+                    throwBuffsInCells(
+                            battle.getTurnToPlay().getSelectedCard(),
+                            battle.getMap().getCellByCoordinates(x, y),
+                            1
+                    );
+                    break;
+                case RANDOM_FRIEND_SOLDIER:
+                    Card randomFriendSoldierCard = battle.getTurnToPlay().getAliveCards().get(
+                            random.nextInt(battle.getTurnToPlay().getAliveCards().size())
+                    );
+                    doSpecialPowerOnFreindSolder(
+                            ((Soldier) randomFriendSoldierCard).getCell().getxCoordinate(),
+                            ((Soldier) randomFriendSoldierCard).getCell().getyCoordinate()
+                    );
+                    break;
+                case RANDOM_ENEMY_SOLDIER:
+                    List<Card> enemyAliveCards = battle.getBattleController().getEenmyPlayer(battle.getTurnToPlay()).getAliveCards();
+                    Card randomEnemySoldierCard = enemyAliveCards.get(
+                            random.nextInt(enemyAliveCards.size())
+                    );
+                    doSpecialPowerOnEnemySoldier(
+                            ((Soldier) randomEnemySoldierCard).getCell().getxCoordinate(),
+                            ((Soldier) randomEnemySoldierCard).getCell().getyCoordinate()
+                    );
+                    break;
+            }
+        }
+    }
+
+    private void throwBuffsInCells(Card cardToAttack, Cell targetCell, int range) {
+        int x = targetCell.getxCoordinate();
+        int y = targetCell.getyCoordinate();
+        for (int i = range - 1; i <= 0; i++) {
+            for (int j = range - 1; j <= 0; j++) {
+                Cell cell = battle.getMap().getCellByCoordinates(x + i, y + j);
+                throwAttackerCardBuffstoTargetCell(cardToAttack, cell);
+            }
+        }
+    }
+
+    private void throwBuffsInNearbyEightCards(Card cardToAttack, Cell targetCell) {
+        int x = targetCell.getxCoordinate();
+        int y = targetCell.getyCoordinate();
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i != 0 & j != 0) {
+                    Card cardInCell = battle.getMap()
+                            .getCellByCoordinates(x + i, y + j)
+                            .getCardInCell();
+                    if (cardInCell != null)
+                        throwAttackerCardBuffstoTargetCard(cardToAttack, cardInCell);
+                }
             }
         }
     }
@@ -335,7 +403,7 @@ public class BattleController {
     }
 
     private void doSpecialPowerOnEnemySoldier(int x, int y) {
-        if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
+        if (cardBelongsToCurrentTurnPlayer(x, y, getEenmyPlayer(battle.getTurnToPlay()))) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -343,6 +411,10 @@ public class BattleController {
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
+    }
+
+    private boolean cardBelongsToCurrentTurnPlayer(int x, int y, Player enemyPlayer) {
+        return playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == enemyPlayer;
     }
 
     private void doSpecialPowerOnFreindSolder(int x, int y) {
@@ -367,7 +439,7 @@ public class BattleController {
 
     private void doSpecialPowerFriendHero(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero) &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
+                cardBelongsToCurrentTurnPlayer(x, y, battle.getTurnToPlay())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -379,7 +451,7 @@ public class BattleController {
 
     private void doSpecialPowerOnFriendMinion(int x, int y) {
         if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
+                cardBelongsToCurrentTurnPlayer(x, y, battle.getTurnToPlay())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -393,7 +465,7 @@ public class BattleController {
 
     private void doSpecialPowerOnEnemyMinion(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion) &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
+                cardBelongsToCurrentTurnPlayer(x, y, getEenmyPlayer(battle.getTurnToPlay()))) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -416,14 +488,14 @@ public class BattleController {
             int counter = 0;
             for (Buff buff : cell.getCardInCell().getBuffsCasted()) {
                 counter++;
-                if (counter >= startEndex) {
+                if (counter >= startEndex || buff.getName().equals(Buff.Name.ANTI)) {
                     buff.cast();
                 }
             }
         }
     }
 
-    private Player getEenmyPlayer(Player player) {
+    public Player getEenmyPlayer(Player player) {
         if (player == battle.getPlayers()[0]) {
             return battle.getPlayers()[1];
         } else {
@@ -560,7 +632,6 @@ public class BattleController {
 
     public void insertNewCardToMap(int x, int y, String cardName) {
         if (cardExistsInHand(cardName)) {
-            //Card newCard = createCopyFromExistingCard(getCardByName(cardName));
             Card newCard = getCardByNameFromHand(cardName);
             if (newCard instanceof Spell || cellIsValidToInsertingCard(x, y)) {
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
@@ -574,6 +645,12 @@ public class BattleController {
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
+                        if (battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion) battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_SPAWN)) {
+                            ConsoleInput.getCordinatesForUseSpecialPowerOnSpawn();
+                        }
+                        if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
+                            battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
+                        }
                     }
                 } else {
                     ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_MANA);
@@ -748,6 +825,27 @@ public class BattleController {
             Buff buff = targetCard.getBuffsCasted().get(i);
             if (buff instanceof AntiBuff || i > buffsCastedSizeBeforeThrow)
                 buff.cast();
+        }
+    }
+
+    public void putRandomCollectibleItemsOnMap() {
+        Random random = new Random();
+        int x = random.nextInt(9), y = random.nextInt(5), itemIndex = random.nextInt(Shop.getCollectibleItems().size());
+        if (cellIsValidToInsertingCard(x, y)) {
+            Cell cell = battle.getMap().getCellByCoordinates(x, y);
+            if (cell.getCardInCell() == null && cell.getFlag() == null) {
+                Item item = Shop.getCollectibleItems().get(itemIndex).makeCopyForCreatingNewCardInShop();
+                cell.setItem(item);
+                item.setCell(cell);
+            }
+        }
+    }
+
+    public void throwAttackerCardBuffstoTargetCell(Card attackerCard, Cell targetCell) {
+        List<Buff> cellEffects = targetCell.getCellEffect();
+        int cellEffectsSizeBeforeThrow = targetCell.getCellEffect().size();
+        for (Buff buff : attackerCard.getBuffsToCast()) {
+            cellEffects.add(buff.clone());
         }
     }
 }

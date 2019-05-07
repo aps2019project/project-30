@@ -1,5 +1,6 @@
 package com.company.Models.Battle.Map;
 
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 
 public class Map {
@@ -35,12 +36,16 @@ public class Map {
         int counter = 0;
         for (Cell cell : getCells()) {
             counter++;
-            if (cell.getFlag() != null) {
-                stringBuilder.append(" F ");
-            } else if (cell.getCardInCell() == null) {
+            if (cell.getCardInCell() == null && cell.getItem() == null && cell.getFlag() == null) {
                 stringBuilder.append(" # ");
             }
-            if (cell.getCardInCell() instanceof Soldier) {
+            else if (cell.getFlag() != null) {
+                stringBuilder.append(" F ");
+            }
+            else if(cell.getItem() != null){
+                stringBuilder.append(" I ");
+            }
+            else if (cell.getCardInCell() instanceof Soldier) {
                 stringBuilder.append(" " + cell.getCardInCell().getId() + " ");
             }
             if (counter == 9) {

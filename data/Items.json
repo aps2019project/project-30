@@ -65,7 +65,7 @@
     "priceInDrake": 30000,
     "description": "increase health 6 units",
     "isInGraveCards": false,
-    "targetType": "FRIEND_HERO",
+    "targetType": "FRIEND_SOLDIER",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
@@ -75,6 +75,26 @@
         "remTurnToCast": 0,
         "value": 6,
         "className": "com.company.Models.Buff.HealthPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Par Simorgh",
+    "manaPoint": 0,
+    "priceInDrake": 3500,
+    "description": "decrease attackPower 2 units",
+    "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "ATTACK_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.AttackWeaknessBuff"
       }
     ],
     "buffsCasted": []

@@ -1,5 +1,6 @@
 package com.company.Models.Card.Item;
 
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Item extends Card {
+    Cell cell;
 
     @Override
     public Item clone() {
@@ -16,8 +18,8 @@ public class Item extends Card {
         item.setInGraveCards(this.isInGraveCards());
         item.setName(this.getName());
         item.setManaPoint(this.getManaPoint());
-        item.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
-        item.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
+        item.getBuffsToCast().addAll(((ArrayList<Buff>) ((ArrayList<Buff>) this.getBuffsToCast()).clone()));
+        item.getBuffsCasted().addAll(((ArrayList<Buff>) ((ArrayList<Buff>) this.getBuffsCasted()).clone()));
         item.setPriceInDrake(this.getPriceInDrake());
         item.setTargetType(this.getTargetType());
         return item;
@@ -35,13 +37,22 @@ public class Item extends Card {
         return item;
     }
 
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
+
     public static void showItems(List<Card> cards) {
         System.out.println("Items :");
         int index = 1;
         for (Card card : cards) {
             if (card instanceof Item) {
                 System.out.println(index++);
-                showItem((Item)card);
+                showItem((Item) card);
             }
         }
     }

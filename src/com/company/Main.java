@@ -54,32 +54,32 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-
-//        AntiBuff antiBuff= new AntiBuff(null, 1000, 0, 1);
+////        StunBuff buff = new StunBuff(null,1, 0, 0);
+//        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
 //        Minion minion = new Minion();
-//        minion.setName("Shire darande");
-//        minion.setPriceInDrake(600);
-//        minion.setManaPoint(2);
-//        minion.setFullHealth(1);
-//        minion.setAttackPower(8);
-//       // minion.setTargetType(TargetType.ENEMY_MINION);
+//        minion.setName("Goraz Vahshi");
+//        minion.setPriceInDrake(500);
+//        minion.setManaPoint(6);
+//        minion.setFullHealth(10);
+//        minion.setAttackPower(14);
 //        minion.setAttackType(AttackType.MELEE);
-//        minion.setAreaOfEffect(0);
+////        minion.getBuffsToCast().add(healthWeaknessBuff);
 //        minion.getBuffsCasted().add(antiBuff);
-//        minion.setActivationTime(ActivationTime.ON_ATTACK);
-//
-//        System.out.println(JsonController.getGson().toJson(minion));
-//////
+//        minion.setActivationTime(ActivationTime.ON_DEFEND);
+//        minion.setTargetType(TargetType.ENEMY_SOLDIER);
 //
 //
-        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 3);
+        HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
+        AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
+        ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
         Item item = new Item();
-        item.setName("Nooshdaroo");
-        item.setPriceInDrake(30000);
-        item.getBuffsToCast().add(buff);
-        item.setDescription("increase health 6 units");
+        item.setName("Majoon Mana");
+        item.setPriceInDrake(0);
+        item.getBuffsToCast().add(manaBuff);
+//        item.getBuffsToCast().add(healthPowerBuff);
+        item.setDescription("increase 2 mana next round");
         item.setTargetType(TargetType.FRIEND_HERO);
-
         System.out.println(JsonController.getGson().toJson(item));
     }
 }

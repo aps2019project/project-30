@@ -325,7 +325,7 @@
     "health": 0,
     "areaOfEffect": 0,
     "attackPower": 1,
-    "name": "Gorg",
+    "name": "Gorge",
     "manaPoint": 3,
     "priceInDrake": 400,
     "targetType": "FRIEND_MINION",
@@ -464,6 +464,32 @@
         "castTime": 1000,
         "remTurnToCast": 0,
         "value": 1,
+        "className": "com.company.Models.Buff.AntiBuff"
+      }
+    ]
+  },
+  {
+    "activationTime": "ON_DEFEND",
+    "attackType": "MELEE",
+    "fullHealth": 10,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 14,
+    "name": "Goraz Vahshi",
+    "manaPoint": 6,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "DISARM",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
         "className": "com.company.Models.Buff.AntiBuff"
       }
     ]
