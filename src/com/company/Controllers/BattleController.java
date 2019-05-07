@@ -219,6 +219,7 @@ public class BattleController {
                     doSpecialPowerOnEnemySoldier(x, y);
                     break;
                 case FRIEND_SOLDIER://
+                case SELF:
                     doSpecialPowerOnFreindSolder(x, y);
                     break;
                 case WHOLE_ENEMY:
@@ -277,8 +278,6 @@ public class BattleController {
                             ((Soldier) randomEnemySoldierCard).getCell().getyCoordinate()
                     );
                     break;
-                case SELF:
-
             }
         }
     }
