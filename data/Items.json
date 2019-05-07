@@ -198,5 +198,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "King Wisdom",
+    "manaPoint": 0,
+    "priceInDrake": 9000,
+    "description": "increase mana by 1",
+    "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "MANA",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.ManaBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
