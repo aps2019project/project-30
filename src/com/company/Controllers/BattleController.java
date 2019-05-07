@@ -3,9 +3,11 @@ package com.company.Controllers;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Buff.AntiBuff;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.ActivationTime;
@@ -79,9 +81,16 @@ public class BattleController {
 
     private void collectFlagInCell(Cell cellToGo, Soldier soldier) {
         if (cellToGo.getFlag() != null) {
-            cellToGo.getFlag().setFlagHolder(soldier);
-            cellToGo.getFlag().setHoldingTurn(battle.getTurn());
-            cellToGo.setFlag(null);
+            Flag flag = cellToGo.getFlag();
+            if(battle.getMode() == Mode.CAPTURE_THE_FLAG) {
+                flag.setFlagHolder(soldier);
+                flag.setHoldingTurn(battle.getTurn());
+                cellToGo.setFlag(null);
+            } else if(battle.getMode() == Mode.COLLECTING_FLAGS){
+                battle.getFlags().remove(flag);
+                flag.setCell(null);
+                cellToGo.setFlag(null);
+            }
         }
         checkGameIsFinished();
     }
@@ -169,6 +178,9 @@ public class BattleController {
         }
         checkGameIsFinished();
         putRandomCollectibleItemsOnMap();
+        if (battle.getMode() == Mode.COLLECTING_FLAGS) {
+            putFlagsOnMap();
+        }
     }
 
     private void botMovements() {
@@ -840,6 +852,18 @@ public class BattleController {
                 item.setCell(cell);
             }
         }
+    }
+
+    public void putFlagsOnMap() {
+        int x = -1, y = -1;
+        while (!cellIsValidToInsertingCard(x, y) || battle.getMap().getCellByCoordinates(x, y).getFlag() != null) {
+            x = random.nextInt(9);
+            y = random.nextInt(5);
+        }
+        Cell cell = battle.getMap().getCellByCoordinates(x, y);
+        Flag flag = new Flag(cell);
+        cell.setFlag(flag);
+        battle.getFlags().add(flag);
     }
 
     public void throwAttackerCardBuffstoTargetCell(Card attackerCard, Cell targetCell) {

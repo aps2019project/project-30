@@ -44,7 +44,7 @@ public class Battle {
         this.turnToPlay = players[0];
         this.mode = mode;
         mode.setBattle(this);
-        initMultiplayerMode();
+        initFlagMode();
         this.battleType = BattleType.MULTI;
         playingBattle = this;
         this.winningPrize = 1000;
@@ -84,12 +84,7 @@ public class Battle {
                 break;
             case 3:
                 this.mode = Mode.COLLECTING_FLAGS;
-                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag1);
-                flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 5));
-                map.getCellByCoordinates(5, 5).setFlag(flag2);
-                flags.add(flag2);
+                this.getBattleController().putFlagsOnMap();
                 break;
         }
     }
@@ -111,7 +106,7 @@ public class Battle {
         players[1].getDeck().getDeckController().initializeHand();
     }
 
-    private void initMultiplayerMode() {
+    private void initFlagMode() {
         switch (this.mode) {
             case KILLING_GENERAL:
                 this.mode = Mode.KILLING_GENERAL;
@@ -124,12 +119,7 @@ public class Battle {
                 break;
             case COLLECTING_FLAGS:
                 this.mode = Mode.COLLECTING_FLAGS;
-                Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag1);
-                flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 5));
-                map.getCellByCoordinates(5, 5).setFlag(flag2);
-                flags.add(flag2);
+                this.getBattleController().putFlagsOnMap();
                 break;
         }
     }
@@ -232,8 +222,26 @@ public class Battle {
         switch (mode) {
             case KILLING_GENERAL:
                 player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Simorgh"));
-                player.getDeck().setItemCard(ShopController.makeCopyForCreatingNewCardInShop(""));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop(""));
+                player.getDeck().setItemCard(ShopController.makeCopyForCreatingNewCardInShop("Taj Danayi"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Kamandar Fars"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Neyzedar Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Gorzdar Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Gorzdar Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 17
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Mar Sami"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 21
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 22
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 26
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Siavash"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Nane Sarma"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Arzhang Div"));
+                //Spells
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Total Disarm"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Lighting Bolt"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Disarm"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 12
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Sacrifice"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shock"));
                 break;
             case CAPTURE_THE_FLAG:
                 break;

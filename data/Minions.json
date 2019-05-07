@@ -94,7 +94,7 @@
     "health": 0,
     "areaOfEffect": 3,
     "attackPower": 4,
-    "name": "Neyze Dar Arab",
+    "name": "Neyzedar Arab",
     "manaPoint": 1,
     "priceInDrake": 600,
     "isInGraveCards": false,
@@ -109,6 +109,7 @@
     "attackPower": 6,
     "name": "Jasoos Arab",
     "manaPoint": 4,
+    "targetType": "ENEMY_SOLDIER",
     "priceInDrake": 700,
     "isInGraveCards": false,
     "buffsToCast": [
@@ -259,9 +260,22 @@
     "health": 0,
     "areaOfEffect": 0,
     "attackPower": 6,
-    "name": "Arjang div",
+    "name": "Arzhang Div",
     "manaPoint": 3,
     "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "MELEE",
+    "fullHealth": 16,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 8,
+    "name": "Div Goraz Savar",
+    "manaPoint": 6,
+    "priceInDrake": 300,
     "isInGraveCards": false,
     "buffsToCast": [],
     "buffsCasted": []
@@ -273,11 +287,11 @@
     "health": 0,
     "areaOfEffect": 4,
     "attackPower": 6,
-    "name": "Mare sami",
+    "name": "Mar Sami",
+    "targetType": "ENEMY_SOLDIER",
     "manaPoint": 4,
     "priceInDrake": 300,
     "isInGraveCards": false,
-    "targetType": "ENEMY_SOLDIER",
     "buffsToCast": [
       {
         "type": "NEGATIVE",
@@ -305,7 +319,32 @@
     "buffsCasted": []
   },
   {
-    "activationTime": "COMBO",
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 1,
+    "name": "Gorg",
+    "manaPoint": 3,
+    "priceInDrake": 400,
+    "targetType": "FRIEND_MINION",
+    "isInGraveCards": false,
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 1,
+        "value": 6,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEATH",
     "attackType": "MELEE",
     "fullHealth": 8,
     "health": 0,
@@ -315,13 +354,14 @@
     "manaPoint": 4,
     "priceInDrake": 350,
     "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
         "name": "HEALTH_WEAKNESS",
         "isCasted": false,
         "castTime": 1,
-        "remTurnToCast": 0,
+        "remTurnToCast": 1,
         "value": 6,
         "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
@@ -329,17 +369,17 @@
     "buffsCasted": []
   },
   {
-    "activationTime": "COMBO",
+    "activationTime": "ON_SPAWN",
     "attackType": "RANGED",
     "fullHealth": 3,
     "health": 0,
-    "areaOfEffect": 0,
+    "areaOfEffect": 5,
     "attackPower": 4,
     "name": "Nane Sarma",
     "manaPoint": 3,
     "priceInDrake": 500,
     "isInGraveCards": false,
-    "targetType": "NEARBY_EIGHT_CELL",
+    "targetType": "NEAR_ENEMYS_HERO",
     "buffsToCast": [
       {
         "type": "NEGATIVE",
@@ -347,23 +387,50 @@
         "isCasted": false,
         "castTime": 1,
         "remTurnToCast": 0,
-        "value": 0,
+        "value": 1,
         "className": "com.company.Models.Buff.StunBuff"
       }
     ],
     "buffsCasted": []
   },
   {
-    "activationTime": "ON_DEATH",
-    "attackType": "HYBRID",
-    "fullHealth": 12,
+    "attackType": "RANGED",
+    "fullHealth": 6,
     "health": 0,
-    "areaOfEffect": 0,
-    "attackPower": 11,
-    "name": "Ghool Tak Cheshm",
-    "manaPoint": 7,
+    "areaOfEffect": 3,
+    "attackPower": 20,
+    "name": "Iraj",
+    "manaPoint": 4,
     "priceInDrake": 500,
     "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "attackType": "HYBRID",
+    "fullHealth": 30,
+    "health": 0,
+    "areaOfEffect": 2,
+    "attackPower": 8,
+    "name": "Ghool bozorg",
+    "manaPoint": 9,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_SPAWN",
+    "attackType": "MELEE",
+    "fullHealth": 16,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 9,
+    "name": "Bahman",
+    "manaPoint": 8,
+    "priceInDrake": 450,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_MINION",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
@@ -371,11 +438,35 @@
         "isCasted": false,
         "castTime": 1,
         "remTurnToCast": 0,
-        "value": 2,
+        "value": 16,
         "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 1,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 8,
+    "name": "Shir Darande",
+    "manaPoint": 2,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.AntiBuff"
+      }
+    ]
   },
   {
     "activationTime": "ON_DEFEND",
