@@ -28,8 +28,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        //ShopController.initialize();
-        //ConsoleInput.menusHandler();
+        ShopController.initialize();
+        ConsoleInput.menusHandler();
 
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
@@ -54,16 +54,17 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-        StunBuff buff = new StunBuff(null,1, 0, 0);
+//        StunBuff buff = new StunBuff(null,1, 0, 0);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 2);
         Minion minion = new Minion();
-        minion.setName("Nane Sarma");
+        minion.setName("Ghool Tak Cheshm");
         minion.setPriceInDrake(500);
-        minion.setManaPoint(3);
-        minion.setFullHealth(3);
-        minion.setAttackPower(4);
-        minion.setAttackType(AttackType.RANGED);
-        minion.getBuffsToCast().add(buff);
-        minion.setActivationTime(ActivationTime.COMBO);
+        minion.setManaPoint(7);
+        minion.setFullHealth(12);
+        minion.setAttackPower(11);
+        minion.setAttackType(AttackType.HYBRID);
+        minion.getBuffsToCast().add(healthWeaknessBuff);
+        minion.setActivationTime(ActivationTime.ON_DEATH);
 //
 //
 /*        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
