@@ -287,7 +287,7 @@ public class Battle {
                 //Spells
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Hell Fire"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Disarm"));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("God Strength"));//todo : 12
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Dispel"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Power Up"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Power"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Attack"));

@@ -435,5 +435,24 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Weakening",
+    "manaPoint": 1,
+    "priceInDrake": 1000,
+    "isInGraveCards": false,
+    "targetType": "RANDOM_ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 4,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]
