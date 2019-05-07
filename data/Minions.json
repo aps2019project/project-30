@@ -267,19 +267,6 @@
     "buffsCasted": []
   },
   {
-    "attackType": "MELEE",
-    "fullHealth": 16,
-    "health": 0,
-    "areaOfEffect": 0,
-    "attackPower": 8,
-    "name": "Div Goraz Savar",
-    "manaPoint": 6,
-    "priceInDrake": 300,
-    "isInGraveCards": false,
-    "buffsToCast": [],
-    "buffsCasted": []
-  },
-  {
     "activationTime": "ON_ATTACK",
     "attackType": "RANGED",
     "fullHealth": 5,
@@ -290,6 +277,7 @@
     "manaPoint": 4,
     "priceInDrake": 300,
     "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
     "buffsToCast": [
       {
         "type": "NEGATIVE",
@@ -351,6 +339,7 @@
     "manaPoint": 3,
     "priceInDrake": 500,
     "isInGraveCards": false,
+    "targetType": "NEARBY_EIGHT_CELL",
     "buffsToCast": [
       {
         "type": "NEGATIVE",
@@ -387,5 +376,31 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "ON_DEFEND",
+    "attackType": "MELEE",
+    "fullHealth": 10,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 14,
+    "name": "Goraz Vahshi",
+    "manaPoint": 6,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "DISARM",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      }
+    ]
   }
 ]

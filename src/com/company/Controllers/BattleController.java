@@ -248,6 +248,7 @@ public class BattleController {
                             battle.getMap().getCellByCoordinates(x, y),
                             1
                     );
+                    break;
             }
         }
     }

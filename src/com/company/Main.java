@@ -55,16 +55,18 @@ public class Main {
 ////        Gson gson = new Gson();
 
 //        StunBuff buff = new StunBuff(null,1, 0, 0);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 2);
+        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
         Minion minion = new Minion();
-        minion.setName("Ghool Tak Cheshm");
+        minion.setName("Goraz Vahshi");
         minion.setPriceInDrake(500);
-        minion.setManaPoint(7);
-        minion.setFullHealth(12);
-        minion.setAttackPower(11);
-        minion.setAttackType(AttackType.HYBRID);
-        minion.getBuffsToCast().add(healthWeaknessBuff);
-        minion.setActivationTime(ActivationTime.ON_DEATH);
+        minion.setManaPoint(6);
+        minion.setFullHealth(10);
+        minion.setAttackPower(14);
+        minion.setAttackType(AttackType.MELEE);
+//        minion.getBuffsToCast().add(healthWeaknessBuff);
+        minion.getBuffsCasted().add(antiBuff);
+        minion.setActivationTime(ActivationTime.ON_DEFEND);
+        minion.setTargetType(TargetType.ENEMY_SOLDIER);
 //
 //
 /*        HealthPowerBuff buff = new HealthPowerBuff(null,1000,0,6);
