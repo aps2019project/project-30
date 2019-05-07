@@ -527,5 +527,31 @@
         "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
     ]
+  },
+  {
+    "activationTime": "PASSIVE",
+    "attackType": "MELEE",
+    "fullHealth": 20,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 12,
+    "name": "Piran",
+    "manaPoint": 8,
+    "priceInDrake": 400,
+    "isInGraveCards": false,
+    "targetType": "SELF",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ANTI",
+        "isCasted": false,
+        "antiBuff": "POSION",
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.AntiBuff"
+      }
+    ]
   }
 ]

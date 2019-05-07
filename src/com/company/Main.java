@@ -58,18 +58,17 @@ public class Main {
         StunBuff stunBuff = new StunBuff(null,1, 0, 0);
         HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,1);
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1,0,2);
-        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
+        AntiBuff antiBuff = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
         Minion minion = new Minion();
-        minion.setName("Jadoogar");
-        minion.setPriceInDrake(550);
-        minion.setManaPoint(4);
-        minion.setFullHealth(4);
-        minion.setAttackPower(4);
-        minion.setAttackType(AttackType.RANGED);
-        minion.getBuffsCasted().add(attackPowerBuff);
-        minion.getBuffsCasted().add(healthWeaknessBuff);
+        minion.setName("Piran");
+        minion.setPriceInDrake(400);
+        minion.setManaPoint(8);
+        minion.setFullHealth(20);
+        minion.setAttackPower(12);
+        minion.setAttackType(AttackType.MELEE);
+        minion.getBuffsCasted().add(antiBuff);
         minion.setActivationTime(ActivationTime.PASSIVE);
-        minion.setTargetType(TargetType.NEARBY_EIGHT_CELL);
+        minion.setTargetType(TargetType.SELF);
 //
 //
 /*        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
