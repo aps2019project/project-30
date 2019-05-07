@@ -552,5 +552,39 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "activationTime": "PASSIVE",
+    "attackType": "RANGED",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 6,
+    "name": "Jadougar Azam",
+    "manaPoint": 6,
+    "priceInDrake": 550,
+    "isInGraveCards": false,
+    "targetType": "NEARBY_EIGHT_CELL",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.HolyBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

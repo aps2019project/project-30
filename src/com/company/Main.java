@@ -58,20 +58,23 @@ public class Main {
 ////        StunBuff buff = new StunBuff(null,1, 0, 0);
 //        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
 //        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 2);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 1, 6);
-        HealthWeaknessBuff healthWeaknessBuff1 = new HealthWeaknessBuff(null, 1, 2, 4);
+//        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 1, 6);
+//        HealthWeaknessBuff healthWeaknessBuff1 = new HealthWeaknessBuff(null, 1, 2, 4);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1000, 0, 2);
+        HolyBuff holyBuff = new HolyBuff(null, 1000, 0, 1);
         Minion minion = new Minion();
-        minion.setName("Gorge Sefid");
-        minion.setPriceInDrake(400);
-        minion.setManaPoint(5);
-        minion.setFullHealth(8);
-        minion.setAttackPower(2);
-        minion.setAttackType(AttackType.MELEE);
-        minion.getBuffsToCast().add(healthWeaknessBuff);
-        minion.getBuffsToCast().add(healthWeaknessBuff1);
+        minion.setName("Jadougar Azam");
+        minion.setPriceInDrake(550);
+        minion.setManaPoint(6);
+        minion.setFullHealth(6);
+        minion.setAttackPower(6);
+        minion.setAttackType(AttackType.RANGED);
+        minion.getBuffsToCast().add(holyBuff);
+        minion.getBuffsToCast().add(attackPowerBuff);
+//        minion.getBuffsToCast().add(healthWeaknessBuff1);
 //        minion.getBuffsCasted().add(healthWeaknessBuff);
-        minion.setActivationTime(ActivationTime.ON_ATTACK);
-        minion.setTargetType(TargetType.ENEMY_SOLDIER);
+        minion.setActivationTime(ActivationTime.PASSIVE);
+        minion.setTargetType(TargetType.NEARBY_EIGHT_CELL);
 
 //
 //        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
