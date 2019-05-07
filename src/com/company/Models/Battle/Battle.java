@@ -244,8 +244,54 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shock"));
                 break;
             case CAPTURE_THE_FLAG:
+                player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Zahak"));
+                player.getDeck().setItemCard(ShopController.makeCopyForCreatingNewCardInShop("Soul Eater"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 19
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shamshirzan Fars"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Neyzedar Fars"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Siavash"));//todo : 5
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Ghollabsangdar Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shahzade Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Oghab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Oghab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Ezhdehaye Atsh Andaz"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shahzade Arab"));//todo : 23
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop(""));//todo : 27
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shahzade Arab"));//todo : 30
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Iraj"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shah Ghool"));
+                //Spells
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Kamandar Fars"));//todo : 2
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Empower"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("God Strength"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Madness"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Poison Lake"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Health With Profit"));
                 break;
             case COLLECTING_FLAGS:
+                player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Arash"));
+                player.getDeck().setItemCard(ShopController.makeCopyForCreatingNewCardInShop("Terror Hood"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Sepahsalar Fars"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Kamandar Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Jasoos Arab"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Ghool Sang Andaz"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Goraz Savar"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Goraz Savar"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shir Darande"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Gorg"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Oghab"));//todo : 25
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Goraz Vahshi"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shahzade Arab"));//todo : 29
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Bahman"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Ghool Bozorg"));
+                //Spells
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Hell Fire"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Disarm"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("God Strength"));//todo : 12
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Power Up"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Power"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Attack"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Attack"));//todo : 17
                 break;
         }
         return player;
