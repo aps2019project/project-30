@@ -42,11 +42,11 @@ public class Main {
         AntiBuff antiBuff = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
         DispelBuff dispelBuff = new DispelBuff(null,1,0,0);
         Spell spell = new Spell();
-        spell.setName("Kings Gaurd");
-        spell.setPriceInDrake(1750);
-        spell.setManaPoint(9);
-        spell.getBuffsToCast().add(healthWeaknessBuff);
-        spell.setTargetType(TargetType.NEARBY_EIGHT_CELL);
+        spell.setName("Area Dispel");
+        spell.setPriceInDrake(1500);
+        spell.setManaPoint(2);
+        spell.getBuffsToCast().add(dispelBuff);
+        spell.setTargetType(TargetType.SQUARE_2);
 
 
 //

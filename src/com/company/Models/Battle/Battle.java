@@ -266,7 +266,7 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Madness"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Poison Lake"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Health With Profit"));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Health With Profit"));//todo : 19
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Kings Gaurd"));
                 break;
             case COLLECTING_FLAGS:
                 player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Arash"));
