@@ -237,16 +237,33 @@ public class BattleController {
                     doOnEnemyColum();
                     break;
                 case NEARBY_EIGHT_CELL:
-                    throwBuffInNearbyEightCards(
+                    throwBuffsInNearbyEightCards(
                             battle.getTurnToPlay().getSelectedCard(),
                             battle.getMap().getCellByCoordinates(x, y)
                     );
                     break;
+                case ONE_CELL:
+                    throwBuffsInCells(
+                            battle.getTurnToPlay().getSelectedCard(),
+                            battle.getMap().getCellByCoordinates(x, y),
+                            1
+                    );
             }
         }
     }
 
-    private void throwBuffInNearbyEightCards(Card cardToAttack, Cell targetCell) {
+    private void throwBuffsInCells(Card cardToAttack, Cell targetCell, int range) {
+        int x = targetCell.getxCoordinate();
+        int y = targetCell.getyCoordinate();
+        for (int i = range - 1; i <= 0; i++) {
+            for (int j = range - 1; j <= 0; j++) {
+                Cell cell = battle.getMap().getCellByCoordinates(x + i, y + j);
+
+            }
+        }
+    }
+
+    private void throwBuffsInNearbyEightCards(Card cardToAttack, Cell targetCell) {
         int x = targetCell.getxCoordinate();
         int y = targetCell.getyCoordinate();
         for (int i = -1; i <= 1; i++) {
@@ -772,6 +789,14 @@ public class BattleController {
             Buff buff = targetCard.getBuffsCasted().get(i);
             if (buff instanceof AntiBuff || i > buffsCastedSizeBeforeThrow)
                 buff.cast();
+        }
+    }
+
+    public void throwAttackerCardBuffstoTargetCell(Card attackerCard, Cell targetCell) {
+        List<Buff> cellEffects = targetCell.getCellEffect();
+        int cellEffectsSizeBeforeThrow = targetCell.getCellEffect().size();
+        for (Buff buff : attackerCard.getBuffsToCast()) {
+            cellEffects.add(buff.clone());
         }
     }
 }
