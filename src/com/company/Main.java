@@ -72,14 +72,17 @@ public class Main {
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 3);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
+        HolyBuff holyBuff = new HolyBuff(null, 2, 0, 10);
         ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 8);
         Item item = new Item();
-        item.setName("Majoon Mana");
+        item.setName("Nefrin Marg");
         item.setPriceInDrake(0);
-        item.getBuffsToCast().add(manaBuff);
+//        item.getBuffsToCast().add(manaBuff);
+        item.getBuffsToCast().add(healthWeaknessBuff);
 //        item.getBuffsToCast().add(healthPowerBuff);
-        item.setDescription("increase 2 mana next round");
-        item.setTargetType(TargetType.FRIEND_HERO);
+        item.setDescription("decrease 8 health to nearest soldier");
+        item.setTargetType(TargetType.FRIEND_SOLDIER);
         System.out.println(JsonController.getGson().toJson(item));
     }
 }

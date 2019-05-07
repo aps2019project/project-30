@@ -98,5 +98,45 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Majoon Roein Tan",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "10 holy buff for 2 turns",
+    "isInGraveCards": false,
+    "targetType": "SELF",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 2,
+        "remTurnToCast": 0,
+        "value": 10,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Nefrin Marg",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "decrease 8 health to nearest soldier",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 8,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

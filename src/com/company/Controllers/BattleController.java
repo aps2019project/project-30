@@ -277,6 +277,8 @@ public class BattleController {
                             ((Soldier) randomEnemySoldierCard).getCell().getyCoordinate()
                     );
                     break;
+                case SELF:
+
             }
         }
     }
