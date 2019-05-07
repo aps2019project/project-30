@@ -85,7 +85,6 @@ public class BattleController {
             if(battle.getMode() == Mode.CAPTURE_THE_FLAG) {
                 flag.setFlagHolder(soldier);
                 flag.setHoldingTurn(battle.getTurn());
-                //TODO:flag cell should set to null
                 cellToGo.setFlag(null);
             } else if(battle.getMode() == Mode.COLLECTING_FLAGS){
                 battle.getFlags().remove(flag);
