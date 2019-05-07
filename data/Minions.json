@@ -763,5 +763,55 @@
         "className": "com.company.Models.Buff.AntiBuff"
       }
     ]
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 6,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 2,
+    "name": "Palang",
+    "manaPoint": 8,
+    "priceInDrake": 400,
+    "isInGraveCards": false,
+    "targetType": "ENEMY_MINION",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 2,
+        "value": 8,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ]
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "RANGED",
+    "fullHealth": 10,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Jen",
+    "manaPoint": 5,
+    "priceInDrake": 500,
+    "isInGraveCards": false,
+    "targetType": "WHOLE_FRIEND",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ]
   }
 ]
