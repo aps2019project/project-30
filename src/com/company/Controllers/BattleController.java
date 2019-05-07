@@ -258,7 +258,7 @@ public class BattleController {
         for (int i = range - 1; i <= 0; i++) {
             for (int j = range - 1; j <= 0; j++) {
                 Cell cell = battle.getMap().getCellByCoordinates(x + i, y + j);
-
+                throwAttackerCardBuffstoTargetCell(cardToAttack, cell);
             }
         }
     }
