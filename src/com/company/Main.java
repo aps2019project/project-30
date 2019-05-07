@@ -29,8 +29,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ShopController.initialize();
-        ConsoleInput.menusHandler();
+        //ShopController.initialize();
+        //ConsoleInput.menusHandler();
 
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
@@ -55,22 +55,24 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-////        StunBuff buff = new StunBuff(null,1, 0, 0);
-//        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
-//        Minion minion = new Minion();
-//        minion.setName("Goraz Vahshi");
-//        minion.setPriceInDrake(500);
-//        minion.setManaPoint(6);
-//        minion.setFullHealth(10);
-//        minion.setAttackPower(14);
-//        minion.setAttackType(AttackType.MELEE);
-////        minion.getBuffsToCast().add(healthWeaknessBuff);
-//        minion.getBuffsCasted().add(antiBuff);
-//        minion.setActivationTime(ActivationTime.ON_DEFEND);
-//        minion.setTargetType(TargetType.ENEMY_SOLDIER);
+        StunBuff stunBuff = new StunBuff(null,1, 0, 0);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,1);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1,0,2);
+        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
+        Minion minion = new Minion();
+        minion.setName("Jadoogar");
+        minion.setPriceInDrake(550);
+        minion.setManaPoint(4);
+        minion.setFullHealth(4);
+        minion.setAttackPower(4);
+        minion.setAttackType(AttackType.RANGED);
+        minion.getBuffsCasted().add(attackPowerBuff);
+        minion.getBuffsCasted().add(healthWeaknessBuff);
+        minion.setActivationTime(ActivationTime.PASSIVE);
+        minion.setTargetType(TargetType.NEARBY_EIGHT_CELL);
 //
 //
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
+/*        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
 //        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 1);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
@@ -92,7 +94,7 @@ public class Main {
         item.getBuffsToCast().add(attackPowerBuff);
         //item.getBuffsToCast().add();
         item.setDescription("with death of every friend minion, attack poewr buff will cast");
-        item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);
-        System.out.println(JsonController.getGson().toJson(item));
+        item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);*/
+        System.out.println(JsonController.getGson().toJson(minion));
     }
 }

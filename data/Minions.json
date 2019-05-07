@@ -493,5 +493,39 @@
         "className": "com.company.Models.Buff.AntiBuff"
       }
     ]
+  },
+  {
+    "activationTime": "PASSIVE",
+    "attackType": "RANGED",
+    "fullHealth": 4,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 4,
+    "name": "Jadoogar",
+    "manaPoint": 4,
+    "priceInDrake": 550,
+    "isInGraveCards": false,
+    "targetType": "NEARBY_EIGHT_CELL",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      },
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ]
   }
 ]
