@@ -236,6 +236,28 @@ public class BattleController {
                 case ENEMY_COLUMN:
                     doOnEnemyColum();
                     break;
+                case NEARBY_EIGHT_CELL:
+                    throwBuffInNearbyEightCards(
+                            battle.getTurnToPlay().getSelectedCard(),
+                            battle.getMap().getCellByCoordinates(x, y)
+                    );
+                    break;
+            }
+        }
+    }
+
+    private void throwBuffInNearbyEightCards(Card cardToAttack, Cell targetCell) {
+        int x = targetCell.getxCoordinate();
+        int y = targetCell.getyCoordinate();
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i != 0 & j != 0) {
+                    Card cardInCell = battle.getMap()
+                            .getCellByCoordinates(x + i, y + j)
+                            .getCardInCell();
+                    if (cardInCell != null)
+                        throwAttackerCardBuffstoTargetCard(cardToAttack, cardInCell);
+                }
             }
         }
     }
