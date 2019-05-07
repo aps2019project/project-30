@@ -29,6 +29,7 @@ import static java.lang.Math.*;
 
 public class BattleController {
     Battle battle;
+    private Random random = new Random();
 
     public BattleController(Battle battle) {
         this.battle = battle;
@@ -162,7 +163,6 @@ public class BattleController {
     }
 
     private void botMovements() {
-        Random random = new Random();
         if (battle.isBotIsActive()) {
             if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
                 for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
@@ -249,6 +249,14 @@ public class BattleController {
                             1
                     );
                     break;
+                case RANDOM_FRIEND_SOLDIER:
+                    Card randomSoldierCard = battle.getTurnToPlay().getAliveCards().get(
+                            random.nextInt(battle.getTurnToPlay().getAliveCards().size())
+                    );
+                    doSpecialPowerOnFreindSolder(
+                            ((Soldier) randomSoldierCard).getCell().getxCoordinate(),
+                            ((Soldier) randomSoldierCard).getCell().getyCoordinate()
+                    );
             }
         }
     }
@@ -375,7 +383,7 @@ public class BattleController {
     }
 
     private void doSpecialPowerOnEnemySoldier(int x, int y) {
-        if (playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
+        if (cardBelongsToCurrentTurnPlayer(x, y, getEenmyPlayer(battle.getTurnToPlay()))) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -383,6 +391,10 @@ public class BattleController {
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.INVALID_CARD);
         }
+    }
+
+    private boolean cardBelongsToCurrentTurnPlayer(int x, int y, Player enemyPlayer) {
+        return playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == enemyPlayer;
     }
 
     private void doSpecialPowerOnFreindSolder(int x, int y) {
@@ -407,7 +419,7 @@ public class BattleController {
 
     private void doSpecialPowerFriendHero(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Hero) &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
+                cardBelongsToCurrentTurnPlayer(x, y, battle.getTurnToPlay())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -419,7 +431,7 @@ public class BattleController {
 
     private void doSpecialPowerOnFriendMinion(int x, int y) {
         if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == battle.getTurnToPlay()) {
+                cardBelongsToCurrentTurnPlayer(x, y, battle.getTurnToPlay())) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -433,7 +445,7 @@ public class BattleController {
 
     private void doSpecialPowerOnEnemyMinion(int x, int y) {
         if ((battle.getMap().getCellByCoordinates(x, y).getCardInCell() instanceof Minion) &&
-                playerThatHasThisCard(battle.getMap().getCellByCoordinates(x, y).getCardInCell()) == getEenmyPlayer(battle.getTurnToPlay())) {
+                cardBelongsToCurrentTurnPlayer(x, y, getEenmyPlayer(battle.getTurnToPlay()))) {
             doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x, y));
             if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                 battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
