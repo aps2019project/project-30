@@ -13,7 +13,7 @@ public class Player {
     private List<Item> items = new ArrayList<>();
     private Account account;
     private String name;
-    private Deck deck;
+    private Deck deck = new Deck("Bot Deck");
     private int score = 0;
     private int mana = 2;
     private int maxMana = 2;

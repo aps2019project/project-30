@@ -6,9 +6,9 @@ login hamid
 123
 enter shop
 buy Eight Heads Dragon
-buy Arjang div
+buy Arzhang Div
 buy Shah Ghool
-buy Shahzade Irani
+buy Shahzade Arab
 buy Sepahsalar Fars
 buy Total Disarm
 buy Empower
@@ -18,7 +18,7 @@ buy Neyzedar Fars
 buy Asbsavar Fars
 buy Kamandar Arab
 buy Ghollabsangdar Arab
-buy Neyze Dar Arab
+buy Neyzedar Arab
 buy Jasoos Arab
 buy Gorzdar Arab
 buy Div Siah
@@ -54,6 +54,13 @@ add 20 to deck test
 add 21 to deck test
 add 22 to deck test
 select deck test
+exit
+enter battle
+story 1
+
+
+
+
 exit
 exit
 login majid

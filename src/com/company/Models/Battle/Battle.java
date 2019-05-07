@@ -53,19 +53,21 @@ public class Battle {
     }
 
     public Battle(int storyLevel) {
+        setModeByStoryLevel(storyLevel);
         botIsActive = true;
         beginTimer();
         this.map = new Map();
         this.turnToPlay = players[0];
         players[0] = new Player(Account.getLoggedInAccount());
         players[1] = getBotPlayer();
-        initPlayersHand(players[1]);
+        players[0].getDeck().getDeckController().initializeHand();
+        players[1].getDeck().getDeckController().initializeHand();
         this.turnToPlay = players[0];
         this.battleType = BattleType.STORY;
-        setModeByStoryLevel(storyLevel);
         mode.setBattle(this);
         this.winningPrize = 500 * storyLevel;
         playingBattle = this;
+//        initPlayersHand(players[1]);
         initHeroes();
         initCardsHealth();
         System.out.println(map.toString());
