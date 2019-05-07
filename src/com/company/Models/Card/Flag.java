@@ -23,6 +23,10 @@ public class Flag {
         return cell;
     }
 
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
     public int getHoldingTurn() {
         return holdingTurn;
     }
