@@ -125,7 +125,7 @@
     "priceInDrake": 20000,
     "description": "give 2 holy buffs to minions on spawn",
     "isInGraveCards": false,
-    "targetType": "WHOLE_FRIEND",
+    "targetType": "FRIEND_MINION",
     "buffsToCast": [
       {
         "type": "POSSETIVE",
@@ -195,6 +195,66 @@
         "remTurnToCast": 0,
         "value": 8,
         "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Shock Hammer",
+    "manaPoint": 0,
+    "priceInDrake": 15000,
+    "description": "disarming one enemy soldier by friend hero",
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "DISARM",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.DisarmBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Poisonous Dagger",
+    "manaPoint": 0,
+    "priceInDrake": 7000,
+    "description": "casting poison buff on random enemy soldier on friend soldier attack",
+    "isInGraveCards": false,
+    "targetType": "RANDOM_ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.PosionBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Assassination Dagger",
+    "manaPoint": 0,
+    "priceInDrake": 15000,
+    "description": "damaging one unit to enemy hero on spawning each friend soldier",
+    "isInGraveCards": false,
+    "targetType": "ENEMY_HERO",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 1,
+        "className": "com.company.Models.Buff.HealthPowerBuff"
       }
     ],
     "buffsCasted": []
