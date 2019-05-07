@@ -88,7 +88,7 @@ public class BattleController {
                 cellToGo.setFlag(null);
             } else if (battle.getMode() == Mode.COLLECTING_FLAGS) {
                 flag.setFlagHolder(soldier);
-                battle.getFlags().remove(flag);
+//                battle.getFlags().remove(flag); WTF Is This ??????????
                 flag.setCell(null);
                 cellToGo.setFlag(null);
             }
@@ -812,18 +812,22 @@ public class BattleController {
     }
 
     public void checkGameIsFinished() {
-        if (battle.getMode().getWinner() != null) {
-            System.out.println("Game Finished : " + battle.getMode().getWinner().getAccount().getUsername());
+        Player winner = battle.getMode().getWinner();
+        if (winner != null) {
+            System.out.println("Game Finished : " + winner.getName());
             BattleLog battleLog = new BattleLog(
-                    battle.getPlayers()[0].getAccount().getUsername(),
-                    battle.getPlayers()[1].getAccount().getUsername(),
-                    battle.getMode().getWinner().getAccount().getUsername(),
+                    battle.getPlayers()[0].getName(),
+                    battle.getPlayers()[1].getName(),
+                    winner.getName(),
                     battle.getTimePassedInSeconds()
             );
             for (Player player : battle.getPlayers()) {
-                player.getAccount().getBattleHistories().add(battleLog);
+                if (player.getAccount() != null) {
+                    player.getAccount().getBattleHistories().add(battleLog);
+                }
             }
-            battle.getMode().getWinner().getAccount().incremeantWins();
+            if (winner.getAccount() != null)
+                winner.getAccount().incremeantWins();
 
             ConsoleInput.setMenu(ConsoleInput.Menu.NEW_BATTLE);
         }

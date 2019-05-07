@@ -357,6 +357,8 @@ public class ConsoleInput {
                     0
             );
             setMenu(Menu.BATTLE);
+        }  else if (command.matches("exit")) {
+            setMenu(Menu.MAIN);
         }
     }
 
