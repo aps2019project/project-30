@@ -291,7 +291,7 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Power Up"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Power"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Attack"));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("All Attack"));//todo : 17
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Weakening"));
                 break;
         }
         return player;
