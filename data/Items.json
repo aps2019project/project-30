@@ -98,5 +98,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Shamshir Chini",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "5 attck power to melee soldier",
+    "isInGraveCards": false,
+    "targetType": "MELEE_SOLDIERS",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 5,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

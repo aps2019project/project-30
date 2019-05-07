@@ -28,9 +28,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        ShopController.initialize();
-        ConsoleInput.menusHandler();
-
+        //ShopController.initialize();
+        //ConsoleInput.menusHandler();
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
@@ -69,17 +68,17 @@ public class Main {
 //        minion.setTargetType(TargetType.ENEMY_SOLDIER);
 //
 //
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 3);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 5);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
         ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
         Item item = new Item();
-        item.setName("Majoon Mana");
+        item.setName("Shamshir Chini");
         item.setPriceInDrake(0);
-        item.getBuffsToCast().add(manaBuff);
-//        item.getBuffsToCast().add(healthPowerBuff);
-        item.setDescription("increase 2 mana next round");
-        item.setTargetType(TargetType.FRIEND_HERO);
+        item.getBuffsToCast().add(attackPowerBuff);
+        //item.getBuffsToCast().add();
+        item.setDescription("5 attck power to melee soldier");
+        item.setTargetType(TargetType.MELEE_SOLDIERS);
         System.out.println(JsonController.getGson().toJson(item));
     }
 }
