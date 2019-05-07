@@ -227,11 +227,11 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Neyzedar Arab"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Gorzdar Arab"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Gorzdar Arab"));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 17
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Ghool Tak Cheshm"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Mar Sami"));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 21
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 22
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 26
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Mar Ghool Peykar"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Gorge Sefid"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Jadougar Azam"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Siavash"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Nane Sarma"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Arzhang Div"));

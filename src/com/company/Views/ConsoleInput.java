@@ -23,6 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConsoleInput {
+    public static final String SELL_CARD_REGEX = "sell (?<cardId>\\d+)";
     private static Scanner scanner = new Scanner(System.in);
 
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
@@ -215,7 +216,7 @@ public class ConsoleInput {
             matcher.find();
             ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
         } else if (command.matches("sell \\d+")) {
-            Matcher matcher = Pattern.compile("sell (?<cardId>\\d+)").matcher(command);
+            Matcher matcher = Pattern.compile(SELL_CARD_REGEX).matcher(command);
             matcher.find();
             ShopController.sell(Account.getLoggedInAccount(), matcher.group("cardId"));
         } else if (command.matches("help")) {
