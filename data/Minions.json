@@ -812,5 +812,30 @@
         "className": "com.company.Models.Buff.AttackPowerBuff"
       }
     ]
+  },
+  {
+    "activationTime": "ON_ATTACK",
+    "attackType": "MELEE",
+    "fullHealth": 2,
+    "health": 0,
+    "areaOfEffect": 0,
+    "attackPower": 6,
+    "name": "Pahlavan Fars",
+    "manaPoint": 9,
+    "priceInDrake": 600,
+    "isInGraveCards": false,
+    "targetType": "RANDOM_ENEMY_SOLDIER",
+    "buffsToCast": [],
+    "buffsCasted": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 5,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ]
   }
 ]
