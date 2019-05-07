@@ -218,5 +218,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Poisonous Dagger",
+    "manaPoint": 0,
+    "priceInDrake": 7000,
+    "description": "casting poison buff on random enemy soldier on friend soldier attack",
+    "isInGraveCards": false,
+    "targetType": "ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "NEGATIVE",
+        "name": "POSION",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.PosionBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

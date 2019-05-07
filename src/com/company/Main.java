@@ -69,17 +69,18 @@ public class Main {
 //
 //
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 1);
+        PosionBuff poisonBuff = new PosionBuff(null,1,0,0);
         DisarmBuff disarmBuff = new DisarmBuff(null,1,0,0);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
         ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
         HolyBuff holyBuff = new HolyBuff(null,2,0,0);
         Item item = new Item();
-        item.setName("Shock Hammer");
-        item.setPriceInDrake(15000);
-        item.getBuffsToCast().add(disarmBuff);
+        item.setName("Poisonous Dagger");
+        item.setPriceInDrake(7000);
+        item.getBuffsToCast().add(poisonBuff);
         //item.getBuffsToCast().add();
-        item.setDescription("disarming one enemy soldier by friend hero");
+        item.setDescription("casting poison buff on random enemy soldier on friend soldier attack");
         item.setTargetType(TargetType.ENEMY_SOLDIER);
         System.out.println(JsonController.getGson().toJson(item));
     }
