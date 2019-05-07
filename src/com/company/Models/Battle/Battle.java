@@ -1,6 +1,7 @@
 package com.company.Models.Battle;
 
 import com.company.Controllers.BattleController;
+import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
@@ -57,7 +58,7 @@ public class Battle {
         this.map = new Map();
         this.turnToPlay = players[0];
         players[0] = new Player(Account.getLoggedInAccount());
-        players[1] = new Player(Account.getLoggedInAccount());
+        players[1] = getBotPlayer();
         initPlayersHand(players[1]);
         this.turnToPlay = players[0];
         this.battleType = BattleType.STORY;
@@ -86,8 +87,8 @@ public class Battle {
                 Flag flag1 = new Flag(map.getCellByCoordinates(5, 1));
                 map.getCellByCoordinates(5, 1).setFlag(flag1);
                 flags.add(flag1);
-                Flag flag2 = new Flag(map.getCellByCoordinates(5, 1));
-                map.getCellByCoordinates(5, 1).setFlag(flag2);
+                Flag flag2 = new Flag(map.getCellByCoordinates(5, 5));
+                map.getCellByCoordinates(5, 5).setFlag(flag2);
                 flags.add(flag2);
                 break;
         }
@@ -223,5 +224,22 @@ public class Battle {
 
     public int getTimePassedInSeconds() {
         return timePassedInSeconds;
+    }
+
+    public Player getBotPlayer() {
+        Player player = new Player();
+        player.setName("BOT");
+        switch (mode) {
+            case KILLING_GENERAL:
+                player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Simorgh"));
+                player.getDeck().setItemCard(ShopController.makeCopyForCreatingNewCardInShop(""));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop(""));
+                break;
+            case CAPTURE_THE_FLAG:
+                break;
+            case COLLECTING_FLAGS:
+                break;
+        }
+        return player;
     }
 }

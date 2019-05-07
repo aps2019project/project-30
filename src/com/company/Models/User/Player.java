@@ -29,11 +29,8 @@ public class Player {
         this.deck = account.getMainDeck();
     }
 
-    public Player(Player player) {
-        this.name = "BOT";
-        this.deck = player.getDeck();
-        this.deck.setHeroCard(player.getDeck().getHeroCard());
-        this.deck.setHeroCard(player.getDeck().getItemCard());
+    public Player() {
+
     }
 
 

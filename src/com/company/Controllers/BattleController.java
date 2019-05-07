@@ -811,6 +811,7 @@ public class BattleController {
                 player.getAccount().getBattleHistories().add(battleLog);
             }
             battle.getMode().getWinner().getAccount().incremeantWins();
+
             ConsoleInput.setMenu(ConsoleInput.Menu.NEW_BATTLE);
         }
     }
