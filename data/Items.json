@@ -138,5 +138,65 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Random Damage",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "increase 8 attack power to friend soldier",
+    "isInGraveCards": false,
+    "targetType": "FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 2,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Terror Hood",
+    "manaPoint": 0,
+    "priceInDrake": 5000,
+    "description": "decrease 2 attackpower to random soldier",
+    "isInGraveCards": false,
+    "targetType": "RANDOM_ENEMY_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HEALTH_WEAKNESS",
+        "isCasted": false,
+        "castTime": 1,
+        "remTurnToCast": 0,
+        "value": 8,
+        "className": "com.company.Models.Buff.HealthWeaknessBuff"
+      }
+    ],
+    "buffsCasted": []
+  },
+  {
+    "name": "Blades Of Agility",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "increase attack power of random soldier by 6",
+    "isInGraveCards": false,
+    "targetType": "RANDOM_FRIEND_SOLDIER",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "ATTACK_POWER",
+        "isCasted": false,
+        "castTime": 1000,
+        "remTurnToCast": 0,
+        "value": 6,
+        "className": "com.company.Models.Buff.AttackPowerBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

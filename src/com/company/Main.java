@@ -69,20 +69,20 @@ public class Main {
 //        minion.setTargetType(TargetType.ENEMY_SOLDIER);
 //
 //
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 3);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
         HolyBuff holyBuff = new HolyBuff(null, 2, 0, 10);
-        ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
+        ManaBuff manaBuff = new ManaBuff(null, 1000, 0, 1);
         HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 8);
         Item item = new Item();
-        item.setName("Nefrin Marg");
-        item.setPriceInDrake(0);
+        item.setName("King Wisdom");
+        item.setPriceInDrake(9000);
 //        item.getBuffsToCast().add(manaBuff);
-        item.getBuffsToCast().add(healthWeaknessBuff);
+        item.getBuffsToCast().add(manaBuff);
 //        item.getBuffsToCast().add(healthPowerBuff);
-        item.setDescription("decrease 8 health to nearest soldier");
-        item.setTargetType(TargetType.FRIEND_SOLDIER);
+        item.setDescription("increase mana by 1");
+        item.setTargetType(TargetType.ENEMY_HERO);
         System.out.println(JsonController.getGson().toJson(item));
     }
 }
