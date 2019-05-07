@@ -246,7 +246,6 @@ public class Battle {
             case CAPTURE_THE_FLAG:
                 player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Zahak"));
                 player.getDeck().setItemCard(ShopController.makeCopyForCreatingNewCardInShop("Soul Eater"));
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Div Siah"));//todo : 19
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shamshirzan Fars"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Neyzedar Fars"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Siavash"));//todo : 5
@@ -267,6 +266,7 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Madness"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Poison Lake"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Health With Profit"));
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Health With Profit"));//todo : 19
                 break;
             case COLLECTING_FLAGS:
                 player.getDeck().setHeroCard(ShopController.makeCopyForCreatingNewCardInShop("Arash"));
