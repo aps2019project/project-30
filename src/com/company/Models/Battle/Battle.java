@@ -256,7 +256,7 @@ public class Battle {
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Ezhdehaye Atsh Andaz"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Palang"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop(""));//todo : 27
-                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shahzade Arab"));//todo : 30
+                player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Giv"));//todo : 30
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Iraj"));
                 player.getDeck().getDeckCards().add(ShopController.makeCopyForCreatingNewCardInShop("Shah Ghool"));
                 //Spells
