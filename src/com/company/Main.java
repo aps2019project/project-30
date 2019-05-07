@@ -68,17 +68,17 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-/*
+        HealthWeaknessBuff healthWeaknessBuff1 = new HealthWeaknessBuff(null, 1, 2, 8);
         Minion minion = new Minion();
-        minion.setName("Piran");
+        minion.setName("Palang");
         minion.setPriceInDrake(400);
         minion.setManaPoint(8);
-        minion.setFullHealth(20);
-        minion.setAttackPower(12);
+        minion.setFullHealth(6);
+        minion.setAttackPower(2);
         minion.setAttackType(AttackType.MELEE);
-        minion.getBuffsCasted().add(antiBuff);
-        minion.setActivationTime(ActivationTime.PASSIVE);
-        minion.setTargetType(TargetType.SELF);*/
+        minion.getBuffsCasted().add(healthWeaknessBuff1);
+        minion.setActivationTime(ActivationTime.ON_ATTACK);
+        minion.setTargetType(TargetType.ENEMY_MINION);
 //
 //
 /*        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
@@ -104,6 +104,6 @@ public class Main {
         //item.getBuffsToCast().add();
         item.setDescription("with death of every friend minion, attack poewr buff will cast");
         item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);*/
-        System.out.println(JsonController.getGson().toJson(spell));
+        System.out.println(JsonController.getGson().toJson(minion));
     }
 }
