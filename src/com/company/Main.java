@@ -57,17 +57,18 @@ public class Main {
 
 ////        StunBuff buff = new StunBuff(null,1, 0, 0);
 //        AntiBuff antiBuff = new AntiBuff(Buff.Name.DISARM, 1000, 0, 0);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 2);
+//        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1, 0, 2);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null, 1000, 0, 1);
         Minion minion = new Minion();
-        minion.setName("Ghool Tak Cheshm");
+        minion.setName("Mar Ghool Peykar");
         minion.setPriceInDrake(500);
-        minion.setManaPoint(7);
-        minion.setFullHealth(12);
-        minion.setAttackPower(11);
-        minion.setAttackType(AttackType.HYBRID);
+        minion.setManaPoint(8);
+        minion.setFullHealth(14);
+        minion.setAttackPower(7);
+        minion.setAttackType(AttackType.RANGED);
 //        minion.getBuffsToCast().add(healthWeaknessBuff);
         minion.getBuffsCasted().add(healthWeaknessBuff);
-        minion.setActivationTime(ActivationTime.ON_DEATH);
+        minion.setActivationTime(ActivationTime.ON_SPAWN);
         minion.setTargetType(TargetType.NEAR_ENEMYS_HERO);
 
 //
