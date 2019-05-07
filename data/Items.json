@@ -118,5 +118,25 @@
       }
     ],
     "buffsCasted": []
+  },
+  {
+    "name": "Ghosl Tamid",
+    "manaPoint": 0,
+    "priceInDrake": 0,
+    "description": "give 2 holy buffs to minions on spawn",
+    "isInGraveCards": false,
+    "targetType": "WHOLE_MINIONS",
+    "buffsToCast": [
+      {
+        "type": "POSSETIVE",
+        "name": "HOLY",
+        "isCasted": false,
+        "castTime": 2,
+        "remTurnToCast": 0,
+        "value": 0,
+        "className": "com.company.Models.Buff.HolyBuff"
+      }
+    ],
+    "buffsCasted": []
   }
 ]

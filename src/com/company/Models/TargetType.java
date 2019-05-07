@@ -17,5 +17,6 @@ public enum TargetType {
     FRIEND_SOLDIER,
     ONE_CELL,
     NEARBY_EIGHT_CELL,
-    MELEE_SOLDIERS
+    MELEE_SOLDIERS,
+    WHOLE_MINIONS
 }

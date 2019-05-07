@@ -72,13 +72,14 @@ public class Main {
         HealthPowerBuff healthPowerBuff = new HealthPowerBuff(null, 1000, 0, 2);
         AttackWeaknessBuff attackWeaknessBuff = new AttackWeaknessBuff(null, 1000, 0, 2);
         ManaBuff manaBuff = new ManaBuff(null, 1, 1, 3);
+        HolyBuff holyBuff = new HolyBuff(null,2,0,0);
         Item item = new Item();
-        item.setName("Shamshir Chini");
+        item.setName("Ghosl Ta'mid");
         item.setPriceInDrake(0);
-        item.getBuffsToCast().add(attackPowerBuff);
+        item.getBuffsToCast().add(holyBuff);
         //item.getBuffsToCast().add();
-        item.setDescription("5 attck power to melee soldier");
-        item.setTargetType(TargetType.MELEE_SOLDIERS);
+        item.setDescription("give 2 holy buffs to minions on spawn");
+        item.setTargetType(TargetType.WHOLE_MINIONS);
         System.out.println(JsonController.getGson().toJson(item));
     }
 }
