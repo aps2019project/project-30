@@ -1,6 +1,7 @@
 package com.company.Models.User;
 
 import com.company.Models.Battle.BattleLog;
+import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Battle.Battle;

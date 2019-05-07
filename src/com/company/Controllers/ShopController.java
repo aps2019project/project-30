@@ -22,19 +22,23 @@ public class ShopController {
 
     public static void buy(Account account, String cardName) {
         if (Shop.cardNameExistsInShop(cardName)) {
-            if (account.getDrake() >= Shop.getCardByName(cardName).getPriceInDrake()) {
-                Card newCard = makeCopyForCreatingNewCardInShop(cardName);
-                AccountController.addCardToCollection(account,newCard);
-                account.decrementDrake(newCard.getPriceInDrake());
+            if (Shop.getCardByName(cardName).getPriceInDrake() != 0) {
+                if (account.getDrake() >= Shop.getCardByName(cardName).getPriceInDrake()) {
+                    Card newCard = makeCopyForCreatingNewCardInShop(cardName);
+                    AccountController.addCardToCollection(account, newCard);
+                    account.decrementDrake(newCard.getPriceInDrake());
+                } else {
+                    ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_DRAKE);
+                }
             } else {
-                ConsoleOutput.printErrorMessage(ErrorType.NOTENOUGH_DRAKE);
+                ConsoleOutput.printErrorMessage(ErrorType.COLLECTIBLE_ITEM);
             }
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
     }
 
-    public static Card makeCopyForCreatingNewCardInShop(String cardName){
+    public static Card makeCopyForCreatingNewCardInShop(String cardName) {
         switch (Card.getCardType(cardName)) {
             case "Item":
                 return ((Item) Shop.getCardByName(cardName)).makeCopyForCreatingNewCardInShop();
@@ -61,5 +65,11 @@ public class ShopController {
 
     public static void initialize() {
         Shop.getShopCollection().getCards().addAll(JsonController.getCards());
+        Shop.getShopCollection().getCards().stream().forEach(card -> {
+                    if (card instanceof Item) {
+                        Shop.getCollectibleItems().add((Item) card);
+                    }
+                }
+        );
     }
 }
