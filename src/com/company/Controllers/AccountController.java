@@ -59,7 +59,7 @@ public class AccountController {
             if (o1.getWins() == o2.getWins()){
                 return o1.getUsername().compareTo(o2.getUsername());
             } else {
-                return o1.getWins() - o2.getWins();
+                return o2.getWins() - o1.getWins();
             }
         });
         AccountView.printLeaderBoard(leaderBoard);
