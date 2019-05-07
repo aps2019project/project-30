@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 
 public class ConsoleInput {
     public static final String SELL_CARD_REGEX = "sell (?<cardId>\\d+)";
+    public static final String CREATE_ACCOUNT_REGEX = "create account \\w+";
     private static Scanner scanner = new Scanner(System.in);
 
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
@@ -171,7 +172,7 @@ public class ConsoleInput {
     }
 
     public static void accountMenuCommandsChecker(String command) {
-        if (command.matches("create account \\w+")) {
+        if (command.matches(CREATE_ACCOUNT_REGEX)) {
             Matcher usernameMatcher = Pattern.compile("create account (?<username>\\w+)").matcher(command);
             if (usernameMatcher.find()) {
                 command = scanner.nextLine();
@@ -295,8 +296,10 @@ public class ConsoleInput {
             setMenu(Menu.GRAVEYARD);
         } else if (command.matches("help")) {
             BattleView.printBattleCommandsToHelp();
-        }else if (command.matches("show map")) {
+        } else if (command.matches("show map")) {
             ConsoleOutput.printMessage(Battle.getPlayingBattle().getMap().toString());
+        } else if (command.matches("exit")) {
+            setMenu(Menu.NEW_BATTLE);
         }
     }
 
@@ -347,17 +350,27 @@ public class ConsoleInput {
                     Integer.valueOf(multiPlayerMatcher.group("flags"))
             );
             setMenu(Menu.BATTLE);
-        } else if (command.matches("start game \\w+ \\S+")) {
-            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+) (?<opponent>\\S+)").matcher(command);
+        } else if (command.matches("start custom game \\w+ \\S+")) {
+            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+)").matcher(command);
             multiPlayerMatcher.find();
             Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(multiPlayerMatcher.group("deckName")));
+            Mode mode = Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode"));
             new Battle(
-                    Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode")),
-                    Account.getAccountByUsername(multiPlayerMatcher.group("opponent")),
+                    mode,
                     0
             );
             setMenu(Menu.BATTLE);
-        }  else if (command.matches("exit")) {
+        } else if (command.matches("start custom game \\w+ \\S+ \\d+")) {
+            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+) (?<flags>\\d+)").matcher(command);
+            multiPlayerMatcher.find();
+            Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(multiPlayerMatcher.group("deckName")));
+            Mode mode = Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode"));
+            new Battle(
+                    mode,
+                    Integer.valueOf(multiPlayerMatcher.group("flags"))
+            );
+            setMenu(Menu.BATTLE);
+        } else if (command.matches("exit")) {
             setMenu(Menu.MAIN);
         }
     }

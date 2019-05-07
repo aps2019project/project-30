@@ -59,13 +59,34 @@ public class Battle {
         beginTimer();
         this.turnToPlay = players[0];
         players[0] = new Player(Account.getLoggedInAccount());
-        players[1] = getBotPlayer();
+        players[1] = getBotPlayer(mode);
         players[0].getDeck().getDeckController().initializeHand();
         players[1].getDeck().getDeckController().initializeHand();
         this.turnToPlay = players[0];
         this.battleType = BattleType.STORY;
         mode.setBattle(this);
         this.winningPrize = 500 * storyLevel;
+        playingBattle = this;
+//        initPlayersHand(players[1]);
+        initHeroes();
+        initCardsHealth();
+        System.out.println(map.toString());
+    }
+
+    public Battle(Mode mode, int flags) {
+        this.map = new Map();
+        initFlagMode();
+        botIsActive = true;
+        beginTimer();
+        this.turnToPlay = players[0];
+        players[0] = new Player(Account.getLoggedInAccount());
+        players[1] = getBotPlayer(mode);
+        players[0].getDeck().getDeckController().initializeHand();
+        players[1].getDeck().getDeckController().initializeHand();
+        this.turnToPlay = players[0];
+        this.battleType = BattleType.STORY;
+        mode.setBattle(this);
+        this.winningPrize = 1500;
         playingBattle = this;
 //        initPlayersHand(players[1]);
         initHeroes();
@@ -219,7 +240,7 @@ public class Battle {
         return timePassedInSeconds;
     }
 
-    public Player getBotPlayer() {
+    public static Player getBotPlayer(Mode mode) {
         Player player = new Player();
         player.setName("BOT");
         switch (mode) {
