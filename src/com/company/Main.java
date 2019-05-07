@@ -35,6 +35,18 @@ public class Main {
         //AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 1, 4);
 //        StunBuff stunBuff = new StunBuff(null, 1, 0, 0);
 
+        StunBuff stunBuff = new StunBuff(null,1, 0, 0);
+        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,1);
+        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1,0,2);
+        AntiBuff antiBuff = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
+        DispelBuff dispelBuff = new DispelBuff(null,1,0,0);
+        Spell spell = new Spell();
+        spell.setName("Dispel");
+        spell.setPriceInDrake(2100);
+        spell.setManaPoint(0);
+        spell.getBuffsToCast().add(dispelBuff);
+        spell.setTargetType(TargetType.ENEMY_SOLDIER);
+
 
 //
 //        Hero hero = new Hero();
@@ -55,10 +67,7 @@ public class Main {
 //
 ////        Gson gson = new Gson();
 
-        StunBuff stunBuff = new StunBuff(null,1, 0, 0);
-        HealthWeaknessBuff healthWeaknessBuff = new HealthWeaknessBuff(null,1,0,1);
-        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null,1,0,2);
-        AntiBuff antiBuff = new AntiBuff(Buff.Name.POSION, 1000, 0, 0);
+/*
         Minion minion = new Minion();
         minion.setName("Piran");
         minion.setPriceInDrake(400);
@@ -68,7 +77,7 @@ public class Main {
         minion.setAttackType(AttackType.MELEE);
         minion.getBuffsCasted().add(antiBuff);
         minion.setActivationTime(ActivationTime.PASSIVE);
-        minion.setTargetType(TargetType.SELF);
+        minion.setTargetType(TargetType.SELF);*/
 //
 //
 /*        AttackPowerBuff attackPowerBuff = new AttackPowerBuff(null, 1000, 0, 6);
@@ -94,6 +103,6 @@ public class Main {
         //item.getBuffsToCast().add();
         item.setDescription("with death of every friend minion, attack poewr buff will cast");
         item.setTargetType(TargetType.RANDOM_FRIEND_SOLDIER);*/
-        System.out.println(JsonController.getGson().toJson(minion));
+        System.out.println(JsonController.getGson().toJson(spell));
     }
 }
