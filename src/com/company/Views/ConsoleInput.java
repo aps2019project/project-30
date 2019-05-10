@@ -30,6 +30,10 @@ public class ConsoleInput {
     public static final String SHOW_LEADERBOARD = "show leaderboard";
     public static final String HELP = "help";
     public static final String EXIT = "exit";
+    public static final String LOGOUT = "logout";
+    public static final String ENTER_COLLECTION = "enter collection";
+    public static final String ENTER_SHOP = "enter shop";
+    public static final String ENTER_BATTLE = "enter battle";
     private static Scanner scanner = new Scanner(System.in);
 
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
@@ -84,15 +88,13 @@ public class ConsoleInput {
     }
 
     public static void mainMenuCommandsChecker(String command) {
-        if (command.matches("save")) {
-            //todo
-        } else if (command.matches("logout")) {
+        if (command.matches(LOGOUT)) {
             AccountController.logout();
-        } else if (command.matches("enter collection")) {
+        } else if (command.matches(ENTER_COLLECTION)) {
             setMenu(Menu.COLLECTION);
-        } else if (command.matches("enter shop")) {
+        } else if (command.matches(ENTER_SHOP)) {
             setMenu(Menu.SHOP);
-        } else if (command.matches("enter battle")) {
+        } else if (command.matches(ENTER_BATTLE)) {
             setMenu(Menu.NEW_BATTLE);
         } else if (command.matches(EXIT)) {
             setMenu(Menu.ACCOUNT);
@@ -187,26 +189,6 @@ public class ConsoleInput {
             AccountView.printAccountCommandsToHelp();
         } else if (command.matches(EXIT)) {
             setMenu(Menu.EXIT);
-        }
-    }
-
-    private static void loginFormater(String command) {
-        Matcher usernameMatcher = Pattern.compile(LOGIN).matcher(command);
-        if (usernameMatcher.find()) {
-            command = scanner.nextLine();
-            Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
-            passwordMatcher.find();
-            AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
-        }
-    }
-
-    private static void createAccountFormater(String command) {
-        Matcher usernameMatcher = Pattern.compile(CREATE_ACCOUNT).matcher(command);
-        if (usernameMatcher.find()) {
-            command = scanner.nextLine();
-            Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
-            passwordMatcher.find();
-            AccountController.createAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
         }
     }
 
@@ -392,4 +374,26 @@ public class ConsoleInput {
         System.out.println("please enter (x, y) to use minion special power");
         battleMenuCommandsChecker("use special power " + scanner.nextLine());
     }
+
+
+    private static void loginFormater(String command) {
+        Matcher usernameMatcher = Pattern.compile(LOGIN).matcher(command);
+        if (usernameMatcher.find()) {
+            command = scanner.nextLine();
+            Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
+            passwordMatcher.find();
+            AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
+        }
+    }
+
+    private static void createAccountFormater(String command) {
+        Matcher usernameMatcher = Pattern.compile(CREATE_ACCOUNT).matcher(command);
+        if (usernameMatcher.find()) {
+            command = scanner.nextLine();
+            Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
+            passwordMatcher.find();
+            AccountController.createAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
+        }
+    }
+
 }
