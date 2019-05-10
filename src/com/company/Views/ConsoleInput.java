@@ -24,7 +24,12 @@ import java.util.regex.Pattern;
 
 public class ConsoleInput {
     public static final String SELL_CARD_REGEX = "sell (?<cardId>\\d+)";
-    public static final String CREATE_ACCOUNT_REGEX = "create account \\w+";
+    public static final String CREATE_ACCOUNT = "create account (?<username>\\w+)";
+    public static final String PASSWORD = "(?<password>\\w+)";
+    public static final String LOGIN = "login (?<username>\\w+)";
+    public static final String SHOW_LEADERBOARD = "show leaderboard";
+    public static final String HELP = "help";
+    public static final String EXIT = "exit";
     private static Scanner scanner = new Scanner(System.in);
 
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
@@ -89,9 +94,9 @@ public class ConsoleInput {
             setMenu(Menu.SHOP);
         } else if (command.matches("enter battle")) {
             setMenu(Menu.NEW_BATTLE);
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.ACCOUNT);
-        } else if (command.matches("help")) {
+        } else if (command.matches(HELP)) {
             MainMenuView.printMainMenuCommandsToHelp();
         }
     }
@@ -116,7 +121,7 @@ public class ConsoleInput {
             Account.getLoggedInAccount().getCollection().getCollectionController().showDeckIsValidate(commandParts[2]);
         } else if (command.matches("remove \\w+ from deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().remove(commandParts[1], commandParts[4]);
-        } else if (command.matches("help")) {
+        } else if (command.matches(HELP)) {
             CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
@@ -166,41 +171,49 @@ public class ConsoleInput {
             } else {
                 ConsoleOutput.printErrorMessage(ErrorType.DECK_NOTFOUND);
             }
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.MAIN);
         }
     }
 
     public static void accountMenuCommandsChecker(String command) {
-        if (command.matches(CREATE_ACCOUNT_REGEX)) {
-            Matcher usernameMatcher = Pattern.compile("create account (?<username>\\w+)").matcher(command);
-            if (usernameMatcher.find()) {
-                command = scanner.nextLine();
-                Matcher passwordMatcher = Pattern.compile("(?<password>\\w+)").matcher(command);
-                passwordMatcher.find();
-                AccountController.createAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
-            }
-        } else if (command.matches("login \\w+")) {
-            Matcher usernameMatcher = Pattern.compile("login (?<username>\\w+)").matcher(command);
-            if (usernameMatcher.find()) {
-                command = scanner.nextLine();
-                Matcher passwordMatcher = Pattern.compile("(?<password>\\w+)").matcher(command);
-                passwordMatcher.find();
-                AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
-            }
-        } else if (command.matches("show leaderboard")) {
+        if (command.matches(CREATE_ACCOUNT)) {
+            createAccountFormater(command);
+        } else if (command.matches(LOGIN)) {
+            loginFormater(command);
+        } else if (command.matches(SHOW_LEADERBOARD)) {
             AccountController.showLeaderBoard();
-        } else if (command.matches("help")) {
+        } else if (command.matches(HELP)) {
             AccountView.printAccountCommandsToHelp();
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.EXIT);
+        }
+    }
+
+    private static void loginFormater(String command) {
+        Matcher usernameMatcher = Pattern.compile(LOGIN).matcher(command);
+        if (usernameMatcher.find()) {
+            command = scanner.nextLine();
+            Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
+            passwordMatcher.find();
+            AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
+        }
+    }
+
+    private static void createAccountFormater(String command) {
+        Matcher usernameMatcher = Pattern.compile(CREATE_ACCOUNT).matcher(command);
+        if (usernameMatcher.find()) {
+            command = scanner.nextLine();
+            Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
+            passwordMatcher.find();
+            AccountController.createAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
         }
     }
 
     public static void shopMenuCommandsChecker(String command) {
         if (command.matches("show")) {
             ShopView.showAllCardsInShop();
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.MAIN);
         } else if (command.matches("search .+")) {
             Matcher matcher = Pattern.compile("search (?<cardName>.+)").matcher(command);
@@ -220,7 +233,7 @@ public class ConsoleInput {
             Matcher matcher = Pattern.compile(SELL_CARD_REGEX).matcher(command);
             matcher.find();
             ShopController.sell(Account.getLoggedInAccount(), matcher.group("cardId"));
-        } else if (command.matches("help")) {
+        } else if (command.matches(HELP)) {
             ShopView.printShopCommandsToHelp();
         }
     }
@@ -294,11 +307,11 @@ public class ConsoleInput {
             Battle.getPlayingBattle().getBattleController().showNextCardOfBattle();
         } else if (command.matches("enter graveyard")) {
             setMenu(Menu.GRAVEYARD);
-        } else if (command.matches("help")) {
+        } else if (command.matches(HELP)) {
             BattleView.printBattleCommandsToHelp();
         } else if (command.matches("show map")) {
             ConsoleOutput.printMessage(Battle.getPlayingBattle().getMap().toString());
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.NEW_BATTLE);
         }
     }
@@ -310,7 +323,7 @@ public class ConsoleInput {
             Battle.getPlayingBattle().getBattleController().showCardFromGraveYardInformation(matcher.group("cardId"));
         } else if (command.matches("show cards")) {
             Battle.getPlayingBattle().getBattleController().showGraveYardCards();
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.BATTLE);
         }
     }
@@ -370,7 +383,7 @@ public class ConsoleInput {
                     Integer.valueOf(multiPlayerMatcher.group("flags"))
             );
             setMenu(Menu.BATTLE);
-        } else if (command.matches("exit")) {
+        } else if (command.matches(EXIT)) {
             setMenu(Menu.MAIN);
         }
     }

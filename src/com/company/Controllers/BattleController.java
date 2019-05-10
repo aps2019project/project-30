@@ -168,17 +168,17 @@ public class BattleController {
         battle.getTurnToPlay().getDeck().getDeckController().addRandomCardToHand();
         battle.getTurnToPlay().getUsedCardsToMove().clear();
         battle.getTurnToPlay().getUsedCardsToAttack().clear();
+        switchTurnOfPlayers();
+        checkGameIsFinished();
+        putRandomCollectibleItemsOnMap();
+    }
 
+    private void switchTurnOfPlayers() {
         if (battle.getTurnToPlay() == battle.getPlayers()[0]) {
             battle.setTurnToPlay(battle.getPlayers()[1]);
         } else {
             battle.setTurnToPlay(battle.getPlayers()[0]);
         }
-        checkGameIsFinished();
-        putRandomCollectibleItemsOnMap();
-//        if (battle.getMode() == Mode.COLLECTING_FLAGS) {
-//            putFlagsOnMap();
-//        }
     }
 
     private void botMovements() {

@@ -9,7 +9,6 @@ public class Map {
     public static final int MAP_HEIGHT_MAX = 5;
     public static final int MAP_HEIGHT_MIN = 1;
     private Cell[] cells = new Cell[5 * 9];
-
     public Cell[] getCells() {
         return cells;
     }
