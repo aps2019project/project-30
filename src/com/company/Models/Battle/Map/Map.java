@@ -4,6 +4,10 @@ import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 
 public class Map {
+    public static final int MAP_WIDTH_MAX = 9;
+    public static final int MAP_WIDTH_MIN = 1;
+    public static final int MAP_HEIGHT_MAX = 5;
+    public static final int MAP_HEIGHT_MIN = 1;
     private Cell[] cells = new Cell[5 * 9];
 
     public Cell[] getCells() {

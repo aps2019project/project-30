@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.company.Models.Battle.Map.Map.*;
 import static java.lang.Math.*;
 
 public class BattleController {
@@ -115,16 +116,12 @@ public class BattleController {
         return cellIsValidToInsertingCard(x1, y1);
     }
 
-    private boolean validRange(int x, int y) {
-
-        if (x > 9 || x <= 0 || y > 5 || y <= 0) {
-            return false;
-        }
-        return true;
+    private boolean validCoordinatesRange(int x, int y) {
+        return x <= MAP_WIDTH_MAX && x >= MAP_WIDTH_MIN && y <= MAP_HEIGHT_MAX && y >= MAP_HEIGHT_MIN;
     }
 
     private boolean cellIsValidToInsertingCard(int x, int y) {
-        if (x > 9 || x <= 0 || y > 5 || y <= 0) {
+        if (!validCoordinatesRange(x, y)) {
             return false;
         } else if (battle.getMap().getCellByCoordinates(x, y).getCardInCell() != null) {
             return false;
@@ -349,7 +346,7 @@ public class BattleController {
     private void doOnSquare3(int x, int y) {
         for (int i = -2; i <= 0; i++) {
             for (int j = -2; j <= 0; j++) {
-                if (validRange(x + i, y + j)) {
+                if (validCoordinatesRange(x + i, y + j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
                     if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
@@ -362,7 +359,7 @@ public class BattleController {
     private void doOnSquare2(int x, int y) {
         for (int i = -1; i <= 0; i++) {
             for (int j = -1; j <= 0; j++) {
-                if (validRange(x + i, y + j)) {
+                if (validCoordinatesRange(x + i, y + j)) {
                     doUseSpecialPowerSwichCase(battle.getMap().getCellByCoordinates(x + i, y + j));
                     if (battle.getTurnToPlay().getSelectedCard() instanceof Spell) {
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(battle.getTurnToPlay().getSelectedCard());
