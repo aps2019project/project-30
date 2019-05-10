@@ -58,7 +58,7 @@ public class BattleController {
         Cell cellToGo = battle.getMap().getCellByCoordinates(x, y);
         Soldier soldier = ((Soldier) battle.getTurnToPlay().getSelectedCard());
         if (cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
-            if (!isMovedThisTurn(battle.getTurnToPlay().getUsedCardsToMove(), battle.getTurnToPlay())) {
+            if (!isMovedThisTurn(soldier)) {
                 soldier.getCell().setCardInCell(null);
                 soldier.setCell(battle.getMap().getCellByCoordinates(x, y));
                 cellToGo.setCardInCell(battle.getTurnToPlay().getSelectedCard());
@@ -97,8 +97,8 @@ public class BattleController {
         checkGameIsFinished();
     }
 
-    private boolean isMovedThisTurn(ArrayList<Card> usedCardsToMove, Player turnToPlay) {
-        return usedCardsToMove.contains(turnToPlay.getSelectedCard());
+    private boolean isMovedThisTurn(Soldier soldier) {
+        return battle.getTurnToPlay().getUsedCardsToMove().contains(soldier);
     }
 
     private boolean cellIsValidToMove(int x1, int y1, Cell cell) {
@@ -732,8 +732,8 @@ public class BattleController {
         }
     }
 
-    private boolean isAttackedThisTurn(Card selectedCard2) {
-        return battle.getTurnToPlay().getUsedCardsToAttack().contains(selectedCard2);
+    private boolean isAttackedThisTurn(Card soldier) {
+        return battle.getTurnToPlay().getUsedCardsToAttack().contains(soldier);
     }
 
     private ErrorType getErrorTypeOfAttack(Cell target, Player turnToPlay) {
@@ -812,21 +812,28 @@ public class BattleController {
         Player winner = battle.getMode().getWinner();
         if (winner != null) {
             System.out.println("Game Finished : " + winner.getName());
-            BattleLog battleLog = new BattleLog(
-                    battle.getPlayers()[0].getName(),
-                    battle.getPlayers()[1].getName(),
-                    winner.getName(),
-                    battle.getTimePassedInSeconds()
-            );
-            for (Player player : battle.getPlayers()) {
-                if (player.getAccount() != null) {
-                    player.getAccount().getBattleHistories().add(battleLog);
-                }
-            }
-            if (winner.getAccount() != null)
-                winner.getAccount().incremeantWins();
-
+            logBattleInBattleHistories(winner);
+            scorePlayers(winner);
             ConsoleInput.setMenu(ConsoleInput.Menu.NEW_BATTLE);
+        }
+    }
+
+    private void scorePlayers(Player winner) {
+        if (winner.getAccount() != null)
+            winner.getAccount().incremeantWins();
+    }
+
+    private void logBattleInBattleHistories(Player winner) {
+        BattleLog battleLog = new BattleLog(
+                battle.getPlayers()[0].getName(),
+                battle.getPlayers()[1].getName(),
+                winner.getName(),
+                battle.getTimePassedInSeconds()
+        );
+        for (Player player : battle.getPlayers()) {
+            if (player.getAccount() != null) {
+                player.getAccount().getBattleHistories().add(battleLog);
+            }
         }
     }
 
