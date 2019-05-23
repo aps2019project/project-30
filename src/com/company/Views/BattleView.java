@@ -40,7 +40,7 @@ public class BattleView {
                 showFlagsCordinates();
                 break;
             case COLLECTING_FLAGS:
-                showFlagsCordinates();
+                //showFlagsCordinates();
                 break;
         }
     }

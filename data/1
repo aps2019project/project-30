@@ -55,13 +55,6 @@ add 21 to deck test
 add 22 to deck test
 select deck test
 exit
-enter battle
-story 3 3
-
-
-
-exit
-exit
 login majid
 123
 enter shop
