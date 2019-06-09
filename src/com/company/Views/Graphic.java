@@ -19,7 +19,7 @@ public class Graphic extends Application {
 
     static {
         try {
-            Parent mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
+            mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,6 +29,7 @@ public class Graphic extends Application {
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
         Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
+        Parent mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
         Scene scene = new Scene(authenticate, 1600, 900);
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
