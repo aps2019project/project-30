@@ -12,6 +12,7 @@ import com.company.Views.ConsoleOutput;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CollectionViews {
 
@@ -34,7 +35,10 @@ public class CollectionViews {
 
     public static void showDeck(Deck deck){
         System.out.println("deck name: " + deck.getName());
-        ConsoleOutput.showAllCards(deck.getDeckCards());
+        List<Card> cardList = deck.getDeckCards();
+        cardList.add(deck.getHeroCard());
+        cardList.add(deck.getItemCard());
+        ConsoleOutput.showAllCards(cardList);
     }
 
     public static void printDeckValidation(boolean isValidate) {

@@ -1,7 +1,6 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
-import com.company.Controllers.BattleController;
 import com.company.Controllers.CollectionController;
 import com.company.Controllers.ShopController;
 import com.company.Models.Battle.Battle;
@@ -23,7 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConsoleInput {
-    public static final String SELL_CARD_REGEX = "sell (?<cardId>\\d+)";
+    public static final String SELL_CARD = "sell (?<cardId>\\d+)";
     public static final String CREATE_ACCOUNT = "create account (?<username>\\w+)";
     public static final String PASSWORD = "(?<password>\\w+)";
     public static final String LOGIN = "login (?<username>\\w+)";
@@ -34,6 +33,11 @@ public class ConsoleInput {
     public static final String ENTER_COLLECTION = "enter collection";
     public static final String ENTER_SHOP = "enter shop";
     public static final String ENTER_BATTLE = "enter battle";
+    public static final String SEARCH_CARD_NAME = "search (?<cardName>.+)";
+    public static final String SHOW = "show";
+    public static final String SHOW_COLLECTION = "show collection";
+    public static final String SEARCH_COLLECTION_CARD_NAME = "search collection (?<cardName>.+)";
+    public static final String BUY_CARD_NAME = "buy (?<cardName>.+)";
     private static Scanner scanner = new Scanner(System.in);
 
     public enum Menu {MAIN, ACCOUNT, COLLECTION, SHOP, NEW_BATTLE, BATTLE, GRAVEYARD, EXIT}
@@ -113,7 +117,7 @@ public class ConsoleInput {
             Matcher matcher = Pattern.compile("search (?<cardName>.+)").matcher(command);
             matcher.find();
             Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
-        } else if (command.matches("show")) {
+        } else if (command.matches(SHOW)) {
             CollectionViews.showAllCardsInCollection();
         } else if (command.matches("save")) {
             //todo
@@ -127,52 +131,14 @@ public class ConsoleInput {
             CollectionViews.printShopCommandsToHelp();
         } else if (command.matches("select deck \\w+")) {
             Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck(commandParts[2]);
-//            JsonSerializer jsonDeckSerializer = new JsonSerializer<Deck>() {
-//                @Override
-//                public JsonElement serialize(Deck deck, Type type, JsonSerializationContext jsonSerializationContext) {
-//                    JsonElement jsonElement = jsonSerializationContext.serialize(deck);
-//                    jsonElement.getAsJsonObject().remove("hand");
-//                    jsonElement.getAsJsonObject().remove("deckController");
-//                    return jsonElement;
-//                }
-//            };
-//            JsonDeserializer jsonBuffDeserializer = new JsonDeserializer<Buff>() {
-//                @Override
-//                public Buff deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-//                    JsonObject jsonObject = jsonElement.getAsJsonObject();
-//                    try {
-//                        return jsonDeserializationContext.deserialize(jsonElement, Class.forName(jsonObject.get("className").getAsString()));
-//                    } catch (ClassNotFoundException e) {
-//                        System.out.println(e.getException().getMessage());
-//                        return null;
-//                    }
-//                }
-//            };
-//
-//            JsonSerializer jsonBuffSerializer = new JsonSerializer<Buff>() {
-//                @Override
-//                public JsonElement serialize(Buff buff, Type type, JsonSerializationContext jsonSerializationContext) {
-//                    JsonElement jsonElement = jsonSerializationContext.serialize(buff);
-//                    jsonElement.getAsJsonObject().addProperty("className", buff.getClass().getName());
-//                    return jsonElement;
-//                }
-//            };
-//
-//            GsonBuilder gsonBuilder = new GsonBuilder();
-//            gsonBuilder
-//                    .registerTypeAdapter(Deck.class, jsonDeckSerializer)
-//                    .registerTypeAdapter(Buff.class, jsonBuffDeserializer)
-//                    .registerTypeAdapter(Buff.class, jsonBuffSerializer);
-//            Gson customGson = gsonBuilder.create();
-//            System.out.println("JsonController.getGson().toJson(Collection.getDeckByName(commandParts[2])) = " + customGson.toJson(Collection.getDeckByName(commandParts[2])));
         } else if (command.matches("show all decks")) {
             CollectionViews.showAllDecks();
         } else if (command.matches("show deck \\w+")) {
-            if (CollectionController.validateDeck(commandParts[2])) {
+//            if (CollectionController.validateDeck(commandParts[2])) {
                 CollectionViews.showDeck(Collection.getDeckByName(commandParts[2]));
-            } else {
-                ConsoleOutput.printErrorMessage(ErrorType.DECK_NOTFOUND);
-            }
+//            } else {
+//                ConsoleOutput.printErrorMessage(ErrorType.DECK_NOTFOUND);
+//            }
         } else if (command.matches(EXIT)) {
             setMenu(Menu.MAIN);
         }
@@ -193,31 +159,39 @@ public class ConsoleInput {
     }
 
     public static void shopMenuCommandsChecker(String command) {
-        if (command.matches("show")) {
+        if (command.matches(SHOW)) {
             ShopView.showAllCardsInShop();
         } else if (command.matches(EXIT)) {
             setMenu(Menu.MAIN);
-        } else if (command.matches("search .+")) {
-            Matcher matcher = Pattern.compile("search (?<cardName>.+)").matcher(command);
-            matcher.find();
-            ShopController.search(matcher.group("cardName"));
-        } else if (command.matches("show collection")) {
+        } else if (command.matches(SEARCH_CARD_NAME)) {
+            searchCardNameFormater(command);
+        } else if (command.matches(SHOW_COLLECTION)) {
             CollectionViews.showAllCardsInCollection();
-        } else if (command.matches("search collection")) {
-            Matcher matcher = Pattern.compile("search collection (?<cardName>.+)").matcher(command);
-            matcher.find();
-            Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
-        } else if (command.matches("buy .+")) {
-            Matcher matcher = Pattern.compile("buy (?<cardName>.+)").matcher(command);
+        } else if (command.matches(SEARCH_COLLECTION_CARD_NAME)) {
+            searchCollectionFormater(command, SEARCH_COLLECTION_CARD_NAME);
+        } else if (command.matches(BUY_CARD_NAME)) {
+            Matcher matcher = Pattern.compile(BUY_CARD_NAME).matcher(command);
             matcher.find();
             ShopController.buy(Account.getLoggedInAccount(), matcher.group("cardName"));
-        } else if (command.matches("sell \\d+")) {
-            Matcher matcher = Pattern.compile(SELL_CARD_REGEX).matcher(command);
+        } else if (command.matches(SELL_CARD)) {
+            Matcher matcher = Pattern.compile(SELL_CARD).matcher(command);
             matcher.find();
             ShopController.sell(Account.getLoggedInAccount(), matcher.group("cardId"));
         } else if (command.matches(HELP)) {
             ShopView.printShopCommandsToHelp();
         }
+    }
+
+    private static void searchCollectionFormater(String command, String searchCollectionCardName) {
+        Matcher matcher = Pattern.compile(searchCollectionCardName).matcher(command);
+        matcher.find();
+        Account.getLoggedInAccount().getCollection().getCollectionController().search(matcher.group("cardName"));
+    }
+
+    private static void searchCardNameFormater(String command) {
+        Matcher matcher = Pattern.compile(SEARCH_CARD_NAME).matcher(command);
+        matcher.find();
+        ShopController.search(matcher.group("cardName"));
     }
 
     public static void battleMenuCommandsChecker(String command) {
@@ -346,7 +320,7 @@ public class ConsoleInput {
             );
             setMenu(Menu.BATTLE);
         } else if (command.matches("start custom game \\w+ \\S+")) {
-            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+)").matcher(command);
+            Matcher multiPlayerMatcher = Pattern.compile("start custom game (?<deckName>\\w+) (?<mode>\\S+)").matcher(command);
             multiPlayerMatcher.find();
             Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(multiPlayerMatcher.group("deckName")));
             Mode mode = Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode"));
@@ -356,7 +330,7 @@ public class ConsoleInput {
             );
             setMenu(Menu.BATTLE);
         } else if (command.matches("start custom game \\w+ \\S+ \\d+")) {
-            Matcher multiPlayerMatcher = Pattern.compile("start game (?<deckName>\\w+) (?<mode>\\S+) (?<flags>\\d+)").matcher(command);
+            Matcher multiPlayerMatcher = Pattern.compile("start custom game (?<deckName>\\w+) (?<mode>\\S+) (?<flags>\\d+)").matcher(command);
             multiPlayerMatcher.find();
             Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(multiPlayerMatcher.group("deckName")));
             Mode mode = Enum.valueOf(Mode.class, multiPlayerMatcher.group("mode"));

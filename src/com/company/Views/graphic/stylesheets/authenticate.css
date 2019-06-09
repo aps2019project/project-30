@@ -1,0 +1,65 @@
+.tabs-container {
+    -fx-background-color: #292929;
+    -fx-text-fill: white;
+}
+
+
+.jfx-tab-pane .headers-region {
+    -fx-background-color: #292929;
+    -fx-padding: 5 0 0 0;
+}
+
+.jfx-tab-pane .tab {
+-fx-padding: 10 0 0 0;
+}
+
+.jfx-tab-pane .tab:selected {
+    -fx-background-image: url("../images/triangle.png");
+    -fx-background-size: 20;
+    -fx-background-position: top center;
+    -fx-background-repeat: stretch;
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #292929;
+}
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: #75bc1b;
+    -fx-stroke-width: 3pt;
+}
+
+.authenticate-root {
+    -fx-background-image: url("../images/authenticate-bg.jpg");
+
+}
+
+.login {
+    -fx-text-fill: white;
+    -fx-background-color: #f26f20;
+    -fx-pref-width: 500;
+    -fx-pref-height: 40;
+}
+
+.description {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20 10;
+    -fx-font-weight: bold;
+    font
+}
+
+.remember-me {
+    -fx-text-fill: #666;
+    -jfx-checked-color: #F57B20;
+    -jfx-unchecked-color: #F57B20;
+}
+
+.login-items-container {
+    -fx-padding: 20 100;
+}
+
+.authenticate-field:hover {
+    -fx-background-color: #434343;
+}
+
+.authenticate-field {
+    -fx-background-color: #383838;
+}

@@ -151,7 +151,7 @@ public class BattleController {
     }
 
     public void endTurn() {
-        botMovements();
+//        botMovements();
         checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
@@ -687,6 +687,8 @@ public class BattleController {
     public static Player playerThatHasThisCard(Card card) {
         for (int i = 0; i < 2; i++) {
             List<Card> playerCards = Battle.getPlayingBattle().getPlayers()[i].getDeck().getDeckCards();
+            playerCards.add(Battle.getPlayingBattle().getPlayers()[i].getDeck().getHeroCard());
+            playerCards.add(Battle.getPlayingBattle().getPlayers()[i].getDeck().getItemCard());
             for (Card c : playerCards) {
                 if (c.getId().equals(card.getId())) {
                     return Battle.getPlayingBattle().getPlayers()[i];

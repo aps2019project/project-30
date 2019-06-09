@@ -558,7 +558,7 @@
     "attackType": "RANGED",
     "fullHealth": 6,
     "health": 0,
-    "areaOfEffect": 0,
+    "areaOfEffect": 5,
     "attackPower": 6,
     "name": "Jadougar Azam",
     "manaPoint": 6,

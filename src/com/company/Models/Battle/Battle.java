@@ -75,6 +75,7 @@ public class Battle {
 
     public Battle(Mode mode, int flags) {
         this.map = new Map();
+        this.mode = mode;
         initFlagMode();
         botIsActive = true;
         beginTimer();

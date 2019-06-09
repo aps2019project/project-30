@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.company.Controllers.AuthenticateController"
+      prefHeight="400.0" prefWidth="600.0" alignment="CENTER" styleClass="authenticate-root">
+
+    <HBox>
+        <Label text="Log In To Duelyst Using Your BANDAI NAMCO Account" prefWidth="500" styleClass="description"/>
+        <JFXTabPane fx:id="tabPane" prefWidth="500" styleClass="tabs-container">
+            <Tab text="LOG IN" fx:id="loginTab">
+                <VBox alignment="CENTER_LEFT" spacing="25" styleClass="login-items-container">
+                    <TextField fx:id="loginUsername" promptText="Username" styleClass="authenticate-field"/>
+                    <PasswordField fx:id="loginPassword" promptText="Password" styleClass="authenticate-field"/>
+                    <JFXCheckBox text="Remember Me" styleClass="remember-me"/>
+                    <JFXButton fx:id="login" text="Login" onAction="#login" styleClass="login"/>
+                </VBox>
+            </Tab>
+            <Tab text="SIGN UP" fx:id="signupTab">
+                <AnchorPane>
+                    <Label text="S"/>
+                </AnchorPane>
+            </Tab>
+        </JFXTabPane>
+    </HBox>
+
+</VBox>
