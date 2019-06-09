@@ -15,10 +15,12 @@ public class Graphic extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
+//        Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
+        Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
         stage = primaryStage;
-        Scene scene = new Scene(authenticate, 400, 515);
+        Scene scene = new Scene(authenticate, 1200, 700);
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
+        scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Duelyst");
         primaryStage.setResizable(false);

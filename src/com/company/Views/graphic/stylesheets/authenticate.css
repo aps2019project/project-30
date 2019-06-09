@@ -1,6 +1,7 @@
 .tabs-container {
     -fx-background-color: #292929;
     -fx-text-fill: white;
+    -fx-max-width: 500;
 }
 
 
@@ -39,12 +40,6 @@
     -fx-pref-height: 40;
 }
 
-.description {
-    -fx-background-color: #ffffff;
-    -fx-padding: 20 10;
-    -fx-font-weight: bold;
-    font
-}
 
 .remember-me {
     -fx-text-fill: #666;
@@ -53,7 +48,7 @@
 }
 
 .login-items-container {
-    -fx-padding: 20 100;
+    -fx-padding: 40 80;
 }
 
 .authenticate-field:hover {
@@ -62,4 +57,6 @@
 
 .authenticate-field {
     -fx-background-color: #383838;
+    -fx-pref-height: 40;
 }
+

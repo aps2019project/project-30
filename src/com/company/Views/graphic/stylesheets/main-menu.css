@@ -1,0 +1,7 @@
+.main-menu-root {
+    -fx-background-image: url("../images/authenticate-bg.jpg");
+}
+
+.menu-item {
+    -fx-font-family: La
+}
