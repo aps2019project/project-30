@@ -10,6 +10,9 @@ import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.ConsoleOutput;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopController {
 
     public static void search(String cardName) {
@@ -18,6 +21,15 @@ public class ShopController {
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
+    }
+
+    public static List<Card> searchCardsByName(String cardName) {
+        List<Card> cards = new ArrayList<>();
+        for (Card card : Shop.getShopCollection().getCards()) {
+            if (card.getName().toLowerCase().contains(cardName.toLowerCase()))
+                cards.add(card);
+        }
+        return cards;
     }
 
     public static void buy(Account account, String cardName) {

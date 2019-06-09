@@ -9,3 +9,31 @@
     -fx-font-size: 30;
     -fx-padding: 20 0 0 60;
 }
+
+.card-shop-container {
+    -fx-padding: 0;
+    -fx-background-image: url("../images/card-container.png");
+    -fx-background-size: cover;
+}
+
+.card-shop-name {
+    -fx-font-family: "Lato Light";
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+}
+
+.shop-root {
+    -fx-background-image: url("../images/authenticate-bg.jpg");
+}
+
+.shop-search {
+    -fx-background-image: url("../images/search-icon.png");
+    -fx-background-size: 20;
+    -fx-background-repeat: stretch;
+    -fx-background-position: right center;
+    -fx-pref-height: 40;
+    -fx-pref-width: 200;
+    -fx-background-color: #0C1022;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #DCDCDC;
+}

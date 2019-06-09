@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Views.Graphic;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.Initializable;
@@ -26,7 +27,7 @@ public class MainMenuController implements Initializable {
         });
 
         shop.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            System.out.println("Tile pressed ");
+            Graphic.stage.getScene().setRoot(Graphic.shop);
             event.consume();
         });
 

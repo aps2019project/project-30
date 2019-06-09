@@ -11,7 +11,8 @@
 }
 
 .jfx-tab-pane .tab {
--fx-padding: 10 0 0 0;
+    -fx-font-family: "Lato Light";
+    -fx-padding: 15 0 0 0;
 }
 
 .jfx-tab-pane .tab:selected {
@@ -20,9 +21,11 @@
     -fx-background-position: top center;
     -fx-background-repeat: stretch;
 }
+
 .jfx-tab-pane .tab-header-background {
     -fx-background-color: #292929;
 }
+
 .jfx-tab-pane .tab-selected-line {
     -fx-stroke: #75bc1b;
     -fx-stroke-width: 3pt;

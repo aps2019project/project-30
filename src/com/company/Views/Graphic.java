@@ -1,5 +1,6 @@
 package com.company.Views;
 
+import com.company.Controllers.ShopController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
@@ -16,10 +17,12 @@ import java.io.IOException;
 public class Graphic extends Application {
     public static Stage stage;
     public static Parent mainMenu;
+    public static Parent shop;
 
     static {
         try {
             mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
+            shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,6 +47,7 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
+        ShopController.initialize();
         launch(args);
     }
 }

@@ -52,7 +52,7 @@ public class CollectionViews {
         System.out.println("##### Account Commands #####");
         System.out.println("1. exit : obviously to exit!");
         System.out.println("2. how :To showing all card and items");
-        System.out.println("3.search :  Show that a card or item is in callection or not");
+        System.out.println("3.searchButton :  Show that a card or item is in callection or not");
         System.out.println("4. save : What you think is for");
         System.out.println("5. create deck : Creating a deck and add to collection ");
         System.out.println("6. delete deck :Delete a deck from collection");
