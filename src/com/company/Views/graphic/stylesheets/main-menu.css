@@ -1,7 +1,11 @@
 .main-menu-root {
     -fx-background-image: url("../images/authenticate-bg.jpg");
+    -fx-background-size: cover;
 }
 
 .menu-item {
-    -fx-font-family: La
+    -fx-font-family: "Lato Light";
+    -fx-text-fill: white;
+    -fx-font-size: 30;
+    -fx-padding: 20 0 0 60;
 }

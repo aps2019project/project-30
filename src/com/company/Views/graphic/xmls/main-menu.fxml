@@ -8,11 +8,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.MainMenuController"
             prefHeight="400.0" prefWidth="600.0" styleClass="main-menu-root">
-    <VBox AnchorPane.leftAnchor="100" AnchorPane.topAnchor="300">
+    <VBox AnchorPane.leftAnchor="100" AnchorPane.topAnchor="200">
         <ImageView fitWidth="250" fitHeight="100">
             <Image url="@../images/logo-game.png"/>
         </ImageView>
         <Label text="PLAY" styleClass="menu-item"/>
+        <Label text="WATCH" styleClass="menu-item"/>
+        <Label text="COLLECTION" styleClass="menu-item"/>
     </VBox>
     <HBox AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="15" alignment="BOTTOM_RIGHT">
         <ImageView fitWidth="70" fitHeight="70">
@@ -21,7 +23,7 @@
         <ImageView fitWidth="70" fitHeight="70">
             <Image url="@../images/profile.png"/>
         </ImageView>
-        <ImageView fitWidth="70" fitHeight="70">
+        <ImageView fx:id="shop" fitWidth="70" fitHeight="70">
             <Image url="@../images/shop.png"/>
         </ImageView>
         <ImageView fitWidth="70" fitHeight="70">
