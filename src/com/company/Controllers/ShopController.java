@@ -14,7 +14,7 @@ public class ShopController {
 
     public static void search(String cardName) {
         if (Shop.cardNameExistsInShop(cardName)) {
-            System.out.println(Shop.getCardByName(cardName).getId());
+            System.out.println(Shop.getCardByName(cardName).getId() + "  " + Shop.getCardByName(cardName).getName());
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUND);
         }
