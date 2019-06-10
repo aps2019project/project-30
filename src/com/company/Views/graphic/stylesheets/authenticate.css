@@ -10,6 +10,10 @@
     -fx-padding: 5 0 0 0;
 }
 
+.jfx-tab-pane .tab-header-area {
+    -fx-padding: 0 -170 0 170;
+}
+
 .jfx-tab-pane .tab {
     -fx-font-family: "Lato Light";
     -fx-padding: 15 0 0 0;
