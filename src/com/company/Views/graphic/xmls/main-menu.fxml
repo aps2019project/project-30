@@ -12,7 +12,7 @@
         <ImageView fitWidth="250" fitHeight="100">
             <Image url="@../images/logo-game.png"/>
         </ImageView>
-        <Label text="PLAY" styleClass="menu-item"/>
+        <Label fx:id="play" text="PLAY" styleClass="menu-item"/>
         <Label text="WATCH" styleClass="menu-item"/>
         <Label text="COLLECTION" styleClass="menu-item"/>
     </VBox>

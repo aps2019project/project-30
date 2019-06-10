@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.company.Views.graphic.xmls.GameController"
+            prefHeight="400.0" prefWidth="600.0" styleClass="game-background">
+    <Button fx:id="endTurn" text="END TURN" styleClass="game-endturn" onAction="#endTurn" AnchorPane.rightAnchor="50" AnchorPane.bottomAnchor="50"/>
+    <HBox fx:id="handContainer" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="50"/>
+    <VBox fx:id="graveyard" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="300" styleClass="game-grave-yard"/>
+
+</AnchorPane>

@@ -12,10 +12,10 @@
 
 .jfx-tab-pane .tab-header-area {
     -fx-padding: 0 -170 0 170;
+    -fx-effect: none;
 }
 
 .jfx-tab-pane .tab {
-    -fx-font-family: "Lato Light";
     -fx-padding: 15 0 0 0;
 }
 
@@ -40,6 +40,7 @@
 }
 
 .login {
+    -fx-font-size: 15;
     -fx-text-fill: white;
     -fx-background-color: #f26f20;
     -fx-pref-width: 500;
@@ -47,6 +48,7 @@
 }
 
 .remember-me {
+    -fx-font-size: 15;
     -fx-text-fill: #666;
     -jfx-checked-color: #F57B20;
     -jfx-unchecked-color: #F57B20;
@@ -61,6 +63,8 @@
 }
 
 .authenticate-field {
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
     -fx-background-color: #383838;
     -fx-pref-height: 40;
 }

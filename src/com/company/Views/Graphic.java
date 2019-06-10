@@ -18,11 +18,13 @@ public class Graphic extends Application {
     public static Stage stage;
     public static Parent mainMenu;
     public static Parent shop;
+    public static Parent game;
 
     static {
         try {
             mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
+            game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,8 +34,8 @@ public class Graphic extends Application {
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
         Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
-        Parent mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
-        Scene scene = new Scene(authenticate, 1600, 900);
+//        Scene scene = new Scene(authenticate, 1600, 900);
+        Scene scene = new Scene(game, 1600, 900);
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/shop.css");

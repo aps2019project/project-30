@@ -4,8 +4,49 @@
 }
 
 .menu-item {
-    -fx-font-family: "Lato Light";
     -fx-text-fill: white;
     -fx-font-size: 30;
     -fx-padding: 20 0 0 60;
+}
+
+* {
+    -fx-font-family: "Lato Light";
+}
+
+.game-background {
+    -fx-background-image: url("../images/game-background-1.jpg");
+    -fx-background-size: cover;
+}
+
+.game-endturn {
+    -fx-background-image: url("../images/end-turn.png");
+    -fx-border-style: none;
+    -fx-border-width: 2px;
+    -fx-border-insets: 0;
+    -fx-text-fill: white;
+    -fx-background-size: 200px 80px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 80px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+    -fx-stroke: #75bc1b;
+    -fx-stroke-width: 3pt;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.game-endturn:hover {
+    -fx-background-image: url("../images/end-turn-glow.png");
+}
+
+.game-endturn:disabled {
+    -fx-background-image: url("../images/end-turn-disabled.png");
+}
+
+.game-grave-yard {
+    -fx-background-image: url("../images/grave-yard.png");
+    -fx-background-size: 150 500;
+    -fx-pref-width: 150;
+    -fx-pref-height: 500;
 }

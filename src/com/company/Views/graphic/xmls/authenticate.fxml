@@ -4,10 +4,9 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.company.Controllers.AuthenticateController"
@@ -26,14 +25,12 @@
             </VBox>
         </Tab>
         <Tab text="SIGN UP" fx:id="signupTab">
-            <AnchorPane>
-                <VBox alignment="CENTER_LEFT" spacing="25" styleClass="login-items-container">
-                    <TextField fx:id="signupUsername" promptText="Username" styleClass="authenticate-field"/>
-                    <PasswordField fx:id="signupPassword" promptText="Password" styleClass="authenticate-field"/>
-                    <PasswordField fx:id="signupPasswordMatch" promptText="Password" styleClass="authenticate-field"/>
-                    <JFXButton fx:id="signup" text="Sign Up" onAction="#signUp" styleClass="login"/>
-                </VBox>
-            </AnchorPane>
+            <VBox alignment="CENTER_LEFT" spacing="25" styleClass="login-items-container">
+                <TextField fx:id="signupUsername" promptText="Username" styleClass="authenticate-field"/>
+                <PasswordField fx:id="signupPassword" promptText="Password" styleClass="authenticate-field"/>
+                <PasswordField fx:id="signupPasswordMatch" promptText="Password" styleClass="authenticate-field"/>
+                <JFXButton fx:id="signup" text="Sign Up" onAction="#signUp" styleClass="login"/>
+            </VBox>
         </Tab>
     </JFXTabPane>
 
