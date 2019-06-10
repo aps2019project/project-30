@@ -46,7 +46,6 @@
     -fx-pref-height: 40;
 }
 
-
 .remember-me {
     -fx-text-fill: #666;
     -jfx-checked-color: #F57B20;
@@ -57,7 +56,7 @@
     -fx-padding: 40 80;
 }
 
-.authenticate-field:hover {
+.authenticate-field:hover .authenticate-field:focused {
     -fx-background-color: #434343;
 }
 
@@ -65,4 +64,3 @@
     -fx-background-color: #383838;
     -fx-pref-height: 40;
 }
-

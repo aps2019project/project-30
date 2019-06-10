@@ -27,7 +27,12 @@
         </Tab>
         <Tab text="SIGN UP" fx:id="signupTab">
             <AnchorPane>
-                <Label text="S"/>
+                <VBox alignment="CENTER_LEFT" spacing="25" styleClass="login-items-container">
+                    <TextField fx:id="signupUsername" promptText="Username" styleClass="authenticate-field"/>
+                    <PasswordField fx:id="signupPassword" promptText="Password" styleClass="authenticate-field"/>
+                    <PasswordField fx:id="signupPasswordMatch" promptText="Password" styleClass="authenticate-field"/>
+                    <JFXButton fx:id="signup" text="Sign Up" onAction="#signUp" styleClass="login"/>
+                </VBox>
             </AnchorPane>
         </Tab>
     </JFXTabPane>
