@@ -54,7 +54,6 @@ public class  CollectionController implements Initializable     {
             imageView.setFitWidth(20);
             hBox.getChildren().add(imageView);
             deckContainer.getChildren().add(hBox);
-
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -66,6 +65,9 @@ public class  CollectionController implements Initializable     {
 
         }
     }
+
+
+
 
 
     public static void assigncreatDeckErrorType(ErrorType errorType){
