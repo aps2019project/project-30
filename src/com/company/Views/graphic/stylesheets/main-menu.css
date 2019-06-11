@@ -6,7 +6,7 @@
 .menu-item {
     -fx-text-fill: white;
     -fx-font-size: 30;
-    -fx-padding: 0 0 0 60;
+    -fx-padding: 0 0 0 100;
 }
 
 * {
@@ -49,4 +49,11 @@
     -fx-background-size: 150 500;
     -fx-pref-width: 150;
     -fx-pref-height: 500;
+}
+
+.gold-container {
+    -fx-padding: 15;
+    -fx-background-image: url("../images/gold-container.png");
+    -fx-background-size: 120 50;
+    -fx-background-repeat: no-repeat;
 }

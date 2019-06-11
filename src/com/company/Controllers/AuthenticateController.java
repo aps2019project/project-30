@@ -50,9 +50,7 @@ public class AuthenticateController {
         }
         else {
             AccountController.createAccount(signupUsername.getText(),signupPassword.getText());
-            if (signEroorType == null) {
-                Graphic.stage.getScene().setRoot(Graphic.mainMenu);
-            } else {
+            if (signEroorType != null) {
                 error.setText("USERNAME EXIST");
             }
         }

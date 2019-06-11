@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
@@ -20,10 +21,12 @@ public class MainMenuController implements Initializable {
     public ImageView shop;
     public Label play;
     public Label collection;
+    public Label gold;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         friends.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             System.out.println("Tile pressed ");
             event.consume();
@@ -46,6 +49,10 @@ public class MainMenuController implements Initializable {
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
 //        MediaPlayer mediaPlayer = new MediaPlayer(media);
 //        mediaPlayer.setAutoPlay(true);
+    }
+
+    public void initValues() {
+        gold.setText(String.valueOf(Account.getLoggedInAccount().getDrake()));
     }
 
 

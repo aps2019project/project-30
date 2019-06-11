@@ -9,6 +9,7 @@ import com.company.Views.Graphic;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,25 +22,25 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GameController implements Initializable {
+public class GameController  {
 
     public HBox handContainer;
     public Button endTurn;
     public VBox graveyard;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
 //            endTurn.setDisable(true);
 //        }
-        for (int i = 0; i < 5; i++) {
+        for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
             AnchorPane pane = new AnchorPane();
             StackPane handCard = new StackPane();
-            ImageView imageView = new ImageView(new Image("com/company/Views/graphic/images/test1.gif"));
+//            ImageView imageView = new ImageView(new Image("com/company/Views/graphic/images/test1.gif"));
+            Label label = new Label(card.getName());
             handCard.setPrefWidth(180);
             handCard.setPrefHeight(180);
-            handCard.getChildren().add(imageView);
+            handCard.getChildren().add(label);
             handCard.getStyleClass().add("game-hand-card-container");
 
             ImageView mana = new ImageView(new Image("com/company/Views/graphic/images/mana.png"));
