@@ -13,8 +13,8 @@
             <Image url="@../images/logo-game.png"/>
         </ImageView>
         <Label fx:id="play" text="PLAY" styleClass="menu-item"/>
-        <Label text="WATCH" styleClass="menu-item"/>
-        <Label text="COLLECTION" styleClass="menu-item"/>
+        <Label fx:id="watch" text="WATCH" styleClass="menu-item"/>
+        <Label fx:id="collection" text="COLLECTION" styleClass="menu-item"/>
     </VBox>
     <HBox AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="15" alignment="BOTTOM_RIGHT">
         <ImageView fitWidth="70" fitHeight="70">
