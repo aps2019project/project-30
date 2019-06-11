@@ -19,9 +19,9 @@
         <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
             <Image url="@../images/back-button.png"/>
         </ImageView>
-        <ScrollPane minWidth="1000" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="300" AnchorPane.bottomAnchor="100"
+        <ScrollPane minWidth="500" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="100" AnchorPane.bottomAnchor="100"
                     hbarPolicy="NEVER">
-            <JFXMasonryPane fx:id="cardContainer" minWidth="1000"/>
+            <JFXMasonryPane fx:id="cardContainer" minWidth="500" style="-fx-background-color: lightblue"/>
         </ScrollPane>
         <TextField AnchorPane.topAnchor="10" AnchorPane.leftAnchor="500" fx:id="search" promptText="Search ..."
                    styleClass="shop-search"/>

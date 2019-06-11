@@ -80,7 +80,6 @@ public class  CollectionController implements Initializable     {
         });
 
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
-            System.out.println("hi");
             List<Card> cards;
             if(newValue.isEmpty())
                 cards=Account.getLoggedInAccount().getCollection().getCards();
@@ -97,6 +96,7 @@ public class  CollectionController implements Initializable     {
                 label.setPrefWidth(200);
                 anchorPane.getChildren().add(label);
                 AnchorPane.setTopAnchor(label, 220.0);
+                cardContainer.getChildren().add(anchorPane);
                 anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
