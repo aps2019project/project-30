@@ -19,6 +19,7 @@ public class MainMenuController implements Initializable {
     public ImageView friends;
     public ImageView shop;
     public Label play;
+    public Label collection;
 
 
     @Override
@@ -35,6 +36,11 @@ public class MainMenuController implements Initializable {
 
         play.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Graphic.stage.getScene().setRoot(Graphic.chooseGame);
+            event.consume();
+        });
+
+        collection.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Graphic.stage.getScene().setRoot(Graphic.collection);
             event.consume();
         });
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());

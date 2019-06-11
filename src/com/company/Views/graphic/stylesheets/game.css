@@ -57,12 +57,6 @@
     -fx-background-image: url("../images/button-right-glow.png");
 }
 
-.killing-general-mode {
-    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
-    -fx-background-image: url("../images/killing-general.jpg");
-    -fx-background-size: cover;
-    -fx-background-position: center;
-}
 
 .choose-game-root {
     -fx-background-image: url("../images/choose-game-bg.png");
@@ -75,10 +69,21 @@
 }
 
 .choose-game-title {
-    -fx-background-color: ;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-text-fill: white;
     -fx-font-size: 25;
     -fx-padding: 0 0 60 0;
+    -fx-pref-width: 300;
+    -fx-text-alignment: center;
+}
+.killing-general-mode {
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/killing-general.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.killing-general-mode:hover {
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
 }
 
 .capture-the-flag-mode {
@@ -88,9 +93,53 @@
     -fx-background-position: center;
 }
 
+.capture-the-flag-mode:hover {
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
+
 .collecting-flags-mode {
     -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
     -fx-background-image: url("../images/collecting-flags.jpg");
     -fx-background-size: cover;
     -fx-background-position: center;
+}
+
+.collecting-flags-mode:hover {
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
+
+.decks-container {
+    -fx-background-color: #1B171D;
+    -fx-pref-width: 300;
+    -fx-padding: 20;
+}
+
+.create-deck {
+     -fx-background-image: url("../images/button.png");
+     -fx-border-style: none;
+     -fx-border-width: 2px;
+     -fx-border-insets: 0;
+     -fx-text-fill: white;
+     -fx-background-size: cover;
+     -fx-pref-width: 100px;
+     -fx-pref-height: 40px;
+     -fx-background-repeat: no-repeat;
+     -fx-background-position: center;
+     -fx-background-color: transparent;
+     -fx-stroke: #75bc1b;
+     -fx-stroke-width: 3pt;
+     -fx-font-size: 15;
+     -fx-font-weight: bold;
+ }
+
+.create-deck:hover {
+    -fx-background-image: url("../images/button-glow.png");
+    -fx-background-size: cover;
+}
+
+.collection-deck {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #2D4051;
+    -fx-pref-width: 200;
+    -fx-pref-height: 60;
 }

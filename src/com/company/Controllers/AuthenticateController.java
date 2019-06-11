@@ -51,7 +51,7 @@ public class AuthenticateController {
         else {
             AccountController.createAccount(signupUsername.getText(),signupPassword.getText());
             if (signEroorType == null) {
-//                Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+                Graphic.stage.getScene().setRoot(Graphic.mainMenu);
             } else {
                 error.setText("USERNAME EXIST");
             }

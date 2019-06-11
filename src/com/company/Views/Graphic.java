@@ -20,6 +20,8 @@ public class Graphic extends Application {
     public static Parent shop;
     public static Parent game;
     public static Parent chooseGame;
+    public static Parent collection;
+
 
     static {
         try {
@@ -27,6 +29,7 @@ public class Graphic extends Application {
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
+            collection = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
