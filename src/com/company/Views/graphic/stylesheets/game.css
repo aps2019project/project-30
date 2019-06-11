@@ -157,6 +157,7 @@
 .decks-name-container {
     -fx-padding: 30;
 }
-.dechbox_collection{
+.deckBox_collection{
     -fx-background-color: #2D4051;
 }
+

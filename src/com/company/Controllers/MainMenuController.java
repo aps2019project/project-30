@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import animatefx.animation.FadeOut;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import javafx.event.EventHandler;

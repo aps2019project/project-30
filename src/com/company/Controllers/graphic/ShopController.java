@@ -57,8 +57,7 @@ public class ShopController implements Initializable {
                 anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        System.out.println(label.getText());
-                        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(),label.getText());
+                        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), label.getText());
                     }
                 });
                 cardContainer.getChildren().add(anchorPane);

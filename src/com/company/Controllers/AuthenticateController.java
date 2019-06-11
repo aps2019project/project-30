@@ -1,5 +1,7 @@
 package com.company.Controllers;
 
+import animatefx.animation.FadeIn;
+import animatefx.animation.FadeOut;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
@@ -11,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -26,6 +30,8 @@ public class AuthenticateController {
     public static ErrorType loginErrorType = null;
     public static ErrorType signEroorType = null;
     public Label error;
+    public VBox loginErrorBox;
+    public VBox loginBox;
 
     public void login(ActionEvent actionEvent) {
         AccountController.loginAccount(loginUsername.getText(),loginPassword.getText());
@@ -34,10 +40,9 @@ public class AuthenticateController {
             ((MainMenuController) Graphic.mainMenuLoader.getController()).initValues();
         }
         else{
-            if(loginErrorType.equals(ErrorType.PASSWORD_INVALID))
-                error.setText("INVALID PASSORD");
-            if(loginErrorType.equals(ErrorType.USERNAME_NOTFOUND))
-                error.setText("USERNAME_NOTFOUND");
+            new FadeOut(loginBox).playOnFinished(new FadeIn(loginErrorBox)).play();
+            new FadeOut(loginErrorBox).playOnFinished(new FadeIn(loginBox)).setDelay(new Duration(2500)).play();
+            error.setText(loginErrorType.getMessage());
         }
     }
 
