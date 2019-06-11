@@ -2,6 +2,7 @@ package com.company.Controllers.graphic;
 
 import com.company.Models.Card.Card;
 import com.company.Models.Shop;
+import com.company.Models.User.Account;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -47,6 +48,13 @@ public class ShopController implements Initializable {
                 label.setPrefWidth(200);
                 anchorPane.getChildren().add(label);
                 AnchorPane.setTopAnchor(label, 220.0);
+                anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(),label.getText());
+                        System.out.println("kahriiiiiiiiiiiiiidam");
+                    }
+                });
                 cardContainer.getChildren().add(anchorPane);
             }
         }));
