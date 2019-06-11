@@ -31,6 +31,7 @@ public class AuthenticateController {
         AccountController.loginAccount(loginUsername.getText(),loginPassword.getText());
         if(loginErrorType==null){
             Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+            ((MainMenuController) Graphic.mainMenuLoader.getController()).initValues();
         }
         else{
             if(loginErrorType.equals(ErrorType.PASSWORD_INVALID))

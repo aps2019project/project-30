@@ -2,10 +2,12 @@ package com.company.Controllers.graphic;
 
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
+import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,12 +16,22 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class CollectionController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CollectionController implements Initializable {
     public JFXTextField deckName;
     public JFXButton createDeck;
     public VBox deckContainer;
     public static ErrorType creatDeckErrorType;
+    public ImageView back;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        back.setOnMouseClicked(event -> {
+            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+        });
+    }
 
     public void createDeck(ActionEvent actionEvent) {
         Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(deckName.getText());

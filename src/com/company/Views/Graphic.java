@@ -22,11 +22,13 @@ public class Graphic extends Application {
     public static Parent game;
     public static Parent chooseGame;
     public static Parent collection;
+    public static FXMLLoader mainMenuLoader;
 
 
     static {
         try {
-            mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
+            mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
+            mainMenu = mainMenuLoader.load();
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
@@ -40,7 +42,6 @@ public class Graphic extends Application {
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
         Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
-//        Scene scene = new Scene(authenticate, 1600, 900);
         Scene scene = new Scene(authenticate, 1600, 900);
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
