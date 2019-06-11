@@ -10,7 +10,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.graphic.ShopController"
             prefHeight="400.0" prefWidth="600.0" styleClass="shop-root">
-    <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+    <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" >
         <Image url="@../images/back-button.png"/>
     </ImageView>
     <ScrollPane minWidth="1000"  AnchorPane.topAnchor="100" AnchorPane.leftAnchor="300" AnchorPane.bottomAnchor="100" hbarPolicy="NEVER">

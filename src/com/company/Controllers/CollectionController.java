@@ -8,9 +8,13 @@ import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.Console.CollectionViews;
 import com.company.Views.ConsoleOutput;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //import static com.company.Models.Shop.getCardById;
 
@@ -152,4 +156,13 @@ public class CollectionController {
         ConsoleOutput.printErrorMessage(ErrorType.CARD_NOTFOUNDINDECK);
     }
 
+
+    public static List<Card> searchCardsByName(String cardName) {
+        List<Card> cards = new ArrayList<>();
+        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
+            if (card.getName().toLowerCase().contains(cardName.toLowerCase()))
+                cards.add(card);
+        }
+        return cards;
+    }
 }
