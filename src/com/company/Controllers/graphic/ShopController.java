@@ -52,7 +52,6 @@ public class ShopController implements Initializable {
                     @Override
                     public void handle(MouseEvent event) {
                         com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(),label.getText());
-                        System.out.println("kahriiiiiiiiiiiiiidam");
                     }
                 });
                 cardContainer.getChildren().add(anchorPane);

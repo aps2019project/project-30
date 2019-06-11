@@ -21,7 +21,7 @@ public class Shop {
     public static boolean cardNameExistsInShop(String cardName) {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
-                if (card.getName().equals(cardName)) {
+                if (card.getName().equalsIgnoreCase(cardName)) {
                     return true;
                 }
             }
@@ -47,7 +47,7 @@ public class Shop {
     public static Card getCardByName(String cardName) {
         if (Shop.getShopCollection() != null && !Shop.getShopCollection().getCards().isEmpty()) {
             for (Card card : Shop.getShopCollection().getCards()) {
-                if (card.getName().equals(cardName)) {
+                if (card.getName().equalsIgnoreCase(cardName)) {
                     return card;
                 }
             }
