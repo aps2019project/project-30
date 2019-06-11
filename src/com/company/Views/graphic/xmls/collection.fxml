@@ -8,14 +8,28 @@
 
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXButton?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.company.Controllers.graphic.CollectionController">
-    <AnchorPane AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" styleClass="decks-container">
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.company.Controllers.graphic.CollectionController">
+    <AnchorPane>
+        <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+            <Image url="@../images/back-button.png"/>
+        </ImageView>
+        <ScrollPane minWidth="1000" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="300" AnchorPane.bottomAnchor="100"
+                    hbarPolicy="NEVER">
+            <JFXMasonryPane fx:id="cardContainer" minWidth="1000"/>
+        </ScrollPane>
+        <TextField AnchorPane.topAnchor="10" AnchorPane.leftAnchor="500" fx:id="search" promptText="Search ..."
+                   styleClass="shop-search"/>
+    </AnchorPane>
+    <AnchorPane styleClass="decks-container">
         <VBox fx:id="deckContainer" AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container"/>
         <HBox AnchorPane.bottomAnchor="0">
             <JFXTextField fx:id="deckName" styleClass="deck-name-field"/>
             <JFXButton fx:id="createDeck" text="CREATE" styleClass="create-deck" onAction="#createDeck"/>
         </HBox>
     </AnchorPane>
-</AnchorPane>
+</HBox>
