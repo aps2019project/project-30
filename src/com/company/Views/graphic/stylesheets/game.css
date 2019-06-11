@@ -143,3 +143,14 @@
     -fx-pref-width: 200;
     -fx-pref-height: 60;
 }
+
+.deck-name-field:hover .deck-name-field:focused {
+    -fx-background-color: #434343;
+}
+
+.deck-name-field {
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #383838;
+    -fx-pref-height: 40;
+}
