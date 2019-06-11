@@ -1,5 +1,6 @@
 package com.company.Views;
 
+import com.company.Controllers.MainMenuController;
 import com.company.Controllers.ShopController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -38,7 +38,7 @@
         </HBox>
         <HBox alignment="CENTER" spacing="5">
             <Button fx:id="single" text="SINGLE PLAYER" styleClass="game-single"/>
-            <Button fx:id="multi" text="MULTI PLAYER" styleClass="game-multi"/>
+            <Button fx:id="multi" text="MULTI PLAYER" styleClass="game-multi" onAction="#startMultiplayer"/>
         </HBox>
     </VBox>
 </AnchorPane>
