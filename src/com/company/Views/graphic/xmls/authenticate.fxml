@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.company.Controllers.AuthenticateController"
@@ -17,12 +17,22 @@
 
     <JFXTabPane fx:id="tabPane" styleClass="tabs-container">
         <Tab text="LOG IN" fx:id="loginTab">
-            <VBox alignment="CENTER_LEFT" spacing="25" styleClass="login-items-container">
-                <TextField fx:id="loginUsername" promptText="Username" styleClass="authenticate-field"/>
-                <PasswordField fx:id="loginPassword" promptText="Password" styleClass="authenticate-field"/>
-                <JFXCheckBox text="Remember Me" styleClass="remember-me"/>
-                <JFXButton fx:id="login" text="Login" onAction="#login" styleClass="login"/>
-            </VBox>
+            <StackPane styleClass="login-items-container">
+
+                <VBox fx:id="loginErrorBox" alignment="CENTER">
+                    <ImageView fitWidth="140" fitHeight="190">
+                        <Image url="@../images/uh-oh.png"/>
+                    </ImageView>
+                    <Label fx:id="error" styleClass="error-message"/>
+
+                </VBox>
+                <VBox fx:id="loginBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
+                    <TextField fx:id="loginUsername" promptText="Username" styleClass="authenticate-field"/>
+                    <PasswordField fx:id="loginPassword" promptText="Password" styleClass="authenticate-field"/>
+                    <JFXCheckBox text="Remember Me" styleClass="remember-me"/>
+                    <JFXButton fx:id="login" text="Login" onAction="#login" styleClass="login"/>
+                </VBox>
+            </StackPane>
         </Tab>
         <Tab text="SIGN UP" fx:id="signupTab">
             <VBox alignment="CENTER_LEFT" spacing="25" styleClass="login-items-container">
@@ -33,6 +43,5 @@
             </VBox>
         </Tab>
     </JFXTabPane>
-    <Label fx:id="error"/>
 
 </VBox>

@@ -68,3 +68,9 @@
     -fx-background-color: #383838;
     -fx-pref-height: 40;
 }
+
+.error-message {
+    -fx-padding: 20 0 0 0;
+    -fx-text-fill: #666;
+    -fx-font-size: 15;
+}

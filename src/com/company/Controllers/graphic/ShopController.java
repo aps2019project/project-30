@@ -7,20 +7,13 @@ import com.jfoenix.controls.JFXMasonryPane;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -51,7 +44,7 @@ public class ShopController implements Initializable {
                 anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(),label.getText());
+                        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), label.getText());
                     }
                 });
                 cardContainer.getChildren().add(anchorPane);
