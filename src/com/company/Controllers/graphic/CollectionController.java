@@ -74,7 +74,7 @@ public class  CollectionController implements Initializable     {
             hBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    selected_deck=deckName.getText();
+                    selected_deck=decklabel.getText();
                     deckContainer.setVisible(false);
                     creatDeckBar.setVisible(false);
                     VBox newVbox=new VBox();
@@ -161,7 +161,9 @@ public class  CollectionController implements Initializable     {
                         @Override
                         public void handle(MouseEvent event) {
                             System.out.println(card.getName());
+                            System.out.println(selected_deck);
                             Account.getLoggedInAccount().getCollection().getCollectionController().addCard(card.getId(), selected_deck);
+                            //cardContainer.getChildren().remove(anchorPane);
                         }
                     });
                 //}
