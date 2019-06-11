@@ -104,12 +104,16 @@ public class CollectionController {
     }
 
     public void createDeck(String deckName) {
+        ErrorType errorType=null;
         if (deckExist(deckName)) {
             ConsoleOutput.printErrorMessage(ErrorType.DECK_EXISTS);
-            return;
+            errorType=ErrorType.DECK_EXISTS;
         }
-        Deck deck = new Deck(deckName);
-        Account.getLoggedInAccount().getDecks().add(deck);
+        else {
+            Deck deck = new Deck(deckName);
+            Account.getLoggedInAccount().getDecks().add(deck);
+        }
+
     }
 
     public void deleteDeck(String deckName) {
