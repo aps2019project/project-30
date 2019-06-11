@@ -15,16 +15,28 @@
     <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>
-    <VBox alignment="CENTER" spacing="20" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-        <HBox alignment="CENTER">
-            <VBox alignment="BOTTOM_CENTER" styleClass="killing-general-mode" prefWidth="300" prefHeight="550">
-                <Label text="Killing General" styleClass="choose-game-title"/>
+    <VBox alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <HBox alignment="CENTER" spacing="50">
+            <VBox fx:id="killingGeneral" alignment="BOTTOM_CENTER" styleClass="killing-general-mode" prefWidth="300" prefHeight="550">
+                <Label text="KillingGeneral" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" styleClass="capture-the-flag-mode" prefWidth="300" prefHeight="550">
+                <Label text="CaptureTheFlag" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" styleClass="collecting-flags-mode" prefWidth="300" prefHeight="550">
+                <Label text="CollectingFlags" styleClass="choose-game-title"/>
                 <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
                     <Image url="@../images/game-select-plate.png"/>
                 </ImageView>
             </VBox>
         </HBox>
-        <HBox alignment="CENTER" spacing="10">
+        <HBox alignment="CENTER" spacing="5">
             <Button fx:id="single" text="SINGLE PLAYER" styleClass="game-single"/>
             <Button fx:id="multi" text="MULTI PLAYER" styleClass="game-multi"/>
         </HBox>

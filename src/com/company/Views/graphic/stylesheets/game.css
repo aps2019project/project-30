@@ -53,20 +53,21 @@
     -fx-font-weight: bold;
 }
 
-.game-multi {
+.game-multi:hover {
     -fx-background-image: url("../images/button-right-glow.png");
 }
 
 .killing-general-mode {
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
     -fx-background-image: url("../images/killing-general.jpg");
     -fx-background-size: cover;
     -fx-background-position: center;
-    /*-fx-effect: ;*/
 }
 
 .choose-game-root {
-    -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
-    -fx-background-color: grey;
+    -fx-background-image: url("../images/choose-game-bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
 }
 
 .choose-game-plate {
@@ -74,7 +75,22 @@
 }
 
 .choose-game-title {
+    -fx-background-color: ;
     -fx-text-fill: white;
     -fx-font-size: 25;
     -fx-padding: 0 0 60 0;
+}
+
+.capture-the-flag-mode {
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/capture-the-flag.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.collecting-flags-mode {
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/collecting-flags.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
 }
