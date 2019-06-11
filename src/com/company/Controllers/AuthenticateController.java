@@ -3,20 +3,14 @@ package com.company.Controllers;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Models.ErrorType;
-import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-
-import java.io.IOException;
 
 public class AuthenticateController {
     public JFXTabPane tabPane;
@@ -28,7 +22,7 @@ public class AuthenticateController {
     public TextField signupPassword;
     public TextField signupPasswordMatch;
     public static ErrorType loginErrorType = null;
-    public static ErrorType signEroorType = null;
+    public static ErrorType signErrorType = null;
     public Label error;
     public VBox loginErrorBox;
     public VBox loginBox;
@@ -56,12 +50,12 @@ public class AuthenticateController {
         }
         else {
             AccountController.createAccount(signupUsername.getText(),signupPassword.getText());
-            if (signEroorType != null) {
+            if (signErrorType != null) {
                 error.setText("USERNAME EXIST");
             }
         }
     }
     public static void signUpError(ErrorType signErrorType){
-        signEroorType=signErrorType;
+        AuthenticateController.signErrorType =signErrorType;
     }
 }
