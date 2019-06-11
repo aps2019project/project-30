@@ -9,6 +9,10 @@
     -fx-padding: 0 0 0 100;
 }
 
+.menu-item:hover {
+    -fx-effect: dropshadow(three-pass-box, lightskyblue, 10, 0, 0, 0);
+}
+
 * {
     -fx-font-family: "Lato Light";
 }
@@ -56,4 +60,8 @@
     -fx-background-image: url("../images/gold-container.png");
     -fx-background-size: 120 50;
     -fx-background-repeat: no-repeat;
+}
+
+.gold {
+    -fx-text-fill: white;
 }

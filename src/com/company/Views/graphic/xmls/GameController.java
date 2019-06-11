@@ -27,12 +27,19 @@ public class GameController  {
     public HBox handContainer;
     public Button endTurn;
     public VBox graveyard;
+    public Label player1name;
+    public Label player2name;
+    public HBox manaContainer1;
+    public HBox manaContainer2;
 
 
     public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
 //            endTurn.setDisable(true);
 //        }
+        player1name.setText(Battle.getPlayingBattle().getPlayers()[0].getName());
+        player2name.setText(Battle.getPlayingBattle().getPlayers()[1].getName());
+        updateMana();
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
             AnchorPane pane = new AnchorPane();
             StackPane handCard = new StackPane();
@@ -57,5 +64,23 @@ public class GameController  {
 
     public void endTurn(ActionEvent actionEvent) {
         endTurn.setDisable(true);
+    }
+
+    public void updateMana() {
+        for (int i = 1; i <= 9; i++) {
+            ImageView imageView;
+            if (i <= Battle.getPlayingBattle().getPlayers()[0].getMaxMana()) {
+                Image image = new Image("com/company/Views/graphic/images/mana.png");
+                imageView = new ImageView(image);
+                imageView.setFitHeight(20);
+                imageView.setFitWidth(20);
+            } else {
+                Image image = new Image("com/company/Views/graphic/images/mana-inactive.png");
+                imageView = new ImageView(image);
+                imageView.setFitHeight(20);
+                imageView.setFitWidth(20);
+            }
+            manaContainer1.getChildren().add(imageView);
+        }
     }
 }

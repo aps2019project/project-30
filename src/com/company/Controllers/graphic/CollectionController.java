@@ -4,11 +4,13 @@ import com.company.Models.Card.Card;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
+import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -19,6 +21,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import java.net.URL;
 import java.util.List;
@@ -32,7 +37,6 @@ public class  CollectionController implements Initializable     {
     public JFXMasonryPane cardContainer;
     public ImageView back;
     public TextField search;
-
 
     public void createDeck(ActionEvent actionEvent) {
         Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(deckName.getText());
@@ -71,6 +75,10 @@ public class  CollectionController implements Initializable     {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        back.setOnMouseClicked(event -> {
+            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+        });
+
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
             System.out.println("hi");
             List<Card> cards;

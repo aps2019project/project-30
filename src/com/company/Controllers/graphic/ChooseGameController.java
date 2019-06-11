@@ -4,6 +4,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Views.Graphic;
 import com.company.Views.graphic.xmls.GameController;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,10 +23,10 @@ public class ChooseGameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        back.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        back.setOnMouseClicked(event -> {
             Graphic.stage.getScene().setRoot(Graphic.mainMenu);
-            event.consume();
         });
+
     }
 
     public void startMultiplayer(ActionEvent actionEvent) {

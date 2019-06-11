@@ -3,6 +3,7 @@ package com.company.Controllers.graphic;
 import com.company.Models.Card.Card;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
+import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -31,6 +32,11 @@ public class ShopController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        back.setOnMouseClicked(event -> {
+            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+        });
+
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
             List<Card> cards;
             if (newValue.isEmpty())
@@ -51,8 +57,8 @@ public class ShopController implements Initializable {
                 anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
+                        System.out.println(label.getText());
                         com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(),label.getText());
-                        System.out.println("kahriiiiiiiiiiiiiidam");
                     }
                 });
                 cardContainer.getChildren().add(anchorPane);

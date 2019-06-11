@@ -7,7 +7,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.MainMenuController"
             prefHeight="400.0" prefWidth="600.0" styleClass="main-menu-root">
-    <VBox AnchorPane.leftAnchor="100" AnchorPane.topAnchor="200">
+    <VBox AnchorPane.leftAnchor="100" AnchorPane.topAnchor="200" spacing="40">
         <ImageView fitWidth="250" fitHeight="100">
             <Image url="@../images/logo-game.png"/>
         </ImageView>
@@ -20,7 +20,7 @@
             <ImageView fitWidth="20" fitHeight="20">
                 <Image url="@../images/gold-icon.png"/>
             </ImageView>
-            <Label fx:id="gold"/>
+            <Label fx:id="gold" styleClass="gold"/>
         </HBox>
         <ImageView fitWidth="70" fitHeight="70">
             <Image url="@../images/quests.png"/>
