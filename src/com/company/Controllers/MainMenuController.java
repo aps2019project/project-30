@@ -34,7 +34,7 @@ public class MainMenuController implements Initializable {
         });
 
         play.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Graphic.stage.getScene().setRoot(Graphic.game);
+            Graphic.stage.getScene().setRoot(Graphic.chooseGame);
             event.consume();
         });
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());

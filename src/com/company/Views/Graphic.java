@@ -19,12 +19,14 @@ public class Graphic extends Application {
     public static Parent mainMenu;
     public static Parent shop;
     public static Parent game;
+    public static Parent chooseGame;
 
     static {
         try {
             mainMenu = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
+            chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -39,6 +41,7 @@ public class Graphic extends Application {
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/shop.css");
+        scene.getStylesheets().add("com/company/Views/graphic/stylesheets/game.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Duelyst");
         Image image = new Image("com/company/Views/graphic/images/cursor.png");  //pass in the image path

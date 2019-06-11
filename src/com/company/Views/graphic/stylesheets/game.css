@@ -1,0 +1,80 @@
+.game-hand-card-container {
+    -fx-background-image: url("../images/game-hand-card-container.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 10;
+    -fx-background-position: center center;
+}
+
+.game-hand-card-container:hover {
+    -fx-background-image: url("../images/game-hand-card-container-hover.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+.game-single {
+    -fx-background-image: url("../images/button-left.png");
+    -fx-border-style: none;
+    -fx-border-width: 2px;
+    -fx-border-insets: 0;
+    -fx-text-fill: white;
+    -fx-background-size: 200px 80px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 80px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+    -fx-stroke: #75bc1b;
+    -fx-stroke-width: 3pt;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.game-single:hover {
+    -fx-background-image: url("../images/button-left-glow.png");
+}
+
+.game-multi {
+    -fx-background-image: url("../images/button-right.png");
+    -fx-border-style: none;
+    -fx-border-width: 2px;
+    -fx-border-insets: 0;
+    -fx-text-fill: white;
+    -fx-background-size: 200px 80px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 80px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+    -fx-stroke: #75bc1b;
+    -fx-stroke-width: 3pt;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.game-multi {
+    -fx-background-image: url("../images/button-right-glow.png");
+}
+
+.killing-general-mode {
+    -fx-background-image: url("../images/killing-general.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    /*-fx-effect: ;*/
+}
+
+.choose-game-root {
+    -fx-effect: dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+    -fx-background-color: grey;
+}
+
+.choose-game-plate {
+    -fx-padding: 300 0 0 0;
+}
+
+.choose-game-title {
+    -fx-text-fill: white;
+    -fx-font-size: 25;
+    -fx-padding: 0 0 60 0;
+}
