@@ -33,5 +33,6 @@
             </VBox>
         </Tab>
     </JFXTabPane>
+    <Label fx:id="error"/>
 
 </VBox>

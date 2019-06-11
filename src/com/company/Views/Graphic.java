@@ -35,7 +35,7 @@ public class Graphic extends Application {
         stage = primaryStage;
         Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
 //        Scene scene = new Scene(authenticate, 1600, 900);
-        Scene scene = new Scene(game, 1600, 900);
+        Scene scene = new Scene(authenticate, 1600, 900);
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/shop.css");

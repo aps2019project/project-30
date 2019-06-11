@@ -14,13 +14,16 @@ import java.util.Comparator;
 public class AccountController {
     AccountView view = new AccountView();
     public static void createAccount(String username, String password) {
+        ErrorType errorType=null;
         if (!usernameExists(username)) {
             Account.addToAccounts(
                     new Account(username, password)
             );
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.USERNAME_EXISTS);
+            errorType=ErrorType.USERNAME_EXISTS;
         }
+        AuthenticateController.signUpError(errorType);
     }
 
     public static void addCardToCollection(Account account ,Card card){
@@ -46,6 +49,7 @@ public class AccountController {
         if (loginErrorType != null) {
             ConsoleOutput.printErrorMessage(loginErrorType);
         }
+        AuthenticateController.loginError(loginErrorType);
     }
 
     public static void logout() {
