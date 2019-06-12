@@ -15,7 +15,7 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.company.Controllers.graphic.CollectionController">
-    <AnchorPane >
+    <AnchorPane>
         <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
             <Image url="@../images/back-button.png"/>
         </ImageView>
