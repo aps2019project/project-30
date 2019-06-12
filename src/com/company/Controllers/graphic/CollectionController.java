@@ -88,11 +88,8 @@ public class  CollectionController implements Initializable     {
                         counter++;
                         HBox singleCard=new HBox();
                         singleCard.getStyleClass().add("deckBox_collection");
-                        //Label decklabel = new Label(deckName.getText());
-                      //  decklabel.getStyleClass().add("collection-deck");
                         Label number=new Label();
                         Label cardName=new Label();
-                        //singleCard.getChildren().add(decklabel);
 
                         number.setText(String.valueOf(counter));
                         cardName.setText(card.getName());
