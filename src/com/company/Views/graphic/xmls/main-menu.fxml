@@ -6,7 +6,16 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.MainMenuController"
+            fx:id="root"
             prefHeight="400.0" prefWidth="600.0" styleClass="main-menu-root">
+
+    <ImageView fx:id="pillars" fitWidth="1000" fitHeight="725" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0">
+        <Image url="@../images/pillars_near.png"/>
+    </ImageView>
+    <StackPane fx:id="cloudsContainer" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
+    <ImageView fx:id="foreGround" fitWidth="1300" fitHeight="393" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+        <Image url="@../images/foreground.png"/>
+    </ImageView>
     <VBox AnchorPane.leftAnchor="100" AnchorPane.topAnchor="200" spacing="40">
         <ImageView fitWidth="250" fitHeight="100">
             <Image url="@../images/logo-game.png"/>

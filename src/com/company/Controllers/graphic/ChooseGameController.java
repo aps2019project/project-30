@@ -2,15 +2,12 @@ package com.company.Controllers.graphic;
 
 import com.company.Models.Battle.Battle;
 import com.company.Views.Graphic;
-import com.company.Views.graphic.xmls.GameController;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;

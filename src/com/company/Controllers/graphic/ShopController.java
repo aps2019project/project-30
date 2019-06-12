@@ -45,22 +45,19 @@ public class ShopController implements Initializable {
                 cards = com.company.Controllers.ShopController.searchCardsByName(newValue);
             cardContainer.getChildren().clear();
             for (Card card : cards) {
-                AnchorPane anchorPane = new AnchorPane();
-                anchorPane.setPrefSize(200, 262);
-                anchorPane.getStyleClass().add("card-shop-container");
-                Label label = new Label(card.getName().toUpperCase());
-                label.getStyleClass().add("card-shop-name");
-                label.setAlignment(Pos.CENTER);
-                label.setPrefWidth(200);
-                anchorPane.getChildren().add(label);
-                AnchorPane.setTopAnchor(label, 220.0);
-                anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), label.getText());
-                    }
-                });
-                cardContainer.getChildren().add(anchorPane);
+                AnchorPane cardContainer = new AnchorPane();
+                cardContainer.setPrefSize(200, 262);
+                cardContainer.getStyleClass().add("card-shop-container");
+                Label title = new Label(card.getName().toUpperCase());
+                title.getStyleClass().add("card-shop-name");
+                title.setPrefWidth(200);
+                cardContainer.getChildren().add(title);
+                AnchorPane.setTopAnchor(title, 220.0);
+                cardContainer.setOnMouseClicked(event ->
+                        com.company.Controllers.ShopController.buy(
+                                Account.getLoggedInAccount(), title.getText())
+                );
+                this.cardContainer.getChildren().add(cardContainer);
             }
         }));
     }

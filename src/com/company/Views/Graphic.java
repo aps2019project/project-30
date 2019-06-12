@@ -47,6 +47,7 @@ public class Graphic extends Application {
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/shop.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/game.css");
+        scene.getStylesheets().add("com/company/Views/graphic/stylesheets/collection.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Duelyst");
         Image image = new Image("com/company/Views/graphic/images/cursor.png");  //pass in the image path
