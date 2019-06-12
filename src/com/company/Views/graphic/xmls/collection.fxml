@@ -21,7 +21,7 @@
         </ImageView>
         <ScrollPane minWidth="1100" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="100" AnchorPane.bottomAnchor="100"
                     hbarPolicy="NEVER">
-            <JFXMasonryPane fx:id="cardContainer" minWidth="1000" />
+            <JFXMasonryPane fx:id="cardContainer" minWidth="1000" styleClass="shop-cards-container"/>
         </ScrollPane>
         <TextField AnchorPane.topAnchor="10" AnchorPane.leftAnchor="500" fx:id="search" promptText="Search ..."
                    styleClass="shop-search"/>

@@ -41,6 +41,7 @@
 }
 
 .shop-cards-container {
+    -fx-padding: 30;
     -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-background-radius: 10;
 }

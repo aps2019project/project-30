@@ -7,14 +7,16 @@ import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +30,7 @@ import java.util.ResourceBundle;
 
 public class CollectionController implements Initializable {
     public static ErrorType creatDeckErrorType;
+    private final ToggleGroup mainDeckToggleGroup = new ToggleGroup();
     public JFXTextField deckName;
     public AnchorPane deck_bar;
     public JFXButton createDeck;
@@ -45,7 +48,12 @@ public class CollectionController implements Initializable {
     public void createDeck(ActionEvent actionEvent) {
         Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(deckName.getText());
         if (creatDeckErrorType == null) {
+            JFXRadioButton mainDeckRadioButton = new JFXRadioButton();
+            mainDeckRadioButton.setUserData(deckName.getText());
+            mainDeckRadioButton.setPadding(new Insets(10));
+            mainDeckRadioButton.setToggleGroup(mainDeckToggleGroup);
             HBox hBox = new HBox();
+            hBox.getChildren().add(mainDeckRadioButton);
             hBox.getStyleClass().add("deckBox_collection");
             Label decklabel = new Label(deckName.getText());
             decklabel.getStyleClass().add("collection-deck");
@@ -56,6 +64,7 @@ public class CollectionController implements Initializable {
             imageView.getStyleClass().add("deck_image_delete");
             imageView.setFitHeight(20);
             imageView.setFitWidth(20);
+
             hBox.getChildren().add(imageView);
             deckContainer.getChildren().add(hBox);
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -101,7 +110,7 @@ public class CollectionController implements Initializable {
 
                     Button backButton = new Button();
                     newHbox.getChildren().add(backButton);
-                    backButton.getStyleClass().add("create-deck");
+                    backButton.getStyleClass().add("deck-back-button");
                     backButton.setText("BACK");
                     backButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
@@ -126,6 +135,13 @@ public class CollectionController implements Initializable {
             Graphic.stage.getScene().setRoot(Graphic.mainMenu);
         });
 
+        mainDeckToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck((String) newValue.getUserData());
+            }
+        });
+
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
             List<Card> cards;
             if (newValue.isEmpty())
@@ -144,13 +160,16 @@ public class CollectionController implements Initializable {
                 anchorPane.getChildren().add(label);
                 AnchorPane.setTopAnchor(label, 220.0);
                 cardContainer.getChildren().add(anchorPane);
-                if (selected_deck != null) {
-                    anchorPane.setOnMouseClicked(event -> {
+
+                anchorPane.setOnMouseClicked(event -> {
+                    if (selected_deck != null) {
                         Account.getLoggedInAccount().getCollection().getCollectionController().addCard(card.getId(), selected_deck);
-                    });
-                }
+                    }
+                });
+
             }
 
         }));
     }
+
 }
