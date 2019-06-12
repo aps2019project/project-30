@@ -35,13 +35,16 @@
         </Tab>
         <Tab text="SIGN UP" fx:id="signupTab">
             <StackPane styleClass="login-items-container">
-
+                <VBox fx:id="signupSuccussBox" alignment="CENTER">
+                    <ImageView fitWidth="140" fitHeight="190">
+                        <Image url="@../images/oh-yes.png"/>
+                    </ImageView>
+                </VBox>
                 <VBox fx:id="signupErrorBox" alignment="CENTER">
                     <ImageView fitWidth="140" fitHeight="190">
                         <Image url="@../images/uh-oh.png"/>
                     </ImageView>
                     <Label fx:id="signupError" styleClass="error-message"/>
-
                 </VBox>
                 <VBox fx:id="signupBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
                     <TextField fx:id="signupUsername" promptText="Username" styleClass="authenticate-field"/>

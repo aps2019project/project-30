@@ -8,10 +8,11 @@
             fx:controller="com.company.Controllers.MainMenuController"
             fx:id="root"
             prefHeight="400.0" prefWidth="600.0" styleClass="main-menu-root">
-    <StackPane fx:id="cloudsContainer" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
+
     <ImageView fx:id="pillars" fitWidth="1530" fitHeight="1110" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
         <Image url="@../images/pillars_near.png"/>
     </ImageView>
+    <StackPane fx:id="cloudsContainer" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
     <ImageView fx:id="foreGround" fitWidth="1600" fitHeight="484" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
         <Image url="@../images/foreground.png"/>
     </ImageView>

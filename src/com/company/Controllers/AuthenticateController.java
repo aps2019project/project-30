@@ -1,11 +1,13 @@
 package com.company.Controllers;
 
+import animatefx.animation.AnimationFX;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Models.ErrorType;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -29,6 +31,7 @@ public class AuthenticateController {
     public VBox signupErrorBox;
     public Label signupError;
     public VBox signupBox;
+    public VBox signupSuccussBox;
 
     public static void loginError(ErrorType longinErrorType) {
         loginErrorType = longinErrorType;
@@ -61,6 +64,17 @@ public class AuthenticateController {
                 new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();
                 new FadeIn(signupBox).playOnFinished(new FadeOut(signupErrorBox)).setDelay(new Duration(2500)).play();
                 signupError.setText(signErrorType.getMessage());
+            } else {
+                signupErrorBox.setVisible(false);
+                new FadeOut(signupBox).playOnFinished(new FadeIn(signupSuccussBox)).play();
+                AnimationFX animationFX = new FadeOut(signupSuccussBox).setDelay(new Duration(1500));
+                animationFX.setOnFinished(event -> {
+                    tabPane.getSelectionModel().select(loginTab);
+                    FadeIn fadeIn = new FadeIn(signupBox);
+                    fadeIn.setOnFinished(event1 -> signupErrorBox.setVisible(true));
+                    fadeIn.play();
+                });
+                animationFX.play();
             }
         }
     }

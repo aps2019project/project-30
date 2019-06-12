@@ -16,6 +16,7 @@
 .shop-root {
     -fx-background-image: url("../images/authenticate-bg.jpg");
     -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
 }
 
 .shop-search {
