@@ -23,8 +23,9 @@
     -fx-background-size: 20;
     -fx-background-repeat: stretch;
     -fx-background-position: right center;
-    -fx-pref-height: 40;
+    -fx-pref-height: 50;
     -fx-pref-width: 200;
+    -fx-padding: 5;
     -fx-background-color: #0C1022;
     -fx-background-radius: 8px;
     -fx-text-fill: #DCDCDC;
@@ -36,4 +37,9 @@
 
 .scroll-pane .viewport {
     -fx-background-color: transparent;
+}
+
+.shop-cards-container {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-background-radius: 10;
 }

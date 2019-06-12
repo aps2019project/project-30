@@ -3,6 +3,7 @@ package com.company.Controllers;
 import animatefx.animation.FadeOut;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
+import com.company.Views.graphic.Fog;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.Initializable;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -23,10 +26,24 @@ public class MainMenuController implements Initializable {
     public Label play;
     public Label collection;
     public Label gold;
+    public StackPane cloudsContainer;
+    public ImageView pillars;
+    public ImageView foreGround;
+    public AnchorPane root;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+//        foreGround.fitWidthProperty().bind(root.widthProperty().divide(2));
+//        foreGround.fitHeightProperty().bind(foreGround.fitWidthProperty().divide(20 / 17));
+//        pillars.fitWidthProperty().bind(root.widthProperty().divide(3/2));
+//        pillars.fitHeightProperty().bind(pillars.fitWidthProperty().divide(10 / 3));
+
+
+        Fog fog = new Fog(600, 200);
+        cloudsContainer.getChildren().add(fog.getView());
+
+
 
         friends.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             System.out.println("Tile pressed ");
