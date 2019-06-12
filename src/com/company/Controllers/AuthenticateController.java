@@ -55,7 +55,7 @@ public class AuthenticateController {
 
     public void signUp(ActionEvent actionEvent) {
         if (!signupPasswordMatch.getText().equals(signupPassword.getText())) {
-            loginError.setText("PASSWORDS NOT EQUAL");
+            signupError.setText("PASSWORDS NOT EQUAL");
             new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();
             new FadeIn(signupBox).playOnFinished(new FadeOut(signupErrorBox)).setDelay(new Duration(2500)).play();
         } else {

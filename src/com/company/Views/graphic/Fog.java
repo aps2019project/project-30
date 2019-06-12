@@ -21,7 +21,7 @@ public class Fog {
         this.height = height ;
         this.fog = new Pane();
         Rectangle rect = new Rectangle(0, 0, width, height);
-        rect.setFill(Color.rgb(69, 115, 195, 0.2));
+        rect.setFill(Color.rgb(69, 115, 195, 0.4));
         fog.getChildren().add(rect);
 
         for (int i = 0; i < 50; i++) {

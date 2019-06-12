@@ -167,3 +167,18 @@
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 }
+
+.tile-default {
+    -fx-background-color: rgba(0,0,0, 0.3);
+}
+
+.tile-default:hover {
+    -fx-text-fill: red;
+    -fx-background-color: rgba(250,250,250, 0.4);
+}
+
+.player-name {
+    -fx-font-family: "Lato";
+    -fx-text-fill: white;
+    -fx-font-size: 20;
+}
