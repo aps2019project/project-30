@@ -67,7 +67,7 @@ public class CollectionController implements Initializable {
             });
 
 
-            hBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            decklabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
                     selected_deck = decklabel.getText();
