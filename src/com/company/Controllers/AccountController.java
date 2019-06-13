@@ -120,4 +120,11 @@ public class AccountController {
             return Integer.parseInt(numberOfAllRegisteredAccounts);
         return 0;
     }
+
+    private static void incrementNumberOfRegisteredAccounts() throws IOException {
+        int registeredAccountsNumber = readNumberOfAllRegisteredAccountsFromFile() + 1;
+        PrintWriter writer = new PrintWriter(NUMBER_OF_ACCOUNTS_FILE_ADDRESS);
+        writer.print(String.valueOf(registeredAccountsNumber));
+        writer.close();
+    }
 }
