@@ -13,13 +13,14 @@ import com.company.Models.User.Account;
 import com.company.Views.Console.CollectionViews;
 import com.company.Views.ConsoleOutput;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 //import static com.company.Models.Shop.getCardById;
 
 
-public class CollectionController {
+public class CollectionController implements Serializable {
 
     public void search(String cardName) {
         for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {

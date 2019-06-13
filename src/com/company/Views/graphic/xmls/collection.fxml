@@ -19,9 +19,8 @@
         <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
             <Image url="@../images/back-button.png"/>
         </ImageView>
-        <ScrollPane minWidth="1100" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="100" AnchorPane.bottomAnchor="100"
-                    hbarPolicy="NEVER">
-            <JFXMasonryPane fx:id="cardContainer" minWidth="1000" styleClass="shop-cards-container"/>
+        <ScrollPane minWidth="1100" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="100" AnchorPane.bottomAnchor="100" hbarPolicy="NEVER" styleClass="shop-cards-container">
+            <JFXMasonryPane fx:id="cardContainer" minWidth="1000" />
         </ScrollPane>
         <TextField AnchorPane.topAnchor="10" AnchorPane.leftAnchor="500" fx:id="search" promptText="Search ..."
                    styleClass="shop-search"/>
@@ -31,6 +30,11 @@
         <HBox fx:id="creatDeckBar" AnchorPane.bottomAnchor="0">
             <JFXTextField fx:id="deckName" styleClass="deck-name-field"/>
             <JFXButton fx:id="createDeck" text="CREATE" styleClass="create-deck" onAction="#createDeck"/>
+        </HBox>
+        <VBox fx:id="deck_contaner_content_bar"  AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container" visible="false"/>
+        <HBox fx:id="backbar" AnchorPane.bottomAnchor="0" visible="false">
+            <JFXButton fx:id="backtodecks" text="BACK" styleClass="create-deck" />
+
         </HBox>
     </AnchorPane>
 </AnchorPane>

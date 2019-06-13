@@ -4,12 +4,13 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.Hand;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class DeckController {
+public class DeckController implements Serializable {
     private Deck deck;
     private int cardToAddInHandIndex = 0;
 

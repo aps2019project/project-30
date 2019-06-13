@@ -12,10 +12,11 @@ import com.company.Models.TargetType;
 import com.company.Models.User.Account;
 import com.company.Views.ConsoleOutput;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Card {
+public abstract class Card implements Serializable {
     private String id;
     private String name;
     private int manaPoint;

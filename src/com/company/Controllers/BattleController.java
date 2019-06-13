@@ -822,7 +822,7 @@ public class BattleController {
 
     private void scorePlayers(Player winner) {
         if (winner.getAccount() != null)
-            winner.getAccount().incremeantWins();
+            winner.getAccount().incrementWins();
     }
 
     private void logBattleInBattleHistories(Player winner) {
