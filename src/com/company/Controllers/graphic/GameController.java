@@ -1,6 +1,7 @@
 package com.company.Controllers.graphic;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
 import javafx.event.ActionEvent;
@@ -45,8 +46,10 @@ public class GameController {
 //        gameTable.setEffect(e);
         gameTable.setAlignment(Pos.CENTER);
         tableContainer.getChildren().add(gameTable);
-        player1name.setText(Battle.getPlayingBattle().getPlayers()[0].getName());
-        player2name.setText(Battle.getPlayingBattle().getPlayers()[1].getName());
+        player1name.setText(Battle.getPlayingBattle().getPlayers()[0].getName().toUpperCase());
+        player2name.setText(Battle.getPlayingBattle().getPlayers()[1].getName().toUpperCase());
+        player1name.getStyleClass().add("player-name");
+        player2name.getStyleClass().add("player-name");
         updateMana();
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
             AnchorPane pane = new AnchorPane();
@@ -60,7 +63,7 @@ public class GameController {
 
             StackPane manaContainer = new StackPane();
             Label manaNum = new Label(String.valueOf(card.getManaPoint()));
-            manaNum.getStyleClass().add("");
+            manaNum.getStyleClass().add("mana-num");
             ImageView manaImage = new ImageView(new Image("com/company/Views/graphic/images/mana.png"));
             manaImage.setFitWidth(45);
             manaImage.setFitHeight(45);
@@ -80,7 +83,8 @@ public class GameController {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
                 AnchorPane tile = new AnchorPane();
-                Soldier soldierInCell = (Soldier) (Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1).getCardInCell());
+                Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1);
+                Soldier soldierInCell = (Soldier) (cell.getCardInCell());
                 if (soldierInCell != null) {
                     try {
                         StackPane cardViewContainer = getCardView(soldierInCell);
@@ -101,6 +105,19 @@ public class GameController {
                     } catch (NullPointerException | IllegalArgumentException e) {
                         System.out.println("===" + e.getMessage());
                     }
+                } else if (cell.getFlag() != null) {
+                    StackPane flagContainer = new StackPane();
+                    Image flagGif;
+                    flagGif = new Image("com/company/Views/graphic/images/gifs/flag.gif");
+                    ImageView flagView = new ImageView(flagGif);
+                    flagView.setFitWidth(60);
+                    flagView.setFitWidth(83);
+                    flagContainer.getChildren().add(flagView);
+                    tile.getChildren().add(flagContainer);
+                    AnchorPane.setTopAnchor(flagContainer, 0.0);
+                    AnchorPane.setBottomAnchor(flagContainer, 0.0);
+                    AnchorPane.setRightAnchor(flagContainer, 0.0);
+                    AnchorPane.setLeftAnchor(flagContainer, 0.0);
                 }
 
                 gridPane.add(tile, i, j);

@@ -69,5 +69,5 @@
 }
 
 .imageItem:hover {
-    -fx-effect: innershadow(one-pass-box, gold, 50, 0.01, 0, 0);
+    -fx-effect: innershadow(one-pass-box, gold, 50, 0.1, 0, 0);
 }
