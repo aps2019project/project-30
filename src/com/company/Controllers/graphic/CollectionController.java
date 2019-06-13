@@ -22,8 +22,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +33,8 @@ import java.util.ResourceBundle;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static javafx.scene.paint.Color.*;
 
 public class CollectionController implements Initializable {
     public static ErrorType creatDeckErrorType;
@@ -99,27 +103,27 @@ public class CollectionController implements Initializable {
         deck_contaner_content_bar.setVisible(true);
         backbar.setVisible(true);
         deck_contaner_content_bar.getChildren().clear();
+        HBox deckN=new HBox();
+        deckN.getStyleClass().add("deckBox_collection");
+        Label decklabel = new Label(selected_deck);
+        decklabel.getStyleClass().add("collection-deck");
+        deckN.getChildren().add(decklabel);
+        deck_contaner_content_bar.getChildren().add(deckN);
         int counter=0;
         for(Card card: Collection.getDeckByName(selected_deck).getDeckCards()){
             counter++;
             HBox singleCard=new HBox();
             singleCard.getStyleClass().add("hbox_card");
-
             Label number=new Label();
             Label cardName=new Label();
-
+            cardName.setTextFill(WHITE);
+            number.setTextFill(BLACK);
             number.setText(String.valueOf(counter));
             cardName.setText(card.getName());
- //           singleCard.getStyleClass().add("collection-deck");
-//            cardName.getStyleClass().add("collection-deck");
+            singleCard.getStyleClass().add("collection-deck-card");
+            cardName.getStyleClass().add("collection-deck-card");
             singleCard.getChildren().add(number);
             singleCard.getChildren().add(cardName);
-//            singleCard.getOnMouseClicked(new EventHandler<>() {
-//                @Override
-//                public void handle(Event event) {
-//
-//                }
-//            });
             deck_contaner_content_bar.getChildren().add(singleCard);
         }
         backtodecks.setOnMouseClicked(new EventHandler<MouseEvent>() {
