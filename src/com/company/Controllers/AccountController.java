@@ -9,13 +9,11 @@ import com.company.Views.ConsoleOutput;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 
 public class AccountController {
-
-    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "Accounts/numberOfAccounts.txt";
-    final public static String ACCOUNTS_FILE_ADDRESS = "Accounts/Accounts.txt";
+    final public static String ACCOUNTS_FOLDER_ADDRESS = "Accounts/";
+    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = ACCOUNTS_FOLDER_ADDRESS + "numberOfAccounts.txt";
 
     AccountView view = new AccountView();
 
@@ -24,7 +22,7 @@ public class AccountController {
         if (!usernameExists(username)) {
             Account newAccount = new Account(username, password);
             Account.addToAccounts(newAccount);
-            saveAccount(newAccount, ACCOUNTS_FILE_ADDRESS);
+            saveAccount(newAccount, ACCOUNTS_FOLDER_ADDRESS);
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.USERNAME_EXISTS);
             errorType = ErrorType.USERNAME_EXISTS;
@@ -140,11 +138,15 @@ public class AccountController {
         writer.close();
     }
 
+    private static String newAccountFileAddress(String username, int numberOfRegisteredAccounts) {
+        return ACCOUNTS_FOLDER_ADDRESS + username + ".txt";
+    }
+
     public static void addSavedAccountsToAccounts() {
         try {
             int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
             for (int i = 0; i < numberOfAccounts; i++) {
-                Account.addToAccounts((Account) readObjectFromFile(ACCOUNTS_FILE_ADDRESS));
+                Account.addToAccounts((Account) readObjectFromFile(ACCOUNTS_FOLDER_ADDRESS));
             }
         } catch (IOException e) {
 
