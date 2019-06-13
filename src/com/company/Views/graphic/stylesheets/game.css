@@ -207,16 +207,19 @@
 
 .player-name {
     -fx-font-family: "Lato Bold";
+    -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-font-size: 25;
-    -fx-stroke-width: 3;
+    -fx-effect: dropshadow(three-pass-box, black, 20, 0.8, 0, 0);
+    -fx-stroke-width: 1;
     -fx-stroke: grey;
 }
 
 .mana-num {
     -fx-text-fill: #0c53a1;
-    -fx-font-family: "Lato";
+    -fx-font-family: "Lato Bold";
     -fx-font-weight: bold;
+    -fx-font-size: 15;
 }
 
 .player2-container {
@@ -226,6 +229,7 @@
 .player1-container {
     -fx-rotate: -3;
 }
+
 
 .attack-power-container {
     -fx-background-image: url("../images/stats_attack.png");

@@ -1,15 +1,16 @@
 package com.company.Models.User;
 
 import com.company.Models.Battle.BattleLog;
-import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.Collection;
-import com.company.Models.Battle.Battle;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
+    final private static String ACCOUNTS_FOLDER_ADDRESS = "Accounts/";
+    final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "Logged in account/Account.txt";
+    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "numberOfAccounts.txt";
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -67,7 +68,11 @@ public class Account implements Serializable {
         loggedInAccount = getAccountByUsername(username);
     }
 
-    public void logout() {
+    public static void login(Account account){
+        loggedInAccount = account;
+    }
+
+    public static void logout() {
         loggedInAccount = null;
     }
 
@@ -113,5 +118,17 @@ public class Account implements Serializable {
 
     public void setMainDeck(Deck mainDeck) {
         this.mainDeck = mainDeck;
+    }
+
+    public static String getAccountsFolderAddress() {
+        return ACCOUNTS_FOLDER_ADDRESS;
+    }
+
+    public static String getLoggedInAccountsFolderAddress() {
+        return LOGGED_IN_ACCOUNT_FILE_ADDRESS;
+    }
+
+    public static String getNumberOfAccountsFileAddress() {
+        return NUMBER_OF_ACCOUNTS_FILE_ADDRESS;
     }
 }

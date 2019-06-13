@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXBadge?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.MainMenuController"
@@ -23,6 +24,7 @@
         <Label fx:id="play" text="PLAY" styleClass="menu-item"/>
         <Label fx:id="watch" text="WATCH" styleClass="menu-item"/>
         <Label fx:id="collection" text="COLLECTION" styleClass="menu-item"/>
+        <Label fx:id="exit" text="EXIT" styleClass="menu-item"/>
     </VBox>
     <HBox AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="15" alignment="BOTTOM_RIGHT">
         <HBox spacing="5" styleClass="gold-container" alignment="CENTER_LEFT">
