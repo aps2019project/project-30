@@ -104,11 +104,15 @@ public class AccountController {
         }
     }
 
-    private static void writeObjectToFile(Object object, String fileAddress) throws IOException {
-        ObjectOutputStream writer = setAccountWriterToFile(fileAddress);
-        writer.writeObject(object);
-        writer.flush();
-        writer.close();
+    public static void writeObjectToFile(Object object, String fileAddress) {
+        try {
+            ObjectOutputStream writer = setAccountWriterToFile(fileAddress);
+            writer.writeObject(object);
+            writer.flush();
+            writer.close();
+        } catch (IOException e){
+            System.err.println("writing was unsuccessful");
+        }
     }
 
     private static ObjectOutputStream setAccountWriterToFile(String fileName) throws IOException {
