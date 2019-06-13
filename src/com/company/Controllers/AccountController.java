@@ -7,9 +7,7 @@ import com.company.Views.Console.AccountView;
 import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -95,4 +93,16 @@ public class AccountController {
         return new ObjectOutputStream(new FileOutputStream(fileName, true));
     }
 
+    private static Object readObjectFromFile(String fileAddress) {
+        try {
+            ObjectInputStream reader = new ObjectInputStream(new FileInputStream(fileAddress));
+            Object readObject = reader.readObject();
+            reader.close();
+            return readObject;
+        } catch (IOException e) {
+            return null;
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
+    }
 }
