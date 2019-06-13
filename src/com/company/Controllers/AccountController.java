@@ -83,6 +83,11 @@ public class AccountController {
         return false;
     }
 
+    private static void saveAccount(Account account,String accountsFileAddress) throws IOException {
+        writeObjectToFile(account,accountsFileAddress);
+        incrementNumberOfRegisteredAccounts();
+    }
+
     private static void writeObjectToFile(Object object, String fileAddress) throws IOException {
         ObjectOutputStream writer = setAccountWriterToFile(fileAddress);
         writer.writeObject(object);
