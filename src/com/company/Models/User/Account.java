@@ -34,7 +34,7 @@ public class Account implements Serializable {
         return wins;
     }
 
-    public void incremeantWins() {
+    public void incrementWins() {
         wins++;
     }
 
