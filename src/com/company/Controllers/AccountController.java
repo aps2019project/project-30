@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 
 public class AccountController {
-    final public static String ACCOUNTS_FOLDER_ADDRESS = "Accounts/";
-    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = ACCOUNTS_FOLDER_ADDRESS + "numberOfAccounts.txt";
+    final public static String ACCOUNTS_FOLDER_ADDRESS = "SavedAccounts/Accounts/";
+    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "SavedAccounts/numberOfAccounts.txt";
 
     AccountView view = new AccountView();
 
@@ -22,7 +22,7 @@ public class AccountController {
         if (!usernameExists(username)) {
             Account newAccount = new Account(username, password);
             Account.addToAccounts(newAccount);
-            saveAccount(newAccount, ACCOUNTS_FOLDER_ADDRESS);
+            saveAccount(newAccount, accountFileAddress(readNumberOfAllRegisteredAccountsFromFile()));
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.USERNAME_EXISTS);
             errorType = ErrorType.USERNAME_EXISTS;
@@ -84,6 +84,17 @@ public class AccountController {
         return false;
     }
 
+    private static int getAccountIndexByUsername(String username) {
+        int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
+        Account account = null;
+        for (int i = 0; i < numberOfAccounts; i++) {
+            account = (Account) readObjectFromFile(accountFileAddress(i));
+            if(account.getUsername().equals(username))
+                return i;
+        }
+        return -1;
+    }
+
     private static void saveAccount(Account account, String accountsFileAddress) {
         try {
             writeObjectToFile(account, accountsFileAddress);
@@ -101,7 +112,7 @@ public class AccountController {
     }
 
     private static ObjectOutputStream setAccountWriterToFile(String fileName) throws IOException {
-        return new ObjectOutputStream(new FileOutputStream(fileName, true));
+        return new ObjectOutputStream(new FileOutputStream(fileName));
     }
 
     private static Object readObjectFromFile(String fileAddress) {
@@ -121,13 +132,17 @@ public class AccountController {
         return new ObjectInputStream(new FileInputStream(fileName));
     }
 
-    private static int readNumberOfAllRegisteredAccountsFromFile() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(NUMBER_OF_ACCOUNTS_FILE_ADDRESS));
-        String numberOfAllRegisteredAccounts = bufferedReader.readLine();
-        System.out.println(numberOfAllRegisteredAccounts);
-        bufferedReader.close();
-        if (numberOfAllRegisteredAccounts != null)
-            return Integer.parseInt(numberOfAllRegisteredAccounts);
+    private static int readNumberOfAllRegisteredAccountsFromFile() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(NUMBER_OF_ACCOUNTS_FILE_ADDRESS));
+            String numberOfAllRegisteredAccounts = bufferedReader.readLine();
+            System.out.println(numberOfAllRegisteredAccounts);
+            bufferedReader.close();
+            if (numberOfAllRegisteredAccounts != null)
+                return Integer.parseInt(numberOfAllRegisteredAccounts);
+        } catch (IOException e) {
+            System.err.println("file not found");
+        }
         return 0;
     }
 
@@ -138,18 +153,19 @@ public class AccountController {
         writer.close();
     }
 
-    private static String newAccountFileAddress(String username, int numberOfRegisteredAccounts) {
-        return ACCOUNTS_FOLDER_ADDRESS + username + ".txt";
+    private static String accountFileAddress(int index) {
+        return ACCOUNTS_FOLDER_ADDRESS + "Account" + index + ".txt";
+    }
+
+    private static void removeFile(String fileAddress) {
+        File file = new File(fileAddress);
+        file.delete();
     }
 
     public static void addSavedAccountsToAccounts() {
-        try {
-            int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
-            for (int i = 0; i < numberOfAccounts; i++) {
-                Account.addToAccounts((Account) readObjectFromFile(ACCOUNTS_FOLDER_ADDRESS));
-            }
-        } catch (IOException e) {
-
+        int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
+        for (int i = 0; i < numberOfAccounts; i++) {
+            Account.addToAccounts((Account) readObjectFromFile(accountFileAddress(i)));
         }
     }
 }
