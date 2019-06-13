@@ -138,6 +138,19 @@
     -fx-background-size: cover;
 }
 
+.hbox_card{
+    -fx-pref-width: 305;
+    -fx-pref-height: 50;
+    -fx-background-image: url("../images/deck_builder_card_bg.png");
+    -fx-background-size: cover;
+}
+.hbox_card :hover{
+    -fx-pref-width: 300;
+    -fx-pref-height: 50;
+    -fx-background-image: url("../images/deck_builder_prismatic_card_bg.png");
+    -fx-background-size: cover;
+}
+
 .collection-deck {
     -fx-text-fill: #ffffff;
     -fx-pref-width: 180;
@@ -161,14 +174,7 @@
 .deckBox_collection{
     -fx-background-color: #2D4051;
 }
-.hbox_card{
-    -fx-background-image: url("../images/deck_builder_card_bg.png");
-    -fx-background-size: cover;
-}
-.hbox_card :hover{
-    -fx-background-image: url("../images/deck_builder_prismatic_card_bg.png");
-    -fx-background-size: cover;
-}
+
 .collection-root {
     -fx-background-image: url("../images/authenticate-bg.jpg");
     -fx-background-size: cover;
