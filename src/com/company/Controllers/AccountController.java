@@ -139,4 +139,15 @@ public class AccountController {
         writer.print(String.valueOf(registeredAccountsNumber));
         writer.close();
     }
+
+    public static void addSavedAccountsToAccounts() {
+        try {
+            int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
+            for (int i = 0; i < numberOfAccounts; i++) {
+                Account.addToAccounts((Account) readObjectFromFile(ACCOUNTS_FILE_ADDRESS));
+            }
+        } catch (IOException e) {
+
+        }
+    }
 }
