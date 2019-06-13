@@ -84,11 +84,15 @@ public class AccountController {
         return false;
     }
 
-    private static void writeObjectToFile(Object object,String fileAddress) throws IOException {
-        ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream(fileAddress));
+    private static void writeObjectToFile(Object object, String fileAddress) throws IOException {
+        ObjectOutputStream writer = setAccountWriterToFile(fileAddress);
         writer.writeObject(object);
         writer.flush();
         writer.close();
+    }
+
+    private static ObjectOutputStream setAccountWriterToFile(String fileName) throws IOException {
+        return new ObjectOutputStream(new FileOutputStream(fileName, true));
     }
 
 }
