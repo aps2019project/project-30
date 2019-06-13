@@ -2,6 +2,7 @@ package com.company.Controllers.graphic;
 
 import com.company.Models.Battle.Battle;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Soldier;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -33,14 +34,14 @@ public class GameController {
         gameTable.setHgap(10);
         updateTable(gameTable);
         PerspectiveTransform e = new PerspectiveTransform();
-        e.setUlx(tableContainer.getLayoutX() + 150);    // Upper left
-        e.setUly(tableContainer.getLayoutY());
-        e.setUrx(tableContainer.getLayoutX() + 850);    // Upper right
-        e.setUry(tableContainer.getLayoutY());
-        e.setLlx(tableContainer.getLayoutX());      // Lower left
-        e.setLly(tableContainer.getLayoutY() + 300);
-        e.setLrx(tableContainer.getLayoutX() + 1000);    // Lower right
-        e.setLry(tableContainer.getLayoutY() + 300);
+        e.setUlx(gameTable.getLayoutX() + 100);    // Upper left
+        e.setUly(gameTable.getLayoutY());
+        e.setUrx(gameTable.getLayoutX() + 900);    // Upper right
+        e.setUry(gameTable.getLayoutY());
+        e.setLlx(gameTable.getLayoutX());      // Lower left
+        e.setLly(gameTable.getLayoutY() + 300);
+        e.setLrx(gameTable.getLayoutX() + 1000);    // Lower right
+        e.setLry(gameTable.getLayoutY() + 300);
 //        gameTable.setEffect(e);
         gameTable.setAlignment(Pos.CENTER);
         tableContainer.getChildren().add(gameTable);
@@ -78,13 +79,31 @@ public class GameController {
         gridPane.getChildren().clear();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
-                Label label = new Label();
-                if (Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1).getCardInCell() != null)
-                    label.setText(Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1).getCardInCell().getName());
-                gridPane.add(label, i, j);
-                label.setPrefWidth(70);
-                label.setPrefHeight(70);
-                label.getStyleClass().add("tile-default");
+                AnchorPane tile = new AnchorPane();
+                Soldier soldierInCell = (Soldier) (Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1).getCardInCell());
+                if (soldierInCell != null) {
+                    try {
+                        StackPane cardViewContainer = new StackPane();
+                        Image cardGif;
+                        cardGif = new Image("com/company/Views/graphic/images/gifs/" + soldierInCell.getName() + "_breathing.gif");
+                        ImageView cardView = new ImageView(cardGif);
+                        cardViewContainer.getChildren().add(cardView);
+                        Label attackPower = new Label(String.valueOf(soldierInCell.getAttackPower()));
+                        Label healthPower = new Label(String.valueOf(soldierInCell.getHealth()));
+
+                        tile.getChildren().add(cardViewContainer);
+                        AnchorPane.setTopAnchor(cardViewContainer, 0.0);
+                        AnchorPane.setBottomAnchor(cardViewContainer, 0.0);
+                        AnchorPane.setRightAnchor(cardViewContainer, 0.0);
+                        AnchorPane.setLeftAnchor(cardViewContainer, 0.0);
+                    } catch (NullPointerException | IllegalArgumentException e) {
+                        System.out.println("===" + e.getMessage());
+                    }
+                }
+                gridPane.add(tile, i, j);
+                tile.setPrefWidth(80);
+                tile.setPrefHeight(80);
+                tile.getStyleClass().add("tile-default");
             }
         }
     }
