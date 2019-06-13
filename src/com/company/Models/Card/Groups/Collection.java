@@ -4,9 +4,10 @@ import com.company.Controllers.CollectionController;
 import com.company.Models.Card.Card;
 import com.company.Models.User.Account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Collection {
+public class Collection implements Serializable {
     private CollectionController collectionController = new CollectionController();
     private ArrayList<Card> cards = new ArrayList<>();
 
