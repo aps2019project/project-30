@@ -7,6 +7,9 @@ import com.company.Views.Console.AccountView;
 import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -79,6 +82,13 @@ public class AccountController {
             }
         }
         return false;
+    }
+
+    private static void writeObjectToFile(Object object,String fileAddress) throws IOException {
+        ObjectOutputStream writer = new ObjectOutputStream(new FileOutputStream(fileAddress));
+        writer.writeObject(object);
+        writer.flush();
+        writer.close();
     }
 
 }
