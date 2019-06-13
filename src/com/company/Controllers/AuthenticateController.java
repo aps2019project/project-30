@@ -5,6 +5,7 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Models.ErrorType;
 import com.company.Views.Graphic;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,6 +33,7 @@ public class AuthenticateController {
     public Label signupError;
     public VBox signupBox;
     public VBox signupSuccussBox;
+    public JFXCheckBox rememberMe;
 
     public static void loginError(ErrorType longinErrorType) {
         loginErrorType = longinErrorType;
@@ -77,5 +79,9 @@ public class AuthenticateController {
                 animationFX.play();
             }
         }
+    }
+
+    public void callChangeIsRemembered(ActionEvent actionEvent) {
+        MainMenuController.changeIsRememberMe();
     }
 }

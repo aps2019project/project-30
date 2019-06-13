@@ -69,6 +69,7 @@ public class MainMenuController implements Initializable {
         exit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             if (rememberMe) {
                 AccountController.writeObjectToFile(Account.getLoggedInAccount(), Account.getLoggedInAccountsFolderAddress());
+                Account.logout();
                 System.out.println("logged in account saved!");
             }
             System.out.println("Exit");
@@ -118,9 +119,8 @@ public class MainMenuController implements Initializable {
         Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
-
-    public static void setRememberMe(boolean rememberMe) {
-        MainMenuController.rememberMe = rememberMe;
+    static void changeIsRememberMe() {
+        rememberMe = !rememberMe;
     }
 
 }

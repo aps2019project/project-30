@@ -15,7 +15,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 public class Graphic extends Application {
     public static Stage stage;
@@ -55,6 +57,10 @@ public class Graphic extends Application {
         primaryStage.setTitle("Duelyst");
         Image image = new Image("com/company/Views/graphic/images/cursor.png");  //pass in the image path
         scene.setCursor(new ImageCursor(image));
+        if (Account.getLoggedInAccount() != null) {
+            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+            ((MainMenuController) Graphic.mainMenuLoader.getController()).initValues();
+        }
 //        stage.getIcons().add(new Image("/images/icon.png"));
         stage.setFullScreen(true);
         primaryStage.show();
@@ -62,6 +68,14 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
+        Account account = (Account) AccountController.readObjectFromFile(Account.getLoggedInAccountsFolderAddress());
+        if (account != null) {
+            System.out.println("**");
+            Account.login(account);
+            AccountController.removeFile(Account.getLoggedInAccountsFolderAddress());
+        } else {
+            System.out.println("no logged in account ");
+        }
         ShopController.initialize();
         launch(args);
     }

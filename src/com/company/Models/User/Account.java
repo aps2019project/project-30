@@ -8,9 +8,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
-    final public static String ACCOUNTS_FOLDER_ADDRESS = "SavedAccounts/Accounts/";
-    final public static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "SavedAccounts/Logged in Account/LoggedInAccount.txt";
-    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "SavedAccounts/numberOfAccounts.txt";
+    final private static String ACCOUNTS_FOLDER_ADDRESS = "Accounts/";
+    final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "Logged in account/Account.txt";
+    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "numberOfAccounts.txt";
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -68,7 +68,11 @@ public class Account implements Serializable {
         loggedInAccount = getAccountByUsername(username);
     }
 
-    public void logout() {
+    public static void login(Account account){
+        loggedInAccount = account;
+    }
+
+    public static void logout() {
         loggedInAccount = null;
     }
 

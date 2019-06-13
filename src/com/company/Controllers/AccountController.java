@@ -57,7 +57,7 @@ public class AccountController {
     }
 
     public static void logout() {
-        Account.getLoggedInAccount().logout();
+        Account.logout();
         ConsoleInput.setMenu(ConsoleInput.Menu.ACCOUNT);
     }
 
@@ -99,8 +99,9 @@ public class AccountController {
     }
 
     public static void writeObjectToFile(Object object, String fileAddress) {
+        ObjectOutputStream writer;
         try {
-            ObjectOutputStream writer = setAccountWriterToFile(fileAddress);
+            writer = setWriter(fileAddress);
             writer.writeObject(object);
             writer.flush();
             writer.close();
@@ -109,21 +110,27 @@ public class AccountController {
         }
     }
 
-    private static ObjectOutputStream setAccountWriterToFile(String fileName) throws IOException {
-        return new ObjectOutputStream(new FileOutputStream(fileName));
+    private static ObjectOutputStream setWriter(String fileName) {
+        try {
+            return new ObjectOutputStream(new FileOutputStream(fileName));
+        } catch (IOException e){
+            System.err.println("opening the file failed");
+        }
+        return null;
     }
 
-    private static Object readObjectFromFile(String fileAddress) {
+    public static Object readObjectFromFile(String fileAddress) {
         try {
             ObjectInputStream reader = setAccountReaderFromFile(fileAddress);
             Object readObject = reader.readObject();
             reader.close();
             return readObject;
         } catch (IOException e) {
-            return null;
+            System.err.println("opening file failed");
         } catch (ClassNotFoundException e) {
-            return null;
+            System.err.println("class not found");
         }
+        return null;
     }
 
     private static ObjectInputStream setAccountReaderFromFile(String fileName) throws IOException {
@@ -160,7 +167,7 @@ public class AccountController {
         return Account.getAccountsFolderAddress() + "Account" + index + ".txt";
     }
 
-    private static void removeFile(String fileAddress) {
+    public static void removeFile(String fileAddress) {
         File file = new File(fileAddress);
         file.delete();
     }
