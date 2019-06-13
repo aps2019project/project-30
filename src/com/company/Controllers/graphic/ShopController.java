@@ -46,7 +46,7 @@ public class ShopController implements Initializable {
                     if (card instanceof Spell)
                         cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
                     else
-                        cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
+                        cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
                     ImageView cardView = new ImageView(cardGif);
                     cardViewContainer.getChildren().add(cardView);
                     cardContainer.getChildren().add(cardViewContainer);

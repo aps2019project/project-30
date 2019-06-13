@@ -151,7 +151,7 @@ public class BattleController {
     }
 
     public void endTurn() {
-//        botMovements();
+        botMovements();
         checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
