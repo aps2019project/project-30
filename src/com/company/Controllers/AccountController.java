@@ -13,6 +13,7 @@ import java.util.Comparator;
 
 
 public class AccountController {
+    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "Accounts/numberOfAccounts.txt";
     AccountView view = new AccountView();
 
     public static void createAccount(String username, String password) {
@@ -108,5 +109,15 @@ public class AccountController {
 
     private static ObjectInputStream setAccountReaderFromFile(String fileName) throws IOException {
         return new ObjectInputStream(new FileInputStream(fileName));
+    }
+
+    private static int readNumberOfAllRegisteredAccountsFromFile() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(NUMBER_OF_ACCOUNTS_FILE_ADDRESS));
+        String numberOfAllRegisteredAccounts = bufferedReader.readLine();
+        System.out.println(numberOfAllRegisteredAccounts);
+        bufferedReader.close();
+        if (numberOfAllRegisteredAccounts != null)
+            return Integer.parseInt(numberOfAllRegisteredAccounts);
+        return 0;
     }
 }
