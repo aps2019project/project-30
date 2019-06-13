@@ -10,6 +10,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Account implements Serializable {
+    final private static String ACCOUNTS_FOLDER_ADDRESS = "SavedAccounts/Accounts/";
+    final private static String LOGGED_IN_ACCOUNTS_FOLDER_ADDRESS = "SavedAccounts/Logged in Account/";
+    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "SavedAccounts/numberOfAccounts.txt";
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -113,5 +116,17 @@ public class Account implements Serializable {
 
     public void setMainDeck(Deck mainDeck) {
         this.mainDeck = mainDeck;
+    }
+
+    public static String getAccountsFolderAddress() {
+        return ACCOUNTS_FOLDER_ADDRESS;
+    }
+
+    public static String getLoggedInAccountsFolderAddress() {
+        return LOGGED_IN_ACCOUNTS_FOLDER_ADDRESS;
+    }
+
+    public static String getNumberOfAccountsFileAddress() {
+        return NUMBER_OF_ACCOUNTS_FILE_ADDRESS;
     }
 }
