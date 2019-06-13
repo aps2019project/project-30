@@ -19,11 +19,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.StackPane;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class ShopController implements Initializable {
     public JFXMasonryPane cardContainer;
@@ -46,6 +48,19 @@ public class ShopController implements Initializable {
             cardContainer.getChildren().clear();
             for (Card card : cards) {
                 AnchorPane cardContainer = new AnchorPane();
+
+                try {
+                    StackPane cardViewContainer = new StackPane();
+                    Image cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
+                    ImageView cardView = new ImageView(cardGif);
+                    cardViewContainer.getChildren().add(cardView);
+                    cardContainer.getChildren().add(cardViewContainer);
+                    cardViewContainer.setPrefWidth(200);
+                    cardViewContainer.setPrefHeight(200);
+                } catch (NullPointerException|IllegalArgumentException e) {
+                    System.out.println("===" + e.getMessage());
+                }
+
                 cardContainer.setPrefSize(200, 262);
                 cardContainer.getStyleClass().add("card-shop-container");
                 Label title = new Label(card.getName().toUpperCase());
