@@ -95,7 +95,7 @@ public class AccountController {
 
     private static Object readObjectFromFile(String fileAddress) {
         try {
-            ObjectInputStream reader = new ObjectInputStream(new FileInputStream(fileAddress));
+            ObjectInputStream reader = setAccountReaderFromFile(fileAddress);
             Object readObject = reader.readObject();
             reader.close();
             return readObject;
@@ -104,5 +104,9 @@ public class AccountController {
         } catch (ClassNotFoundException e) {
             return null;
         }
+    }
+
+    private static ObjectInputStream setAccountReaderFromFile(String fileName) throws IOException {
+        return new ObjectInputStream(new FileInputStream(fileName));
     }
 }
