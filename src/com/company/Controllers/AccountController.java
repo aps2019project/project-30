@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 
 public class AccountController {
-    final public static String ACCOUNTS_FOLDER_ADDRESS = "SavedAccounts/Accounts/";
-    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "SavedAccounts/numberOfAccounts.txt";
 
     AccountView view = new AccountView();
 
@@ -89,19 +87,15 @@ public class AccountController {
         Account account = null;
         for (int i = 0; i < numberOfAccounts; i++) {
             account = (Account) readObjectFromFile(accountFileAddress(i));
-            if(account.getUsername().equals(username))
+            if (account.getUsername().equals(username))
                 return i;
         }
         return -1;
     }
 
     private static void saveAccount(Account account, String accountsFileAddress) {
-        try {
-            writeObjectToFile(account, accountsFileAddress);
-            incrementNumberOfRegisteredAccounts();
-        } catch (IOException e) {
-
-        }
+        writeObjectToFile(account, accountsFileAddress);
+        incrementNumberOfRegisteredAccounts();
     }
 
     public static void writeObjectToFile(Object object, String fileAddress) {
@@ -110,7 +104,7 @@ public class AccountController {
             writer.writeObject(object);
             writer.flush();
             writer.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             System.err.println("writing was unsuccessful");
         }
     }
@@ -138,7 +132,7 @@ public class AccountController {
 
     private static int readNumberOfAllRegisteredAccountsFromFile() {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(NUMBER_OF_ACCOUNTS_FILE_ADDRESS));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(Account.getNumberOfAccountsFileAddress()));
             String numberOfAllRegisteredAccounts = bufferedReader.readLine();
             System.out.println(numberOfAllRegisteredAccounts);
             bufferedReader.close();
@@ -150,15 +144,20 @@ public class AccountController {
         return 0;
     }
 
-    private static void incrementNumberOfRegisteredAccounts() throws IOException {
-        int registeredAccountsNumber = readNumberOfAllRegisteredAccountsFromFile() + 1;
-        PrintWriter writer = new PrintWriter(NUMBER_OF_ACCOUNTS_FILE_ADDRESS);
-        writer.print(String.valueOf(registeredAccountsNumber));
-        writer.close();
+    private static void incrementNumberOfRegisteredAccounts() {
+        try {
+            int registeredAccountsNumber = readNumberOfAllRegisteredAccountsFromFile() + 1;
+            PrintWriter writer = new PrintWriter(Account.getNumberOfAccountsFileAddress());
+            writer.print(String.valueOf(registeredAccountsNumber));
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("incrementing registered accounts number failed");
+        }
+
     }
 
     private static String accountFileAddress(int index) {
-        return ACCOUNTS_FOLDER_ADDRESS + "Account" + index + ".txt";
+        return Account.getAccountsFolderAddress() + "Account" + index + ".txt";
     }
 
     private static void removeFile(String fileAddress) {

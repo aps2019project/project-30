@@ -67,9 +67,13 @@ public class MainMenuController implements Initializable {
         });
 
         exit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (rememberMe)
+            if (rememberMe) {
                 AccountController.writeObjectToFile(Account.getLoggedInAccount(), Account.getLoggedInAccountsFolderAddress());
+                System.out.println("logged in account saved!");
+            }
+            System.out.println("Exit");
         });
+
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
 //        MediaPlayer mediaPlayer = new MediaPlayer(media);
 //        mediaPlayer.setAutoPlay(true);
