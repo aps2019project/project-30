@@ -151,7 +151,7 @@ public class BattleController {
     }
 
     public void endTurn() {
-//        botMovements();
+        botMovements();
         checkGameIsFinished();
         Player player = getEenmyPlayer(battle.getTurnToPlay());
         for (Card card : player.getUsedCards()) {
@@ -822,7 +822,7 @@ public class BattleController {
 
     private void scorePlayers(Player winner) {
         if (winner.getAccount() != null)
-            winner.getAccount().incremeantWins();
+            winner.getAccount().incrementWins();
     }
 
     private void logBattleInBattleHistories(Player winner) {

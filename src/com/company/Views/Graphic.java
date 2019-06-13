@@ -1,7 +1,9 @@
 package com.company.Views;
 
+import com.company.Controllers.AccountController;
 import com.company.Controllers.MainMenuController;
 import com.company.Controllers.ShopController;
+import com.company.Models.User.Account;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
@@ -17,7 +19,6 @@ import java.io.IOException;
 
 public class Graphic extends Application {
     public static Stage stage;
-    public static Parent mainMenu;
     public static Parent shop;
     public static Parent game;
     public static Parent chooseGame;
@@ -27,12 +28,11 @@ public class Graphic extends Application {
 
     static {
         try {
-            mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
-            mainMenu = mainMenuLoader.load();
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
             collection = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
+            AccountController.addSavedAccountsToAccounts();
         } catch (IOException e) {
             e.printStackTrace();
         }

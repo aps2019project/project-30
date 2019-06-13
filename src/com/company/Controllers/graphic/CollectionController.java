@@ -144,7 +144,7 @@ public class CollectionController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         back.setOnMouseClicked(event -> {
-            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+            RootsController.backToMainMenu();
         });
 
         mainDeckToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {

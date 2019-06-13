@@ -6,9 +6,10 @@ import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Battle.Battle;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Account {
+public class Account implements Serializable {
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -33,7 +34,7 @@ public class Account {
         return wins;
     }
 
-    public void incremeantWins() {
+    public void incrementWins() {
         wins++;
     }
 

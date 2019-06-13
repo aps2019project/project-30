@@ -23,7 +23,7 @@
     -fx-background-image: url("../images/search-icon.png");
     -fx-background-size: 20;
     -fx-background-repeat: stretch;
-    -fx-background-position: right center;
+    -fx-background-position: 170 15;
     -fx-pref-height: 50;
     -fx-pref-width: 200;
     -fx-padding: 5;

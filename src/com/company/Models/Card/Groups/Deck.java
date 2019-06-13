@@ -3,11 +3,12 @@ package com.company.Models.Card.Groups;
 import com.company.Controllers.DeckController;
 import com.company.Models.Card.Card;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Deck {
+public class Deck implements Serializable {
     private String name;
     private List<Card> deckCards = new ArrayList<>();
     private Card heroCard;

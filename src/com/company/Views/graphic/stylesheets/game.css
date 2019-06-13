@@ -182,16 +182,55 @@
 }
 
 .tile-default {
-    -fx-background-color: rgba(0,0,0, 0.3);
+    -fx-background-color: rgba(0, 0, 0, 0.3);
 }
 
 .tile-default:hover {
     -fx-text-fill: red;
-    -fx-background-color: rgba(250,250,250, 0.4);
+    -fx-background-color: rgba(250, 250, 250, 0.4);
 }
 
 .player-name {
-    -fx-font-family: "Lato";
+    -fx-font-family: "Lato Bold";
     -fx-text-fill: white;
-    -fx-font-size: 20;
+    -fx-font-size: 25;
+    -fx-stroke-width: 3;
+    -fx-stroke: grey;
+}
+
+.mana-num {
+    -fx-text-fill: #0c53a1;
+    -fx-font-family: "Lato";
+    -fx-font-weight: bold;
+}
+
+.player2-container {
+    -fx-rotate: 3;
+}
+
+.player1-container {
+    -fx-rotate: -3;
+}
+
+.attack-power-container {
+    -fx-background-image: url("../images/stats_attack.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+}
+
+.health-power-container {
+    -fx-background-image: url("../images/stats_hp.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+}
+
+.stats {
+    -fx-font-family: "Lato Bold";
+    -fx-text-fill: white;
+    -fx-stroke-width: 1;
+    -fx-stroke: grey;
 }
