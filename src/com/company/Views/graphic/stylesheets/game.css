@@ -138,3 +138,26 @@
 .player1-container {
     -fx-rotate: -3;
 }
+
+.attack-power-container {
+    -fx-background-image: url("../images/stats_attack.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+}
+
+.health-power-container {
+    -fx-background-image: url("../images/stats_hp.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-pref-width: 30;
+    -fx-pref-height: 30;
+}
+
+.stats {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-stroke-width: 1;
+    -fx-stroke: grey;
+}

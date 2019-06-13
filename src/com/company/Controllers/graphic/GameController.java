@@ -83,29 +83,50 @@ public class GameController {
                 Soldier soldierInCell = (Soldier) (Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1).getCardInCell());
                 if (soldierInCell != null) {
                     try {
-                        StackPane cardViewContainer = new StackPane();
-                        Image cardGif;
-                        cardGif = new Image("com/company/Views/graphic/images/gifs/" + soldierInCell.getName() + "_breathing.gif");
-                        ImageView cardView = new ImageView(cardGif);
-                        cardViewContainer.getChildren().add(cardView);
-                        Label attackPower = new Label(String.valueOf(soldierInCell.getAttackPower()));
-                        Label healthPower = new Label(String.valueOf(soldierInCell.getHealth()));
+                        StackPane cardViewContainer = getCardView(soldierInCell);
+                        StackPane attackPowerContainer = getStatsView(soldierInCell.getAttackPower(), "attack-power-container");
+                        StackPane healthPowerContainer = getStatsView(soldierInCell.getHealth(), "health-power-container");
 
                         tile.getChildren().add(cardViewContainer);
+                        tile.getChildren().add(attackPowerContainer);
+                        tile.getChildren().add(healthPowerContainer);
                         AnchorPane.setTopAnchor(cardViewContainer, 0.0);
                         AnchorPane.setBottomAnchor(cardViewContainer, 0.0);
                         AnchorPane.setRightAnchor(cardViewContainer, 0.0);
                         AnchorPane.setLeftAnchor(cardViewContainer, 0.0);
+                        AnchorPane.setBottomAnchor(attackPowerContainer, 0.0);
+                        AnchorPane.setLeftAnchor(attackPowerContainer, 0.0);
+                        AnchorPane.setBottomAnchor(healthPowerContainer, 0.0);
+                        AnchorPane.setRightAnchor(healthPowerContainer, 0.0);
                     } catch (NullPointerException | IllegalArgumentException e) {
                         System.out.println("===" + e.getMessage());
                     }
                 }
+
                 gridPane.add(tile, i, j);
                 tile.setPrefWidth(80);
                 tile.setPrefHeight(80);
                 tile.getStyleClass().add("tile-default");
             }
         }
+    }
+
+    private StackPane getStatsView(int attackPower2, String s) {
+        StackPane attackPowerContainer = new StackPane();
+        Label attackPower = new Label(String.valueOf(attackPower2));
+        attackPowerContainer.getChildren().add(attackPower);
+        attackPowerContainer.getStyleClass().add(s);
+        attackPower.getStyleClass().add("stats");
+        return attackPowerContainer;
+    }
+
+    private StackPane getCardView(Soldier soldierInCell) {
+        StackPane cardViewContainer = new StackPane();
+        Image cardGif;
+        cardGif = new Image("com/company/Views/graphic/images/gifs/" + soldierInCell.getName() + "_breathing.gif");
+        ImageView cardView = new ImageView(cardGif);
+        cardViewContainer.getChildren().add(cardView);
+        return cardViewContainer;
     }
 
     public void endTurn(ActionEvent actionEvent) {
