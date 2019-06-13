@@ -28,7 +28,7 @@
                 <VBox fx:id="loginBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
                     <TextField fx:id="loginUsername" promptText="Username" styleClass="authenticate-field"/>
                     <PasswordField fx:id="loginPassword" promptText="Password" styleClass="authenticate-field"/>
-                    <JFXCheckBox text="Remember Me" styleClass="remember-me"/>
+                    <JFXCheckBox fx:id="rememberMe" text="Remember Me" styleClass="remember-me"/>
                     <JFXButton fx:id="login" text="Login" onAction="#login" styleClass="login"/>
                 </VBox>
             </StackPane>
