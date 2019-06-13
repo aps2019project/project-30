@@ -12,25 +12,29 @@
 <?import javafx.scene.image.Image?>
 
 <?import com.jfoenix.controls.JFXMasonryPane?>
-<HBox xmlns="http://javafx.com/javafx"
+<AnchorPane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.company.Controllers.graphic.CollectionController">
-    <AnchorPane>
+      fx:controller="com.company.Controllers.graphic.CollectionController" styleClass="collection-root">
+    <AnchorPane AnchorPane.leftAnchor="0">
         <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
             <Image url="@../images/back-button.png"/>
         </ImageView>
-        <ScrollPane minWidth="500" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="100" AnchorPane.bottomAnchor="100"
-                    hbarPolicy="NEVER">
-            <JFXMasonryPane fx:id="cardContainer" minWidth="500" style="-fx-background-color: lightblue"/>
+        <ScrollPane minWidth="1100" AnchorPane.topAnchor="100" AnchorPane.leftAnchor="100" AnchorPane.bottomAnchor="100" hbarPolicy="NEVER" styleClass="shop-cards-container">
+            <JFXMasonryPane fx:id="cardContainer" minWidth="1000" />
         </ScrollPane>
         <TextField AnchorPane.topAnchor="10" AnchorPane.leftAnchor="500" fx:id="search" promptText="Search ..."
                    styleClass="shop-search"/>
     </AnchorPane>
-    <AnchorPane styleClass="decks-container">
+    <AnchorPane fx:id="deck_bar" styleClass="decks-container" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0">
         <VBox fx:id="deckContainer" AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container"/>
-        <HBox AnchorPane.bottomAnchor="0">
+        <HBox fx:id="creatDeckBar" AnchorPane.bottomAnchor="0">
             <JFXTextField fx:id="deckName" styleClass="deck-name-field"/>
             <JFXButton fx:id="createDeck" text="CREATE" styleClass="create-deck" onAction="#createDeck"/>
         </HBox>
+        <VBox fx:id="deck_contaner_content_bar"  AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container" visible="false"/>
+        <HBox fx:id="backbar" AnchorPane.bottomAnchor="0" visible="false">
+            <JFXButton fx:id="backtodecks" text="BACK" styleClass="create-deck" />
+
+        </HBox>
     </AnchorPane>
-</HBox>
+</AnchorPane>

@@ -118,6 +118,7 @@ public class CollectionController implements Serializable {
             Deck deck = new Deck(deckName);
             Account.getLoggedInAccount().getDecks().add(deck);
         }
+        com.company.Controllers.graphic.CollectionController.assigncreatDeckErrorType(errorType);
 
     }
 

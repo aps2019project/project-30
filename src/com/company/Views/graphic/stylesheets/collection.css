@@ -1,0 +1,9 @@
+.deck-back-button {
+    -fx-background-image: url("../images/button-right.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.deck-back-button:hover {
+    -fx-background-image: url("../images/button-right-glow.png");
+}
