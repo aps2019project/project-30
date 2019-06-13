@@ -23,6 +23,7 @@
         <Label fx:id="play" text="PLAY" styleClass="menu-item"/>
         <Label fx:id="watch" text="WATCH" styleClass="menu-item"/>
         <Label fx:id="collection" text="COLLECTION" styleClass="menu-item"/>
+        <Label fx:id="exit" text="EXIT" styleClass="menu-item"/>
     </VBox>
     <HBox AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="15" alignment="BOTTOM_RIGHT">
         <HBox spacing="5" styleClass="gold-container" prefWidth="120" prefHeight="50" alignment="CENTER_LEFT">
