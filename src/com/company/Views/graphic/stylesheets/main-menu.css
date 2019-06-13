@@ -60,9 +60,14 @@
     -fx-background-image: url("../images/gold-container.png");
     -fx-background-size: 120 50;
     -fx-background-repeat: no-repeat;
+    -fx-pref-width: 120;
+    -fx-pref-height: 50;
 }
 
 .gold {
     -fx-text-fill: white;
 }
 
+.imageItem:hover {
+    -fx-effect: innershadow(one-pass-box, gold, 50, 0.01, 0, 0);
+}

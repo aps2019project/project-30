@@ -76,6 +76,7 @@
     -fx-pref-width: 300;
     -fx-text-alignment: center;
 }
+
 .killing-general-mode {
     -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
     -fx-background-image: url("../images/killing-general.jpg");
@@ -111,18 +112,20 @@
 
 
 .tile-default {
-    -fx-background-color: rgba(0,0,0, 0.3);
+    -fx-background-color: rgba(0, 0, 0, 0.3);
 }
 
 .tile-default:hover {
     -fx-text-fill: red;
-    -fx-background-color: rgba(250,250,250, 0.4);
+    -fx-background-color: rgba(250, 250, 250, 0.4);
 }
 
 .player-name {
-    -fx-font-family: "Lato";
+    -fx-font-family: "Lato Bold";
     -fx-text-fill: white;
-    -fx-font-size: 20;
+    -fx-font-size: 25;
+    -fx-stroke-width: 3;
+    -fx-stroke: grey;
 }
 
 .mana-num {
@@ -156,7 +159,7 @@
 }
 
 .stats {
-    -fx-font-weight: bold;
+    -fx-font-family: "Lato Bold";
     -fx-text-fill: white;
     -fx-stroke-width: 1;
     -fx-stroke: grey;

@@ -27,7 +27,7 @@ public class ShopController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         back.setOnMouseClicked(event -> {
-            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+            RootsController.backToMainMenu();
         });
 
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
