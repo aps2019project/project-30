@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -103,15 +104,22 @@ public class CollectionController implements Initializable {
             counter++;
             HBox singleCard=new HBox();
             singleCard.getStyleClass().add("hbox_card");
+
             Label number=new Label();
             Label cardName=new Label();
 
             number.setText(String.valueOf(counter));
             cardName.setText(card.getName());
-            number.getStyleClass().add("collection-deck");
-            cardName.getStyleClass().add("collection-deck");
+ //           singleCard.getStyleClass().add("collection-deck");
+//            cardName.getStyleClass().add("collection-deck");
             singleCard.getChildren().add(number);
             singleCard.getChildren().add(cardName);
+//            singleCard.getOnMouseClicked(new EventHandler<>() {
+//                @Override
+//                public void handle(Event event) {
+//
+//                }
+//            });
             deck_contaner_content_bar.getChildren().add(singleCard);
         }
         backtodecks.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -136,7 +144,7 @@ public class CollectionController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         back.setOnMouseClicked(event -> {
-            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+            RootsController.backToMainMenu();
         });
 
         mainDeckToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {

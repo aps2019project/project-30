@@ -3,6 +3,7 @@ package com.company.Controllers;
 import animatefx.animation.AnimationFX;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
+import com.company.Controllers.graphic.RootsController;
 import com.company.Models.ErrorType;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXCheckBox;
@@ -46,8 +47,7 @@ public class AuthenticateController {
     public void login(ActionEvent actionEvent) {
         AccountController.loginAccount(loginUsername.getText(), loginPassword.getText());
         if (loginErrorType == null) {
-            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
-            ((MainMenuController) Graphic.mainMenuLoader.getController()).initValues();
+            RootsController.openMainMenu();
         } else {
             new FadeOut(loginBox).playOnFinished(new FadeIn(loginErrorBox)).play();
             new FadeIn(loginBox).playOnFinished(new FadeOut(loginErrorBox)).setDelay(new Duration(2500)).play();

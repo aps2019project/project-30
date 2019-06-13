@@ -7,3 +7,62 @@
 .deck-back-button:hover {
     -fx-background-image: url("../images/button-right-glow.png");
 }
+
+.decks-container {
+    -fx-background-color: #1B171D;
+    -fx-pref-width: 400;
+    -fx-padding: 20;
+}
+
+.create-deck {
+    -fx-background-image: url("../images/button.png");
+    -fx-border-style: none;
+    -fx-border-width: 2px;
+    -fx-border-insets: 0;
+    -fx-text-fill: white;
+    -fx-background-size: cover;
+    -fx-pref-width: 140px;
+    -fx-pref-height: 46px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+    -fx-stroke: #75bc1b;
+    -fx-stroke-width: 3pt;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.create-deck:hover {
+    -fx-background-image: url("../images/button-glow.png");
+    -fx-background-size: cover;
+}
+
+.collection-deck {
+    -fx-text-fill: #ffffff;
+    -fx-pref-width: 200;
+    -fx-pref-height: 60;
+}
+
+.deck-name-field:hover .deck-name-field:focused {
+    -fx-background-color: #434343;
+}
+
+.deck-name-field {
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #383838;
+    -fx-pref-height: 40;
+}
+
+.decks-name-container {
+    -fx-padding: 30;
+}
+.deckBox_collection{
+    -fx-background-color: #2D4051;
+}
+
+.collection-root {
+    -fx-background-image: url("../images/authenticate-bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}

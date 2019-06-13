@@ -21,7 +21,7 @@ public class ChooseGameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         back.setOnMouseClicked(event -> {
-            Graphic.stage.getScene().setRoot(Graphic.mainMenu);
+            RootsController.backToMainMenu();
         });
 
     }

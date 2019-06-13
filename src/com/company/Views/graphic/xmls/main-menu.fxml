@@ -26,25 +26,25 @@
         <Label fx:id="exit" text="EXIT" styleClass="menu-item"/>
     </VBox>
     <HBox AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="15" alignment="BOTTOM_RIGHT">
-        <HBox spacing="5" styleClass="gold-container" prefWidth="120" prefHeight="50" alignment="CENTER_LEFT">
+        <HBox spacing="5" styleClass="gold-container" alignment="CENTER_LEFT">
             <ImageView fitWidth="20" fitHeight="20">
                 <Image url="@../images/gold-icon.png"/>
             </ImageView>
             <Label fx:id="gold" styleClass="gold"/>
         </HBox>
-        <ImageView fitWidth="70" fitHeight="70">
+        <ImageView fitWidth="70" fitHeight="70" styleClass="imageItem">
             <Image url="@../images/quests.png"/>
         </ImageView>
-        <ImageView fitWidth="70" fitHeight="70">
+        <ImageView fitWidth="70" fitHeight="70" styleClass="imageItem">
             <Image url="@../images/profile.png"/>
         </ImageView>
-        <ImageView fx:id="shop" fitWidth="70" fitHeight="70">
+        <ImageView fx:id="shop" fitWidth="70" fitHeight="70" styleClass="imageItem">
             <Image url="@../images/shop.png"/>
         </ImageView>
-        <ImageView fitWidth="70" fitHeight="70">
+        <ImageView fitWidth="70" fitHeight="70" styleClass="imageItem">
             <Image url="@../images/settings.png"/>
         </ImageView>
-        <ImageView fx:id="friends" fitWidth="100" fitHeight="100">
+        <ImageView fx:id="friends" fitWidth="100" fitHeight="100" styleClass="imageItem">
             <Image url="@../images/friends.png"/>
         </ImageView>
 

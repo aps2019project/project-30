@@ -21,7 +21,6 @@ import java.io.ObjectInputStream;
 
 public class Graphic extends Application {
     public static Stage stage;
-    public static Parent mainMenu;
     public static Parent shop;
     public static Parent game;
     public static Parent chooseGame;
@@ -31,8 +30,6 @@ public class Graphic extends Application {
 
     static {
         try {
-            mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
-            mainMenu = mainMenuLoader.load();
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
