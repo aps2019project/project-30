@@ -13,15 +13,18 @@ import java.util.Comparator;
 
 
 public class AccountController {
+
     final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "Accounts/numberOfAccounts.txt";
+    final public static String ACCOUNTS_FILE_ADDRESS = "Accounts/Accounts.txt";
+
     AccountView view = new AccountView();
 
     public static void createAccount(String username, String password) {
         ErrorType errorType = null;
         if (!usernameExists(username)) {
-            Account.addToAccounts(
-                    new Account(username, password)
-            );
+            Account newAccount = new Account(username, password);
+            Account.addToAccounts(newAccount);
+            saveAccount(newAccount, ACCOUNTS_FILE_ADDRESS);
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.USERNAME_EXISTS);
             errorType = ErrorType.USERNAME_EXISTS;
@@ -83,9 +86,13 @@ public class AccountController {
         return false;
     }
 
-    private static void saveAccount(Account account,String accountsFileAddress) throws IOException {
-        writeObjectToFile(account,accountsFileAddress);
-        incrementNumberOfRegisteredAccounts();
+    private static void saveAccount(Account account, String accountsFileAddress) {
+        try {
+            writeObjectToFile(account, accountsFileAddress);
+            incrementNumberOfRegisteredAccounts();
+        } catch (IOException e) {
+
+        }
     }
 
     private static void writeObjectToFile(Object object, String fileAddress) throws IOException {
