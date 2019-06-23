@@ -5,6 +5,7 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.ErrorType;
+import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
@@ -47,6 +48,7 @@ public class AuthenticateController {
     public void login(ActionEvent actionEvent) {
         AccountController.loginAccount(loginUsername.getText(), loginPassword.getText());
         if (loginErrorType == null) {
+            AccountController.saveAccounts();
             RootsController.openMainMenu();
             if (rememberMe.isSelected()) {
                 MainMenuController.changeIsRememberMe();
