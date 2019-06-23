@@ -90,7 +90,7 @@ public class JsonController {
     }
 
     public static List<Account> getAccounts() {
-        try (FileReader reader = new FileReader("Account.json"))
+        try (FileReader reader = new FileReader(Account.getSavedAccountsFilePath()))
         {
             Type accountListType = new TypeToken<ArrayList<Account>>(){}.getType();
             List<Account> accounts = getGson().fromJson(reader, accountListType);
