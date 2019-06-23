@@ -15,8 +15,7 @@ public class RootsController {
 
     public static void openMainMenu() {
         try {
-            FXMLLoader mainMenuLoader;
-            mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
+            FXMLLoader mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
             mainMenu = mainMenuLoader.load();
             mainMenuController = mainMenuLoader.getController();
             mainMenuController.initValues();
@@ -33,8 +32,7 @@ public class RootsController {
 
     public static void openGameCollection() {
         try {
-            FXMLLoader collectionLoader;
-            collectionLoader = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
+            FXMLLoader collectionLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/collection.fxml"));
             collection = collectionLoader.load();
             collectionController = collectionLoader.getController();
             collectionController.updateDecks();
