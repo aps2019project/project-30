@@ -1,16 +1,19 @@
 package com.company.Controllers.graphic;
 
+import animatefx.animation.ZoomIn;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 public class GameController {
@@ -25,6 +28,8 @@ public class GameController {
     public AnchorPane gameRoot;
     public Pane tableContainer;
     public GridPane gameTable;
+    public ImageView player1HeroPic;
+    public ImageView player2HeroPic;
 
     public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
@@ -35,17 +40,24 @@ public class GameController {
         gameTable.setHgap(10);
         updateTable(gameTable);
         PerspectiveTransform e = new PerspectiveTransform();
-        e.setUlx(gameTable.getLayoutX() + 100);    // Upper left
-        e.setUly(gameTable.getLayoutY());
-        e.setUrx(gameTable.getLayoutX() + 900);    // Upper right
-        e.setUry(gameTable.getLayoutY());
-        e.setLlx(gameTable.getLayoutX());      // Lower left
-        e.setLly(gameTable.getLayoutY() + 300);
-        e.setLrx(gameTable.getLayoutX() + 1000);    // Lower right
-        e.setLry(gameTable.getLayoutY() + 300);
-//        gameTable.setEffect(e);
+        e.setUlx(20);
+        e.setUly(5);
+        e.setUrx(900);
+        e.setUry(5);
+        e.setLlx(-40);
+        e.setLly(500);
+        e.setLrx(1000);
+        e.setLry(500);
+        tableContainer.setEffect(e);
         gameTable.setAlignment(Pos.CENTER);
         tableContainer.getChildren().add(gameTable);
+        Image heroPic1 = new Image("com/company/Views/graphic/images/heroes/" + Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard().getName() + "_logo.png");
+        player1HeroPic.setImage(heroPic1);
+        player1HeroPic.setOnMouseEntered(event -> new ZoomIn(player1HeroPic).play());
+        Image heroPic2 = new Image("com/company/Views/graphic/images/heroes/" + Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard().getName() + "_logo.png");
+        player1HeroPic.setImage(heroPic2);
+        player2HeroPic.setOnMouseEntered(event -> new ZoomIn(player2HeroPic).play());
+
         player1name.setText(Battle.getPlayingBattle().getPlayers()[0].getName().toUpperCase());
         player2name.setText(Battle.getPlayingBattle().getPlayers()[1].getName().toUpperCase());
         player1name.getStyleClass().add("player-name");
