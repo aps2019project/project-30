@@ -151,6 +151,7 @@ public class CollectionController implements Initializable {
     }
 
     public void updateDecks(){
+        updateCollection("");
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
 
             dechAddToDeckBr(deck.getName());
@@ -172,31 +173,35 @@ public class CollectionController implements Initializable {
         });
 
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
-            List<Card> cards;
-            if(newValue.isEmpty())
-                cards = Account.getLoggedInAccount().getCollection().getCards();
-            else
-                cards=com.company.Controllers.CollectionController.searchCardsByName(newValue);
-            cardContainer.getChildren().clear();
-            for (Card card : cards) {
-                AnchorPane anchorPane = new AnchorPane();
-                anchorPane.setPrefSize(200, 262);
-                anchorPane.getStyleClass().add("card-shop-container");
-                Label label = new Label(card.getName().toUpperCase());
-                label.getStyleClass().add("card-shop-name");
-                label.setAlignment(Pos.CENTER);
-                label.setPrefWidth(200);
-                anchorPane.getChildren().add(label);
-                AnchorPane.setTopAnchor(label, 220.0);
-                cardContainer.getChildren().add(anchorPane);
-
-                anchorPane.setOnMouseClicked(event -> {
-                    if (selected_deck != null) {
-                        Account.getLoggedInAccount().getCollection().getCollectionController().addCard(card.getId(), selected_deck);
-                        showDekContentBar();
-                    }
-                });
-            }
+            updateCollection(newValue);
         }));
+    }
+
+    private void updateCollection(String newValue) {
+        List<Card> cards;
+        if(newValue.isEmpty())
+            cards = Account.getLoggedInAccount().getCollection().getCards();
+        else
+            cards=com.company.Controllers.CollectionController.searchCardsByName(newValue);
+        cardContainer.getChildren().clear();
+        for (Card card : cards) {
+            AnchorPane anchorPane = new AnchorPane();
+            anchorPane.setPrefSize(200, 262);
+            anchorPane.getStyleClass().add("card-shop-container");
+            Label label = new Label(card.getName().toUpperCase());
+            label.getStyleClass().add("card-shop-name");
+            label.setAlignment(Pos.CENTER);
+            label.setPrefWidth(200);
+            anchorPane.getChildren().add(label);
+            AnchorPane.setTopAnchor(label, 220.0);
+            cardContainer.getChildren().add(anchorPane);
+
+            anchorPane.setOnMouseClicked(event -> {
+                if (selected_deck != null) {
+                    Account.getLoggedInAccount().getCollection().getCollectionController().addCard(card.getId(), selected_deck);
+                    showDekContentBar();
+                }
+            });
+        }
     }
 }
