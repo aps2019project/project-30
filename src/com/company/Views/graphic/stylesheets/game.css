@@ -147,13 +147,9 @@
     -fx-background-image: url("../images/deck_builder_card_bg.png");
     -fx-background-size: cover;
 }
-/*.hbox_card :hover{*/
-
-    /*!*-fx-pref-width: 300;*!*/
-    /*!*-fx-pref-height: 50;*!*/
-    /*-fx-background-image: url("../images/deck_builder_prismatic_card_bg.png");*/
-    /*-fx-background-size: cover;*/
-/*}*/
+.hbox_card:hover{
+    -fx-background-image: url("../images/deck_builder_prismatic_card_bg.png");
+}
 
 .collection-deck {
     -fx-text-fill: #ffffff;
