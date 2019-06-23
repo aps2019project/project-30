@@ -2,6 +2,7 @@ package com.company.Controllers;
 
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
@@ -9,9 +10,7 @@ import com.company.Models.Card.Spell.Spell;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +96,16 @@ public class JsonController {
         cards.addAll(getHeroes());
         cards.addAll(getItems());
         return cards;
+    }
+
+    public static void exportDeck(Deck deck, String address) {
+        System.out.println(getGson().toJson(deck));
+        System.out.println(address);
+        try (FileWriter fileWriter = new FileWriter(address)) {
+            fileWriter.write(getGson().toJson(deck));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
