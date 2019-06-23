@@ -10,8 +10,7 @@ import java.util.List;
 
 public class Account implements Serializable {
     final private static String SAVED_ACCOUNTS_FILE_PATH = "Accounts/SavedAccounts.json";
-    final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "Logged in account/Account.txt";
-    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "numberOfAccounts.txt";
+    final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "LoggedInAccount/LoggedInAccount.json";
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -131,11 +130,7 @@ public class Account implements Serializable {
         return SAVED_ACCOUNTS_FILE_PATH;
     }
 
-    public static String getLoggedInAccountsFolderAddress() {
+    public static String getLoggedInAccountsFilePath() {
         return LOGGED_IN_ACCOUNT_FILE_ADDRESS;
-    }
-
-    public static String getNumberOfAccountsFileAddress() {
-        return NUMBER_OF_ACCOUNTS_FILE_ADDRESS;
     }
 }

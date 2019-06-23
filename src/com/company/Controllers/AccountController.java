@@ -82,11 +82,12 @@ public class AccountController {
 
     public static void saveAccounts() {
         removeFile(Account.getSavedAccountsFilePath());
-        ConsoleOutput.writeTextOnFile(Account.getSavedAccountsFilePath(), "[");
-        for (Account account : Account.getAccounts()) {
-            JsonController.writeObjectOnFile(account, Account.getSavedAccountsFilePath());
-        }
-        ConsoleOutput.writeTextOnFile(Account.getSavedAccountsFilePath(), "]");
+        JsonController.writeAllAccountsOnFile(Account.getSavedAccountsFilePath());
+    }
+
+    public static void saveLoggedInAccount() {
+        AccountController.removeFile(Account.getSavedAccountsFilePath());
+        JsonController.writeLoggedInAccountOnFile();
     }
 
     public static boolean removeFile(String fileAddress) {
