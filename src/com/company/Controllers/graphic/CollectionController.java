@@ -29,6 +29,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import java.net.URL;
@@ -53,6 +54,8 @@ public class CollectionController implements Initializable {
     public ImageView back;
     public TextField search;
     public String selected_deck=null;
+    public ScrollPane firstScroll;
+    public ScrollPane secondScroll;
 
 
     public void createDeck(ActionEvent actionEvent) {
@@ -95,6 +98,7 @@ public class CollectionController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 selected_deck=decklabel.getText();
+                firstScroll.setVisible(false);
                 deckContainer.setVisible(false);
                 creatDeckBar.setVisible(false);
                 showDekContentBar();
@@ -105,23 +109,25 @@ public class CollectionController implements Initializable {
     }
 
 
-    private void showDekContentBar(){
+    private void showDekContentBar() {
         deck_contaner_content_bar.setVisible(true);
+        secondScroll.setVisible(true);
         backbar.setVisible(true);
         deck_contaner_content_bar.getChildren().clear();
-        HBox deckN=new HBox();
+        HBox deckN = new HBox();
         deckN.getStyleClass().add("deckBox_collection");
         Label decklabel = new Label(selected_deck);
         decklabel.getStyleClass().add("collection-deck");
         deckN.getChildren().add(decklabel);
         deck_contaner_content_bar.getChildren().add(deckN);
-        int counter=0;
-        for(Card card: Collection.getDeckByName(selected_deck).getDeckCards()){
+        int counter = 0;
+        ArrayList<Card> hazfi = new ArrayList<Card>();
+        for (Card card : Collection.getDeckByName(selected_deck).getDeckCards()) {
             counter++;
-            HBox singleCard=new HBox();
+            HBox singleCard = new HBox();
             singleCard.getStyleClass().add("hbox_card");
-            Label number=new Label();
-            Label cardName=new Label();
+            Label number = new Label();
+            Label cardName = new Label();
             cardName.setTextFill(WHITE);
             number.setTextFill(BLACK);
             number.setText(String.valueOf(counter));
@@ -131,17 +137,27 @@ public class CollectionController implements Initializable {
             singleCard.getChildren().add(number);
             singleCard.getChildren().add(cardName);
             deck_contaner_content_bar.getChildren().add(singleCard);
+            singleCard.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    Account.getLoggedInAccount().getCollection().getCollectionController().remove(card.getId(), selected_deck);
+                    deck_contaner_content_bar.getChildren().remove(singleCard);
+                }
+            });
         }
         backtodecks.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 deck_contaner_content_bar.setVisible(false);
+                secondScroll.setVisible(false);
                 backbar.setVisible(false);
                 deckContainer.setVisible(true);
+                firstScroll.setVisible(true);
                 creatDeckBar.setVisible(true);
-                selected_deck=null;
+                selected_deck = null;
             }
         });
+
     }
 
 

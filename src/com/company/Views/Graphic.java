@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.MainMenuController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
