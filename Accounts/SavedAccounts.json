@@ -1,0 +1,26 @@
+[
+  {
+    "username": "1",
+    "password": "1",
+    "drake": 500000,
+    "decks": [],
+    "collection": {
+      "collectionController": {},
+      "cards": []
+    },
+    "battleHistories": [],
+    "wins": 0
+  },
+  {
+    "username": "2",
+    "password": "2",
+    "drake": 500000,
+    "decks": [],
+    "collection": {
+      "collectionController": {},
+      "cards": []
+    },
+    "battleHistories": [],
+    "wins": 0
+  }
+]

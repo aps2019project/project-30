@@ -62,7 +62,9 @@ public class Account implements Serializable {
     }
 
     public static void addToAccounts(List<Account> accounts) {
-        accounts.addAll(accounts);
+        for (Account account : accounts) {
+            addToAccounts(account);
+        }
     }
 
     public String getUsername() {
@@ -73,7 +75,7 @@ public class Account implements Serializable {
         loggedInAccount = getAccountByUsername(username);
     }
 
-    public static void login(Account account){
+    public static void login(Account account) {
         loggedInAccount = account;
     }
 

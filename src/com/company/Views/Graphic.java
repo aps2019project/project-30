@@ -66,14 +66,6 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
-        Account account = (Account) AccountController.readObjectFromFile(Account.getLoggedInAccountsFolderAddress());
-        if (account != null) {
-            System.out.println("**");
-            Account.login(account);
-            AccountController.removeFile(Account.getLoggedInAccountsFolderAddress());
-        } else {
-            System.out.println("no logged in account ");
-        }
         ShopController.initialize();
         launch(args);
     }
