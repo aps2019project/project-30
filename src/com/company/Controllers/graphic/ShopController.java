@@ -76,45 +76,22 @@ public class ShopController implements Initializable {
             cardContainer.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    int t=0;
+                    boolean cardExist=false;
                     for(Card c:Account.getLoggedInAccount().getCollection().getCards()){
                         if(card.getName().equals(c.getName())){
-                            t=1;
+                            cardExist=true;
                             com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), c.getId());
-                            System.out.println("befrooosh");
                             break;
                         }
                     }
-                    if(t==0) {
-                        System.out.println("bekhaaaaaaar");
+                    if(!cardExist) {
                         com.company.Controllers.ShopController.buy(
                                 Account.getLoggedInAccount(), card.getName());
                     }
-
-                   //sellAndBuy(card);
-//                    if(Account.getLoggedInAccount().getCollection().getCollectionController().cardExist(card.getName())){
-//                        com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
-//                    }
-//                    else {
-//                        com.company.Controllers.ShopController.buy(
-//                                Account.getLoggedInAccount(), card.getName());
-//                    }
-
-
                 }
             });
 
             this.cardContainer.getChildren().add(cardContainer);
         }
     }
-
-//    public void sellAndBuy(Card card){
-//        if(Account.getLoggedInAccount().getCollection().getCollectionController().cardExistByName(card.getName())){
-//            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
-//        }
-//        else {
-//            com.company.Controllers.ShopController.buy(
-//                    Account.getLoggedInAccount(), card.getName());
-//        }
-//    }
 }
