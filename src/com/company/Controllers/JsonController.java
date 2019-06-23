@@ -100,8 +100,8 @@ public class JsonController {
 
     public static void exportDeck(Deck deck, String address) {
         System.out.println(getGson().toJson(deck));
-        System.out.println(address);
-        try (FileWriter fileWriter = new FileWriter(address)) {
+        System.out.println(address  + "\\deck.json");
+        try (FileWriter fileWriter = new FileWriter(address + "\\deck.json")) {
             fileWriter.write(getGson().toJson(deck));
         } catch (Exception e) {
             e.printStackTrace();
