@@ -101,11 +101,20 @@ public class JsonController {
     public static void exportDeck(Deck deck, String address) {
         System.out.println(getGson().toJson(deck));
         System.out.println(address);
-        try (FileWriter fileWriter = new FileWriter(address)) {
+        try (FileWriter fileWriter = new FileWriter(address + "")) {
             fileWriter.write(getGson().toJson(deck));
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Deck importDeck(String address) {
+        try (FileReader fileReader = new FileReader(address)) {
+            return getGson().fromJson(fileReader, Deck.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
