@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.URISyntaxException;
 
 public class Graphic extends Application {
     public static Stage stage;
@@ -61,7 +62,6 @@ public class Graphic extends Application {
 //        stage.getIcons().add(new Image("/images/icon.png"));
         stage.setFullScreen(true);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {

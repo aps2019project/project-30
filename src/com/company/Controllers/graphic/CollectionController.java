@@ -153,7 +153,6 @@ public class CollectionController implements Initializable {
     public void updateDecks(){
         updateCollection("");
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
-
             dechAddToDeckBr(deck.getName());
         }
     }

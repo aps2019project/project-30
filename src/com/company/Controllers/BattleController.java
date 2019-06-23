@@ -608,7 +608,7 @@ public class BattleController {
         return false;
     }
 
-    private boolean cardExistsInHand(String cardName) {
+    public boolean cardExistsInHand(String cardName) {
         for (Card card : battle.getTurnToPlay().getDeck().getHand().getCards()) {
             if (card.getName().equals(cardName)) {
                 return true;

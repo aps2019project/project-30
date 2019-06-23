@@ -1,10 +1,12 @@
 package com.company.Controllers.graphic;
 
+import animatefx.animation.SlideInUp;
 import animatefx.animation.ZoomIn;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -17,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GameController {
 
@@ -51,7 +55,7 @@ public class GameController {
         e.setLly(500);
         e.setLrx(1000);
         e.setLry(500);
-        tableContainer.setEffect(e);
+//        tableContainer.setEffect(e);
         gameTable.setAlignment(Pos.CENTER);
         tableContainer.getChildren().add(gameTable);
         Image heroPic1 = new Image("com/company/Views/graphic/images/heroes/" + Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard().getName() + "_logo.png");
@@ -70,6 +74,7 @@ public class GameController {
     }
 
     private void updateHand() {
+        handContainer.getChildren().clear();
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
             AnchorPane pane = new AnchorPane();
             StackPane handCard = new StackPane();
@@ -80,6 +85,8 @@ public class GameController {
             try {
                 Image cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
                 ImageView cardView = new ImageView(cardGif);
+                cardView.setFitWidth(80);
+                cardView.setFitHeight(80);
                 handCard.getChildren().add(cardView);
             } catch (Exception e) {
 //                e.printStackTrace();
@@ -100,6 +107,25 @@ public class GameController {
             AnchorPane.setTopAnchor(manaContainer, 140.0);
             AnchorPane.setLeftAnchor(manaContainer, 67.0);
             handContainer.getChildren().add(pane);
+            pane.setId(card.getId());
+            pane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    if (Battle.getPlayingBattle().getTurnToPlay().getSelectedCard() == null) {
+                        TranslateTransition transition = new TranslateTransition();
+                        transition.setToY(-30);
+                        transition.setNode(pane);
+                        transition.play();
+                        Battle.getPlayingBattle().getBattleController().selectCard(pane.getId());
+                    } else {
+                        TranslateTransition transition = new TranslateTransition();
+                        transition.setToY(0);
+                        transition.setNode(pane);
+                        transition.play();
+                        Battle.getPlayingBattle().getBattleController().selectCard(pane.getId());
+                    }
+                }
+            });
         }
     }
 
@@ -107,15 +133,32 @@ public class GameController {
         gridPane.getChildren().clear();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
-                AnchorPane tile = new AnchorPane();
                 Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1);
                 Soldier soldierInCell = (Soldier) (cell.getCardInCell());
+                AnchorPane tile = new AnchorPane();
+                tile.setId(i + ":" + j);
+                tile.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        if (Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getName())) {
+                            Matcher matcher = Pattern.compile("(?<i>\\d+):(?<j>\\d+)").matcher(((AnchorPane) event.getSource()).getId());
+                            matcher.find();
+                            Battle.getPlayingBattle()
+                                    .getBattleController().insertNewCardToMap(
+                                    Integer.valueOf(matcher.group("i")) + 1,
+                                    Integer.valueOf(matcher.group("j")) + 1,
+                                    Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getName()                            );
+                            updateHand();
+                            updateTable(gameTable);
+                        }
+                    }
+                });
+
                 if (soldierInCell != null) {
                     try {
                         StackPane cardViewContainer = getCardView(soldierInCell);
                         StackPane attackPowerContainer = getStatsView(soldierInCell.getAttackPower(), "attack-power-container");
                         StackPane healthPowerContainer = getStatsView(soldierInCell.getHealth(), "health-power-container");
-
                         tile.getChildren().add(cardViewContainer);
                         tile.getChildren().add(attackPowerContainer);
                         tile.getChildren().add(healthPowerContainer);
@@ -175,6 +218,7 @@ public class GameController {
         Battle.getPlayingBattle().getBattleController().endTurn();
         updateTable(gameTable);
         updateMana();
+        updateHand();
 //        endTurn.setDisable(true);
     }
 
@@ -183,18 +227,17 @@ public class GameController {
         manaContainer2.getChildren().clear();
         for (int j = 0; j < 2; j++) {
             for (int i = 1; i <= 9; i++) {
+                Image image;
                 ImageView imageView;
-                if (i <= Battle.getPlayingBattle().getPlayers()[j].getMaxMana()) {
-                    Image image = new Image("com/company/Views/graphic/images/mana.png");
-                    imageView = new ImageView(image);
-                    imageView.setFitHeight(30);
-                    imageView.setFitWidth(30);
-                } else {
-                    Image image = new Image("com/company/Views/graphic/images/mana-inactive.png");
-                    imageView = new ImageView(image);
-                    imageView.setFitHeight(30);
-                    imageView.setFitWidth(30);
-                }
+                if (i <= Battle.getPlayingBattle().getPlayers()[j].getMaxMana())
+                    image = new Image("com/company/Views/graphic/images/mana.png");
+                    else
+                    image = new Image("com/company/Views/graphic/images/mana-inactive.png");
+
+                imageView = new ImageView(image);
+                imageView.setFitHeight(30);
+                imageView.setFitWidth(30);
+                imageView.getStyleClass().add("mana-image");
                 if (j == 0)
                     manaContainer1.getChildren().add(imageView);
                 else
