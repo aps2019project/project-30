@@ -2,6 +2,7 @@ package com.company.Controllers.graphic;
 
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
+import com.company.Models.Card.Groups.Deck;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
@@ -57,45 +58,50 @@ public class CollectionController implements Initializable {
     public void createDeck(ActionEvent actionEvent) {
         Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(deckName.getText());
         if (creatDeckErrorType == null) {
-            JFXRadioButton mainDeckRadioButton = new JFXRadioButton();
-            mainDeckRadioButton.setUserData(deckName.getText());
-            mainDeckRadioButton.setPadding(new Insets(10));
-            mainDeckRadioButton.setToggleGroup(mainDeckToggleGroup);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(mainDeckRadioButton);
-            hBox.getStyleClass().add("deckBox_collection");
-            Label decklabel = new Label(deckName.getText());
-            decklabel.getStyleClass().add("collection-deck");
-            hBox.getChildren().add(decklabel);
-            Image image = new Image("com/company/Views/graphic/images/waste-bin.png");
-            ImageView imageView = new ImageView(image);
-            imageView.setId(deckName.getText());
-            imageView.getStyleClass().add("deck_image_delete");
-            imageView.setFitHeight(20);
-            imageView.setFitWidth(20);
-            hBox.getChildren().add(imageView);
-            deckContainer.getChildren().add(hBox);
-            imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(((ImageView) event.getSource()).getId());
-                    deckContainer.getChildren().remove(hBox);
-                }
-            });
-
-
-            decklabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    selected_deck=decklabel.getText();
-                    deckContainer.setVisible(false);
-                    creatDeckBar.setVisible(false);
-                    showDekContentBar();
-
-                }
-            });
+            dechAddToDeckBr(deckName.getText());
 
         }
+    }
+
+    private void dechAddToDeckBr(String deckname){
+        JFXRadioButton mainDeckRadioButton = new JFXRadioButton();
+        mainDeckRadioButton.setUserData(deckname);
+        mainDeckRadioButton.setPadding(new Insets(10));
+        mainDeckRadioButton.setToggleGroup(mainDeckToggleGroup);
+        HBox hBox = new HBox();
+        hBox.getChildren().add(mainDeckRadioButton);
+        hBox.getStyleClass().add("deckBox_collection");
+        Label decklabel = new Label(deckname);
+        decklabel.getStyleClass().add("collection-deck");
+        hBox.getChildren().add(decklabel);
+        Image image = new Image("com/company/Views/graphic/images/waste-bin.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setId(deckname);
+        imageView.getStyleClass().add("deck_image_delete");
+        imageView.setFitHeight(20);
+        imageView.setFitWidth(20);
+        hBox.getChildren().add(imageView);
+        deckContainer.getChildren().add(hBox);
+        imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(((ImageView) event.getSource()).getId());
+                deckContainer.getChildren().remove(hBox);
+            }
+        });
+
+
+        decklabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                selected_deck=decklabel.getText();
+                deckContainer.setVisible(false);
+                creatDeckBar.setVisible(false);
+                showDekContentBar();
+
+            }
+        });
+
     }
 
 
@@ -147,6 +153,12 @@ public class CollectionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        for(Deck deck:Account.getLoggedInAccount().getDecks()){
+
+            dechAddToDeckBr(deck.getName());
+        }
+
         back.setOnMouseClicked(event -> {
             RootsController.backToMainMenu();
         });
