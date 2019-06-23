@@ -43,7 +43,7 @@ public class MainMenuController implements Initializable {
 //        pillars.fitHeightProperty().bind(pillars.fitWidthProperty().divide(10 / 3));
 
 
-        Fog fog = new Fog(600, 200);
+        Fog fog = new Fog(1000, 300);
         cloudsContainer.getChildren().add(fog.getView());
 
 
@@ -72,9 +72,7 @@ public class MainMenuController implements Initializable {
             if (rememberMe) {
                 AccountController.writeObjectToFile(Account.getLoggedInAccount(), Account.getLoggedInAccountsFolderAddress());
                 Account.logout();
-                System.out.println("logged in account saved!");
             }
-            System.out.println("Exit");
         });
 
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
