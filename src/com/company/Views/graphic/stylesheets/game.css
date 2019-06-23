@@ -139,24 +139,39 @@
 }
 
 .hbox_card{
-    -fx-pref-width: 305;
-    -fx-pref-height: 50;
+
+    -fx-padding: 15;
+    -fx-spacing: 110;
+    -fx-pref-width: 300;
+    -fx-pref-height: 40;
     -fx-background-image: url("../images/deck_builder_card_bg.png");
     -fx-background-size: cover;
 }
-.hbox_card :hover{
-    -fx-pref-width: 300;
-    -fx-pref-height: 50;
-    -fx-background-image: url("../images/deck_builder_prismatic_card_bg.png");
-    -fx-background-size: cover;
-}
+/*.hbox_card :hover{*/
+
+    /*!*-fx-pref-width: 300;*!*/
+    /*!*-fx-pref-height: 50;*!*/
+    /*-fx-background-image: url("../images/deck_builder_prismatic_card_bg.png");*/
+    /*-fx-background-size: cover;*/
+/*}*/
 
 .collection-deck {
     -fx-text-fill: #ffffff;
     -fx-pref-width: 180;
     -fx-pref-height: 70;
 }
-
+.collection-deck-car {
+    /*-fx-text-: #ffffff;*/
+    -fx-pref-width: 90;
+    -fx-pref-height: 73;
+    -fx-font-size: 50;
+}
+.collection-deck-name{
+    -fx-text-fill: #ffffff;
+    -fx-pref-width: 180;
+    -fx-pref-height: 70;
+    -fx-font-size: 50;
+}
 .deck-name-field:hover .deck-name-field:focused {
     -fx-background-color: #434343;
 }
