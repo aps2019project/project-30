@@ -82,7 +82,7 @@ public class GameController {
                 ImageView cardView = new ImageView(cardGif);
                 handCard.getChildren().add(cardView);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             handCard.getStyleClass().add("game-hand-card-container");
 
