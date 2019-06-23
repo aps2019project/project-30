@@ -20,13 +20,11 @@ public class AccountController {
         if (!usernameExists(username)) {
             Account newAccount = new Account(username, password);
             Account.addToAccounts(newAccount);
-            saveAccount(newAccount, accountFileAddress(readNumberOfAllRegisteredAccountsFromFile()));
         } else {
             ConsoleOutput.printErrorMessage(ErrorType.USERNAME_EXISTS);
             errorType = ErrorType.USERNAME_EXISTS;
         }
         AuthenticateController.signUpError(errorType);
-
 
     }
 
@@ -86,16 +84,20 @@ public class AccountController {
         int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
         Account account = null;
         for (int i = 0; i < numberOfAccounts; i++) {
-            account = (Account) readObjectFromFile(accountFileAddress(i));
+            account = (Account) readObjectFromFile(accountFileAddress());
             if (account.getUsername().equals(username))
                 return i;
         }
         return -1;
     }
 
-    private static void saveAccount(Account account, String accountsFileAddress) {
-        writeObjectToFile(account, accountsFileAddress);
-        incrementNumberOfRegisteredAccounts();
+    private static void saveAccounts() {
+        removeFile(Account.getSavedAccountsFilePath());
+        ConsoleOutput.writeTextOnFile(Account.getSavedAccountsFilePath(), "[");
+        for (Account account : Account.getAccounts()) {
+            JsonController.writeObjectOnFile(account, Account.getSavedAccountsFilePath());
+        }
+        ConsoleOutput.writeTextOnFile(Account.getSavedAccountsFilePath(), "]");
     }
 
     public static void writeObjectToFile(Object object, String fileAddress) {
@@ -113,7 +115,7 @@ public class AccountController {
     private static ObjectOutputStream setWriter(String fileName) {
         try {
             return new ObjectOutputStream(new FileOutputStream(fileName));
-        } catch (IOException e){
+        } catch (IOException e) {
             System.err.println("opening the file failed");
         }
         return null;
@@ -163,19 +165,23 @@ public class AccountController {
 
     }
 
-    private static String accountFileAddress(int index) {
-        return Account.getAccountsFolderAddress() + "Account" + index + ".txt";
+    private static String accountFileAddress() {
+        return Account.getSavedAccountsFilePath();
     }
 
-    public static void removeFile(String fileAddress) {
+    public static boolean removeFile(String fileAddress) {
         File file = new File(fileAddress);
-        file.delete();
+        if (file.exists()) {
+            file.delete();
+            return true;
+        }
+        return false;
     }
 
     public static void addSavedAccountsToAccounts() {
         int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
         for (int i = 0; i < numberOfAccounts; i++) {
-            Account.addToAccounts((Account) readObjectFromFile(accountFileAddress(i)));
+            Account.addToAccounts((Account) readObjectFromFile(accountFileAddress()));
         }
     }
 }
