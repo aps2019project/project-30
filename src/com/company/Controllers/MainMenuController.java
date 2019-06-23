@@ -53,7 +53,8 @@ public class MainMenuController implements Initializable {
         });
 
         shop.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Graphic.stage.getScene().setRoot(Graphic.shop);
+//            Graphic.stage.getScene().setRoot(Graphic.shop);
+            RootsController.openShop();
             event.consume();
         });
 
