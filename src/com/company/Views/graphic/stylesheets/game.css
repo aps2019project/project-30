@@ -238,3 +238,9 @@
     -fx-stroke-width: 1;
     -fx-stroke: grey;
 }
+
+.graveyard-card-container {
+    -fx-background-image: url("../images/graveyard-card-container.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}

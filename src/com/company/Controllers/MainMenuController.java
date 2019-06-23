@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import animatefx.animation.FadeOut;
+import com.company.Controllers.graphic.RootsController;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.company.Views.graphic.Fog;
@@ -62,7 +63,7 @@ public class MainMenuController implements Initializable {
         });
 
         collection.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            Graphic.stage.getScene().setRoot(Graphic.collection);
+            RootsController.openGameCollection();
             event.consume();
         });
 

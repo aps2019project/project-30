@@ -16,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
+import java.util.function.Consumer;
+
 public class GameController {
 
     public HBox handContainer;
@@ -35,6 +37,7 @@ public class GameController {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
 //            endTurn.setDisable(true);
 //        }
+        updateGraveYard();
         gameTable = new GridPane();
         gameTable.setVgap(10);
         gameTable.setHgap(10);
@@ -63,14 +66,24 @@ public class GameController {
         player1name.getStyleClass().add("player-name");
         player2name.getStyleClass().add("player-name");
         updateMana();
+        updateHand();
+    }
+
+    private void updateHand() {
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
             AnchorPane pane = new AnchorPane();
             StackPane handCard = new StackPane();
-//            ImageView imageView = new ImageView(new Image("com/company/Views/graphic/images/test1.gif"));
             Label cardName = new Label(card.getName());
             handCard.setPrefWidth(180);
             handCard.setPrefHeight(180);
             handCard.getChildren().add(cardName);
+            try {
+                Image cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
+                ImageView cardView = new ImageView(cardGif);
+                handCard.getChildren().add(cardView);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             handCard.getStyleClass().add("game-hand-card-container");
 
             StackPane manaContainer = new StackPane();
@@ -188,5 +201,20 @@ public class GameController {
                     manaContainer2.getChildren().add(imageView);
             }
         }
+    }
+
+    public void updateGraveYard() {
+        graveyard.getChildren().clear();
+        Battle.getPlayingBattle().getTurnToPlay().getDeck().getDeckCards().stream()
+                .filter((Card::isInGraveCards))
+                .forEach(card -> {
+                    StackPane cardContainer = new StackPane();
+                    cardContainer.setPrefWidth(150);
+                    cardContainer.setPrefHeight(150);
+                    cardContainer.getStyleClass().add("graveyard-card-container");
+                    Label cardName = new Label(card.getName());
+                    cardContainer.getChildren().add(cardName);
+                    graveyard.getChildren().add(cardContainer);
+                });
     }
 }

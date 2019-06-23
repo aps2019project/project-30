@@ -14,7 +14,7 @@
     <Button fx:id="endTurn" text="END TURN" styleClass="game-endturn" onAction="#endTurn" AnchorPane.rightAnchor="50"
             AnchorPane.bottomAnchor="50"/>
     <HBox fx:id="handContainer" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="50"/>
-    <VBox fx:id="graveyard" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="300" styleClass="game-grave-yard"/>
+    <VBox fx:id="graveyard" spacing="5" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="300" styleClass="game-grave-yard"/>
     <HBox alignment="CENTER_LEFT" AnchorPane.topAnchor="30" AnchorPane.leftAnchor="50" styleClass="player1-container">
         <ImageView fx:id="player1HeroPic" fitWidth="150" fitHeight="150">
             <Image url="@../images/heroes/Arash_logo.png"/>

@@ -9,7 +9,9 @@ import java.io.IOException;
 
 public class RootsController {
     static Parent mainMenu;
+    static Parent collection;
     static MainMenuController mainMenuController;
+    static CollectionController collectionController;
 
     public static void openMainMenu() {
         try {
@@ -27,5 +29,18 @@ public class RootsController {
     public static void backToMainMenu() {
         Graphic.stage.getScene().setRoot(RootsController.mainMenu);
         mainMenuController.initValues();
+    }
+
+    public static void openGameCollection() {
+        try {
+            FXMLLoader collectionLoader;
+            collectionLoader = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
+            collection = collectionLoader.load();
+            collectionController = collectionLoader.getController();
+            collectionController.updateDecks();
+            Graphic.stage.getScene().setRoot(RootsController.collection);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
