@@ -80,93 +80,13 @@ public class AccountController {
         return false;
     }
 
-    private static int getAccountIndexByUsername(String username) {
-        int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
-        Account account = null;
-        for (int i = 0; i < numberOfAccounts; i++) {
-            account = (Account) readObjectFromFile(accountFileAddress());
-            if (account.getUsername().equals(username))
-                return i;
-        }
-        return -1;
-    }
-
-    private static void saveAccounts() {
+    public static void saveAccounts() {
         removeFile(Account.getSavedAccountsFilePath());
         ConsoleOutput.writeTextOnFile(Account.getSavedAccountsFilePath(), "[");
         for (Account account : Account.getAccounts()) {
             JsonController.writeObjectOnFile(account, Account.getSavedAccountsFilePath());
         }
         ConsoleOutput.writeTextOnFile(Account.getSavedAccountsFilePath(), "]");
-    }
-
-    public static void writeObjectToFile(Object object, String fileAddress) {
-        ObjectOutputStream writer;
-        try {
-            writer = setWriter(fileAddress);
-            writer.writeObject(object);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            System.err.println("writing was unsuccessful");
-        }
-    }
-
-    private static ObjectOutputStream setWriter(String fileName) {
-        try {
-            return new ObjectOutputStream(new FileOutputStream(fileName));
-        } catch (IOException e) {
-            System.err.println("opening the file failed");
-        }
-        return null;
-    }
-
-    public static Object readObjectFromFile(String fileAddress) {
-        try {
-            ObjectInputStream reader = setAccountReaderFromFile(fileAddress);
-            Object readObject = reader.readObject();
-            reader.close();
-            return readObject;
-        } catch (IOException e) {
-            System.err.println("opening file failed");
-        } catch (ClassNotFoundException e) {
-            System.err.println("class not found");
-        }
-        return null;
-    }
-
-    private static ObjectInputStream setAccountReaderFromFile(String fileName) throws IOException {
-        return new ObjectInputStream(new FileInputStream(fileName));
-    }
-
-    private static int readNumberOfAllRegisteredAccountsFromFile() {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(Account.getNumberOfAccountsFileAddress()));
-            String numberOfAllRegisteredAccounts = bufferedReader.readLine();
-            System.out.println(numberOfAllRegisteredAccounts);
-            bufferedReader.close();
-            if (numberOfAllRegisteredAccounts != null)
-                return Integer.parseInt(numberOfAllRegisteredAccounts);
-        } catch (IOException e) {
-            System.err.println("file not found");
-        }
-        return 0;
-    }
-
-    private static void incrementNumberOfRegisteredAccounts() {
-        try {
-            int registeredAccountsNumber = readNumberOfAllRegisteredAccountsFromFile() + 1;
-            PrintWriter writer = new PrintWriter(Account.getNumberOfAccountsFileAddress());
-            writer.print(String.valueOf(registeredAccountsNumber));
-            writer.close();
-        } catch (IOException e) {
-            System.err.println("incrementing registered accounts number failed");
-        }
-
-    }
-
-    private static String accountFileAddress() {
-        return Account.getSavedAccountsFilePath();
     }
 
     public static boolean removeFile(String fileAddress) {
@@ -179,9 +99,6 @@ public class AccountController {
     }
 
     public static void addSavedAccountsToAccounts() {
-        int numberOfAccounts = readNumberOfAllRegisteredAccountsFromFile();
-        for (int i = 0; i < numberOfAccounts; i++) {
-            Account.addToAccounts((Account) readObjectFromFile(accountFileAddress()));
-        }
+        Account.addToAccounts(JsonController.getAccounts());
     }
 }
