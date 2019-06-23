@@ -1,17 +1,17 @@
 package com.company.Controllers.graphic;
 
 import com.company.Models.Card.Card;
-import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
-import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXMasonryPane;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
@@ -26,8 +26,6 @@ public class ShopController implements Initializable {
     public void updateDecks(){
         updateShop("");
     }
-
-
 
 
     @Override
@@ -75,11 +73,48 @@ public class ShopController implements Initializable {
             title.setPrefWidth(200);
             cardContainer.getChildren().add(title);
             AnchorPane.setTopAnchor(title, 220.0);
-            cardContainer.setOnMouseClicked(event ->
-                    com.company.Controllers.ShopController.buy(
-                            Account.getLoggedInAccount(), title.getText())
-            );
+            cardContainer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    int t=0;
+                    for(Card c:Account.getLoggedInAccount().getCollection().getCards()){
+                        if(card.getName().equals(c.getName())){
+                            t=1;
+                            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), c.getId());
+                            System.out.println("befrooosh");
+                            break;
+                        }
+                    }
+                    if(t==0) {
+                        System.out.println("bekhaaaaaaar");
+                        com.company.Controllers.ShopController.buy(
+                                Account.getLoggedInAccount(), card.getName());
+                    }
+
+                   //sellAndBuy(card);
+//                    if(Account.getLoggedInAccount().getCollection().getCollectionController().cardExist(card.getName())){
+//                        com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
+//                    }
+//                    else {
+//                        com.company.Controllers.ShopController.buy(
+//                                Account.getLoggedInAccount(), card.getName());
+//                    }
+
+
+                }
+            });
+
             this.cardContainer.getChildren().add(cardContainer);
         }
     }
+
+//    public void sellAndBuy(Card card){
+//        if(Account.getLoggedInAccount().getCollection().getCollectionController().cardExistByName(card.getName())){
+//            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
+//        }
+//        else {
+//            com.company.Controllers.ShopController.buy(
+//                    Account.getLoggedInAccount(), card.getName());
+//        }
+//    }
 }
