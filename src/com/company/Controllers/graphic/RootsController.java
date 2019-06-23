@@ -1,6 +1,7 @@
 package com.company.Controllers.graphic;
 
 import com.company.Controllers.MainMenuController;
+import com.company.Models.Sound;
 import com.company.Views.Graphic;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ public class RootsController {
     static CollectionController collectionController;
 
     public static void openMainMenu() {
+        Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS);
         try {
             FXMLLoader mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
             mainMenu = mainMenuLoader.load();

@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.MainMenuController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.URISyntaxException;
 
 public class Graphic extends Application {
     public static Stage stage;
