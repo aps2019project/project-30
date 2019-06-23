@@ -150,14 +150,15 @@ public class CollectionController implements Initializable {
         creatDeckErrorType=errorType;
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void updateDecks(){
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
 
             dechAddToDeckBr(deck.getName());
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
         back.setOnMouseClicked(event -> {
             RootsController.backToMainMenu();
