@@ -6,6 +6,7 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.User.Account;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
@@ -90,6 +91,19 @@ public class JsonController {
         }
     }
 
+    public static List<Account> getAccounts() {
+        try (FileReader reader = new FileReader("Account.json"))
+        {
+            Type accountListType = new TypeToken<ArrayList<Account>>(){}.getType();
+            List<Account> accounts = getGson().fromJson(reader, accountListType);
+            accounts.removeIf(account -> (account == null));
+            return accounts;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
     public static List<Card> getCards() {
         ArrayList<Card> cards = new ArrayList<Card>();
         cards.addAll(getSpells());
@@ -98,5 +112,4 @@ public class JsonController {
         cards.addAll(getItems());
         return cards;
     }
-
 }
