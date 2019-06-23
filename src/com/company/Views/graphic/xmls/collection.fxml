@@ -26,16 +26,16 @@
                    styleClass="shop-search"/>
     </AnchorPane>
     <AnchorPane fx:id="deck_bar" styleClass="decks-container" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0">
-        <!--<ScrollPane hbarPolicy="NEVER" vbarPolicy="ALWAYS">-->
-        <VBox fx:id="deckContainer" AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container"/>
-        <!--</ScrollPane>-->
+        <ScrollPane fx:id="firstScroll" hbarPolicy="NEVER" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="70" AnchorPane.topAnchor="0">
+            <VBox fx:id="deckContainer" AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container"/>
+        </ScrollPane>
         <HBox fx:id="creatDeckBar" AnchorPane.bottomAnchor="0">
             <JFXTextField fx:id="deckName" styleClass="deck-name-field"/>
             <JFXButton fx:id="createDeck" text="CREATE" styleClass="create-deck" onAction="#createDeck"/>
         </HBox>
-        <!--<ScrollPane hbarPolicy="NEVER" vbarPolicy="ALWAYS">-->
+        <ScrollPane fx:id="secondScroll" hbarPolicy="NEVER" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="70" AnchorPane.topAnchor="0" visible="false" AnchorPane.rightAnchor="30">
             <VBox fx:id="deck_contaner_content_bar"  AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container" visible="false"/>
-        <!--</ScrollPane>-->
+        </ScrollPane>
         <HBox fx:id="backbar" AnchorPane.bottomAnchor="0" visible="false">
             <JFXButton fx:id="backtodecks" text="BACK" styleClass="create-deck" />
 
