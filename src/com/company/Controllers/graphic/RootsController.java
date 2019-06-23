@@ -11,8 +11,10 @@ import java.io.IOException;
 public class RootsController {
     static Parent mainMenu;
     static Parent collection;
+    static Parent shop;
     static MainMenuController mainMenuController;
     static CollectionController collectionController;
+    static ShopController shopController;
 
     public static void openMainMenu() {
         Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS);
@@ -42,5 +44,18 @@ public class RootsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void openShop() {
+        try {
+            FXMLLoader shopLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/shop.fxml"));
+            shop = shopLoader.load();
+            shopController = shopLoader.getController();
+            shopController.updateDecks();
+            Graphic.stage.getScene().setRoot(RootsController.shop);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

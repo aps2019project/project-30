@@ -84,6 +84,15 @@ public class CollectionController implements Serializable {
         return false;
     }
 
+//    public boolean cardExistByName(String cardName){
+//        for (Card card : Account.getLoggedInAccount().getCollection().getCards()) {
+//            if (card.getName().equals(cardName)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
     public void selectDeck(String deckName) {
         if (deckExist(deckName) && validateDeck(deckName)) {
             Account.getLoggedInAccount().setMainDeck(Collection.getDeckByName(deckName));
