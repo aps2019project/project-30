@@ -10,9 +10,7 @@ import com.company.Models.User.Account;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,5 +109,17 @@ public class JsonController {
         cards.addAll(getHeroes());
         cards.addAll(getItems());
         return cards;
+    }
+
+    public static void writeObjectOnFile(Account account, String destinationAddress) {
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(destinationAddress, true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        PrintStream printStream = new PrintStream(fileOutputStream);
+        printStream.print(JsonController.getGson().toJson(account));
+        printStream.print(',');
     }
 }
