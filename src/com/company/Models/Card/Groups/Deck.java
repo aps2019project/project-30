@@ -13,8 +13,8 @@ public class Deck implements Serializable {
     private List<Card> deckCards = new ArrayList<>();
     private Card heroCard;
     private Card itemCard;
-    private Hand hand;
-    private DeckController deckController = new DeckController(this);
+    private transient Hand hand;
+    private transient DeckController deckController = new DeckController(this);
     public Deck(String name) {
         this.name = name;
         hand = new Hand(this);

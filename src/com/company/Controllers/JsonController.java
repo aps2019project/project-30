@@ -2,6 +2,7 @@ package com.company.Controllers;
 
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Minion.Minion;
@@ -155,4 +156,21 @@ public class JsonController {
             e.printStackTrace();
         }
     }
+    public static void exportDeck(Deck deck, String address) {
+        try (FileWriter fileWriter = new FileWriter(address + "\\deck.json")) {
+            fileWriter.write(getGson().toJson(deck));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Deck importDeck(String address) {
+        try (FileReader fileReader = new FileReader(address)) {
+            return getGson().fromJson(fileReader, Deck.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.DeckController;
+import com.company.Controllers.JsonController;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Card.Groups.Deck;
@@ -27,7 +29,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.DirectoryChooser;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -79,17 +83,39 @@ public class CollectionController implements Initializable {
         hBox.getChildren().add(decklabel);
         Image image = new Image("com/company/Views/graphic/images/waste-bin.png");
         ImageView imageView = new ImageView(image);
+        Image saveicon = new Image("com/company/Views/graphic/images/save-icon.png");
+        ImageView save = new ImageView(saveicon);
         imageView.setId(deckname);
         imageView.getStyleClass().add("deck_image_delete");
         imageView.setFitHeight(20);
         imageView.setFitWidth(20);
+        save.setFitHeight(20);
+        save.setFitWidth(20);
+        save.setId(deckname);
         hBox.getChildren().add(imageView);
+        hBox.getChildren().add(save);
         deckContainer.getChildren().add(hBox);
         imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Account.getLoggedInAccount().getCollection().getCollectionController().deleteDeck(((ImageView) event.getSource()).getId());
                 deckContainer.getChildren().remove(hBox);
+            }
+        });
+
+        save.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                DirectoryChooser chooser = new DirectoryChooser();
+                chooser.setTitle("");
+                File defaultDirectory = new File("c:/");
+                chooser.setInitialDirectory(defaultDirectory);
+                File selectedDirectory = chooser.showDialog(Graphic.stage);
+                JsonController.exportDeck(
+                        Collection.getDeckByName(((ImageView) event.getSource()).getId()),
+                        selectedDirectory.getAbsolutePath()
+                );
+
             }
         });
 
@@ -121,7 +147,6 @@ public class CollectionController implements Initializable {
         deckN.getChildren().add(decklabel);
         deck_contaner_content_bar.getChildren().add(deckN);
         int counter = 0;
-        ArrayList<Card> hazfi = new ArrayList<Card>();
         for (Card card : Collection.getDeckByName(selected_deck).getDeckCards()) {
             counter++;
             HBox singleCard = new HBox();
