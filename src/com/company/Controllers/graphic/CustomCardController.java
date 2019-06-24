@@ -7,12 +7,18 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -41,10 +47,17 @@ public class CustomCardController implements Initializable {
     public TextField heroAreaOfEffect;
     public TextField minionAreaOfEffect;
     public TextField heroCoolDown;
+    public StackPane stackPane;
+    public StackPane buffcreationmenu;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.exit(0);
+        heroSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            GaussianBlur gaussianBlur = new GaussianBlur();
+            stackPane.setEffect(gaussianBlur);
+            buffcreationmenu.setVisible(true);
+        });
+
         heroAttackType.getItems().addAll(AttackType.values());
         minionAttackType.getItems().addAll(AttackType.values());
         heroSpecialPower.getItems().addAll(Buff.Name.values());
@@ -138,5 +151,10 @@ public class CustomCardController implements Initializable {
                 break;
         }
         return newBuff;
+    }
+
+    public void createBuff(ActionEvent actionEvent) {
+        buffcreationmenu.setVisible(false);
+        stackPane.setEffect(null);
     }
 }

@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Sound;
 import com.company.Views.Graphic;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -70,6 +71,7 @@ public class RootsController {
     }
 
     public static void openCustomCardGenerator() {
-        Graphic.stage.getScene().setRoot(customCardGenerator);
+        Platform.runLater(() -> Graphic.stage.getScene().setRoot(customCardGenerator));
+
     }
 }

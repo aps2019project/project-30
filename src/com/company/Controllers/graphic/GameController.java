@@ -1,15 +1,11 @@
 package com.company.Controllers.graphic;
 
-import animatefx.animation.SlideInUp;
 import animatefx.animation.ZoomIn;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
 import javafx.animation.TranslateTransition;
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableObjectValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -21,8 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
-import java.util.Observer;
-import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,11 +35,13 @@ public class GameController {
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
 
+
     public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
 //            endTurn.setDisable(true);
 //        }
-//        ObservableObjectValue<Card> selectedCard = ;
+
+
         updateGraveYard();
         gameTable = new GridPane();
         gameTable.setVgap(10);
@@ -127,7 +123,7 @@ public class GameController {
                         transition.setToY(0);
                         transition.setNode(pane);
                         transition.play();
-                        Battle.getPlayingBattle().getBattleController().selectCard(pane.getId());
+                        Battle.getPlayingBattle().getBattleController().selectCard(null);
                     }
                 }
             });
