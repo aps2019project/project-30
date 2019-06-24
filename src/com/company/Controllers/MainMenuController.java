@@ -68,6 +68,9 @@ public class MainMenuController implements Initializable {
         });
 
         exit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            if(rememberMe){
+                JsonController.writeLoggedInAccountOnFile();
+            }
             Account.logout();
         });
 
