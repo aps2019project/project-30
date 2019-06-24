@@ -25,6 +25,7 @@ public class AttackPowerBuff extends Buff {
         }
         decrementCounters();
     }
+
     public AttackPowerBuff clone() {
         AttackPowerBuff attackPowerBuff = new AttackPowerBuff(this.antiBuff, this.castTime, this.remTurnToCast, this.value);
         attackPowerBuff.name = this.name;

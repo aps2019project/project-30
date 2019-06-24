@@ -1,5 +1,7 @@
 package com.company.Controllers.graphic;
 
+import com.company.Models.Buff.AntiBuff;
+import com.company.Models.Buff.Buff;
 import com.company.Models.Card.AttackType;
 import com.jfoenix.controls.JFXComboBox;
 import com.company.Models.Card.Hero.Hero;
@@ -15,6 +17,10 @@ import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
     public JFXComboBox<AttackType> heroAttackType;
+    public JFXComboBox<AttackType> minionAttackType;
+    public JFXComboBox<Buff.Name> minionSpecialPower;
+    public JFXComboBox<Buff.Name> heroSpecialPower;
+
 
     public TextField heroName;
     public TextField heroNeededDrake;
@@ -30,12 +36,14 @@ public class CustomCardController implements Initializable {
     public TextField heroAttackPower;
     public TextField heroAreaOfEffect;
     public TextField minionAreaOfEffect;
+    public TextField heroCoolDown;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         heroAttackType.getItems().addAll(AttackType.values());
-//        heroAttackType.getSelectionModel().getSelectedItem()
-//        todo: to get selected item
+        minionAttackType.getItems().addAll(AttackType.values());
+        heroSpecialPower.getItems().addAll(Buff.Name.values());
+        minionSpecialPower.getItems().addAll(Buff.Name.values());
     }
 
     public void createNewCustomHero(ActionEvent actionEvent) {
@@ -45,11 +53,22 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(heroNeededMana.getText()),
                 Integer.parseInt(heroFullHealth.getText()),
                 Integer.parseInt(heroAttackPower.getText()),
-                Integer.parseInt(heroAreaOfEffect.getText())
+                Integer.parseInt(heroAreaOfEffect.getText()),
+                heroAttackType.getSelectionModel().getSelectedItem(),
+                null
         );
+        newHero.setCoolDown(Integer.parseInt(heroCoolDown.getText()));
     }
 
-    private Soldier createNewCustomCard(String name, int priceInDrake, int manaPoint, int fullHealth, int attackPower, int areaOfEffect) {
+    private Soldier createNewCustomCard(
+            String name,
+            int priceInDrake,
+            int manaPoint,
+            int fullHealth,
+            int attackPower,
+            int areaOfEffect,
+            AttackType attackType,
+            Buff specialPower) {
         Soldier newSoldier = new Soldier();
         newSoldier.setName(name);
         newSoldier.setPriceInDrake(priceInDrake);
@@ -58,6 +77,8 @@ public class CustomCardController implements Initializable {
         newSoldier.setFullHealth(fullHealth);
         newSoldier.setAttackPower(attackPower);
         newSoldier.setAreaOfEffect(areaOfEffect);
+        newSoldier.setAttackType(attackType);
+        newSoldier.getBuffsToCast().add(specialPower);
         return newSoldier;
     }
 
@@ -68,7 +89,18 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(minionNeededMana.getText()),
                 Integer.parseInt(minionFullHealth.getText()),
                 Integer.parseInt(minionAttackPower.getText()),
-                Integer.parseInt(minionAreaOfEffect.getText())
+                Integer.parseInt(minionAreaOfEffect.getText()),
+                minionAttackType.getSelectionModel().getSelectedItem(),
+                null
         );
+    }
+
+    public void createNewCustomBuff(Buff.Name name){
+        Buff newBuff = null;
+        switch (name){
+            case ANTI:
+//                newBuff = new AntiBuff();
+                break;
+        }
     }
 }
