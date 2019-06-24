@@ -45,3 +45,8 @@
     -fx-background-color: rgba(0, 0, 0, 0.5);
     -fx-background-radius: 10;
 }
+.question-popup{
+    -fx-background-color: rgba(0,0,0,0.5);
+    -fx-background-radius: 10;
+
+}
