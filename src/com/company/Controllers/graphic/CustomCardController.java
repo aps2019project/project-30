@@ -1,18 +1,22 @@
 package com.company.Controllers.graphic;
 
-import com.company.Models.Buff.AntiBuff;
-import com.company.Models.Buff.Buff;
+import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.jfoenix.controls.JFXComboBox;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
@@ -40,6 +44,7 @@ public class CustomCardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.exit(0);
         heroAttackType.getItems().addAll(AttackType.values());
         minionAttackType.getItems().addAll(AttackType.values());
         heroSpecialPower.getItems().addAll(Buff.Name.values());
@@ -95,12 +100,43 @@ public class CustomCardController implements Initializable {
         );
     }
 
-    public void createNewCustomBuff(Buff.Name name){
+    public Buff createNewCustomBuff(Buff.Name name, int castTime, int value) {
         Buff newBuff = null;
-        switch (name){
+        switch (name) {
             case ANTI:
-//                newBuff = new AntiBuff();
+                newBuff = new AntiBuff(null, castTime, 0, value);
+                break;
+            case ATTACK_POWER:
+                newBuff = new AttackPowerBuff(null, castTime, 0, value);
+                break;
+            case ATTACK_WEAKNESS:
+                newBuff = new AttackWeaknessBuff(null, castTime, 0, value);
+                break;
+            case DISARM:
+                newBuff = new DisarmBuff(null, castTime, 0, value);
+                break;
+            case DISPELL:
+                newBuff = new DispelBuff(null, castTime, 0, value);
+                break;
+            case HEALTH_POWER:
+                newBuff = new HealthPowerBuff(null, castTime, 0, value);
+                break;
+            case HEALTH_WEAKNESS:
+                newBuff = new HealthWeaknessBuff(null, castTime, 0, value);
+                break;
+            case HOLY:
+                newBuff = new HolyBuff(null, castTime, 0, value);
+                break;
+            case MANA:
+                newBuff = new ManaBuff(null, castTime, 0, value);
+                break;
+            case POSION:
+                newBuff = new PosionBuff(null, castTime, 0, value);
+                break;
+            case STUN:
+                newBuff = new StunBuff(null, castTime, 0, value);
                 break;
         }
+        return newBuff;
     }
 }
