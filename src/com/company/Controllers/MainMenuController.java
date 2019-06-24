@@ -27,10 +27,10 @@ public class MainMenuController implements Initializable {
     public Label play;
     public Label collection;
     public Label gold;
-    public Label exit;
     public StackPane cloudsContainer;
     public ImageView pillars;
     public ImageView foreGround;
+    public ImageView exit;
     public AnchorPane root;
     private static boolean rememberMe = false;
 
@@ -69,10 +69,12 @@ public class MainMenuController implements Initializable {
         });
 
         exit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (rememberMe) {
-                AccountController.writeObjectToFile(Account.getLoggedInAccount(), Account.getLoggedInAccountsFolderAddress());
-                Account.logout();
+            if(rememberMe){
+                JsonController.writeLoggedInAccountOnFile();
             }
+            AccountController.saveAccounts();
+            Account.logout();
+            System.exit(0);
         });
 
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
@@ -119,7 +121,7 @@ public class MainMenuController implements Initializable {
         Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
-    static void changeIsRememberMe() {
+    public static void changeIsRememberMe() {
         rememberMe = true;
     }
 

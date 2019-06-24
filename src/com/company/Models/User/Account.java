@@ -6,11 +6,11 @@ import com.company.Models.Card.Groups.Collection;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Account implements Serializable {
-    final private static String ACCOUNTS_FOLDER_ADDRESS = "Accounts/";
-    final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "Logged in account/Account.txt";
-    final private static String NUMBER_OF_ACCOUNTS_FILE_ADDRESS = "numberOfAccounts.txt";
+    final private static String SAVED_ACCOUNTS_FILE_PATH = "Accounts/SavedAccounts.json";
+    final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "LoggedInAccount/LoggedInAccount.json";
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -60,6 +60,10 @@ public class Account implements Serializable {
         accounts.add(account);
     }
 
+    public static void addToAccounts(List<Account> inputAccounts) {
+        accounts.addAll(inputAccounts);
+    }
+
     public String getUsername() {
         return username;
     }
@@ -68,7 +72,7 @@ public class Account implements Serializable {
         loggedInAccount = getAccountByUsername(username);
     }
 
-    public static void login(Account account){
+    public static void login(Account account) {
         loggedInAccount = account;
     }
 
@@ -120,15 +124,11 @@ public class Account implements Serializable {
         this.mainDeck = mainDeck;
     }
 
-    public static String getAccountsFolderAddress() {
-        return ACCOUNTS_FOLDER_ADDRESS;
+    public static String getSavedAccountsFilePath() {
+        return SAVED_ACCOUNTS_FILE_PATH;
     }
 
-    public static String getLoggedInAccountsFolderAddress() {
+    public static String getLoggedInAccountsFilePath() {
         return LOGGED_IN_ACCOUNT_FILE_ADDRESS;
-    }
-
-    public static String getNumberOfAccountsFileAddress() {
-        return NUMBER_OF_ACCOUNTS_FILE_ADDRESS;
     }
 }
