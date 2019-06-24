@@ -1,12 +1,21 @@
 package com.company.Controllers.graphic;
 
+import com.company.Models.Card.AttackType;
+import com.jfoenix.controls.JFXComboBox;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class CustomCardController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CustomCardController implements Initializable {
+    public JFXComboBox<AttackType> heroAttackType;
+
     public TextField heroName;
     public TextField heroNeededDrake;
     public TextField heroNeededMana;
@@ -21,6 +30,13 @@ public class CustomCardController {
     public TextField heroAttackPower;
     public TextField heroAreaOfEffect;
     public TextField minionAreaOfEffect;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        heroAttackType.getItems().addAll(AttackType.values());
+//        heroAttackType.getSelectionModel().getSelectedItem()
+//        todo: to get selected item
+    }
 
     public void createNewCustomHero(ActionEvent actionEvent) {
         Hero newHero = (Hero) createNewCustomCard(

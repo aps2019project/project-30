@@ -7,6 +7,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.graphic.CustomCardController"
@@ -19,6 +21,9 @@
         <JFXTabPane fx:id="tabPane" styleClass="tabs-container">
             <Tab text="HERO" fx:id="hero">
                 <VBox alignment="CENTER_LEFT" spacing="25">
+                    <TextField fx:id="heroName" promptText="Username" styleClass="authenticate-field"/>
+                    <JFXComboBox fx:id="heroAttackType" promptText="Attack Type" styleClass="combo-box"/>
+                    <JFXButton text="CREATE" onAction="#createHero" styleClass="login"/>
                     <TextField fx:id="heroName" promptText="name" styleClass="authenticate-field"/>
                     <TextField fx:id="heroFullHealth" promptText="Full Health" styleClass="authenticate-field"/>
                     <TextField fx:id="heroAttackPower" promptText="Attack Power" styleClass="authenticate-field"/>
