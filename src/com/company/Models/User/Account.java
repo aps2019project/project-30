@@ -80,10 +80,6 @@ public class Account implements Serializable {
         loggedInAccount = null;
     }
 
-    public void addToDecks(Deck deck) {
-
-    }
-
     public int getDrake() {
         return drake;
     }

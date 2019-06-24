@@ -4,6 +4,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
+import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;

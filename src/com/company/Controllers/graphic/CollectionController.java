@@ -1,6 +1,5 @@
 package com.company.Controllers.graphic;
 
-import com.company.Controllers.DeckController;
 import com.company.Controllers.JsonController;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
@@ -15,7 +14,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -25,21 +23,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import static javafx.scene.paint.Color.*;
 
@@ -67,12 +60,12 @@ public class CollectionController implements Initializable {
     public void createDeck(ActionEvent actionEvent) {
         Account.getLoggedInAccount().getCollection().getCollectionController().createDeck(deckName.getText());
         if (creatDeckErrorType == null) {
-            dechAddToDeckBr(deckName.getText());
+            addDeckToDecksContainer(deckName.getText());
 
         }
     }
 
-    private void dechAddToDeckBr(String deckname){
+    private void addDeckToDecksContainer(String deckname){
         JFXRadioButton mainDeckRadioButton = new JFXRadioButton();
         mainDeckRadioButton.setUserData(deckname);
         mainDeckRadioButton.setPadding(new Insets(10));
@@ -187,9 +180,10 @@ public class CollectionController implements Initializable {
     }
 
     public void updateDecks(){
+        deckContainer.getChildren().clear();
         updateCollection("");
         for(Deck deck:Account.getLoggedInAccount().getDecks()){
-            dechAddToDeckBr(deck.getName());
+            addDeckToDecksContainer(deck.getName());
         }
     }
 
@@ -247,7 +241,7 @@ public class CollectionController implements Initializable {
         fileChooser.setInitialDirectory(defaultDirectory);
         File selectedDeck = fileChooser.showOpenDialog(Graphic.stage);
         Deck importedDeck = JsonController.importDeck(selectedDeck.getAbsolutePath());
-        Account.getLoggedInAccount().addToDecks(importedDeck);
+        Account.getLoggedInAccount().getDecks().add(importedDeck);
         updateDecks();
     }
 }
