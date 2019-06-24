@@ -173,6 +173,22 @@ public class JsonController {
         }
     }
 
+    public static void writeMinionsOnFile(List<Minion> minions) {
+        try (FileWriter fileWriter = new FileWriter(Minion.getMinionsJsonFilePath())) {
+            fileWriter.write(getGson().toJson(minions));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeHeroesOnFile(List<Hero> heroes) {
+        try (FileWriter fileWriter = new FileWriter(Hero.getHeroesJsonFilePath())) {
+            fileWriter.write(getGson().toJson(heroes));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void exportDeck(Deck deck, String address) {
         try (FileWriter fileWriter = new FileWriter(address + "\\deck.json")) {
             fileWriter.write(getGson().toJson(deck));
