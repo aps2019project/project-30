@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.JsonController;
 import com.company.Controllers.MainMenuController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
@@ -66,6 +67,7 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
+        AccountController.loadLoggedInAccount();
         ShopController.initialize();
         launch(args);
     }

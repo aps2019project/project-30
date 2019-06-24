@@ -71,6 +71,7 @@ public class MainMenuController implements Initializable {
             if(rememberMe){
                 JsonController.writeLoggedInAccountOnFile();
             }
+            AccountController.saveAccounts();
             Account.logout();
         });
 
@@ -118,7 +119,7 @@ public class MainMenuController implements Initializable {
         Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
-    static void changeIsRememberMe() {
+    public static void changeIsRememberMe() {
         rememberMe = true;
     }
 

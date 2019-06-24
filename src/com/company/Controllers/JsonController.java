@@ -97,7 +97,7 @@ public class JsonController {
             accounts.removeIf(account -> (account == null));
             return accounts;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return new ArrayList<>();
         }
     }

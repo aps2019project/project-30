@@ -102,4 +102,12 @@ public class AccountController {
     public static void addSavedAccountsToAccounts() {
         Account.addToAccounts(JsonController.getAccounts());
     }
+
+    public static void loadLoggedInAccount() {
+        Account account = JsonController.getLoggedInAccounts();
+        if(account != null){
+            MainMenuController.changeIsRememberMe();
+            Account.login(account);
+        }
+    }
 }
