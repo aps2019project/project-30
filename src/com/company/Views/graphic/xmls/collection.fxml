@@ -33,6 +33,7 @@
             <JFXTextField fx:id="deckName" styleClass="deck-name-field"/>
             <JFXButton fx:id="createDeck" text="CREATE" styleClass="create-deck" onAction="#createDeck"/>
         </HBox>
+        <JFXButton fx:id="importDeck" text="IMPORT DECK" styleClass="create-deck" onAction="#importDeckFromFile"/>
         <ScrollPane fx:id="secondScroll" hbarPolicy="NEVER" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="70" AnchorPane.topAnchor="0" visible="false" AnchorPane.rightAnchor="30">
             <VBox fx:id="deck_contaner_content_bar"  AnchorPane.topAnchor="0" spacing="10" styleClass="decks-name-container" visible="false"/>
         </ScrollPane>

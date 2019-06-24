@@ -30,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
@@ -52,6 +53,7 @@ public class CollectionController implements Initializable {
     public VBox deck_contaner_content_bar;
     public HBox backbar;
     public JFXButton createDeck;
+    public JFXButton importDeck;
     public VBox deckContainer;
     public HBox creatDeckBar;
     public JFXMasonryPane cardContainer;
@@ -103,22 +105,17 @@ public class CollectionController implements Initializable {
             }
         });
 
-        save.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                DirectoryChooser chooser = new DirectoryChooser();
-                chooser.setTitle("");
-                File defaultDirectory = new File("c:/");
-                chooser.setInitialDirectory(defaultDirectory);
-                File selectedDirectory = chooser.showDialog(Graphic.stage);
-                JsonController.exportDeck(
-                        Collection.getDeckByName(((ImageView) event.getSource()).getId()),
-                        selectedDirectory.getAbsolutePath()
-                );
-
-            }
+        save.setOnMouseClicked(event -> {
+            DirectoryChooser chooser = new DirectoryChooser();
+            chooser.setTitle("Choose Directory To Save Deck");
+            File defaultDirectory = new File("c:/");
+            chooser.setInitialDirectory(defaultDirectory);
+            File selectedDirectory = chooser.showDialog(Graphic.stage);
+            JsonController.exportDeck(
+                    Collection.getDeckByName(((ImageView) event.getSource()).getId()),
+                    selectedDirectory.getAbsolutePath()
+            );
         });
-
 
         decklabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -146,16 +143,14 @@ public class CollectionController implements Initializable {
         decklabel.getStyleClass().add("collection-deck");
         deckN.getChildren().add(decklabel);
         deck_contaner_content_bar.getChildren().add(deckN);
-        int counter = 0;
         for (Card card : Collection.getDeckByName(selected_deck).getDeckCards()) {
-            counter++;
             HBox singleCard = new HBox();
             singleCard.getStyleClass().add("hbox_card");
             Label number = new Label();
             Label cardName = new Label();
             cardName.setTextFill(WHITE);
             number.setTextFill(BLACK);
-            number.setText(String.valueOf(counter));
+            number.setText(String.valueOf(card.getManaPoint()));
             cardName.setText(card.getName());
             singleCard.getStyleClass().add("collection-deck-card");
             cardName.getStyleClass().add("collection-deck-card");
@@ -243,5 +238,16 @@ public class CollectionController implements Initializable {
                 }
             });
         }
+    }
+
+    public void importDeckFromFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Deck To Add");
+        File defaultDirectory = new File("c:/");
+        fileChooser.setInitialDirectory(defaultDirectory);
+        File selectedDeck = fileChooser.showOpenDialog(Graphic.stage);
+        Deck importedDeck = JsonController.importDeck(selectedDeck.getAbsolutePath());
+        Account.getLoggedInAccount().addToDecks(importedDeck);
+        updateDecks();
     }
 }
