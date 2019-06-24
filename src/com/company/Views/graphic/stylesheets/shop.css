@@ -50,3 +50,7 @@
     -fx-background-radius: 10;
 
 }
+
+.combo-box {
+    -fx-text-fill: white;
+}
