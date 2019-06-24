@@ -157,8 +157,8 @@ public class JsonController {
         return cards;
     }
 
-    public static void writeAllAccountsOnFile(String destinationAddress) {
-        try (FileWriter fileWriter = new FileWriter(destinationAddress)) {
+    public static void writeAllAccountsOnFile() {
+        try (FileWriter fileWriter = new FileWriter(Account.getSavedAccountsFilePath())) {
             fileWriter.write(getGson().toJson(Account.getAccounts()));
         } catch (IOException e) {
             e.printStackTrace();
