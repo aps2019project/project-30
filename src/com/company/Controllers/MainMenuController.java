@@ -32,6 +32,7 @@ public class MainMenuController implements Initializable {
     public ImageView foreGround;
     public ImageView exit;
     public AnchorPane root;
+    public Label save;
     private static boolean rememberMe = false;
 
 
@@ -72,9 +73,12 @@ public class MainMenuController implements Initializable {
             if(rememberMe){
                 JsonController.writeLoggedInAccountOnFile();
             }
-            AccountController.saveAccounts();
             Account.logout();
             System.exit(0);
+        });
+
+        save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            AccountController.saveAccounts();
         });
 
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
