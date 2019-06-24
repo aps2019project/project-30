@@ -6,6 +6,7 @@ import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXMasonryPane;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -124,5 +125,9 @@ public class ShopController implements Initializable {
             com.company.Controllers.ShopController.buy(
                     Account.getLoggedInAccount(), card.getName());
         }
+    }
+
+    public void openCustomCardPage(ActionEvent actionEvent) {
+        RootsController.openCustomCardGenerator();
     }
 }

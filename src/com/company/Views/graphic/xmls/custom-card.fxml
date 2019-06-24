@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.company.Controllers.graphic.CustomCardController"
+            prefHeight="400.0" prefWidth="600.0">
+    <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+        <Image url="@../images/back-button.png"/>
+    </ImageView>
+    <StackPane AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+               alignment="CENTER">
+        <JFXTabPane fx:id="tabPane" styleClass="tabs-container">
+            <Tab text="HERO" fx:id="hero">
+                <VBox alignment="CENTER_LEFT" spacing="25">
+                    <TextField fx:id="heroName" promptText="Username" styleClass="authenticate-field"/>
+
+                    <JFXButton text="CREATE" onAction="#createHero" styleClass="login"/>
+                </VBox>
+            </Tab>
+            <Tab text="MINION" fx:id="minion">
+                <VBox alignment="CENTER_LEFT" spacing="25">
+                    <TextField fx:id="minionName" promptText="Username" styleClass="authenticate-field"/>
+
+                    <JFXButton text="CREATE" onAction="#createMinion" styleClass="login"/>
+                </VBox>
+            </Tab>
+        </JFXTabPane>
+
+    </StackPane>
+</AnchorPane>

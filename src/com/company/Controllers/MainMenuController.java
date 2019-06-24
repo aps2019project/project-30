@@ -80,10 +80,6 @@ public class MainMenuController implements Initializable {
         save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             AccountController.saveAccounts();
         });
-
-//        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.setAutoPlay(true);
     }
 
     public void initValues() {
