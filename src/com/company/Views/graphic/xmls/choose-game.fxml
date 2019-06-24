@@ -16,26 +16,38 @@
     <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>
-    <VBox alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-        <HBox alignment="CENTER" spacing="50">
-            <VBox fx:id="killingGeneral" alignment="BOTTOM_CENTER" styleClass="killing-general-mode" prefWidth="300" prefHeight="550">
-                <Label text="KillingGeneral" styleClass="choose-game-title"/>
+    <VBox fx:id="multiorsingle" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <HBox alignment="CENTER" spacing="50" >
+            <VBox fx:id="singlePlayer" alignment="BOTTOM_CENTER" styleClass="killing-general-mode" prefWidth="300" prefHeight="550">
+                <Label text="SINGLE PLAYER" styleClass="choose-game-title"/>
                 <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
                     <Image url="@../images/game-select-plate.png"/>
                 </ImageView>
             </VBox>
-            <VBox alignment="BOTTOM_CENTER" styleClass="capture-the-flag-mode" prefWidth="300" prefHeight="550">
-                <Label text="CaptureTheFlag" styleClass="choose-game-title"/>
-                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
-                    <Image url="@../images/game-select-plate.png"/>
-                </ImageView>
-            </VBox>
-            <VBox alignment="BOTTOM_CENTER" styleClass="collecting-flags-mode" prefWidth="300" prefHeight="550">
-                <Label text="CollectingFlags" styleClass="choose-game-title"/>
+            <VBox fx:id="multiPlayer" alignment="BOTTOM_CENTER" styleClass="capture-the-flag-mode" prefWidth="300" prefHeight="550">
+                <Label text="MULTI PLAYER" styleClass="choose-game-title"/>
                 <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
                     <Image url="@../images/game-select-plate.png"/>
                 </ImageView>
             </VBox>
         </HBox>
+    </VBox>
+    <VBox  fx:id="secondPageSingle" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" visible="false">
+        <HBox alignment="CENTER" spacing="50" >
+            <VBox fx:id="story" alignment="BOTTOM_CENTER" styleClass="story" prefWidth="300" prefHeight="550">
+                <Label text="STORY" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+            <VBox fx:id="custom" alignment="BOTTOM_CENTER" styleClass="custom" prefWidth="300" prefHeight="550">
+                <Label text="CUSTOM" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+
+        </HBox>
+
     </VBox>
 </AnchorPane>

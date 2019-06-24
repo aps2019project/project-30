@@ -5,11 +5,14 @@ import com.company.Models.Sound;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,11 +20,31 @@ import java.util.ResourceBundle;
 
 public class ChooseGameController implements Initializable {
     public ImageView back;
-    public Button single;
-    public Button multi;
+//    public Button single;
+//    public Button multi;
+    public VBox singlePlayer;
+    public VBox multiPlayer;
+    public String numberOfPlayers;
+    public VBox secondPageSingle;
+    public VBox multiorsingle;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                numberOfPlayers="singlePlayer";
+                multiorsingle.setVisible(false);
+                secondPageSingle.setVisible(true);
+            }
+        });
+        multiPlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                numberOfPlayers="multiPlayer";
+            }
+        });
+
         back.setOnMouseClicked(event -> {
             RootsController.backToMainMenu();
         });

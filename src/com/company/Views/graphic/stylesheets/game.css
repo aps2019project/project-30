@@ -82,6 +82,28 @@
     -fx-background-size: cover;
     -fx-background-position: center;
 }
+.story{
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/gate_002@2x.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+
+}
+.story:hover{
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
+
+
+.custom{
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/gate_007@2x.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+
+}
+.custom:hover{
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
 
 .killing-general-mode:hover {
     -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
