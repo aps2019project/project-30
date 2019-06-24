@@ -31,6 +31,7 @@ Minion extends Soldier {
         minion.getBuffsToCast().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsToCast()).clone()));
         minion.getBuffsCasted().addAll(((ArrayList<Buff>)((ArrayList<Buff>)this.getBuffsCasted()).clone()));
         minion.setCell(this.getCell());
+        minion.setAreaOfEffect(this.getAreaOfEffect());
         minion.setTargetType(this.getTargetType());
         return minion;
     }
