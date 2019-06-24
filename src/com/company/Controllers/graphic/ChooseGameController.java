@@ -3,6 +3,7 @@ package com.company.Controllers.graphic;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Sound;
 import com.company.Views.Graphic;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,7 +28,10 @@ public class ChooseGameController implements Initializable {
 
     }
 
-    public void startMultiplayer(ActionEvent actionEvent) {
+    public void multiplayer(ActionEvent actionEvent) {
+    }
+
+    public void startGame(ActionEvent actionEvent) {
         new Battle(
                 3,
                 2
@@ -42,6 +46,8 @@ public class ChooseGameController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public void singlePlayer(ActionEvent actionEvent) {
     }
 }
