@@ -57,7 +57,7 @@
         <Image url="@../images/back-button.png"/>
     </ImageView>
     <StackPane fx:id="buffcreationmenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
-        <VBox alignment="CENTER" maxWidth="600" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 20">
+        <VBox alignment="CENTER" maxWidth="600" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 40">
             <TextField fx:id="buffValue" promptText="Buff Value" styleClass="authenticate-field"/>
             <JFXButton text="CREATE" onAction="#createBuff" styleClass="login"/>
         </VBox>
