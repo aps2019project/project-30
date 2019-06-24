@@ -24,7 +24,7 @@
                     <TextField fx:id="heroAttackPower" promptText="Attack Power" styleClass="authenticate-field"/>
                     <TextField fx:id="heroAreaOfEffect" promptText="Area Of Effect" styleClass="authenticate-field"/>
                     <TextField fx:id="heroCoolDown" promptText="Cool Down" styleClass="authenticate-field"/>
-                    <HBox alignment="CENTER">
+                    <HBox alignment="CENTER" spacing="30">
                         <JFXComboBox fx:id="heroAttackType" promptText="Attack Type" styleClass="combo-box"/>
                         <JFXComboBox fx:id="heroSpecialPower" promptText="Special Power" styleClass="combo-box"/>
                     </HBox>
@@ -41,7 +41,7 @@
                     <TextField fx:id="minionFullHealth" promptText="Full Health" styleClass="authenticate-field"/>
                     <TextField fx:id="minionAttackPower" promptText="Attack Power" styleClass="authenticate-field"/>
                     <TextField fx:id="minionAreaOfEffect" promptText="Area Of Effect" styleClass="authenticate-field"/>
-                    <HBox alignment="CENTER">
+                    <HBox alignment="CENTER" spacing="30">
                         <JFXComboBox fx:id="minionAttackType" promptText="Attack Type" styleClass="combo-box"/>
                         <JFXComboBox fx:id="minionSpecialPower" promptText="Special Power" styleClass="combo-box"/>
                     </HBox>
@@ -56,10 +56,11 @@
     <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>
-    <StackPane fx:id="buffcreationmenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
-        <VBox alignment="CENTER" maxWidth="600" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 40">
+    <StackPane fx:id="buffCreationMenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+        <VBox alignment="CENTER" spacing="20" maxWidth="600" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 40">
             <TextField fx:id="buffValue" promptText="Buff Value" styleClass="authenticate-field"/>
-            <JFXButton text="CREATE" onAction="#createBuff" styleClass="login"/>
+            <TextField fx:id="castTime" promptText="Cast Time" styleClass="authenticate-field"/>
+            <JFXButton text="Set Special Power" onAction="#createNewCustomBuff" styleClass="login"/>
         </VBox>
     </StackPane>
 </AnchorPane>

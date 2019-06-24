@@ -6,26 +6,19 @@ import com.jfoenix.controls.JFXComboBox;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Card.Soldier;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.util.Pair;
 
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
+    public StackPane stackPane;
+    public StackPane buffCreationMenu;
+
     public JFXComboBox<AttackType> heroAttackType;
     public JFXComboBox<AttackType> minionAttackType;
     public JFXComboBox<Buff.Name> minionSpecialPower;
@@ -35,27 +28,31 @@ public class CustomCardController implements Initializable {
     public TextField heroName;
     public TextField heroNeededDrake;
     public TextField heroNeededMana;
+    public TextField heroDescription;
+    public TextField heroFullHealth;
+    public TextField heroAttackPower;
+    public TextField heroAreaOfEffect;
+    public TextField heroCoolDown;
+
     public TextField minionName;
     public TextField minionNeededDrake;
     public TextField minionNeededMana;
-    public TextField heroDescription;
     public TextField minionDescription;
     public TextField minionFullHealth;
-    public TextField heroFullHealth;
     public TextField minionAttackPower;
-    public TextField heroAttackPower;
-    public TextField heroAreaOfEffect;
     public TextField minionAreaOfEffect;
-    public TextField heroCoolDown;
-    public StackPane stackPane;
-    public StackPane buffcreationmenu;
+
+    public TextField buffValue;
+    public TextField castTime;
+
+    private Buff specialPower;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         heroSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             GaussianBlur gaussianBlur = new GaussianBlur();
             stackPane.setEffect(gaussianBlur);
-            buffcreationmenu.setVisible(true);
+            buffCreationMenu.setVisible(true);
         });
 
         heroAttackType.getItems().addAll(AttackType.values());
@@ -73,9 +70,24 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(heroAttackPower.getText()),
                 Integer.parseInt(heroAreaOfEffect.getText()),
                 heroAttackType.getSelectionModel().getSelectedItem(),
-                null
+                specialPower
         );
         newHero.setCoolDown(Integer.parseInt(heroCoolDown.getText()));
+        specialPower = null;
+    }
+
+    public void createNewCustomMinion(ActionEvent actionEvent) {
+        Minion newMinion = (Minion) createNewCustomCard(
+                minionName.getText(),
+                Integer.parseInt(minionNeededDrake.getText()),
+                Integer.parseInt(minionNeededMana.getText()),
+                Integer.parseInt(minionFullHealth.getText()),
+                Integer.parseInt(minionAttackPower.getText()),
+                Integer.parseInt(minionAreaOfEffect.getText()),
+                minionAttackType.getSelectionModel().getSelectedItem(),
+                specialPower
+        );
+        specialPower = null;
     }
 
     private Soldier createNewCustomCard(
@@ -100,20 +112,7 @@ public class CustomCardController implements Initializable {
         return newSoldier;
     }
 
-    public void createNewCustomMinion(ActionEvent actionEvent) {
-        Minion newMinion = (Minion) createNewCustomCard(
-                minionName.getText(),
-                Integer.parseInt(minionNeededDrake.getText()),
-                Integer.parseInt(minionNeededMana.getText()),
-                Integer.parseInt(minionFullHealth.getText()),
-                Integer.parseInt(minionAttackPower.getText()),
-                Integer.parseInt(minionAreaOfEffect.getText()),
-                minionAttackType.getSelectionModel().getSelectedItem(),
-                null
-        );
-    }
-
-    public Buff createNewCustomBuff(Buff.Name name, int castTime, int value) {
+    public Buff constructNewCustomBuff(Buff.Name name, int castTime, int value) {
         Buff newBuff = null;
         switch (name) {
             case ANTI:
@@ -153,8 +152,11 @@ public class CustomCardController implements Initializable {
         return newBuff;
     }
 
-    public void createBuff(ActionEvent actionEvent) {
-        buffcreationmenu.setVisible(false);
+    public void createNewCustomBuff(ActionEvent actionEvent) {
+        specialPower = constructNewCustomBuff(heroSpecialPower.getSelectionModel().getSelectedItem(),
+                Integer.parseInt(castTime.getText()),
+                Integer.parseInt(buffValue.getText()));
+        buffCreationMenu.setVisible(false);
         stackPane.setEffect(null);
     }
 }
