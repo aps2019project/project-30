@@ -27,7 +27,7 @@
                     <TextField fx:id="heroNeededMana" promptText="Mana" styleClass="authenticate-field"/>
                     <TextField fx:id="heroDescription" promptText="Description" styleClass="authenticate-field"/>
 
-                    <JFXButton text="CREATE" onAction="#createHero" styleClass="login"/>
+                    <JFXButton text="CREATE" onAction="#createNewCustomHero" styleClass="login"/>
                 </VBox>
             </Tab>
             <Tab text="MINION" fx:id="minion">
@@ -40,7 +40,7 @@
                     <TextField fx:id="minionNeededMana" promptText="Mana" styleClass="authenticate-field"/>
                     <TextField fx:id="minionDescription" promptText="Description" styleClass="authenticate-field"/>
 
-                    <JFXButton text="CREATE" onAction="#createMinion" styleClass="login"/>
+                    <JFXButton text="CREATE" onAction="#createNewCustomMinion" styleClass="login"/>
                 </VBox>
             </Tab>
         </JFXTabPane>

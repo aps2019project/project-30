@@ -22,7 +22,7 @@ public class CustomCardController {
     public TextField heroAreaOfEffect;
     public TextField minionAreaOfEffect;
 
-    public Hero createHero(ActionEvent actionEvent) {
+    public void createNewCustomHero(ActionEvent actionEvent) {
         Hero newHero = (Hero) createNewCustomCard(
                 heroName.getText(),
                 Integer.parseInt(heroNeededDrake.getText()),
@@ -31,7 +31,6 @@ public class CustomCardController {
                 Integer.parseInt(heroAttackPower.getText()),
                 Integer.parseInt(heroAreaOfEffect.getText())
         );
-        return newHero;
     }
 
     private Soldier createNewCustomCard(String name, int priceInDrake, int manaPoint, int fullHealth, int attackPower, int areaOfEffect) {
@@ -46,7 +45,7 @@ public class CustomCardController {
         return newSoldier;
     }
 
-    public Minion createMinion(ActionEvent actionEvent) {
+    public void createNewCustomMinion(ActionEvent actionEvent) {
         Minion newMinion = (Minion) createNewCustomCard(
                 minionName.getText(),
                 Integer.parseInt(minionNeededDrake.getText()),
@@ -55,6 +54,5 @@ public class CustomCardController {
                 Integer.parseInt(minionAttackPower.getText()),
                 Integer.parseInt(minionAreaOfEffect.getText())
         );
-        return newMinion;
     }
 }
