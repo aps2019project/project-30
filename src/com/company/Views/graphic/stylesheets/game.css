@@ -13,7 +13,7 @@
     -fx-background-position: center center;
 }
 
-.game-single {
+.left-button {
     -fx-background-image: url("../images/button-left.png");
     -fx-border-style: none;
     -fx-border-width: 2px;
@@ -31,11 +31,11 @@
     -fx-font-weight: bold;
 }
 
-.game-single:hover {
+.left-button:hover , .left-button:disabled{
     -fx-background-image: url("../images/button-left-glow.png");
 }
 
-.game-multi {
+.right-button {
     -fx-background-image: url("../images/button-right.png");
     -fx-border-style: none;
     -fx-border-width: 2px;
@@ -53,7 +53,7 @@
     -fx-font-weight: bold;
 }
 
-.game-multi:hover {
+.right-button:hover, .right-button:disabled {
     -fx-background-image: url("../images/button-right-glow.png");
 }
 

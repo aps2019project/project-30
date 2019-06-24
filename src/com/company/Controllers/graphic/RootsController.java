@@ -1,5 +1,6 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.AccountController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Sound;
 import com.company.Views.Graphic;
@@ -12,9 +13,18 @@ public class RootsController {
     static Parent mainMenu;
     static Parent collection;
     static Parent shop;
+    static Parent customCardGenerator;
     static MainMenuController mainMenuController;
     static CollectionController collectionController;
     static ShopController shopController;
+
+    static {
+        try {
+            customCardGenerator = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/custom-card.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void openMainMenu() {
         Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS);
@@ -57,5 +67,9 @@ public class RootsController {
             e.printStackTrace();
         }
 
+    }
+
+    public static void openCustomCardGenerator() {
+        Graphic.stage.getScene().setRoot(customCardGenerator);
     }
 }

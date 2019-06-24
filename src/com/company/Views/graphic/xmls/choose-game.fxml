@@ -8,6 +8,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import com.jfoenix.controls.JFXButton?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.graphic.ChooseGameController"
@@ -37,8 +38,9 @@
             </VBox>
         </HBox>
         <HBox alignment="CENTER" spacing="5">
-            <Button fx:id="single" text="SINGLE PLAYER" styleClass="game-single"/>
-            <Button fx:id="multi" text="MULTI PLAYER" styleClass="game-multi" onAction="#startMultiplayer"/>
+            <Button fx:id="single" text="SINGLE PLAYER" styleClass="left-button" onAction="#singlePlayer"/>
+            <Button fx:id="multi" text="MULTI PLAYER" styleClass="right-button" onAction="#multiplayer"/>
         </HBox>
+        <JFXButton fx:id="start" text="START" styleClass="create-deck" onAction="#startGame"/>
     </VBox>
 </AnchorPane>

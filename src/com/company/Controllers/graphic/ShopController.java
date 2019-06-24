@@ -4,10 +4,12 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
+import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -44,6 +46,7 @@ public class ShopController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         back.setOnMouseClicked(event -> {
             RootsController.backToMainMenu();
         });
@@ -128,5 +131,9 @@ public class ShopController implements Initializable {
                     Account.getLoggedInAccount(), card.getName());
 
         }
+    }
+
+    public void openCustomCardPage(ActionEvent actionEvent) {
+        RootsController.openCustomCardGenerator();
     }
 }
