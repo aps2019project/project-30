@@ -6,6 +6,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             fx:id="main"
             xmlns:fx="http://javafx.com/fxml"
@@ -14,9 +16,18 @@
     <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" >
         <Image url="@../images/back-button.png"/>
     </ImageView>
-    <ScrollPane    minWidth="1000"  AnchorPane.topAnchor="100" AnchorPane.leftAnchor="300" AnchorPane.bottomAnchor="100" hbarPolicy="NEVER" styleClass="shop-cards-container">
-        <JFXMasonryPane fx:id="cardContainer" minWidth="1000" />
-    </ScrollPane>
+    <JFXTabPane fx:id="tabPane"  minWidth="1000"  AnchorPane.topAnchor="100" AnchorPane.leftAnchor="300" AnchorPane.bottomAnchor="100">
+        <Tab id="buy" text="BUY">
+        <ScrollPane    hbarPolicy="NEVER" styleClass="shop-cards-container">
+            <JFXMasonryPane fx:id="cardforbuyContainer" minWidth="1000" />
+        </ScrollPane>
+        </Tab>
+        <Tab id="sell" text="SELL">
+            <ScrollPane     hbarPolicy="NEVER" styleClass="shop-cards-container">
+                <JFXMasonryPane fx:id="cardforsellContainer" minWidth="1000" />
+            </ScrollPane>
+        </Tab>
+    </JFXTabPane>
     <TextField AnchorPane.topAnchor="10" AnchorPane.leftAnchor="500" fx:id="search" promptText="Search ..."
                styleClass="shop-search"/>
 </AnchorPane>
