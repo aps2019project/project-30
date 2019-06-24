@@ -17,7 +17,7 @@ public class Deck implements Serializable {
     private transient DeckController deckController = new DeckController(this);
     public Deck(String name) {
         this.name = name;
-        hand = new Hand(this);
+        setHand();
     }
 
     public List<Card> getDeckCards() {
@@ -44,10 +44,6 @@ public class Deck implements Serializable {
         return hand;
     }
 
-    public void setHand(Hand hand) {
-        this.hand = hand;
-    }
-
     public boolean isValidate() {
         return true;
     }
@@ -60,4 +56,11 @@ public class Deck implements Serializable {
         return deckController;
     }
 
+    public void setDeckController() {
+        this.deckController = new DeckController(this);
+    }
+
+    public void setHand(){
+        this.hand = new Hand(this);
+    }
 }

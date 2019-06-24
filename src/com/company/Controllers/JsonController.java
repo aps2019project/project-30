@@ -30,7 +30,7 @@ public class JsonController {
         }
     }
 
-    public static class CardDeserializer implements  JsonDeserializer<Card> {
+    public static class CardDeserializer implements JsonDeserializer<Card> {
 
         @Override
         public Card deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
@@ -120,7 +120,14 @@ public class JsonController {
         try (FileReader reader = new FileReader(Account.getSavedAccountsFilePath())) {
             Type accountListType = new TypeToken<ArrayList<Account>>() {
             }.getType();
-            return getGson().fromJson(reader, accountListType);
+            List<Account> accounts = getGson().fromJson(reader, accountListType);
+            for (Account account : accounts) {
+                for (Deck deck:account.getDecks()){
+                    deck.setDeckController();
+                    deck.setHand();
+                }
+            }
+            return accounts;
         } catch (IOException e) {
             System.err.println(e.getMessage());
             return new ArrayList<>();
@@ -129,7 +136,12 @@ public class JsonController {
 
     public static Account getLoggedInAccounts() {
         try (FileReader reader = new FileReader(Account.getLoggedInAccountsFilePath())) {
-            return getGson().fromJson(reader, Account.class);
+            Account account = getGson().fromJson(reader, Account.class);
+            for (Deck deck:account.getDecks()){
+                deck.setDeckController();
+                deck.setHand();
+            }
+            return account;
         } catch (IOException e) {
             System.err.println(e.getMessage());
             return null;
@@ -160,6 +172,7 @@ public class JsonController {
             e.printStackTrace();
         }
     }
+
     public static void exportDeck(Deck deck, String address) {
         try (FileWriter fileWriter = new FileWriter(address + "\\deck.json")) {
             fileWriter.write(getGson().toJson(deck));
