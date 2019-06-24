@@ -69,10 +69,11 @@ public class MainMenuController implements Initializable {
         });
 
         exit.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            if (rememberMe) {
-                AccountController.writeObjectToFile(Account.getLoggedInAccount(), Account.getLoggedInAccountsFolderAddress());
-                Account.logout();
+            if(rememberMe){
+                JsonController.writeLoggedInAccountOnFile();
             }
+            AccountController.saveAccounts();
+            Account.logout();
         });
 
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());
@@ -119,7 +120,7 @@ public class MainMenuController implements Initializable {
         Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
-    static void changeIsRememberMe() {
+    public static void changeIsRememberMe() {
         rememberMe = true;
     }
 
