@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.graphic.ChooseGameController"
@@ -46,7 +47,36 @@
                     <Image url="@../images/game-select-plate.png"/>
                 </ImageView>
             </VBox>
-
+        </HBox>
+    </VBox>
+    <VBox  fx:id="mode" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" visible="false">
+        <HBox alignment="CENTER" spacing="50" >
+            <VBox fx:id="killingGenerall" alignment="BOTTOM_CENTER" styleClass="kill" prefWidth="300" prefHeight="550">
+                <Label text="KILLING GENERALL" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+            <VBox fx:id="captureTheFlag" alignment="BOTTOM_CENTER" styleClass="cap" prefWidth="300" prefHeight="550">
+                <Label text="CAPTURE THE FLAG" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+            <VBox fx:id="captureMostFlag" alignment="BOTTOM_CENTER" styleClass="collecting-flags-mode" prefWidth="300" prefHeight="550">
+                <Label text="CAPTURE MOST FLAG" styleClass="choose-game-title"/>
+                <ImageView fitWidth="300" fitHeight="62" styleClass="choose-game-plate">
+                    <Image url="@../images/game-select-plate.png"/>
+                </ImageView>
+            </VBox>
+        </HBox>
+    </VBox>
+    <VBox   fx:id="selectAcount" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" visible="false">
+        <HBox alignment="CENTER" spacing="100">
+            <TextField fx:id="search" promptText="Search.."/>
+            <ScrollPane hbarPolicy="NEVER">
+                <JFXMasonryPane fx:id="acountContaner" minWidth="1000" />
+            </ScrollPane>
         </HBox>
 
     </VBox>

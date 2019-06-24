@@ -2,31 +2,45 @@ package com.company.Controllers.graphic;
 
 import com.company.Models.Battle.Battle;
 import com.company.Models.Sound;
+import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXMasonryPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChooseGameController implements Initializable {
     public ImageView back;
 //    public Button single;
+    public String numberOfPlayers;
+    public String storyorcustom;
 //    public Button multi;
     public VBox singlePlayer;
     public VBox multiPlayer;
-    public String numberOfPlayers;
     public VBox secondPageSingle;
     public VBox multiorsingle;
+    public VBox story;
+    public VBox custom;
+    public VBox mode;
+    public VBox selectAcount;
+    public TextField search;
+    public JFXMasonryPane acountContaner;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,8 +56,48 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 numberOfPlayers="multiPlayer";
+                selectAcount.setVisible(true);
+                multiorsingle.setVisible(false);
             }
         });
+        story.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                secondPageSingle.setVisible(false);
+                storyorcustom="story";
+                mode.setVisible(true);
+            }
+        });
+        custom.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                secondPageSingle.setVisible(false);
+                storyorcustom="custom";
+                mode.setVisible(true);
+            }
+        });
+
+        search.textProperty().addListener(((observable, oldValue, newValue) -> {
+            List<Account> list=new ArrayList<>();
+            if(newValue.isEmpty()){
+                list=Account.getAccounts();
+            }
+            else{
+                for(Account account:Account.getAccounts()){
+                    if(account.getUsername().contains(newValue))
+                        list.add(account);
+                }
+            }
+            for(Account account:list){
+                AnchorPane anchorPane=new AnchorPane();
+                Label label=new Label(account.getUsername());
+                anchorPane.getChildren().add(label);
+                acountContaner.getChildren().add(anchorPane);
+            }
+        }));
+
+
+
 
         back.setOnMouseClicked(event -> {
             RootsController.backToMainMenu();
