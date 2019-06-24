@@ -8,6 +8,7 @@ import com.company.Models.Card.Hero.Hero;
 import java.util.ArrayList;
 
 public class Spell extends Card {
+    final private static String SPELLS_JSON_FILE_PATH= "data/Spells.json";
 
     public Spell clone() {
         Spell spell = new Spell();
@@ -42,5 +43,9 @@ public class Spell extends Card {
                 "- Name : " + spell.getName() +
                 "- MP : " + spell.getManaPoint() +
                 "- Desc : " + spell.getDescription());
+    }
+
+    public static String getSpellsJsonFilePath() {
+        return SPELLS_JSON_FILE_PATH;
     }
 }

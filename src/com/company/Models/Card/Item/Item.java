@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Item extends Card {
+    final private static String ITEMS_JSON_FILE_PATH = "data/Items.json";
+
     Cell cell;
 
     @Override
@@ -79,5 +81,9 @@ public class Item extends Card {
         System.out.println("- ID : " + item.getId() +
                 "- Name : " + item.getName() +
                 "- Desc : " + item.getDescription());
+    }
+
+    public static String getItemsJsonFilePath() {
+        return ITEMS_JSON_FILE_PATH;
     }
 }
