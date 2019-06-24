@@ -24,11 +24,26 @@ public class JsonController {
             try {
                 return jsonDeserializationContext.deserialize(jsonElement, Class.forName(jsonObject.get("className").getAsString()));
             } catch (ClassNotFoundException e) {
-                System.out.println(e.getException().getMessage());
+                System.err.println(e.getMessage());
                 return null;
             }
         }
     }
+
+    public static class CardDeserializer implements  JsonDeserializer<Card> {
+
+        @Override
+        public Card deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            try {
+                return jsonDeserializationContext.deserialize(jsonElement, Class.forName(jsonObject.get("className").getAsString()));
+            } catch (ClassNotFoundException e) {
+                System.err.println(e.getMessage());
+                return null;
+            }
+        }
+    }
+
 
     public static class BuffSerializer implements JsonSerializer<Buff> {
         @Override
@@ -39,10 +54,21 @@ public class JsonController {
         }
     }
 
+    public static class CardSerializer implements JsonSerializer<Card> {
+        @Override
+        public JsonElement serialize(Card card, Type type, JsonSerializationContext jsonSerializationContext) {
+            JsonElement jsonElement = jsonSerializationContext.serialize(card);
+            jsonElement.getAsJsonObject().addProperty("className", card.getClass().getName());
+            return jsonElement;
+        }
+    }
+
     public static Gson getGson() {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Buff.class, new BuffDeserializer())
-                .registerTypeAdapter(Buff.class, new BuffSerializer());
+                .registerTypeAdapter(Buff.class, new BuffSerializer())
+                .registerTypeAdapter(Card.class, new CardSerializer())
+                .registerTypeAdapter(Card.class, new CardDeserializer());
         return gsonBuilder.create();
     }
 
@@ -94,9 +120,7 @@ public class JsonController {
         try (FileReader reader = new FileReader(Account.getSavedAccountsFilePath())) {
             Type accountListType = new TypeToken<ArrayList<Account>>() {
             }.getType();
-            List<Account> accounts = getGson().fromJson(reader, accountListType);
-            accounts.removeIf(account -> (account == null));
-            return accounts;
+            return getGson().fromJson(reader, accountListType);
         } catch (IOException e) {
             System.err.println(e.getMessage());
             return new ArrayList<>();
@@ -105,12 +129,9 @@ public class JsonController {
 
     public static Account getLoggedInAccounts() {
         try (FileReader reader = new FileReader(Account.getLoggedInAccountsFilePath())) {
-            Type accountListType = new TypeToken<ArrayList<Account>>() {
-            }.getType();
-            List<Account> accounts = getGson().fromJson(reader, accountListType);
-            return accounts.get(0);
+            return getGson().fromJson(reader, Account.class);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return null;
         }
     }
@@ -125,34 +146,17 @@ public class JsonController {
     }
 
     public static void writeAllAccountsOnFile(String destinationAddress) {
-        FileOutputStream fileOutputStream = null;
-        try {
-            fileOutputStream = new FileOutputStream(destinationAddress, true);
-        } catch (FileNotFoundException e) {
+        try (FileWriter fileWriter = new FileWriter(destinationAddress)) {
+            fileWriter.write(getGson().toJson(Account.getAccounts()));
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        PrintStream printStream = new PrintStream(fileOutputStream);
-        printStream.print('[');
-        for (Account account : Account.getAccounts()) {
-            printStream.print(JsonController.getGson().toJson(account));
-            printStream.print(',');
-        }
-        printStream.print(']');
-        printStream.flush();
-        printStream.close();
     }
 
     public static void writeLoggedInAccountOnFile() {
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(Account.getLoggedInAccountsFilePath());
-            PrintStream printStream = new PrintStream(fileOutputStream);
-            Account account = new Account("ali","1");
-            printStream.print('[');
-            printStream.print(JsonController.getGson().toJson(account));
-            printStream.print(']');
-            printStream.flush();
-            printStream.close();
-        } catch (FileNotFoundException e) {
+        try (FileWriter fileWriter = new FileWriter(Account.getLoggedInAccountsFilePath())) {
+            fileWriter.write(getGson().toJson(Account.getLoggedInAccount()));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

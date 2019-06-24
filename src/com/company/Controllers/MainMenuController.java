@@ -27,10 +27,10 @@ public class MainMenuController implements Initializable {
     public Label play;
     public Label collection;
     public Label gold;
-    public Label exit;
     public StackPane cloudsContainer;
     public ImageView pillars;
     public ImageView foreGround;
+    public ImageView exit;
     public AnchorPane root;
     private static boolean rememberMe = false;
 
@@ -74,6 +74,7 @@ public class MainMenuController implements Initializable {
             }
             AccountController.saveAccounts();
             Account.logout();
+            System.exit(0);
         });
 
 //        Media media = new Media(new File("com/company/Views/graphic/sounds/mainmenu.mp3").toURI().toString());

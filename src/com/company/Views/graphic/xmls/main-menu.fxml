@@ -24,7 +24,6 @@
         <Label fx:id="play" text="PLAY" styleClass="menu-item"/>
         <Label fx:id="watch" text="WATCH" styleClass="menu-item"/>
         <Label fx:id="collection" text="COLLECTION" styleClass="menu-item"/>
-        <Label fx:id="exit" text="EXIT" styleClass="menu-item"/>
     </VBox>
     <HBox AnchorPane.rightAnchor="20" AnchorPane.bottomAnchor="20" spacing="15" alignment="BOTTOM_RIGHT">
         <HBox spacing="5" styleClass="gold-container" alignment="CENTER_LEFT">
@@ -42,8 +41,8 @@
         <ImageView fx:id="shop" fitWidth="70" fitHeight="70" styleClass="imageItem">
             <Image url="@../images/shop.png"/>
         </ImageView>
-        <ImageView fitWidth="70" fitHeight="70" styleClass="imageItem">
-            <Image url="@../images/settings.png"/>
+        <ImageView fx:id="exit" fitWidth="70" fitHeight="70" styleClass="imageItem">
+            <Image url="@../images/exit.png"/>
         </ImageView>
         <ImageView fx:id="friends" fitWidth="100" fitHeight="100" styleClass="imageItem">
             <Image url="@../images/friends.png"/>

@@ -60,10 +60,8 @@ public class Account implements Serializable {
         accounts.add(account);
     }
 
-    public static void addToAccounts(List<Account> accounts) {
-        for (Account account : accounts) {
-            addToAccounts(account);
-        }
+    public static void addToAccounts(List<Account> inputAccounts) {
+        accounts.addAll(inputAccounts);
     }
 
     public String getUsername() {

@@ -7,8 +7,9 @@ import com.company.Views.Console.AccountView;
 import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AccountController {
@@ -100,12 +101,14 @@ public class AccountController {
     }
 
     public static void addSavedAccountsToAccounts() {
-        Account.addToAccounts(JsonController.getAccounts());
+        List<Account> inputAccounts = JsonController.getAccounts();
+        if (inputAccounts != null)
+            Account.addToAccounts(inputAccounts);
     }
 
     public static void loadLoggedInAccount() {
         Account account = JsonController.getLoggedInAccounts();
-        if(account != null){
+        if (account != null) {
             MainMenuController.changeIsRememberMe();
             Account.login(account);
         }
