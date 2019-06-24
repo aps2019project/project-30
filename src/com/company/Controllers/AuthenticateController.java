@@ -5,12 +5,9 @@ import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.ErrorType;
-import com.company.Models.User.Account;
-import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -84,5 +81,12 @@ public class AuthenticateController {
                 animationFX.play();
             }
         }
+        setSignUpTextBoxesNull();
+    }
+
+    private void setSignUpTextBoxesNull() {
+        signupUsername.setText(null);
+        signupPassword.setText(null);
+        signupPasswordMatch.setText(null);
     }
 }
