@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.ComboBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.graphic.CustomCardController"
@@ -57,10 +58,14 @@
         <Image url="@../images/back-button.png"/>
     </ImageView>
     <StackPane fx:id="buffCreationMenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
-        <VBox alignment="CENTER" spacing="20" maxWidth="600" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 40">
+        <VBox alignment="CENTER" spacing="20" maxWidth="450" maxHeight="300" style="-fx-background-color: grey; -fx-padding: 40">
+            <Label fx:id="buffName" alignment="CENTER" text="Special Power Details"/>
             <TextField fx:id="buffValue" promptText="Buff Value" styleClass="authenticate-field"/>
             <TextField fx:id="castTime" promptText="Cast Time" styleClass="authenticate-field"/>
-            <JFXButton text="Set Special Power" onAction="#createNewCustomBuff" styleClass="login"/>
+            <HBox alignment="CENTER" spacing="20">
+                <JFXButton text="Set Special Power" onAction="#createNewCustomBuff" styleClass="login"/>
+                <JFXButton text="Cancel" onAction="#cancelBuffCreationMenu" styleClass="login"/>
+            </HBox>
         </VBox>
     </StackPane>
 </AnchorPane>

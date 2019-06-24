@@ -1,5 +1,6 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.JsonController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.jfoenix.controls.JFXComboBox;
@@ -13,6 +14,7 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
@@ -45,6 +47,8 @@ public class CustomCardController implements Initializable {
     public TextField buffValue;
     public TextField castTime;
 
+    public Label buffName;
+
     private Buff specialPower;
 
     @Override
@@ -62,7 +66,7 @@ public class CustomCardController implements Initializable {
     }
 
     public void createNewCustomHero(ActionEvent actionEvent) {
-        Hero newHero = (Hero) createNewCustomCard(
+        Hero newHero = createNewCustomHeroCard(
                 heroName.getText(),
                 Integer.parseInt(heroNeededDrake.getText()),
                 Integer.parseInt(heroNeededMana.getText()),
@@ -70,14 +74,16 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(heroAttackPower.getText()),
                 Integer.parseInt(heroAreaOfEffect.getText()),
                 heroAttackType.getSelectionModel().getSelectedItem(),
-                specialPower
+                specialPower,
+                Integer.parseInt(heroCoolDown.getText())
         );
-        newHero.setCoolDown(Integer.parseInt(heroCoolDown.getText()));
-        specialPower = null;
+        setSpecialPower(null);
+
+        addNewHeroToHeroesJsonFile(newHero);
     }
 
     public void createNewCustomMinion(ActionEvent actionEvent) {
-        Minion newMinion = (Minion) createNewCustomCard(
+        Minion newMinion = (Minion) createNewCustomMinionCard(
                 minionName.getText(),
                 Integer.parseInt(minionNeededDrake.getText()),
                 Integer.parseInt(minionNeededMana.getText()),
@@ -87,10 +93,24 @@ public class CustomCardController implements Initializable {
                 minionAttackType.getSelectionModel().getSelectedItem(),
                 specialPower
         );
-        specialPower = null;
+        setSpecialPower(null);
+
+        addNewMinionToMinionsJsonFile(newMinion);
     }
 
-    private Soldier createNewCustomCard(
+    private void addNewHeroToHeroesJsonFile(Hero newHero) {
+        List<Hero> heroes = JsonController.getHeroes();
+        heroes.add(newHero);
+        JsonController.writeHeroesOnFile(heroes);
+    }
+
+    private void addNewMinionToMinionsJsonFile(Minion newMinion) {
+        List<Minion> minions = JsonController.getMinions();
+        minions.add(newMinion);
+        JsonController.writeMinionsOnFile(minions);
+    }
+
+    private Minion createNewCustomMinionCard(
             String name,
             int priceInDrake,
             int manaPoint,
@@ -99,17 +119,41 @@ public class CustomCardController implements Initializable {
             int areaOfEffect,
             AttackType attackType,
             Buff specialPower) {
-        Soldier newSoldier = new Soldier();
-        newSoldier.setName(name);
-        newSoldier.setPriceInDrake(priceInDrake);
-        newSoldier.setManaPoint(manaPoint);
-        newSoldier.setDescription(heroDescription.getText());
-        newSoldier.setFullHealth(fullHealth);
-        newSoldier.setAttackPower(attackPower);
-        newSoldier.setAreaOfEffect(areaOfEffect);
-        newSoldier.setAttackType(attackType);
-        newSoldier.getBuffsToCast().add(specialPower);
-        return newSoldier;
+        Minion newMinion = new Minion();
+        newMinion.setName(name);
+        newMinion.setPriceInDrake(priceInDrake);
+        newMinion.setManaPoint(manaPoint);
+        newMinion.setDescription(heroDescription.getText());
+        newMinion.setFullHealth(fullHealth);
+        newMinion.setAttackPower(attackPower);
+        newMinion.setAreaOfEffect(areaOfEffect);
+        newMinion.setAttackType(attackType);
+        newMinion.getBuffsToCast().add(specialPower);
+        return newMinion;
+    }
+
+    private Hero createNewCustomHeroCard(
+            String name,
+            int priceInDrake,
+            int manaPoint,
+            int fullHealth,
+            int attackPower,
+            int areaOfEffect,
+            AttackType attackType,
+            Buff specialPower,
+            int coolDown) {
+        Hero newHero = new Hero();
+        newHero.setName(name);
+        newHero.setPriceInDrake(priceInDrake);
+        newHero.setManaPoint(manaPoint);
+        newHero.setDescription(heroDescription.getText());
+        newHero.setFullHealth(fullHealth);
+        newHero.setAttackPower(attackPower);
+        newHero.setAreaOfEffect(areaOfEffect);
+        newHero.setAttackType(attackType);
+        newHero.getBuffsToCast().add(specialPower);
+        newHero.setCoolDown(coolDown);
+        return newHero;
     }
 
     public Buff constructNewCustomBuff(Buff.Name name, int castTime, int value) {
@@ -153,10 +197,25 @@ public class CustomCardController implements Initializable {
     }
 
     public void createNewCustomBuff(ActionEvent actionEvent) {
-        specialPower = constructNewCustomBuff(heroSpecialPower.getSelectionModel().getSelectedItem(),
+        setSpecialPower(constructNewCustomBuff(heroSpecialPower.getSelectionModel().getSelectedItem(),
                 Integer.parseInt(castTime.getText()),
-                Integer.parseInt(buffValue.getText()));
+                Integer.parseInt(buffValue.getText())
+        ));
+        closeBuffCreationMenu();
+    }
+
+    public void closeBuffCreationMenu() {
         buffCreationMenu.setVisible(false);
         stackPane.setEffect(null);
     }
+
+    public void cancelBuffCreationMenu(){
+        //TODO: on select
+        closeBuffCreationMenu();
+    }
+
+    public void setSpecialPower(Buff specialPower) {
+        this.specialPower = specialPower;
+    }
+
 }
