@@ -7,6 +7,9 @@ import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
 import javafx.animation.TranslateTransition;
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableObjectValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -42,6 +45,7 @@ public class GameController {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
 //            endTurn.setDisable(true);
 //        }
+//        ObservableObjectValue<Card> selectedCard = ;
         updateGraveYard();
         gameTable = new GridPane();
         gameTable.setVgap(10);
