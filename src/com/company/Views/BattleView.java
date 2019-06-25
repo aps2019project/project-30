@@ -109,6 +109,7 @@ public class BattleView {
 
     public static VBox cardDesciption(Card card) {
         VBox vBox = new VBox();
+        vBox.setSpacing(70);
         Image cardGif;
         if (card instanceof Spell)
             cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
@@ -118,7 +119,7 @@ public class BattleView {
 
         vBox.getChildren().add(imageView);
         if (!(card instanceof Spell)) {
-            vBox.getStyleClass().add("card-description");
+            vBox.getStyleClass().add("solder-description");
             HBox powers = new HBox();
             powers.setSpacing(70);
             Label heath = new Label(String.valueOf(((Soldier) card).getHealth()));
@@ -126,7 +127,7 @@ public class BattleView {
             vBox.getChildren().add(powers);
         }
         else {
-
+            vBox.getStyleClass().add("spell-description");
         }
         Label name = new Label(card.getName());
         vBox.getChildren().add(name);
