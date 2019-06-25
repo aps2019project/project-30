@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 
@@ -31,6 +32,8 @@ import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
     final private static String GIFS_FOLDER_PATH = "src/com/company/Views/graphic/images/gifs/";
+
+    public ImageView back;
 
     public enum state {ATTACK, IDLE, BREATHING, DEATH, RUN}
 
@@ -71,6 +74,9 @@ public class CustomCardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        back.setOnMouseClicked(event -> {
+            RootsController.openShop();
+        });
         heroSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             GaussianBlur gaussianBlur = new GaussianBlur();
             stackPane.setEffect(gaussianBlur);
