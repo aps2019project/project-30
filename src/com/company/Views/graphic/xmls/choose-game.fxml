@@ -70,6 +70,7 @@
                 </ImageView>
             </VBox>
         </HBox>
+        <TextField alignment="CENTER" fx:id="flagsincustom" promptText="Flags" styleClass="t"/>
     </VBox>
     <VBox   fx:id="selectAcount" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" visible="false">
         <HBox alignment="CENTER" spacing="100">
@@ -102,6 +103,6 @@
                 </ImageView>
             </VBox>
         </HBox>
-        <TextField fx:id="flagsinstory" promptText="Flags"/>
+            <TextField alignment="CENTER" fx:id="flagsinstory" promptText="Flags" styleClass="t"/>
     </VBox>
 </AnchorPane>

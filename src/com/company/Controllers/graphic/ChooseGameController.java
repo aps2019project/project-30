@@ -31,7 +31,7 @@ public class ChooseGameController implements Initializable {
 //    public Button single;
     public String numberOfPlayers;
     public String storyorcustom;
-    public String mode;
+    public Mode mode;
     public int storyLevel=1;
 //    public Button multi;
     public VBox singlePlayer;
@@ -52,6 +52,7 @@ public class ChooseGameController implements Initializable {
     public VBox level2;
     public VBox level3;
     public TextField flagsinstory;
+    public TextField flagsincustom;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,21 +111,25 @@ public class ChooseGameController implements Initializable {
         killingGenerall.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                new Battle(Mode.KILLING_GENERAL,0);
+                mode=Mode.KILLING_GENERAL;
             }
         });
         captureMostFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                new Battle(Mode.COLLECTING_FLAGS,0);
+                mode=Mode.COLLECTING_FLAGS;
             }
         });
         captureTheFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                new Battle(Mode.CAPTURE_THE_FLAG,0);
+                mode=Mode.CAPTURE_THE_FLAG;
             }
         });
+        flagsincustom.textProperty().addListener(((observable, oldValue, newValue) -> {
+            new Battle(storyLevel,Integer.parseInt(newValue));
+            RootsController.game();
+        }));
 
         level1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -147,6 +152,7 @@ public class ChooseGameController implements Initializable {
 
         flagsinstory.textProperty().addListener(((observable, oldValue, newValue) -> {
             new Battle(storyLevel,Integer.parseInt(newValue));
+            RootsController.game();
         }));
 
 
@@ -159,22 +165,22 @@ public class ChooseGameController implements Initializable {
     public void multiplayer(ActionEvent actionEvent) {
     }
 
-    public void startGame(ActionEvent actionEvent) {
-        new Battle(
-                3,
-                2
-        );
-        try {
-            FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/game.fxml"));
-            Parent root = loader.load();
-            ((GameController) loader.getController()).init();
-            Graphic.stage.getScene().setRoot(root);
-            Sound.pause(Sound.MAIN_MENU_SOUND_ADDRESS);
-            Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void startGame(ActionEvent actionEvent) {
+//        new Battle(
+//                3,
+//                2
+//        );
+//        try {
+//            FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/game.fxml"));
+//            Parent root = loader.load();
+//            ((GameController) loader.getController()).init();
+//            Graphic.stage.getScene().setRoot(root);
+//            Sound.pause(Sound.MAIN_MENU_SOUND_ADDRESS);
+//            Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void singlePlayer(ActionEvent actionEvent) {
     }

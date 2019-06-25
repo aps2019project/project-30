@@ -301,3 +301,7 @@
     -fx-background-size: cover;
     -fx-background-position: center;
 }
+
+.t{
+    -fx-max-width: 100;
+}
