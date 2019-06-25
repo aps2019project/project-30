@@ -4,6 +4,7 @@ import animatefx.animation.ZoomIn;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.ObservableCard;
 import com.company.Models.Card.Soldier;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -34,6 +35,7 @@ public class GameController {
     public GridPane gameTable;
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
+    private ObservableCard selectedCard;
 
 
     public void init() {

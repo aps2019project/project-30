@@ -58,6 +58,11 @@ public class CustomCardController implements Initializable {
             stackPane.setEffect(gaussianBlur);
             buffCreationMenu.setVisible(true);
         });
+        minionSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            GaussianBlur gaussianBlur = new GaussianBlur();
+            stackPane.setEffect(gaussianBlur);
+            buffCreationMenu.setVisible(true);
+        });
 
         heroAttackType.getItems().addAll(AttackType.values());
         minionAttackType.getItems().addAll(AttackType.values());
@@ -210,7 +215,8 @@ public class CustomCardController implements Initializable {
     }
 
     public void cancelBuffCreationMenu(){
-        //TODO: on select
+        heroSpecialPower.getSelectionModel().clearSelection();
+        minionSpecialPower.getSelectionModel().clearSelection();
         closeBuffCreationMenu();
     }
 
