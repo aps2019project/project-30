@@ -36,7 +36,7 @@ public class GameController {
     public HBox manaContainer2;
     public AnchorPane gameRoot;
     public Pane tableContainer;
-    public GridPane gameTable;
+    public GridPan e gameTable;
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
     private Card selectedCard;
@@ -140,7 +140,7 @@ public class GameController {
             pane.setOnMouseEntered(event -> {
                 cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()));
                 gameRoot.getChildren().add(cardDesciption);
-                AnchorPane.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
+                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
                 gameRoot.setLeftAnchor(cardDesciption,pane.getLayoutX());
 
             });
