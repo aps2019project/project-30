@@ -71,6 +71,11 @@ public class CollectionController implements Initializable {
         mainDeckRadioButton.setPadding(new Insets(10));
         mainDeckRadioButton.setToggleGroup(mainDeckToggleGroup);
         HBox hBox = new HBox();
+//        Image image1=new Image("com/company/Views/graphic/images/crest_f1_deck_select.png");
+//        ImageView neshan=new ImageView(image1);
+//        neshan.setFitWidth(50);
+//        neshan.setFitHeight(50);
+//        hBox.getChildren().add(neshan);
         hBox.getChildren().add(mainDeckRadioButton);
         hBox.getStyleClass().add("deckBox_collection");
         Label decklabel = new Label(deckname);
@@ -86,7 +91,9 @@ public class CollectionController implements Initializable {
         imageView.setFitWidth(20);
         save.setFitHeight(20);
         save.setFitWidth(20);
+
         save.setId(deckname);
+
         hBox.getChildren().add(imageView);
         hBox.getChildren().add(save);
         deckContainer.getChildren().add(hBox);
