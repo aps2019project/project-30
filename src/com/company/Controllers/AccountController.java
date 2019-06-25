@@ -83,7 +83,7 @@ public class AccountController {
 
     public static void saveAccounts() {
         removeFile(Account.getSavedAccountsFilePath());
-        JsonController.writeAllAccountsOnFile(Account.getSavedAccountsFilePath());
+        JsonController.writeAllAccountsOnFile();
     }
 
     public static void saveLoggedInAccount() {

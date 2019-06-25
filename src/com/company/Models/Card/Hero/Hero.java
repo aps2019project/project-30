@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hero extends Soldier {
+    final public static String HEROES_JSON_FILE_PATH = "data/Heroes.json";
     private int coolDown;
     private int remainingCoolDown;
 
@@ -109,5 +110,7 @@ public class Hero extends Soldier {
                 "- Desc : " + hero.getDescription());
     }
 
-
+    public static String getHeroesJsonFilePath() {
+        return HEROES_JSON_FILE_PATH;
+    }
 }

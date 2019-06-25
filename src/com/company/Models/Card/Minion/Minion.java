@@ -14,6 +14,8 @@ import java.util.List;
 
 public class
 Minion extends Soldier {
+    final public static String MINIONS_JSON_FILE_PATH = "data/Minions.json";
+
     private ActivationTime activationTime;
 
     @Override
@@ -82,5 +84,9 @@ Minion extends Soldier {
                 "- HP : " + minion.getHealth() +
                 "- MP : " + minion.getManaPoint() +
                 "- Desc : " + minion.getDescription());
+    }
+
+    public static String getMinionsJsonFilePath() {
+        return MINIONS_JSON_FILE_PATH;
     }
 }

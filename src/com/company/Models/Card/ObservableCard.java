@@ -6,9 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableObjectValue;
 
 public class ObservableCard implements ObservableObjectValue<Card> {
-
     private Card card;
-
     @Override
     public Card get() {
         return card;
@@ -26,7 +24,7 @@ public class ObservableCard implements ObservableObjectValue<Card> {
 
     @Override
     public Card getValue() {
-        return card;
+        return null;
     }
 
     @Override

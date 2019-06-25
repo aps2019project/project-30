@@ -73,7 +73,7 @@ public class JsonController {
     }
 
     public static List<Spell> getSpells() {
-        try (FileReader reader = new FileReader("data/Spells.json")) {
+        try (FileReader reader = new FileReader(Spell.getSpellsJsonFilePath())) {
             Type spellListType = new TypeToken<ArrayList<Spell>>() {
             }.getType();
             return getGson().fromJson(reader, spellListType);
@@ -84,7 +84,7 @@ public class JsonController {
     }
 
     public static List<Minion> getMinions() {
-        try (FileReader reader = new FileReader("data/Minions.json")) {
+        try (FileReader reader = new FileReader(Minion.getMinionsJsonFilePath())) {
             Type minionListType = new TypeToken<ArrayList<Minion>>() {
             }.getType();
             return getGson().fromJson(reader, minionListType);
@@ -95,7 +95,7 @@ public class JsonController {
     }
 
     public static List<Hero> getHeroes() {
-        try (FileReader reader = new FileReader("data/Heroes.json")) {
+        try (FileReader reader = new FileReader(Hero.getHeroesJsonFilePath())) {
             Type heroListType = new TypeToken<ArrayList<Hero>>() {
             }.getType();
             return getGson().fromJson(reader, heroListType);
@@ -106,7 +106,7 @@ public class JsonController {
     }
 
     public static List<Item> getItems() {
-        try (FileReader reader = new FileReader("data/Items.json")) {
+        try (FileReader reader = new FileReader(Item.getItemsJsonFilePath())) {
             Type itemListType = new TypeToken<ArrayList<Item>>() {
             }.getType();
             return getGson().fromJson(reader, itemListType);
@@ -157,8 +157,8 @@ public class JsonController {
         return cards;
     }
 
-    public static void writeAllAccountsOnFile(String destinationAddress) {
-        try (FileWriter fileWriter = new FileWriter(destinationAddress)) {
+    public static void writeAllAccountsOnFile() {
+        try (FileWriter fileWriter = new FileWriter(Account.getSavedAccountsFilePath())) {
             fileWriter.write(getGson().toJson(Account.getAccounts()));
         } catch (IOException e) {
             e.printStackTrace();
@@ -168,6 +168,22 @@ public class JsonController {
     public static void writeLoggedInAccountOnFile() {
         try (FileWriter fileWriter = new FileWriter(Account.getLoggedInAccountsFilePath())) {
             fileWriter.write(getGson().toJson(Account.getLoggedInAccount()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeMinionsOnFile(List<Minion> minions) {
+        try (FileWriter fileWriter = new FileWriter(Minion.getMinionsJsonFilePath())) {
+            fileWriter.write(getGson().toJson(minions));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeHeroesOnFile(List<Hero> heroes) {
+        try (FileWriter fileWriter = new FileWriter(Hero.getHeroesJsonFilePath())) {
+            fileWriter.write(getGson().toJson(heroes));
         } catch (IOException e) {
             e.printStackTrace();
         }
