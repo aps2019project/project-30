@@ -32,6 +32,9 @@
                     <TextField fx:id="heroNeededDrake" promptText="Drake" styleClass="authenticate-field"/>
                     <TextField fx:id="heroNeededMana" promptText="Mana" styleClass="authenticate-field"/>
                     <TextField fx:id="heroDescription" promptText="Description" styleClass="authenticate-field"/>
+                    <HBox alignment="CENTER" spacing="30">
+                    <JFXButton fx:id="ImportHeroGifsMenu" text="Movements Gif" styleClass="create-deck" onAction="#openHeroImportGifMenu"/>
+                    </HBox>
 
                     <JFXButton text="CREATE" onAction="#createNewCustomHero" styleClass="login"/>
                 </VBox>
@@ -49,6 +52,10 @@
                     <TextField fx:id="minionNeededDrake" promptText="Drake" styleClass="authenticate-field"/>
                     <TextField fx:id="minionNeededMana" promptText="Mana" styleClass="authenticate-field"/>
                     <TextField fx:id="minionDescription" promptText="Description" styleClass="authenticate-field"/>
+                    <HBox alignment="CENTER" spacing="30">
+                    <JFXButton fx:id="ImportMinionGifsMenu" text="Movements Gif" styleClass="create-deck" onAction="#openMinionImportGifMenu"/>
+                    </HBox>
+
                     <JFXButton text="CREATE" onAction="#createNewCustomMinion" styleClass="login"/>
                 </VBox>
             </Tab>
@@ -57,6 +64,31 @@
     <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>
+    <StackPane fx:id="heroMovementsGifSettingMenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+        <VBox alignment="CENTER" spacing="15" maxWidth="450" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 40;-fx-background-radius: 20">
+                <JFXButton fx:id="importHeroIdleGif" text="Idle" styleClass="create-deck" onAction="#importHeroIdleGifFromFile"/>
+                <JFXButton fx:id="importHeroBreathingGif" text="Breathing" styleClass="create-deck" onAction="#importHeroBreathingGifFromFile"/>
+                <JFXButton fx:id="importHeroMoveGif" text="Move" styleClass="create-deck" onAction="#importHeroMoveGifFromFile"/>
+                <JFXButton fx:id="importHeroAttackGif" text="Attack" styleClass="create-deck" onAction="#importHeroAttackGifFromFile"/>
+                <JFXButton fx:id="importHeroDeathGif" text="Death" styleClass="create-deck" onAction="#importHeroDeathGifFromFile"/>
+            <HBox alignment="CENTER" spacing="10">
+                <JFXButton text="Done" onAction="#cancelImportGifsMenu" styleClass="login"/>
+                <JFXButton text="Cancel" onAction="#cancelImportGifsMenu" styleClass="login"/>
+            </HBox>
+        </VBox>
+    </StackPane>
+    <StackPane fx:id="minionMovementsGifSettingMenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+        <VBox alignment="CENTER" spacing="15" maxWidth="450" maxHeight="400" style="-fx-background-color: grey; -fx-padding: 40;-fx-background-radius: 20">
+                <JFXButton fx:id="importMinionIdleGif" text="Idle" styleClass="create-deck" onAction="#importMinionIdleGifFromFile"/>
+                <JFXButton fx:id="importMinionBreathingGif" text="Breathing" styleClass="create-deck" onAction="#importMinionBreathingGifFromFile"/>
+                <JFXButton fx:id="importMinionMoveGif" text="Move" styleClass="create-deck" onAction="#importMinionMoveGifFromFile"/>
+                <JFXButton fx:id="importMinionAttackGif" text="Attack" styleClass="create-deck" onAction="#importMinionAttackGifFromFile"/>
+                <JFXButton fx:id="importMinionDeathGif" text="Death" styleClass="create-deck" onAction="#importMinionDeathGifFromFile"/>
+            <HBox alignment="CENTER" spacing="10">
+                <JFXButton text="Done" onAction="#cancelImportGifsMenu" styleClass="login"/>
+                <JFXButton text="Cancel" onAction="#cancelImportGifsMenu" styleClass="login"/>
+            </HBox>        </VBox>
+    </StackPane>
     <StackPane fx:id="buffCreationMenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <VBox alignment="CENTER" spacing="20" maxWidth="450" maxHeight="300" style="-fx-background-color: grey; -fx-padding: 40;-fx-background-radius: 20">
             <Label fx:id="buffName" alignment="CENTER" text="Special Power Details"/>

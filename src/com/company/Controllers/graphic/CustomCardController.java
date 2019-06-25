@@ -3,6 +3,9 @@ package com.company.Controllers.graphic;
 import com.company.Controllers.JsonController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
+import com.company.Models.Card.Groups.Deck;
+import com.company.Models.User.Account;
+import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXComboBox;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
@@ -12,14 +15,29 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
+    final private static String GIFS_FOLDER_PATH = "src/com/company/Views/graphic/images/gifs/";
+
+    public enum state {ATTACK, IDLE, BREATHING, DEATH, RUN}
+
     public StackPane stackPane;
     public StackPane buffCreationMenu;
+    public StackPane minionMovementsGifSettingMenu;
+    public StackPane heroMovementsGifSettingMenu;
+
 
     public JFXComboBox<AttackType> heroAttackType;
     public JFXComboBox<AttackType> minionAttackType;
@@ -46,7 +64,6 @@ public class CustomCardController implements Initializable {
 
     public TextField buffValue;
     public TextField castTime;
-
     public Label buffName;
 
     private Buff specialPower;
@@ -206,7 +223,13 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(castTime.getText()),
                 Integer.parseInt(buffValue.getText())
         ));
+        clearNewSpecialPowerFields();
         closeBuffCreationMenu();
+    }
+
+    private void clearNewSpecialPowerFields() {
+        buffValue.clear();
+        castTime.clear();
     }
 
     public void closeBuffCreationMenu() {
@@ -214,9 +237,16 @@ public class CustomCardController implements Initializable {
         stackPane.setEffect(null);
     }
 
-    public void cancelBuffCreationMenu(){
+    public void cancelImportGifsMenu() {
+        heroMovementsGifSettingMenu.setVisible(false);
+        minionMovementsGifSettingMenu.setVisible(false);
+        stackPane.setEffect(null);
+    }
+
+    public void cancelBuffCreationMenu() {
         heroSpecialPower.getSelectionModel().clearSelection();
         minionSpecialPower.getSelectionModel().clearSelection();
+        clearNewSpecialPowerFields();
         closeBuffCreationMenu();
     }
 
@@ -224,4 +254,92 @@ public class CustomCardController implements Initializable {
         this.specialPower = specialPower;
     }
 
+    public void openHeroImportGifMenu() {
+        stackPane.setEffect(new GaussianBlur());
+        heroMovementsGifSettingMenu.setVisible(true);
+    }
+
+    public void openMinionImportGifMenu() {
+        stackPane.setEffect(new GaussianBlur());
+        minionMovementsGifSettingMenu.setVisible(true);
+    }
+
+    public void importHeroMoveGifFromFile() {
+        File selectedGif = importGifFile();
+        copyHeroSelectedGifToProjectResources(selectedGif, state.RUN.toString().toLowerCase());
+    }
+
+    public void importHeroAttackGifFromFile() {
+        File selectedGif = importGifFile();
+        copyHeroSelectedGifToProjectResources(selectedGif,state.ATTACK.toString().toLowerCase());
+    }
+
+    public void importHeroIdleGifFromFile() {
+        File selectedGif = importGifFile();
+        copyHeroSelectedGifToProjectResources(selectedGif,state.IDLE.toString().toLowerCase());
+    }
+
+    public void importHeroBreathingGifFromFile() {
+        File selectedGif = importGifFile();
+        copyHeroSelectedGifToProjectResources(selectedGif,state.BREATHING.toString().toLowerCase());
+    }
+
+    public void importHeroDeathGifFromFile() {
+        File selectedGif = importGifFile();
+        copyHeroSelectedGifToProjectResources(selectedGif,state.DEATH.toString().toLowerCase());
+    }
+
+
+    public void importMinionMoveGifFromFile() {
+        File selectedGif = importGifFile();
+        copyMinionSelectedGifToProjectResources(selectedGif, state.RUN.toString().toLowerCase());
+    }
+
+    public void importMinionAttackGifFromFile() {
+        File selectedGif = importGifFile();
+        copyMinionSelectedGifToProjectResources(selectedGif, state.ATTACK.toString().toLowerCase());
+    }
+
+    public void importMinionIdleGifFromFile() {
+        File selectedGif = importGifFile();
+        copyMinionSelectedGifToProjectResources(selectedGif, state.IDLE.toString().toLowerCase());
+    }
+
+    public void importMinionBreathingGifFromFile() {
+        File selectedGif = importGifFile();
+        copyMinionSelectedGifToProjectResources(selectedGif, state.BREATHING.toString().toLowerCase());
+    }
+
+    public void importMinionDeathGifFromFile() {
+        File selectedGif = importGifFile();
+        copyMinionSelectedGifToProjectResources(selectedGif, state.DEATH.toString().toLowerCase());
+    }
+
+    private void copyHeroSelectedGifToProjectResources(File selectedGif, String state) {
+        if (selectedGif != null)
+            copyFileUsingChannel(selectedGif.getPath(), GIFS_FOLDER_PATH, heroName.getText() + "_" + state + ".gif");
+    }
+
+    private void copyMinionSelectedGifToProjectResources(File selectedGif, String state) {
+        if (selectedGif != null)
+            copyFileUsingChannel(selectedGif.getPath(), GIFS_FOLDER_PATH, minionAreaOfEffect.getText() + "_" + state + ".gif");
+    }
+
+    private File importGifFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose a gif for move");
+        File defaultDirectory = new File("d:/");
+        fileChooser.setInitialDirectory(defaultDirectory);
+        return fileChooser.showOpenDialog(Graphic.stage);
+    }
+
+    private static void copyFileUsingChannel(String sourceFilePath, String destinationFolderPath, String copiedFileName) {
+        File source = new File(sourceFilePath);
+        File dest = new File(destinationFolderPath + copiedFileName);
+        try {
+            Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

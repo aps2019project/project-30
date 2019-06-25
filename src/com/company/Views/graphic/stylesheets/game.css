@@ -82,6 +82,46 @@
     -fx-background-size: cover;
     -fx-background-position: center;
 }
+.cap{
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/gate_014@2x.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.kill{
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/gate_015@2x.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.kill:hover{
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
+.cap:hover{
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
+.story{
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/gate_002@2x.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+
+}
+.story:hover{
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
+
+
+.custom{
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0);
+    -fx-background-image: url("../images/gate_007@2x.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+
+}
+.custom:hover{
+    -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
+}
 
 .killing-general-mode:hover {
     -fx-effect: dropshadow(three-pass-box, white, 20, 0, 0, 0);
@@ -187,7 +227,7 @@
 }
 
 .collection-root {
-    -fx-background-image: url("../images/authenticate-bg.jpg");
+    -fx-background-image: url("../images/scene_load_background@2x.jpg");
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 }
@@ -263,4 +303,8 @@
     -fx-background-image: url("../images/graveyard-card-container.png");
     -fx-background-size: cover;
     -fx-background-position: center;
+}
+
+.t{
+    -fx-max-width: 100;
 }
