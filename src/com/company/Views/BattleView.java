@@ -110,7 +110,7 @@ public class BattleView {
                 "help: to seeing this help!\n");
     }
 
-    public static VBox cardDesciption(Card card) {
+    public static VBox cardDesciption(Card card,String state) {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setPrefWidth(200);
@@ -140,8 +140,12 @@ public class BattleView {
             }
         }catch (Exception e) { }
 
+        if(state.equals("collection")){
+            vBox.getStyleClass().add("collection-cards-description");
+        }
+
         if (!(card instanceof Spell)) {
-            vBox.getStyleClass().add("solder-description");
+            if(state.equals("game"))vBox.getStyleClass().add("solder-description");
             HBox powers = new HBox();
             powers.setSpacing(100);
             Label heath = new Label(String.valueOf(((Soldier) card).getHealth()));
@@ -155,7 +159,7 @@ public class BattleView {
             anchorPane.getChildren().add(powers);
         }
         else {
-            vBox.getStyleClass().add("spell-description");
+            if(state.equals("game"))vBox.getStyleClass().add("spell-description");
         }
         Label name = new Label(card.getName());
         anchorPane.getChildren().add(name);
