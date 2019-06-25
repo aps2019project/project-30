@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 public class CustomCardController implements Initializable {
     public StackPane stackPane;
     public StackPane buffCreationMenu;
+    public StackPane movementsGifSettingMenu;
+
 
     public JFXComboBox<AttackType> heroAttackType;
     public JFXComboBox<AttackType> minionAttackType;
@@ -46,7 +48,6 @@ public class CustomCardController implements Initializable {
 
     public TextField buffValue;
     public TextField castTime;
-
     public Label buffName;
 
     private Buff specialPower;
@@ -206,7 +207,13 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(castTime.getText()),
                 Integer.parseInt(buffValue.getText())
         ));
+        clearNewSpecialPowerFields();
         closeBuffCreationMenu();
+    }
+
+    private void clearNewSpecialPowerFields() {
+        buffValue.clear();
+        castTime.clear();
     }
 
     public void closeBuffCreationMenu() {
@@ -217,6 +224,7 @@ public class CustomCardController implements Initializable {
     public void cancelBuffCreationMenu(){
         heroSpecialPower.getSelectionModel().clearSelection();
         minionSpecialPower.getSelectionModel().clearSelection();
+        clearNewSpecialPowerFields();
         closeBuffCreationMenu();
     }
 
@@ -224,4 +232,8 @@ public class CustomCardController implements Initializable {
         this.specialPower = specialPower;
     }
 
+    public void openImportGifMenu(){
+        stackPane.setEffect(new GaussianBlur());
+        movementsGifSettingMenu.setVisible(true);
+    }
 }
