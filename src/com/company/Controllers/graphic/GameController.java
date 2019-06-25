@@ -123,7 +123,7 @@ public class GameController {
                         transition.play();
                         Battle.getPlayingBattle().getBattleController().selectCard(pane.getId());
                         selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(pane.getId());
-                        updateGameTableColor();
+
                     } else {
                         TranslateTransition transition = new TranslateTransition();
                         transition.setToY(0);
@@ -131,21 +131,22 @@ public class GameController {
                         transition.play();
                         selectedCard = null;
                     }
+                    updateGameTableColor();
                 }
             });
         }
     }
 
     private void updateGameTableColor() {
-        if (Battle.getPlayingBattle().getBattleController().cardExistsInHand(selectedCard.getId())) {
+        if (selectedCard != null && Battle.getPlayingBattle().getBattleController().cardExistsInHand(selectedCard.getId())) {
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 5; j++) {
                     Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1);
                     if (cell.getCardInCell() != null &&
                             BattleController.playerThatHasThisCard(cell.getCardInCell()).equals(Battle.getPlayingBattle().getTurnToPlay()))
-                        for (int x = -2; x <= 2; x++)
-                            for (int y = -2; y <= 2; y++)
-                                if (Math.abs(x) + Math.abs(y) <= 2) {
+                        for (int x = -1; x <= 1; x++)
+                            for (int y = -1; y <= 1; y++)
+                                if (Math.abs(x) + Math.abs(y) <= 1) {
                                     if (BattleController.validCoordinatesRange(i + 1 + x, j + 1 + y)) {
                                         AnchorPane tileToColoring = getCellFromGameTable(i + x, j + y);
                                         Cell cellToColoring = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1 + x, j + 1 + y);
@@ -160,12 +161,38 @@ public class GameController {
                                 }
                 }
             }
+        } else if (selectedCard != null && !Battle.getPlayingBattle().getBattleController().cardExistsInHand(selectedCard.getId())) {
+            int cardX = ((Soldier) selectedCard).getCell().getxCoordinate();
+            int cardY = ((Soldier) selectedCard).getCell().getyCoordinate();
+            setTableToDefaultColor();
+            for (int x = -2; x <= 2; x++)
+                for (int y = -2; y <= 2; y++)
+                    if (Math.abs(x) + Math.abs(y) <= 2) {
+                        AnchorPane cell = getCellFromGameTable(cardX + x, cardY + y);
+                        if (Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x - 1, cardY + y - 1) != null &&
+                                Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x - 1, cardY + y - 1).getCardInCell() == null) {
+                            cell.getStyleClass().clear();
+                            cell.getStyleClass().add("tile-to-deploy");
+                        }
+                    }
+        } else {
+            setTableToDefaultColor();
         }
 //        for (Cell cell : Battle.getPlayingBattle().getMap().getCells()) {
 //            if (Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getName())) {
 //                if ()
 //            }
 //        }
+    }
+
+    private void setTableToDefaultColor() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 5; j++) {
+                AnchorPane tileToColoring = getCellFromGameTable(i, j);
+                tileToColoring.getStyleClass().clear();
+                tileToColoring.getStyleClass().add("tile-default");
+            }
+        }
     }
 
     private AnchorPane getCellFromGameTable(int x, int y) {
@@ -184,13 +211,15 @@ public class GameController {
                 Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1);
                 Soldier soldierInCell = (Soldier) (cell.getCardInCell());
                 AnchorPane tile = new AnchorPane();
-                tile.setId((1 + 1) + ":" + (j + 1));
+                tile.setId((i + 1) + ":" + (j + 1));
                 tile.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        if (Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId())) {
-                            Matcher matcher = Pattern.compile("(?<i>\\d+):(?<j>\\d+)").matcher(((AnchorPane) event.getSource()).getId());
-                            matcher.find();
+                        Matcher matcher = Pattern.compile("(?<i>\\d+):(?<j>\\d+)").matcher(((AnchorPane) event.getSource()).getId());
+                        matcher.find();
+                        if (Battle.getPlayingBattle().getTurnToPlay().getSelectedCard() != null &&
+                                Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId())) {
+
                             Battle.getPlayingBattle()
                                     .getBattleController().insertNewCardToMap(
                                     Integer.valueOf(matcher.group("i")),
@@ -198,6 +227,17 @@ public class GameController {
                                     Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId());
                             updateHand();
                             updateTable(gameTable);
+                        } else {
+                            Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(
+                                    Integer.valueOf(matcher.group("i")),
+                                    Integer.valueOf(matcher.group("j")));
+                            if (cell.getCardInCell() != null) {
+                                Battle.getPlayingBattle().getBattleController().selectCard(cell.getCardInCell().getId());
+                                selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell.getCardInCell().getId());
+                                updateGameTableColor();
+                            } else {
+                                //todo: Move
+                            }
                         }
                     }
                 });
