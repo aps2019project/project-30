@@ -6,6 +6,7 @@ import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -109,21 +110,28 @@ public class BattleView {
 
     public static VBox cardDesciption(Card card) {
         VBox vBox = new VBox();
-        vBox.setSpacing(70);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(200);
+        vBox.setPrefHeight(262);
+        vBox.setSpacing(50);
         Image cardGif;
-        if (card instanceof Spell)
-            cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
-        else
-            cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
-        ImageView imageView = new ImageView(cardGif);
+        try {
+            if (card instanceof Spell)
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
+            else
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
+                ImageView imageView = new ImageView(cardGif);
+                vBox.getChildren().add(imageView);
+        }catch (Exception e) { }
 
-        vBox.getChildren().add(imageView);
         if (!(card instanceof Spell)) {
             vBox.getStyleClass().add("solder-description");
             HBox powers = new HBox();
-            powers.setSpacing(70);
+            powers.setSpacing(50);
             Label heath = new Label(String.valueOf(((Soldier) card).getHealth()));
-            Label attck = new Label(String.valueOf(((Soldier) card).getAttackPower()));
+            Label attack = new Label(String.valueOf(((Soldier) card).getAttackPower()));
+            powers.getChildren().add(attack);
+            powers.getChildren().add(heath);
             vBox.getChildren().add(powers);
         }
         else {
