@@ -116,7 +116,7 @@ public class BattleController {
         return cellIsValidToInsertingCard(x1, y1);
     }
 
-    private boolean validCoordinatesRange(int x, int y) {
+    public static boolean validCoordinatesRange(int x, int y) {
         return x <= MAP_WIDTH_MAX && x >= MAP_WIDTH_MIN && y <= MAP_HEIGHT_MAX && y >= MAP_HEIGHT_MIN;
     }
 
@@ -608,9 +608,9 @@ public class BattleController {
         return false;
     }
 
-    public boolean cardExistsInHand(String cardName) {
+    public boolean cardExistsInHand(String cardId) {
         for (Card card : battle.getTurnToPlay().getDeck().getHand().getCards()) {
-            if (card.getName().equals(cardName)) {
+            if (card.getId().equals(cardId)) {
                 return true;
             }
         }
@@ -641,9 +641,9 @@ public class BattleController {
         return graveYardCards;
     }
 
-    public void insertNewCardToMap(int x, int y, String cardName) {
-        if (cardExistsInHand(cardName)) {
-            Card newCard = getCardByNameFromHand(cardName);
+    public void insertNewCardToMap(int x, int y, String cardId) {
+        if (cardExistsInHand(cardId)) {
+            Card newCard = getCardByIdFromHand(cardId);
             if (newCard instanceof Spell || cellIsValidToInsertingCard(x, y)) {
                 if (newCard.getManaPoint() <= battle.getTurnToPlay().getMana()) {
                     if (newCard instanceof Spell) {
@@ -656,9 +656,9 @@ public class BattleController {
                         Battle.getPlayingBattle().getTurnToPlay().decrementMana(newCard.getManaPoint());
                         Battle.getPlayingBattle().getTurnToPlay().getUsedCards().add(newCard);
                         battle.getTurnToPlay().getDeck().getDeckController().removeFromHand(newCard);
-                        if (battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion) battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_SPAWN)) {
-                            ConsoleInput.getCordinatesForUseSpecialPowerOnSpawn();
-                        }
+//                        if (battle.getTurnToPlay().getSelectedCard() instanceof Minion && ((Minion) battle.getTurnToPlay().getSelectedCard()).getActivationTime().equals(ActivationTime.ON_SPAWN)) {
+//                            ConsoleInput.getCordinatesForUseSpecialPowerOnSpawn();
+//                        }
                         if (battle.getMap().getCellByCoordinates(x, y).getItem() != null) {
                             battle.getTurnToPlay().addItem(battle.getMap().getCellByCoordinates(x, y).getItem());
                         }
@@ -675,9 +675,9 @@ public class BattleController {
     }
 
 
-    public Card getCardByNameFromHand(String cardName) {
+    public Card getCardByIdFromHand(String cardId) {
         for (Card card : Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards()) {
-            if (card.getName().equals(cardName)) {
+            if (card.getId().equals(cardId)) {
                 return card;
             }
         }

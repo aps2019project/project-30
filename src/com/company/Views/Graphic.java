@@ -59,10 +59,10 @@ public class Graphic extends Application {
         Image image = new Image("com/company/Views/graphic/images/cursor.png");  //pass in the image path
         scene.setCursor(new ImageCursor(image));
         if (Account.getLoggedInAccount() != null) {
-            //RootsController.openMainMenu();
-            RootsController.openCustomCardGenerator();
+            RootsController.openMainMenu();
+//            RootsController.openCustomCardGenerator();
         }
-//        stage.getIcons().add(new Image("/images/icon.png"));
+        stage.getIcons().add(new Image("com/company/Views/graphic/images/heroes/Arash_logo.png"));
         stage.setFullScreen(true);
         primaryStage.show();
     }
