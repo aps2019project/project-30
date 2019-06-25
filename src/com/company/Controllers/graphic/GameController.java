@@ -11,7 +11,7 @@ import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -19,13 +19,16 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GameController {
+public class GameController implements Initializable {
 
     public HBox handContainer;
     public Button endTurn;
@@ -36,11 +39,33 @@ public class GameController {
     public HBox manaContainer2;
     public AnchorPane gameRoot;
     public Pane tableContainer;
-    public GridPan e gameTable;
+    public GridPane gameTable;
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
     private Card selectedCard;
     public static VBox cardDesciption;
+
+    boolean tabPressed = false;
+    boolean numLockPressed = false;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()){
+                    case TAB: tabPressed = true; break;
+                    case NUM_LOCK: numLockPressed = true; break;
+                }
+                if(tabPressed && numLockPressed){
+                    Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
+                    RootsController.gameController.updateMana();
+                }
+            }
+        });
+
+    }
 
     public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
