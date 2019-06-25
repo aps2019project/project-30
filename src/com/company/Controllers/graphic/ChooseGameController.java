@@ -1,6 +1,7 @@
 package com.company.Controllers.graphic;
 
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
@@ -30,6 +31,8 @@ public class ChooseGameController implements Initializable {
 //    public Button single;
     public String numberOfPlayers;
     public String storyorcustom;
+    public String mode;
+    public int storyLevel=1;
 //    public Button multi;
     public VBox singlePlayer;
     public VBox multiPlayer;
@@ -37,10 +40,18 @@ public class ChooseGameController implements Initializable {
     public VBox multiorsingle;
     public VBox story;
     public VBox custom;
-    public VBox mode;
+    public VBox modeBox;
     public VBox selectAcount;
+    public VBox killingGenerall;
+    public VBox captureTheFlag;
+    public VBox captureMostFlag;
     public TextField search;
     public JFXMasonryPane acountContaner;
+    public VBox levels;
+    public VBox level1;
+    public VBox level2;
+    public VBox level3;
+    public TextField flagsinstory;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,7 +76,7 @@ public class ChooseGameController implements Initializable {
             public void handle(MouseEvent event) {
                 secondPageSingle.setVisible(false);
                 storyorcustom="story";
-                mode.setVisible(true);
+                levels.setVisible(true);
             }
         });
         custom.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -73,7 +84,7 @@ public class ChooseGameController implements Initializable {
             public void handle(MouseEvent event) {
                 secondPageSingle.setVisible(false);
                 storyorcustom="custom";
-                mode.setVisible(true);
+                modeBox.setVisible(true);
             }
         });
 
@@ -96,7 +107,47 @@ public class ChooseGameController implements Initializable {
             }
         }));
 
+        killingGenerall.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                new Battle(Mode.KILLING_GENERAL,0);
+            }
+        });
+        captureMostFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                new Battle(Mode.COLLECTING_FLAGS,0);
+            }
+        });
+        captureTheFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                new Battle(Mode.CAPTURE_THE_FLAG,0);
+            }
+        });
 
+        level1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                storyLevel=1;
+            }
+        });
+        level2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                storyLevel=2;
+            }
+        });
+        level3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                storyLevel=3;
+            }
+        });
+
+        flagsinstory.textProperty().addListener(((observable, oldValue, newValue) -> {
+            new Battle(storyLevel,Integer.parseInt(newValue));
+        }));
 
 
         back.setOnMouseClicked(event -> {
