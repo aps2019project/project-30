@@ -9,19 +9,23 @@ import com.company.Models.Card.Soldier;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GameController {
+public class GameController implements Initializable {
 
     public HBox handContainer;
     public Button endTurn;
@@ -37,6 +41,27 @@ public class GameController {
     public ImageView player2HeroPic;
     private ObservableCard selectedCard;
 
+    boolean tabPressed = false;
+    boolean numLockPressed = false;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()){
+                    case TAB: tabPressed = true; break;
+                    case NUM_LOCK: numLockPressed = true; break;
+                }
+                if(tabPressed && numLockPressed){
+                    Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
+                    RootsController.gameController.updateMana();
+                }
+            }
+        });
+
+    }
 
     public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {

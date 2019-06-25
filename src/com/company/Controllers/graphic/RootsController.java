@@ -18,6 +18,7 @@ public class RootsController {
     static MainMenuController mainMenuController;
     static CollectionController collectionController;
     static ShopController shopController;
+    static GameController gameController;
 
     static {
         try {
@@ -69,11 +70,13 @@ public class RootsController {
         }
 
     }
+
     public static void game(){
         try {
             FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/game.fxml"));
             Parent root = loader.load();
-            ((GameController) loader.getController()).init();
+            gameController = (GameController) loader.getController();
+            gameController.init();
             Graphic.stage.getScene().setRoot(root);
             Sound.pause(Sound.MAIN_MENU_SOUND_ADDRESS);
             Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS);
