@@ -237,8 +237,11 @@
 }
 
 .tile-default:hover {
-    -fx-text-fill: red;
     -fx-background-color: rgba(250, 250, 250, 0.4);
+}
+
+.tile-to-deploy {
+    -fx-background-color: rgba(255, 255, 0, 0.3);
 }
 
 .player-name {
@@ -304,4 +307,13 @@
 
 .t{
     -fx-max-width: 100;
+}
+
+.solder-description{
+    -fx-background-image: url("../images/card-bg.png");
+    -fx-background-size: cover;
+}
+.spell-description{
+    -fx-background-image: url("../images/card-bg-spell.png");
+    -fx-background-size: cover;
 }
