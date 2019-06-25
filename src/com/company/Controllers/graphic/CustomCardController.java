@@ -4,6 +4,7 @@ import com.company.Controllers.JsonController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXComboBox;
@@ -14,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 
@@ -30,6 +32,8 @@ import java.util.ResourceBundle;
 
 public class CustomCardController implements Initializable {
     final private static String GIFS_FOLDER_PATH = "src/com/company/Views/graphic/images/gifs/";
+
+    public ImageView back;
 
     public enum state {ATTACK, IDLE, BREATHING, DEATH, RUN}
 
@@ -70,6 +74,9 @@ public class CustomCardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        back.setOnMouseClicked(event -> {
+            RootsController.openShop();
+        });
         heroSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             GaussianBlur gaussianBlur = new GaussianBlur();
             stackPane.setEffect(gaussianBlur);
@@ -102,6 +109,7 @@ public class CustomCardController implements Initializable {
         setSpecialPower(null);
 
         addNewHeroToHeroesJsonFile(newHero);
+        addNewCustomCardToShopCollection(newHero);
     }
 
     public void createNewCustomMinion(ActionEvent actionEvent) {
@@ -118,6 +126,7 @@ public class CustomCardController implements Initializable {
         setSpecialPower(null);
 
         addNewMinionToMinionsJsonFile(newMinion);
+        addNewCustomCardToShopCollection(newMinion);
     }
 
     private void addNewHeroToHeroesJsonFile(Hero newHero) {
@@ -125,6 +134,11 @@ public class CustomCardController implements Initializable {
         heroes.add(newHero);
         JsonController.writeHeroesOnFile(heroes);
     }
+
+    private void addNewCustomCardToShopCollection(Soldier newSoldier) {
+        Shop.getShopCollection().getCards().add(newSoldier);
+    }
+
 
     private void addNewMinionToMinionsJsonFile(Minion newMinion) {
         List<Minion> minions = JsonController.getMinions();
@@ -271,22 +285,22 @@ public class CustomCardController implements Initializable {
 
     public void importHeroAttackGifFromFile() {
         File selectedGif = importGifFile();
-        copyHeroSelectedGifToProjectResources(selectedGif,state.ATTACK.toString().toLowerCase());
+        copyHeroSelectedGifToProjectResources(selectedGif, state.ATTACK.toString().toLowerCase());
     }
 
     public void importHeroIdleGifFromFile() {
         File selectedGif = importGifFile();
-        copyHeroSelectedGifToProjectResources(selectedGif,state.IDLE.toString().toLowerCase());
+        copyHeroSelectedGifToProjectResources(selectedGif, state.IDLE.toString().toLowerCase());
     }
 
     public void importHeroBreathingGifFromFile() {
         File selectedGif = importGifFile();
-        copyHeroSelectedGifToProjectResources(selectedGif,state.BREATHING.toString().toLowerCase());
+        copyHeroSelectedGifToProjectResources(selectedGif, state.BREATHING.toString().toLowerCase());
     }
 
     public void importHeroDeathGifFromFile() {
         File selectedGif = importGifFile();
-        copyHeroSelectedGifToProjectResources(selectedGif,state.DEATH.toString().toLowerCase());
+        copyHeroSelectedGifToProjectResources(selectedGif, state.DEATH.toString().toLowerCase());
     }
 
 

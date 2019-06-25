@@ -6,6 +6,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
+import com.company.Views.BattleView;
 import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -134,6 +135,12 @@ public class GameController {
                     updateGameTableColor();
                 }
             });
+            pane.setOnMouseEntered(event -> {
+                VBox cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()));
+                gameRoot.getChildren().add(cardDesciption);
+                AnchorPane.setLeftAnchor(cardDesciption, 100.0);
+                AnchorPane.setTopAnchor(cardDesciption, 100.0);
+            });
         }
     }
 
@@ -169,8 +176,8 @@ public class GameController {
                 for (int y = -2; y <= 2; y++)
                     if (Math.abs(x) + Math.abs(y) <= 2) {
                         AnchorPane cell = getCellFromGameTable(cardX + x, cardY + y);
-                        if (Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x - 1, cardY + y - 1) != null &&
-                                Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x - 1, cardY + y - 1).getCardInCell() == null) {
+                        if (Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x, cardY + y) != null &&
+                                Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x, cardY + y).getCardInCell() == null) {
                             cell.getStyleClass().clear();
                             cell.getStyleClass().add("tile-to-deploy");
                         }

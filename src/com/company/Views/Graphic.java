@@ -62,7 +62,7 @@ public class Graphic extends Application {
             RootsController.openMainMenu();
 //            RootsController.openCustomCardGenerator();
         }
-        stage.getIcons().add(new Image("com/company/Views/graphic/images/heroes/Arash_logo.png"));
+//        stage.getIcons().add(new Image("/images/icon.png"));
         stage.setFullScreen(true);
         primaryStage.show();
     }

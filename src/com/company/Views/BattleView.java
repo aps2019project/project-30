@@ -5,6 +5,12 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
+import com.company.Models.Card.Spell.Spell;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +64,7 @@ public class BattleView {
 
     private static void showPlayersMana() {
         for (int playerIndex = 0; playerIndex < 2; playerIndex++) {
-            System.out.println("Player " + (playerIndex+1) +
+            System.out.println("Player " + (playerIndex + 1) +
                     " ----> manas: " + Battle.getPlayingBattle().getPlayers()[playerIndex].getMana());
         }
     }
@@ -76,7 +82,7 @@ public class BattleView {
         Card.showMinionsAndSpellsInBattle(Battle.getPlayingBattle().getTurnToPlay().getDeck().getHand().getCards());
     }
 
-    public static void printBattleCommandsToHelp(){
+    public static void printBattleCommandsToHelp() {
         System.out.println("game info: to seeing game information!\n" +
                 "show my minions : to seeing your minions!\n" +
                 "show opponent minions : to seeing your opppnent minions!\n" +
@@ -100,5 +106,39 @@ public class BattleView {
                 "exit\n" +
                 "show menu\n" +
                 "help: to seeing this help!\n");
+    }
+
+    public static VBox cardDesciption(Card card) {
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(200);
+        vBox.setPrefHeight(262);
+        vBox.setSpacing(50);
+        Image cardGif;
+        try {
+            if (card instanceof Spell)
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
+            else
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
+                ImageView imageView = new ImageView(cardGif);
+                vBox.getChildren().add(imageView);
+        }catch (Exception e) { }
+
+        if (!(card instanceof Spell)) {
+            vBox.getStyleClass().add("solder-description");
+            HBox powers = new HBox();
+            powers.setSpacing(50);
+            Label heath = new Label(String.valueOf(((Soldier) card).getHealth()));
+            Label attack = new Label(String.valueOf(((Soldier) card).getAttackPower()));
+            powers.getChildren().add(attack);
+            powers.getChildren().add(heath);
+            vBox.getChildren().add(powers);
+        }
+        else {
+            vBox.getStyleClass().add("spell-description");
+        }
+        Label name = new Label(card.getName());
+        vBox.getChildren().add(name);
+        return vBox;
     }
 }

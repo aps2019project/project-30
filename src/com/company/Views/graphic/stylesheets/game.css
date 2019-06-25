@@ -308,3 +308,12 @@
 .t{
     -fx-max-width: 100;
 }
+
+.solder-description{
+    -fx-background-image: url("../images/card-bg.png");
+    -fx-background-size: cover;
+}
+.spell-description{
+    -fx-background-image: url("../images/card-bg-spell.png");
+    -fx-background-size: cover;
+}
