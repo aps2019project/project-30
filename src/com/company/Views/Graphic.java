@@ -60,7 +60,7 @@ public class Graphic extends Application {
         scene.setCursor(new ImageCursor(image));
         if (Account.getLoggedInAccount() != null) {
             //RootsController.openMainMenu();
-            RootsController.openCustomCardGenerator();
+            RootsController.openMainMenu();
         }
 //        stage.getIcons().add(new Image("/images/icon.png"));
         stage.setFullScreen(true);
