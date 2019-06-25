@@ -11,6 +11,7 @@ import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -39,6 +40,7 @@ public class GameController {
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
     private Card selectedCard;
+    public static VBox cardDesciption;
 
     public void init() {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
@@ -136,10 +138,17 @@ public class GameController {
                 }
             });
             pane.setOnMouseEntered(event -> {
-                VBox cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()));
+                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()));
                 gameRoot.getChildren().add(cardDesciption);
-                AnchorPane.setLeftAnchor(cardDesciption, 100.0);
-                AnchorPane.setTopAnchor(cardDesciption, 100.0);
+                AnchorPane.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
+                gameRoot.setLeftAnchor(cardDesciption,pane.getLayoutX());
+
+            });
+            pane.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    gameRoot.getChildren().remove(cardDesciption);
+                }
             });
         }
     }
