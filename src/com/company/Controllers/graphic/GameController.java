@@ -9,7 +9,6 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
-import com.company.Models.User.Account;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
@@ -263,47 +262,10 @@ public class GameController implements Initializable {
                 Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1);
                 Soldier soldierInCell = (Soldier) (cell.getCardInCell());
                 AnchorPane tile = new AnchorPane();
+                tile.setMaxSize(80, 80);
+                tile.setPrefSize(80, 80);
                 tile.setId((i + 1) + ":" + (j + 1));
-                tile.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        Matcher matcher = Pattern.compile("(?<i>\\d+):(?<j>\\d+)").matcher(((AnchorPane) event.getSource()).getId());
-                        matcher.find();
-                        if (Battle.getPlayingBattle().getTurnToPlay().getSelectedCard() != null &&
-                                Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId())) {
-
-                            Battle.getPlayingBattle()
-                                    .getBattleController().insertNewCardToMap(
-                                    Integer.valueOf(matcher.group("i")),
-                                    Integer.valueOf(matcher.group("j")),
-                                    Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId());
-                            updateHand();
-                            updateTable(gameTable);
-                            selectedCard = null;
-                        } else {
-                            Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(
-                                    Integer.valueOf(matcher.group("i")),
-                                    Integer.valueOf(matcher.group("j")));
-                            if (cell.getCardInCell() != null) {
-                                if (selectedCard != null) {
-                                    Battle.getPlayingBattle().getBattleController().attack(((Soldier) cell.getCardInCell()).getCell(), false);
-                                    updateTable(gameTable);
-                                } else {
-                                    Battle.getPlayingBattle().getBattleController().selectCard(cell.getCardInCell().getId());
-                                    selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell.getCardInCell().getId());
-                                }
-                            } else {
-                                Battle.getPlayingBattle().getBattleController().move(
-                                        Integer.valueOf(matcher.group("i")),
-                                        Integer.valueOf(matcher.group("j"))
-                                );
-                                selectedCard = null;
-                                updateTable(gameTable);
-                            }
-                            updateGameTableColor();
-                        }
-                    }
-                });
+                tile.setOnMouseClicked(this::tileClickHandler);
 
                 if (soldierInCell != null) {
                     try {
@@ -329,8 +291,8 @@ public class GameController implements Initializable {
                     Image flagGif;
                     flagGif = new Image("com/company/Views/graphic/images/gifs/flag.gif");
                     ImageView flagView = new ImageView(flagGif);
-                    flagView.setFitWidth(60);
-                    flagView.setFitWidth(83);
+                    flagView.setFitWidth(30);
+                    flagView.setFitWidth(42);
                     flagContainer.getChildren().add(flagView);
                     tile.getChildren().add(flagContainer);
                     AnchorPane.setTopAnchor(flagContainer, 0.0);
@@ -340,8 +302,7 @@ public class GameController implements Initializable {
                 }
 
                 gridPane.add(tile, i, j);
-                tile.setPrefWidth(80);
-                tile.setPrefHeight(80);
+
                 tile.getStyleClass().add("tile-default");
             }
         }
@@ -370,6 +331,7 @@ public class GameController implements Initializable {
         updateTable(gameTable);
         updateMana();
         updateHand();
+        updateGraveYard();
 //        endTurn.setDisable(true);
     }
 
@@ -403,11 +365,18 @@ public class GameController implements Initializable {
                 .filter((Card::isInGraveCards))
                 .forEach(card -> {
                     StackPane cardContainer = new StackPane();
-                    cardContainer.setPrefWidth(150);
-                    cardContainer.setPrefHeight(150);
+                    cardContainer.setPrefWidth(60);
+                    cardContainer.setPrefHeight(60);
                     cardContainer.getStyleClass().add("graveyard-card-container");
-                    Label cardName = new Label(card.getName());
-                    cardContainer.getChildren().add(cardName);
+                    Image cardGif;
+                    if (card instanceof Spell || card instanceof Item)
+                        cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
+                    else
+                        cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
+                    ImageView cardView = new ImageView(cardGif);
+                    cardView.setFitWidth(40);
+                    cardView.setFitHeight(40);
+                    cardContainer.getChildren().add(cardView);
                     graveyard.getChildren().add(cardContainer);
                 });
     }
@@ -430,5 +399,49 @@ public class GameController implements Initializable {
         List<Battle> savedGames = JsonController.getSavedGames();
         if (savedGames != null)
             Battle.addToSavedBattles(savedGames);
+    }
+
+    private void tileClickHandler(MouseEvent event) {
+        Matcher matcher = Pattern.compile("(?<i>\\d+):(?<j>\\d+)").matcher(((AnchorPane) event.getSource()).getId());
+        matcher.find();
+        if (Battle.getPlayingBattle().getTurnToPlay().getSelectedCard() != null &&
+                Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId())) {
+
+            Battle.getPlayingBattle()
+                    .getBattleController().insertNewCardToMap(
+                    Integer.valueOf(matcher.group("i")),
+                    Integer.valueOf(matcher.group("j")),
+                    Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId());
+            updateHand();
+            updateTable(gameTable);
+            selectedCard = null;
+        } else {
+            Cell cell1 = Battle.getPlayingBattle().getMap().getCellByCoordinates(
+                    Integer.valueOf(matcher.group("i")),
+                    Integer.valueOf(matcher.group("j")));
+            if (cell1.getCardInCell() != null) {
+                if (selectedCard != null) {
+                    Battle.getPlayingBattle().getBattleController().attack(((Soldier) cell1.getCardInCell()).getCell(), false);
+                    updateTable(gameTable);
+                    selectedCard = null;
+                } else {
+                    Battle.getPlayingBattle().getBattleController().selectCard(cell1.getCardInCell().getId());
+                    selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell1.getCardInCell().getId());
+                }
+            } else {
+                Battle.getPlayingBattle().getBattleController().move(
+                        Integer.valueOf(matcher.group("i")),
+                        Integer.valueOf(matcher.group("j"))
+                );
+                if (((Soldier) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() == Integer.valueOf(matcher.group("i")) &&
+                        ((Soldier) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() == Integer.valueOf(matcher.group("j"))) {
+
+
+                }
+                selectedCard = null;
+                updateTable(gameTable);
+            }
+            updateGameTableColor();
+        }
     }
 }
