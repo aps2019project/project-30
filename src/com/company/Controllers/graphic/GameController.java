@@ -168,7 +168,7 @@ public class GameController implements Initializable {
                 }
             });
             pane.setOnMouseEntered(event -> {
-                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()));
+                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()),"game");
                 gameRoot.getChildren().add(cardDesciption);
                 gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
                 gameRoot.setLeftAnchor(cardDesciption,pane.getLayoutX());

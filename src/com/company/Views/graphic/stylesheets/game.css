@@ -317,3 +317,7 @@
     -fx-background-image: url("../images/card-bg-spell.png");
     -fx-background-size: cover;
 }
+.collection-cards-description{
+    -fx-background-image: url("../images/frame_quest_challenge.png");
+    -fx-background-size: cover;
+}
