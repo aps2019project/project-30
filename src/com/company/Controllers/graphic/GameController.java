@@ -273,6 +273,7 @@ public class GameController implements Initializable {
                                     Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId());
                             updateHand();
                             updateTable(gameTable);
+                            selectedCard = null;
                         } else {
                             Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(
                                     Integer.valueOf(matcher.group("i")),
