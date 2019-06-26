@@ -122,7 +122,7 @@ public class BattleView {
         //vBox.setSpacing(70);
         Image cardGif;
         try {
-            if (card instanceof Spell)
+            if (card instanceof Spell || card instanceof Item)
                 cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
             else
                 cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
