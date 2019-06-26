@@ -8,6 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -19,6 +20,21 @@ public class Sound {
     private static HashMap<String, MediaPlayer> playedSongs = new HashMap<>();
 
     public static void play(String soundAddress) {
+        Media media = null;
+        try {
+            media = new Media(Graphic.class.getResource(soundAddress).toURI().toString());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        playedSongs.put(soundAddress, mediaPlayer);
+        mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                mediaPlayer.seek(Duration.ZERO);
+            }
+        });
         if(!playedSongs.containsKey(soundAddress)) {
             Media media = null;
             try {
