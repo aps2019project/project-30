@@ -95,7 +95,7 @@ public class GameController implements Initializable {
         });
 
         cheatCodeHandler();
-        Sound.muteAndUnmute(gameRoot, Sound.BATTLE_MAIN_MUSIC_ADDRESS);
+        Sound.muteAndUnmute(Graphic.stage.getScene(), Sound.BATTLE_MAIN_MUSIC_ADDRESS);
 
     }
 

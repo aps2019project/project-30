@@ -39,7 +39,7 @@ public class MainMenuController implements Initializable {
 //        pillars.fitWidthProperty().bind(root.widthProperty().divide(3/2));
 //        pillars.fitHeightProperty().bind(pillars.fitWidthProperty().divide(10 / 3));
 
-        Sound.muteAndUnmute(root,Sound.MAIN_MENU_SOUND_ADDRESS);
+        Sound.muteAndUnmute(Graphic.stage.getScene(),Sound.MAIN_MENU_SOUND_ADDRESS);
 
         Fog fog = new Fog(1000, 300);
         cloudsContainer.getChildren().add(fog.getView());
