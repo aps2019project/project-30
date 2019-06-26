@@ -3,17 +3,11 @@ package com.company.Controllers.graphic;
 import com.company.Controllers.JsonController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
-import com.company.Models.Sound;
 import com.company.Models.User.Account;
-import com.company.Views.Graphic;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.GaussianBlur;
@@ -24,7 +18,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -211,6 +204,14 @@ public class ChooseGameController implements Initializable {
         GaussianBlur gaussianBlur = new GaussianBlur();
         anchorPane.setEffect(gaussianBlur);
         loadSavedGameMenu.setVisible(true);
+        showSavedGamesButtons();
+    }
+
+    private void showSavedGamesButtons() {
+        int index = 1;
+        for (Battle battle:Battle.getSavedBattles()) {
+            loadSavedGameMenu.getChildren().add(createLoadSavedGameButton(index,battle));
+        }
     }
 
     public void closeBuffCreationMenu() {
@@ -222,7 +223,7 @@ public class ChooseGameController implements Initializable {
         closeBuffCreationMenu();
     }
 
-    public HBox getLoadedGamesButton(int index,Battle battle) {
+    public HBox createLoadSavedGameButton(int index, Battle battle) {
         HBox singleCard = new HBox();
         singleCard.getStyleClass().add("hbox_card");
         Label number = new Label();
