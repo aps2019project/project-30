@@ -57,7 +57,9 @@ public class BattleController {
     public void move(int x, int y) {
         Cell cellToGo = battle.getMap().getCellByCoordinates(x, y);
         Soldier soldier = ((Soldier) battle.getTurnToPlay().getSelectedCard());
-        if (cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
+        if (battle.getTurnToPlay().getSelectedCard() != null &&
+                cellIsValidToMove(x, y, ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell())) {
+
             if (!isMovedThisTurn(soldier)) {
                 soldier.getCell().setCardInCell(null);
                 soldier.setCell(battle.getMap().getCellByCoordinates(x, y));

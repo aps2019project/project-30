@@ -93,6 +93,7 @@ public class Soldier extends Card {
             this.getCell().setCardInCell(null);
             this.setCell(null);
             Battle.getPlayingBattle().getBattleController().getGraveYard().add(this);
+            this.setInGraveCards(true);
         }
     }
 
