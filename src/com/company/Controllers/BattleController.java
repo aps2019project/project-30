@@ -171,6 +171,8 @@ public class BattleController {
         switchTurnOfPlayers();
         checkGameIsFinished();
         putRandomCollectibleItemsOnMap();
+        battle.getPlayers()[0].setSelectedCard(null);
+        battle.getPlayers()[1].setSelectedCard(null);
     }
 
     private void switchTurnOfPlayers() {

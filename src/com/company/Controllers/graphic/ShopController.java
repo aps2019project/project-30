@@ -9,12 +9,14 @@ import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.List;
@@ -57,7 +59,7 @@ public class ShopController implements Initializable {
             cards = com.company.Controllers.CollectionController.searchCardsByName(newValue);
         cardforsellContainer.getChildren().clear();
         for (Card card : cards) {
-            AnchorPane cardContainer = new AnchorPane();
+            VBox cardContainer = new VBox();
             createCardContainer(card, cardContainer);
             this.cardforsellContainer.getChildren().add(cardContainer);
         }
@@ -72,13 +74,14 @@ public class ShopController implements Initializable {
             cards = com.company.Controllers.ShopController.searchCardsByName(newValue);
         cardforbuyContainer.getChildren().clear();
         for (Card card : cards) {
-            AnchorPane cardContainer = new AnchorPane();
+            VBox cardContainer = new VBox();
             createCardContainer(card, cardContainer);
             this.cardforbuyContainer.getChildren().add(cardContainer);
         }
     }
 
-    private void createCardContainer(Card card, AnchorPane cardContainer) {
+    private void createCardContainer(Card card, VBox cardContainer) {
+        cardContainer.setAlignment(Pos.CENTER);
         try {
             StackPane cardViewContainer = new StackPane();
             Image cardGif;
@@ -101,9 +104,7 @@ public class ShopController implements Initializable {
         cardContainer.getStyleClass().add("card-shop-container");
         Label title = new Label(card.getName().toUpperCase());
         title.getStyleClass().add("card-shop-name");
-        title.setPrefWidth(200);
         cardContainer.getChildren().add(title);
-        AnchorPane.setTopAnchor(title, 220.0);
         cardContainer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
