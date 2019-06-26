@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Controllers.graphic.GameController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.BattleLog;
 import com.company.Models.Battle.Map.Cell;
@@ -208,8 +209,8 @@ public class BattleController {
                             if (card.getManaPoint() <= battle.getTurnToPlay().getMana()) {
                                 selectCard(card.getId());
                                 insertNewCardToMap(
-                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getxCoordinate() + 1,
-                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getyCoordinate() + 1,
+                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getxCoordinate() -1,
+                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getyCoordinate() -1,
                                         card.getId());
                             }
                         }
@@ -253,6 +254,7 @@ public class BattleController {
                     doSpecialPowerOnEnemySoldier(x, y);
                     break;
                 case FRIEND_SOLDIER://
+                    break;
                 case SELF:
                     doSpecialPowerOnFreindSolder(x, y);
                     break;

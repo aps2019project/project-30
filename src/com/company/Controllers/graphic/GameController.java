@@ -264,7 +264,7 @@ public class GameController implements Initializable {
         return null;
     }
 
-    private void updateTable(GridPane gridPane) {
+    public void updateTable(GridPane gridPane) {
         gridPane.getChildren().clear();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
