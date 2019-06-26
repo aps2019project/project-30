@@ -171,6 +171,8 @@ public class BattleController {
         switchTurnOfPlayers();
         checkGameIsFinished();
         putRandomCollectibleItemsOnMap();
+        battle.getPlayers()[0].setSelectedCard(null);
+        battle.getPlayers()[1].setSelectedCard(null);
     }
 
     private void switchTurnOfPlayers() {
@@ -725,7 +727,7 @@ public class BattleController {
         } else {
             if (!isAttackedThisTurn(selectedCard)) {
                 selectedCard.attack(target.getCardInCell(), isCombo);
-                HandleMinionOnAttackBuffs(target, turnToPlay);
+//                HandleMinionOnAttackBuffs(target, turnToPlay);
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
         }

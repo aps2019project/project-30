@@ -2,11 +2,14 @@ package com.company.Controllers.graphic;
 
 import animatefx.animation.ZoomIn;
 import com.company.Controllers.BattleController;
+import com.company.Controllers.JsonController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.User.Account;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
@@ -25,12 +28,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GameController implements Initializable {
 
+    public static VBox cardDesciption;
     public HBox handContainer;
     public Button endTurn;
     public VBox graveyard;
@@ -43,11 +48,10 @@ public class GameController implements Initializable {
     public GridPane gameTable;
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
-    private Card selectedCard;
-    public static VBox cardDesciption;
-
     boolean tabPressed = false;
     boolean numLockPressed = false;
+    private Card selectedCard;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,11 +59,15 @@ public class GameController implements Initializable {
         gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                switch (event.getCode()){
-                    case TAB: tabPressed = true; break;
-                    case NUM_LOCK: numLockPressed = true; break;
+                switch (event.getCode()) {
+                    case TAB:
+                        tabPressed = true;
+                        break;
+                    case PLUS:
+                        numLockPressed = true;
+                        break;
                 }
-                if(tabPressed && numLockPressed){
+                if (tabPressed && numLockPressed) {
                     Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
                     RootsController.gameController.updateMana();
                 }
@@ -118,7 +126,7 @@ public class GameController implements Initializable {
             handCard.getChildren().add(cardName);
             try {
                 Image cardGif;
-                if (card instanceof Spell)
+                if (card instanceof Spell || card instanceof Item)
                     cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
                 else
                     cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
@@ -168,10 +176,10 @@ public class GameController implements Initializable {
                 }
             });
             pane.setOnMouseEntered(event -> {
-                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()),"game");
+                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()), "game");
                 gameRoot.getChildren().add(cardDesciption);
-                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
-                gameRoot.setLeftAnchor(cardDesciption,pane.getLayoutX());
+                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY() + 200.0);
+                gameRoot.setLeftAnchor(cardDesciption, pane.getLayoutX());
 
             });
             pane.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -192,17 +200,15 @@ public class GameController implements Initializable {
                             BattleController.playerThatHasThisCard(cell.getCardInCell()).equals(Battle.getPlayingBattle().getTurnToPlay()))
                         for (int x = -1; x <= 1; x++)
                             for (int y = -1; y <= 1; y++)
-                                if (Math.abs(x) + Math.abs(y) <= 1) {
-                                    if (BattleController.validCoordinatesRange(i + 1 + x, j + 1 + y)) {
-                                        AnchorPane tileToColoring = getCellFromGameTable(i + x, j + y);
-                                        Cell cellToColoring = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1 + x, j + 1 + y);
-                                        if (cellToColoring.getCardInCell() == null) {
-                                            tileToColoring.getStyleClass().clear();
-                                            tileToColoring.getStyleClass().add("tile-to-deploy");
-                                        } else {
-                                            tileToColoring.getStyleClass().clear();
-                                            tileToColoring.getStyleClass().add("tile-default");
-                                        }
+                                if (BattleController.validCoordinatesRange(i + 1 + x, j + 1 + y)) {
+                                    AnchorPane tileToColoring = getCellFromGameTable(i + x, j + y);
+                                    Cell cellToColoring = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1 + x, j + 1 + y);
+                                    if (cellToColoring.getCardInCell() == null) {
+                                        tileToColoring.getStyleClass().clear();
+                                        tileToColoring.getStyleClass().add("tile-to-deploy");
+                                    } else {
+                                        tileToColoring.getStyleClass().clear();
+                                        tileToColoring.getStyleClass().add("tile-default");
                                     }
                                 }
                 }
@@ -273,6 +279,7 @@ public class GameController implements Initializable {
                                     Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId());
                             updateHand();
                             updateTable(gameTable);
+                            selectedCard = null;
                         } else {
                             Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(
                                     Integer.valueOf(matcher.group("i")),
@@ -403,5 +410,25 @@ public class GameController implements Initializable {
                     cardContainer.getChildren().add(cardName);
                     graveyard.getChildren().add(cardContainer);
                 });
+    }
+
+    public void saveAndExit() {
+        saveGame();
+        exitGame();
+    }
+
+    private static void saveGame() {
+        JsonController.removeFile(Battle.getSavedGamesFilePath());
+        JsonController.writeAllSavedGamesOnFile();
+    }
+
+    private static void exitGame() {
+        RootsController.backToMainMenu();
+    }
+
+    public void loadSavedGamesAndAddToSavedGamesList() {
+        List<Battle> savedGames = JsonController.getSavedGames();
+        if (savedGames != null)
+            Battle.addToSavedBattles(savedGames);
     }
 }

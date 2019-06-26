@@ -126,11 +126,13 @@ public class BattleView {
         //vBox.setSpacing(70);
         Image cardGif;
         try {
-            if (card instanceof Spell)
-                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
+            if (card instanceof Spell || card instanceof Item)
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
             else
-                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
             ImageView imageView = new ImageView(cardGif);
+            imageView.setFitWidth(120);
+            imageView.setFitHeight(120);
 
             if(card instanceof Spell){
                 anchorPane.getChildren().add(imageView);

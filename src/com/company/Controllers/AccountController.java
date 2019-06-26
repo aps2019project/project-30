@@ -82,28 +82,19 @@ public class AccountController {
     }
 
     public static void saveAccounts() {
-        removeFile(Account.getSavedAccountsFilePath());
+        JsonController.removeFile(Account.getSavedAccountsFilePath());
         JsonController.writeAllAccountsOnFile();
     }
 
     public static void saveLoggedInAccount() {
-        AccountController.removeFile(Account.getSavedAccountsFilePath());
+        JsonController.removeFile(Account.getSavedAccountsFilePath());
         JsonController.writeLoggedInAccountOnFile();
     }
 
-    public static boolean removeFile(String fileAddress) {
-        File file = new File(fileAddress);
-        if (file.exists()) {
-            file.delete();
-            return true;
-        }
-        return false;
-    }
-
-    public static void addSavedAccountsToAccounts() {
-        List<Account> inputAccounts = JsonController.getAccounts();
-        if (inputAccounts != null)
-            Account.addToAccounts(inputAccounts);
+    public static void LoadSavedAccountsAndAddToAccounts() {
+        List<Account> accounts = JsonController.getAccounts();
+        if (accounts != null)
+            Account.addToAccounts(accounts);
     }
 
     public static void loadLoggedInAccount() {

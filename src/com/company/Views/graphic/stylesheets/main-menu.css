@@ -18,8 +18,9 @@
 }
 
 .game-background {
-    -fx-background-image: url("../images/game-background-1.jpg");
-    -fx-background-size: cover;
+    -fx-background-image: url("../images/game-background-2.jpg"), url("../images/midground-bg-2.png");
+    -fx-background-size: cover, cover;
+    -fx-background-position: center, left bottom;
 }
 
 .game-endturn {
