@@ -17,6 +17,7 @@ import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
 import com.company.Models.Shop;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Views.BattleView;
@@ -757,6 +758,7 @@ public class BattleController {
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
         }
+        Sound.play(Sound.ATTACK_SOUND_EFFECT_ADDRESS);
     }
 
     private void HandleMinionOnAttackBuffs(Cell target, Player turnToPlay) {
