@@ -117,7 +117,11 @@ public class GameController implements Initializable {
             handCard.setPrefHeight(180);
             handCard.getChildren().add(cardName);
             try {
-                Image cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
+                Image cardGif;
+                if (card instanceof Spell)
+                    cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
+                else
+                    cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
                 ImageView cardView = new ImageView(cardGif);
                 cardView.setFitWidth(150);
                 cardView.setFitHeight(150);

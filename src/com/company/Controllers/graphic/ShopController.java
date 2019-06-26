@@ -83,10 +83,12 @@ public class ShopController implements Initializable {
             StackPane cardViewContainer = new StackPane();
             Image cardGif;
             if (card instanceof Spell)
-                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
             else
-                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
             ImageView cardView = new ImageView(cardGif);
+            cardView.setFitWidth(150);
+            cardView.setFitHeight(150);
             cardViewContainer.getChildren().add(cardView);
             cardContainer.getChildren().add(cardViewContainer);
             cardViewContainer.setPrefWidth(200);

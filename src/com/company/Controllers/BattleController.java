@@ -186,10 +186,12 @@ public class BattleController {
             if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
                 for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
                     selectCard(aliveCard.getId());
-                    move(
-                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
-                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
-                    );
+                    if ((Soldier) battle.getTurnToPlay().getSelectedCard() != null) {
+                        move(
+                                ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
+                                ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
+                        );
+                    }
                 }
             }
         }
