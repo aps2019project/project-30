@@ -2,6 +2,9 @@ package com.company.Models;
 
 import com.company.Views.Graphic;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -41,6 +44,27 @@ public class Sound {
             Sound.pause(soundAddress);
         else
             play(soundAddress);
+    }
+
+    public static void muteAndUnmute(AnchorPane root, String soundAddress) {
+        root.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            boolean ctrlPressed = false;
+            boolean mPressed = false;
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case CONTROL:
+                        ctrlPressed = true;
+                        break;
+                    case M:
+                        mPressed = true;
+                        break;
+                }
+                if (ctrlPressed && mPressed) {
+                    Sound.changeMusicState(soundAddress);
+                }
+            }
+        });
     }
 
 }

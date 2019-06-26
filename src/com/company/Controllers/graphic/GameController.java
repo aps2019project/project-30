@@ -77,22 +77,7 @@ public class GameController implements Initializable {
             }
         });
 
-        gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case CONTROL:
-                        ctrlPressed = true;
-                        break;
-                    case M:
-                        MPressed = true;
-                        break;
-                }
-                if (ctrlPressed && MPressed) {
-                    Sound.changeMusicState(Sound.BATTLE_MAIN_MUSIC_ADDRESS);
-                }
-            }
-        });
+        Sound.muteAndUnmute(gameRoot, Sound.BATTLE_MAIN_MUSIC_ADDRESS);
 
     }
 
