@@ -59,6 +59,12 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        cheatCodeHandler();
+        Sound.muteAndUnmute(gameRoot, Sound.BATTLE_MAIN_MUSIC_ADDRESS);
+
+    }
+
+    private void cheatCodeHandler() {
         gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -76,9 +82,6 @@ public class GameController implements Initializable {
                 }
             }
         });
-
-        Sound.muteAndUnmute(gameRoot, Sound.BATTLE_MAIN_MUSIC_ADDRESS);
-
     }
 
     public void init() {

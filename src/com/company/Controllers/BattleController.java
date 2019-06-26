@@ -206,6 +206,7 @@ public class BattleController {
                              i++) {
                             Card card = battle.getTurnToPlay().getDeck().getHand().getCards().get(i);
                             if (card.getManaPoint() <= battle.getTurnToPlay().getMana()) {
+                                selectCard(card.getId());
                                 insertNewCardToMap(
                                         ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getxCoordinate() + 1,
                                         ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getyCoordinate() + 1,

@@ -19,37 +19,31 @@ public class Sound {
     private static HashMap<String, MediaPlayer> playedSongs = new HashMap<>();
 
     public static void play(String soundAddress) {
-        Media media = null;
-        try {
-            media = new Media(Graphic.class.getResource(soundAddress).toURI().toString());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+        if(!playedSongs.containsKey(soundAddress)) {
+            Media media = null;
+            try {
+                media = new Media(Graphic.class.getResource(soundAddress).toURI().toString());
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            playedSongs.put(soundAddress, mediaPlayer);
+            mediaPlayer.play();
         }
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        playedSongs.put(soundAddress, mediaPlayer);
-        mediaPlayer.play();
     }
 
     public static void pause(String soundAddress) {
-        playedSongs.get(soundAddress).pause();
-        playedSongs.remove(soundAddress);
-    }
-
-    private static boolean isPlaying(String soundAddress) {
-        return playedSongs.containsKey(soundAddress);
-    }
-
-    public static void changeMusicState(String soundAddress) {
-        if (isPlaying(soundAddress))
-            Sound.pause(soundAddress);
-        else
-            play(soundAddress);
+        if(playedSongs.containsKey(soundAddress)) {
+            playedSongs.get(soundAddress).pause();
+            playedSongs.remove(soundAddress);
+        }
     }
 
     public static void muteAndUnmute(AnchorPane root, String soundAddress) {
         root.setOnKeyReleased(new EventHandler<KeyEvent>() {
             boolean ctrlPressed = false;
             boolean mPressed = false;
+            boolean pPressed = false;
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -59,9 +53,16 @@ public class Sound {
                     case M:
                         mPressed = true;
                         break;
+                    case P:
+                        pPressed = true;
+                        break;
                 }
                 if (ctrlPressed && mPressed) {
-                    Sound.changeMusicState(soundAddress);
+                    pause(soundAddress);
+                    mPressed = ctrlPressed = false;
+                } else if (ctrlPressed && pPressed) {
+                    play(soundAddress);
+                    pPressed = ctrlPressed = false;
                 }
             }
         });
