@@ -3,6 +3,8 @@ package com.company.Models;
 import com.company.Views.Graphic;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -20,21 +22,6 @@ public class Sound {
     private static HashMap<String, MediaPlayer> playedSongs = new HashMap<>();
 
     public static void play(String soundAddress) {
-//        Media media = null;
-//        try {
-//            media = new Media(Graphic.class.getResource(soundAddress).toURI().toString());
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        }
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        playedSongs.put(soundAddress, mediaPlayer);
-//        mediaPlayer.play();
-//        mediaPlayer.setOnEndOfMedia(new Runnable() {
-//            @Override
-//            public void run() {
-//                mediaPlayer.seek(Duration.ZERO);
-//            }
-//        });
         if(!playedSongs.containsKey(soundAddress)) {
             Media media = null;
             try {
@@ -55,7 +42,7 @@ public class Sound {
         }
     }
 
-    public static void muteAndUnmute(AnchorPane root, String soundAddress) {
+    public static void muteAndUnmute(Scene root, String soundAddress) {
         root.setOnKeyReleased(new EventHandler<KeyEvent>() {
             boolean ctrlPressed = false;
             boolean mPressed = false;
