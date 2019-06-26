@@ -20,6 +20,7 @@ public class Sound {
     final public static String MAIN_MENU_SOUND_ADDRESS = "graphic/sounds/mainmenu.mp3";
     final public static String BATTLE_MAIN_MUSIC_ADDRESS = "graphic/sounds/battlemusic.m4a";
     final public static String ATTACK_SOUND_EFFECT_ADDRESS = "graphic/sounds/attack.mp3";
+    final public static String SELECT_SOUND_EFFECT_ADDRESS = "graphic/sounds/select.m4a";
     private static HashMap<String, MediaPlayer> playedSongs = new HashMap<>();
 
     public static void play(String soundAddress) {

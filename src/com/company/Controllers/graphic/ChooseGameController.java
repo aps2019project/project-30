@@ -5,6 +5,7 @@ import com.company.Controllers.JsonController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.animation.AnimationTimer;
@@ -76,13 +77,14 @@ public class ChooseGameController implements Initializable {
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("hoyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 RootsController.backToMainMenu();
             }
         });
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 numberOfPlayers="singlePlayer";
                 multiorsingle.setVisible(false);
                 secondPageSingle.setVisible(true);
@@ -91,6 +93,7 @@ public class ChooseGameController implements Initializable {
         multiPlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 numberOfPlayers="multiPlayer";
                 selectAcount.setVisible(true);
                 multiorsingle.setVisible(false);
@@ -99,6 +102,7 @@ public class ChooseGameController implements Initializable {
         story.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 secondPageSingle.setVisible(false);
                 storyorcustom="story";
                 levels.setVisible(true);
@@ -107,6 +111,7 @@ public class ChooseGameController implements Initializable {
         custom.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 secondPageSingle.setVisible(false);
                 storyorcustom="custom";
                 modeBox.setVisible(true);
@@ -135,18 +140,21 @@ public class ChooseGameController implements Initializable {
         killingGenerall.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 mode=Mode.KILLING_GENERAL;
             }
         });
         captureMostFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 mode=Mode.COLLECTING_FLAGS;
             }
         });
         captureTheFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 mode=Mode.CAPTURE_THE_FLAG;
             }
         });
@@ -162,6 +170,7 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=1;
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 mode=Mode.KILLING_GENERAL;
             }
         });
@@ -169,6 +178,7 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=2;
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 mode=Mode.CAPTURE_THE_FLAG;
             }
         });
@@ -176,6 +186,7 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=3;
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
                 mode=Mode.COLLECTING_FLAGS;
             }
         });

@@ -4,6 +4,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXTabPane;
@@ -41,6 +42,7 @@ public class ShopController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         back.setOnMouseClicked(event -> {
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
             RootsController.backToMainMenu();
         });
 
