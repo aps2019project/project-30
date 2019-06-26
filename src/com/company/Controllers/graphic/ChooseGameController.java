@@ -1,29 +1,26 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.BattleController;
+import com.company.Controllers.JsonController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
-import com.company.Models.Sound;
 import com.company.Models.User.Account;
-import com.company.Views.Graphic;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +30,9 @@ import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
 
 public class ChooseGameController implements Initializable {
+    public AnchorPane anchorPane;
+    public StackPane loadSavedGameMenu;
+
     public ImageView back;
 //    public Button single;
     public String numberOfPlayers;
@@ -203,7 +203,30 @@ public class ChooseGameController implements Initializable {
     public void singlePlayer(ActionEvent actionEvent) {
     }
 
-    public HBox getLoadedGamesButton(int index,Battle battle) {
+    public void openLoadSavedGameMenu() {
+        GaussianBlur gaussianBlur = new GaussianBlur();
+        anchorPane.setEffect(gaussianBlur);
+        loadSavedGameMenu.setVisible(true);
+        showSavedGamesButtons();
+    }
+
+    private void showSavedGamesButtons() {
+        int index = 1;
+        for (Battle battle:Battle.getSavedBattles()) {
+            loadSavedGameMenu.getChildren().add(createLoadSavedGameButton(index,battle));
+        }
+    }
+
+    public void closeBuffCreationMenu() {
+        loadSavedGameMenu.setVisible(false);
+        anchorPane.setEffect(null);
+    }
+
+    public void cancelLoadSavedGame() {
+        closeBuffCreationMenu();
+    }
+
+    public HBox createLoadSavedGameButton(int index, Battle battle) {
         HBox singleCard = new HBox();
         singleCard.getStyleClass().add("hbox_card");
         Label number = new Label();

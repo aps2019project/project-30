@@ -12,9 +12,9 @@
 <?import com.jfoenix.controls.JFXMasonryPane?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.company.Controllers.graphic.ChooseGameController"
-            styleClass="choose-game-root">
-    <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+            fx:controller="com.company.Controllers.graphic.ChooseGameController">
+    <AnchorPane fx:id="anchorPane" styleClass="choose-game-root" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>
     <VBox fx:id="multiorsingle" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
@@ -105,4 +105,15 @@
         </HBox>
             <TextField alignment="CENTER" fx:id="flagsinstory" promptText="Flags" styleClass="t"/>
     </VBox>
+    <Button fx:id="loadSavedGames" text="LOAD SAVED GAMES" styleClass="right-button" onAction="#openLoadSavedGameMenu" AnchorPane.leftAnchor="50"
+            AnchorPane.bottomAnchor="50"/>
+    </AnchorPane>
+    <StackPane fx:id="loadSavedGameMenu" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
+        <VBox alignment="CENTER" spacing="20" maxWidth="450" maxHeight="300" style="-fx-background-color: grey; -fx-padding: 40;-fx-background-radius: 20">
+            <HBox alignment="CENTER" spacing="20">
+                <JFXButton text="Cancel" onAction="#cancelLoadSavedGame" styleClass="login"/>
+            </HBox>
+        </VBox>
+    </StackPane>
 </AnchorPane>
+

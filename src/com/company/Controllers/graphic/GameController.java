@@ -9,8 +9,11 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.Sound;
+import com.company.Models.User.Account;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
+import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,6 +32,7 @@ import javafx.scene.layout.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,6 +53,8 @@ public class GameController implements Initializable {
     public ImageView player2HeroPic;
     boolean tabPressed = false;
     boolean numLockPressed = false;
+    boolean ctrlPressed = false;
+    boolean MPressed = false;
     private Card selectedCard;
     public static VBox vvBox;
     public static VBox vvvBox;
@@ -88,6 +94,12 @@ public class GameController implements Initializable {
             }
         });
 
+        cheatCodeHandler();
+        Sound.muteAndUnmute(gameRoot, Sound.BATTLE_MAIN_MUSIC_ADDRESS);
+
+    }
+
+    private void cheatCodeHandler() {
         gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -105,7 +117,6 @@ public class GameController implements Initializable {
                 }
             }
         });
-
     }
 
     public void init() {
@@ -288,15 +299,15 @@ public class GameController implements Initializable {
         return null;
     }
 
-    private void updateTable(GridPane gridPane) {
+    public void updateTable(GridPane gridPane) {
         gridPane.getChildren().clear();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 5; j++) {
                 Cell cell = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1, j + 1);
                 Soldier soldierInCell = (Soldier) (cell.getCardInCell());
                 AnchorPane tile = new AnchorPane();
-                tile.setMaxSize(80, 80);
-                tile.setPrefSize(80, 80);
+                tile.setMaxSize(100, 100);
+                tile.setPrefSize(100,    100);
                 tile.setId((i + 1) + ":" + (j + 1));
                 tile.setOnMouseClicked(this::tileClickHandler);
 
@@ -324,9 +335,22 @@ public class GameController implements Initializable {
                     Image flagGif;
                     flagGif = new Image("com/company/Views/graphic/images/gifs/flag.gif");
                     ImageView flagView = new ImageView(flagGif);
-                    flagView.setFitWidth(30);
-                    flagView.setFitWidth(42);
+                    flagView.setFitWidth(40);
+                    flagView.setFitHeight(56);
                     flagContainer.getChildren().add(flagView);
+                    tile.getChildren().add(flagContainer);
+                    AnchorPane.setTopAnchor(flagContainer, 0.0);
+                    AnchorPane.setBottomAnchor(flagContainer, 0.0);
+                    AnchorPane.setRightAnchor(flagContainer, 0.0);
+                    AnchorPane.setLeftAnchor(flagContainer, 0.0);
+                } else if (cell.getItem() != null) {
+                    StackPane flagContainer = new StackPane();
+                    Image itemImage;
+                    itemImage = new Image("com/company/Views/graphic/images/tile-item.png");
+                    ImageView itemView = new ImageView(itemImage);
+                    itemView.setFitWidth(80);
+                    itemView.setFitWidth(60);
+                    flagContainer.getChildren().add(itemView);
                     tile.getChildren().add(flagContainer);
                     AnchorPane.setTopAnchor(flagContainer, 0.0);
                     AnchorPane.setBottomAnchor(flagContainer, 0.0);
@@ -415,8 +439,8 @@ public class GameController implements Initializable {
                     else
                         cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
                     ImageView cardView = new ImageView(cardGif);
-                    cardView.setFitWidth(40);
-                    cardView.setFitHeight(40);
+                    cardView.setFitWidth(80);
+                    cardView.setFitHeight(80);
                     cardContainer.getChildren().add(cardView);
                     graveyard.getChildren().add(cardContainer);
                 });
@@ -429,6 +453,7 @@ public class GameController implements Initializable {
 
     private static void saveGame() {
         JsonController.removeFile(Battle.getSavedGamesFilePath());
+        Battle.addToSavedBattles(Battle.getPlayingBattle());
         JsonController.writeAllSavedGamesOnFile();
     }
 

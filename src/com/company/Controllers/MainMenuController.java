@@ -1,23 +1,19 @@
 package com.company.Controllers;
 
-import animatefx.animation.FadeOut;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.company.Views.graphic.Fog;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,6 +41,7 @@ public class MainMenuController implements Initializable {
 //        pillars.fitWidthProperty().bind(root.widthProperty().divide(3/2));
 //        pillars.fitHeightProperty().bind(pillars.fitWidthProperty().divide(10 / 3));
 
+        Sound.muteAndUnmute(root,Sound.MAIN_MENU_SOUND_ADDRESS);
 
         Fog fog = new Fog(1000, 300);
         cloudsContainer.getChildren().add(fog.getView());
