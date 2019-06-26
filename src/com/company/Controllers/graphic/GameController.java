@@ -33,6 +33,7 @@ import java.util.regex.Pattern;
 
 public class GameController implements Initializable {
 
+    public static VBox cardDesciption;
     public HBox handContainer;
     public Button endTurn;
     public VBox graveyard;
@@ -45,11 +46,18 @@ public class GameController implements Initializable {
     public GridPane gameTable;
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
-    private Card selectedCard;
-    public static VBox cardDesciption;
-
     boolean tabPressed = false;
     boolean numLockPressed = false;
+    private Card selectedCard;
+
+    private static void saveGame() {
+        JsonController.removeFile(Battle.getSavedGamesFilePath());
+        JsonController.writeAllSavedGamesOnFile();
+    }
+
+    private static void exitGame() {
+        RootsController.backToMainMenu();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,11 +65,15 @@ public class GameController implements Initializable {
         gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                switch (event.getCode()){
-                    case TAB: tabPressed = true; break;
-                    case PLUS: numLockPressed = true; break;
+                switch (event.getCode()) {
+                    case TAB:
+                        tabPressed = true;
+                        break;
+                    case PLUS:
+                        numLockPressed = true;
+                        break;
                 }
-                if(tabPressed && numLockPressed){
+                if (tabPressed && numLockPressed) {
                     Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
                     RootsController.gameController.updateMana();
                 }
@@ -170,10 +182,10 @@ public class GameController implements Initializable {
                 }
             });
             pane.setOnMouseEntered(event -> {
-                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()),"game");
+                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()), "game");
                 gameRoot.getChildren().add(cardDesciption);
-                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
-                gameRoot.setLeftAnchor(cardDesciption,pane.getLayoutX());
+                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY() + 200.0);
+                gameRoot.setLeftAnchor(cardDesciption, pane.getLayoutX());
 
             });
             pane.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -194,17 +206,15 @@ public class GameController implements Initializable {
                             BattleController.playerThatHasThisCard(cell.getCardInCell()).equals(Battle.getPlayingBattle().getTurnToPlay()))
                         for (int x = -1; x <= 1; x++)
                             for (int y = -1; y <= 1; y++)
-                                if (Math.abs(x) + Math.abs(y) <= 1) {
-                                    if (BattleController.validCoordinatesRange(i + 1 + x, j + 1 + y)) {
-                                        AnchorPane tileToColoring = getCellFromGameTable(i + x, j + y);
-                                        Cell cellToColoring = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1 + x, j + 1 + y);
-                                        if (cellToColoring.getCardInCell() == null) {
-                                            tileToColoring.getStyleClass().clear();
-                                            tileToColoring.getStyleClass().add("tile-to-deploy");
-                                        } else {
-                                            tileToColoring.getStyleClass().clear();
-                                            tileToColoring.getStyleClass().add("tile-default");
-                                        }
+                                if (BattleController.validCoordinatesRange(i + 1 + x, j + 1 + y)) {
+                                    AnchorPane tileToColoring = getCellFromGameTable(i + x, j + y);
+                                    Cell cellToColoring = Battle.getPlayingBattle().getMap().getCellByCoordinates(i + 1 + x, j + 1 + y);
+                                    if (cellToColoring.getCardInCell() == null) {
+                                        tileToColoring.getStyleClass().clear();
+                                        tileToColoring.getStyleClass().add("tile-to-deploy");
+                                    } else {
+                                        tileToColoring.getStyleClass().clear();
+                                        tileToColoring.getStyleClass().add("tile-default");
                                     }
                                 }
                 }
@@ -408,17 +418,8 @@ public class GameController implements Initializable {
                 });
     }
 
-    public void saveAndExit(){
+    public void saveAndExit() {
         saveGame();
         exitGame();
-    }
-
-    private static void saveGame(){
-        JsonController.removeFile(Battle.getSavedGamesFilePath());
-        JsonController.writeAllSavedGamesOnFile();
-    }
-
-    private static void exitGame(){
-        RootsController.backToMainMenu();
     }
 }

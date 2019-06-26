@@ -95,25 +95,6 @@
     "buffsCasted": []
   },
   {
-    "name": "Lighting Bolt",
-    "manaPoint": 2,
-    "priceInDrake": 1250,
-    "isInGraveCards": false,
-    "targetType": "ENEMY_HERO",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "HEALTH_WEAKNESS",
-        "isCasted": false,
-        "castTime": 1,
-        "remTurnToCast": 0,
-        "value": 8,
-        "className": "com.company.Models.Buff.HealthWeaknessBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
     "name": "Poison Lake",
     "manaPoint": 5,
     "priceInDrake": 900,
@@ -349,75 +330,6 @@
     "buffsCasted": []
   },
   {
-    "name": "Tir Doshakh",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "increase attackPower 2 units",
-    "isInGraveCards": false,
-    "targetType": "FRIEND_SOLDIER",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "ATTACK_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 2,
-        "className": "com.company.Models.Buff.AttackPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Elixir",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "increase attackPower 3 units \u0026 increase healthPower 2",
-    "isInGraveCards": false,
-    "targetType": "FRIEND_SOLDIER",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "ATTACK_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 3,
-        "className": "com.company.Models.Buff.AttackPowerBuff"
-      },
-      {
-        "type": "POSSETIVE",
-        "name": "HEALTH_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 2,
-        "className": "com.company.Models.Buff.HealthPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Majoon Mana",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "increase 2 mana next round",
-    "isInGraveCards": false,
-    "targetType": "FRIEND_HERO",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "MANA",
-        "isCasted": false,
-        "castTime": 1,
-        "remTurnToCast": 1,
-        "value": 3,
-        "className": "com.company.Models.Buff.ManaBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
     "name": "Dispel",
     "manaPoint": 0,
     "priceInDrake": 2100,
@@ -451,25 +363,6 @@
         "remTurnToCast": 0,
         "value": 4,
         "className": "com.company.Models.Buff.AttackPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Kings Gaurd",
-    "manaPoint": 9,
-    "priceInDrake": 1750,
-    "isInGraveCards": false,
-    "targetType": "NEARBY_EIGHT_CELL",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "HEALTH_WEAKNESS",
-        "isCasted": false,
-        "castTime": 1,
-        "remTurnToCast": 0,
-        "value": 100,
-        "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
     ],
     "buffsCasted": []

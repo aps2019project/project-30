@@ -727,7 +727,7 @@ public class BattleController {
         } else {
             if (!isAttackedThisTurn(selectedCard)) {
                 selectedCard.attack(target.getCardInCell(), isCombo);
-                HandleMinionOnAttackBuffs(target, turnToPlay);
+//                HandleMinionOnAttackBuffs(target, turnToPlay);
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
         }
