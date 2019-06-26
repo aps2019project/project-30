@@ -1,6 +1,7 @@
 package com.company.Controllers.graphic;
 
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
@@ -85,7 +86,7 @@ public class ShopController implements Initializable {
         try {
             StackPane cardViewContainer = new StackPane();
             Image cardGif;
-            if (card instanceof Spell)
+            if (card instanceof Spell || card instanceof Item)
                 cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
             else
                 cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");

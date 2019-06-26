@@ -5,6 +5,7 @@ import com.company.Controllers.BattleController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Views.BattleView;
@@ -118,7 +119,7 @@ public class GameController implements Initializable {
             handCard.getChildren().add(cardName);
             try {
                 Image cardGif;
-                if (card instanceof Spell)
+                if (card instanceof Spell || card instanceof Item)
                     cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
                 else
                     cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
