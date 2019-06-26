@@ -32,8 +32,10 @@ import static javafx.scene.paint.Color.WHITE;
 public class ChooseGameController implements Initializable {
     public AnchorPane anchorPane;
     public StackPane loadSavedGameMenu;
+    public TextField enterTime;
 
     public ImageView back;
+    public boolean tr=false;
 //    public Button single;
     public String numberOfPlayers;
     public String storyorcustom;
@@ -62,6 +64,14 @@ public class ChooseGameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        enterTime.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if(!newValue.isEmpty()) {
+                MainMenuController.timeTurn = Integer.parseInt(newValue) * 1000000;
+                tr=true;
+            }
+        }));
+
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -141,6 +151,8 @@ public class ChooseGameController implements Initializable {
         });
         flagsincustom.textProperty().addListener(((observable, oldValue, newValue) -> {
             new Battle(storyLevel,Integer.parseInt(newValue));
+            if(tr)
+                setEnd();
             RootsController.game();
         }));
 
@@ -168,6 +180,8 @@ public class ChooseGameController implements Initializable {
 
         flagsinstory.textProperty().addListener(((observable, oldValue, newValue) -> {
             new Battle(storyLevel,Integer.parseInt(newValue));
+            if(tr)
+                setEnd();
             RootsController.game();
         }));
 

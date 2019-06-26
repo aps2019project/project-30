@@ -18,6 +18,7 @@
         <Image url="@../images/back-button.png"/>
     </ImageView>
     <VBox fx:id="multiorsingle" alignment="CENTER" spacing="50" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <TextField fx:id="enterTime" promptText="Enter turn time" maxWidth="120"/>
         <HBox alignment="CENTER" spacing="50" >
             <VBox fx:id="singlePlayer" alignment="BOTTOM_CENTER" styleClass="killing-general-mode" prefWidth="300" prefHeight="550">
                 <Label text="SINGLE PLAYER" styleClass="choose-game-title"/>
