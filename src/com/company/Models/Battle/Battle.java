@@ -21,19 +21,19 @@ import java.util.List;
 
 
 public class Battle {
-    final private static String SAVED_GAMES_FILE_PATH = "SavedGames/savedGames.json";
-    private static List<Battle> savedBattles = new ArrayList<>();
-    private static Battle playingBattle;
+    final private transient static String SAVED_GAMES_FILE_PATH = "SavedGames/savedGames.json";
+    private transient static List<Battle> savedBattles = new ArrayList<>();
+    private transient static Battle playingBattle;
     private Mode mode;
     private Map map = new Map();
     private BattleType battleType;
-    private Player[] players = new Player[2];
-    private Player turnToPlay;
-    private BattleController battleController = new BattleController(this);
-    private List<Flag> flags = new ArrayList<>();
-    private BattleView battleView = new BattleView(this);
+    private transient Player[] players = new Player[2];
+    private transient Player turnToPlay;
+    private transient BattleController battleController = new BattleController(this);
+    private transient List<Flag> flags = new ArrayList<>();
+    private transient BattleView battleView = new BattleView(this);
     private static int lastBattleCardId = 0;
-    private int winningPrize;
+    private transient int winningPrize;
     private int turn = 1;
     private int timePassedInSeconds = 0;
     private boolean botIsActive = false;
@@ -332,6 +332,18 @@ public class Battle {
     }
 
     public static void addToSavedBattles(List<Battle> savedBattles) {
-        Battle.savedBattles = savedBattles;
+        Battle.savedBattles.addAll(savedBattles);
+    }
+
+    public static void addToSavedBattles(Battle savedBattle) {
+        Battle.savedBattles.add(savedBattle);
+    }
+
+    public void setBattleController() {
+        this.battleController = new BattleController(this);
+    }
+
+    public void setBattleView() {
+        this.battleView = new BattleView(this);
     }
 }

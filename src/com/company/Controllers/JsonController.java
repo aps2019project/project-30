@@ -122,7 +122,12 @@ public class JsonController {
             try (FileReader reader = new FileReader(Battle.getSavedGamesFilePath())) {
                 Type savedGamesType = new TypeToken<ArrayList<Battle>>() {
                 }.getType();
-                return getGson().fromJson(reader, savedGamesType);
+                List<Battle> battles = getGson().fromJson(reader, savedGamesType);
+                for (Battle battle :battles) {
+                    battle.setBattleController();
+                    battle.setBattleView();
+                }
+                return battles;
             } catch (IOException e) {
                 e.printStackTrace();
                 return new ArrayList<>();

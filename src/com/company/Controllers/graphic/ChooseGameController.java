@@ -1,5 +1,6 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.BattleController;
 import com.company.Controllers.JsonController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
@@ -193,14 +194,7 @@ public class ChooseGameController implements Initializable {
     public void singlePlayer(ActionEvent actionEvent) {
     }
 
-    public void loadSavedGamesAndAddToSavedGamesList() {
-        List<Battle> savedGames = JsonController.getSavedGames();
-        if (savedGames != null)
-            Battle.addToSavedBattles(savedGames);
-    }
-
     public void openLoadSavedGameMenu() {
-        loadSavedGamesAndAddToSavedGamesList();
         GaussianBlur gaussianBlur = new GaussianBlur();
         anchorPane.setEffect(gaussianBlur);
         loadSavedGameMenu.setVisible(true);

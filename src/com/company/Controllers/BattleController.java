@@ -892,4 +892,10 @@ public class BattleController {
             cellEffects.add(buff.clone());
         }
     }
+
+    public static void loadSavedGamesAndAddToSavedGamesList() {
+        List<Battle> savedGames = JsonController.getSavedGames();
+        if (savedGames != null)
+            Battle.addToSavedBattles(savedGames);
+    }
 }

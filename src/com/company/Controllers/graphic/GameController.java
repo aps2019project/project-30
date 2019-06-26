@@ -419,6 +419,7 @@ public class GameController implements Initializable {
 
     private static void saveGame() {
         JsonController.removeFile(Battle.getSavedGamesFilePath());
+        Battle.addToSavedBattles(Battle.getPlayingBattle());
         JsonController.writeAllSavedGamesOnFile();
     }
 

@@ -1,6 +1,7 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.BattleController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.User.Account;
@@ -30,6 +31,7 @@ public class Graphic extends Application {
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
             collection = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
             AccountController.LoadSavedAccountsAndAddToAccounts();
+            BattleController.loadSavedGamesAndAddToSavedGamesList();
         } catch (IOException e) {
             e.printStackTrace();
         }
