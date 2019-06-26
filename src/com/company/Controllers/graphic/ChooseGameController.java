@@ -56,6 +56,13 @@ public class ChooseGameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("hoyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+                RootsController.backToMainMenu();
+            }
+        });
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -156,9 +163,7 @@ public class ChooseGameController implements Initializable {
         }));
 
 
-        back.setOnMouseClicked(event -> {
-            RootsController.backToMainMenu();
-        });
+
 
     }
 

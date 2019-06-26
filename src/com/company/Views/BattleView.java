@@ -15,6 +15,8 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javafx.scene.paint.Color.WHITE;
+
 public class BattleView {
     Battle battle;
 
@@ -108,37 +110,69 @@ public class BattleView {
                 "help: to seeing this help!\n");
     }
 
-    public static VBox cardDesciption(Card card) {
+    public static VBox cardDesciption(Card card,String state) {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setPrefWidth(200);
         vBox.setPrefHeight(262);
-        vBox.setSpacing(50);
+        AnchorPane anchorPane=new AnchorPane();
+        anchorPane.setPrefWidth(200);
+        anchorPane.setPrefHeight(262);
+        vBox.getChildren().add(anchorPane);
+        //vBox.setSpacing(70);
         Image cardGif;
         try {
             if (card instanceof Spell)
-                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + ".gif");
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_actionbar.gif");
             else
-                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_breathing.gif");
-                ImageView imageView = new ImageView(cardGif);
-                vBox.getChildren().add(imageView);
+                cardGif = new Image("com/company/Views/graphic/images/gifs/" + card.getName() + "_idle.gif");
+            ImageView imageView = new ImageView(cardGif);
+            imageView.setFitWidth(120);
+            imageView.setFitHeight(120);
+
+            if(card instanceof Spell){
+                anchorPane.getChildren().add(imageView);
+                anchorPane.setTopAnchor(imageView, 70.5);
+                anchorPane.setLeftAnchor(imageView, 78.0);
+            }
+            else {
+                anchorPane.getChildren().add(imageView);
+                anchorPane.setTopAnchor(imageView, 30.5);
+                anchorPane.setLeftAnchor(imageView, 50.0);
+            }
         }catch (Exception e) { }
 
+        if(state.equals("collection")){
+            vBox.getStyleClass().add("collection-cards-description");
+        }
+
         if (!(card instanceof Spell)) {
-            vBox.getStyleClass().add("solder-description");
+            if(state.equals("game"))vBox.getStyleClass().add("solder-description");
             HBox powers = new HBox();
-            powers.setSpacing(50);
+            powers.setSpacing(100);
             Label heath = new Label(String.valueOf(((Soldier) card).getHealth()));
             Label attack = new Label(String.valueOf(((Soldier) card).getAttackPower()));
+            attack.setTextFill(WHITE);
+            heath.setTextFill(WHITE);
             powers.getChildren().add(attack);
             powers.getChildren().add(heath);
-            vBox.getChildren().add(powers);
+            anchorPane.setLeftAnchor(powers,38.0);
+            anchorPane.setTopAnchor(powers,145.0);
+            anchorPane.getChildren().add(powers);
         }
         else {
-            vBox.getStyleClass().add("spell-description");
+            if(state.equals("game"))vBox.getStyleClass().add("spell-description");
         }
         Label name = new Label(card.getName());
-        vBox.getChildren().add(name);
+        anchorPane.getChildren().add(name);
+        anchorPane.setBottomAnchor(name,35.0);
+        if(card instanceof Spell){
+            anchorPane.setLeftAnchor(name,80.8);
+        }
+        else
+        anchorPane.setLeftAnchor(name,60.8);
+        name.setTextFill(WHITE);
+
         return vBox;
     }
 }

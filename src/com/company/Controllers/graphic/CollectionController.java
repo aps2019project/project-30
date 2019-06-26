@@ -4,8 +4,10 @@ import com.company.Controllers.JsonController;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
+import com.company.Views.BattleView;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
@@ -38,6 +40,7 @@ import static javafx.scene.paint.Color.*;
 
 public class CollectionController implements Initializable {
     public static ErrorType creatDeckErrorType;
+    public AnchorPane mainAnchor;
     private final ToggleGroup mainDeckToggleGroup = new ToggleGroup();
     public JFXTextField deckName;
     public AnchorPane deck_bar;
@@ -55,6 +58,7 @@ public class CollectionController implements Initializable {
     public String selected_deck=null;
     public ScrollPane firstScroll;
     public ScrollPane secondScroll;
+    public static VBox description;
 
 
     public void createDeck(ActionEvent actionEvent) {
@@ -164,6 +168,21 @@ public class CollectionController implements Initializable {
                     deck_contaner_content_bar.getChildren().remove(singleCard);
                 }
             });
+            singleCard.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    description= BattleView.cardDesciption(card,"collection");
+                    mainAnchor.setRightAnchor(description,410.0);
+                    mainAnchor.setTopAnchor(description,singleCard.getLayoutY());
+                    mainAnchor.getChildren().add(description);
+                }
+            });
+            singleCard.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    mainAnchor.getChildren().remove(description);
+                }
+            });
         }
         backtodecks.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -251,4 +270,6 @@ public class CollectionController implements Initializable {
         Account.getLoggedInAccount().getDecks().add(importedDeck);
         updateDecks();
     }
+
+
 }

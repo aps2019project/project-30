@@ -18,7 +18,7 @@
 }
 
 .game-background {
-    -fx-background-image: url("../images/game-background-1.jpg");
+    -fx-background-image: url("../images/game-background-2.jpg"), url("../images/midground-bg-1.png");
     -fx-background-size: cover;
 }
 

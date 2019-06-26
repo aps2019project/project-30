@@ -171,6 +171,8 @@ public class BattleController {
         switchTurnOfPlayers();
         checkGameIsFinished();
         putRandomCollectibleItemsOnMap();
+        battle.getPlayers()[0].setSelectedCard(null);
+        battle.getPlayers()[1].setSelectedCard(null);
     }
 
     private void switchTurnOfPlayers() {
@@ -186,10 +188,12 @@ public class BattleController {
             if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
                 for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
                     selectCard(aliveCard.getId());
-                    move(
-                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
-                            ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
-                    );
+                    if ((Soldier) battle.getTurnToPlay().getSelectedCard() != null) {
+                        move(
+                                ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
+                                ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
+                        );
+                    }
                 }
             }
         }
@@ -532,8 +536,10 @@ public class BattleController {
     }
 
     private boolean isCardIdValid(String cardId) {
-        List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
-        playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
+        List<Card> playerCards = battle.getPlayers()[0].getDeck().getDeckCards();
+        playerCards.addAll(battle.getPlayers()[1].getDeck().getDeckCards());
+        playerCards.add(battle.getPlayers()[0].getDeck().getHeroCard());
+        playerCards.add(battle.getPlayers()[1].getDeck().getHeroCard());
         for (Card playerCard : playerCards) {
             if (playerCard.getId().equals(cardId))
                 return true;
