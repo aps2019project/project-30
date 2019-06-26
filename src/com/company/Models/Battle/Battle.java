@@ -7,7 +7,6 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Soldier;
-import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.company.Models.User.Player;
 import com.company.Models.Battle.Map.Map;
@@ -22,6 +21,8 @@ import java.util.List;
 
 
 public class Battle {
+    final private static String SAVED_GAMES_FILE_PATH = "SavedGames/savedGames.json";
+    private static List<Battle> savedBattles = new ArrayList<>();
     private static Battle playingBattle;
     private Mode mode;
     private Map map = new Map();
@@ -320,5 +321,17 @@ public class Battle {
                 break;
         }
         return player;
+    }
+
+    public static String getSavedGamesFilePath() {
+        return SAVED_GAMES_FILE_PATH;
+    }
+
+    public static List<Battle> getSavedBattles() {
+        return savedBattles;
+    }
+
+    public static void setSavedBattles(List<Battle> savedBattles) {
+        Battle.savedBattles = savedBattles;
     }
 }
