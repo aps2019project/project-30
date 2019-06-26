@@ -4,11 +4,8 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
-import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXMasonryPane;
 import com.jfoenix.controls.JFXTabPane;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -17,18 +14,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static javafx.scene.paint.Color.BLACK;
-import static javafx.scene.paint.Color.RED;
 
 public class ShopController implements Initializable {
     public JFXTabPane tabPane;
@@ -39,8 +29,8 @@ public class ShopController implements Initializable {
     public TextField search;
 
     public void updateDecks() {
-        updateShopsell("");
-        updateShopbuy("");
+        updateShopSell("");
+        updateShopBuy("");
     }
 
 
@@ -53,13 +43,13 @@ public class ShopController implements Initializable {
 
         search.textProperty().addListener(((observable, oldValue, newValue) -> {
             if (tabPane.getSelectionModel().getSelectedItem().getId().equals("sell"))
-                updateShopsell(newValue);
+                updateShopSell(newValue);
             else
-                updateShopbuy(newValue);
+                updateShopBuy(newValue);
         }));
     }
 
-    private void updateShopsell(String newValue) {
+    private void updateShopSell(String newValue) {
         List<Card> cards;
         if (newValue.isEmpty())
             cards = Account.getLoggedInAccount().getCollection().getCards();
@@ -68,13 +58,13 @@ public class ShopController implements Initializable {
         cardforsellContainer.getChildren().clear();
         for (Card card : cards) {
             AnchorPane cardContainer = new AnchorPane();
-            crearCardContaner(card, cardContainer);
+            createCardContainer(card, cardContainer);
             this.cardforsellContainer.getChildren().add(cardContainer);
         }
     }
 
 
-    private void updateShopbuy(String newValue) {
+    private void updateShopBuy(String newValue) {
         List<Card> cards;
         if (newValue.isEmpty())
             cards = Shop.getShopCollection().getCards();
@@ -83,14 +73,12 @@ public class ShopController implements Initializable {
         cardforbuyContainer.getChildren().clear();
         for (Card card : cards) {
             AnchorPane cardContainer = new AnchorPane();
-
-            crearCardContaner(card, cardContainer);
-
+            createCardContainer(card, cardContainer);
             this.cardforbuyContainer.getChildren().add(cardContainer);
         }
     }
 
-    private void crearCardContaner(Card card, AnchorPane cardContainer) {
+    private void createCardContainer(Card card, AnchorPane cardContainer) {
         try {
             StackPane cardViewContainer = new StackPane();
             Image cardGif;
@@ -125,7 +113,7 @@ public class ShopController implements Initializable {
     private void buyOrSell(Card card) {
         if (tabPane.getSelectionModel().getSelectedItem().getId().equals("sell")) {
             com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
-            updateShopsell(search.getText());
+            updateShopSell(search.getText());
         } else {
             com.company.Controllers.ShopController.buy(
                     Account.getLoggedInAccount(), card.getName());
