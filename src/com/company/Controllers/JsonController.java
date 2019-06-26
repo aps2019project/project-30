@@ -117,7 +117,7 @@ public class JsonController {
         }
     }
 
-    public static List<Item> getSavedGames() {
+    public static List<Battle> getSavedGames() {
         try (FileReader reader = new FileReader(Battle.getSavedGamesFilePath())) {
             Type savedGamesType = new TypeToken<ArrayList<Battle>>() {
             }.getType();

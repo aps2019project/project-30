@@ -92,9 +92,9 @@ public class AccountController {
     }
 
     public static void LoadSavedAccountsAndAddToAccounts() {
-        List<Account> inputAccounts = JsonController.getAccounts();
-        if (inputAccounts != null)
-            Account.addToAccounts(inputAccounts);
+        List<Account> accounts = JsonController.getAccounts();
+        if (accounts != null)
+            Account.addToAccounts(accounts);
     }
 
     public static void loadLoggedInAccount() {

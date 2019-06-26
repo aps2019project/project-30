@@ -331,7 +331,7 @@ public class Battle {
         return savedBattles;
     }
 
-    public static void setSavedBattles(List<Battle> savedBattles) {
+    public static void addToSavedBattles(List<Battle> savedBattles) {
         Battle.savedBattles = savedBattles;
     }
 }
