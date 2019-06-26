@@ -532,8 +532,10 @@ public class BattleController {
     }
 
     private boolean isCardIdValid(String cardId) {
-        List<Card> playerCards = battle.getTurnToPlay().getDeck().getDeckCards();
-        playerCards.add(battle.getTurnToPlay().getDeck().getHeroCard());
+        List<Card> playerCards = battle.getPlayers()[0].getDeck().getDeckCards();
+        playerCards.addAll(battle.getPlayers()[1].getDeck().getDeckCards());
+        playerCards.add(battle.getPlayers()[0].getDeck().getHeroCard());
+        playerCards.add(battle.getPlayers()[1].getDeck().getHeroCard());
         for (Card playerCard : playerCards) {
             if (playerCard.getId().equals(cardId))
                 return true;

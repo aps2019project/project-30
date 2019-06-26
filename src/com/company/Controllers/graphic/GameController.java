@@ -6,6 +6,7 @@ import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
+import com.company.Models.Card.Spell.Spell;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
@@ -175,7 +176,7 @@ public class GameController {
             for (int x = -2; x <= 2; x++)
                 for (int y = -2; y <= 2; y++)
                     if (Math.abs(x) + Math.abs(y) <= 2) {
-                        AnchorPane cell = getCellFromGameTable(cardX + x, cardY + y);
+                        AnchorPane cell = getCellFromGameTable(cardX + x - 1, cardY + y - 1);
                         if (Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x, cardY + y) != null &&
                                 Battle.getPlayingBattle().getMap().getCellByCoordinates(cardX + x, cardY + y).getCardInCell() == null) {
                             cell.getStyleClass().clear();
@@ -239,12 +240,22 @@ public class GameController {
                                     Integer.valueOf(matcher.group("i")),
                                     Integer.valueOf(matcher.group("j")));
                             if (cell.getCardInCell() != null) {
-                                Battle.getPlayingBattle().getBattleController().selectCard(cell.getCardInCell().getId());
-                                selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell.getCardInCell().getId());
-                                updateGameTableColor();
+                                if (selectedCard != null) {
+                                    Battle.getPlayingBattle().getBattleController().attack(((Soldier) cell.getCardInCell()).getCell(), false);
+                                    updateTable(gameTable);
+                                } else {
+                                    Battle.getPlayingBattle().getBattleController().selectCard(cell.getCardInCell().getId());
+                                    selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell.getCardInCell().getId());
+                                }
                             } else {
-                                //todo: Move
+                                Battle.getPlayingBattle().getBattleController().move(
+                                        Integer.valueOf(matcher.group("i")),
+                                        Integer.valueOf(matcher.group("j"))
+                                );
+                                selectedCard = null;
+                                updateTable(gameTable);
                             }
+                            updateGameTableColor();
                         }
                     }
                 });
