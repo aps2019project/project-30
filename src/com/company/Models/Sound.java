@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -25,6 +26,12 @@ public class Sound {
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         playedSongs.put(soundAddress, mediaPlayer);
         mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            @Override
+            public void run() {
+                mediaPlayer.seek(Duration.ZERO);
+            }
+        });
     }
 
     public static void pause(String soundAddress) {
