@@ -192,27 +192,57 @@ public class BattleView {
        // vBox.setSpacing(20);
         switch (ChooseGameController.mode){
             case CAPTURE_THE_FLAG:
-                Label flagLocation=new Label(String.valueOf(Battle.getPlayingBattle().getFlags().get(0).getCell().getxCoordinate())+"   "+String.valueOf(Battle.getPlayingBattle().getFlags().get(0).getCell().getyCoordinate()));
-                Label flagHolder=new Label(Battle.getPlayingBattle().getFlags().get(0).getFlagHolder().getName());
+                Label flagLocation=new Label();
+                Label flagHolder=new Label();
+                flagLocation.setText(String.valueOf(Battle.getPlayingBattle().getFlags().get(0).getCell().getxCoordinate())+"   "+String.valueOf(Battle.getPlayingBattle().getFlags().get(0).getCell().getyCoordinate()));
+                if(Battle.getPlayingBattle().getFlags().get(0).getFlagHolder()==null){
+                    flagHolder.setText("no one");
+                }
+                else
+                flagHolder.setText(Battle.getPlayingBattle().getFlags().get(0).getFlagHolder().getName());
+
                 anchorPane.getChildren().add(flagHolder);
                 anchorPane.getChildren().add(flagLocation);
 
                 break;
             case KILLING_GENERAL:
-                Label label=new Label(Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard().getName()+"  : "+((Soldier)(Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard())).getHealth());
-                Label label1=new Label(Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard().getName()+"  : "+((Soldier)(Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard())).getHealth());
+                Label label=new Label();
+                Label label1=new Label();
+
+                label.setText(Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard().getName()+"  : "+((Soldier)(Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard())).getHealth());
+                label1.setText(Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard().getName()+"  : "+((Soldier)(Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard())).getHealth());
                 anchorPane.getChildren().add(label);
                 anchorPane.getChildren().add(label1);
+                anchorPane.setTopAnchor(label,50.0);
+                anchorPane.setTopAnchor(label1,150.0);
+                anchorPane.setLeftAnchor(label,50.0);
+                anchorPane.setLeftAnchor(label1,50.0);
                 label.setTextFill(WHITE);
                 label1.setTextFill(WHITE);
+
                 break;
             case COLLECTING_FLAGS:
                 int i=1;
                 for(Flag flag:Battle.getPlayingBattle().getFlags()){
-                    Label flagDescription=new Label(flag.getFlagHolder().getName()+"  ");
+                    i++;
+                    Label l=new Label();
+                    Label flagDescription=new Label();
+                    if(flag.getFlagHolder()==null){
+                        flagDescription.setText("no one");
+                    }
+                    else {
+
+                        if(ex(flag.getFlagHolder(),Battle.getPlayingBattle().getPlayers()[0])){
+                            flagDescription.setText(flag.getFlagHolder().getName() + " from "+Battle.getPlayingBattle().getPlayers()[0].getName());
+                        }
+                        else {
+                            flagDescription.setText(flag.getFlagHolder().getName() + " from "+Battle.getPlayingBattle().getPlayers()[1].getName());
+                        }
+                    }
                     anchorPane.getChildren().add(flagDescription);
-                    anchorPane.setTopAnchor(flagDescription,i*30.0);
-                    anchorPane.setLeftAnchor(flagDescription,30.0);
+                    anchorPane.setTopAnchor(flagDescription,i*20.0);
+                    anchorPane.setLeftAnchor(flagDescription,50.0);
+                    flagDescription.setTextFill(WHITE);
                 }
                 break;
 
@@ -220,5 +250,14 @@ public class BattleView {
         }
         return vBox;
     }
+
+    public static boolean ex(Card card ,Player player){
+        for(Card c:player.getDeck().getDeckCards()){
+            if(c.getId().equals(card.getId()))
+                return true;
+        }
+        return false;
+    }
+
 }
 

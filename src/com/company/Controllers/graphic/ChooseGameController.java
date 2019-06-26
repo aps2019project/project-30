@@ -146,18 +146,21 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=1;
+                mode=Mode.KILLING_GENERAL;
             }
         });
         level2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=2;
+                mode=Mode.CAPTURE_THE_FLAG;
             }
         });
         level3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=3;
+                mode=Mode.COLLECTING_FLAGS;
             }
         });
 

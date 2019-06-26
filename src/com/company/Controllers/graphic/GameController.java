@@ -51,10 +51,43 @@ public class GameController implements Initializable {
     boolean tabPressed = false;
     boolean numLockPressed = false;
     private Card selectedCard;
+    public static VBox vvBox;
+    public static VBox vvvBox;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        player1name.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+               vvBox= BattleView.getInfo();
+                gameRoot.getChildren().add(vvBox);
+                gameRoot.setLeftAnchor(vvBox,100.0);
+                gameRoot.setTopAnchor(vvBox,100.0);
+            }
+        });
+        player2name.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                 vvvBox= BattleView.getInfo();
+                gameRoot.getChildren().add(vvvBox);
+                gameRoot.setRightAnchor(vvvBox,100.0);
+                gameRoot.setTopAnchor(vvvBox,100.0);
+            }
+        });
+        player1name.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                gameRoot.getChildren().remove(vvBox);
+            }
+        });
+        player2name.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                gameRoot.getChildren().remove(vvvBox);
+            }
+        });
 
         gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
