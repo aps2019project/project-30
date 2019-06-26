@@ -95,7 +95,7 @@ public class GameController implements Initializable {
         });
 
         cheatCodeHandler();
-        Sound.muteAndUnmute(Graphic.stage.getScene(), Sound.BATTLE_MAIN_MUSIC_ADDRESS);
+
 
     }
 
@@ -123,7 +123,7 @@ public class GameController implements Initializable {
 //        if (!Battle.getPlayingBattle().getTurnToPlay().getName().equals(Account.getLoggedInAccount().getUsername())) {
 //            endTurn.setDisable(true);
 //        }
-
+        Sound.muteAndUnmute(Graphic.stage.getScene(), Sound.BATTLE_MAIN_MUSIC_ADDRESS);
 
         updateGraveYard();
         gameTable = new GridPane();
