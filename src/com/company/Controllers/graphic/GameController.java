@@ -3,6 +3,7 @@ package com.company.Controllers.graphic;
 import animatefx.animation.ZoomIn;
 import com.company.Controllers.BattleController;
 import com.company.Controllers.JsonController;
+import com.company.Controllers.MainMenuController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
@@ -384,6 +385,7 @@ public class GameController implements Initializable {
     }
 
     public void endTurn(ActionEvent actionEvent) {
+        MainMenuController.timenow=-1;
         Battle.getPlayingBattle().getBattleController().endTurn();
         updateTable(gameTable);
         updateMana();
