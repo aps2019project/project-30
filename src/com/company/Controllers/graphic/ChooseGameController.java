@@ -194,7 +194,7 @@ public class ChooseGameController implements Initializable {
     public void singlePlayer(ActionEvent actionEvent) {
     }
 
-    public Button getLoadedGamesButton(int index,Battle battle) {
+    public HBox getLoadedGamesButton(int index,Battle battle) {
         HBox singleCard = new HBox();
         singleCard.getStyleClass().add("hbox_card");
         Label number = new Label();
