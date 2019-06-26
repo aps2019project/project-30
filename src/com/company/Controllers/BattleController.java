@@ -720,7 +720,7 @@ public class BattleController {
             playerCards.add(Battle.getPlayingBattle().getPlayers()[i].getDeck().getHeroCard());
             playerCards.add(Battle.getPlayingBattle().getPlayers()[i].getDeck().getItemCard());
             for (Card c : playerCards) {
-                if (c.getId().equals(card.getId())) {
+                if (card != null && c.getId().equals(card.getId())) {
                     return Battle.getPlayingBattle().getPlayers()[i];
                 }
             }

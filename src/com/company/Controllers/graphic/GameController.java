@@ -487,17 +487,31 @@ public class GameController implements Initializable {
                     selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell1.getCardInCell().getId());
                 }
             } else {
+                int x = Integer.valueOf(matcher.group("i"));
+                int y = Integer.valueOf(matcher.group("j"));
                 Battle.getPlayingBattle().getBattleController().move(
                         Integer.valueOf(matcher.group("i")),
                         Integer.valueOf(matcher.group("j"))
                 );
-                if (((Soldier) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() == Integer.valueOf(matcher.group("i")) &&
-                        ((Soldier) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() == Integer.valueOf(matcher.group("j"))) {
-
+                if (((Soldier) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() == x &&
+                        ((Soldier) Battle.getPlayingBattle().getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() == y) {
 
                 }
                 selectedCard = null;
                 updateTable(gameTable);
+                new Thread(() -> {
+                    Image idleImage = ((ImageView) ((StackPane) getCellFromGameTable(x - 1, y - 1)
+                            .getChildren().get(0)).getChildren().get(0)).getImage();
+                    ((ImageView) ((StackPane) getCellFromGameTable(x - 1, y - 1)
+                            .getChildren().get(0)).getChildren().get(0)).setImage(
+                            new Image("com/company/Views/graphic/images/gifs/" + Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getName() + "_run.gif"));
+                    long startTime = System.currentTimeMillis();
+                    long endTime;
+                    while ((endTime = System.currentTimeMillis()) - startTime < 2000) ;
+                    System.out.println(endTime - startTime);
+                    ((ImageView) ((StackPane) getCellFromGameTable(x - 1, y - 1)
+                            .getChildren().get(0)).getChildren().get(0)).setImage(idleImage);
+                }).start();
             }
             updateGameTableColor();
         }
