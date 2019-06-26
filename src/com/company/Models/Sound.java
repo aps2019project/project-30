@@ -31,4 +31,16 @@ public class Sound {
         playedSongs.get(soundAddress).pause();
         playedSongs.remove(soundAddress);
     }
+
+    private static boolean isPlaying(String soundAddress) {
+        return playedSongs.containsKey(soundAddress);
+    }
+
+    public static void changeMusicState(String soundAddress) {
+        if (isPlaying(soundAddress))
+            Sound.pause(soundAddress);
+        else
+            play(soundAddress);
+    }
+
 }

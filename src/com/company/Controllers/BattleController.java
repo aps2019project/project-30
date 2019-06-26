@@ -23,6 +23,7 @@ import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
 
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -184,16 +185,34 @@ public class BattleController {
     }
 
     private void botMovements() {
+        Random random = new Random();
         if (battle.isBotIsActive()) {
             if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
-                for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
-                    selectCard(aliveCard.getId());
-                    if ((Soldier) battle.getTurnToPlay().getSelectedCard() != null) {
-                        move(
-                                ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
-                                ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
-                        );
-                    }
+                switch (1) {
+                    case 0://Move
+                        for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
+                            selectCard(aliveCard.getId());
+                            if ((Soldier) battle.getTurnToPlay().getSelectedCard() != null) {
+                                move(
+                                        ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
+                                        ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
+                                );
+                            }
+                        }
+                        break;
+                    case 1://Insert new card
+                        for (int i = random.nextInt(battle.getTurnToPlay().getDeck().getHand().getCards().size());
+                             i < battle.getTurnToPlay().getDeck().getHand().getCards().size();
+                             i++) {
+                            Card card = battle.getTurnToPlay().getDeck().getHand().getCards().get(i);
+                            if (card.getManaPoint() <= battle.getTurnToPlay().getMana()) {
+                                insertNewCardToMap(
+                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getxCoordinate() + 1,
+                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getyCoordinate() + 1,
+                                        card.getId());
+                            }
+                        }
+                        break;
                 }
             }
         }
@@ -874,7 +893,7 @@ public class BattleController {
     public void putFlagsOnMap() {
         int x = -1, y = -1;
         while (!cellIsValidToInsertingCard(x, y)) {
-            while (battle.getMap().getCellByCoordinates(x, y) == null || battle.getMap().getCellByCoordinates(x, y).getFlag() != null){
+            while (battle.getMap().getCellByCoordinates(x, y) == null || battle.getMap().getCellByCoordinates(x, y).getFlag() != null) {
                 x = random.nextInt(9);
                 y = random.nextInt(5);
             }

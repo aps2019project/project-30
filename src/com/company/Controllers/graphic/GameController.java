@@ -9,6 +9,7 @@ import com.company.Models.Card.Card;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
@@ -50,6 +51,8 @@ public class GameController implements Initializable {
     public ImageView player2HeroPic;
     boolean tabPressed = false;
     boolean numLockPressed = false;
+    boolean ctrlPressed = false;
+    boolean MPressed = false;
     private Card selectedCard;
 
 
@@ -70,6 +73,23 @@ public class GameController implements Initializable {
                 if (tabPressed && numLockPressed) {
                     Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
                     RootsController.gameController.updateMana();
+                }
+            }
+        });
+
+        gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case CONTROL:
+                        ctrlPressed = true;
+                        break;
+                    case M:
+                        MPressed = true;
+                        break;
+                }
+                if (ctrlPressed && MPressed) {
+                    Sound.changeMusicState(Sound.BATTLE_MAIN_MUSIC_ADDRESS);
                 }
             }
         });
