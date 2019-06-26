@@ -1,11 +1,15 @@
 package com.company.Views;
 
+import com.company.Controllers.graphic.ChooseGameController;
 import com.company.Models.Battle.Battle;
+import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Flag;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.User.Player;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -173,4 +177,46 @@ public class BattleView {
 
         return vBox;
     }
+
+
+    public static VBox getInfo(){
+        VBox vBox=new VBox();
+        AnchorPane anchorPane=new AnchorPane();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(200);
+        vBox.setPrefHeight(262);
+        vBox.getChildren().add(anchorPane);
+        vBox.getStyleClass().add("collection-cards-description");
+       // vBox.setSpacing(20);
+        switch (ChooseGameController.mode){
+            case CAPTURE_THE_FLAG:
+                Label flagLocation=new Label(String.valueOf(Battle.getPlayingBattle().getFlags().get(0).getCell().getxCoordinate())+"   "+String.valueOf(Battle.getPlayingBattle().getFlags().get(0).getCell().getyCoordinate()));
+                Label flagHolder=new Label(Battle.getPlayingBattle().getFlags().get(0).getFlagHolder().getName());
+                anchorPane.getChildren().add(flagHolder);
+                anchorPane.getChildren().add(flagLocation);
+
+                break;
+            case KILLING_GENERAL:
+                Label label=new Label(Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard().getName()+"  : "+((Soldier)(Battle.getPlayingBattle().getPlayers()[0].getDeck().getHeroCard())).getHealth());
+                Label label1=new Label(Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard().getName()+"  : "+((Soldier)(Battle.getPlayingBattle().getPlayers()[1].getDeck().getHeroCard())).getHealth());
+                anchorPane.getChildren().add(label);
+                anchorPane.getChildren().add(label1);
+                label.setTextFill(WHITE);
+                label1.setTextFill(WHITE);
+                break;
+            case COLLECTING_FLAGS:
+                int i=1;
+                for(Flag flag:Battle.getPlayingBattle().getFlags()){
+                    Label flagDescription=new Label(flag.getFlagHolder().getName()+"  ");
+                    anchorPane.getChildren().add(flagDescription);
+                    anchorPane.setTopAnchor(flagDescription,i*30.0);
+                    anchorPane.setLeftAnchor(flagDescription,30.0);
+                }
+                break;
+
+
+        }
+        return vBox;
+    }
 }
+

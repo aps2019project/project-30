@@ -31,7 +31,7 @@ public class ChooseGameController implements Initializable {
 //    public Button single;
     public String numberOfPlayers;
     public String storyorcustom;
-    public Mode mode;
+    public static Mode mode;
     public int storyLevel=1;
 //    public Button multi;
     public VBox singlePlayer;
@@ -167,6 +167,10 @@ public class ChooseGameController implements Initializable {
 
     }
 
+    public Mode getMode() {
+        return mode;
+    }
+
     public void multiplayer(ActionEvent actionEvent) {
     }
 
@@ -190,3 +194,4 @@ public class ChooseGameController implements Initializable {
     public void singlePlayer(ActionEvent actionEvent) {
     }
 }
+
