@@ -2,6 +2,7 @@ package com.company.Controllers.graphic;
 
 import animatefx.animation.ZoomIn;
 import com.company.Controllers.BattleController;
+import com.company.Controllers.JsonController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
@@ -58,7 +59,7 @@ public class GameController implements Initializable {
             public void handle(KeyEvent event) {
                 switch (event.getCode()){
                     case TAB: tabPressed = true; break;
-                    case NUM_LOCK: numLockPressed = true; break;
+                    case PLUS: numLockPressed = true; break;
                 }
                 if(tabPressed && numLockPressed){
                     Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
@@ -405,5 +406,19 @@ public class GameController implements Initializable {
                     cardContainer.getChildren().add(cardName);
                     graveyard.getChildren().add(cardContainer);
                 });
+    }
+
+    public void saveAndExit(){
+        saveGame();
+        exitGame();
+    }
+
+    private static void saveGame(){
+        JsonController.removeFile(Battle.getSavedGamesFilePath());
+        JsonController.writeAllSavedGamesOnFile();
+    }
+
+    private static void exitGame(){
+        RootsController.backToMainMenu();
     }
 }

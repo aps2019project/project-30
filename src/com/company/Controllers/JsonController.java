@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Models.Battle.Battle;
 import com.company.Models.Buff.Buff;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Deck;
@@ -116,13 +117,24 @@ public class JsonController {
         }
     }
 
+    public static List<Item> getSavedGames() {
+        try (FileReader reader = new FileReader(Battle.getSavedGamesFilePath())) {
+            Type savedGamesType = new TypeToken<ArrayList<Battle>>() {
+            }.getType();
+            return getGson().fromJson(reader, savedGamesType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
     public static List<Account> getAccounts() {
         try (FileReader reader = new FileReader(Account.getSavedAccountsFilePath())) {
             Type accountListType = new TypeToken<ArrayList<Account>>() {
             }.getType();
             List<Account> accounts = getGson().fromJson(reader, accountListType);
             for (Account account : accounts) {
-                for (Deck deck:account.getDecks()){
+                for (Deck deck : account.getDecks()) {
                     deck.setDeckController();
                     deck.setHand();
                 }
@@ -137,7 +149,7 @@ public class JsonController {
     public static Account getLoggedInAccounts() {
         try (FileReader reader = new FileReader(Account.getLoggedInAccountsFilePath())) {
             Account account = getGson().fromJson(reader, Account.class);
-            for (Deck deck:account.getDecks()){
+            for (Deck deck : account.getDecks()) {
                 deck.setDeckController();
                 deck.setHand();
             }
@@ -168,6 +180,14 @@ public class JsonController {
     public static void writeLoggedInAccountOnFile() {
         try (FileWriter fileWriter = new FileWriter(Account.getLoggedInAccountsFilePath())) {
             fileWriter.write(getGson().toJson(Account.getLoggedInAccount()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void writeAllSavedGamesOnFile() {
+        try (FileWriter fileWriter = new FileWriter(Battle.getSavedGamesFilePath())) {
+            fileWriter.write(getGson().toJson(Battle.getSavedBattles()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -204,6 +224,15 @@ public class JsonController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean removeFile(String fileAddress) {
+        File file = new File(fileAddress);
+        if (file.exists()) {
+            file.delete();
+            return true;
+        }
+        return false;
     }
 
 }

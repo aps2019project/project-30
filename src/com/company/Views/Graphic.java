@@ -1,11 +1,8 @@
 package com.company.Views;
 
 import com.company.Controllers.AccountController;
-import com.company.Controllers.JsonController;
-import com.company.Controllers.MainMenuController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
-import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,15 +10,9 @@ import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.URISyntaxException;
 
 public class Graphic extends Application {
     public static Stage stage;
@@ -38,7 +29,7 @@ public class Graphic extends Application {
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
             collection = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
-            AccountController.addSavedAccountsToAccounts();
+            AccountController.LoadSavedAccountsAndAddToAccounts();
         } catch (IOException e) {
             e.printStackTrace();
         }
