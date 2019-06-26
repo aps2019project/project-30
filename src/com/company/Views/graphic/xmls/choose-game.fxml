@@ -13,7 +13,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.graphic.ChooseGameController">
-    <AnchorPane fx:id="anchorPane" styleClass="choose-game-root">
+    <AnchorPane fx:id="anchorPane" styleClass="choose-game-root" AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>

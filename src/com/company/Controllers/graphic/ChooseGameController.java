@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -28,6 +29,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static javafx.scene.paint.Color.BLACK;
+import static javafx.scene.paint.Color.WHITE;
 
 public class ChooseGameController implements Initializable {
     public AnchorPane anchorPane;
@@ -216,5 +220,21 @@ public class ChooseGameController implements Initializable {
 
     public void cancelLoadSavedGame() {
         closeBuffCreationMenu();
+    }
+
+    public HBox getLoadedGamesButton(int index,Battle battle) {
+        HBox singleCard = new HBox();
+        singleCard.getStyleClass().add("hbox_card");
+        Label number = new Label();
+        Label cardName = new Label();
+        cardName.setTextFill(WHITE);
+        number.setTextFill(BLACK);
+        number.setText(String.valueOf(index));
+        cardName.setText(battle.getPlayers()[0] + " VS " + battle.getPlayers()[1]);
+        singleCard.getStyleClass().add("collection-deck-card");
+        cardName.getStyleClass().add("collection-deck-card");
+        singleCard.getChildren().add(number);
+        singleCard.getChildren().add(cardName);
+        return singleCard;
     }
 }

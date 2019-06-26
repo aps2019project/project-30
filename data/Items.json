@@ -60,26 +60,6 @@
     "buffsCasted": []
   },
   {
-    "name": "Nooshdaroo",
-    "manaPoint": 0,
-    "priceInDrake": 30000,
-    "description": "increase health 6 units",
-    "isInGraveCards": false,
-    "targetType": "FRIEND_SOLDIER",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "HEALTH_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 6,
-        "className": "com.company.Models.Buff.HealthPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
     "name": "Par Simorgh",
     "manaPoint": 0,
     "priceInDrake": 3500,
@@ -95,26 +75,6 @@
         "remTurnToCast": 0,
         "value": 2,
         "className": "com.company.Models.Buff.AttackWeaknessBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Shamshir Chini",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "5 attck power to melee soldier",
-    "isInGraveCards": false,
-    "targetType": "MELEE_SOLDIERS",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "ATTACK_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 5,
-        "className": "com.company.Models.Buff.AttackPowerBuff"
       }
     ],
     "buffsCasted": []
@@ -155,46 +115,6 @@
         "remTurnToCast": 0,
         "value": 1,
         "className": "com.company.Models.Buff.AttackPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Majoon Roein Tan",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "10 holy buff for 2 turns",
-    "isInGraveCards": false,
-    "targetType": "SELF",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "HOLY",
-        "isCasted": false,
-        "castTime": 2,
-        "remTurnToCast": 0,
-        "value": 10,
-        "className": "com.company.Models.Buff.HolyBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Nefrin Marg",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "decrease 8 health to nearest soldier",
-    "isInGraveCards": false,
-    "targetType": "FRIEND_SOLDIER",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "HEALTH_WEAKNESS",
-        "isCasted": false,
-        "castTime": 1,
-        "remTurnToCast": 0,
-        "value": 8,
-        "className": "com.company.Models.Buff.HealthWeaknessBuff"
       }
     ],
     "buffsCasted": []
@@ -260,26 +180,6 @@
     "buffsCasted": []
   },
   {
-    "name": "Random Damage",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "increase 8 attack power to friend soldier",
-    "isInGraveCards": false,
-    "targetType": "FRIEND_SOLDIER",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "ATTACK_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 2,
-        "className": "com.company.Models.Buff.AttackPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
     "name": "Terror Hood",
     "manaPoint": 0,
     "priceInDrake": 5000,
@@ -295,46 +195,6 @@
         "remTurnToCast": 0,
         "value": 8,
         "className": "com.company.Models.Buff.HealthWeaknessBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "Blades Of Agility",
-    "manaPoint": 0,
-    "priceInDrake": 0,
-    "description": "increase attack power of random soldier by 6",
-    "isInGraveCards": false,
-    "targetType": "RANDOM_FRIEND_SOLDIER",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "ATTACK_POWER",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 6,
-        "className": "com.company.Models.Buff.AttackPowerBuff"
-      }
-    ],
-    "buffsCasted": []
-  },
-  {
-    "name": "King Wisdom",
-    "manaPoint": 0,
-    "priceInDrake": 9000,
-    "description": "increase mana by 1",
-    "isInGraveCards": false,
-    "targetType": "ENEMY_HERO",
-    "buffsToCast": [
-      {
-        "type": "POSSETIVE",
-        "name": "MANA",
-        "isCasted": false,
-        "castTime": 1000,
-        "remTurnToCast": 0,
-        "value": 1,
-        "className": "com.company.Models.Buff.ManaBuff"
       }
     ],
     "buffsCasted": []
