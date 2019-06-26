@@ -8,6 +8,7 @@ import com.company.Models.Battle.Map.Cell;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Soldier;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.User.Account;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
 import javafx.animation.TranslateTransition;
@@ -26,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,11 +58,15 @@ public class GameController implements Initializable {
         gameRoot.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                switch (event.getCode()){
-                    case TAB: tabPressed = true; break;
-                    case PLUS: numLockPressed = true; break;
+                switch (event.getCode()) {
+                    case TAB:
+                        tabPressed = true;
+                        break;
+                    case PLUS:
+                        numLockPressed = true;
+                        break;
                 }
-                if(tabPressed && numLockPressed){
+                if (tabPressed && numLockPressed) {
                     Battle.getPlayingBattle().getTurnToPlay().setMaxMana(9);
                     RootsController.gameController.updateMana();
                 }
@@ -169,10 +175,10 @@ public class GameController implements Initializable {
                 }
             });
             pane.setOnMouseEntered(event -> {
-                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()),"game");
+                cardDesciption = BattleView.cardDesciption(Battle.getPlayingBattle().getBattleController().getCardById(pane.getId()), "game");
                 gameRoot.getChildren().add(cardDesciption);
-                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY()+200.0);
-                gameRoot.setLeftAnchor(cardDesciption,pane.getLayoutX());
+                gameRoot.setBottomAnchor(cardDesciption, pane.getLayoutY() + 200.0);
+                gameRoot.setLeftAnchor(cardDesciption, pane.getLayoutX());
 
             });
             pane.setOnMouseExited(new EventHandler<MouseEvent>() {
@@ -407,17 +413,23 @@ public class GameController implements Initializable {
                 });
     }
 
-    public void saveAndExit(){
+    public void saveAndExit() {
         saveGame();
         exitGame();
     }
 
-    private static void saveGame(){
+    private static void saveGame() {
         JsonController.removeFile(Battle.getSavedGamesFilePath());
         JsonController.writeAllSavedGamesOnFile();
     }
 
-    private static void exitGame(){
+    private static void exitGame() {
         RootsController.backToMainMenu();
+    }
+
+    public void loadSavedGamesAndAddToSavedGamesList() {
+        List<Battle> savedGames = JsonController.getSavedGames();
+        if (savedGames != null)
+            Battle.addToSavedBattles(savedGames);
     }
 }
