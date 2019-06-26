@@ -31,7 +31,7 @@ public class MainMenuController implements Initializable {
     public Label save;
     private static boolean rememberMe = false;
     public static long timeTurn;
-    public static long timenow;
+    public static long timenow=-1;
 
 
     @Override

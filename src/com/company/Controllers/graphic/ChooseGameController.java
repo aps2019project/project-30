@@ -67,7 +67,8 @@ public class ChooseGameController implements Initializable {
 
         enterTime.textProperty().addListener(((observable, oldValue, newValue) -> {
             if(!newValue.isEmpty()) {
-                MainMenuController.timeTurn = Integer.parseInt(newValue) * 1000000;
+                MainMenuController.timeTurn = Integer.parseInt(newValue);
+                MainMenuController.timeTurn*=1000000000;
                 tr=true;
             }
         }));
@@ -151,8 +152,9 @@ public class ChooseGameController implements Initializable {
         });
         flagsincustom.textProperty().addListener(((observable, oldValue, newValue) -> {
             new Battle(storyLevel,Integer.parseInt(newValue));
-            if(tr)
+            if(tr) {
                 setEnd();
+            }
             RootsController.game();
         }));
 
@@ -256,15 +258,21 @@ public class ChooseGameController implements Initializable {
         return singleCard;
     }
     public void setEnd(){
-        AnimationTimer h = new AnimationTimer() {
+        AnimationTimer h=new AnimationTimer() {
             @Override
+
             public void handle(long now) {
-                if(now- MainMenuController.timenow>=MainMenuController.timeTurn){
-                    RootsController.gameController.endTurnq();
+                if(MainMenuController.timenow==-1){
                     MainMenuController.timenow=now;
                 }
+                if((now)- MainMenuController.timenow>MainMenuController.timeTurn){
+                    RootsController.gameController.endTurnq();
+                    MainMenuController.timenow=now;
+                   // System.out.println(now+"          tokhmooiiiiiiiiiiiiiiii");
+                }
             }
-        } ;
+        };h.start();
+
 
     }
 }
