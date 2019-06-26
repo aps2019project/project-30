@@ -472,24 +472,37 @@ public class GameController implements Initializable {
     private void tileClickHandler(MouseEvent event) {
         Matcher matcher = Pattern.compile("(?<i>\\d+):(?<j>\\d+)").matcher(((AnchorPane) event.getSource()).getId());
         matcher.find();
+        int x = Integer.valueOf(matcher.group("i"));
+        int y = Integer.valueOf(matcher.group("j"));
         if (Battle.getPlayingBattle().getTurnToPlay().getSelectedCard() != null &&
                 Battle.getPlayingBattle().getBattleController().cardExistsInHand(Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId())) {
 
             Battle.getPlayingBattle()
-                    .getBattleController().insertNewCardToMap(
-                    Integer.valueOf(matcher.group("i")),
-                    Integer.valueOf(matcher.group("j")),
+                    .getBattleController().insertNewCardToMap(x, y,
                     Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getId());
             updateHand();
             updateTable(gameTable);
             selectedCard = null;
         } else {
-            Cell cell1 = Battle.getPlayingBattle().getMap().getCellByCoordinates(
-                    Integer.valueOf(matcher.group("i")),
-                    Integer.valueOf(matcher.group("j")));
+            Cell cell1 = Battle.getPlayingBattle().getMap().getCellByCoordinates(x, y);
             if (cell1.getCardInCell() != null) {
                 if (selectedCard != null) {
                     Battle.getPlayingBattle().getBattleController().attack(((Soldier) cell1.getCardInCell()).getCell(), false);
+                    int attackerX = ((Soldier) cell1.getCardInCell()).getCell().getxCoordinate();
+                    int attackerY = ((Soldier) cell1.getCardInCell()).getCell().getyCoordinate();
+                    new Thread(() -> {
+                        Image idleImage = ((ImageView) ((StackPane) getCellFromGameTable(attackerX - 1, attackerY - 1)
+                                .getChildren().get(0)).getChildren().get(0)).getImage();
+                        ((ImageView) ((StackPane) getCellFromGameTable(attackerX - 1, attackerY - 1)
+                                .getChildren().get(0)).getChildren().get(0)).setImage(
+                                new Image("com/company/Views/graphic/images/gifs/" + Battle.getPlayingBattle().getTurnToPlay().getSelectedCard().getName() + "_attack.gif"));
+                        long startTime = System.currentTimeMillis();
+                        long endTime;
+                        while ((endTime = System.currentTimeMillis()) - startTime < 2000) ;
+                        System.out.println(endTime - startTime);
+                        ((ImageView) ((StackPane) getCellFromGameTable(attackerX - 1, attackerY - 1)
+                                .getChildren().get(0)).getChildren().get(0)).setImage(idleImage);
+                    }).start();
                     updateTable(gameTable);
                     selectedCard = null;
                 } else {
@@ -497,8 +510,6 @@ public class GameController implements Initializable {
                     selectedCard = Battle.getPlayingBattle().getBattleController().getCardById(cell1.getCardInCell().getId());
                 }
             } else {
-                int x = Integer.valueOf(matcher.group("i"));
-                int y = Integer.valueOf(matcher.group("j"));
                 Battle.getPlayingBattle().getBattleController().move(
                         Integer.valueOf(matcher.group("i")),
                         Integer.valueOf(matcher.group("j"))
