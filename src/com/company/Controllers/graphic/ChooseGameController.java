@@ -35,7 +35,7 @@ public class ChooseGameController implements Initializable {
 //    public Button single;
     public String numberOfPlayers;
     public String storyorcustom;
-    public Mode mode;
+    public static Mode mode;
     public int storyLevel=1;
 //    public Button multi;
     public VBox singlePlayer;
@@ -146,18 +146,21 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=1;
+                mode=Mode.KILLING_GENERAL;
             }
         });
         level2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=2;
+                mode=Mode.CAPTURE_THE_FLAG;
             }
         });
         level3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=3;
+                mode=Mode.COLLECTING_FLAGS;
             }
         });
 
@@ -169,6 +172,10 @@ public class ChooseGameController implements Initializable {
 
 
 
+    }
+
+    public Mode getMode() {
+        return mode;
     }
 
     public void multiplayer(ActionEvent actionEvent) {
@@ -210,3 +217,4 @@ public class ChooseGameController implements Initializable {
         return singleCard;
     }
 }
+
