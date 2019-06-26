@@ -3,6 +3,8 @@ package com.company.Models;
 import com.company.Views.Graphic;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -40,7 +42,7 @@ public class Sound {
         }
     }
 
-    public static void muteAndUnmute(AnchorPane root, String soundAddress) {
+    public static void muteAndUnmute(Scene root, String soundAddress) {
         root.setOnKeyReleased(new EventHandler<KeyEvent>() {
             boolean ctrlPressed = false;
             boolean mPressed = false;

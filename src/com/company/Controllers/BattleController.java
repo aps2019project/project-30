@@ -191,11 +191,11 @@ public class BattleController {
         Random random = new Random();
         if (battle.isBotIsActive()) {
             if (battle.getTurnToPlay().equals(battle.getPlayers()[1])) {
-                switch (1) {
+                switch (random.nextInt(2)) {
                     case 0://Move
                         for (Card aliveCard : battle.getTurnToPlay().getAliveCards()) {
                             selectCard(aliveCard.getId());
-                            if ((Soldier) battle.getTurnToPlay().getSelectedCard() != null) {
+                            if (battle.getTurnToPlay().getSelectedCard() != null) {
                                 move(
                                         ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getxCoordinate() + random.nextInt(2) - 1,
                                         ((Soldier) battle.getTurnToPlay().getSelectedCard()).getCell().getyCoordinate() + random.nextInt(2) - 1
@@ -209,11 +209,13 @@ public class BattleController {
                              i++) {
                             Card card = battle.getTurnToPlay().getDeck().getHand().getCards().get(i);
                             if (card.getManaPoint() <= battle.getTurnToPlay().getMana()) {
-                                selectCard(card.getId());
-                                insertNewCardToMap(
-                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getxCoordinate() -1,
-                                        ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getyCoordinate() -1,
-                                        card.getId());
+                                if (card instanceof Minion) {
+                                    selectCard(card.getId());
+                                    insertNewCardToMap(
+                                            ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getxCoordinate() - 1,
+                                            ((Soldier) battle.getTurnToPlay().getDeck().getHeroCard()).getCell().getyCoordinate() - 1,
+                                            card.getId());
+                                }
                             }
                         }
                         break;
@@ -720,7 +722,7 @@ public class BattleController {
             playerCards.add(Battle.getPlayingBattle().getPlayers()[i].getDeck().getHeroCard());
             playerCards.add(Battle.getPlayingBattle().getPlayers()[i].getDeck().getItemCard());
             for (Card c : playerCards) {
-                if (c.getId().equals(card.getId())) {
+                if (card != null && c.getId().equals(card.getId())) {
                     return Battle.getPlayingBattle().getPlayers()[i];
                 }
             }

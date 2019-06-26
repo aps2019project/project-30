@@ -2,10 +2,12 @@ package com.company.Controllers.graphic;
 
 import com.company.Controllers.BattleController;
 import com.company.Controllers.JsonController;
+import com.company.Controllers.MainMenuController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.User.Account;
 import com.jfoenix.controls.JFXMasonryPane;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
@@ -30,8 +32,10 @@ import static javafx.scene.paint.Color.WHITE;
 public class ChooseGameController implements Initializable {
     public AnchorPane anchorPane;
     public StackPane loadSavedGameMenu;
+    public TextField enterTime;
 
     public ImageView back;
+    public boolean tr=false;
 //    public Button single;
     public String numberOfPlayers;
     public String storyorcustom;
@@ -60,6 +64,15 @@ public class ChooseGameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        enterTime.textProperty().addListener(((observable, oldValue, newValue) -> {
+            if(!newValue.isEmpty()) {
+                MainMenuController.timeTurn = Integer.parseInt(newValue);
+                MainMenuController.timeTurn*=1000000000;
+                tr=true;
+            }
+        }));
+
         back.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -139,6 +152,9 @@ public class ChooseGameController implements Initializable {
         });
         flagsincustom.textProperty().addListener(((observable, oldValue, newValue) -> {
             new Battle(storyLevel,Integer.parseInt(newValue));
+            if(tr) {
+                setEnd();
+            }
             RootsController.game();
         }));
 
@@ -166,6 +182,8 @@ public class ChooseGameController implements Initializable {
 
         flagsinstory.textProperty().addListener(((observable, oldValue, newValue) -> {
             new Battle(storyLevel,Integer.parseInt(newValue));
+            if(tr)
+                setEnd();
             RootsController.game();
         }));
 
@@ -238,6 +256,24 @@ public class ChooseGameController implements Initializable {
         singleCard.getChildren().add(number);
         singleCard.getChildren().add(cardName);
         return singleCard;
+    }
+    public void setEnd(){
+        AnimationTimer h=new AnimationTimer() {
+            @Override
+
+            public void handle(long now) {
+                if(MainMenuController.timenow==-1){
+                    MainMenuController.timenow=now;
+                }
+                if((now)- MainMenuController.timenow>MainMenuController.timeTurn){
+                    RootsController.gameController.endTurnq();
+                    MainMenuController.timenow=now;
+                   // System.out.println(now+"          tokhmooiiiiiiiiiiiiiiii");
+                }
+            }
+        };h.start();
+
+
     }
 }
 

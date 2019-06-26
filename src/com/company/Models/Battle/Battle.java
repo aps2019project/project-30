@@ -37,6 +37,7 @@ public class Battle {
     private int turn = 1;
     private int timePassedInSeconds = 0;
     private boolean botIsActive = false;
+    public int time=0;
 
     public Battle(Mode mode, Account opponent, int flags) {
         beginTimer();
