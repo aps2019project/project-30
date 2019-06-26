@@ -59,10 +59,10 @@ public class Sound {
                         break;
                 }
                 if (ctrlPressed && mPressed) {
-                    pause(soundAddress);
+                    playedSongs.get(soundAddress).setMute(true);
                     mPressed = ctrlPressed = false;
                 } else if (ctrlPressed && pPressed) {
-                    play(soundAddress);
+                    playedSongs.get(soundAddress).setMute(false);
                     pPressed = ctrlPressed = false;
                 }
             }
