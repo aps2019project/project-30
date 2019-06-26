@@ -367,6 +367,14 @@ public class GameController implements Initializable {
         updateGraveYard();
 //        endTurn.setDisable(true);
     }
+    public void endTurnq() {
+        Battle.getPlayingBattle().getBattleController().endTurn();
+        updateTable(gameTable);
+        updateMana();
+        updateHand();
+        updateGraveYard();
+//        endTurn.setDisable(true);
+    }
 
     public void updateMana() {
         manaContainer1.getChildren().clear();

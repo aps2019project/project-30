@@ -1,5 +1,6 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.MainMenuController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Sound;
@@ -7,6 +8,7 @@ import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXMasonryPane;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -215,6 +217,18 @@ public class ChooseGameController implements Initializable {
         singleCard.getChildren().add(number);
         singleCard.getChildren().add(cardName);
         return singleCard;
+    }
+    public void setEnd(){
+        AnimationTimer h = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if(now- MainMenuController.timenow>=MainMenuController.timeTurn){
+                    RootsController.gameController.endTurnq();
+                    MainMenuController.timenow=now;
+                }
+            }
+        } ;
+
     }
 }
 
