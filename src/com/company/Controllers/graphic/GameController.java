@@ -428,9 +428,4 @@ public class GameController implements Initializable {
         RootsController.backToMainMenu();
     }
 
-    public void loadSavedGamesAndAddToSavedGamesList() {
-        List<Battle> savedGames = JsonController.getSavedGames();
-        if (savedGames != null)
-            Battle.addToSavedBattles(savedGames);
-    }
 }

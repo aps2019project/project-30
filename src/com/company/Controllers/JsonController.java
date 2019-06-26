@@ -118,14 +118,17 @@ public class JsonController {
     }
 
     public static List<Battle> getSavedGames() {
-        try (FileReader reader = new FileReader(Battle.getSavedGamesFilePath())) {
-            Type savedGamesType = new TypeToken<ArrayList<Battle>>() {
-            }.getType();
-            return getGson().fromJson(reader, savedGamesType);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
+        if(new File(Battle.getSavedGamesFilePath()).exists()) {
+            try (FileReader reader = new FileReader(Battle.getSavedGamesFilePath())) {
+                Type savedGamesType = new TypeToken<ArrayList<Battle>>() {
+                }.getType();
+                return getGson().fromJson(reader, savedGamesType);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return new ArrayList<>();
+            }
         }
+        return new ArrayList<>();
     }
 
     public static List<Account> getAccounts() {

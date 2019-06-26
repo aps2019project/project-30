@@ -1,5 +1,6 @@
 package com.company.Controllers.graphic;
 
+import com.company.Controllers.JsonController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
 import com.company.Models.Sound;
@@ -15,9 +16,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -27,6 +30,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChooseGameController implements Initializable {
+    public AnchorPane anchorPane;
+    public StackPane loadSavedGameMenu;
+
     public ImageView back;
 //    public Button single;
     public String numberOfPlayers;
@@ -188,5 +194,27 @@ public class ChooseGameController implements Initializable {
 //    }
 
     public void singlePlayer(ActionEvent actionEvent) {
+    }
+
+    public void loadSavedGamesAndAddToSavedGamesList() {
+        List<Battle> savedGames = JsonController.getSavedGames();
+        if (savedGames != null)
+            Battle.addToSavedBattles(savedGames);
+    }
+
+    public void openLoadSavedGameMenu() {
+        loadSavedGamesAndAddToSavedGamesList();
+        GaussianBlur gaussianBlur = new GaussianBlur();
+        anchorPane.setEffect(gaussianBlur);
+        loadSavedGameMenu.setVisible(true);
+    }
+
+    public void closeBuffCreationMenu() {
+        loadSavedGameMenu.setVisible(false);
+        anchorPane.setEffect(null);
+    }
+
+    public void cancelLoadSavedGame() {
+        closeBuffCreationMenu();
     }
 }
