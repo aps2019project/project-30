@@ -29,7 +29,7 @@ public class RootsController {
     }
 
     public static void openMainMenu() {
-        Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS);
+        Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS,true);
         try {
             FXMLLoader mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
             mainMenu = mainMenuLoader.load();
@@ -79,7 +79,7 @@ public class RootsController {
             gameController.init();
             Graphic.stage.getScene().setRoot(root);
             Sound.pause(Sound.MAIN_MENU_SOUND_ADDRESS);
-            Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS);
+            Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS,true);
         } catch (IOException e) {
             e.printStackTrace();
         }

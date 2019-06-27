@@ -42,7 +42,7 @@ public class ShopController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         back.setOnMouseClicked(event -> {
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             RootsController.backToMainMenu();
         });
 

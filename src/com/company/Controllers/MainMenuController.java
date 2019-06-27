@@ -50,25 +50,25 @@ public class MainMenuController implements Initializable {
         friends.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             System.out.println("Tile pressed ");
             event.consume();
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
         });
 
         shop.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 //            Graphic.stage.getScene().setRoot(Graphic.shop);
             RootsController.openShop();
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             event.consume();
         });
 
         play.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Graphic.stage.getScene().setRoot(Graphic.chooseGame);
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             event.consume();
         });
 
         collection.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             RootsController.openGameCollection();
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             event.consume();
         });
 
@@ -77,13 +77,13 @@ public class MainMenuController implements Initializable {
                 JsonController.writeLoggedInAccountOnFile();
             }
             Account.logout();
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             System.exit(0);
         });
 
         save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             AccountController.saveAccounts();
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
         });
     }
 

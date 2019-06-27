@@ -111,7 +111,7 @@ public class CollectionController implements Initializable {
         });
 
         save.setOnMouseClicked(event -> {
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             DirectoryChooser chooser = new DirectoryChooser();
             chooser.setTitle("Choose Directory To Save Deck");
             File defaultDirectory = new File("c:/");
@@ -126,7 +126,7 @@ public class CollectionController implements Initializable {
         decklabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 selected_deck=decklabel.getText();
                 firstScroll.setVisible(false);
                 deckContainer.setVisible(false);

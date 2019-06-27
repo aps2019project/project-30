@@ -76,7 +76,7 @@ public class CustomCardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         back.setOnMouseClicked(event -> {
-            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             RootsController.openShop();
         });
         heroSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -112,7 +112,7 @@ public class CustomCardController implements Initializable {
 
         addNewHeroToHeroesJsonFile(newHero);
         addNewCustomCardToShopCollection(newHero);
-        Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+        Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
     }
 
     public void createNewCustomMinion(ActionEvent actionEvent) {
@@ -130,7 +130,7 @@ public class CustomCardController implements Initializable {
 
         addNewMinionToMinionsJsonFile(newMinion);
         addNewCustomCardToShopCollection(newMinion);
-        Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS);
+        Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
     }
 
     private void addNewHeroToHeroesJsonFile(Hero newHero) {

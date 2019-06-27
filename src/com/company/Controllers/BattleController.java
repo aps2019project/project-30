@@ -758,7 +758,7 @@ public class BattleController {
                 turnToPlay.getUsedCardsToAttack().add(selectedCard);
             }
         }
-        Sound.play(Sound.ATTACK_SOUND_EFFECT_ADDRESS);
+        Sound.play(Sound.ATTACK_SOUND_EFFECT_ADDRESS,false);
     }
 
     private void HandleMinionOnAttackBuffs(Cell target, Player turnToPlay) {

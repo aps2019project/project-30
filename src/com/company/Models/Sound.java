@@ -1,15 +1,11 @@
 package com.company.Models;
 
 import com.company.Views.Graphic;
-import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URISyntaxException;
@@ -21,10 +17,10 @@ public class Sound {
     final public static String BATTLE_MAIN_MUSIC_ADDRESS = "graphic/sounds/battlemusic.m4a";
     final public static String ATTACK_SOUND_EFFECT_ADDRESS = "graphic/sounds/attack.mp3";
     final public static String SELECT_SOUND_EFFECT_ADDRESS = "graphic/sounds/select.m4a";
-    private static HashMap<String, MediaPlayer> playedSongs = new HashMap<>();
+    private static HashMap<String, MediaPlayer> playingSounds = new HashMap<>();
 
-    public static void play(String soundAddress) {
-        if(!playedSongs.containsKey(soundAddress)) {
+    public static void play(String soundAddress,boolean repeat) {
+        if(!playingSounds.containsKey(soundAddress)) {
             Media media = null;
             try {
                 media = new Media(Graphic.class.getResource(soundAddress).toURI().toString());
@@ -32,15 +28,25 @@ public class Sound {
                 e.printStackTrace();
             }
             MediaPlayer mediaPlayer = new MediaPlayer(media);
-            playedSongs.put(soundAddress, mediaPlayer);
+            playingSounds.put(soundAddress, mediaPlayer);
             mediaPlayer.play();
+                mediaPlayer.setOnEndOfMedia(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(repeat) {
+                            mediaPlayer.seek(Duration.ZERO);
+                    }else {
+                            playingSounds.remove(soundAddress);
+                        }
+                    }
+                });
         }
     }
 
     public static void pause(String soundAddress) {
-        if(playedSongs.containsKey(soundAddress)) {
-            playedSongs.get(soundAddress).pause();
-            playedSongs.remove(soundAddress);
+        if(playingSounds.containsKey(soundAddress)) {
+            playingSounds.get(soundAddress).pause();
+            playingSounds.remove(soundAddress);
         }
     }
 
@@ -63,10 +69,10 @@ public class Sound {
                         break;
                 }
                 if (ctrlPressed && mPressed) {
-                    playedSongs.get(soundAddress).setMute(true);
+                    playingSounds.get(soundAddress).setMute(true);
                     mPressed = ctrlPressed = false;
                 } else if (ctrlPressed && pPressed) {
-                    playedSongs.get(soundAddress).setMute(false);
+                    playingSounds.get(soundAddress).setMute(false);
                     pPressed = ctrlPressed = false;
                 }
             }
