@@ -23,6 +23,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,10 +49,12 @@ public class GameController implements Initializable {
     public HBox manaContainer1;
     public HBox manaContainer2;
     public AnchorPane gameRoot;
+    public StackPane pauseMenu;
     public Pane tableContainer;
     public GridPane gameTable;
     public ImageView player1HeroPic;
     public ImageView player2HeroPic;
+    public Label fastForward;
     boolean tabPressed = false;
     boolean numLockPressed = false;
     boolean ctrlPressed = false;
@@ -96,6 +99,37 @@ public class GameController implements Initializable {
         });
 
         cheatCodeHandler();
+
+        gameRoot.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()){
+                    case Q:
+                        changePaseMenuState();
+                        break;
+                }
+            }
+
+            private void changePaseMenuState() {
+                if(!pauseMenu.isVisible()) {
+                    GaussianBlur gaussianBlur = new GaussianBlur(30);
+                    gameRoot.setEffect(gaussianBlur);
+                    pauseMenu.setVisible(true);
+                } else{
+                    gameRoot.setEffect(null);
+                    pauseMenu.setVisible(false);
+                }
+            }
+        });
+
+        fastForward.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(pauseMenu.isVisible()){
+
+                }
+            }
+        });
 
 
     }
