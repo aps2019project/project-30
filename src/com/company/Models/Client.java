@@ -12,6 +12,16 @@ public class Client {
     private static boolean isConnected = false;
     private static Socket clientSocket;
 
+    public static boolean connectToTheServer() {
+        try {
+            clientSocket = new Socket(SERVER_IP, readingPortNumberFromFile());
+            isConnected = true;
+        } catch (IOException e) {
+            System.err.println("Server is not ready yet,press your button and come back later");
+            return false;
+        }
+        return true;
+    }
 
     private static int readingPortNumberFromFile() {
         try {
