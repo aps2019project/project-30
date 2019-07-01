@@ -279,7 +279,6 @@ public class ChooseGameController implements Initializable {
                 if((now)- MainMenuController.timenow>MainMenuController.timeTurn){
                     RootsController.gameController.endTurnq();
                     MainMenuController.timenow=now;
-                   // System.out.println(now+"          tokhmooiiiiiiiiiiiiiiii");
                 }
             }
         };h.start();
