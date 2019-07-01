@@ -9,13 +9,13 @@ public class Client {
     final private static String PORT_NUMBER_FILE_ADDRESS = "config.properties";
     final private static String SERVER_IP = "localhost";
 
-    private static boolean isConnected = false;
+    private static boolean connected = false;
     private static Socket clientSocket;
 
     public static boolean connectToTheServer() {
         try {
             clientSocket = new Socket(SERVER_IP, readingPortNumberFromFile());
-            isConnected = true;
+            setConnected(true);
         } catch (IOException e) {
             System.err.println("Server is not ready yet,press your button and come back later");
             return false;
@@ -34,5 +34,13 @@ public class Client {
             e.printStackTrace();
         }
         return 8000;
+    }
+
+    public static void setConnected(boolean connected) {
+        Client.connected = connected;
+    }
+
+    public static boolean isConnected() {
+        return connected;
     }
 }

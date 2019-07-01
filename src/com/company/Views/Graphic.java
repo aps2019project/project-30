@@ -62,12 +62,19 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
-        if(Client.connectToTheServer()) {
-            AccountController.loadLoggedInAccount();
-            ShopController.initialize();
-            launch(args);
-        } else {
-            System.err.println("no internet connection!");
+        while (!Client.isConnected()) {
+            if (Client.connectToTheServer()) {
+                AccountController.loadLoggedInAccount();
+                ShopController.initialize();
+                launch(args);
+            } else {
+                System.err.println("connection failed");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
