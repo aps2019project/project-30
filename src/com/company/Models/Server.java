@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Properties;
 
 public class Server {
@@ -13,6 +14,7 @@ public class Server {
     public static void main(String[] args) throws IOException{
         ServerSocket server = new ServerSocket(0);
         setPortNumberOnPropertiesFile(server);
+        Socket client = server.accept();
     }
 
     private static void setPortNumberOnPropertiesFile(ServerSocket server) throws IOException {
