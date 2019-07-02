@@ -2,20 +2,21 @@ package com.company.Models;
 
 import com.google.gson.JsonObject;
 
-public class Request {
-    public enum RequestType{
-        LOGIN
+public class Response {
+
+    public static class Codes{
+        final public static int LOGIN = 1;
     }
 
-    private RequestType requestType;
+    private int code;
     private JsonObject content = new JsonObject();
 
-    public RequestType getRequestType() {
-        return requestType;
+    public int getCode() {
+        return code;
     }
 
-    public void setRequestType(RequestType requestType) {
-        this.requestType = requestType;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public JsonObject getContent() {
