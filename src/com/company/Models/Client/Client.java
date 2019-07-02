@@ -1,5 +1,6 @@
 package com.company.Models.Client;
 
+import com.company.Controllers.Client.ClientRequestController;
 import com.company.Models.Receiver.ClientMessageReceiver;
 import com.company.Models.Writer.MessageWriter;
 
@@ -17,12 +18,14 @@ public class Client {
 
     private static MessageWriter clientMessageWriter;
     private static ClientMessageReceiver clientMessageReceiver;
+
+    private static ClientRequestController requestController;
     private static Socket clientSocket;
 
     public static boolean setClientUp() {
         if (connectToTheServer()) {
             setClientMessageReader();
-            setClientMessageWriter();
+            setRequestController();
             return true;
         }
         return false;
@@ -69,10 +72,10 @@ public class Client {
         }
     }
 
-    private static void setClientMessageWriter() {
+    private static void setRequestController() {
         try {
-            clientMessageWriter = new MessageWriter(clientSocket.getOutputStream());
-            clientMessageWriter.start();
+            requestController = new ClientRequestController(clientSocket.getOutputStream());
+            requestController.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

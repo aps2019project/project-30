@@ -8,11 +8,11 @@ import java.io.PrintStream;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ClientRequestTransmitter extends Thread{
+public class ClientRequestController extends Thread{
     private PrintStream printer;
     private BlockingQueue<Request> requests = new LinkedBlockingQueue<>();
 
-    public ClientRequestTransmitter(OutputStream output) {
+    public ClientRequestController(OutputStream output) {
         printer = new PrintStream(output);
     }
 
@@ -28,6 +28,10 @@ public class ClientRequestTransmitter extends Thread{
     }
 
     public void sendRequest (Request request) {
-        requests.add(request);
+        try {
+            requests.put(request);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
