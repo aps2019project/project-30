@@ -34,7 +34,7 @@ public class ChooseGameController implements Initializable {
     public StackPane loadSavedGameMenu;
     public TextField enterTime;
 
-    public ImageView back;
+    public ImageView bacck;
     public boolean tr=false;
 //    public Button single;
     public String numberOfPlayers;
@@ -73,11 +73,17 @@ public class ChooseGameController implements Initializable {
             }
         }));
 
-        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//        bacck.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                System.out.println("hoyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+//                RootsController.backToMainMenu();
+//            }
+//        });
+        bacck.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("hoyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-                RootsController.backToMainMenu();
+                System.out.println("kiiiiiiiiiiiiiiiiiiiiiiir");
             }
         });
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
