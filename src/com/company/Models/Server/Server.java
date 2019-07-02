@@ -1,4 +1,4 @@
-package com.company.Models;
+package com.company.Models.Server;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
 package com.company.Controllers.Client;
 
-public class ClientRequsetTransmitter {
+public class ClientRequestTransmitter {
 }

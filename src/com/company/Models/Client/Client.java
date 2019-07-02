@@ -1,4 +1,4 @@
-package com.company.Models;
+package com.company.Models.Client;
 
 import com.company.Models.Receiver.ClientMessageReceiver;
 import com.company.Models.Writer.MessageWriter;
@@ -15,8 +15,8 @@ public class Client {
 
     private static boolean connected = false;
 
-    private static MessageWriter serverMessageWriter;
-    private static ClientMessageReceiver serverMessageReceiver;
+    private static MessageWriter clientMessageWriter;
+    private static ClientMessageReceiver clientMessageReceiver;
     private static Socket clientSocket;
 
     public static boolean setClientUp() {
@@ -62,8 +62,8 @@ public class Client {
 
     private static void setClientMessageReader() {
         try {
-            serverMessageReceiver = new ClientMessageReceiver(clientSocket.getInputStream());
-            serverMessageReceiver.start();
+            clientMessageReceiver = new ClientMessageReceiver(clientSocket.getInputStream());
+            clientMessageReceiver.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,8 +71,8 @@ public class Client {
 
     private static void setClientMessageWriter() {
         try {
-            serverMessageWriter = new MessageWriter(clientSocket.getOutputStream());
-            serverMessageWriter.start();
+            clientMessageWriter = new MessageWriter(clientSocket.getOutputStream());
+            clientMessageWriter.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
