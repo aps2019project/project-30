@@ -3,19 +3,19 @@ package com.company.Models;
 import com.google.gson.JsonObject;
 
 public class Request {
-    public enum RequestType{
+    public enum Type {
         LOGIN
     }
 
-    private RequestType requestType;
+    private Type type;
     private JsonObject content = new JsonObject();
 
-    public RequestType getRequestType() {
-        return requestType;
+    public Type getType() {
+        return type;
     }
 
-    public void setRequestType(RequestType requestType) {
-        this.requestType = requestType;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public JsonObject getContent() {

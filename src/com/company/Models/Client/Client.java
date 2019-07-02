@@ -2,6 +2,8 @@ package com.company.Models.Client;
 
 import com.company.Controllers.Client.ClientRequestController;
 import com.company.Controllers.Client.ClientResponseController;
+import com.company.Models.Request;
+import com.google.gson.JsonObject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -21,7 +23,7 @@ public class Client {
 
     public static boolean setClientUp() {
         if (connectToTheServer()) {
-            setClientMessageReader();
+            setResponseController();
             setRequestController();
             return true;
         }
@@ -60,7 +62,7 @@ public class Client {
         return connected;
     }
 
-    private static void setClientMessageReader() {
+    private static void setResponseController() {
         try {
             responseController = new ClientResponseController(clientSocket.getInputStream());
             responseController.start();
@@ -75,6 +77,34 @@ public class Client {
             requestController.start();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static ClientRequestController getRequestController() {
+        return requestController;
+    }
+
+    public static ClientResponseController getResponseController() {
+        return responseController;
+    }
+
+    public static void main(String[] args){
+        while (!Client.isConnected()) {
+            if (Client.setClientUp()) {
+                Request request = new Request();
+                request.setType(Request.Type.LOGIN);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("name","ali");
+                request.setContent(jsonObject);
+                Client.getRequestController().sendRequest(request);
+            } else {
+                System.err.println("connection failed");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

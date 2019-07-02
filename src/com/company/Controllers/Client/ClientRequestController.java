@@ -10,7 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ClientRequestController extends Thread{
     private PrintStream printer;
-    private BlockingQueue<Request> ClientRequests = new LinkedBlockingQueue<>();
+    private BlockingQueue<Request> clientRequests = new LinkedBlockingQueue<>();
 
     public ClientRequestController(OutputStream output) {
         printer = new PrintStream(output);
@@ -20,7 +20,7 @@ public class ClientRequestController extends Thread{
     public void run() {
         try {
             while (!interrupted()) {
-                printer.println(new Gson().toJson(ClientRequests.take()));
+                printer.println(new Gson().toJson(clientRequests.take()));
             }
         } catch (InterruptedException e) {
             System.err.println(e.getMessage());
@@ -29,7 +29,8 @@ public class ClientRequestController extends Thread{
 
     public void sendRequest (Request request) {
         try {
-            ClientRequests.put(request);
+            clientRequests.put(request);
+            System.out.println(request.getContent().toString());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

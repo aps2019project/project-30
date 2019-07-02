@@ -2,10 +2,13 @@ package com.company.Views;
 
 import com.company.Controllers.AccountController;
 import com.company.Controllers.BattleController;
+import com.company.Controllers.Client.ClientRequestController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Client.Client;
+import com.company.Models.Request;
 import com.company.Models.User.Account;
+import com.google.gson.JsonObject;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
@@ -63,6 +66,11 @@ public class Graphic extends Application {
     public static void main(String[] args) {
         while (!Client.isConnected()) {
             if (Client.setClientUp()) {
+                Request request = new Request();
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("name","ali");
+                request.setContent(jsonObject);
+                Client.getRequestController().sendRequest(request);
                 AccountController.loadLoggedInAccount();
                 ShopController.initialize();
                 launch(args);
