@@ -1,6 +1,5 @@
-package com.company.Controllers;
+package com.company.Models.Receiver;
 
-import com.company.Models.MessageReceiver;
 import java.io.InputStream;
 import java.util.Scanner;
 

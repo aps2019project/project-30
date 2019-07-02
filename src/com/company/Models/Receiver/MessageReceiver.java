@@ -1,4 +1,4 @@
-package com.company.Models;
+package com.company.Models.Receiver;
 
 import java.util.Scanner;
 

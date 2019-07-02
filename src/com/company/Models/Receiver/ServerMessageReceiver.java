@@ -1,6 +1,6 @@
-package com.company.Controllers;
+package com.company.Models.Receiver;
 
-import com.company.Models.MessageReceiver;
+import com.company.Models.Writer.MessageWriter;
 
 import java.io.IOException;
 import java.net.Socket;

@@ -1,4 +1,4 @@
-package com.company.Controllers;
+package com.company.Models.Writer;
 
 
 import java.io.OutputStream;
@@ -10,7 +10,7 @@ public class MessageWriter extends Thread {
     private PrintStream printer;
     private BlockingQueue<String> pipeline = new LinkedBlockingQueue<>();
 
-    MessageWriter(OutputStream output) {
+    public MessageWriter(OutputStream output) {
         printer = new PrintStream(output);
     }
 
