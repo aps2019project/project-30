@@ -67,9 +67,11 @@ public abstract class Buff {
     }
 
     public boolean hasAntiBuff() {
-        for (Buff buff : cardToCast.getBuffsCasted()) {
-            if (name.equals(buff.antiBuff)) {
-                return true;
+        if (cardToCast != null) {
+            for (Buff buff : cardToCast.getBuffsCasted()) {
+                if (name.equals(buff.antiBuff)) {
+                    return true;
+                }
             }
         }
         return false;

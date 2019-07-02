@@ -5,6 +5,7 @@ import com.company.Controllers.JsonController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Battle.Battle;
 import com.company.Models.Battle.Modes.Mode;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.jfoenix.controls.JFXMasonryPane;
 import javafx.animation.AnimationTimer;
@@ -34,7 +35,7 @@ public class ChooseGameController implements Initializable {
     public StackPane loadSavedGameMenu;
     public TextField enterTime;
 
-    public ImageView bacck;
+    public ImageView back;
     public boolean tr=false;
 //    public Button single;
     public String numberOfPlayers;
@@ -73,22 +74,17 @@ public class ChooseGameController implements Initializable {
             }
         }));
 
-//        bacck.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                System.out.println("hoyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-//                RootsController.backToMainMenu();
-//            }
-//        });
-        bacck.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        back.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                System.out.println("kiiiiiiiiiiiiiiiiiiiiiiir");
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
+                RootsController.backToMainMenu();
             }
         });
         singlePlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 numberOfPlayers="singlePlayer";
                 multiorsingle.setVisible(false);
                 secondPageSingle.setVisible(true);
@@ -97,6 +93,7 @@ public class ChooseGameController implements Initializable {
         multiPlayer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 numberOfPlayers="multiPlayer";
                 selectAcount.setVisible(true);
                 multiorsingle.setVisible(false);
@@ -105,6 +102,7 @@ public class ChooseGameController implements Initializable {
         story.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 secondPageSingle.setVisible(false);
                 storyorcustom="story";
                 levels.setVisible(true);
@@ -113,6 +111,7 @@ public class ChooseGameController implements Initializable {
         custom.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 secondPageSingle.setVisible(false);
                 storyorcustom="custom";
                 modeBox.setVisible(true);
@@ -141,18 +140,21 @@ public class ChooseGameController implements Initializable {
         killingGenerall.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 mode=Mode.KILLING_GENERAL;
             }
         });
         captureMostFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 mode=Mode.COLLECTING_FLAGS;
             }
         });
         captureTheFlag.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 mode=Mode.CAPTURE_THE_FLAG;
             }
         });
@@ -168,6 +170,7 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=1;
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 mode=Mode.KILLING_GENERAL;
             }
         });
@@ -175,6 +178,7 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=2;
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 mode=Mode.CAPTURE_THE_FLAG;
             }
         });
@@ -182,6 +186,7 @@ public class ChooseGameController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 storyLevel=3;
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 mode=Mode.COLLECTING_FLAGS;
             }
         });
@@ -274,7 +279,6 @@ public class ChooseGameController implements Initializable {
                 if((now)- MainMenuController.timenow>MainMenuController.timeTurn){
                     RootsController.gameController.endTurnq();
                     MainMenuController.timenow=now;
-                   // System.out.println(now+"          tokhmooiiiiiiiiiiiiiiii");
                 }
             }
         };h.start();

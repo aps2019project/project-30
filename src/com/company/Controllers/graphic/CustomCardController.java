@@ -5,6 +5,7 @@ import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Shop;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.jfoenix.controls.JFXComboBox;
@@ -75,6 +76,7 @@ public class CustomCardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         back.setOnMouseClicked(event -> {
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             RootsController.openShop();
         });
         heroSpecialPower.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -110,6 +112,7 @@ public class CustomCardController implements Initializable {
 
         addNewHeroToHeroesJsonFile(newHero);
         addNewCustomCardToShopCollection(newHero);
+        Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
     }
 
     public void createNewCustomMinion(ActionEvent actionEvent) {
@@ -127,6 +130,7 @@ public class CustomCardController implements Initializable {
 
         addNewMinionToMinionsJsonFile(newMinion);
         addNewCustomCardToShopCollection(newMinion);
+        Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
     }
 
     private void addNewHeroToHeroesJsonFile(Hero newHero) {

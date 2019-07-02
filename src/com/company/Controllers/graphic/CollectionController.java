@@ -6,6 +6,7 @@ import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Spell.Spell;
 import com.company.Models.ErrorType;
+import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.BattleView;
 import com.company.Views.Graphic;
@@ -110,6 +111,7 @@ public class CollectionController implements Initializable {
         });
 
         save.setOnMouseClicked(event -> {
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             DirectoryChooser chooser = new DirectoryChooser();
             chooser.setTitle("Choose Directory To Save Deck");
             File defaultDirectory = new File("c:/");
@@ -124,6 +126,7 @@ public class CollectionController implements Initializable {
         decklabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
                 selected_deck=decklabel.getText();
                 firstScroll.setVisible(false);
                 deckContainer.setVisible(false);

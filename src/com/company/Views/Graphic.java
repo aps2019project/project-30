@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.BattleController;
 import com.company.Controllers.ShopController;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Client;
 import com.company.Models.User.Account;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -61,8 +62,12 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
-        AccountController.loadLoggedInAccount();
-        ShopController.initialize();
-        launch(args);
+        if(Client.connectToTheServer()) {
+            AccountController.loadLoggedInAccount();
+            ShopController.initialize();
+            launch(args);
+        } else {
+            System.err.println("no internet connection!");
+        }
     }
 }
