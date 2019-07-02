@@ -1,6 +1,7 @@
 package com.company.Controllers.Server;
 
 import com.company.Models.Request;
+import com.company.Models.Response;
 import com.google.gson.Gson;
 
 import java.io.OutputStream;
@@ -12,7 +13,7 @@ import static java.lang.Thread.interrupted;
 
 public class ServerResponseController extends Thread{
     private PrintStream printer;
-    private BlockingQueue<Request> serverResponses = new LinkedBlockingQueue<>();
+    private BlockingQueue<Response> serverResponses = new LinkedBlockingQueue<>();
 
     public ServerResponseController(OutputStream output) {
         printer = new PrintStream(output);
@@ -29,9 +30,9 @@ public class ServerResponseController extends Thread{
         }
     }
 
-    public void sendRequest (Request request) {
+    public void sendRequest (Response response) {
         try {
-            serverResponses.put(request);
+            serverResponses.put(response);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

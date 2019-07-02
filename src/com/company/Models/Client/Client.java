@@ -2,8 +2,6 @@ package com.company.Models.Client;
 
 import com.company.Controllers.Client.ClientRequestController;
 import com.company.Controllers.Client.ClientResponseController;
-import com.company.Models.Receiver.ClientMessageReceiver;
-import com.company.Models.Writer.MessageWriter;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +10,7 @@ import java.util.Properties;
 
 public class Client {
     final private static String PORT_NUMBER_FILE_ADDRESS = "config.properties";
-    final private static String SERVER_IP = "localhost";
+    final private static String SERVER_ADDRESS = "localhost";
     private static String AuthToken = null;
 
     private static boolean connected = false;
@@ -32,7 +30,7 @@ public class Client {
 
     public static boolean connectToTheServer() {
         try {
-            clientSocket = new Socket(SERVER_IP, readingPortNumberFromFile());
+            clientSocket = new Socket(SERVER_ADDRESS, readingPortNumberFromFile());
             setConnected(true);
         } catch (IOException e) {
             System.err.println("Server is not ready yet,press your button and come back later");
