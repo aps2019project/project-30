@@ -1,5 +1,8 @@
 package com.company.Models;
 
+import com.company.Models.Receiver.ClientMessageReceiver;
+import com.company.Models.Writer.MessageWriter;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.Socket;
@@ -11,7 +14,19 @@ public class Client {
     private static String AuthToken = null;
 
     private static boolean connected = false;
+
+    private static MessageWriter serverMessageWriter;
+    private static ClientMessageReceiver serverMessageReceiver;
     private static Socket clientSocket;
+
+    public static boolean setClientUp() {
+        if (connectToTheServer()) {
+            setClientMessageReader();
+            setClientMessageWriter();
+            return true;
+        }
+        return false;
+    }
 
     public static boolean connectToTheServer() {
         try {
@@ -43,5 +58,23 @@ public class Client {
 
     public static boolean isConnected() {
         return connected;
+    }
+
+    private static void setClientMessageReader() {
+        try {
+            serverMessageReceiver = new ClientMessageReceiver(clientSocket.getInputStream());
+            serverMessageReceiver.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void setClientMessageWriter() {
+        try {
+            serverMessageWriter = new MessageWriter(clientSocket.getOutputStream());
+            serverMessageWriter.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

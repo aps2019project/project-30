@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ClientMessageReceiver extends MessageReceiver {
 
-    ClientMessageReceiver(InputStream input) {
+    public ClientMessageReceiver(InputStream input) {
         scanner = new Scanner(input);
     }
 

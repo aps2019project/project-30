@@ -62,7 +62,7 @@ public class Graphic extends Application {
 
     public static void main(String[] args) {
         while (!Client.isConnected()) {
-            if (Client.connectToTheServer()) {
+            if (Client.setClientUp()) {
                 AccountController.loadLoggedInAccount();
                 ShopController.initialize();
                 launch(args);
