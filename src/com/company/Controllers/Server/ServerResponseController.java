@@ -25,7 +25,7 @@ public class ServerResponseController extends Thread{
                 printer.println(new Gson().toJson(serverResponses.take()));
             }
         } catch (InterruptedException e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 

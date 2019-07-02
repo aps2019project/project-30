@@ -1,6 +1,7 @@
 package com.company.Models.Client;
 
 import com.company.Controllers.Client.ClientRequestController;
+import com.company.Controllers.Client.ClientResponseController;
 import com.company.Models.Receiver.ClientMessageReceiver;
 import com.company.Models.Writer.MessageWriter;
 
@@ -16,10 +17,8 @@ public class Client {
 
     private static boolean connected = false;
 
-    private static MessageWriter clientMessageWriter;
-    private static ClientMessageReceiver clientMessageReceiver;
-
     private static ClientRequestController requestController;
+    private static ClientResponseController responseController;
     private static Socket clientSocket;
 
     public static boolean setClientUp() {
@@ -50,7 +49,7 @@ public class Client {
             System.out.println(port);
             return Integer.parseInt(port);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("there is no port number on config file");
         }
         return 8000;
     }
@@ -65,8 +64,8 @@ public class Client {
 
     private static void setClientMessageReader() {
         try {
-            clientMessageReceiver = new ClientMessageReceiver(clientSocket.getInputStream());
-            clientMessageReceiver.start();
+            responseController = new ClientResponseController(clientSocket.getInputStream());
+            responseController.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
