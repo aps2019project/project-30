@@ -1,4 +1,4 @@
-package com.company.Controllers.Client;
+package com.company.Controllers.Server;
 
 import com.company.Models.Request;
 import com.google.gson.Gson;
@@ -8,11 +8,13 @@ import java.io.PrintStream;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ClientRequestController extends Thread{
-    private PrintStream printer;
-    private BlockingQueue<Request> ClientRequests = new LinkedBlockingQueue<>();
+import static java.lang.Thread.interrupted;
 
-    public ClientRequestController(OutputStream output) {
+public class ServerResponseController extends Thread{
+    private PrintStream printer;
+    private BlockingQueue<Request> serverResponses = new LinkedBlockingQueue<>();
+
+    public ServerResponseController(OutputStream output) {
         printer = new PrintStream(output);
     }
 
@@ -20,7 +22,7 @@ public class ClientRequestController extends Thread{
     public void run() {
         try {
             while (!interrupted()) {
-                printer.println(new Gson().toJson(ClientRequests.take()));
+                printer.println(new Gson().toJson(serverResponses.take()));
             }
         } catch (InterruptedException e) {
             System.err.println(e.getMessage());
@@ -29,7 +31,7 @@ public class ClientRequestController extends Thread{
 
     public void sendRequest (Request request) {
         try {
-            ClientRequests.put(request);
+            serverResponses.put(request);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
