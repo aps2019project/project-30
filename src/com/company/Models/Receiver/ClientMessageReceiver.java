@@ -16,4 +16,12 @@ public class ClientMessageReceiver extends MessageReceiver {
         }
     }
 
+    public static Scanner scanner;
+
+    public String read() {
+        String message = scanner.nextLine();
+        System.out.println(message);
+        return message;
+    }
+
 }
