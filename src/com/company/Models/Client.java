@@ -8,6 +8,7 @@ import java.util.Properties;
 public class Client {
     final private static String PORT_NUMBER_FILE_ADDRESS = "config.properties";
     final private static String SERVER_IP = "localhost";
+    private static String AuthToken = null;
 
     private static boolean connected = false;
     private static Socket clientSocket;

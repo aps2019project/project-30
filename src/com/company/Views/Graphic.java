@@ -24,7 +24,6 @@ public class Graphic extends Application {
     public static Parent collection;
     public static FXMLLoader mainMenuLoader;
 
-
     static {
         try {
             shop = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/shop.fxml"));
