@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Scanner;
 
-public class ClientResponseController extends Thread{
+public class ClientResponseController extends Thread {
 
     public InputStream input;
 
@@ -27,7 +27,7 @@ public class ClientResponseController extends Thread{
             while (Client.isConnected()) {
                 if (parser.hasNext()) {
                     Response response = gson.fromJson(parser.next(), Response.class);
-                    System.out.println("Server Response : " + response.getCode());
+                    System.out.println("Server Response : code ---> " + response.getCode() + "\n" + response.getContent().toString());
                     handleResponse(response);
                 }
             }
@@ -37,7 +37,7 @@ public class ClientResponseController extends Thread{
     }
 
     private void handleResponse(Response response) {
-        switch (response.getCode()){
+        switch (response.getCode()) {
             case Response.Codes.LOGIN:
                 break;
         }

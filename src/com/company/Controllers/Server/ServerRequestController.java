@@ -1,5 +1,6 @@
 package com.company.Controllers.Server;
 
+import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.google.gson.Gson;
@@ -39,11 +40,7 @@ public class ServerRequestController extends Thread{
     private void handleResponse(Request request) {
         switch (request.getType()){
             case LOGIN:
-                Response response = new Response();
-                response.setCode(Response.Codes.LOGIN);
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("message","login");
-                response.setContent(jsonObject);
+                Response response = new Response(Response.Codes.LOGIN,new Property("message","login"));
                 client.getServerResponseController().sendResponse(response);
                 break;
         }
