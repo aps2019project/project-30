@@ -6,7 +6,8 @@ import com.sun.org.apache.bcel.internal.classfile.Code;
 public class Response {
 
     public static class Codes{
-        final public static int LOGIN = 1;
+        //Login and sign up : 1
+        final public static int LOGIN = 101;
     }
 
     public Response(int code,Property... properties) {

@@ -7,6 +7,19 @@ public class Request {
         LOGIN
     }
 
+    public Request() {
+
+    }
+
+    public Request(Type type, Property... properties) {
+        setType(type);
+        JsonObject jsonObject = new JsonObject();
+        for (Property property:properties) {
+            jsonObject.addProperty(property.getProperty(),property.getValue());
+        }
+        setContent(jsonObject);
+    }
+
     private Type type;
     private JsonObject content = new JsonObject();
 
