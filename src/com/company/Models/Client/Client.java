@@ -91,7 +91,7 @@ public class Client {
     public static void main(String[] args){
         while (!Client.isConnected()) {
             if (Client.setClientUp()) {
-                Request request = new Request();
+                Request request = new Request(); 
                 request.setType(Request.Type.LOGIN);
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.addProperty("name","ali");

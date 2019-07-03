@@ -14,9 +14,11 @@ import static java.lang.Thread.interrupted;
 public class ServerResponseController extends Thread{
     private PrintStream printer;
     private BlockingQueue<Response> serverResponses = new LinkedBlockingQueue<>();
+    private ClientController client;
 
-    public ServerResponseController(OutputStream output) {
+    public ServerResponseController(ClientController client,OutputStream output) {
         printer = new PrintStream(output);
+        this.client = client;
     }
 
     @Override
@@ -30,7 +32,7 @@ public class ServerResponseController extends Thread{
         }
     }
 
-    public void sendRequest (Response response) {
+    public void sendResponse(Response response) {
         try {
             serverResponses.put(response);
         } catch (InterruptedException e) {

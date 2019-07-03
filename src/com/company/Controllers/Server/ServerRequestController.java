@@ -1,9 +1,9 @@
 package com.company.Controllers.Server;
 
-import com.company.Models.Client.Client;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonStreamParser;
 
 import java.io.IOException;
@@ -12,9 +12,11 @@ import java.io.InputStreamReader;
 
 public class ServerRequestController extends Thread{
     public InputStream input;
+    private ClientController client;
 
-    public ServerRequestController(InputStream input) {
+    public ServerRequestController(ClientController client ,InputStream input) {
         this.input = input;
+        this.client = client;
     }
 
     @Override
@@ -37,7 +39,14 @@ public class ServerRequestController extends Thread{
     private void handleResponse(Request request) {
         switch (request.getType()){
             case LOGIN:
+                Response response = new Response();
+                response.setCode(Response.Codes.LOGIN);
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("message","login");
+                response.setContent(jsonObject);
+                client.getServerResponseController().sendResponse(response);
                 break;
         }
     }
+
 }
