@@ -76,8 +76,8 @@
                     </VBox>
 
                     <VBox fx:id="connectBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
-                        <TextField fx:id="serverIP" promptText="Server IP" styleClass="authenticate-field"/>
-                        <TextField fx:id="serverPort" promptText="port" styleClass="authenticate-field"/>
+                        <TextField fx:id="serverIP" text="localhost" promptText="Server IP" styleClass="authenticate-field"/>
+                        <TextField fx:id="serverPort" text="1010" promptText="port" styleClass="authenticate-field"/>
                         <JFXButton fx:id="connect" text="Connect" onAction="#connect" styleClass="login"/>
                     </VBox>
                 </StackPane>

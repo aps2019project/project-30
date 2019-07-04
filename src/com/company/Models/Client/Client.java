@@ -103,4 +103,12 @@ public class Client {
     public static void setPortNumber(int portNumber) {
         Client.portNumber = portNumber;
     }
+
+    public static String getAuthToken() {
+        return AuthToken;
+    }
+
+    public static void setAuthToken(String authToken) {
+        AuthToken = authToken;
+    }
 }
