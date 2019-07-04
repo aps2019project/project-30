@@ -38,7 +38,7 @@ public class ClientResponseController extends Thread {
 
     private void handleResponse(Response response) {
         switch (response.getCode()) {
-            case Response.Codes.LOGIN:
+            case Response.Codes.SUCCESSFUL_LOGIN:
                 break;
         }
     }
