@@ -6,54 +6,83 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.company.Controllers.AuthenticateController"
-      prefHeight="400.0" prefWidth="600.0" alignment="CENTER" styleClass="authenticate-root">
-    <ImageView fitWidth="600" fitHeight="200">
-        <Image url="@../images/logo.png"/>
-    </ImageView>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.company.Controllers.AuthenticateController"
+           styleClass="authenticate-root">
+    <VBox fx:id="loginAndSignUpVBox" visible="false" alignment="CENTER" StackPane.alignment="CENTER">
+        <ImageView fitWidth="600" fitHeight="200">
+            <Image url="@../images/logo.png"/>
+        </ImageView>
 
-    <JFXTabPane fx:id="tabPane" styleClass="tabs-container">
-        <Tab text="LOG IN" fx:id="loginTab">
-            <StackPane styleClass="login-items-container">
+        <JFXTabPane fx:id="loginAndSignUpTabPane" styleClass="tabs-container">
+            <Tab text="LOG IN" fx:id="loginTab">
+                <StackPane styleClass="login-items-container">
 
-                <VBox fx:id="loginErrorBox" alignment="CENTER">
-                    <ImageView fitWidth="140" fitHeight="190">
-                        <Image url="@../images/uh-oh.png"/>
-                    </ImageView>
-                    <Label fx:id="loginError" styleClass="error-message"/>
+                    <VBox fx:id="loginErrorBox" alignment="CENTER">
+                        <ImageView fitWidth="140" fitHeight="190">
+                            <Image url="@../images/uh-oh.png"/>
+                        </ImageView>
+                        <Label fx:id="loginError" styleClass="error-message"/>
 
-                </VBox>
-                <VBox fx:id="loginBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
-                    <TextField fx:id="loginUsername" promptText="Username" styleClass="authenticate-field"/>
-                    <PasswordField fx:id="loginPassword" promptText="Password" styleClass="authenticate-field"/>
-                    <JFXCheckBox fx:id="rememberMe" text="Remember Me" styleClass="remember-me"/>
-                    <JFXButton fx:id="login" text="Login" onAction="#login" styleClass="login"/>
-                </VBox>
-            </StackPane>
-        </Tab>
-        <Tab text="SIGN UP" fx:id="signupTab">
-            <StackPane styleClass="login-items-container">
-                <VBox fx:id="signupSuccussBox" alignment="CENTER">
-                    <ImageView fitWidth="140" fitHeight="190">
-                        <Image url="@../images/oh-yes.png"/>
-                    </ImageView>
-                </VBox>
-                <VBox fx:id="signupErrorBox" alignment="CENTER">
-                    <ImageView fitWidth="140" fitHeight="190">
-                        <Image url="@../images/uh-oh.png"/>
-                    </ImageView>
-                    <Label fx:id="signupError" styleClass="error-message"/>
-                </VBox>
-                <VBox fx:id="signupBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
-                    <TextField fx:id="signupUsername" promptText="Username" styleClass="authenticate-field"/>
-                    <PasswordField fx:id="signupPassword" promptText="Password" styleClass="authenticate-field"/>
-                    <PasswordField fx:id="signupPasswordMatch" promptText="Password" styleClass="authenticate-field"/>
-                    <JFXButton fx:id="signup" text="Sign Up" onAction="#signUp" styleClass="login"/>
-                </VBox>
-            </StackPane>
-        </Tab>
-    </JFXTabPane>
+                    </VBox>
+                    <VBox fx:id="loginBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
+                        <TextField fx:id="loginUsername" promptText="Username" styleClass="authenticate-field"/>
+                        <PasswordField fx:id="loginPassword" promptText="Password" styleClass="authenticate-field"/>
+                        <JFXCheckBox fx:id="rememberMe" text="Remember Me" styleClass="remember-me"/>
+                        <JFXButton fx:id="login" text="Login" onAction="#login" styleClass="login"/>
+                    </VBox>
+                </StackPane>
+            </Tab>
+            <Tab text="SIGN UP" fx:id="signupTab">
+                <StackPane styleClass="login-items-container">
+                    <VBox fx:id="signupSuccussBox" alignment="CENTER">
+                        <ImageView fitWidth="140" fitHeight="190">
+                            <Image url="@../images/oh-yes.png"/>
+                        </ImageView>
+                    </VBox>
+                    <VBox fx:id="signupErrorBox" alignment="CENTER">
+                        <ImageView fitWidth="140" fitHeight="190">
+                            <Image url="@../images/uh-oh.png"/>
+                        </ImageView>
+                        <Label fx:id="signupError" styleClass="error-message"/>
+                    </VBox>
+                    <VBox fx:id="signupBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
+                        <TextField fx:id="signupUsername" promptText="Username" styleClass="authenticate-field"/>
+                        <PasswordField fx:id="signupPassword" promptText="Password" styleClass="authenticate-field"/>
+                        <PasswordField fx:id="signupPasswordMatch" promptText="Password"
+                                       styleClass="authenticate-field"/>
+                        <JFXButton fx:id="signup" text="Sign Up" onAction="#signUp" styleClass="login"/>
+                    </VBox>
+                </StackPane>
+            </Tab>
+        </JFXTabPane>
+    </VBox>
 
-</VBox>
+    <VBox fx:id="connectingToServerVBox" visible="true" alignment="CENTER" StackPane.alignment="CENTER">
+        <ImageView fitWidth="600" fitHeight="200">
+            <Image url="@../images/logo.png"/>
+        </ImageView>
+
+        <JFXTabPane styleClass="tabs-container">
+            <Tab text="Connecting To Server" fx:id="connectingTab">
+                <StackPane alignment="CENTER" styleClass="login-items-container">
+                    <VBox fx:id="connectErrorBox" alignment="CENTER">
+                        <ImageView fitWidth="140" fitHeight="190">
+                            <Image url="@../images/uh-oh.png"/>
+                        </ImageView>
+
+                        <Label fx:id="connectingError" styleClass="error-message"/>
+                    </VBox>
+
+                    <VBox fx:id="connectBox" alignment="CENTER_LEFT" spacing="25" style="-fx-background-color: #292929">
+                        <TextField fx:id="serverIP" promptText="Server IP" styleClass="authenticate-field"/>
+                        <TextField fx:id="serverPort" promptText="port" styleClass="authenticate-field"/>
+                        <JFXButton fx:id="connect" text="Connect" onAction="#connect" styleClass="login"/>
+                    </VBox>
+                </StackPane>
+            </Tab>
+        </JFXTabPane>
+    </VBox>
+
+</StackPane>

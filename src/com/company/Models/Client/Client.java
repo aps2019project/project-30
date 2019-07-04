@@ -12,7 +12,8 @@ import java.util.Properties;
 
 public class Client {
     final private static String PORT_NUMBER_FILE_ADDRESS = "config.properties";
-    final private static String SERVER_ADDRESS = "localhost";
+    private static String sererIP;
+    private static int portNumber;
     private static String AuthToken = null;
 
     private static boolean connected = false;
@@ -32,26 +33,13 @@ public class Client {
 
     public static boolean connectToTheServer() {
         try {
-            clientSocket = new Socket(SERVER_ADDRESS, readingPortNumberFromFile());
+            clientSocket = new Socket(sererIP, portNumber);
             setConnected(true);
         } catch (IOException e) {
             System.err.println("Server is not ready yet,press your button and come back later");
             return false;
         }
         return true;
-    }
-
-    private static int readingPortNumberFromFile() {
-        try {
-            Properties properties = new Properties();
-            properties.load(new FileInputStream(PORT_NUMBER_FILE_ADDRESS));
-            String port = properties.getProperty("port");
-            System.out.println(port);
-            return Integer.parseInt(port);
-        } catch (IOException e) {
-            System.err.println("there is no port number on config file");
-        }
-        return 8000;
     }
 
     public static void setConnected(boolean connected) {
@@ -88,13 +76,13 @@ public class Client {
         return responseController;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         while (!Client.isConnected()) {
             if (Client.setClientUp()) {
-                Request request = new Request(); 
+                Request request = new Request();
                 request.setType(Request.Type.LOGIN);
                 JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("name","ali");
+                jsonObject.addProperty("name", "ali");
                 request.setContent(jsonObject);
                 Client.getRequestController().sendRequest(request);
             } else {
@@ -106,5 +94,13 @@ public class Client {
                 }
             }
         }
+    }
+
+    public static void setSererIP(String sererIP) {
+        Client.sererIP = sererIP;
+    }
+
+    public static void setPortNumber(int portNumber) {
+        Client.portNumber = portNumber;
     }
 }

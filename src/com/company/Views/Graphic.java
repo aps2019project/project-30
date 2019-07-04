@@ -66,19 +66,8 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
-        while (!Client.isConnected()) {
-            if (Client.setClientUp()) {
-//                AccountController.loadLoggedInAccount();
-                ShopController.initialize();
-                launch(args);
-            } else {
-                System.err.println("connection failed");
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+//        AccountController.loadLoggedInAccount();
+        ShopController.initialize();
+        launch(args);
     }
 }

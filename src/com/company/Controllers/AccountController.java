@@ -29,7 +29,6 @@ public class AccountController {
 
     }
 
-
     public static void signup(String username, String password) throws Account.SignupException {
         if (username.isEmpty() || password.isEmpty()) {
             throw new Account.SignupException("Username/Password Is Empty");

@@ -15,8 +15,7 @@ public class Server {
     final private static String PORT_NUMBER_FILE_ADDRESS = "config.properties";
 
     public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(0);
-        setPortNumberOnPropertiesFile(server);
+        ServerSocket server = new ServerSocket(readingPortNumberFromFile());
         while (true) {
             Socket client = server.accept();
             new ClientController(client);
@@ -34,6 +33,20 @@ public class Server {
         System.out.println(port);
         properties.setProperty("port", port);
         properties.store(new FileOutputStream(PORT_NUMBER_FILE_ADDRESS), null);
+    }
+
+
+    private static int readingPortNumberFromFile() {
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileInputStream(PORT_NUMBER_FILE_ADDRESS));
+            String port = properties.getProperty("port");
+            System.out.println(port);
+            return Integer.parseInt(port);
+        } catch (IOException e) {
+            System.err.println("there is no port number on config file");
+        }
+        return 8000;
     }
 
 }
