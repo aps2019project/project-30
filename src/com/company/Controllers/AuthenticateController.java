@@ -44,8 +44,8 @@ public class AuthenticateController {
     public void login(ActionEvent actionEvent) {
         Client.getRequestController().sendRequest(new Request(
                 Request.Type.LOGIN,
-                new Property(Property.USERNAME_PROPERTY,loginUsername.getText()),
-                new Property(Property.PASSWORD_PROPERTY,loginPassword.getText())
+                new Property(Property.USERNAME_PROPERTY, loginUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY, loginPassword.getText())
         ));
         if (loginErrorType == null) {
             AccountController.saveAccounts();
@@ -61,6 +61,11 @@ public class AuthenticateController {
     }
 
     public void signUp(ActionEvent actionEvent) {
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.SIGN_UP,
+                new Property(Property.USERNAME_PROPERTY, signupUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY,signupPassword.getText())
+        ));
         if (!signupPasswordMatch.getText().equals(signupPassword.getText())) {
             signupError.setText("PASSWORDS NOT EQUAL");
             new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();

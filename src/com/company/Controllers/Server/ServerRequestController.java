@@ -1,6 +1,7 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
@@ -44,7 +45,7 @@ public class ServerRequestController extends Thread{
             case LOGIN:
                 signinHandler(request);
                 break;
-            case SIGNUP:
+            case SIGN_UP:
                 signUpHandler(request);
                 break;
 
@@ -70,14 +71,14 @@ public class ServerRequestController extends Thread{
     }
 
     private void signUpHandler(Request request) {
-        String username = request.getContent().get("username").getAsString();
-        String password = request.getContent().get("username").getAsString();
+        String username = request.getContent().get(Property.USERNAME_PROPERTY).getAsString();
+        String password = request.getContent().get(Property.PASSWORD_PROPERTY).getAsString();
         Response response;
         try {
             AccountController.signup(username, password);
-            response = new Response(Response.Codes.SUCCESSFUL_SIGNUP);
+            response = new Response(Response.Codes.SUCCESSFUL_SIGN_UP);
         } catch (Account.SignupException e) {
-            response = new Response(Response.Codes.BAD_SIGNUP);
+            response = new Response(Response.Codes.BAD_SIGN_UP);
         }
         client.getServerResponseController().sendResponse(response);
     }

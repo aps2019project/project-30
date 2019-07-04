@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Account implements Serializable {
+public class Account {
     final private static String SAVED_ACCOUNTS_FILE_PATH = "Accounts/SavedAccounts.json";
     final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "LoggedInAccount/LoggedInAccount.json";
     private ClientController clientController;

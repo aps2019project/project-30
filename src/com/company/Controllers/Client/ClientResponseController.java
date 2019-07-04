@@ -40,6 +40,9 @@ public class ClientResponseController extends Thread {
         switch (response.getCode()) {
             case Response.Codes.SUCCESSFUL_LOGIN:
                 break;
+            case Response.Codes.SUCCESSFUL_SIGN_UP:
+                System.out.println("sign up");
+                break;
         }
     }
 }
