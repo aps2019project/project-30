@@ -4,7 +4,10 @@ import animatefx.animation.AnimationFX;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Client.Client;
 import com.company.Models.ErrorType;
+import com.company.Models.Property;
+import com.company.Models.Request;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
@@ -34,16 +37,16 @@ public class AuthenticateController {
     public VBox signupSuccussBox;
     public JFXCheckBox rememberMe;
 
-    public static void loginError(ErrorType longinErrorType) {
-        loginErrorType = longinErrorType;
-    }
-
     public static void signUpError(ErrorType signErrorType) {
         AuthenticateController.signErrorType = signErrorType;
     }
 
     public void login(ActionEvent actionEvent) {
-        AccountController.login(loginUsername.getText(), loginPassword.getText());
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.LOGIN,
+                new Property(Property.USERNAME_PROPERTY,loginUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY,loginPassword.getText())
+        ));
         if (loginErrorType == null) {
             AccountController.saveAccounts();
             RootsController.openMainMenu();
