@@ -53,8 +53,8 @@ public class ServerRequestController extends Thread{
     }
 
     private void signinHandler(Request request) {
-        String username = request.getContent().get("username").getAsString();
-        String password = request.getContent().get("username").getAsString();
+        String username = request.getContent().get(Property.USERNAME_PROPERTY).getAsString();
+        String password = request.getContent().get(Property.PASSWORD_PROPERTY).getAsString();
         Response response;
         try {
             String token = AccountController.login(username, password);

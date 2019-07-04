@@ -116,14 +116,14 @@ public class MainMenuController implements Initializable {
 //        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), "Hell Fire");
 //        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), "Palang");
 
-
-        Account.getLoggedInAccount().getCollection().getCollectionController().createDeck("test");
-
-        for (int i = 0; i < 24; i++) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(String.valueOf(i + 1), "test");
-        }
-
-        Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
+//
+//        Account.getLoggedInAccount().getCollection().getCollectionController().createDeck("test");
+//
+//        for (int i = 0; i < 24; i++) {
+//            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(String.valueOf(i + 1), "test");
+//        }
+//
+//        Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
     public static void changeIsRememberMe() {

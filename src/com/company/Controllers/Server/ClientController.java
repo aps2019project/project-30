@@ -9,10 +9,16 @@ public class ClientController {
     private Account account;
     private ServerRequestController serverRequestController;
     private ServerResponseController serverResponseController;
+    private Socket clientSocket;
 
     public ClientController(Socket clientSocket) {
+        this.clientSocket = clientSocket;
         setServerRequestController(this, clientSocket);
         setServerResponseController(this, clientSocket);
+    }
+
+    public Socket getClientSocket() {
+        return clientSocket;
     }
 
     private void setServerResponseController(ClientController client, Socket clientSocket) {
