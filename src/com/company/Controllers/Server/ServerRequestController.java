@@ -1,7 +1,6 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
-import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
@@ -32,7 +31,7 @@ public class ServerRequestController extends Thread{
                 if (parser.hasNext()) {
                     Request request = gson.fromJson(parser.next(), Request.class);
                     System.out.println("Client Request : " + request.getContent().toString());
-                    handleResponse(request);
+                    handleRequest(request);
                 }
             }
         } catch (IOException e) {
@@ -40,7 +39,7 @@ public class ServerRequestController extends Thread{
         }
     }
 
-    private void handleResponse(Request request) {
+    private void handleRequest(Request request) {
         switch (request.getType()){
             case LOGIN:
                 signinHandler(request);
