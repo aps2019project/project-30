@@ -5,11 +5,10 @@ import com.google.gson.JsonObject;
 public class Response {
 
     public static class Codes{
-        //Login and sign up : 1
         public static final int BAD_LOGIN = 430;
         public static final int SUCCESSFUL_LOGIN = 100;
-        public static final int BAD_SIGNUP = 431;
-        public static final int SUCCESSFUL_SIGNUP = 101;
+        public static final int BAD_SIGN_UP = 431;
+        public static final int SUCCESSFUL_SIGN_UP = 101;
     }
 
     public Response(int code,Property... properties) {

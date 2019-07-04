@@ -4,7 +4,10 @@ import animatefx.animation.AnimationFX;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Client.Client;
 import com.company.Models.ErrorType;
+import com.company.Models.Property;
+import com.company.Models.Request;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
@@ -34,54 +37,50 @@ public class AuthenticateController {
     public VBox signupSuccussBox;
     public JFXCheckBox rememberMe;
 
-    public static void loginError(ErrorType longinErrorType) {
-        loginErrorType = longinErrorType;
-    }
-
     public static void signUpError(ErrorType signErrorType) {
         AuthenticateController.signErrorType = signErrorType;
     }
 
     public void login(ActionEvent actionEvent) {
-        AccountController.login(loginUsername.getText(), loginPassword.getText());
-        if (loginErrorType == null) {
-            AccountController.saveAccounts();
-            RootsController.openMainMenu();
-            if (rememberMe.isSelected()) {
-                MainMenuController.changeIsRememberMe();
-            }
-        } else {
-            new FadeOut(loginBox).playOnFinished(new FadeIn(loginErrorBox)).play();
-            new FadeIn(loginBox).playOnFinished(new FadeOut(loginErrorBox)).setDelay(new Duration(2500)).play();
-            loginError.setText(loginErrorType.getMessage());
-        }
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.LOGIN,
+                new Property(Property.USERNAME_PROPERTY, loginUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY, loginPassword.getText())
+        ));
     }
 
+    public void setLoginError(String errorMessage) {
+        new FadeOut(loginBox).playOnFinished(new FadeIn(loginErrorBox)).play();
+        new FadeIn(loginBox).playOnFinished(new FadeOut(loginErrorBox)).setDelay(new Duration(2500)).play();
+        loginError.setText(errorMessage);
+    }
+
+    public void setSignUpError(String errorMessage) {
+        new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();
+        new FadeIn(signupBox).playOnFinished(new FadeOut(signupErrorBox)).setDelay(new Duration(2500)).play();
+        signupError.setText(signErrorType.getMessage());
+    }
+
+    public void successfulLogin() {
+        signupErrorBox.setVisible(false);
+        new FadeOut(signupBox).playOnFinished(new FadeIn(signupSuccussBox)).play();
+        AnimationFX animationFX = new FadeOut(signupSuccussBox).setDelay(new Duration(1500));
+        animationFX.setOnFinished(event -> {
+            tabPane.getSelectionModel().select(loginTab);
+            FadeIn fadeIn = new FadeIn(signupBox);
+            fadeIn.setOnFinished(event1 -> signupErrorBox.setVisible(true));
+            fadeIn.play();
+        });
+        animationFX.play();
+    }
+
+
     public void signUp(ActionEvent actionEvent) {
-        if (!signupPasswordMatch.getText().equals(signupPassword.getText())) {
-            signupError.setText("PASSWORDS NOT EQUAL");
-            new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();
-            new FadeIn(signupBox).playOnFinished(new FadeOut(signupErrorBox)).setDelay(new Duration(2500)).play();
-        } else {
-            AccountController.createAccount(signupUsername.getText(), signupPassword.getText());
-            if (signErrorType != null) {
-                new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();
-                new FadeIn(signupBox).playOnFinished(new FadeOut(signupErrorBox)).setDelay(new Duration(2500)).play();
-                signupError.setText(signErrorType.getMessage());
-            } else {
-                signupErrorBox.setVisible(false);
-                new FadeOut(signupBox).playOnFinished(new FadeIn(signupSuccussBox)).play();
-                AnimationFX animationFX = new FadeOut(signupSuccussBox).setDelay(new Duration(1500));
-                animationFX.setOnFinished(event -> {
-                    tabPane.getSelectionModel().select(loginTab);
-                    FadeIn fadeIn = new FadeIn(signupBox);
-                    fadeIn.setOnFinished(event1 -> signupErrorBox.setVisible(true));
-                    fadeIn.play();
-                });
-                animationFX.play();
-            }
-        }
-        setSignUpTextBoxesNull();
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.SIGN_UP,
+                new Property(Property.USERNAME_PROPERTY, signupUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY,signupPassword.getText())
+        ));
     }
 
     private void setSignUpTextBoxesNull() {

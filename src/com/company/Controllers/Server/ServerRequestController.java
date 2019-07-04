@@ -32,7 +32,7 @@ public class ServerRequestController extends Thread{
                 if (parser.hasNext()) {
                     Request request = gson.fromJson(parser.next(), Request.class);
                     System.out.println("Client Request : " + request.getContent().toString());
-                    handleResponse(request);
+                    handleRequest(request);
                 }
             }
         } catch (IOException e) {
@@ -40,12 +40,12 @@ public class ServerRequestController extends Thread{
         }
     }
 
-    private void handleResponse(Request request) {
+    private void handleRequest(Request request) {
         switch (request.getType()){
             case LOGIN:
                 signinHandler(request);
                 break;
-            case SIGNUP:
+            case SIGN_UP:
                 signUpHandler(request);
                 break;
             case BUY:
@@ -58,7 +58,6 @@ public class ServerRequestController extends Thread{
         String username = request.getContent().get("username").getAsString();
         String password = request.getContent().get("username").getAsString();
         Response response;
-        JsonObject content = new JsonObject();
         try {
             String token = AccountController.login(username, password);
             response = new Response(Response.Codes.SUCCESSFUL_LOGIN, new Property("token", token));
@@ -66,21 +65,20 @@ public class ServerRequestController extends Thread{
             client.setAccount(account);
             account.setClientController(client);
         } catch (LoginException e) {
-            response = new Response(Response.Codes.BAD_LOGIN, new Property("errorMessage", e.getMessage()));
+            response = new Response(Response.Codes.BAD_LOGIN, new Property(Property.ERROR_MESSAGE_PROPERTY, e.getMessage()));
         }
-        response.setContent(content);
         client.getServerResponseController().sendResponse(response);
     }
 
     private void signUpHandler(Request request) {
-        String username = request.getContent().get("username").getAsString();
-        String password = request.getContent().get("username").getAsString();
+        String username = request.getContent().get(Property.USERNAME_PROPERTY).getAsString();
+        String password = request.getContent().get(Property.PASSWORD_PROPERTY).getAsString();
         Response response;
         try {
             AccountController.signup(username, password);
-            response = new Response(Response.Codes.SUCCESSFUL_SIGNUP);
+            response = new Response(Response.Codes.SUCCESSFUL_SIGN_UP);
         } catch (Account.SignupException e) {
-            response = new Response(Response.Codes.BAD_SIGNUP);
+            response = new Response(Response.Codes.BAD_SIGN_UP);
         }
         client.getServerResponseController().sendResponse(response);
     }
