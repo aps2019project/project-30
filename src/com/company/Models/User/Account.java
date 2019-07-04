@@ -1,5 +1,6 @@
 package com.company.Models.User;
 
+import com.company.Controllers.Server.ClientController;
 import com.company.Models.Battle.BattleLog;
 import com.company.Models.Card.Groups.Deck;
 import com.company.Models.Card.Groups.Collection;
@@ -11,6 +12,8 @@ import java.util.List;
 public class Account implements Serializable {
     final private static String SAVED_ACCOUNTS_FILE_PATH = "Accounts/SavedAccounts.json";
     final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "LoggedInAccount/LoggedInAccount.json";
+    private ClientController clientController;
+    private String token;
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -25,6 +28,14 @@ public class Account implements Serializable {
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public ClientController getClientController() {
+        return clientController;
+    }
+
+    public void setClientController(ClientController clientController) {
+        this.clientController = clientController;
     }
 
     public static Account getLoggedInAccount() {
@@ -126,5 +137,17 @@ public class Account implements Serializable {
 
     public static String getLoggedInAccountsFilePath() {
         return LOGGED_IN_ACCOUNT_FILE_ADDRESS;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

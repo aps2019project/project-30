@@ -1,10 +1,12 @@
 package com.company.Controllers.Server;
 
+import com.company.Models.User.Account;
+
 import java.io.IOException;
 import java.net.Socket;
 
 public class ClientController {
-
+    private Account account;
     private ServerRequestController serverRequestController;
     private ServerResponseController serverResponseController;
 
@@ -38,4 +40,13 @@ public class ClientController {
     public ServerResponseController getServerResponseController() {
         return serverResponseController;
     }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
 }

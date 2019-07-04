@@ -1,13 +1,15 @@
 package com.company.Models;
 
 import com.google.gson.JsonObject;
-import com.sun.org.apache.bcel.internal.classfile.Code;
 
 public class Response {
 
     public static class Codes{
         //Login and sign up : 1
-        final public static int LOGIN = 101;
+        public static final int BAD_LOGIN = 430;
+        public static final int SUCCESSFUL_LOGIN = 100;
+        public static final int BAD_SIGNUP = 431;
+        public static final int SUCCESSFUL_SIGNUP = 101;
     }
 
     public Response(int code,Property... properties) {
