@@ -43,18 +43,16 @@ public class ServerRequestController extends Thread{
     private void handleResponse(Request request) {
         switch (request.getType()){
             case LOGIN:
-                Response response = new Response(Response.Codes.SUCCESSFUL_LOGIN,
-                        new Property("message","login"));
-                client.getServerResponseController().sendResponse(response);
+                signinHandler(request);
                 break;
             case SIGNUP:
-                signupHandler(request);
+                signUpHandler(request);
                 break;
 
         }
     }
 
-    private void signupHandler(Request request) {
+    private void signinHandler(Request request) {
         String username = request.getContent().get("username").getAsString();
         String password = request.getContent().get("username").getAsString();
         Response response = new Response();
@@ -71,6 +69,20 @@ public class ServerRequestController extends Thread{
             content.addProperty("errorMessage", e.getMessage());
         }
         response.setContent(content);
+        client.getServerResponseController().sendResponse(response);
+    }
+
+    private void signUpHandler(Request request) {
+        String username = request.getContent().get("username").getAsString();
+        String password = request.getContent().get("username").getAsString();
+        Response response = new Response();
+        try {
+            AccountController.signup(username, password);
+            response.setCode(Response.Codes.SUCCESSFUL_SIGNUP);
+        } catch (Account.SignupException e) {
+            response.setCode(Response.Codes.BAD_SIGNUP);
+            e.printStackTrace();
+        }
         client.getServerResponseController().sendResponse(response);
     }
 

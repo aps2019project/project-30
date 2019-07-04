@@ -59,6 +59,12 @@ public class Account implements Serializable {
         return null;
     }
 
+    public static class SignupException extends Exception {
+        public SignupException(String message) {
+            super(message);
+        }
+    }
+
     public boolean isPasswordCorrect(String password) {
         return this.password.equals(password);
     }
