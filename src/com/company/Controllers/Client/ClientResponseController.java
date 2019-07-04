@@ -1,5 +1,6 @@
 package com.company.Controllers.Client;
 
+import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Client.Client;
 import com.company.Models.Response;
 import com.google.gson.Gson;
@@ -39,6 +40,11 @@ public class ClientResponseController extends Thread {
     private void handleResponse(Response response) {
         switch (response.getCode()) {
             case Response.Codes.SUCCESSFUL_LOGIN:
+                RootsController.openMainMenu();
+                break;
+            case Response.Codes.BAD_LOGIN:
+                RootsController.setLoginErrorOnAuthenticate(
+                        response.getContent().get("errorMessage").getAsString());
                 break;
         }
     }

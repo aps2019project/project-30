@@ -1,6 +1,7 @@
 package com.company.Controllers.graphic;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.AuthenticateController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Sound;
 import com.company.Views.Graphic;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 public class RootsController {
+    public static Parent authenticate;
     static Parent mainMenu;
     static Parent collection;
     static Parent shop;
@@ -19,6 +21,7 @@ public class RootsController {
     static CollectionController collectionController;
     static ShopController shopController;
     static GameController gameController;
+    public static AuthenticateController authenticateController;
 
     static {
         try {
@@ -88,5 +91,9 @@ public class RootsController {
     public static void openCustomCardGenerator() {
         Platform.runLater(() -> Graphic.stage.getScene().setRoot(customCardGenerator));
 
+    }
+
+    public static void setLoginErrorOnAuthenticate(String errorMessage) {
+        authenticateController.setLoginError(errorMessage);
     }
 }

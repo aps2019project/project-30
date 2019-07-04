@@ -43,18 +43,13 @@ public class AuthenticateController {
     }
 
     public void login(ActionEvent actionEvent) {
-        AccountController.login(loginUsername.getText(), loginPassword.getText());
-        if (loginErrorType == null) {
-            AccountController.saveAccounts();
-            RootsController.openMainMenu();
-            if (rememberMe.isSelected()) {
-                MainMenuController.changeIsRememberMe();
-            }
-        } else {
-            new FadeOut(loginBox).playOnFinished(new FadeIn(loginErrorBox)).play();
-            new FadeIn(loginBox).playOnFinished(new FadeOut(loginErrorBox)).setDelay(new Duration(2500)).play();
-            loginError.setText(loginErrorType.getMessage());
-        }
+
+    }
+
+    public void setLoginError(String errorMessage) {
+        new FadeOut(loginBox).playOnFinished(new FadeIn(loginErrorBox)).play();
+        new FadeIn(loginBox).playOnFinished(new FadeOut(loginErrorBox)).setDelay(new Duration(2500)).play();
+        loginError.setText(errorMessage);
     }
 
     public void signUp(ActionEvent actionEvent) {

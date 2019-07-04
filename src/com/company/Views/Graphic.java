@@ -43,8 +43,10 @@ public class Graphic extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
-        Parent authenticate = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
-        Scene scene = new Scene(authenticate, 1600, 900);
+        FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/game.fxml"));
+        RootsController.authenticate = loader.load();
+        RootsController.authenticateController = loader.getController();
+        Scene scene = new Scene(RootsController.authenticate, 1600, 900);
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/authenticate.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/main-menu.css");
         scene.getStylesheets().add("com/company/Views/graphic/stylesheets/shop.css");

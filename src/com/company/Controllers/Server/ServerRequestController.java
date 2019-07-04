@@ -1,6 +1,7 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
