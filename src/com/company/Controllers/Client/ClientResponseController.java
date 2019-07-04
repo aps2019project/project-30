@@ -2,6 +2,7 @@ package com.company.Controllers.Client;
 
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Client.Client;
+import com.company.Models.Property;
 import com.company.Models.Response;
 import com.google.gson.Gson;
 import com.google.gson.JsonStreamParser;
@@ -44,10 +45,14 @@ public class ClientResponseController extends Thread {
                 break;
             case Response.Codes.BAD_LOGIN:
                 RootsController.setLoginErrorOnAuthenticate(
-                        response.getContent().get("errorMessage").getAsString());
+                        response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
                 break;
             case Response.Codes.SUCCESSFUL_SIGN_UP:
-                System.out.println("sign up");
+                RootsController.openLoginTab();
+                break;
+            case Response.Codes.BAD_SIGN_UP:
+                RootsController.setSignUpErrorOnAuthenticate(
+                        response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
                 break;
         }
     }

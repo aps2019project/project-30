@@ -63,7 +63,7 @@ public class ServerRequestController extends Thread{
             client.setAccount(account);
             account.setClientController(client);
         } catch (LoginException e) {
-            response = new Response(Response.Codes.BAD_LOGIN, new Property("errorMessage", e.getMessage()));
+            response = new Response(Response.Codes.BAD_LOGIN, new Property(Property.ERROR_MESSAGE_PROPERTY, e.getMessage()));
         }
         client.getServerResponseController().sendResponse(response);
     }

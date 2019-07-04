@@ -3,6 +3,7 @@ package com.company.Models;
 public class Property {
     final public static String USERNAME_PROPERTY = "username";
     final public static String PASSWORD_PROPERTY = "password";
+    final public static String ERROR_MESSAGE_PROPERTY = "errorMessage";
 
 
     private String property;
