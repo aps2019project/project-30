@@ -98,4 +98,17 @@ public class RootsController {
             authenticateController.setLoginError(errorMessage);
         });
     }
+
+    public static void setSignUpErrorOnAuthenticate(String errorMessage) {
+        Platform.runLater(() -> {
+            authenticateController.setSignUpError(errorMessage);
+        });
+    }
+
+    public static void openLoginTab() {
+        Platform.runLater(() -> {
+            authenticateController.successfulLogin();
+        });
+    }
+
 }
