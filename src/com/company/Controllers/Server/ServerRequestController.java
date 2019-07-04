@@ -54,18 +54,16 @@ public class ServerRequestController extends Thread{
     private void signinHandler(Request request) {
         String username = request.getContent().get("username").getAsString();
         String password = request.getContent().get("username").getAsString();
-        Response response = new Response();
+        Response response;
         JsonObject content = new JsonObject();
         try {
             String token = AccountController.login(username, password);
-            response.setCode(Response.Codes.SUCCESSFUL_LOGIN);
-            content.addProperty("token", token);
+            response = new Response(Response.Codes.SUCCESSFUL_LOGIN, new Property("token", token));
             Account account = Account.getAccountByUsername(username);
             client.setAccount(account);
             account.setClientController(client);
         } catch (LoginException e) {
-            response.setCode(Response.Codes.BAD_LOGIN);
-            content.addProperty("errorMessage", e.getMessage());
+            response = new Response(Response.Codes.BAD_LOGIN, new Property("errorMessage", e.getMessage()));
         }
         response.setContent(content);
         client.getServerResponseController().sendResponse(response);
@@ -74,13 +72,12 @@ public class ServerRequestController extends Thread{
     private void signUpHandler(Request request) {
         String username = request.getContent().get("username").getAsString();
         String password = request.getContent().get("username").getAsString();
-        Response response = new Response();
+        Response response;
         try {
             AccountController.signup(username, password);
-            response.setCode(Response.Codes.SUCCESSFUL_SIGNUP);
+            response = new Response(Response.Codes.SUCCESSFUL_SIGNUP);
         } catch (Account.SignupException e) {
-            response.setCode(Response.Codes.BAD_SIGNUP);
-            e.printStackTrace();
+            response = new Response(Response.Codes.BAD_SIGNUP);
         }
         client.getServerResponseController().sendResponse(response);
     }

@@ -43,7 +43,7 @@ public class AuthenticateController {
     }
 
     public void login(ActionEvent actionEvent) {
-        AccountController.loginAccount(loginUsername.getText(), loginPassword.getText());
+        AccountController.login(loginUsername.getText(), loginPassword.getText());
         if (loginErrorType == null) {
             AccountController.saveAccounts();
             RootsController.openMainMenu();
