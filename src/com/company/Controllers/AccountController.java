@@ -7,14 +7,14 @@ import com.company.Views.Console.AccountView;
 import com.company.Views.ConsoleInput;
 import com.company.Views.ConsoleOutput;
 
+import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class AccountController {
-
-    AccountView view = new AccountView();
+    public static final int TOKEN_LENGTH = 20;
 
     public static void createAccount(String username, String password) {
         ErrorType errorType = null;
@@ -37,22 +37,19 @@ public class AccountController {
         account.getCollection().getCards().remove(card);
     }
 
-    public static void loginAccount(String username, String password) {
-        ErrorType loginErrorType = null;
-        if (!usernameExists(username)) {
-            loginErrorType = ErrorType.USERNAME_NOTFOUND;
-        } else {
-            if (Account.getAccountByUsername(username).isPasswordCorrect(password)) {
-                Account.login(username, password);
-                ConsoleInput.setMenu(ConsoleInput.Menu.MAIN);
+    public static String login(String username, String password) throws LoginException {
+        if (usernameExists(username)) {
+            Account account = Account.getAccountByUsername(username);
+            if (account.getPassword().equals(password)) {
+                String token = generateToken();
+                account.setToken(token);
+                return token;
             } else {
-                loginErrorType = ErrorType.PASSWORD_INVALID;
+                throw new LoginException("Password is not valid");
             }
+        } else {
+            throw new LoginException("Username not found");
         }
-        if (loginErrorType != null) {
-            ConsoleOutput.printErrorMessage(loginErrorType);
-        }
-        AuthenticateController.loginError(loginErrorType);
     }
 
     public static void logout() {
@@ -103,5 +100,18 @@ public class AccountController {
             MainMenuController.changeIsRememberMe();
             Account.login(account);
         }
+    }
+
+    public static String generateToken() {
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        StringBuilder sb = new StringBuilder(TOKEN_LENGTH);
+        for (int i = 0; i < TOKEN_LENGTH; i++) {
+            int index = (int) (AlphaNumericString.length() * Math.random());
+            sb.append(AlphaNumericString.charAt(index));
+        }
+        return sb.toString();
     }
 }
