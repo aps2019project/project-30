@@ -48,6 +48,8 @@ public class ServerRequestController extends Thread{
             case SIGNUP:
                 signUpHandler(request);
                 break;
+            case BUY:
+                BuyHandeler(request);
 
         }
     }
@@ -83,4 +85,10 @@ public class ServerRequestController extends Thread{
         client.getServerResponseController().sendResponse(response);
     }
 
+    private void BuyHandeler(Request request){
+
+    }
 }
+
+
+

@@ -5,7 +5,9 @@ import com.google.gson.JsonObject;
 public class Request {
     public enum Type {
         LOGIN,
-        SIGNUP
+        SIGNUP,
+        BUY,
+        SELL
     }
 
     public Request() {
