@@ -46,6 +46,9 @@ public class ClientResponseController extends Thread {
                 RootsController.setLoginErrorOnAuthenticate(
                         response.getContent().get("errorMessage").getAsString());
                 break;
+            case Response.Codes.SUCCESSFUL_SIGN_UP:
+                System.out.println("sign up");
+                break;
         }
     }
 }

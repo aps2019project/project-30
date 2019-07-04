@@ -45,7 +45,7 @@ public class ServerRequestController extends Thread{
             case LOGIN:
                 signinHandler(request);
                 break;
-            case SIGNUP:
+            case SIGN_UP:
                 signUpHandler(request);
                 break;
 
@@ -56,7 +56,6 @@ public class ServerRequestController extends Thread{
         String username = request.getContent().get("username").getAsString();
         String password = request.getContent().get("username").getAsString();
         Response response;
-        JsonObject content = new JsonObject();
         try {
             String token = AccountController.login(username, password);
             response = new Response(Response.Codes.SUCCESSFUL_LOGIN, new Property("token", token));
@@ -66,19 +65,18 @@ public class ServerRequestController extends Thread{
         } catch (LoginException e) {
             response = new Response(Response.Codes.BAD_LOGIN, new Property("errorMessage", e.getMessage()));
         }
-        response.setContent(content);
         client.getServerResponseController().sendResponse(response);
     }
 
     private void signUpHandler(Request request) {
-        String username = request.getContent().get("username").getAsString();
-        String password = request.getContent().get("username").getAsString();
+        String username = request.getContent().get(Property.USERNAME_PROPERTY).getAsString();
+        String password = request.getContent().get(Property.PASSWORD_PROPERTY).getAsString();
         Response response;
         try {
             AccountController.signup(username, password);
-            response = new Response(Response.Codes.SUCCESSFUL_SIGNUP);
+            response = new Response(Response.Codes.SUCCESSFUL_SIGN_UP);
         } catch (Account.SignupException e) {
-            response = new Response(Response.Codes.BAD_SIGNUP);
+            response = new Response(Response.Codes.BAD_SIGN_UP);
         }
         client.getServerResponseController().sendResponse(response);
     }

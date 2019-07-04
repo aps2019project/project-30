@@ -43,7 +43,7 @@ public class Graphic extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/game.fxml"));
+        FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/authenticate.fxml"));
         RootsController.authenticate = loader.load();
         RootsController.authenticateController = loader.getController();
         Scene scene = new Scene(RootsController.authenticate, 1600, 900);
@@ -68,12 +68,7 @@ public class Graphic extends Application {
     public static void main(String[] args) {
         while (!Client.isConnected()) {
             if (Client.setClientUp()) {
-                Request request = new Request();
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("name","ali");
-                request.setContent(jsonObject);
-                Client.getRequestController().sendRequest(request);
-                AccountController.loadLoggedInAccount();
+//                AccountController.loadLoggedInAccount();
                 ShopController.initialize();
                 launch(args);
             } else {

@@ -4,7 +4,10 @@ import animatefx.animation.AnimationFX;
 import animatefx.animation.FadeIn;
 import animatefx.animation.FadeOut;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Client.Client;
 import com.company.Models.ErrorType;
+import com.company.Models.Property;
+import com.company.Models.Request;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
@@ -34,16 +37,16 @@ public class AuthenticateController {
     public VBox signupSuccussBox;
     public JFXCheckBox rememberMe;
 
-    public static void loginError(ErrorType longinErrorType) {
-        loginErrorType = longinErrorType;
-    }
-
     public static void signUpError(ErrorType signErrorType) {
         AuthenticateController.signErrorType = signErrorType;
     }
 
     public void login(ActionEvent actionEvent) {
-
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.LOGIN,
+                new Property(Property.USERNAME_PROPERTY, loginUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY, loginPassword.getText())
+        ));
     }
 
     public void setLoginError(String errorMessage) {
@@ -53,6 +56,11 @@ public class AuthenticateController {
     }
 
     public void signUp(ActionEvent actionEvent) {
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.SIGN_UP,
+                new Property(Property.USERNAME_PROPERTY, signupUsername.getText()),
+                new Property(Property.PASSWORD_PROPERTY,signupPassword.getText())
+        ));
         if (!signupPasswordMatch.getText().equals(signupPassword.getText())) {
             signupError.setText("PASSWORDS NOT EQUAL");
             new FadeOut(signupBox).playOnFinished(new FadeIn(signupErrorBox)).play();

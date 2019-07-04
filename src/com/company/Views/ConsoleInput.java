@@ -356,7 +356,7 @@ public class ConsoleInput {
             command = scanner.nextLine();
             Matcher passwordMatcher = Pattern.compile(PASSWORD).matcher(command);
             passwordMatcher.find();
-            AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
+//            AccountController.loginAccount(usernameMatcher.group("username"), passwordMatcher.group("password"));
         }
     }
 

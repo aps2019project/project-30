@@ -94,6 +94,8 @@ public class RootsController {
     }
 
     public static void setLoginErrorOnAuthenticate(String errorMessage) {
-        authenticateController.setLoginError(errorMessage);
+        Platform.runLater(() -> {
+            authenticateController.setLoginError(errorMessage);
+        });
     }
 }
