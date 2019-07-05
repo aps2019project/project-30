@@ -54,6 +54,9 @@ public class ClientResponseController extends Thread {
                 RootsController.setSignUpErrorOnAuthenticate(
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
                 break;
+            case Response.Codes.MESSAGE_NOTIFY:
+                System.out.println(response.getContent().get("message").getAsString()); //todo : Graphic
+                break;
         }
     }
 }

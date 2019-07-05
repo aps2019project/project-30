@@ -1,6 +1,7 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.ChatController;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
@@ -48,8 +49,16 @@ public class ServerRequestController extends Thread{
             case SIGN_UP:
                 signUpHandler(request);
                 break;
-
+            case NEW_MESSAGE:
+                newMessageHandler(request);
+                break;
         }
+    }
+
+    private void newMessageHandler(Request request) {
+        ChatController.newMessage(
+                client.getAccount().getUsername(),
+                request.getContent().get("message").getAsString());
     }
 
     private void signinHandler(Request request) {
