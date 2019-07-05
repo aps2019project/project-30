@@ -55,6 +55,9 @@ public class ClientResponseController extends Thread {
                 RootsController.setSignUpErrorOnAuthenticate(
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
                 break;
+            case Response.Codes.SUCCESSFUL_SCOREBOARD:
+                System.out.println(response.getContent());
+                break;
             case Response.Codes.SUCCESSFUL_LOG_OUT:
                 Account.logout();
                 System.exit(0);

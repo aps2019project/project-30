@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
     public ImageView friends;
     public ImageView shop;
+    public ImageView scoreboard;
     public Label play;
     public Label collection;
     public Label gold;
@@ -88,6 +89,13 @@ public class MainMenuController implements Initializable {
 
         save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             ServerAccountController.saveAccounts();
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
+        });
+
+        scoreboard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Client.getRequestController().sendRequest(
+                    new Request(Request.Type.SCOREBOARD)
+            );
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
         });
     }

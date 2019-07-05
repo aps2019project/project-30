@@ -33,7 +33,7 @@
             </ImageView>
             <Label fx:id="gold" styleClass="gold"/>
         </HBox>
-        <ImageView fitWidth="70" fitHeight="70" styleClass="imageItem">
+        <ImageView fx:id="scoreboard" fitWidth="70" fitHeight="70" styleClass="imageItem">
             <Image url="@../images/quests.png"/>
         </ImageView>
         <ImageView fitWidth="70" fitHeight="70" styleClass="imageItem">

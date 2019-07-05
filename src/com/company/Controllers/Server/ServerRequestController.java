@@ -1,11 +1,13 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.JsonController;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonStreamParser;
 import org.omg.PortableServer.THREAD_POLICY_ID;
@@ -32,7 +34,7 @@ public class ServerRequestController extends Thread {
             while (Thread.currentThread().isAlive()) {
                 if (client.isConnected() && parser.hasNext()) {
                     Request request = gson.fromJson(parser.next(), Request.class);
-                    System.out.println("Client Request: " + request.getType().toString() + " ---> " +request.getContent().toString());
+                    System.out.println("Client Request: " + request.getType().toString() + " ---> " + request.getContent().toString());
                     handleRequest(request);
                 }
             }
@@ -49,11 +51,23 @@ public class ServerRequestController extends Thread {
             case SIGN_UP:
                 signUpHandler(request);
                 break;
+            case SCOREBOARD:
+                scoreboard();
+                break;
             case DISCONNECT:
                 disconnectHandler();
                 break;
 
         }
+    }
+
+    private void scoreboard() {
+        ServerAccountController.sortPlayers();
+        JsonObject jsonObject = new JsonObject();
+        for (Account account:Account.getAccounts()) {
+            jsonObject.addProperty(account.getUsername(),account.getWins());
+        }
+        client.getServerResponseController().sendResponse(new Response(Response.Codes.SUCCESSFUL_SCOREBOARD,jsonObject));
     }
 
     private void disconnectHandler() {

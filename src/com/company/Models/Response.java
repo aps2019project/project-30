@@ -10,14 +10,20 @@ public class Response {
         public static final int SUCCESSFUL_LOGIN = 100;
         public static final int SUCCESSFUL_SIGN_UP = 101;
         final public static int SUCCESSFUL_LOG_OUT = 102;
+        final public static int SUCCESSFUL_SCOREBOARD = 104;
     }
 
     public Response(int code,Property... properties) {
-        setCode(code);
+        this.setCode(code);
         JsonObject jsonObject = new JsonObject();
         for (Property property :properties) {
             jsonObject.addProperty(property.getProperty(),property.getValue());
         }
+        this.setContent(jsonObject);
+    }
+
+    public Response(int code,JsonObject jsonObject){
+        this.setCode(code);
         this.setContent(jsonObject);
     }
 
