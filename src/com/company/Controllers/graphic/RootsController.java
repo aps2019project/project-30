@@ -3,6 +3,7 @@ package com.company.Controllers.graphic;
 import com.company.Controllers.AccountController;
 import com.company.Controllers.AuthenticateController;
 import com.company.Controllers.MainMenuController;
+import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Sound;
 import com.company.Views.Graphic;
 import javafx.application.Platform;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RootsController {
     public static Parent authenticate;
@@ -22,6 +24,7 @@ public class RootsController {
     static ShopController shopController;
     static GameController gameController;
     public static AuthenticateController authenticateController;
+    public static Collection jcollection;
 
     static {
         try {
@@ -110,5 +113,6 @@ public class RootsController {
             authenticateController.successfulLogin();
         });
     }
+
 
 }

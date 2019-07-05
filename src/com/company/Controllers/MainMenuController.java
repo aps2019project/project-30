@@ -1,6 +1,9 @@
 package com.company.Controllers;
 
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Client.Client;
+import com.company.Models.Property;
+import com.company.Models.Request;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
@@ -55,6 +58,11 @@ public class MainMenuController implements Initializable {
 
         shop.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
 //            Graphic.stage.getScene().setRoot(Graphic.shop);
+
+            Client.getRequestController().sendRequest(new Request(
+                    Request.Type.SHOP
+            ));
+
             RootsController.openShop();
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             event.consume();

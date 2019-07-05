@@ -3,6 +3,9 @@ package com.company.Controllers.graphic;
 import com.company.Models.Card.Card;
 import com.company.Models.Card.Item.Item;
 import com.company.Models.Card.Spell.Spell;
+import com.company.Models.Client.Client;
+import com.company.Models.Property;
+import com.company.Models.Request;
 import com.company.Models.Shop;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
@@ -118,11 +121,13 @@ public class ShopController implements Initializable {
 
     private void buyOrSell(Card card) {
         if (tabPane.getSelectionModel().getSelectedItem().getId().equals("sell")) {
-            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
+            Client.getRequestController().sendRequest(new Request(Request.Type.SELL,new Property(Property.CARD_PROPERTY,card.getName())));
+//            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
             updateShopSell(search.getText());
         } else {
-            com.company.Controllers.ShopController.buy(
-                    Account.getLoggedInAccount(), card.getName());
+            Client.getRequestController().sendRequest(new Request(Request.Type.BUY,new Property(Property.CARD_PROPERTY,card.getName())));
+//            com.company.Controllers.ShopController.buy(
+//                    Account.getLoggedInAccount(), card.getName());
 
         }
     }

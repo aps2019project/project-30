@@ -1,9 +1,11 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.JsonController;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -49,8 +51,10 @@ public class ServerRequestController extends Thread{
                 signUpHandler(request);
                 break;
             case BUY:
-                BuyHandeler(request);
-
+                buyHandeler(request);
+                break;
+            case SHOP:
+                shopHandler(request);
         }
     }
 
@@ -83,8 +87,14 @@ public class ServerRequestController extends Thread{
         client.getServerResponseController().sendResponse(response);
     }
 
-    private void BuyHandeler(Request request){
+    private void buyHandeler(Request request){
 
+    }
+
+    private void shopHandler(Request request){
+       // String jsonObject=JsonController.getGson().toJson(Shop.getShopCollection());
+        Response response=new Response(Response.Codes.SENT_CARDS,new Property(Property.SHOP_CARD,JsonController.getGson().toJson(Shop.getShopCollection())));
+        client.getServerResponseController().sendResponse(response);
     }
 }
 

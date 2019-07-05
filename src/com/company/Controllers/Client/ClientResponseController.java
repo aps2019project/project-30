@@ -1,6 +1,8 @@
 package com.company.Controllers.Client;
 
+import com.company.Controllers.JsonController;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Client.Client;
 import com.company.Models.Property;
 import com.company.Models.Response;
@@ -53,6 +55,9 @@ public class ClientResponseController extends Thread {
             case Response.Codes.BAD_SIGN_UP:
                 RootsController.setSignUpErrorOnAuthenticate(
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
+                break;
+            case Response.Codes.SENT_CARDS:
+                RootsController.jcollection=JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);
                 break;
         }
     }
