@@ -111,4 +111,8 @@ public class Client {
     public static void setAuthToken(String authToken) {
         AuthToken = authToken;
     }
+
+    public static Socket getClientSocket() {
+        return clientSocket;
+    }
 }

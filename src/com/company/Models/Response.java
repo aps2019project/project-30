@@ -6,9 +6,10 @@ public class Response {
 
     public static class Codes{
         public static final int BAD_LOGIN = 430;
-        public static final int SUCCESSFUL_LOGIN = 100;
         public static final int BAD_SIGN_UP = 431;
+        public static final int SUCCESSFUL_LOGIN = 100;
         public static final int SUCCESSFUL_SIGN_UP = 101;
+        final public static int SUCCESSFUL_LOG_OUT = 102;
     }
 
     public Response(int code,Property... properties) {

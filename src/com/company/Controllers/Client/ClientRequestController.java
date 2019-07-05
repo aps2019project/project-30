@@ -30,7 +30,7 @@ public class ClientRequestController extends Thread{
     public void sendRequest (Request request) {
         try {
             clientRequests.put(request);
-            System.out.println(request.getContent().toString());
+            System.out.println(request.getType().toString() + " ---> " +request.getContent().toString());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
