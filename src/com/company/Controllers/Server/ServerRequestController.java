@@ -1,21 +1,18 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
-import com.company.Controllers.JsonController;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonStreamParser;
-import org.omg.PortableServer.THREAD_POLICY_ID;
+import com.google.gson.*;
 
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.List;
 
 public class ServerRequestController extends Thread {
     public InputStream input;
@@ -63,11 +60,16 @@ public class ServerRequestController extends Thread {
 
     private void scoreboard() {
         ServerAccountController.sortPlayers();
-        JsonObject jsonObject = new JsonObject();
-        for (Account account:Account.getAccounts()) {
-            jsonObject.addProperty(account.getUsername(),account.getWins());
+        JsonArray jsonArray = new JsonArray();
+        for (int i = 0; i < Account.getAccounts().size(); i++) {
+            Account account = Account.getAccounts().get(i);
+            jsonArray.add((i + 1) + "-> " + account.getUsername() + " " + account.getWins());
         }
-        client.getServerResponseController().sendResponse(new Response(Response.Codes.SUCCESSFUL_SCOREBOARD,jsonObject));
+        Response response = new Response(Response.Codes.ACCOUNTS_INFO);
+        JsonObject content = new JsonObject();
+        content.add("accountsList", jsonArray);
+        response.setContent(content);
+        client.getServerResponseController().sendResponse(response);
     }
 
     private void disconnectHandler() {
