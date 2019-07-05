@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Controllers.Server.ServerAccountController;
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
@@ -82,7 +83,7 @@ public class MainMenuController implements Initializable {
         });
 
         save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            AccountController.saveAccounts();
+            ServerAccountController.saveAccounts();
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
         });
     }
@@ -117,13 +118,13 @@ public class MainMenuController implements Initializable {
 //        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), "Palang");
 
 
-        Account.getLoggedInAccount().getCollection().getCollectionController().createDeck("test");
-
-        for (int i = 0; i < 24; i++) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(String.valueOf(i + 1), "test");
-        }
-
-        Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
+//        Account.getLoggedInAccount().getCollection().getCollectionController().createDeck("test");
+//
+//        for (int i = 0; i < 24; i++) {
+//            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(String.valueOf(i + 1), "test");
+//        }
+//
+//        Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
     public static void changeIsRememberMe() {
