@@ -2,6 +2,7 @@ package com.company.Models.Server;
 
 import com.company.Controllers.AccountController;
 import com.company.Controllers.BattleController;
+import com.company.Controllers.AccountController;
 import com.company.Controllers.Client.ClientRequestController;
 import com.company.Controllers.Client.ClientResponseController;
 import com.company.Controllers.Server.*;
@@ -22,6 +23,19 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(ServerController.readingPortNumberFromFile());
+        new Thread(() -> {
+            while (true) {
+                System.out.println(":::: Online Accounts ::::");
+                AccountController.getConnectedAccount().forEach(account -> {
+                    System.out.println(account.getUsername());
+                });
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
         while (true) {
             Socket client = server.accept();
             new ClientController(client);

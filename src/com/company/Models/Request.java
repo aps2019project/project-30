@@ -7,7 +7,9 @@ public class Request {
         LOGIN,
         SIGN_UP,
         DISCONNECT,
-        SCOREBOARD
+        SCOREBOARD,
+        DISCONNECT,
+        NEW_MESSAGE
     }
 
     public Request() {

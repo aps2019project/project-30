@@ -1,6 +1,7 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.ChatController;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
@@ -54,8 +55,16 @@ public class ServerRequestController extends Thread {
             case DISCONNECT:
                 disconnectHandler();
                 break;
-
+            case NEW_MESSAGE:
+                newMessageHandler(request);
+                break;
         }
+    }
+
+    private void newMessageHandler(Request request) {
+        ChatController.newMessage(
+                client.getAccount().getUsername(),
+                request.getContent().get("message").getAsString());
     }
 
     private void scoreboard() {
@@ -81,8 +90,8 @@ public class ServerRequestController extends Thread {
     }
 
     private void signinHandler(Request request) {
-        String username = request.getContent().get("username").getAsString();
-        String password = request.getContent().get("username").getAsString();
+        String username = request.getContent().get(Property.USERNAME_PROPERTY).getAsString();
+        String password = request.getContent().get(Property.PASSWORD_PROPERTY).getAsString();
         Response response;
         try {
             String token = AccountController.login(username, password);

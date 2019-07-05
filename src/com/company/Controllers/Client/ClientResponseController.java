@@ -67,6 +67,9 @@ public class ClientResponseController extends Thread {
                 Account.logout();
                 System.exit(0);
                 break;
+            case Response.Codes.MESSAGE_NOTIFY:
+                System.out.println(response.getContent().get("message").getAsString()); //todo : Graphic
+                break;
         }
     }
 }

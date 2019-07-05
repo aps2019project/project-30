@@ -12,7 +12,8 @@ import java.util.List;
 public class Account {
     final private static String SAVED_ACCOUNTS_FILE_PATH = "Accounts/SavedAccounts.json";
     final private static String LOGGED_IN_ACCOUNT_FILE_ADDRESS = "LoggedInAccount/LoggedInAccount.json";
-    private ClientController clientController;
+    private transient ClientController clientController;
+    private String token;
     private static ArrayList<Account> accounts = new ArrayList<>();
     private static Account loggedInAccount;
     private String username;
@@ -146,5 +147,13 @@ public class Account {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

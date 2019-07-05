@@ -12,6 +12,8 @@ import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 public class AccountController {
@@ -39,6 +41,12 @@ public class AccountController {
             Account.addToAccounts(
                     new Account(username, password));
         }
+    }
+
+    public static List<Account> getConnectedAccount () {
+        return Account.getAccounts().stream()
+                .filter(account -> account.getClientController() != null && account.getClientController().getClientSocket().isConnected())
+                .collect(Collectors.toList());
     }
 
     public static void addCardToCollection(Account account, Card card) {

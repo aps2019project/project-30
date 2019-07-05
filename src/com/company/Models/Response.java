@@ -14,6 +14,7 @@ public class Response {
         public static final int SUCCESSFUL_SIGN_UP = 101;
         final public static int SUCCESSFUL_LOG_OUT = 102;
         final public static int ACCOUNTS_INFO = 104;
+        public static final int MESSAGE_NOTIFY = 50;
     }
 
     public Response(int code, Property... properties) {
@@ -22,11 +23,6 @@ public class Response {
         for (Property property : properties) {
             jsonObject.addProperty(property.getProperty(), property.getValue());
         }
-        this.setContent(jsonObject);
-    }
-
-    public Response(int code, JsonObject jsonObject) {
-        this.setCode(code);
         this.setContent(jsonObject);
     }
 

@@ -85,6 +85,7 @@ public class MainMenuController implements Initializable {
                     new Request(Request.Type.DISCONNECT)
             );
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
+            System.exit(0);
         });
 
         save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
