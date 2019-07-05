@@ -9,6 +9,7 @@ public class Response {
         public static final int SUCCESSFUL_LOGIN = 100;
         public static final int BAD_SIGN_UP = 431;
         public static final int SUCCESSFUL_SIGN_UP = 101;
+        final public static int SUCCESSFUL_LOG_OUT = 102;
         public static final int MESSAGE_NOTIFY = 50;
     }
 

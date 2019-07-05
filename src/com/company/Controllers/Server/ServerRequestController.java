@@ -10,16 +10,17 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonStreamParser;
 
+
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class ServerRequestController extends Thread{
+public class ServerRequestController extends Thread {
     public InputStream input;
     private ClientController client;
 
-    public ServerRequestController(ClientController client ,InputStream input) {
+    public ServerRequestController(ClientController client, InputStream input) {
         this.input = input;
         this.client = client;
     }
@@ -30,9 +31,9 @@ public class ServerRequestController extends Thread{
             Gson gson = new Gson();
             JsonStreamParser parser = new JsonStreamParser(reader);
             while (Thread.currentThread().isAlive()) {
-                if (parser.hasNext()) {
+                if (client.isConnected() && parser.hasNext()) {
                     Request request = gson.fromJson(parser.next(), Request.class);
-                    System.out.println("Client Request : " + request.getContent().toString());
+                    System.out.println("Client Request: " + request.getType().toString() + " ---> " +request.getContent().toString());
                     handleRequest(request);
                 }
             }
@@ -42,12 +43,15 @@ public class ServerRequestController extends Thread{
     }
 
     private void handleRequest(Request request) {
-        switch (request.getType()){
+        switch (request.getType()) {
             case LOGIN:
                 signinHandler(request);
                 break;
             case SIGN_UP:
                 signUpHandler(request);
+                break;
+            case DISCONNECT:
+                disconnectHandler();
                 break;
             case NEW_MESSAGE:
                 newMessageHandler(request);
@@ -59,6 +63,14 @@ public class ServerRequestController extends Thread{
         ChatController.newMessage(
                 client.getAccount().getUsername(),
                 request.getContent().get("message").getAsString());
+    }
+
+    private void disconnectHandler() {
+        client.getServerResponseController().sendResponse(
+                new Response(Response.Codes.SUCCESSFUL_LOG_OUT)
+        );
+        client.setServerRequestController(null);
+        client.setServerResponseController(null);
     }
 
     private void signinHandler(Request request) {

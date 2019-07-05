@@ -4,6 +4,7 @@ import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Client.Client;
 import com.company.Models.Property;
 import com.company.Models.Response;
+import com.company.Models.User.Account;
 import com.google.gson.Gson;
 import com.google.gson.JsonStreamParser;
 
@@ -53,6 +54,10 @@ public class ClientResponseController extends Thread {
             case Response.Codes.BAD_SIGN_UP:
                 RootsController.setSignUpErrorOnAuthenticate(
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
+                break;
+            case Response.Codes.SUCCESSFUL_LOG_OUT:
+                Account.logout();
+                System.exit(0);
                 break;
             case Response.Codes.MESSAGE_NOTIFY:
                 System.out.println(response.getContent().get("message").getAsString()); //todo : Graphic

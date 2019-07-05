@@ -6,6 +6,7 @@ public class Request {
     public enum Type {
         LOGIN,
         SIGN_UP,
+        DISCONNECT,
         NEW_MESSAGE
     }
 

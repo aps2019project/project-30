@@ -13,15 +13,15 @@ public class ClientController {
 
     public ClientController(Socket clientSocket) {
         this.clientSocket = clientSocket;
-        setServerRequestController(this, clientSocket);
-        setServerResponseController(this, clientSocket);
+        setServerRequestControllerUp(this, clientSocket);
+        setServerResponseControllerUp(this, clientSocket);
     }
 
     public Socket getClientSocket() {
         return clientSocket;
     }
 
-    private void setServerResponseController(ClientController client, Socket clientSocket) {
+    private void setServerResponseControllerUp(ClientController client, Socket clientSocket) {
         try {
             serverResponseController = new ServerResponseController(client, clientSocket.getOutputStream());
             serverResponseController.start();
@@ -30,7 +30,7 @@ public class ClientController {
         }
     }
 
-    private void setServerRequestController(ClientController client, Socket clientSocket) {
+    private void setServerRequestControllerUp(ClientController client, Socket clientSocket) {
         try {
             serverRequestController = new ServerRequestController(client, clientSocket.getInputStream());
             serverRequestController.start();
@@ -47,12 +47,25 @@ public class ClientController {
         return serverResponseController;
     }
 
+    public void setServerRequestController(ServerRequestController serverRequestController) {
+        this.serverRequestController = serverRequestController;
+    }
+
+    public void setServerResponseController(ServerResponseController serverResponseController) {
+        this.serverResponseController = serverResponseController;
+    }
+
     public Account getAccount() {
         return account;
     }
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+
+    public boolean isConnected() {
+        return serverRequestController != null;
     }
 
 }

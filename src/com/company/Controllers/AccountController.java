@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Card.Card;
+import com.company.Models.Client.Client;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
@@ -30,7 +31,6 @@ public class AccountController {
         AuthenticateController.signUpError(errorType);
 
     }
-
 
     public static void signup(String username, String password) throws Account.SignupException {
         if (username.isEmpty() || password.isEmpty()) {
@@ -62,7 +62,7 @@ public class AccountController {
             Account account = Account.getAccountByUsername(username);
             if (account.getPassword().equals(password)) {
                 String token = generateToken();
-                account.setToken(token);
+                Client.setAuthToken(token);
                 return token;
             } else {
                 throw new LoginException("Password is not valid");
