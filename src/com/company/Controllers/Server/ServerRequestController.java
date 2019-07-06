@@ -95,13 +95,12 @@ public class ServerRequestController extends Thread{
     }
 
     private void shopBuyHandler(Request request){
-       // String jsonObject=JsonController.getGson().toJson(Shop.getShopCollection());
         Response response=new Response(Response.Codes.SENT_CARDS,new Property(Property.SHOP_BUYCARD,JsonController.getGson().toJson(Shop.getShopCollection())));
         client.getServerResponseController().sendResponse(response);
     }
 
     private void shopSellHandler(Request request){
-        Response response=new Response(Response.Codes.SENT_CARDS,new Property(Property.SHOP_SELLCARD,JsonController.getGson().toJson(Account.getLoggedInAccount().getCollection())));
+        Response response=new Response(Response.Codes.SHOLSELCARD_SENT,new Property(Property.SHOP_SELLCARD,JsonController.getGson().toJson(Account.getLoggedInAccount().getCollection())));
         client.getServerResponseController().sendResponse(response);
     }
 }

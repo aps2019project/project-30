@@ -57,6 +57,8 @@ public class ClientResponseController extends Thread {
             case Response.Codes.SENT_CARDS:
                 RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);
                 break;
+            case Response.Codes.SHOLSELCARD_SENT:
+                RootsController.jSellCollection=JsonController.getGson().fromJson(response.getContent().get("cardsforsell").getAsString(),Collection.class);
         }
     }
 }

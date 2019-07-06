@@ -58,18 +58,23 @@ public class ShopController implements Initializable {
     }
 
     private void updateShopSell(String newValue) {
+
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.SHOPSELL
+        ));
+
         List<Card> cards;
         if (newValue.isEmpty()) {
-            if(RootsController.jSellCollection==null){
-                Client.getRequestController().sendRequest(new Request(
-                    Request.Type.SHOPSELL
-            ));
-            }
+            cards=RootsController.jSellCollection.getCards();
+           // if(RootsController.jSellCollection==null){
+
+          //  }
 
 
            // cards = Account.getLoggedInAccount().getCollection().getCards();
         }
         else
+            cards=searchByName(RootsController.jSellCollection.getCards(),newValue);
           //  cards = com.company.Controllers.CollectionController.searchCardsByName(newValue);
         cardforsellContainer.getChildren().clear();
         for (Card card : cards) {
@@ -82,6 +87,11 @@ public class ShopController implements Initializable {
 
 
     private void updateShopBuy(String newValue) {
+
+        Client.getRequestController().sendRequest(new Request(
+                Request.Type.SHOPBUY
+        ));
+
         List<Card> cards;
         if (newValue.isEmpty())
             cards = RootsController.jBuyCollection.getCards();
