@@ -57,7 +57,7 @@ public class ClientResponseController extends Thread {
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
                 break;
             case Response.Codes.ACCOUNTS_INFO:
-                JsonArray jsonArray = response.getContent().get("list").getAsJsonArray();
+                JsonArray jsonArray = response.getContent().get("accountsList").getAsJsonArray();
                 List<String> list = new ArrayList<>();
                 for (int i = 0; i < jsonArray.size(); i++)
                     list.add(jsonArray.get(i).getAsString());

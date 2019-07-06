@@ -22,7 +22,7 @@ public class Server {
     }
 
     public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(ServerController.readingPortNumberFromFile());
+        ServerSocket server = new ServerSocket(1010);
         new Thread(() -> {
             while (true) {
                 System.out.println(":::: Online Accounts ::::");

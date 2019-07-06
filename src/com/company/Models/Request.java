@@ -8,7 +8,6 @@ public class Request {
         SIGN_UP,
         DISCONNECT,
         SCOREBOARD,
-        DISCONNECT,
         NEW_MESSAGE
     }
 

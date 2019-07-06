@@ -12,8 +12,13 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.company.Controllers.Client.ScoreboardController"
             prefHeight="400.0" prefWidth="600.0" styleClass="main-menu-root">
-    <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" >
+    <ImageView fx:id="back" fitWidth="100" fitHeight="100" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0">
         <Image url="@../images/back-button.png"/>
     </ImageView>
+
+    <ScrollPane hbarPolicy="NEVER" fx:id="scrollPane">
+        <VBox fx:id="scoreBoard" alignment="CENTER">
+        </VBox>
+    </ScrollPane>
 
 </AnchorPane>
