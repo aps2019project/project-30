@@ -8,6 +8,7 @@ import com.company.Models.Property;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
 import com.google.gson.*;
+import javafx.application.Platform;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -70,7 +71,8 @@ public class ClientResponseController extends Thread {
                 System.exit(0);
                 break;
             case Response.Codes.MESSAGE_NOTIFY:
-                System.out.println(response.getContent().get("message").getAsString()); //todo : Graphic
+                System.out.println(response.getContent().get("message").getAsString());
+                Platform.runLater(() -> RootsController.chatController.addChatToChats(response.getContent().get("message").getAsString()));
                 break;
             case Response.Codes.SENT_CARDS:
                 RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);

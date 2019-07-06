@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.company.Controllers.graphic.ChatController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox StackPane.alignment="CENTER">
+        <ScrollPane>
+            <VBox fx:id="chats"/>
+        </ScrollPane>
+        <HBox>
+            <TextField promptText="message ..." fx:id="newMessage"/>
+            <Button fx:id="send" text="SEND" onAction="#sendMessage"/>
+        </HBox>
+    </VBox>
+</StackPane>

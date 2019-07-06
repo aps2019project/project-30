@@ -36,6 +36,7 @@ public class MainMenuController implements Initializable {
     private static boolean rememberMe = false;
     public static long timeTurn;
     public static long timenow=-1;
+    public Label chats;
 
 
     @Override
@@ -67,6 +68,10 @@ public class MainMenuController implements Initializable {
             RootsController.openShop();
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             event.consume();
+        });
+
+        chats.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            RootsController.openChats();
         });
 
         play.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {

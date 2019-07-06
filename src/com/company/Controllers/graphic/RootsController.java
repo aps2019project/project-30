@@ -17,6 +17,7 @@ import java.util.List;
 public class RootsController {
     public static Parent authenticate;
     static Parent scoreboard;
+    static Parent chat;
     static Parent mainMenu;
     static Parent collection;
     static Parent shop;
@@ -26,6 +27,7 @@ public class RootsController {
     static CollectionController collectionController;
     static ShopController shopController;
     static GameController gameController;
+    public static ChatController chatController;
     public static AuthenticateController authenticateController;
     public static Collection jBuyCollection;
     public static Collection jSellCollection=null;
@@ -33,6 +35,9 @@ public class RootsController {
     static {
         try {
             customCardGenerator = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/custom-card.fxml"));
+            FXMLLoader chatsLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/chat.fxml"));
+            chat = chatsLoader.load();
+            chatController = chatsLoader.getController();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,6 +98,9 @@ public class RootsController {
         }
     }
 
+    public static void openChats() {
+        Graphic.stage.getScene().setRoot(RootsController.chat);
+    }
 
     public static void game() {
         try {
