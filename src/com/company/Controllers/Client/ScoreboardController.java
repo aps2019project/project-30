@@ -1,6 +1,8 @@
 package com.company.Controllers.Client;
 
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Client.Client;
+import com.company.Models.Request;
 import com.company.Models.Sound;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -26,8 +28,10 @@ public class ScoreboardController implements Initializable {
         });
     }
 
-    public static void updateScoreBoard(){
-
+    public void updateScoreBoard(){
+        Client.getRequestController().sendRequest(
+                new Request(Request.Type.SCOREBOARD)
+        );
     }
 
     public void initValues(List<String> list) {
