@@ -12,8 +12,6 @@ import com.google.gson.JsonStreamParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.Scanner;
 
 public class ClientResponseController extends Thread {
 
@@ -57,7 +55,7 @@ public class ClientResponseController extends Thread {
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
                 break;
             case Response.Codes.SENT_CARDS:
-                RootsController.jcollection=JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);
+                RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);
                 break;
         }
     }

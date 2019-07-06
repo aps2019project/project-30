@@ -24,7 +24,8 @@ public class RootsController {
     static ShopController shopController;
     static GameController gameController;
     public static AuthenticateController authenticateController;
-    public static Collection jcollection;
+    public static Collection jBuyCollection;
+    public static Collection jSellCollection=null;
 
     static {
         try {

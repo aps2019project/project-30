@@ -10,6 +10,7 @@ public class Response {
         public static final int BAD_SIGN_UP = 431;
         public static final int SUCCESSFUL_SIGN_UP = 101;
         public static final int SENT_CARDS=200;
+        public static final int SHOLSELCARD_SENT=201;
     }
 
     public Response(int code,Property... properties) {

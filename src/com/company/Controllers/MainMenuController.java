@@ -2,17 +2,14 @@ package com.company.Controllers;
 
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Client.Client;
-import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.company.Views.graphic.Fog;
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -60,7 +57,7 @@ public class MainMenuController implements Initializable {
 //            Graphic.stage.getScene().setRoot(Graphic.shop);
 
             Client.getRequestController().sendRequest(new Request(
-                    Request.Type.SHOP
+                    Request.Type.SHOPBUY
             ));
 
             RootsController.openShop();

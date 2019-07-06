@@ -8,7 +8,6 @@ import com.company.Models.Response;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonStreamParser;
 
 import javax.security.auth.login.LoginException;
@@ -53,8 +52,12 @@ public class ServerRequestController extends Thread{
             case BUY:
                 buyHandeler(request);
                 break;
-            case SHOP:
-                shopHandler(request);
+            case SHOPBUY:
+                shopBuyHandler(request);
+                break;
+            case SHOPSELL:
+                shopSellHandler(request);
+                break;
         }
     }
 
@@ -91,9 +94,14 @@ public class ServerRequestController extends Thread{
 
     }
 
-    private void shopHandler(Request request){
+    private void shopBuyHandler(Request request){
        // String jsonObject=JsonController.getGson().toJson(Shop.getShopCollection());
-        Response response=new Response(Response.Codes.SENT_CARDS,new Property(Property.SHOP_CARD,JsonController.getGson().toJson(Shop.getShopCollection())));
+        Response response=new Response(Response.Codes.SENT_CARDS,new Property(Property.SHOP_BUYCARD,JsonController.getGson().toJson(Shop.getShopCollection())));
+        client.getServerResponseController().sendResponse(response);
+    }
+
+    private void shopSellHandler(Request request){
+        Response response=new Response(Response.Codes.SENT_CARDS,new Property(Property.SHOP_SELLCARD,JsonController.getGson().toJson(Account.getLoggedInAccount().getCollection())));
         client.getServerResponseController().sendResponse(response);
     }
 }

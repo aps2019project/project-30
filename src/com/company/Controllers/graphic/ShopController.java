@@ -6,7 +6,6 @@ import com.company.Models.Card.Spell.Spell;
 import com.company.Models.Client.Client;
 import com.company.Models.Property;
 import com.company.Models.Request;
-import com.company.Models.Shop;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.jfoenix.controls.JFXMasonryPane;
@@ -24,6 +23,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -59,10 +59,18 @@ public class ShopController implements Initializable {
 
     private void updateShopSell(String newValue) {
         List<Card> cards;
-        if (newValue.isEmpty())
-            cards = Account.getLoggedInAccount().getCollection().getCards();
+        if (newValue.isEmpty()) {
+            if(RootsController.jSellCollection==null){
+                Client.getRequestController().sendRequest(new Request(
+                    Request.Type.SHOPSELL
+            ));
+            }
+
+
+           // cards = Account.getLoggedInAccount().getCollection().getCards();
+        }
         else
-            cards = com.company.Controllers.CollectionController.searchCardsByName(newValue);
+          //  cards = com.company.Controllers.CollectionController.searchCardsByName(newValue);
         cardforsellContainer.getChildren().clear();
         for (Card card : cards) {
             VBox cardContainer = new VBox();
@@ -72,12 +80,21 @@ public class ShopController implements Initializable {
     }
 
 
+
     private void updateShopBuy(String newValue) {
         List<Card> cards;
         if (newValue.isEmpty())
-            cards = Shop.getShopCollection().getCards();
-        else
-            cards = com.company.Controllers.ShopController.searchCardsByName(newValue);
+            cards = RootsController.jBuyCollection.getCards();
+        else {
+            //cards = com.company.Controllers.ShopController.searchCardsByName(newValue);
+
+            cards=searchByName(RootsController.jBuyCollection.getCards(),newValue);
+//            Client.getRequestController().sendRequest(new Request(
+//                    Request.Type.SEARCH_BUY,
+//                    new Property(Property.BUY_SEARCH_BAR, newValue)
+//            ));
+
+        }
         cardforbuyContainer.getChildren().clear();
         for (Card card : cards) {
             VBox cardContainer = new VBox();
@@ -134,5 +151,14 @@ public class ShopController implements Initializable {
 
     public void openCustomCardPage(ActionEvent actionEvent) {
         RootsController.openCustomCardGenerator();
+    }
+
+    private List<Card> searchByName(List<Card> mainList,String name){
+        List<Card> list=new ArrayList<>();
+        for(Card card :mainList){
+            if(card.getName().contains(name))
+                list.add(card);
+        }
+        return list;
     }
 }

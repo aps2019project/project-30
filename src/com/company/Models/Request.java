@@ -7,8 +7,10 @@ public class Request {
         LOGIN,
         SIGN_UP,
         BUY,
-        SHOP,
+        SHOPBUY,
+        SHOPSELL,
         SELL
+       // SELL_COLLECTION
     }
 
 

@@ -69,7 +69,7 @@ public class ConsoleInput {
                     collectionMenuCommandsChecker(command);
                     break;
                 case SHOP:
-                    System.out.println("*** SHOP ***");
+                    System.out.println("*** SHOPBUY ***");
                     shopMenuCommandsChecker(command);
                     break;
                 case NEW_BATTLE:
