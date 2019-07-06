@@ -66,16 +66,11 @@ public class ShopController implements Initializable {
         List<Card> cards;
         if (newValue.isEmpty()) {
             cards=RootsController.jSellCollection.getCards();
-           // if(RootsController.jSellCollection==null){
 
-          //  }
-
-
-           // cards = Account.getLoggedInAccount().getCollection().getCards();
         }
         else
             cards=searchByName(RootsController.jSellCollection.getCards(),newValue);
-          //  cards = com.company.Controllers.CollectionController.searchCardsByName(newValue);
+
         cardforsellContainer.getChildren().clear();
         for (Card card : cards) {
             VBox cardContainer = new VBox();
@@ -96,13 +91,8 @@ public class ShopController implements Initializable {
         if (newValue.isEmpty())
             cards = RootsController.jBuyCollection.getCards();
         else {
-            //cards = com.company.Controllers.ShopController.searchCardsByName(newValue);
 
             cards=searchByName(RootsController.jBuyCollection.getCards(),newValue);
-//            Client.getRequestController().sendRequest(new Request(
-//                    Request.Type.SEARCH_BUY,
-//                    new Property(Property.BUY_SEARCH_BAR, newValue)
-//            ));
 
         }
         cardforbuyContainer.getChildren().clear();
@@ -148,11 +138,11 @@ public class ShopController implements Initializable {
 
     private void buyOrSell(Card card) {
         if (tabPane.getSelectionModel().getSelectedItem().getId().equals("sell")) {
-            Client.getRequestController().sendRequest(new Request(Request.Type.SELL,new Property(Property.CARD_PROPERTY,card.getName())));
+            Client.getRequestController().sendRequest(new Request(Request.Type.SELL,new Property(Property.CARDID_PROPERTY,card.getId())));
 //            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
             updateShopSell(search.getText());
         } else {
-            Client.getRequestController().sendRequest(new Request(Request.Type.BUY,new Property(Property.CARD_PROPERTY,card.getName())));
+            Client.getRequestController().sendRequest(new Request(Request.Type.BUY,new Property(Property.CARDNAME_PROPERTY,card.getName())));
 //            com.company.Controllers.ShopController.buy(
 //                    Account.getLoggedInAccount(), card.getName());
 

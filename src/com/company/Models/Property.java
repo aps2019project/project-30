@@ -4,7 +4,8 @@ public class Property {
     final public static String USERNAME_PROPERTY = "username";
     final public static String PASSWORD_PROPERTY = "password";
     final public static String ERROR_MESSAGE_PROPERTY = "errorMessage";
-    final public static String CARD_PROPERTY ="cardid";
+    final public static String CARDID_PROPERTY ="cardid";
+    final public static String CARDNAME_PROPERTY="cardid";
     final public static String SHOP_BUYCARD ="allshopcard";
     //final public static String BUY_SEARCH_BAR="searchcontent";
     final public static String SHOP_SELLCARD="cardsforsell";

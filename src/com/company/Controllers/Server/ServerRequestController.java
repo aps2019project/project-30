@@ -52,6 +52,9 @@ public class ServerRequestController extends Thread{
             case BUY:
                 buyHandeler(request);
                 break;
+            case SELL:
+                sellHandler(request);
+                break;
             case SHOPBUY:
                 shopBuyHandler(request);
                 break;
@@ -91,7 +94,13 @@ public class ServerRequestController extends Thread{
     }
 
     private void buyHandeler(Request request){
+        String name=request.getContent().get(Property.CARDID_PROPERTY).getAsString();
+        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), name);
+    }
 
+    private void sellHandler(Request request){
+        String id=request.getContent().get(Property.CARDID_PROPERTY).getAsString();
+        com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), id);
     }
 
     private void shopBuyHandler(Request request){
