@@ -1,5 +1,8 @@
 package com.company.Models.Server;
 
+import com.company.Controllers.AccountController;
+import com.company.Controllers.BattleController;
+import com.company.Controllers.AccountController;
 import com.company.Controllers.Client.ClientRequestController;
 import com.company.Controllers.Client.ClientResponseController;
 import com.company.Controllers.Server.*;
@@ -12,28 +15,31 @@ import java.net.Socket;
 import java.util.Properties;
 
 public class Server {
-    final private static String PORT_NUMBER_FILE_ADDRESS = "config.properties";
+
+    static{
+        AccountController.LoadSavedAccountsAndAddToAccounts();
+        BattleController.loadSavedGamesAndAddToSavedGamesList();
+    }
 
     public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(0);
-        setPortNumberOnPropertiesFile(server);
+        ServerSocket server = new ServerSocket(1010);
+        new Thread(() -> {
+            while (true) {
+                System.out.println(":::: Online Accounts ::::");
+                AccountController.getConnectedAccount().forEach(account -> {
+                    System.out.println(account.getUsername());
+                });
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
         while (true) {
             Socket client = server.accept();
             new ClientController(client);
         }
-    }
-
-    private static void setPortNumberOnPropertiesFile(ServerSocket server) throws IOException {
-        File portNumberFile = new File(PORT_NUMBER_FILE_ADDRESS);
-        if (!portNumberFile.exists()) {
-            portNumberFile.createNewFile();
-        }
-        Properties properties = new Properties();
-        properties.load(new FileInputStream(portNumberFile));
-        String port = String.valueOf(server.getLocalPort());
-        System.out.println(port);
-        properties.setProperty("port", port);
-        properties.store(new FileOutputStream(PORT_NUMBER_FILE_ADDRESS), null);
     }
 
 }

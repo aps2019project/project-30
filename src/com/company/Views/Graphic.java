@@ -33,8 +33,6 @@ public class Graphic extends Application {
             game = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/game.fxml"));
             chooseGame = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/choose-game.fxml"));
             collection = FXMLLoader.load(Graphic.class.getResource("graphic/xmls/collection.fxml"));
-            AccountController.LoadSavedAccountsAndAddToAccounts();
-            BattleController.loadSavedGamesAndAddToSavedGamesList();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -66,19 +64,8 @@ public class Graphic extends Application {
     }
 
     public static void main(String[] args) {
-        while (!Client.isConnected()) {
-            if (Client.setClientUp()) {
-//                AccountController.loadLoggedInAccount();
-                ShopController.initialize();
-                launch(args);
-            } else {
-                System.err.println("connection failed");
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+//        AccountController.loadLoggedInAccount();
+        ShopController.initialize();
+        launch(args);
     }
 }

@@ -9,8 +9,11 @@ public class Request {
         BUY,
         SHOPBUY,
         SHOPSELL,
-        SELL
+        SELL,
        // SELL_COLLECTION
+        DISCONNECT,
+        SCOREBOARD,
+        NEW_MESSAGE
     }
 
 

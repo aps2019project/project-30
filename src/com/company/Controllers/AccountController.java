@@ -1,6 +1,7 @@
 package com.company.Controllers;
 
 import com.company.Models.Card.Card;
+import com.company.Models.Client.Client;
 import com.company.Models.ErrorType;
 import com.company.Models.User.Account;
 import com.company.Views.Console.AccountView;
@@ -11,6 +12,8 @@ import javax.security.auth.login.LoginException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 public class AccountController {
@@ -29,7 +32,6 @@ public class AccountController {
 
     }
 
-
     public static void signup(String username, String password) throws Account.SignupException {
         if (username.isEmpty() || password.isEmpty()) {
             throw new Account.SignupException("Username/Password Is Empty");
@@ -39,6 +41,12 @@ public class AccountController {
             Account.addToAccounts(
                     new Account(username, password));
         }
+    }
+
+    public static List<Account> getConnectedAccount () {
+        return Account.getAccounts().stream()
+                .filter(account -> account.getClientController() != null && account.getClientController().getClientSocket().isConnected())
+                .collect(Collectors.toList());
     }
 
     public static void addCardToCollection(Account account, Card card) {
@@ -54,7 +62,7 @@ public class AccountController {
             Account account = Account.getAccountByUsername(username);
             if (account.getPassword().equals(password)) {
                 String token = generateToken();
-                account.setToken(token);
+                Client.setAuthToken(token);
                 return token;
             } else {
                 throw new LoginException("Password is not valid");

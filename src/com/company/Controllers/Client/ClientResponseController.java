@@ -6,12 +6,16 @@ import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Client.Client;
 import com.company.Models.Property;
 import com.company.Models.Response;
-import com.google.gson.Gson;
-import com.google.gson.JsonStreamParser;
+import com.company.Models.User.Account;
+import com.google.gson.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClientResponseController extends Thread {
 
@@ -53,6 +57,20 @@ public class ClientResponseController extends Thread {
             case Response.Codes.BAD_SIGN_UP:
                 RootsController.setSignUpErrorOnAuthenticate(
                         response.getContent().get(Property.ERROR_MESSAGE_PROPERTY).getAsString());
+                break;
+            case Response.Codes.ACCOUNTS_INFO:
+                JsonArray jsonArray = response.getContent().get("accountsList").getAsJsonArray();
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < jsonArray.size(); i++)
+                    list.add(jsonArray.get(i).getAsString());
+                RootsController.openScoreBoardMenu(list);
+                break;
+            case Response.Codes.SUCCESSFUL_LOG_OUT:
+                Account.logout();
+                System.exit(0);
+                break;
+            case Response.Codes.MESSAGE_NOTIFY:
+                System.out.println(response.getContent().get("message").getAsString()); //todo : Graphic
                 break;
             case Response.Codes.SENT_CARDS:
                 RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);

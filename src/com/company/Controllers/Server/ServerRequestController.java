@@ -1,12 +1,14 @@
 package com.company.Controllers.Server;
 
 import com.company.Controllers.AccountController;
+import com.company.Controllers.ChatController;
 import com.company.Controllers.JsonController;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
 import com.company.Models.Shop;
 import com.company.Models.User.Account;
+import com.google.gson.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonStreamParser;
 
@@ -14,12 +16,14 @@ import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Comparator;
+import java.util.List;
 
-public class ServerRequestController extends Thread{
+public class ServerRequestController extends Thread {
     public InputStream input;
     private ClientController client;
 
-    public ServerRequestController(ClientController client ,InputStream input) {
+    public ServerRequestController(ClientController client, InputStream input) {
         this.input = input;
         this.client = client;
     }
@@ -30,9 +34,9 @@ public class ServerRequestController extends Thread{
             Gson gson = new Gson();
             JsonStreamParser parser = new JsonStreamParser(reader);
             while (Thread.currentThread().isAlive()) {
-                if (parser.hasNext()) {
+                if (client.isConnected() && parser.hasNext()) {
                     Request request = gson.fromJson(parser.next(), Request.class);
-                    System.out.println("Client Request : " + request.getContent().toString());
+                    System.out.println("Client Request: " + request.getType().toString() + " ---> " + request.getContent().toString());
                     handleRequest(request);
                 }
             }
@@ -42,12 +46,21 @@ public class ServerRequestController extends Thread{
     }
 
     private void handleRequest(Request request) {
-        switch (request.getType()){
+        switch (request.getType()) {
             case LOGIN:
                 signinHandler(request);
                 break;
             case SIGN_UP:
                 signUpHandler(request);
+                break;
+            case SCOREBOARD:
+                scoreboard();
+                break;
+            case DISCONNECT:
+                disconnectHandler();
+                break;
+            case NEW_MESSAGE:
+                newMessageHandler(request);
                 break;
             case BUY:
                 buyHandeler(request);
@@ -64,9 +77,37 @@ public class ServerRequestController extends Thread{
         }
     }
 
+    private void newMessageHandler(Request request) {
+        ChatController.newMessage(
+                client.getAccount().getUsername(),
+                request.getContent().get("message").getAsString());
+    }
+
+    private void scoreboard() {
+        ServerAccountController.sortPlayers();
+        JsonArray jsonArray = new JsonArray();
+        for (int i = 0; i < Account.getAccounts().size(); i++) {
+            Account account = Account.getAccounts().get(i);
+            jsonArray.add((i + 1) + "-> " + account.getUsername() + " " + account.getWins());
+        }
+        Response response = new Response(Response.Codes.ACCOUNTS_INFO);
+        JsonObject content = new JsonObject();
+        content.add("accountsList", jsonArray);
+        response.setContent(content);
+        client.getServerResponseController().sendResponse(response);
+    }
+
+    private void disconnectHandler() {
+        client.getServerResponseController().sendResponse(
+                new Response(Response.Codes.SUCCESSFUL_LOG_OUT)
+        );
+        client.setServerRequestController(null);
+        client.setServerResponseController(null);
+    }
+
     private void signinHandler(Request request) {
-        String username = request.getContent().get("username").getAsString();
-        String password = request.getContent().get("username").getAsString();
+        String username = request.getContent().get(Property.USERNAME_PROPERTY).getAsString();
+        String password = request.getContent().get(Property.PASSWORD_PROPERTY).getAsString();
         Response response;
         try {
             String token = AccountController.login(username, password);
@@ -113,6 +154,3 @@ public class ServerRequestController extends Thread{
         client.getServerResponseController().sendResponse(response);
     }
 }
-
-
-

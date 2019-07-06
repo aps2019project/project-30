@@ -139,12 +139,10 @@ public class ShopController implements Initializable {
     private void buyOrSell(Card card) {
         if (tabPane.getSelectionModel().getSelectedItem().getId().equals("sell")) {
             Client.getRequestController().sendRequest(new Request(Request.Type.SELL,new Property(Property.CARDID_PROPERTY,card.getId())));
-//            com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), card.getId());
             updateShopSell(search.getText());
         } else {
             Client.getRequestController().sendRequest(new Request(Request.Type.BUY,new Property(Property.CARDNAME_PROPERTY,card.getName())));
-//            com.company.Controllers.ShopController.buy(
-//                    Account.getLoggedInAccount(), card.getName());
+
 
         }
     }

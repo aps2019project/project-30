@@ -2,6 +2,7 @@ package com.company.Controllers.graphic;
 
 import com.company.Controllers.AccountController;
 import com.company.Controllers.AuthenticateController;
+import com.company.Controllers.Client.ScoreboardController;
 import com.company.Controllers.MainMenuController;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Sound;
@@ -15,10 +16,12 @@ import java.util.List;
 
 public class RootsController {
     public static Parent authenticate;
+    static Parent scoreboard;
     static Parent mainMenu;
     static Parent collection;
     static Parent shop;
     static Parent customCardGenerator;
+    static ScoreboardController scoreboardController;
     static MainMenuController mainMenuController;
     static CollectionController collectionController;
     static ShopController shopController;
@@ -36,7 +39,7 @@ public class RootsController {
     }
 
     public static void openMainMenu() {
-        Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS,true);
+        Sound.play(Sound.MAIN_MENU_SOUND_ADDRESS, true);
         try {
             FXMLLoader mainMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/main-menu.fxml"));
             mainMenu = mainMenuLoader.load();
@@ -78,7 +81,20 @@ public class RootsController {
 
     }
 
-    public static void game(){
+    public static void openScoreBoardMenu(List<String> list) {
+        try {
+            FXMLLoader scoreboardMenuLoader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/scoreboard.fxml"));
+            scoreboard = scoreboardMenuLoader.load();
+            scoreboardController = scoreboardMenuLoader.getController();
+            scoreboardController.initValues(list);
+            Graphic.stage.getScene().setRoot(RootsController.scoreboard);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void game() {
         try {
             FXMLLoader loader = new FXMLLoader(Graphic.class.getResource("graphic/xmls/game.fxml"));
             Parent root = loader.load();
@@ -86,7 +102,7 @@ public class RootsController {
             gameController.init();
             Graphic.stage.getScene().setRoot(root);
             Sound.pause(Sound.MAIN_MENU_SOUND_ADDRESS);
-            Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS,true);
+            Sound.play(Sound.BATTLE_MAIN_MUSIC_ADDRESS, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,6 +130,4 @@ public class RootsController {
             authenticateController.successfulLogin();
         });
     }
-
-
 }

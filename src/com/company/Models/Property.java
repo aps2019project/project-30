@@ -9,6 +9,8 @@ public class Property {
     final public static String SHOP_BUYCARD ="allshopcard";
     //final public static String BUY_SEARCH_BAR="searchcontent";
     final public static String SHOP_SELLCARD="cardsforsell";
+    final public static String WINS_NUMBER_PROPERTY = "winsNumber";
+    public static final String ACCOUNTS_INFO = "AccountsInfo";
 
 
     private String property;

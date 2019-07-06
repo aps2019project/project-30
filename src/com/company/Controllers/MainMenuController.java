@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Controllers.Server.ServerAccountController;
 import com.company.Controllers.graphic.RootsController;
 import com.company.Models.Client.Client;
 import com.company.Models.Request;
@@ -7,9 +8,11 @@ import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.company.Views.graphic.Fog;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -20,6 +23,7 @@ import java.util.ResourceBundle;
 public class MainMenuController implements Initializable {
     public ImageView friends;
     public ImageView shop;
+    public ImageView scoreboard;
     public Label play;
     public Label collection;
     public Label gold;
@@ -81,13 +85,22 @@ public class MainMenuController implements Initializable {
             if(rememberMe){
                 JsonController.writeLoggedInAccountOnFile();
             }
-            Account.logout();
+            Client.getRequestController().sendRequest(
+                    new Request(Request.Type.DISCONNECT)
+            );
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
             System.exit(0);
         });
 
         save.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            AccountController.saveAccounts();
+            ServerAccountController.saveAccounts();
+            Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
+        });
+
+        scoreboard.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Client.getRequestController().sendRequest(
+                    new Request(Request.Type.SCOREBOARD)
+            );
             Sound.play(Sound.SELECT_SOUND_EFFECT_ADDRESS,false);
         });
     }
@@ -122,13 +135,13 @@ public class MainMenuController implements Initializable {
 //        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), "Palang");
 
 
-        Account.getLoggedInAccount().getCollection().getCollectionController().createDeck("test");
-
-        for (int i = 0; i < 24; i++) {
-            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(String.valueOf(i + 1), "test");
-        }
-
-        Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
+//        Account.getLoggedInAccount().getCollection().getCollectionController().createDeck("test");
+//
+//        for (int i = 0; i < 24; i++) {
+//            Account.getLoggedInAccount().getCollection().getCollectionController().addCard(String.valueOf(i + 1), "test");
+//        }
+//
+//        Account.getLoggedInAccount().getCollection().getCollectionController().selectDeck("test");
     }
 
     public static void changeIsRememberMe() {
