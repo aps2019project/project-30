@@ -3,6 +3,7 @@ package com.company.Controllers.Server;
 import com.company.Controllers.AccountController;
 import com.company.Controllers.ChatController;
 import com.company.Controllers.JsonController;
+import com.company.Models.Card.Card;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
@@ -27,7 +28,6 @@ public class ServerRequestController extends Thread {
         this.input = input;
         this.client = client;
     }
-
     @Override
     public void run() {
         try (InputStreamReader reader = new InputStreamReader(input)) {
@@ -136,11 +136,27 @@ public class ServerRequestController extends Thread {
 
     private void buyHandeler(Request request){
         String name=request.getContent().get(Property.CARDID_PROPERTY).getAsString();
-        com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), name);
+        if(Shop.getNumberofcar().get(name)>=1){
+            com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), name);
+            int n=Shop.getNumberofcar().get(name);
+            Shop.getNumberofcar().remove(name);
+            Shop.getNumberofcar().put(name,n-1);
+        }
+
     }
 
     private void sellHandler(Request request){
         String id=request.getContent().get(Property.CARDID_PROPERTY).getAsString();
+        String name="";
+        for(Card card:Account.getLoggedInAccount().getCollection().getCards()){
+            if(card.getId().equals(id)) {
+                name = card.getName();
+                break;
+            }
+        }
+        int n=Shop.getNumberofcar().get(name);
+        Shop.getNumberofcar().remove(name);
+        Shop.getNumberofcar().put(name,n+1);
         com.company.Controllers.ShopController.sell(Account.getLoggedInAccount(), id);
     }
 
@@ -154,140 +170,5 @@ public class ServerRequestController extends Thread {
         client.getServerResponseController().sendResponse(response);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

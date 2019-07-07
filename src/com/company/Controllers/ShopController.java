@@ -77,6 +77,9 @@ public class ShopController {
 
     public static void initialize() {
         Shop.getShopCollection().getCards().addAll(JsonController.getCards());
+        for(Card card:Shop.getShopCollection().getCards()){
+            Shop.getNumberofcar().put(card.getName(),5);
+        }
         Shop.getShopCollection().getCards().stream().forEach(card -> {
                     if (card instanceof Item) {
                         Shop.getCollectibleItems().add((Item) card);

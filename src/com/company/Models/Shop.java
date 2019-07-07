@@ -5,10 +5,18 @@ import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Card.Item.Item;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Shop {
     static ArrayList<Item> collectibleItems = new ArrayList<>();
     static Collection shopCollection = new Collection();
+    static Map<String,Integer> numberofcar;
+
+
+
+    public static Map<String, Integer> getNumberofcar() {
+        return numberofcar;
+    }
 
     public static Collection getShopCollection() {
         return shopCollection;
