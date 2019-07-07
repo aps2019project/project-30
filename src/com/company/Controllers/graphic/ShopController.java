@@ -65,11 +65,11 @@ public class ShopController implements Initializable {
 
         List<Card> cards;
         if (newValue.isEmpty()) {
-            cards=RootsController.jSellCollection.getCards();
+            cards=RootsController.jSellCollection;
 
         }
         else
-            cards=searchByName(RootsController.jSellCollection.getCards(),newValue);
+            cards=searchByName(RootsController.jSellCollection,newValue);
 
         cardforsellContainer.getChildren().clear();
         for (Card card : cards) {
@@ -89,10 +89,10 @@ public class ShopController implements Initializable {
 
         List<Card> cards;
         if (newValue.isEmpty())
-            cards = RootsController.jBuyCollection.getCards();
+            cards = RootsController.jBuyCollection;
         else {
 
-            cards=searchByName(RootsController.jBuyCollection.getCards(),newValue);
+            cards=searchByName(RootsController.jBuyCollection,newValue);
 
         }
         cardforbuyContainer.getChildren().clear();

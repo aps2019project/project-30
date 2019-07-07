@@ -2,17 +2,20 @@ package com.company.Controllers.Client;
 
 import com.company.Controllers.JsonController;
 import com.company.Controllers.graphic.RootsController;
+import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Client.Client;
 import com.company.Models.Property;
 import com.company.Models.Response;
 import com.company.Models.User.Account;
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,6 +25,7 @@ public class ClientResponseController extends Thread {
 
     public InputStream input;
 
+    public  Type type = new  TypeToken<List<Card>>(){}.getType();
     public ClientResponseController(InputStream input) {
         this.input = input;
     }
@@ -75,10 +79,14 @@ public class ClientResponseController extends Thread {
                 Platform.runLater(() -> RootsController.chatController.addChatToChats(response.getContent().get("message").getAsString()));
                 break;
             case Response.Codes.SENT_CARDS:
-                RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), Collection.class);
+
+                RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), type);
                 break;
             case Response.Codes.SHOLSELCARD_SENT:
-                RootsController.jSellCollection=JsonController.getGson().fromJson(response.getContent().get("cardsforsell").getAsString(),Collection.class);
+
+                RootsController.jSellCollection=JsonController.getGson().fromJson(response.getContent().get("cardsforsell").getAsString(),type);
+                break;
+
         }
     }
 }

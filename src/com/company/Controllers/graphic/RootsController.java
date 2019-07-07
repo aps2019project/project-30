@@ -4,6 +4,7 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.AuthenticateController;
 import com.company.Controllers.Client.ScoreboardController;
 import com.company.Controllers.MainMenuController;
+import com.company.Models.Card.Card;
 import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Sound;
 import com.company.Views.Graphic;
@@ -29,8 +30,8 @@ public class RootsController {
     static GameController gameController;
     public static ChatController chatController;
     public static AuthenticateController authenticateController;
-    public static Collection jBuyCollection;
-    public static Collection jSellCollection;
+    public static List<Card> jBuyCollection;
+    public static List<Card> jSellCollection;
 
     static {
         try {
