@@ -7,6 +7,7 @@ import com.company.Models.Card.Groups.Collection;
 import com.company.Models.Client.Client;
 import com.company.Models.Property;
 import com.company.Models.Response;
+import com.company.Models.Shop;
 import com.company.Models.User.Account;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -79,8 +80,10 @@ public class ClientResponseController extends Thread {
                 Platform.runLater(() -> RootsController.chatController.addChatToChats(response.getContent().get("message").getAsString()));
                 break;
             case Response.Codes.SENT_CARDS:
-
                 RootsController.jBuyCollection =JsonController.getGson().fromJson(response.getContent().get("allshopcard").getAsString(), type);
+                for(Card card: Shop.getShopCollection().getCards()){
+                    Shop.getNumberofcar().put(card.getName(),5);
+                }
                 break;
             case Response.Codes.SHOLSELCARD_SENT:
 
