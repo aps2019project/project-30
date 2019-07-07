@@ -6,10 +6,12 @@ import com.company.Models.User.Account;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Collection implements Serializable {
     private CollectionController collectionController = new CollectionController();
     private ArrayList<Card> cards = new ArrayList<>();
+    //private HashMap<String,Integer> cardsMap=new HashMap<String, Integer>();
 
 
     public void setCollectionController(CollectionController collectionController) {

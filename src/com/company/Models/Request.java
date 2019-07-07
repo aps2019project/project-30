@@ -10,7 +10,6 @@ public class Request {
         SHOPBUY,
         SHOPSELL,
         SELL,
-       // SELL_COLLECTION
         DISCONNECT,
         SCOREBOARD,
         NEW_MESSAGE

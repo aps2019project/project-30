@@ -30,7 +30,7 @@ public class RootsController {
     public static ChatController chatController;
     public static AuthenticateController authenticateController;
     public static Collection jBuyCollection;
-    public static Collection jSellCollection=null;
+    public static Collection jSellCollection;
 
     static {
         try {
