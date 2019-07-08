@@ -4,6 +4,8 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.ChatController;
 import com.company.Controllers.JsonController;
 import com.company.Models.Card.Card;
+import com.company.Models.Card.Hero.Hero;
+import com.company.Models.Card.Minion.Minion;
 import com.company.Models.Property;
 import com.company.Models.Request;
 import com.company.Models.Response;
@@ -74,9 +76,27 @@ public class ServerRequestController extends Thread {
             case SHOPSELL:
                 shopSellHandler(request);
                 break;
-            case :
+            case NEW_HERO:
+                newHeroHandler(request);
+                break;
+            case NEW_MINION:
+                newMinionHandler(request);
                 break;
         }
+    }
+
+    private void newMinionHandler(Request request) {
+        Gson gson = new Gson();
+        Minion newMinion = gson.fromJson(request.getContent().get(Property.NEW_MINION),Minion.class);
+        Shop.getShopCollection().getCards().add(newMinion);
+        Shop.getNumberofcar().put(newMinion.getName(),5);
+    }
+
+    private void newHeroHandler(Request request) {
+        Gson gson = new Gson();
+        Hero newHero = gson.fromJson(request.getContent().get(Property.NEW_HERO),Hero.class);
+        Shop.getShopCollection().getCards().add(newHero);
+        Shop.getNumberofcar().put(newHero.getName(),5);
     }
 
     private void newMessageHandler(Request request) {

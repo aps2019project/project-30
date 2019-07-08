@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Shop {
+
     static ArrayList<Item> collectibleItems = new ArrayList<>();
     static Collection shopCollection = new Collection();
     static Map<String,Integer> numberofcar;
