@@ -12,7 +12,9 @@ public class Request {
         SELL,
         DISCONNECT,
         SCOREBOARD,
-        NEW_MESSAGE
+        NEW_MESSAGE,
+        NEW_HERO,
+        NEW_MINION
     }
 
 

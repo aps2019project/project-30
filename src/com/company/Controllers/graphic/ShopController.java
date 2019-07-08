@@ -66,7 +66,6 @@ public class ShopController implements Initializable {
         List<Card> cards;
         if (newValue.isEmpty()) {
             cards=RootsController.jSellCollection;
-
         }
         else
             cards=searchByName(RootsController.jSellCollection,newValue);

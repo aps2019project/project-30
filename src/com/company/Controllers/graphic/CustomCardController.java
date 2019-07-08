@@ -3,11 +3,11 @@ package com.company.Controllers.graphic;
 import com.company.Controllers.JsonController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
-import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Client.Client;
 import com.company.Models.Request;
 import com.company.Models.Shop;
+import com.company.Models.Property;
 import com.company.Models.Sound;
-import com.company.Models.User.Account;
 import com.company.Views.Graphic;
 import com.google.gson.JsonObject;
 import com.jfoenix.controls.JFXComboBox;
@@ -23,11 +23,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
@@ -112,10 +109,10 @@ public class CustomCardController implements Initializable {
         );
         setSpecialPower(null);
 
-        Request request = new Request();
+        Request request = new Request(Request.Type.NEW_HERO);
         JsonObject jsonObject = new JsonObject();
-        jsonObject.add("newHero",JsonController.getGson().toJsonTree(newHero,Hero.class));
-        System.out.println(jsonObject);
+        jsonObject.add(Property.NEW_HERO,JsonController.getGson().toJsonTree(newHero,Hero.class));
+        Client.getRequestController().sendRequest(request);
 
         addNewHeroToHeroesJsonFile(newHero);
         addNewCustomCardToShopCollection(newHero);
@@ -134,6 +131,11 @@ public class CustomCardController implements Initializable {
                 specialPower
         );
         setSpecialPower(null);
+
+        Request request = new Request(Request.Type.NEW_MINION);
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add(Property.NEW_MINION,JsonController.getGson().toJsonTree(newMinion,Minion.class));
+        Client.getRequestController().sendRequest(request);
 
         addNewMinionToMinionsJsonFile(newMinion);
         addNewCustomCardToShopCollection(newMinion);

@@ -74,6 +74,8 @@ public class ServerRequestController extends Thread {
             case SHOPSELL:
                 shopSellHandler(request);
                 break;
+            case :
+                break;
         }
     }
 

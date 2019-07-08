@@ -11,6 +11,8 @@ public class Property {
     final public static String SHOP_SELLCARD="cardsforsell";
     final public static String WINS_NUMBER_PROPERTY = "winsNumber";
     public static final String ACCOUNTS_INFO = "AccountsInfo";
+    public static final String NEW_HERO = "newHero";
+    public static final String NEW_MINION = "newMinion";
 
 
     private String property;
