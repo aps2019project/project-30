@@ -4,10 +4,12 @@ import com.company.Controllers.JsonController;
 import com.company.Models.Buff.*;
 import com.company.Models.Card.AttackType;
 import com.company.Models.Card.Groups.Deck;
+import com.company.Models.Request;
 import com.company.Models.Shop;
 import com.company.Models.Sound;
 import com.company.Models.User.Account;
 import com.company.Views.Graphic;
+import com.google.gson.JsonObject;
 import com.jfoenix.controls.JFXComboBox;
 import com.company.Models.Card.Hero.Hero;
 import com.company.Models.Card.Minion.Minion;
@@ -109,6 +111,11 @@ public class CustomCardController implements Initializable {
                 Integer.parseInt(heroCoolDown.getText())
         );
         setSpecialPower(null);
+
+        Request request = new Request();
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.add("newHero",JsonController.getGson().toJsonTree(newHero,Hero.class));
+        System.out.println(jsonObject);
 
         addNewHeroToHeroesJsonFile(newHero);
         addNewCustomCardToShopCollection(newHero);

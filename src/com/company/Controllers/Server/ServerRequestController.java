@@ -128,6 +128,7 @@ public class ServerRequestController extends Thread {
         try {
             AccountController.signup(username, password);
             response = new Response(Response.Codes.SUCCESSFUL_SIGN_UP);
+            ServerAccountController.saveAccounts();
         } catch (Account.SignupException e) {
             response = new Response(Response.Codes.BAD_SIGN_UP);
         }
