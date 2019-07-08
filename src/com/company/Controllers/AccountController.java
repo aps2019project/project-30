@@ -45,7 +45,8 @@ public class AccountController {
 
     public static List<Account> getConnectedAccount () {
         return Account.getAccounts().stream()
-                .filter(account -> account.getClientController() != null && account.getClientController().getClientSocket().isConnected())
+                .filter(account -> account.getClientController() != null &&
+                        account.getClientController().getClientSocket().isConnected())
                 .collect(Collectors.toList());
     }
 

@@ -23,6 +23,7 @@ import java.util.List;
 public class Battle {
     final private transient static String SAVED_GAMES_FILE_PATH = "SavedGames/savedGames.json";
     private transient static List<Battle> savedBattles = new ArrayList<>();
+    private transient static List<Battle> playingBattles = new ArrayList<>();
     private transient static Battle playingBattle;
     private Mode mode;
     private Map map = new Map();
@@ -115,6 +116,11 @@ public class Battle {
                 }
                 break;
         }
+    }
+
+
+    public static List<Battle> getPlayingBattles() {
+        return playingBattles;
     }
 
     private void beginTimer() {

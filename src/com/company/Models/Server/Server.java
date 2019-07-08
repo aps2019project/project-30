@@ -6,6 +6,9 @@ import com.company.Controllers.AccountController;
 import com.company.Controllers.Client.ClientRequestController;
 import com.company.Controllers.Client.ClientResponseController;
 import com.company.Controllers.Server.*;
+import com.company.Controllers.ServerController;
+import com.company.Views.ServerGraphic;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,7 +24,7 @@ public class Server {
         BattleController.loadSavedGamesAndAddToSavedGamesList();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void startServer() throws IOException {
         ServerSocket server = new ServerSocket(1010);
         new Thread(() -> {
             while (true) {

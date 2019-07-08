@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.company.Controllers.ServerController"
+      prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
+    <VBox>
+        <Label text="Online Players"/>
+        <ScrollPane prefHeight="350">
+            <VBox fx:id="onlines"/>
+        </ScrollPane>
+    </VBox>
+    <VBox>
+        <Label text="Playing Games"/>
+        <ScrollPane prefHeight="350">
+            <VBox fx:id="games"/>
+        </ScrollPane>
+    </VBox>
+</VBox>
