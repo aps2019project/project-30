@@ -19,8 +19,6 @@ import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Comparator;
-import java.util.List;
 
 public class ServerRequestController extends Thread {
     public InputStream input;
@@ -65,7 +63,7 @@ public class ServerRequestController extends Thread {
                 newMessageHandler(request);
                 break;
             case BUY:
-                buyHandeler(request);
+                buyHandler(request);
                 break;
             case SELL:
                 sellHandler(request);
@@ -157,7 +155,7 @@ public class ServerRequestController extends Thread {
         client.getServerResponseController().sendResponse(response);
     }
 
-    private void buyHandeler(Request request){
+    private void buyHandler(Request request){
         String name=request.getContent().get(Property.CARDID_PROPERTY).getAsString();
         if(Shop.getNumberofcar().get(name)>=1){
             com.company.Controllers.ShopController.buy(Account.getLoggedInAccount(), name);
